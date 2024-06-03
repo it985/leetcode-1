@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2150.Find%20All%20Lonely%20Numbers%20in%20the%20Array/README_EN.md
+rating: 1275
+source: Weekly Contest 277 Q3
+tags:
+    - Array
+    - Hash Table
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [2150. Find All Lonely Numbers in the Array](https://leetcode.com/problems/find-all-lonely-numbers-in-the-array)
 
 [中文文档](/solution/2100-2199/2150.Find%20All%20Lonely%20Numbers%20in%20the%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code>. A number <code>x</code> is <strong>lonely</strong> when it appears only <strong>once</strong>, and no <strong>adjacent</strong> numbers (i.e. <code>x + 1</code> and <code>x - 1)</code> appear in the array.</p>
 
@@ -43,11 +59,17 @@ Note that [5, 1] may also be returned.
 	<li><code>0 &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -60,7 +82,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -81,7 +103,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -99,7 +121,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findLonely(nums []int) []int {
@@ -117,7 +139,7 @@ func findLonely(nums []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findLonely(nums: number[]): number[] {
@@ -135,10 +157,8 @@ function findLonely(nums: number[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

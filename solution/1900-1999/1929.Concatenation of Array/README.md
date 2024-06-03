@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1929.Concatenation%20of%20Array/README.md
+rating: 1132
+source: 第 249 场周赛 Q1
+tags:
+    - 数组
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [1929. 数组串联](https://leetcode.cn/problems/concatenation-of-array)
 
 [English Version](/solution/1900-1999/1929.Concatenation%20of%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个长度为 <code>n</code> 的整数数组 <code>nums</code> 。请你构建一个长度为 <code>2n</code> 的答案数组 <code>ans</code> ，数组下标<strong> 从 0 开始计数 </strong>，对于所有 <code>0 <= i < n</code> 的 <code>i</code> ，满足下述所有要求：</p>
 
@@ -48,15 +61,17 @@
 	<li><code>1 <= nums[i] <= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -64,9 +79,7 @@ class Solution:
         return nums + nums
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -81,7 +94,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -95,7 +108,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getConcatenation(nums []int) []int {
@@ -103,7 +116,25 @@ func getConcatenation(nums []int) []int {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function getConcatenation(nums: number[]): number[] {
+    return [...nums, ...nums];
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn get_concatenation(nums: Vec<i32>) -> Vec<i32> {
+        nums.repeat(2)
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -117,25 +148,7 @@ var getConcatenation = function (nums) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function getConcatenation(nums: number[]): number[] {
-    return [...nums, ...nums];
-}
-```
-
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn get_concatenation(nums: Vec<i32>) -> Vec<i32> {
-        nums.repeat(2)
-    }
-}
-```
-
-### **C**
+#### C
 
 ```c
 /**
@@ -151,10 +164,8 @@ int* getConcatenation(int* nums, int numsSize, int* returnSize) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2952.Minimum%20Number%20of%20Coins%20to%20be%20Added/README.md
+rating: 1784
+source: 第 374 场周赛 Q2
+tags:
+    - 贪心
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2952. 需要添加的硬币的最小数量](https://leetcode.cn/problems/minimum-number-of-coins-to-be-added)
 
 [English Version](/solution/2900-2999/2952.Minimum%20Number%20of%20Coins%20to%20be%20Added/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0 </strong>开始的整数数组 <code>coins</code>，表示可用的硬币的面值，以及一个整数 <code>target</code> 。</p>
 
@@ -52,11 +66,13 @@
 	<li><code>1 &lt;= coins[i] &lt;= target</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 构造**
+### 方法一：贪心 + 构造
 
 我们不妨假设当前需要构造的金额为 $s$，且我们已经构造出了 $[0,...,s-1]$ 内的所有金额。如果此时有一个新的硬币 $x$，我们把它加入到数组中，可以构造出 $[x, s+x-1]$ 内的所有金额。
 
@@ -71,9 +87,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -91,9 +105,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -113,7 +125,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -134,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumAddedCoins(coins []int, target int) (ans int) {
@@ -152,7 +164,7 @@ func minimumAddedCoins(coins []int, target int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumAddedCoins(coins: number[], target: number): number {
@@ -170,10 +182,8 @@ function minimumAddedCoins(coins: number[], target: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

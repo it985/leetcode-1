@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1450.Number%20of%20Students%20Doing%20Homework%20at%20a%20Given%20Time/README.md
+rating: 1129
+source: 第 189 场周赛 Q1
+tags:
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [1450. 在既定时间做作业的学生人数](https://leetcode.cn/problems/number-of-students-doing-homework-at-a-given-time)
 
 [English Version](/solution/1400-1499/1450.Number%20of%20Students%20Doing%20Homework%20at%20a%20Given%20Time/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个整数数组 <code>startTime</code>（开始时间）和 <code>endTime</code>（结束时间），并指定一个整数 <code>queryTime</code> 作为查询时间。</p>
 
@@ -60,17 +72,128 @@
 	<li><code>1 &lt;=&nbsp;queryTime &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：遍历计数**
+### 方法一：遍历计数
 
 同时遍历 $startTime$ 和 $endTime$，统计正在做作业的学生人数。
 
 时间复杂度 $O(n)$，空间复杂度 $O(1)$。其中 $n$ 是 $startTime$ 和 $endTime$ 的长度。
 
-**方法二：差分数组**
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def busyStudent(
+        self, startTime: List[int], endTime: List[int], queryTime: int
+    ) -> int:
+        return sum(a <= queryTime <= b for a, b in zip(startTime, endTime))
+```
+
+#### Java
+
+```java
+class Solution {
+    public int busyStudent(int[] startTime, int[] endTime, int queryTime) {
+        int ans = 0;
+        for (int i = 0; i < startTime.length; ++i) {
+            if (startTime[i] <= queryTime && queryTime <= endTime[i]) {
+                ++ans;
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int busyStudent(vector<int>& startTime, vector<int>& endTime, int queryTime) {
+        int ans = 0;
+        for (int i = 0; i < startTime.size(); ++i) {
+            ans += startTime[i] <= queryTime && queryTime <= endTime[i];
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func busyStudent(startTime []int, endTime []int, queryTime int) int {
+	ans := 0
+	for i, a := range startTime {
+		b := endTime[i]
+		if a <= queryTime && queryTime <= b {
+			ans++
+		}
+	}
+	return ans
+}
+```
+
+#### TypeScript
+
+```ts
+function busyStudent(startTime: number[], endTime: number[], queryTime: number): number {
+    const n = startTime.length;
+    let res = 0;
+    for (let i = 0; i < n; i++) {
+        if (startTime[i] <= queryTime && endTime[i] >= queryTime) {
+            res++;
+        }
+    }
+    return res;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn busy_student(start_time: Vec<i32>, end_time: Vec<i32>, query_time: i32) -> i32 {
+        let mut res = 0;
+        for i in 0..start_time.len() {
+            if start_time[i] <= query_time && end_time[i] >= query_time {
+                res += 1;
+            }
+        }
+        res
+    }
+}
+```
+
+#### C
+
+```c
+int busyStudent(int* startTime, int startTimeSize, int* endTime, int endTimeSize, int queryTime) {
+    int res = 0;
+    for (int i = 0; i < startTimeSize; i++) {
+        if (startTime[i] <= queryTime && endTime[i] >= queryTime) {
+            res++;
+        }
+    }
+    return res;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：差分数组
 
 差分数组可以 $O(1)$ 时间处理区间加减操作。例如，对区间 $[l, r]$ 中的每个数加上 $c$。
 
@@ -96,17 +219,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```python
-class Solution:
-    def busyStudent(
-        self, startTime: List[int], endTime: List[int], queryTime: int
-    ) -> int:
-        return sum(a <= queryTime <= b for a, b in zip(startTime, endTime))
-```
+#### Python3
 
 ```python
 class Solution:
@@ -120,23 +233,7 @@ class Solution:
         return sum(c[: queryTime + 1])
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```java
-class Solution {
-    public int busyStudent(int[] startTime, int[] endTime, int queryTime) {
-        int ans = 0;
-        for (int i = 0; i < startTime.length; ++i) {
-            if (startTime[i] <= queryTime && queryTime <= endTime[i]) {
-                ++ans;
-            }
-        }
-        return ans;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -155,20 +252,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int busyStudent(vector<int>& startTime, vector<int>& endTime, int queryTime) {
-        int ans = 0;
-        for (int i = 0; i < startTime.size(); ++i) {
-            ans += startTime[i] <= queryTime && queryTime <= endTime[i];
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -188,20 +272,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func busyStudent(startTime []int, endTime []int, queryTime int) int {
-	ans := 0
-	for i, a := range startTime {
-		b := endTime[i]
-		if a <= queryTime && queryTime <= b {
-			ans++
-		}
-	}
-	return ans
-}
-```
+#### Go
 
 ```go
 func busyStudent(startTime []int, endTime []int, queryTime int) int {
@@ -219,55 +290,8 @@ func busyStudent(startTime []int, endTime []int, queryTime int) int {
 }
 ```
 
-### **C**
-
-```c
-int busyStudent(int* startTime, int startTimeSize, int* endTime, int endTimeSize, int queryTime) {
-    int res = 0;
-    for (int i = 0; i < startTimeSize; i++) {
-        if (startTime[i] <= queryTime && endTime[i] >= queryTime) {
-            res++;
-        }
-    }
-    return res;
-}
-```
-
-### **TypeScript**
-
-```ts
-function busyStudent(startTime: number[], endTime: number[], queryTime: number): number {
-    const n = startTime.length;
-    let res = 0;
-    for (let i = 0; i < n; i++) {
-        if (startTime[i] <= queryTime && endTime[i] >= queryTime) {
-            res++;
-        }
-    }
-    return res;
-}
-```
-
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn busy_student(start_time: Vec<i32>, end_time: Vec<i32>, query_time: i32) -> i32 {
-        let mut res = 0;
-        for i in 0..start_time.len() {
-            if start_time[i] <= query_time && end_time[i] >= query_time {
-                res += 1;
-            }
-        }
-        res
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

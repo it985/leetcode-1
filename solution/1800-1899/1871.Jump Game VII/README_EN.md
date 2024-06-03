@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1871.Jump%20Game%20VII/README_EN.md
+rating: 1896
+source: Weekly Contest 242 Q3
+tags:
+    - String
+    - Dynamic Programming
+    - Prefix Sum
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [1871. Jump Game VII](https://leetcode.com/problems/jump-game-vii)
 
 [中文文档](/solution/1800-1899/1871.Jump%20Game%20VII/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> binary string <code>s</code> and two integers <code>minJump</code> and <code>maxJump</code>. In the beginning, you are standing at index <code>0</code>, which is equal to <code>&#39;0&#39;</code>. You can move from index <code>i</code> to index <code>j</code> if the following conditions are fulfilled:</p>
 
@@ -41,9 +58,13 @@ In the second step, move from index 3 to index 5.
 	<li><code>1 &lt;= minJump &lt;= maxJump &lt; s.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Prefix Sum + Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: Prefix Sum + Dynamic Programming
 
 We define a prefix sum array $pre$ of length $n+1$, where $pre[i]$ represents the number of reachable positions in the first $i$ positions of $s$. We define a boolean array $f$ of length $n$, where $f[i]$ indicates whether $s[i]$ is reachable. Initially, $pre[1] = 1$ and $f[0] = true$.
 
@@ -55,7 +76,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -72,7 +93,7 @@ class Solution:
         return f[-1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -95,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -121,7 +142,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canReach(s string, minJump int, maxJump int) bool {
@@ -144,7 +165,7 @@ func canReach(s string, minJump int, maxJump int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canReach(s: string, minJump: number, maxJump: number): boolean {
@@ -164,7 +185,7 @@ function canReach(s: string, minJump: number, maxJump: number): boolean {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -190,10 +211,8 @@ var canReach = function (s, minJump, maxJump) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

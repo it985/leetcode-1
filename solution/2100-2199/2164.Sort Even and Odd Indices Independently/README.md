@@ -1,15 +1,29 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2164.Sort%20Even%20and%20Odd%20Indices%20Independently/README.md
+rating: 1252
+source: 第 279 场周赛 Q1
+tags:
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2164. 对奇偶下标分别排序](https://leetcode.cn/problems/sort-even-and-odd-indices-independently)
 
 [English Version](/solution/2100-2199/2164.Sort%20Even%20and%20Odd%20Indices%20Independently/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 。根据下述规则重排 <code>nums</code> 中的值：</p>
 
 <ol>
 	<li>按 <strong>非递增</strong> 顺序排列 <code>nums</code> <strong>奇数下标</strong> 上的所有值。
+
     <ul>
     	<li>举个例子，如果排序前 <code>nums = [4,<em><strong>1</strong></em>,2,<em><strong>3</strong></em>]</code> ，对奇数下标的值排序后变为 <code>[4,<em><strong>3</strong></em>,2,<em><strong>1</strong></em>]</code> 。奇数下标 <code>1</code> 和 <code>3</code> 的值按照非递增顺序重排。</li>
     </ul>
@@ -19,6 +33,7 @@
     	<li>举个例子，如果排序前 <code>nums = [<em><strong>4</strong></em>,1,<em><strong>2</strong></em>,3]</code> ，对偶数下标的值排序后变为 <code>[<em><strong>2</strong></em>,1,<em><strong>4</strong></em>,3]</code> 。偶数下标 <code>0</code> 和 <code>2</code> 的值按照非递减顺序重排。</li>
     </ul>
     </li>
+
 </ol>
 
 <p>返回重排 <code>nums</code> 的值之后形成的数组。</p>
@@ -57,15 +72,17 @@
 	<li><code>1 &lt;= nums[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,9 +94,7 @@ class Solution:
         return nums
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -133,7 +148,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sortEvenOdd(nums []int) []int {
@@ -162,16 +177,8 @@ func sortEvenOdd(nums []int) []int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

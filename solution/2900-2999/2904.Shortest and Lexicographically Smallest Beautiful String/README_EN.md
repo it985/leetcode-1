@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2904.Shortest%20and%20Lexicographically%20Smallest%20Beautiful%20String/README_EN.md
+rating: 1483
+source: Weekly Contest 367 Q2
+tags:
+    - String
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [2904. Shortest and Lexicographically Smallest Beautiful String](https://leetcode.com/problems/shortest-and-lexicographically-smallest-beautiful-string)
 
 [中文文档](/solution/2900-2999/2904.Shortest%20and%20Lexicographically%20Smallest%20Beautiful%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a binary string <code>s</code> and a positive integer <code>k</code>.</p>
 
@@ -65,27 +80,21 @@ The lexicographically smallest beautiful substring with length 2 is the substrin
 	<li><code>1 &lt;= k &lt;= s.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Enumeration
 
 We can enumerate all substrings $s[i: j]$, where $i \lt j$, and check if they are beautiful substrings. If so, we update the answer.
 
 The time complexity is $O(n^3)$, and the space complexity is $O(n)$. Here, $n$ is the length of the string $s$.
 
-**Solution 2: Two Pointers**
-
-We can also use two pointers to maintain a sliding window, where pointer $i$ points to the left boundary of the window, and pointer $j$ points to the right boundary of the window. Initially, $i$ and $j$ both point to $0$. In addition, we use a variable $cnt$ to record the number of $1$s in the sliding window.
-
-We first move pointer $j$ to the right, add $s[j]$ to the sliding window, and update $cnt$. If $cnt$ is greater than $k$, or if $i$ is less than $j$ and $s[i]$ is $0$, we move pointer $i$ to the right and update $cnt$.
-
-When $cnt$ equals $k$, we have found a beautiful substring. We compare it with the current answer and update the answer if necessary.
-
-The time complexity is $O(n^2)$, and the space complexity is $O(n)$. Here, $n$ is the length of the string $s$.
-
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -101,6 +110,143 @@ class Solution:
                     ans = t
         return ans
 ```
+
+#### Java
+
+```java
+class Solution {
+    public String shortestBeautifulSubstring(String s, int k) {
+        int n = s.length();
+        String ans = "";
+        for (int i = 0; i < n; ++i) {
+            for (int j = i + k; j <= n; ++j) {
+                String t = s.substring(i, j);
+                int cnt = 0;
+                for (char c : t.toCharArray()) {
+                    cnt += c - '0';
+                }
+                if (cnt == k
+                    && ("".equals(ans) || j - i < ans.length()
+                        || (j - i == ans.length() && t.compareTo(ans) < 0))) {
+                    ans = t;
+                }
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    string shortestBeautifulSubstring(string s, int k) {
+        int n = s.size();
+        string ans = "";
+        for (int i = 0; i < n; ++i) {
+            for (int j = i + k; j <= n; ++j) {
+                string t = s.substr(i, j - i);
+                int cnt = count(t.begin(), t.end(), '1');
+                if (cnt == k && (ans == "" || j - i < ans.size() || (j - i == ans.size() && t < ans))) {
+                    ans = t;
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func shortestBeautifulSubstring(s string, k int) (ans string) {
+	n := len(s)
+	for i := 0; i < n; i++ {
+		for j := i + k; j <= n; j++ {
+			t := s[i:j]
+			cnt := 0
+			for _, c := range t {
+				if c == '1' {
+					cnt++
+				}
+			}
+			if cnt == k && (ans == "" || j-i < len(ans) || (j-i == len(ans) && t < ans)) {
+				ans = t
+			}
+		}
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function shortestBeautifulSubstring(s: string, k: number): string {
+    const n = s.length;
+    let ans: string = '';
+    for (let i = 0; i < n; ++i) {
+        for (let j = i + k; j <= n; ++j) {
+            const t = s.slice(i, j);
+            const cnt = t.split('').filter(c => c === '1').length;
+            if (
+                cnt === k &&
+                (ans === '' || j - i < ans.length || (j - i === ans.length && t < ans))
+            ) {
+                ans = t;
+            }
+        }
+    }
+    return ans;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn shortest_beautiful_substring(s: String, k: i32) -> String {
+        let n = s.len();
+        let mut ans = String::new();
+
+        for i in 0..n {
+            for j in i + (k as usize)..=n {
+                let t = &s[i..j];
+                if
+                    (t.matches('1').count() as i32) == k &&
+                    (ans.is_empty() || j - i < ans.len() || (j - i == ans.len() && t < &ans))
+                {
+                    ans = t.to_string();
+                }
+            }
+        }
+        ans
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Two Pointers
+
+We can also use two pointers to maintain a sliding window, where pointer $i$ points to the left boundary of the window, and pointer $j$ points to the right boundary of the window. Initially, $i$ and $j$ both point to $0$. In addition, we use a variable $cnt$ to record the number of $1$s in the sliding window.
+
+We first move pointer $j$ to the right, add $s[j]$ to the sliding window, and update $cnt$. If $cnt$ is greater than $k$, or if $i$ is less than $j$ and $s[i]$ is $0$, we move pointer $i$ to the right and update $cnt$.
+
+When $cnt$ equals $k$, we have found a beautiful substring. We compare it with the current answer and update the answer if necessary.
+
+The time complexity is $O(n^2)$, and the space complexity is $O(n)$. Here, $n$ is the length of the string $s$.
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -121,29 +267,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-```java
-class Solution {
-    public String shortestBeautifulSubstring(String s, int k) {
-        int n = s.length();
-        String ans = "";
-        for (int i = 0; i < n; ++i) {
-            for (int j = i + k; j <= n; ++j) {
-                String t = s.substring(i, j);
-                int cnt = 0;
-                for (char c : t.toCharArray()) {
-                    cnt += c - '0';
-                }
-                if (cnt == k && ("".equals(ans) || j - i < ans.length() || (j - i == ans.length() && t.compareTo(ans) < 0))) {
-                    ans = t;
-                }
-            }
-        }
-        return ans;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -170,27 +294,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    string shortestBeautifulSubstring(string s, int k) {
-        int n = s.size();
-        string ans = "";
-        for (int i = 0; i < n; ++i) {
-            for (int j = i + k; j <= n; ++j) {
-                string t = s.substr(i, j - i);
-                int cnt = count(t.begin(), t.end(), '1');
-                if (cnt == k && (ans == "" || j - i < ans.size() || (j - i == ans.size() && t < ans))) {
-                    ans = t;
-                }
-            }
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -215,28 +319,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func shortestBeautifulSubstring(s string, k int) (ans string) {
-	n := len(s)
-	for i := 0; i < n; i++ {
-		for j := i + k; j <= n; j++ {
-			t := s[i:j]
-			cnt := 0
-			for _, c := range t {
-				if c == '1' {
-					cnt++
-				}
-			}
-			if cnt == k && (ans == "" || j-i < len(ans) || (j-i == len(ans) && t < ans)) {
-				ans = t
-			}
-		}
-	}
-	return
-}
-```
+#### Go
 
 ```go
 func shortestBeautifulSubstring(s string, k int) (ans string) {
@@ -258,27 +341,7 @@ func shortestBeautifulSubstring(s string, k int) (ans string) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function shortestBeautifulSubstring(s: string, k: number): string {
-    const n = s.length;
-    let ans: string = '';
-    for (let i = 0; i < n; ++i) {
-        for (let j = i + k; j <= n; ++j) {
-            const t = s.slice(i, j);
-            const cnt = t.split('').filter(c => c === '1').length;
-            if (
-                cnt === k &&
-                (ans === '' || j - i < ans.length || (j - i === ans.length && t < ans))
-            ) {
-                ans = t;
-            }
-        }
-    }
-    return ans;
-}
-```
+#### TypeScript
 
 ```ts
 function shortestBeautifulSubstring(s: string, k: number): string {
@@ -300,29 +363,7 @@ function shortestBeautifulSubstring(s: string, k: number): string {
 }
 ```
 
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn shortest_beautiful_substring(s: String, k: i32) -> String {
-        let n = s.len();
-        let mut ans = String::new();
-
-        for i in 0..n {
-            for j in i + (k as usize)..=n {
-                let t = &s[i..j];
-                if
-                    (t.matches('1').count() as i32) == k &&
-                    (ans.is_empty() || j - i < ans.len() || (j - i == ans.len() && t < &ans))
-                {
-                    ans = t.to_string();
-                }
-            }
-        }
-        ans
-    }
-}
-```
+#### Rust
 
 ```rust
 impl Solution {
@@ -361,10 +402,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

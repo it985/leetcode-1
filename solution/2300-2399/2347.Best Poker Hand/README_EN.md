@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2347.Best%20Poker%20Hand/README_EN.md
+rating: 1241
+source: Biweekly Contest 83 Q1
+tags:
+    - Array
+    - Hash Table
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [2347. Best Poker Hand](https://leetcode.com/problems/best-poker-hand)
 
 [中文文档](/solution/2300-2399/2347.Best%20Poker%20Hand/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>ranks</code> and a character array <code>suits</code>. You have <code>5</code> cards where the <code>i<sup>th</sup></code> card has a rank of <code>ranks[i]</code> and a suit of <code>suits[i]</code>.</p>
 
@@ -56,11 +72,17 @@ Note that we cannot make a &quot;Flush&quot; or a &quot;Three of a Kind&quot;.
 	<li>No two cards have the same rank and suit.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -76,7 +98,7 @@ class Solution:
         return 'High Card'
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -127,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func bestHand(ranks []int, suits []byte) string {
@@ -154,7 +176,7 @@ func bestHand(ranks []int, suits []byte) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function bestHand(ranks: number[], suits: string[]): string {
@@ -176,7 +198,7 @@ function bestHand(ranks: number[], suits: string[]): string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -199,7 +221,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 char* bestHand(int* ranks, int ranksSize, char* suits, int suitsSize) {
@@ -228,10 +250,8 @@ char* bestHand(int* ranks, int ranksSize, char* suits, int suitsSize) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

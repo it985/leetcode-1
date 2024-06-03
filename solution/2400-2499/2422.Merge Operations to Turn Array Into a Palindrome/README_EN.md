@@ -1,8 +1,22 @@
-# [2422. Merge Operations to Turn Array Into a Palindrome](https://leetcode.com/problems/merge-operations-to-turn-array-into-a-palindrome)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2422.Merge%20Operations%20to%20Turn%20Array%20Into%20a%20Palindrome/README_EN.md
+tags:
+    - Greedy
+    - Array
+    - Two Pointers
+---
+
+<!-- problem:start -->
+
+# [2422. Merge Operations to Turn Array Into a Palindrome 🔒](https://leetcode.com/problems/merge-operations-to-turn-array-into-a-palindrome)
 
 [中文文档](/solution/2400-2499/2422.Merge%20Operations%20to%20Turn%20Array%20Into%20a%20Palindrome/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an array <code>nums</code> consisting of <strong>positive</strong> integers.</p>
 
@@ -10,10 +24,12 @@
 
 <ul>
 	<li>Choose any two <strong>adjacent</strong> elements and <strong>replace</strong> them with their <strong>sum</strong>.
+
     <ul>
     	<li>For example, if <code>nums = [1,<u>2,3</u>,1]</code>, you can apply one operation to make it <code>[1,5,1]</code>.</li>
     </ul>
     </li>
+
 </ul>
 
 <p>Return <em>the <strong>minimum</strong> number of operations needed to turn the array into a <strong>palindrome</strong></em>.</p>
@@ -47,9 +63,13 @@ It can be shown that 2 is the minimum number of operations needed.
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy + Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Greedy + Two Pointers
 
 Define two pointers $i$ and $j$, pointing to the beginning and end of the array respectively, use variables $a$ and $b$ to represent the values of the first and last elements, and variable $ans$ to represent the number of operations.
 
@@ -65,7 +85,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array. The space c
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -88,7 +108,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -113,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,7 +159,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumOperations(nums []int) int {
@@ -164,16 +184,8 @@ func minimumOperations(nums []int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

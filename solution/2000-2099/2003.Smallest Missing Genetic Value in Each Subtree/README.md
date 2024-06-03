@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2003.Smallest%20Missing%20Genetic%20Value%20in%20Each%20Subtree/README.md
+rating: 2415
+source: 第 258 场周赛 Q4
+tags:
+    - 树
+    - 深度优先搜索
+    - 并查集
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2003. 每棵子树内缺失的最小基因值](https://leetcode.cn/problems/smallest-missing-genetic-value-in-each-subtree)
 
 [English Version](/solution/2000-2099/2003.Smallest%20Missing%20Genetic%20Value%20in%20Each%20Subtree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>有一棵根节点为 <code>0</code>&nbsp;的 <strong>家族树</strong>&nbsp;，总共包含 <code>n</code>&nbsp;个节点，节点编号为 <code>0</code>&nbsp;到 <code>n - 1</code>&nbsp;。给你一个下标从 <strong>0</strong>&nbsp;开始的整数数组 <code>parents</code>&nbsp;，其中&nbsp;<code>parents[i]</code>&nbsp;是节点 <code>i</code>&nbsp;的父节点。由于节点 <code>0</code>&nbsp;是 <strong>根</strong>&nbsp;，所以&nbsp;<code>parents[0] == -1</code>&nbsp;。</p>
 
@@ -65,11 +80,13 @@
 	<li><code>nums[i]</code>&nbsp;互不相同。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们注意到，每个节点的基因值互不相同，因此，我们只需要找到基因值为 $1$ 的节点 $idx$，那么除了从节点 $idx$ 到根节点 $0$ 的每个节点，其它节点的答案都是 $1$。
 
@@ -87,9 +104,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -128,9 +143,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -185,7 +198,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -234,7 +247,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func smallestMissingValueSubtree(parents []int, nums []int) []int {
@@ -280,7 +293,51 @@ func smallestMissingValueSubtree(parents []int, nums []int) []int {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function smallestMissingValueSubtree(parents: number[], nums: number[]): number[] {
+    const n = nums.length;
+    const g: number[][] = Array.from({ length: n }, () => []);
+    const vis: boolean[] = Array(n).fill(false);
+    const has: boolean[] = Array(n + 2).fill(false);
+    const ans: number[] = Array(n).fill(1);
+    let idx = -1;
+    for (let i = 0; i < n; ++i) {
+        if (i) {
+            g[parents[i]].push(i);
+        }
+        if (nums[i] === 1) {
+            idx = i;
+        }
+    }
+    if (idx === -1) {
+        return ans;
+    }
+    const dfs = (i: number): void => {
+        if (vis[i]) {
+            return;
+        }
+        vis[i] = true;
+        if (nums[i] < has.length) {
+            has[nums[i]] = true;
+        }
+        for (const j of g[i]) {
+            dfs(j);
+        }
+    };
+    for (let i = 2; ~idx; idx = parents[idx]) {
+        dfs(idx);
+        while (has[i]) {
+            ++i;
+        }
+        ans[idx] = i;
+    }
+    return ans;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -336,54 +393,8 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function smallestMissingValueSubtree(parents: number[], nums: number[]): number[] {
-    const n = nums.length;
-    const g: number[][] = Array.from({ length: n }, () => []);
-    const vis: boolean[] = Array(n).fill(false);
-    const has: boolean[] = Array(n + 2).fill(false);
-    const ans: number[] = Array(n).fill(1);
-    let idx = -1;
-    for (let i = 0; i < n; ++i) {
-        if (i) {
-            g[parents[i]].push(i);
-        }
-        if (nums[i] === 1) {
-            idx = i;
-        }
-    }
-    if (idx === -1) {
-        return ans;
-    }
-    const dfs = (i: number): void => {
-        if (vis[i]) {
-            return;
-        }
-        vis[i] = true;
-        if (nums[i] < has.length) {
-            has[nums[i]] = true;
-        }
-        for (const j of g[i]) {
-            dfs(j);
-        }
-    };
-    for (let i = 2; ~idx; idx = parents[idx]) {
-        dfs(idx);
-        while (has[i]) {
-            ++i;
-        }
-        ans[idx] = i;
-    }
-    return ans;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

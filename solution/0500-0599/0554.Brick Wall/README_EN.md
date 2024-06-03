@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0554.Brick%20Wall/README_EN.md
+tags:
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [554. Brick Wall](https://leetcode.com/problems/brick-wall)
 
 [中文文档](/solution/0500-0599/0554.Brick%20Wall/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is a rectangular brick wall in front of you with <code>n</code> rows of bricks. The <code>i<sup>th</sup></code> row has some number of bricks each of the same height (i.e., one unit) but they can be of different widths. The total width of each row is the same.</p>
 
@@ -37,13 +50,17 @@
 	<li><code>1 &lt;= wall[i][j] &lt;= 2<sup>31</sup> - 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-The question can be understood as, let the vertical line pass through the edge of the brick as much as possible, use the hash table to process the frequency of the brick edge in different positions (not including the two vertical edges), and the final answer is the total number of rows minus the maximum Frequency.
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,7 +76,7 @@ class Solution:
         return len(wall) - cnt[max(cnt, key=cnt.get)]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -78,7 +95,7 @@ class Solution {
 }
 ```
 
-### **Go**
+#### Go
 
 ```go
 func leastBricks(wall [][]int) int {
@@ -100,7 +117,7 @@ func leastBricks(wall [][]int) int {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -124,10 +141,8 @@ var leastBricks = function (wall) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

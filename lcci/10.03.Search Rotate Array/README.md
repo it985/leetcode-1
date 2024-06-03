@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/10.03.Search%20Rotate%20Array/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 10.03. 搜索旋转数组](https://leetcode.cn/problems/search-rotate-array-lcci)
 
 [English Version](/lcci/10.03.Search%20Rotate%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>搜索旋转数组。给定一个排序后的数组，包含n个整数，但这个数组已被旋转过很多次了，次数不详。请编写代码找出数组中的某个元素，假设数组元素原先是按升序排列的。若有多个相同元素，返回索引值最小的一个。</p>
 <p><strong>示例1:</strong></p>
@@ -20,11 +28,13 @@
 	<li>arr 长度范围在[1, 1000000]之间</li>
 </ol>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找**
+### 方法一：二分查找
 
 我们定义二分查找的左边界 $l=0$，右边界 $r=n-1$，其中 $n$ 为数组的长度。
 
@@ -42,13 +52,11 @@
 
 相似题目：
 
--   [81. 搜索旋转排序数组 II](/solution/0000-0099/0081.Search%20in%20Rotated%20Sorted%20Array%20II/README.md)
+-   [81. 搜索旋转排序数组 II](https://github.com/doocs/leetcode/blob/main/solution/0000-0099/0081.Search%20in%20Rotated%20Sorted%20Array%20II/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -73,9 +81,7 @@ class Solution:
         return l if arr[l] == target else -1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -140,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func search(arr []int, target int) int {
@@ -173,7 +179,7 @@ func search(arr []int, target int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function search(arr: number[], target: number): number {
@@ -203,10 +209,44 @@ function search(arr: number[], target: number): number {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    func search(_ arr: [Int], _ target: Int) -> Int {
+        var l = 0
+        var r = arr.count - 1
 
+        while arr[l] == arr[r] && l < r {
+            r -= 1
+        }
+
+        while l < r {
+            let mid = (l + r) >> 1
+            if arr[mid] > arr[r] {
+                if arr[l] <= target && target <= arr[mid] {
+                    r = mid
+                } else {
+                    l = mid + 1
+                }
+            } else if arr[mid] < arr[r] {
+                if arr[mid] < target && target <= arr[r] {
+                    l = mid + 1
+                } else {
+                    r = mid
+                }
+            } else {
+                r -= 1
+            }
+        }
+
+        return arr[l] == target ? l : -1
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

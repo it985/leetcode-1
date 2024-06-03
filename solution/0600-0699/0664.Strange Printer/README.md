@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0664.Strange%20Printer/README.md
+tags:
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [664. 奇怪的打印机](https://leetcode.cn/problems/strange-printer)
 
 [English Version](/solution/0600-0699/0664.Strange%20Printer/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>有台奇怪的打印机有以下两个特殊要求：</p>
 
@@ -41,11 +52,13 @@
 	<li><code>s</code> 由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i][j]$ 表示打印完成区间 $s[i..j]$ 的最少操作数，初始时 $f[i][j]=\infty$，答案为 $f[0][n-1]$，其中 $n$ 是字符串 $s$ 的长度。
 
@@ -66,9 +79,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -86,9 +97,7 @@ class Solution:
         return f[0][-1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -116,7 +125,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -142,7 +151,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func strangePrinter(s string) int {
@@ -170,7 +179,7 @@ func strangePrinter(s string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function strangePrinter(s: string): number {
@@ -192,10 +201,8 @@ function strangePrinter(s: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

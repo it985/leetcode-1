@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0632.Smallest%20Range%20Covering%20Elements%20from%20K%20Lists/README_EN.md
+tags:
+    - Greedy
+    - Array
+    - Hash Table
+    - Sorting
+    - Sliding Window
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [632. Smallest Range Covering Elements from K Lists](https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists)
 
 [中文文档](/solution/0600-0699/0632.Smallest%20Range%20Covering%20Elements%20from%20K%20Lists/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You have <code>k</code> lists of sorted integers in <strong>non-decreasing&nbsp;order</strong>. Find the <b>smallest</b> range that includes at least one number from each of the <code>k</code> lists.</p>
 
@@ -38,11 +55,17 @@ List 3: [5, 18, 22, 30], 22 is in range [20,24].
 	<li><code>nums[i]</code>&nbsp;is sorted in <strong>non-decreasing</strong> order.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -52,7 +75,7 @@ class Solution:
         cnt = Counter()
         ans = [-inf, inf]
         j = 0
-        for b, v in t:
+        for i, (b, v) in enumerate(t):
             cnt[v] += 1
             while len(cnt) == len(nums):
                 a = t[j][0]
@@ -67,7 +90,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -111,7 +134,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -153,7 +176,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func smallestRange(nums [][]int) []int {
@@ -187,7 +210,7 @@ func smallestRange(nums [][]int) []int {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -230,10 +253,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

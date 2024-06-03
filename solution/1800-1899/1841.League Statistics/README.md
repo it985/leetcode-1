@@ -1,10 +1,20 @@
-# [1841. 联赛信息统计](https://leetcode.cn/problems/league-statistics)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1841.League%20Statistics/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1841. 联赛信息统计 🔒](https://leetcode.cn/problems/league-statistics)
 
 [English Version](/solution/1800-1899/1841.League%20Statistics/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Teams</code></p>
 
@@ -95,15 +105,17 @@ Dortmund (team_id=4) 有2场比赛: 2胜. 总分数 = 3 + 3 = 6.
 Arsenal (team_id=6) 有2场比赛: 2平. 总分数 = 1 + 1 = 2.
 Dortmund 是积分榜上的第一支球队. Ajax和Arsenal 有同样的分数, 但Arsenal的goal_diff高于Ajax, 所以Arsenal在表中的顺序在Ajaxzhi'qian.</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -146,3 +158,7 @@ ORDER BY points DESC, goal_diff DESC, team_name;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

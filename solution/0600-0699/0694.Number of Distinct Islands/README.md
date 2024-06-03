@@ -1,10 +1,24 @@
-# [694. 不同岛屿的数量](https://leetcode.cn/problems/number-of-distinct-islands)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0694.Number%20of%20Distinct%20Islands/README.md
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 并查集
+    - 哈希表
+    - 哈希函数
+---
+
+<!-- problem:start -->
+
+# [694. 不同岛屿的数量 🔒](https://leetcode.cn/problems/number-of-distinct-islands)
 
 [English Version](/solution/0600-0699/0694.Number%20of%20Distinct%20Islands/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个非空 01 二维数组表示的网格，一个岛屿由四连通（上、下、左、右四个方向）的 <code>1</code> 组成，你可以认为网格的四周被海水包围。</p>
 
@@ -40,11 +54,13 @@
 	<li><code>grid[i][j]</code>&nbsp;仅包含&nbsp;<code>0</code>&nbsp;或&nbsp;<code>1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + DFS**
+### 方法一：哈希表 + DFS
 
 我们遍历网格中的每个位置 $(i, j)$，如果该位置为 $1$，则以其为起始节点开始进行深度优先搜索，过程中将 $1$ 修改为 $0$，并且将搜索的方向记录下来，等搜索结束后将方向序列加入哈希表中，最后返回哈希表中不同方向序列的数量即可。
 
@@ -52,9 +68,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -81,9 +95,7 @@ class Solution:
         return len(paths)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -125,7 +137,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -162,7 +174,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numDistinctIslands(grid [][]int) int {
@@ -195,7 +207,7 @@ func numDistinctIslands(grid [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numDistinctIslands(grid: number[][]): number {
@@ -228,10 +240,8 @@ function numDistinctIslands(grid: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

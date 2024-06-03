@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1320.Minimum%20Distance%20to%20Type%20a%20Word%20Using%20Two%20Fingers/README.md
+rating: 2027
+source: 第 171 场周赛 Q4
+tags:
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [1320. 二指输入的的最小距离](https://leetcode.cn/problems/minimum-distance-to-type-a-word-using-two-fingers)
 
 [English Version](/solution/1300-1399/1320.Minimum%20Distance%20to%20Type%20a%20Word%20Using%20Two%20Fingers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1300-1399/1320.Minimum%20Distance%20to%20Type%20a%20Word%20Using%20Two%20Fingers/images/leetcode_keyboard.png" /></p>
 
@@ -60,11 +73,13 @@
 	<li>每个 <code>word[i]</code>&nbsp;都是一个大写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i][j][k]$ 表示输入完 $word[i]$，且手指 $1$ 位于位置 $j$，手指 $2$ 位于位置 $k$ 时，最小的移动距离。这里的位置 $j$ 和 $k$ 表示的是字母对应的数字，取值范围为 $[0,..25]$。初始时 $f[i][j][k]=\infty$。
 
@@ -87,9 +102,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -120,9 +133,7 @@ class Solution:
         return int(min(a, b))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -171,7 +182,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -216,7 +227,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumDistance(word string) int {
@@ -270,10 +281,8 @@ func abs(x int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

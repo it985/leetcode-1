@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2218.Maximum%20Value%20of%20K%20Coins%20From%20Piles/README_EN.md
+rating: 2157
+source: Weekly Contest 286 Q4
+tags:
+    - Array
+    - Dynamic Programming
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [2218. Maximum Value of K Coins From Piles](https://leetcode.com/problems/maximum-value-of-k-coins-from-piles)
 
 [中文文档](/solution/2200-2299/2218.Maximum%20Value%20of%20K%20Coins%20From%20Piles/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are <code>n</code> <strong>piles</strong> of coins on a table. Each pile consists of a <strong>positive number</strong> of coins of assorted denominations.</p>
 
@@ -40,11 +56,17 @@ The maximum total we can obtain is 101.
 	<li><code>1 &lt;= k &lt;= sum(piles[i].length) &lt;= 2000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -60,20 +82,7 @@ class Solution:
         return dp[-1][-1]
 ```
 
-```python
-class Solution:
-    def maxValueOfCoins(self, piles: List[List[int]], k: int) -> int:
-        presum = [list(accumulate(p, initial=0)) for p in piles]
-        dp = [0] * (k + 1)
-        for s in presum:
-            for j in range(k, -1, -1):
-                for idx, v in enumerate(s):
-                    if j >= idx:
-                        dp[j] = max(dp[j], dp[j - idx] + v)
-        return dp[-1]
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -103,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -129,7 +138,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxValueOfCoins(piles [][]int, k int) int {
@@ -156,16 +165,33 @@ func maxValueOfCoins(piles [][]int, k int) int {
 }
 ```
 
-### **TypeScript**
+<!-- tabs:end -->
 
-```ts
+<!-- solution:end -->
 
-```
+<!-- solution:start -->
 
-### **...**
+### Solution 2
 
-```
+<!-- tabs:start -->
 
+#### Python3
+
+```python
+class Solution:
+    def maxValueOfCoins(self, piles: List[List[int]], k: int) -> int:
+        presum = [list(accumulate(p, initial=0)) for p in piles]
+        dp = [0] * (k + 1)
+        for s in presum:
+            for j in range(k, -1, -1):
+                for idx, v in enumerate(s):
+                    if j >= idx:
+                        dp[j] = max(dp[j], dp[j - idx] + v)
+        return dp[-1]
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
-# [2403. Minimum Time to Kill All Monsters](https://leetcode.com/problems/minimum-time-to-kill-all-monsters)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2403.Minimum%20Time%20to%20Kill%20All%20Monsters/README_EN.md
+tags:
+    - Bit Manipulation
+    - Array
+    - Dynamic Programming
+    - Bitmask
+---
+
+<!-- problem:start -->
+
+# [2403. Minimum Time to Kill All Monsters 🔒](https://leetcode.com/problems/minimum-time-to-kill-all-monsters)
 
 [中文文档](/solution/2400-2499/2403.Minimum%20Time%20to%20Kill%20All%20Monsters/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>power</code> where <code>power[i]</code> is the power of the <code>i<sup>th</sup></code> monster.</p>
 
@@ -67,9 +82,13 @@ It can be proven that 6 is the minimum number of days needed.
 	<li><code>1 &lt;= power[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: State Compression + Memorization Search or Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: State Compression + Memorization Search or Dynamic Programming
 
 Since defeating monsters can increase the daily magic power gain $gain$, the order of defeating monsters affects the result, so we need to enumerate. Noting that the data range of the problem is small, we consider using state compression dynamic programming to solve it.
 
@@ -79,7 +98,7 @@ The time complexity is $O(n \times 2^n)$, and the space complexity is $O(2^n)$. 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -99,21 +118,7 @@ class Solution:
         return dfs(0)
 ```
 
-```python
-class Solution:
-    def minimumTime(self, power: List[int]) -> int:
-        n = len(power)
-        dp = [inf] * (1 << n)
-        dp[0] = 0
-        for mask in range(1, 1 << n):
-            cnt = mask.bit_count()
-            for i, v in enumerate(power):
-                if (mask >> i) & 1:
-                    dp[mask] = min(dp[mask], dp[mask ^ (1 << i)] + (v + cnt - 1) // cnt)
-        return dp[-1]
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -150,27 +155,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public long minimumTime(int[] power) {
-        int n = power.length;
-        long[] dp = new long[1 << n];
-        Arrays.fill(dp, Long.MAX_VALUE);
-        dp[0] = 0;
-        for (int mask = 1; mask < 1 << n; ++mask) {
-            int cnt = Integer.bitCount(mask);
-            for (int i = 0; i < n; ++i) {
-                if (((mask >> i) & 1) == 1) {
-                    dp[mask] = Math.min(dp[mask], dp[mask ^ (1 << i)] + (power[i] + cnt - 1) / cnt);
-                }
-            }
-        }
-        return dp[(1 << n) - 1];
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 using ll = long long;
@@ -203,27 +188,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    long long minimumTime(vector<int>& power) {
-        int n = power.size();
-        vector<long long> dp(1 << n, LONG_MAX);
-        dp[0] = 0;
-        for (int mask = 1; mask < 1 << n; ++mask) {
-            int cnt = __builtin_popcount(mask);
-            for (int i = 0; i < n; ++i) {
-                if ((mask >> i) & 1) {
-                    dp[mask] = min(dp[mask], dp[mask ^ (1 << i)] + (power[i] + cnt - 1) / cnt);
-                }
-            }
-        }
-        return dp[(1 << n) - 1];
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func minimumTime(power []int) int64 {
@@ -255,27 +220,7 @@ func minimumTime(power []int) int64 {
 }
 ```
 
-```go
-func minimumTime(power []int) int64 {
-	n := len(power)
-	dp := make([]int64, 1<<n)
-	for i := range dp {
-		dp[i] = math.MaxInt64
-	}
-	dp[0] = 0
-	for mask := 1; mask < 1<<n; mask++ {
-		cnt := bits.OnesCount(uint(mask))
-		for i, v := range power {
-			if ((mask >> i) & 1) == 1 {
-				dp[mask] = min(dp[mask], dp[mask^(1<<i)]+int64((v+cnt-1)/cnt))
-			}
-		}
-	}
-	return dp[len(dp)-1]
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumTime(power: number[]): number {
@@ -313,6 +258,100 @@ function bitCount(x) {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minimumTime(self, power: List[int]) -> int:
+        n = len(power)
+        dp = [inf] * (1 << n)
+        dp[0] = 0
+        for mask in range(1, 1 << n):
+            cnt = mask.bit_count()
+            for i, v in enumerate(power):
+                if (mask >> i) & 1:
+                    dp[mask] = min(dp[mask], dp[mask ^ (1 << i)] + (v + cnt - 1) // cnt)
+        return dp[-1]
+```
+
+#### Java
+
+```java
+class Solution {
+    public long minimumTime(int[] power) {
+        int n = power.length;
+        long[] dp = new long[1 << n];
+        Arrays.fill(dp, Long.MAX_VALUE);
+        dp[0] = 0;
+        for (int mask = 1; mask < 1 << n; ++mask) {
+            int cnt = Integer.bitCount(mask);
+            for (int i = 0; i < n; ++i) {
+                if (((mask >> i) & 1) == 1) {
+                    dp[mask] = Math.min(dp[mask], dp[mask ^ (1 << i)] + (power[i] + cnt - 1) / cnt);
+                }
+            }
+        }
+        return dp[(1 << n) - 1];
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    long long minimumTime(vector<int>& power) {
+        int n = power.size();
+        vector<long long> dp(1 << n, LONG_MAX);
+        dp[0] = 0;
+        for (int mask = 1; mask < 1 << n; ++mask) {
+            int cnt = __builtin_popcount(mask);
+            for (int i = 0; i < n; ++i) {
+                if ((mask >> i) & 1) {
+                    dp[mask] = min(dp[mask], dp[mask ^ (1 << i)] + (power[i] + cnt - 1) / cnt);
+                }
+            }
+        }
+        return dp[(1 << n) - 1];
+    }
+};
+```
+
+#### Go
+
+```go
+func minimumTime(power []int) int64 {
+	n := len(power)
+	dp := make([]int64, 1<<n)
+	for i := range dp {
+		dp[i] = math.MaxInt64
+	}
+	dp[0] = 0
+	for mask := 1; mask < 1<<n; mask++ {
+		cnt := bits.OnesCount(uint(mask))
+		for i, v := range power {
+			if ((mask >> i) & 1) == 1 {
+				dp[mask] = min(dp[mask], dp[mask^(1<<i)]+int64((v+cnt-1)/cnt))
+			}
+		}
+	}
+	return dp[len(dp)-1]
+}
+```
+
+#### TypeScript
+
 ```ts
 function minimumTime(power: number[]): number {
     const n = power.length;
@@ -340,11 +379,8 @@ function bitCount(x) {
 }
 ```
 
-### **...**
-
-```
-
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

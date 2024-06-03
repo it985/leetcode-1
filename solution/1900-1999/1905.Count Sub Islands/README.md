@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1905.Count%20Sub%20Islands/README.md
+rating: 1678
+source: 第 246 场周赛 Q3
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 并查集
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [1905. 统计子岛屿](https://leetcode.cn/problems/count-sub-islands)
 
 [English Version](/solution/1900-1999/1905.Count%20Sub%20Islands/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个 <code>m x n</code> 的二进制矩阵 <code>grid1</code> 和 <code>grid2</code> ，它们只包含 <code>0</code> （表示水域）和 <code>1</code> （表示陆地）。一个 <strong>岛屿</strong> 是由 <strong>四个方向</strong> （水平或者竖直）上相邻的 <code>1</code> 组成的区域。任何矩阵以外的区域都视为水域。</p>
 
@@ -41,11 +57,13 @@ grid2 中标红的 1 区域是子岛屿，总共有 2 个子岛屿。
 	<li><code>grid1[i][j]</code> 和 <code>grid2[i][j]</code> 都要么是 <code>0</code> 要么是 <code>1</code> 。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们可以遍历矩阵 `grid2` 中的每一个格子 $(i, j)$，如果该格子为 $1$，则从该格子开始进行深度优先搜索，将与该格子相连的所有格子的值都置为 $0$，并记录与该格子相连的所有格子中，`grid1` 中对应格子的值是否为 $1$，如果为 $1$，则说明该格子在 `grid1` 中也是一个岛屿，否则不是。最后统计 `grid2` 中子岛屿的数量即可。
 
@@ -53,9 +71,7 @@ grid2 中标红的 1 区域是子岛屿，总共有 2 个子岛屿。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -74,31 +90,7 @@ class Solution:
         return sum(dfs(i, j) for i in range(m) for j in range(n) if grid2[i][j])
 ```
 
-```python
-class Solution:
-    def countSubIslands(self, grid1: List[List[int]], grid2: List[List[int]]) -> int:
-        def bfs(i: int, j: int) -> int:
-            ok = grid1[i][j]
-            q = deque([(i, j)])
-            grid2[i][j] = 0
-            while q:
-                i, j = q.popleft()
-                for a, b in pairwise(dirs):
-                    x, y = i + a, j + b
-                    if 0 <= x < m and 0 <= y < n and grid2[x][y]:
-                        q.append((x, y))
-                        ok = ok & grid1[x][y]
-                        grid2[x][y] = 0
-            return ok
-
-        m, n = len(grid1), len(grid1[0])
-        dirs = (-1, 0, 1, 0, -1)
-        return sum(bfs(i, j) for i in range(m) for j in range(n) if grid2[i][j])
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -138,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -170,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countSubIslands(grid1 [][]int, grid2 [][]int) (ans int) {
@@ -199,7 +191,7 @@ func countSubIslands(grid1 [][]int, grid2 [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countSubIslands(grid1: number[][], grid2: number[][]): number {
@@ -228,10 +220,42 @@ function countSubIslands(grid1: number[][], grid2: number[][]): number {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def countSubIslands(self, grid1: List[List[int]], grid2: List[List[int]]) -> int:
+        def bfs(i: int, j: int) -> int:
+            ok = grid1[i][j]
+            q = deque([(i, j)])
+            grid2[i][j] = 0
+            while q:
+                i, j = q.popleft()
+                for a, b in pairwise(dirs):
+                    x, y = i + a, j + b
+                    if 0 <= x < m and 0 <= y < n and grid2[x][y]:
+                        q.append((x, y))
+                        ok = ok & grid1[x][y]
+                        grid2[x][y] = 0
+            return ok
+
+        m, n = len(grid1), len(grid1[0])
+        dirs = (-1, 0, 1, 0, -1)
+        return sum(bfs(i, j) for i in range(m) for j in range(n) if grid2[i][j])
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

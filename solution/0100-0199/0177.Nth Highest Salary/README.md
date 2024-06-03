@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0177.Nth%20Highest%20Salary/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
 # [177. 第 N 高的薪水](https://leetcode.cn/problems/nth-highest-salary)
 
 [English Version](/solution/0100-0199/0177.Nth%20Highest%20Salary/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表:&nbsp;<code>Employee</code></p>
 
@@ -66,17 +76,34 @@ n = 2
 | null                   |
 +------------------------+</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + LIMIT**
+### 方法一：排序 + LIMIT
 
 我们可以先对 `salary` 进行降序排序，然后使用 `LIMIT` 语句获取第 $n$ 高的工资。
 
 <!-- tabs:start -->
 
-### **SQL**
+#### Python3
+
+```python
+import pandas as pd
+
+
+def nth_highest_salary(employee: pd.DataFrame, N: int) -> pd.DataFrame:
+    unique_salaries = employee.salary.unique()
+    if len(unique_salaries) < N:
+        return pd.DataFrame([np.NaN], columns=[f"getNthHighestSalary({N})"])
+    else:
+        salary = sorted(unique_salaries, reverse=True)[N - 1]
+        return pd.DataFrame([salary], columns=[f"getNthHighestSalary({N})"])
+```
+
+#### MySQL
 
 ```sql
 CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
@@ -94,19 +121,8 @@ BEGIN
 END
 ```
 
-### **Pandas**
-
-```python
-import pandas as pd
-
-
-def nth_highest_salary(employee: pd.DataFrame, N: int) -> pd.DataFrame:
-    unique_salaries = employee.salary.unique()
-    if len(unique_salaries) < N:
-        return pd.DataFrame([np.NaN], columns=[f"getNthHighestSalary({N})"])
-    else:
-        salary = sorted(unique_salaries, reverse=True)[N - 1]
-        return pd.DataFrame([salary], columns=[f"getNthHighestSalary({N})"])
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

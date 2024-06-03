@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2486.Append%20Characters%20to%20String%20to%20Make%20Subsequence/README.md
+rating: 1362
+source: 第 321 场周赛 Q2
+tags:
+    - 贪心
+    - 双指针
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2486. 追加字符以获得子序列](https://leetcode.cn/problems/append-characters-to-string-to-make-subsequence)
 
 [English Version](/solution/2400-2499/2486.Append%20Characters%20to%20String%20to%20Make%20Subsequence/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个仅由小写英文字母组成的字符串 <code>s</code> 和 <code>t</code> 。</p>
 
@@ -51,39 +65,36 @@
 	<li><code>s</code> 和 <code>t</code> 仅由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双指针**
+### 方法一：双指针
 
-定义两个指针 $i$ 和 $j$，分别指向字符串 $s$ 和 $t$ 的首字符。遍历字符串 $t$，当 $s[i] \neq t[j]$ 时，指针 $i$ 后移，直到 $s[i] = t[j]$ 或者 $i$ 到达字符串 $s$ 的末尾。如果 $i$ 到达字符串 $s$ 的末尾，说明 $t$ 中的字符 $t[j]$ 无法在 $s$ 中找到对应的字符，返回 $t$ 中剩余的字符数。否则，将指针 $i$ 和 $j$ 同时后移，继续遍历字符串 $t$。
+我们定义两个指针 $i$ 和 $j$，分别指向字符串 $s$ 和 $t$ 的首字符。遍历字符串 $t$，当 $s[i] \neq t[j]$ 时，指针 $i$ 后移，直到 $s[i] = t[j]$ 或者 $i$ 到达字符串 $s$ 的末尾。如果 $i$ 到达字符串 $s$ 的末尾，说明 $t$ 中的字符 $t[j]$ 无法在 $s$ 中找到对应的字符，返回 $t$ 中剩余的字符数。否则，将指针 $i$ 和 $j$ 同时后移，继续遍历字符串 $t$。
 
 时间复杂度 $(m + n)$，空间复杂度 $O(1)$。其中 $m$ 和 $n$ 分别是字符串 $s$ 和 $t$ 的长度。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
     def appendCharacters(self, s: str, t: str) -> int:
-        m, n = len(s), len(t)
-        i = 0
-        for j in range(n):
-            while i < m and s[i] != t[j]:
+        i, m = 0, len(s)
+        for j, c in enumerate(t):
+            while i < m and s[i] != c:
                 i += 1
             if i == m:
-                return n - j
+                return len(t) - j
             i += 1
         return 0
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -122,7 +133,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func appendCharacters(s string, t string) int {
@@ -139,10 +150,26 @@ func appendCharacters(s string, t string) int {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
-
+```ts
+function appendCharacters(s: string, t: string): number {
+    const [m, n] = [s.length, t.length];
+    for (let i = 0, j = 0; j < n; ++j) {
+        while (i < m && s[i] !== t[j]) {
+            ++i;
+        }
+        if (i === m) {
+            return n - j;
+        }
+        ++i;
+    }
+    return 0;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

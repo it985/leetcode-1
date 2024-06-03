@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0410.Split%20Array%20Largest%20Sum/README_EN.md
+tags:
+    - Greedy
+    - Array
+    - Binary Search
+    - Dynamic Programming
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [410. Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum)
 
 [中文文档](/solution/0400-0499/0410.Split%20Array%20Largest%20Sum/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code> and an integer <code>k</code>, split <code>nums</code> into <code>k</code> non-empty subarrays such that the largest sum of any subarray is <strong>minimized</strong>.</p>
 
@@ -38,9 +54,13 @@ The best way is to split it into [1,2,3] and [4,5], where the largest sum among 
 	<li><code>1 &lt;= k &lt;= min(50, nums.length)</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Binary Search
 
 We notice that the larger the maximum sum of the subarrays, the fewer the number of subarrays. When there is a maximum sum of the subarrays that meets the condition, then a larger maximum sum of the subarrays will definitely meet the condition. This means that we can perform a binary search for the maximum sum of the subarrays to find the smallest value that meets the condition.
 
@@ -52,7 +72,7 @@ The time complexity is $O(n \times \log m)$, and the space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -70,7 +90,7 @@ class Solution:
         return left + bisect_left(range(left, right + 1), True, key=check)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -105,7 +125,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -140,7 +160,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func splitArray(nums []int, k int) int {
@@ -164,7 +184,7 @@ func splitArray(nums []int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function splitArray(nums: number[], k: number): number {
@@ -198,10 +218,8 @@ function splitArray(nums: number[], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1931.Painting%20a%20Grid%20With%20Three%20Different%20Colors/README_EN.md
+rating: 2170
+source: Weekly Contest 249 Q3
+tags:
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [1931. Painting a Grid With Three Different Colors](https://leetcode.com/problems/painting-a-grid-with-three-different-colors)
 
 [中文文档](/solution/1900-1999/1931.Painting%20a%20Grid%20With%20Three%20Different%20Colors/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two integers <code>m</code> and <code>n</code>. Consider an <code>m x n</code> grid where each cell is initially white. You can paint each cell <strong>red</strong>, <strong>green</strong>, or <strong>blue</strong>. All cells <strong>must</strong> be painted.</p>
 
@@ -40,9 +54,13 @@
 	<li><code>1 &lt;= n &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: State Compression + Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: State Compression + Dynamic Programming
 
 We notice that the number of rows in the grid does not exceed $5$, so there are at most $3^5=243$ different color schemes in a column.
 
@@ -62,7 +80,7 @@ The time complexity is $O((m + n) \times 3^{2m})$, and the space complexity is $
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -101,7 +119,7 @@ class Solution:
         return sum(f) % mod
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -168,7 +186,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -232,7 +250,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func colorTheGrid(m int, n int) (ans int) {
@@ -291,7 +309,7 @@ func colorTheGrid(m int, n int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function colorTheGrid(m: number, n: number): number {
@@ -351,10 +369,8 @@ function colorTheGrid(m: number, n: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

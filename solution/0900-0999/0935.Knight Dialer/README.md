@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0935.Knight%20Dialer/README.md
+tags:
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [935. 骑士拨号器](https://leetcode.cn/problems/knight-dialer)
 
 [English Version](/solution/0900-0999/0935.Knight%20Dialer/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>象棋骑士有一个<strong>独特的移动方式</strong>，它可以垂直移动两个方格，水平移动一个方格，或者水平移动两个方格，垂直移动一个方格(两者都形成一个&nbsp;<strong>L&nbsp;</strong>的形状)。</p>
 
@@ -59,17 +69,17 @@
 	<li><code>1 &lt;= n &lt;= 5000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：递推**
+### 方法一：递推
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -92,9 +102,7 @@ class Solution:
         return sum(t) % (10**9 + 7)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -130,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 using ll = long long;
@@ -160,7 +168,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func knightDialer(n int) int {
@@ -195,36 +203,7 @@ func knightDialer(n int) int {
 }
 ```
 
-### **C#**
-
-```cs
-public class Solution {
-    public int KnightDialer(int n) {
-        if (n == 1) return 10;
-        int A = 4;
-        int B = 2;
-        int C = 2;
-        int D = 1;
-        int MOD = (int)1e9 + 7;
-        for (int i = 0; i < n - 1; i++) {
-            int tempA = A;
-            int tempB = B;
-            int tempC = C;
-            int tempD = D;
-            A = ((2 * tempB) % MOD + (2 * tempC) % MOD) % MOD;
-            B = tempA;
-            C = (tempA + (2 * tempD) % MOD) % MOD;
-            D = tempC;
-        }
-
-        int ans = (A + B) % MOD;
-        ans = (ans + C) % MOD;
-        return (ans + D) % MOD;
-    }
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function knightDialer(n: number): number {
@@ -263,10 +242,37 @@ function knightDialer(n: number): number {
 }
 ```
 
-### **...**
+#### C#
 
-```
+```cs
+public class Solution {
+    public int KnightDialer(int n) {
+        if (n == 1) return 10;
+        int A = 4;
+        int B = 2;
+        int C = 2;
+        int D = 1;
+        int MOD = (int)1e9 + 7;
+        for (int i = 0; i < n - 1; i++) {
+            int tempA = A;
+            int tempB = B;
+            int tempC = C;
+            int tempD = D;
+            A = ((2 * tempB) % MOD + (2 * tempC) % MOD) % MOD;
+            B = tempA;
+            C = (tempA + (2 * tempD) % MOD) % MOD;
+            D = tempC;
+        }
 
+        int ans = (A + B) % MOD;
+        ans = (ans + C) % MOD;
+        return (ans + D) % MOD;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

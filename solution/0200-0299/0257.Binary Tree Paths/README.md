@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0257.Binary%20Tree%20Paths/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 字符串
+    - 回溯
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [257. 二叉树的所有路径](https://leetcode.cn/problems/binary-tree-paths)
 
 [English Version](/solution/0200-0299/0257.Binary%20Tree%20Paths/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个二叉树的根节点 <code>root</code> ，按 <strong>任意顺序</strong> ，返回所有从根节点到叶子节点的路径。</p>
 
@@ -34,11 +48,13 @@
 	<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们可以使用深度优先搜索的方法遍历整棵二叉树，每一次我们将当前的节点添加到路径中。如果当前的节点是叶子节点，则我们将整个路径加入到答案中。否则我们继续递归遍历节点的孩子节点。最后当我们递归结束返回到当前节点时，我们需要将当前节点从路径中删除。
 
@@ -46,9 +62,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -76,9 +90,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -121,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -170,7 +182,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -202,7 +214,7 @@ func binaryTreePaths(root *TreeNode) (ans []string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -240,10 +252,8 @@ function binaryTreePaths(root: TreeNode | null): string[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

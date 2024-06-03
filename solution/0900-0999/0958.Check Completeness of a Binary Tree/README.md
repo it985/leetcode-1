@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0958.Check%20Completeness%20of%20a%20Binary%20Tree/README.md
+tags:
+    - 树
+    - 广度优先搜索
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [958. 二叉树的完全性检验](https://leetcode.cn/problems/check-completeness-of-a-binary-tree)
 
 [English Version](/solution/0900-0999/0958.Check%20Completeness%20of%20a%20Binary%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一棵二叉树的根节点<meta charset="UTF-8" />&nbsp;<code>root</code> ，请你判断这棵树是否是一棵 <strong>完全二叉树</strong>&nbsp;。</p>
 
@@ -41,15 +53,17 @@
 	<li><code>1 &lt;= Node.val &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -70,9 +84,7 @@ class Solution:
         return all(node is None for node in q)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -107,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -137,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -163,10 +175,8 @@ func isCompleteTree(root *TreeNode) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1034.Coloring%20A%20Border/README.md
+rating: 1578
+source: 第 134 场周赛 Q2
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [1034. 边界着色](https://leetcode.cn/problems/coloring-a-border)
 
 [English Version](/solution/1000-1099/1034.Coloring%20A%20Border/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个大小为 <code>m x n</code> 的整数矩阵 <code>grid</code> ，表示一个网格。另给你三个整数&nbsp;<code>row</code>、<code>col</code> 和 <code>color</code> 。网格中的每个值表示该位置处的网格块的颜色。</p>
 
@@ -56,11 +71,13 @@
 	<li><code>0 &lt;= col &lt; n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们从位置 $(row, col)$ 出发，利用 DFS 搜索所有颜色为 $grid[row][col]$ 的网格块，如果该网格块的某个相邻位置的颜色不为 $grid[row][col]$，或者该网格块在网格的边界上，则将该网格块的颜色改为 $color$。
 
@@ -68,9 +85,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -96,9 +111,7 @@ class Solution:
         return grid
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -139,7 +152,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -174,7 +187,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func colorBorder(grid [][]int, row int, col int, color int) [][]int {
@@ -207,7 +220,7 @@ func colorBorder(grid [][]int, row int, col int, color int) [][]int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function colorBorder(grid: number[][], row: number, col: number, color: number): number[][] {
@@ -238,10 +251,8 @@ function colorBorder(grid: number[][], row: number, col: number, color: number):
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

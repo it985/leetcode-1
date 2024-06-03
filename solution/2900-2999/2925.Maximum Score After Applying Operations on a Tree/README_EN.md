@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2925.Maximum%20Score%20After%20Applying%20Operations%20on%20a%20Tree/README_EN.md
+rating: 1939
+source: Weekly Contest 370 Q3
+tags:
+    - Tree
+    - Depth-First Search
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [2925. Maximum Score After Applying Operations on a Tree](https://leetcode.com/problems/maximum-score-after-applying-operations-on-a-tree)
 
 [中文文档](/solution/2900-2999/2925.Maximum%20Score%20After%20Applying%20Operations%20on%20a%20Tree/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is an undirected tree with <code>n</code> nodes labeled from <code>0</code> to <code>n - 1</code>, and rooted at node <code>0</code>. You are given&nbsp;a 2D integer array <code>edges</code> of length <code>n - 1</code>, where <code>edges[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> indicates that there is an edge between nodes <code>a<sub>i</sub></code> and <code>b<sub>i</sub></code> in the tree.</p>
 
@@ -57,9 +73,13 @@ It can be shown that 40 is the maximum score obtainable after any number of oper
 	<li>The input is generated such that <code>edges</code> represents a valid tree.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Tree DP**
+<!-- solution:start -->
+
+### Solution 1: Tree DP
 
 The problem is actually asking us to select some nodes from all nodes of the tree so that the sum of these nodes' values is maximized, and there is one node on each path from the root node to the leaf node that is not selected.
 
@@ -77,7 +97,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -104,7 +124,7 @@ class Solution:
         return dfs(0)[1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -143,7 +163,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -179,7 +199,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumScoreAfterOperations(edges [][]int, values []int) int64 {
@@ -211,7 +231,7 @@ func maximumScoreAfterOperations(edges [][]int, values []int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumScoreAfterOperations(edges: number[][], values: number[]): number {
@@ -240,10 +260,8 @@ function maximumScoreAfterOperations(edges: number[][], values: number[]): numbe
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

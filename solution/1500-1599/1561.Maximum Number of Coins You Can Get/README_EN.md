@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1561.Maximum%20Number%20of%20Coins%20You%20Can%20Get/README_EN.md
+rating: 1405
+source: Weekly Contest 203 Q2
+tags:
+    - Greedy
+    - Array
+    - Math
+    - Game Theory
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1561. Maximum Number of Coins You Can Get](https://leetcode.com/problems/maximum-number-of-coins-you-can-get)
 
 [中文文档](/solution/1500-1599/1561.Maximum%20Number%20of%20Coins%20You%20Can%20Get/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are <code>3n</code> piles of coins of varying size, you and your friends will take piles of coins as follows:</p>
 
@@ -53,13 +71,17 @@ On the other hand if we choose this arrangement (1, <strong>2</strong>, 8), (2, 
 	<li><code>1 &lt;= piles[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-Greedy.
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -68,10 +90,11 @@ class Solution:
         return sum(piles[-2 : len(piles) // 3 - 1 : -2])
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
+
     public int maxCoins(int[] piles) {
         Arrays.sort(piles);
         int ans = 0;
@@ -83,7 +106,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -97,7 +120,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxCoins(piles []int) int {
@@ -110,7 +133,7 @@ func maxCoins(piles []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxCoins(piles: number[]): number {
@@ -124,7 +147,7 @@ function maxCoins(piles: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -140,7 +163,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 int cmp(const void* a, const void* b) {
@@ -157,10 +180,8 @@ int maxCoins(int* piles, int pilesSize) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

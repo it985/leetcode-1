@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1115.Print%20FooBar%20Alternately/README_EN.md
+tags:
+    - Concurrency
+---
+
+<!-- problem:start -->
+
 # [1115. Print FooBar Alternately](https://leetcode.com/problems/print-foobar-alternately)
 
 [中文文档](/solution/1100-1199/1115.Print%20FooBar%20Alternately/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Suppose you are given the following code:</p>
 
@@ -56,9 +68,13 @@ class FooBar {
 	<li><code>1 &lt;= n &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Multithreading + Semaphore**
+<!-- solution:start -->
+
+### Solution 1: Multithreading + Semaphore
 
 We use two semaphores $f$ and $b$ to control the execution order of the two threads, where $f$ is initially set to $1$ and $b$ is set to $0$, indicating that thread $A$ executes first.
 
@@ -72,7 +88,7 @@ The time complexity is $O(n)$, and the space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 from threading import Semaphore
@@ -99,7 +115,7 @@ class FooBar:
             self.f.release()
 ```
 
-### **Java**
+#### Java
 
 ```java
 class FooBar {
@@ -131,7 +147,7 @@ class FooBar {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 #include <semaphore.h>
@@ -168,10 +184,8 @@ public:
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

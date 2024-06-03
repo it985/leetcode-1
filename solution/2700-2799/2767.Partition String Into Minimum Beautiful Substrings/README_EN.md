@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2767.Partition%20String%20Into%20Minimum%20Beautiful%20Substrings/README_EN.md
+rating: 1864
+source: Biweekly Contest 108 Q3
+tags:
+    - Hash Table
+    - String
+    - Dynamic Programming
+    - Backtracking
+---
+
+<!-- problem:start -->
+
 # [2767. Partition String Into Minimum Beautiful Substrings](https://leetcode.com/problems/partition-string-into-minimum-beautiful-substrings)
 
 [中文文档](/solution/2700-2799/2767.Partition%20String%20Into%20Minimum%20Beautiful%20Substrings/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a binary string <code>s</code>, partition the string into one or more <strong>substrings</strong> such that each substring is <strong>beautiful</strong>.</p>
 
@@ -55,9 +72,13 @@ It can be shown that 3 is the minimum number of beautiful substrings that s can 
 	<li><code>s[i]</code> is either <code>&#39;0&#39;</code> or <code>&#39;1&#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Memoization Search**
+<!-- solution:start -->
+
+### Solution 1: Memoization Search
 
 Since the problem requires us to judge whether a string is the binary representation of a power of $5$, we might as well first preprocess all the powers of $5$ and record them in a hash table $ss$.
 
@@ -77,7 +98,7 @@ Time complexity $O(n^2)$, space complexity $O(n)$. Where $n$ is the length of st
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -106,7 +127,7 @@ class Solution:
         return -1 if ans == inf else ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -151,7 +172,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -192,7 +213,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumBeautifulSubstrings(s string) int {
@@ -234,7 +255,7 @@ func minimumBeautifulSubstrings(s string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumBeautifulSubstrings(s: string): number {
@@ -269,10 +290,8 @@ function minimumBeautifulSubstrings(s: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

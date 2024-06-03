@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0349.Intersection%20of%20Two%20Arrays/README_EN.md
+tags:
+    - Array
+    - Hash Table
+    - Two Pointers
+    - Binary Search
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [349. Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays)
 
 [中文文档](/solution/0300-0399/0349.Intersection%20of%20Two%20Arrays/README.md)
 
 ## Description
 
-<p>Given two integer arrays <code>nums1</code> and <code>nums2</code>, return <em>an array of their intersection</em>. Each element in the result must be <strong>unique</strong> and you may return the result in <strong>any order</strong>.</p>
+<!-- description:start -->
+
+<p>Given two integer arrays <code>nums1</code> and <code>nums2</code>, return <em>an array of their <span data-keyword="array-intersection">intersection</span></em>. Each element in the result must be <strong>unique</strong> and you may return the result in <strong>any order</strong>.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
@@ -30,11 +46,17 @@
 	<li><code>0 &lt;= nums1[i], nums2[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -42,7 +64,7 @@ class Solution:
         return list(set(nums1) & set(nums2))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -63,7 +85,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -86,7 +108,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func intersection(nums1 []int, nums2 []int) (ans []int) {
@@ -104,7 +126,7 @@ func intersection(nums1 []int, nums2 []int) (ans []int) {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -128,18 +150,25 @@ var intersection = function (nums1, nums2) {
 };
 ```
 
-```js
-/**
- * @param {number[]} nums1
- * @param {number[]} nums2
- * @return {number[]}
- */
-var intersection = function (nums1, nums2) {
-    return Array.from(new Set(nums1)).filter(num => new Set(nums2).has(num));
-};
+#### C#
+
+```cs
+public class Solution {
+    public int[] Intersection(int[] nums1, int[] nums2) {
+        List<int> result = new List<int>();
+        HashSet<int> arr1 = new(nums1);
+        HashSet<int> arr2 = new(nums2);
+        foreach (int x in arr1) {
+            if (arr2.Contains(x)) {
+                result.Add(x);
+            }
+        }
+        return result.ToArray();
+    }
+}
 ```
 
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -165,28 +194,31 @@ class Solution {
 }
 ```
 
-### **C#**
+<!-- tabs:end -->
 
-```cs
-public class Solution {
-    public int[] Intersection(int[] nums1, int[] nums2) {
-        List<int> result = new List<int>();
-        HashSet<int> arr1 = new(nums1);
-        HashSet<int> arr2 = new(nums2);
-        foreach (int x in arr1) {
-            if (arr2.Contains(x)) {
-                result.Add(x);
-            }
-        }
-        return result.ToArray();
-    }
-}
-```
+<!-- solution:end -->
 
-### **...**
+<!-- solution:start -->
 
-```
+### Solution 2
 
+<!-- tabs:start -->
+
+#### JavaScript
+
+```js
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var intersection = function (nums1, nums2) {
+    return Array.from(new Set(nums1)).filter(num => new Set(nums2).has(num));
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

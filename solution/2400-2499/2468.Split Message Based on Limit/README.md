@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2468.Split%20Message%20Based%20on%20Limit/README.md
+rating: 2381
+source: 第 91 场双周赛 Q4
+tags:
+    - 字符串
+    - 二分查找
+---
+
+<!-- problem:start -->
+
 # [2468. 根据限制分割消息](https://leetcode.cn/problems/split-message-based-on-limit)
 
 [English Version](/solution/2400-2499/2468.Split%20Message%20Based%20on%20Limit/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串&nbsp;<code>message</code>&nbsp;和一个正整数&nbsp;<code>limit</code>&nbsp;。</p>
 
@@ -47,11 +60,13 @@
 	<li><code>1 &lt;= limit &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举分段数量 + 模拟**
+### 方法一：枚举分段数量 + 模拟
 
 我们设字符串 `message` 的长度为 $n$，分段数量为 $k$。
 
@@ -67,9 +82,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -92,9 +105,7 @@ class Solution:
         return []
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -124,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -154,7 +165,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func splitMessage(message string, limit int) (ans []string) {
@@ -180,16 +191,8 @@ func splitMessage(message string, limit int) (ans []string) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2731.Movement%20of%20Robots/README_EN.md
+rating: 1922
+source: Biweekly Contest 106 Q3
+tags:
+    - Brainteaser
+    - Array
+    - Prefix Sum
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2731. Movement of Robots](https://leetcode.com/problems/movement-of-robots)
 
 [中文文档](/solution/2700-2799/2731.Movement%20of%20Robots/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Some robots are standing on an infinite number line with their initial coordinates given by a <strong>0-indexed</strong> integer array <code>nums</code> and will start moving once given the command to move. The robots will move a unit distance each second.</p>
 
@@ -64,9 +81,13 @@ The distance between the two robots is abs(-2 - 3) = 5.
 	<li><code>nums[i]</code>&nbsp;will be unique.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Quick thinking + Sorting**
+<!-- solution:start -->
+
+### Solution 1: Quick thinking + Sorting
 
 After two robots collide, they will immediately change direction, which is equivalent to the two robots continuing to move in their original direction. Therefore, we traverse the array $nums$, and according to the instructions in the string $s$, we add or subtract $d$ from the position of each robot, and then sort the array $nums$.
 
@@ -76,7 +97,7 @@ The time complexity is $O(n \times \log n)$ and the space complexity is $O(n)$, 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -92,7 +113,7 @@ class Solution:
         return ans % mod
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -114,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -138,7 +159,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sumDistance(nums []int, s string, d int) (ans int) {
@@ -160,7 +181,7 @@ func sumDistance(nums []int, s string, d int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumDistance(nums: number[], s: string, d: number): number {
@@ -180,10 +201,8 @@ function sumDistance(nums: number[], s: string, d: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

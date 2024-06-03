@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1326.Minimum%20Number%20of%20Taps%20to%20Open%20to%20Water%20a%20Garden/README.md
+rating: 1885
+source: 第 172 场周赛 Q4
+tags:
+    - 贪心
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [1326. 灌溉花园的最少水龙头数目](https://leetcode.cn/problems/minimum-number-of-taps-to-open-to-water-a-garden)
 
 [English Version](/solution/1300-1399/1326.Minimum%20Number%20of%20Taps%20to%20Open%20to%20Water%20a%20Garden/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在 x 轴上有一个一维的花园。花园长度为&nbsp;<code>n</code>，从点&nbsp;<code>0</code>&nbsp;开始，到点&nbsp;<code>n</code>&nbsp;结束。</p>
 
@@ -51,11 +65,13 @@
 	<li><code>0 &lt;= ranges[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 我们注意到，对于所有能覆盖某个左端点的水龙头，选择能覆盖最远右端点的那个水龙头是最优的。
 
@@ -78,15 +94,13 @@
 
 相似题目：
 
--   [45. 跳跃游戏 II](/solution/0000-0099/0045.Jump%20Game%20II/README.md)
--   [55. 跳跃游戏](/solution/0000-0099/0055.Jump%20Game/README.md)
--   [1024. 视频拼接](/solution/1000-1099/1024.Video%20Stitching/README.md)
+-   [45. 跳跃游戏 II](https://github.com/doocs/leetcode/blob/main/solution/0000-0099/0045.Jump%20Game%20II/README.md)
+-   [55. 跳跃游戏](https://github.com/doocs/leetcode/blob/main/solution/0000-0099/0055.Jump%20Game/README.md)
+-   [1024. 视频拼接](https://github.com/doocs/leetcode/blob/main/solution/1000-1099/1024.Video%20Stitching/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -107,9 +121,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -135,7 +147,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -162,7 +174,58 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func minTaps(n int, ranges []int) (ans int) {
+	last := make([]int, n+1)
+	for i, x := range ranges {
+		l, r := max(0, i-x), i+x
+		last[l] = max(last[l], r)
+	}
+	var pre, mx int
+	for i, j := range last[:n] {
+		mx = max(mx, j)
+		if mx <= i {
+			return -1
+		}
+		if pre == i {
+			ans++
+			pre = mx
+		}
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function minTaps(n: number, ranges: number[]): number {
+    const last = new Array(n + 1).fill(0);
+    for (let i = 0; i < n + 1; ++i) {
+        const l = Math.max(0, i - ranges[i]);
+        const r = i + ranges[i];
+        last[l] = Math.max(last[l], r);
+    }
+    let ans = 0;
+    let mx = 0;
+    let pre = 0;
+    for (let i = 0; i < n; ++i) {
+        mx = Math.max(mx, last[i]);
+        if (mx <= i) {
+            return -1;
+        }
+        if (pre == i) {
+            ++ans;
+            pre = mx;
+        }
+    }
+    return ans;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -201,61 +264,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func minTaps(n int, ranges []int) (ans int) {
-	last := make([]int, n+1)
-	for i, x := range ranges {
-		l, r := max(0, i-x), i+x
-		last[l] = max(last[l], r)
-	}
-	var pre, mx int
-	for i, j := range last[:n] {
-		mx = max(mx, j)
-		if mx <= i {
-			return -1
-		}
-		if pre == i {
-			ans++
-			pre = mx
-		}
-	}
-	return
-}
-```
-
-### **TypeScript**
-
-```ts
-function minTaps(n: number, ranges: number[]): number {
-    const last = new Array(n + 1).fill(0);
-    for (let i = 0; i < n + 1; ++i) {
-        const l = Math.max(0, i - ranges[i]);
-        const r = i + ranges[i];
-        last[l] = Math.max(last[l], r);
-    }
-    let ans = 0;
-    let mx = 0;
-    let pre = 0;
-    for (let i = 0; i < n; ++i) {
-        mx = Math.max(mx, last[i]);
-        if (mx <= i) {
-            return -1;
-        }
-        if (pre == i) {
-            ++ans;
-            pre = mx;
-        }
-    }
-    return ans;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

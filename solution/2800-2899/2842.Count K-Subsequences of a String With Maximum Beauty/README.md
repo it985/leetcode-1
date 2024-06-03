@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2842.Count%20K-Subsequences%20of%20a%20String%20With%20Maximum%20Beauty/README.md
+rating: 2091
+source: 第 112 场双周赛 Q4
+tags:
+    - 贪心
+    - 哈希表
+    - 数学
+    - 字符串
+    - 组合数学
+---
+
+<!-- problem:start -->
+
 # [2842. 统计一个字符串的 k 子序列美丽值最大的数目](https://leetcode.cn/problems/count-k-subsequences-of-a-string-with-maximum-beauty)
 
 [English Version](/solution/2800-2899/2842.Count%20K-Subsequences%20of%20a%20String%20With%20Maximum%20Beauty/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串&nbsp;<code>s</code>&nbsp;和一个整数&nbsp;<code>k</code>&nbsp;。</p>
 
@@ -79,11 +95,13 @@ s 的 k 子序列为：
 	<li><code>s</code>&nbsp;只包含小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 组合数学**
+### 方法一：贪心 + 组合数学
 
 我们先用哈希表 $f$ 统计字符串 $s$ 中每个字符的出现次数，即 $f[c]$ 表示字符 $c$ 在字符串 $s$ 中出现的次数。
 
@@ -101,9 +119,7 @@ s 的 k 子序列为：
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -125,9 +141,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -191,7 +205,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -252,7 +266,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countKSubsequencesWithMaxBeauty(s string, k int) int {
@@ -315,7 +329,7 @@ func countKSubsequencesWithMaxBeauty(s string, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countKSubsequencesWithMaxBeauty(s: string, k: number): number {
@@ -364,10 +378,8 @@ function countKSubsequencesWithMaxBeauty(s: string, k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

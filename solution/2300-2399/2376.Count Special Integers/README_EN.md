@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2376.Count%20Special%20Integers/README_EN.md
+rating: 2120
+source: Weekly Contest 306 Q4
+tags:
+    - Math
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [2376. Count Special Integers](https://leetcode.com/problems/count-special-integers)
 
 [中文文档](/solution/2300-2399/2376.Count%20Special%20Integers/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>We call a positive integer <strong>special</strong> if all of its digits are <strong>distinct</strong>.</p>
 
@@ -40,11 +55,17 @@ Some of the integers that are not special are: 22, 114, and 131.</pre>
 	<li><code>1 &lt;= n &lt;= 2 * 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -73,37 +94,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def countSpecialNumbers(self, n: int) -> int:
-        return self.f(n)
-
-    def f(self, n):
-        @cache
-        def dfs(pos, mask, lead, limit):
-            if pos <= 0:
-                return lead ^ 1
-            up = a[pos] if limit else 9
-            ans = 0
-            for i in range(up + 1):
-                if (mask >> i) & 1:
-                    continue
-                if i == 0 and lead:
-                    ans += dfs(pos - 1, mask, lead, limit and i == up)
-                else:
-                    ans += dfs(pos - 1, mask | 1 << i, False, limit and i == up)
-            return ans
-
-        a = [0] * 11
-        l = 0
-        while n:
-            l += 1
-            a[l] = n % 10
-            n //= 10
-        return dfs(l, 0, True, True)
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -143,6 +134,136 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int countSpecialNumbers(int n) {
+        int ans = 0;
+        vector<int> digits;
+        while (n) {
+            digits.push_back(n % 10);
+            n /= 10;
+        }
+        int m = digits.size();
+        vector<bool> vis(10);
+        for (int i = 1; i < m; ++i) {
+            ans += 9 * A(9, i - 1);
+        }
+        for (int i = m - 1; ~i; --i) {
+            int v = digits[i];
+            for (int j = i == m - 1 ? 1 : 0; j < v; ++j) {
+                if (!vis[j]) {
+                    ans += A(10 - (m - i), i);
+                }
+            }
+            if (vis[v]) {
+                break;
+            }
+            vis[v] = true;
+            if (i == 0) {
+                ++ans;
+            }
+        }
+        return ans;
+    }
+
+    int A(int m, int n) {
+        return n == 0 ? 1 : A(m, n - 1) * (m - n + 1);
+    }
+};
+```
+
+#### Go
+
+```go
+func countSpecialNumbers(n int) int {
+	digits := []int{}
+	for n != 0 {
+		digits = append(digits, n%10)
+		n /= 10
+	}
+	m := len(digits)
+	vis := make([]bool, 10)
+	ans := 0
+	for i := 1; i < m; i++ {
+		ans += 9 * A(9, i-1)
+	}
+	for i := m - 1; i >= 0; i-- {
+		v := digits[i]
+		j := 0
+		if i == m-1 {
+			j = 1
+		}
+		for ; j < v; j++ {
+			if !vis[j] {
+				ans += A(10-(m-i), i)
+			}
+		}
+		if vis[v] {
+			break
+		}
+		vis[v] = true
+		if i == 0 {
+			ans++
+		}
+	}
+	return ans
+}
+
+func A(m, n int) int {
+	if n == 0 {
+		return 1
+	}
+	return A(m, n-1) * (m - n + 1)
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def countSpecialNumbers(self, n: int) -> int:
+        return self.f(n)
+
+    def f(self, n):
+        @cache
+        def dfs(pos, mask, lead, limit):
+            if pos <= 0:
+                return lead ^ 1
+            up = a[pos] if limit else 9
+            ans = 0
+            for i in range(up + 1):
+                if (mask >> i) & 1:
+                    continue
+                if i == 0 and lead:
+                    ans += dfs(pos - 1, mask, lead, limit and i == up)
+                else:
+                    ans += dfs(pos - 1, mask | 1 << i, False, limit and i == up)
+            return ans
+
+        a = [0] * 11
+        l = 0
+        while n:
+            l += 1
+            a[l] = n % 10
+            n //= 10
+        return dfs(l, 0, True, True)
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -192,46 +313,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int countSpecialNumbers(int n) {
-        int ans = 0;
-        vector<int> digits;
-        while (n) {
-            digits.push_back(n % 10);
-            n /= 10;
-        }
-        int m = digits.size();
-        vector<bool> vis(10);
-        for (int i = 1; i < m; ++i) {
-            ans += 9 * A(9, i - 1);
-        }
-        for (int i = m - 1; ~i; --i) {
-            int v = digits[i];
-            for (int j = i == m - 1 ? 1 : 0; j < v; ++j) {
-                if (!vis[j]) {
-                    ans += A(10 - (m - i), i);
-                }
-            }
-            if (vis[v]) {
-                break;
-            }
-            vis[v] = true;
-            if (i == 0) {
-                ++ans;
-            }
-        }
-        return ans;
-    }
-
-    int A(int m, int n) {
-        return n == 0 ? 1 : A(m, n - 1) * (m - n + 1);
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -278,50 +360,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func countSpecialNumbers(n int) int {
-	digits := []int{}
-	for n != 0 {
-		digits = append(digits, n%10)
-		n /= 10
-	}
-	m := len(digits)
-	vis := make([]bool, 10)
-	ans := 0
-	for i := 1; i < m; i++ {
-		ans += 9 * A(9, i-1)
-	}
-	for i := m - 1; i >= 0; i-- {
-		v := digits[i]
-		j := 0
-		if i == m-1 {
-			j = 1
-		}
-		for ; j < v; j++ {
-			if !vis[j] {
-				ans += A(10-(m-i), i)
-			}
-		}
-		if vis[v] {
-			break
-		}
-		vis[v] = true
-		if i == 0 {
-			ans++
-		}
-	}
-	return ans
-}
-
-func A(m, n int) int {
-	if n == 0 {
-		return 1
-	}
-	return A(m, n-1) * (m - n + 1)
-}
-```
+#### Go
 
 ```go
 func countSpecialNumbers(n int) int {
@@ -379,17 +418,8 @@ func f(n int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0608.Tree%20Node/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
 # [608. Tree Node](https://leetcode.com/problems/tree-node)
 
 [中文文档](/solution/0600-0699/0608.Tree%20Node/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Tree</code></p>
 
@@ -84,9 +96,13 @@ Tree table:
 <strong>Explanation:</strong> If there is only one node on the tree, you only need to output its root attributes.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Conditional Statements + Subquery**
+<!-- solution:start -->
+
+### Solution 1: Conditional Statements + Subquery
 
 We can use the `CASE WHEN` conditional statement to determine the type of each node as follows:
 
@@ -96,7 +112,7 @@ We can use the `CASE WHEN` conditional statement to determine the type of each n
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -111,3 +127,7 @@ FROM Tree;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

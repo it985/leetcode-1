@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0810.Chalkboard%20XOR%20Game/README.md
+tags:
+    - 位运算
+    - 脑筋急转弯
+    - 数组
+    - 数学
+    - 博弈
+---
+
+<!-- problem:start -->
+
 # [810. 黑板异或游戏](https://leetcode.cn/problems/chalkboard-xor-game)
 
 [English Version](/solution/0800-0899/0810.Chalkboard%20XOR%20Game/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>黑板上写着一个非负整数数组 <code>nums[i]</code> 。</p>
 
@@ -50,11 +64,13 @@ Alice 有两个选择: 擦掉数字 1 或 2。
 	<li><code>0 &lt;= nums[i] &lt; 2<sup>16</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：位运算**
+### 方法一：位运算
 
 根据游戏规则，轮到某个玩家时，如果当前黑板上所有数字按位异或运算结果为 $0$，这个玩家获胜。由于 Alice 先手，因此当 `nums` 中所有数字的异或结果为 $0$ 时，Alice 可以获胜。
 
@@ -102,9 +118,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -112,9 +126,7 @@ class Solution:
         return len(nums) % 2 == 0 or reduce(xor, nums) == 0
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -124,7 +136,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -138,7 +150,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func xorGame(nums []int) bool {
@@ -153,10 +165,8 @@ func xorGame(nums []int) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

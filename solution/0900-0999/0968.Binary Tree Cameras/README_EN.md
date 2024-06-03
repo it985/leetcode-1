@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0968.Binary%20Tree%20Cameras/README_EN.md
+tags:
+    - Tree
+    - Depth-First Search
+    - Dynamic Programming
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [968. Binary Tree Cameras](https://leetcode.com/problems/binary-tree-cameras)
 
 [中文文档](/solution/0900-0999/0968.Binary%20Tree%20Cameras/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given the <code>root</code> of a binary tree. We install cameras on the tree nodes where each camera at a node can monitor its parent, itself, and its immediate children.</p>
 
@@ -33,11 +48,17 @@
 	<li><code>Node.val == 0</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -62,7 +83,7 @@ class Solution:
         return min(a, b)
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -100,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -139,7 +160,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -168,7 +189,7 @@ func minCameraCover(root *TreeNode) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -202,10 +223,8 @@ function minCameraCover(root: TreeNode | null): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

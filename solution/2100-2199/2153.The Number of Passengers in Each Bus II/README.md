@@ -1,10 +1,20 @@
-# [2153. 每辆车的乘客人数 II](https://leetcode.cn/problems/the-number-of-passengers-in-each-bus-ii)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2153.The%20Number%20of%20Passengers%20in%20Each%20Bus%20II/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2153. 每辆车的乘客人数 II 🔒](https://leetcode.cn/problems/the-number-of-passengers-in-each-bus-ii)
 
 [English Version](/solution/2100-2199/2153.The%20Number%20of%20Passengers%20in%20Each%20Bus%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Buses</code></p>
 
@@ -90,15 +100,17 @@ Passengers 表:
 - 15 号乘客在时间 7 到达。
 - 3 号公交车在时间 7 到达，车上有两个空座位，搭载了 12 号和 13 号乘客。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -124,3 +136,7 @@ ORDER BY bus_id;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

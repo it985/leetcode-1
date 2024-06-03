@@ -1,8 +1,22 @@
-# [2832. Maximal Range That Each Element Is Maximum in It](https://leetcode.com/problems/maximal-range-that-each-element-is-maximum-in-it)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2832.Maximal%20Range%20That%20Each%20Element%20Is%20Maximum%20in%20It/README_EN.md
+tags:
+    - Stack
+    - Array
+    - Monotonic Stack
+---
+
+<!-- problem:start -->
+
+# [2832. Maximal Range That Each Element Is Maximum in It 🔒](https://leetcode.com/problems/maximal-range-that-each-element-is-maximum-in-it)
 
 [中文文档](/solution/2800-2899/2832.Maximal%20Range%20That%20Each%20Element%20Is%20Maximum%20in%20It/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> array <code>nums</code> of <b>distinct </b>integers.</p>
 
@@ -46,9 +60,13 @@ For nums[4] the longest subarray in which 6 is the maximum is nums[0..4] so ans[
 	<li>All elements in <code>nums</code> are distinct.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Monotonic Stack**
+<!-- solution:start -->
+
+### Solution 1: Monotonic Stack
 
 This problem is a template for monotonic stack. We only need to use the monotonic stack to find the position of the first element larger than $nums[i]$ on the left and right, denoted as $left[i]$ and $right[i]$. Then, the interval length with $nums[i]$ as the maximum value is $right[i] - left[i] - 1$.
 
@@ -56,7 +74,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -81,7 +99,7 @@ class Solution:
         return [r - l - 1 for l, r in zip(left, right)]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -120,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -158,7 +176,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumLengthOfRanges(nums []int) []int {
@@ -198,7 +216,7 @@ func maximumLengthOfRanges(nums []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumLengthOfRanges(nums: number[]): number[] {
@@ -229,10 +247,8 @@ function maximumLengthOfRanges(nums: number[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

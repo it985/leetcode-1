@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0082.Remove%20Duplicates%20from%20Sorted%20List%20II/README_EN.md
+tags:
+    - Linked List
+    - Two Pointers
+---
+
+<!-- problem:start -->
+
 # [82. Remove Duplicates from Sorted List II](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii)
 
 [中文文档](/solution/0000-0099/0082.Remove%20Duplicates%20from%20Sorted%20List%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>head</code> of a sorted linked list, <em>delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list</em>. Return <em>the linked list <strong>sorted</strong> as well</em>.</p>
 
@@ -30,9 +43,13 @@
 	<li>The list is guaranteed to be <strong>sorted</strong> in ascending order.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Single Pass**
+<!-- solution:start -->
+
+### Solution 1: Single Pass
 
 First, we create a dummy head node $dummy$, and set $dummy.next = head$. Then we create a pointer $pre$ pointing to $dummy$, and a pointer $cur$ pointing to $head$, and start traversing the linked list.
 
@@ -44,7 +61,7 @@ The time complexity is $O(n)$, and the space complexity is $O(1)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -67,7 +84,7 @@ class Solution:
         return dummy.next
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -101,7 +118,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -136,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -164,75 +181,7 @@ func deleteDuplicates(head *ListNode) *ListNode {
 }
 ```
 
-### **C#**
-
-```cs
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     public int val;
- *     public ListNode next;
- *     public ListNode(int val=0, ListNode next=null) {
- *         this.val = val;
- *         this.next = next;
- *     }
- * }
- */
-public class Solution {
-    public ListNode DeleteDuplicates(ListNode head) {
-        ListNode dummy = new ListNode(0, head);
-        ListNode pre = dummy;
-        ListNode cur = head;
-        while (cur != null) {
-            while (cur.next != null && cur.next.val == cur.val) {
-                cur = cur.next;
-            }
-            if (pre.next == cur) {
-                pre = cur;
-            } else {
-                pre.next = cur.next;
-            }
-            cur = cur.next;
-        }
-        return dummy.next;
-    }
-}
-```
-
-### **JavaScript**
-
-```js
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode} head
- * @return {ListNode}
- */
-var deleteDuplicates = function (head) {
-    const dummy = new ListNode(0, head);
-    let pre = dummy;
-    let cur = head;
-    while (cur) {
-        while (cur.next && cur.val === cur.next.val) {
-            cur = cur.next;
-        }
-        if (pre.next === cur) {
-            pre = cur;
-        } else {
-            pre.next = cur.next;
-        }
-        cur = cur.next;
-    }
-    return dummy.next;
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -266,7 +215,7 @@ function deleteDuplicates(head: ListNode | null): ListNode | null {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for singly-linked list.
@@ -306,10 +255,76 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
+```js
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var deleteDuplicates = function (head) {
+    const dummy = new ListNode(0, head);
+    let pre = dummy;
+    let cur = head;
+    while (cur) {
+        while (cur.next && cur.val === cur.next.val) {
+            cur = cur.next;
+        }
+        if (pre.next === cur) {
+            pre = cur;
+        } else {
+            pre.next = cur.next;
+        }
+        cur = cur.next;
+    }
+    return dummy.next;
+};
 ```
 
+#### C#
+
+```cs
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     public ListNode(int val=0, ListNode next=null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode DeleteDuplicates(ListNode head) {
+        ListNode dummy = new ListNode(0, head);
+        ListNode pre = dummy;
+        ListNode cur = head;
+        while (cur != null) {
+            while (cur.next != null && cur.next.val == cur.val) {
+                cur = cur.next;
+            }
+            if (pre.next == cur) {
+                pre = cur;
+            } else {
+                pre.next = cur.next;
+            }
+            cur = cur.next;
+        }
+        return dummy.next;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

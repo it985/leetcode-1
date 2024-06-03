@@ -1,10 +1,20 @@
-# [1336. 每次访问的交易次数](https://leetcode.cn/problems/number-of-transactions-per-visit)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1336.Number%20of%20Transactions%20per%20Visit/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1336. 每次访问的交易次数 🔒](https://leetcode.cn/problems/number-of-transactions-per-visit)
 
 [English Version](/solution/1300-1399/1336.Number%20of%20Transactions%20per%20Visit/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Visits</code></p>
 
@@ -108,13 +118,17 @@ Visits</code> 表:
 * 对于 transactions_count &gt;= 4, 没有客户访问银行进行了超过3次交易，所以我们停止在 transactions_count = 3 。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -155,3 +169,7 @@ ORDER BY n;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

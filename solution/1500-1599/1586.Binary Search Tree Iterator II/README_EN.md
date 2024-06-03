@@ -1,8 +1,25 @@
-# [1586. Binary Search Tree Iterator II](https://leetcode.com/problems/binary-search-tree-iterator-ii)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1586.Binary%20Search%20Tree%20Iterator%20II/README_EN.md
+tags:
+    - Stack
+    - Tree
+    - Design
+    - Binary Search Tree
+    - Binary Tree
+    - Iterator
+---
+
+<!-- problem:start -->
+
+# [1586. Binary Search Tree Iterator II 🔒](https://leetcode.com/problems/binary-search-tree-iterator-ii)
 
 [中文文档](/solution/1500-1599/1586.Binary%20Search%20Tree%20Iterator%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Implement the <code>BSTIterator</code> class that represents an iterator over the <strong><a href="https://en.wikipedia.org/wiki/Tree_traversal#In-order_(LNR)">in-order traversal</a></strong> of a binary search tree (BST):</p>
 
@@ -59,9 +76,13 @@ bSTIterator.prev(); // state becomes [3, 7, <u>9</u>, 15, 20], return 9
 <p>&nbsp;</p>
 <strong>Follow up:</strong> Could you solve the problem without precalculating the values of the tree?
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: In-order Traversal + Array**
+<!-- solution:start -->
+
+### Solution 1: In-order Traversal + Array
 
 We can use in-order traversal to store the values of all nodes in the binary search tree into an array $nums$, and then use the array to implement the iterator. We define a pointer $i$, initially $i = -1$, which points to an element in the array $nums$. Each time we call $next()$, we add $1$ to the value of $i$ and return $nums[i]$; each time we call $prev()$, we subtract $1$ from the value of $i$ and return $nums[i]$.
 
@@ -69,7 +90,7 @@ In terms of time complexity, initializing the iterator requires $O(n)$ time, whe
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -115,7 +136,7 @@ class BSTIterator:
 # param_4 = obj.prev()
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -177,7 +198,7 @@ class BSTIterator {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -239,7 +260,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -298,7 +319,7 @@ func (this *BSTIterator) Prev() int {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -362,10 +383,8 @@ class BSTIterator {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

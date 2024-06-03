@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1174.Immediate%20Food%20Delivery%20II/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
 # [1174. 即时食物配送 II](https://leetcode.cn/problems/immediate-food-delivery-ii)
 
 [English Version](/solution/1100-1199/1174.Immediate%20Food%20Delivery%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>配送表: <code>Delivery</code></p>
 
@@ -63,26 +73,24 @@ Delivery 表：
 因此，一半顾客的首次订单是即时的。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：子查询**
+### 方法一：子查询
 
 我们可以使用子查询，先找到每个用户的首次订单，然后再计算即时订单的比例。
 
-**方法二：窗口函数**
-
-我们可以使用 `RANK()` 窗口函数，按照每个用户的订单日期升序排列，获取到每个用户的订单排名，然后我们筛选出排名为 $1$ 的订单，即为首次订单，再计算即时订单的比例。
-
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
 SELECT
-    ROUND(SUM(order_date = customer_pref_delivery_date) / COUNT(1) * 100, 2) AS immediate_percentage
+    ROUND(AVG(order_date = customer_pref_delivery_date) * 100, 2) AS immediate_percentage
 FROM Delivery
 WHERE
     (customer_id, order_date) IN (
@@ -91,6 +99,20 @@ WHERE
         GROUP BY 1
     );
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：窗口函数
+
+我们可以使用 `RANK()` 窗口函数，按照每个用户的订单日期升序排列，获取到每个用户的订单排名，然后我们筛选出排名为 $1$ 的订单，即为首次订单，再计算即时订单的比例。
+
+<!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -105,9 +127,13 @@ WITH
         FROM Delivery
     )
 SELECT
-    ROUND(SUM(order_date = customer_pref_delivery_date) / COUNT(1) * 100, 2) AS immediate_percentage
+    ROUND(AVG(order_date = customer_pref_delivery_date) * 100, 2) AS immediate_percentage
 FROM T
 WHERE rk = 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

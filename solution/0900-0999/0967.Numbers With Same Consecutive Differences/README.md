@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0967.Numbers%20With%20Same%20Consecutive%20Differences/README.md
+tags:
+    - 广度优先搜索
+    - 回溯
+---
+
+<!-- problem:start -->
+
 # [967. 连续差相同的数字](https://leetcode.cn/problems/numbers-with-same-consecutive-differences)
 
 [English Version](/solution/0900-0999/0967.Numbers%20With%20Same%20Consecutive%20Differences/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>返回所有长度为 <code>n</code> 且满足其每两个连续位上的数字之间的差的绝对值为 <code>k</code> 的<strong> 非负整数 </strong>。</p>
 
@@ -51,17 +62,17 @@
 	<li><code>0 &lt;= k &lt;= 9</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-DFS。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +94,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -117,7 +126,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -142,7 +151,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numsSameConsecDiff(n int, k int) []int {
@@ -169,10 +178,8 @@ func numsSameConsecDiff(n int, k int) []int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2405.Optimal%20Partition%20of%20String/README.md
+rating: 1355
+source: 第 310 场周赛 Q2
+tags:
+    - 贪心
+    - 哈希表
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2405. 子字符串的最优划分](https://leetcode.cn/problems/optimal-partition-of-string)
 
 [English Version](/solution/2400-2499/2405.Optimal%20Partition%20of%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串 <code>s</code> ，请你将该字符串划分成一个或多个 <strong>子字符串</strong> ，并满足每个子字符串中的字符都是 <strong>唯一</strong> 的。也就是说，在单个子字符串中，字母的出现次数都不超过 <strong>一次</strong> 。</p>
 
@@ -42,11 +56,13 @@
 	<li><code>s</code> 仅由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 根据题意，每个子字符串应该尽可能长，且包含的字符唯一。我们只需要贪心地进行划分即可。
 
@@ -56,9 +72,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -73,22 +87,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def partitionString(self, s: str) -> int:
-        ans, v = 1, 0
-        for c in s:
-            i = ord(c) - ord('a')
-            if (v >> i) & 1:
-                v = 0
-                ans += 1
-            v |= 1 << i
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -106,6 +105,107 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int partitionString(string s) {
+        unordered_set<char> ss;
+        int ans = 1;
+        for (char c : s) {
+            if (ss.count(c)) {
+                ++ans;
+                ss.clear();
+            }
+            ss.insert(c);
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func partitionString(s string) int {
+	ss := map[rune]bool{}
+	ans := 1
+	for _, c := range s {
+		if ss[c] {
+			ans++
+			ss = map[rune]bool{}
+		}
+		ss[c] = true
+	}
+	return ans
+}
+```
+
+#### TypeScript
+
+```ts
+function partitionString(s: string): number {
+    const set = new Set();
+    let res = 1;
+    for (const c of s) {
+        if (set.has(c)) {
+            res++;
+            set.clear();
+        }
+        set.add(c);
+    }
+    return res;
+}
+```
+
+#### Rust
+
+```rust
+use std::collections::HashSet;
+impl Solution {
+    pub fn partition_string(s: String) -> i32 {
+        let mut set = HashSet::new();
+        let mut res = 1;
+        for c in s.as_bytes().iter() {
+            if set.contains(c) {
+                res += 1;
+                set.clear();
+            }
+            set.insert(c);
+        }
+        res
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def partitionString(self, s: str) -> int:
+        ans, v = 1, 0
+        for c in s:
+            i = ord(c) - ord('a')
+            if (v >> i) & 1:
+                v = 0
+                ans += 1
+            v |= 1 << i
+        return ans
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -125,25 +225,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int partitionString(string s) {
-        unordered_set<char> ss;
-        int ans = 1;
-        for (char c : s) {
-            if (ss.count(c)) {
-                ++ans;
-                ss.clear();
-            }
-            ss.insert(c);
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -164,22 +246,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func partitionString(s string) int {
-	ss := map[rune]bool{}
-	ans := 1
-	for _, c := range s {
-		if ss[c] {
-			ans++
-			ss = map[rune]bool{}
-		}
-		ss[c] = true
-	}
-	return ans
-}
-```
+#### Go
 
 ```go
 func partitionString(s string) int {
@@ -196,47 +263,8 @@ func partitionString(s string) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function partitionString(s: string): number {
-    const set = new Set();
-    let res = 1;
-    for (const c of s) {
-        if (set.has(c)) {
-            res++;
-            set.clear();
-        }
-        set.add(c);
-    }
-    return res;
-}
-```
-
-### **Rust**
-
-```rust
-use std::collections::HashSet;
-impl Solution {
-    pub fn partition_string(s: String) -> i32 {
-        let mut set = HashSet::new();
-        let mut res = 1;
-        for c in s.as_bytes().iter() {
-            if set.contains(c) {
-                res += 1;
-                set.clear();
-            }
-            set.insert(c);
-        }
-        res
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

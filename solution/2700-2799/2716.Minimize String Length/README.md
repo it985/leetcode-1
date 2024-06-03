@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2716.Minimize%20String%20Length/README.md
+rating: 1242
+source: 第 348 场周赛 Q1
+tags:
+    - 哈希表
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2716. 最小化字符串长度](https://leetcode.cn/problems/minimize-string-length)
 
 [English Version](/solution/2700-2799/2716.Minimize%20String%20Length/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的字符串 <code>s</code> ，重复执行下述操作 <strong>任意</strong> 次：</p>
 
@@ -49,11 +62,13 @@
 	<li><code>s</code> 仅由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 题目实际上可以转化为求字符串中不同字符的个数，因此，我们只需要统计字符串中不同字符的个数即可。
 
@@ -61,9 +76,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -71,9 +84,7 @@ class Solution:
         return len(set(s))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -87,7 +98,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -99,7 +110,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimizedStringLength(s string) int {
@@ -111,7 +122,7 @@ func minimizedStringLength(s string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimizedStringLength(s: string): number {
@@ -119,7 +130,7 @@ function minimizedStringLength(s: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -137,6 +148,18 @@ impl Solution {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Rust
+
 ```rust
 use std::collections::HashSet;
 
@@ -153,10 +176,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

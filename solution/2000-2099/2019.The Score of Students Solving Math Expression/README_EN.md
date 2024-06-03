@@ -1,8 +1,27 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2019.The%20Score%20of%20Students%20Solving%20Math%20Expression/README_EN.md
+rating: 2583
+source: Weekly Contest 260 Q4
+tags:
+    - Stack
+    - Memoization
+    - Array
+    - Math
+    - String
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [2019. The Score of Students Solving Math Expression](https://leetcode.com/problems/the-score-of-students-solving-math-expression)
 
 [中文文档](/solution/2000-2099/2019.The%20Score%20of%20Students%20Solving%20Math%20Expression/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>s</code> that contains digits <code>0-9</code>, addition symbols <code>&#39;+&#39;</code>, and multiplication symbols <code>&#39;*&#39;</code> <strong>only</strong>, representing a <strong>valid</strong> math expression of <strong>single digit numbers</strong> (e.g., <code>3+5*2</code>). This expression was given to <code>n</code> elementary school students. The students were instructed to get the answer of the expression by following this <strong>order of operations</strong>:</p>
 
@@ -67,9 +86,13 @@ The points for the students are: [0,0,5,0,0,5]. The sum of the points is 10.
 	<li><code>0 &lt;= answers[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Dynamic Programming (Interval DP)**
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming (Interval DP)
 
 First, we design a function $cal(s)$ to calculate the result of a valid mathematical expression that only contains single-digit numbers. The correct answer is $x = cal(s)$.
 
@@ -96,7 +119,7 @@ The time complexity is $O(n^3 \times M^2)$, and the space complexity is $O(n^2 \
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -135,7 +158,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -197,7 +220,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -257,7 +280,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func scoreOfStudents(s string, answers []int) int {
@@ -317,7 +340,7 @@ func cal(s string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function scoreOfStudents(s: string, answers: number[]): number {
@@ -379,10 +402,8 @@ function scoreOfStudents(s: string, answers: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

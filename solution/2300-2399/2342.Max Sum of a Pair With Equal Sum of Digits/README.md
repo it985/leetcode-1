@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2342.Max%20Sum%20of%20a%20Pair%20With%20Equal%20Sum%20of%20Digits/README.md
+rating: 1308
+source: 第 302 场周赛 Q2
+tags:
+    - 数组
+    - 哈希表
+    - 排序
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [2342. 数位和相等数对的最大和](https://leetcode.cn/problems/max-sum-of-a-pair-with-equal-sum-of-digits)
 
 [English Version](/solution/2300-2399/2342.Max%20Sum%20of%20a%20Pair%20With%20Equal%20Sum%20of%20Digits/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的数组 <code>nums</code> ，数组中的元素都是 <strong>正</strong> 整数。请你选出两个下标 <code>i</code> 和 <code>j</code>（<code>i != j</code>），且 <code>nums[i]</code> 的数位和 与&nbsp; <code>nums[j]</code> 的数位和相等。</p>
 
@@ -39,11 +54,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们可以用一个哈希表 $d$ 记录每个数位和对应的最大值，初始化一个答案变量 $ans = -1$。
 
@@ -57,9 +74,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,9 +92,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -124,7 +137,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumSum(nums []int) int {
@@ -144,7 +157,7 @@ func maximumSum(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumSum(nums: number[]): number {
@@ -164,7 +177,7 @@ function maximumSum(nums: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -190,10 +203,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

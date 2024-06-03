@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1387.Sort%20Integers%20by%20The%20Power%20Value/README.md
+rating: 1506
+source: 第 22 场双周赛 Q3
+tags:
+    - 记忆化搜索
+    - 动态规划
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1387. 将整数按权重排序](https://leetcode.cn/problems/sort-integers-by-the-power-value)
 
 [English Version](/solution/1300-1399/1387.Sort%20Integers%20by%20The%20Power%20Value/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>我们将整数 <code>x</code>&nbsp;的 <strong>权重</strong> 定义为按照下述规则将 <code>x</code>&nbsp;变成 <code>1</code>&nbsp;所需要的步数：</p>
 
@@ -55,11 +69,13 @@
 	<li><code>1 &lt;= k &lt;= hi - lo + 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：自定义排序**
+### 方法一：自定义排序
 
 我们先定义一个函数 $f(x)$，表示将数字 $x$ 变成 $1$ 所需要的步数，也即是数字 $x$ 的权重。
 
@@ -71,9 +87,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 @cache
@@ -93,9 +107,7 @@ class Solution:
         return sorted(range(lo, hi + 1), key=f)[k - 1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -125,7 +137,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -159,7 +171,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getKth(lo int, hi int, k int) int {
@@ -188,7 +200,7 @@ func getKth(lo int, hi int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function getKth(lo: number, hi: number, k: number): number {
@@ -213,10 +225,8 @@ function getKth(lo: number, hi: number, k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

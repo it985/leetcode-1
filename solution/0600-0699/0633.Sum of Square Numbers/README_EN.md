@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0633.Sum%20of%20Square%20Numbers/README_EN.md
+tags:
+    - Math
+    - Two Pointers
+    - Binary Search
+---
+
+<!-- problem:start -->
+
 # [633. Sum of Square Numbers](https://leetcode.com/problems/sum-of-square-numbers)
 
 [中文文档](/solution/0600-0699/0633.Sum%20of%20Square%20Numbers/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a non-negative integer <code>c</code>, decide whether there&#39;re two integers <code>a</code> and <code>b</code> such that <code>a<sup>2</sup> + b<sup>2</sup> = c</code>.</p>
 
@@ -29,17 +43,21 @@
 	<li><code>0 &lt;= c &lt;= 2<sup>31</sup> - 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-![](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0600-0699/0633.Sum%20of%20Square%20Numbers/images/table.png)
+<!-- solution:start -->
 
-The picture above shows the relationship between `a`, `b`, and `c`. This question is actually looking up `c` in this table
+### Solution 1: Mathematics + Two Pointers
 
-From the upper right corner of the table, it is not difficult to find that it is similar to a binary search tree, so just start from the upper right corner and search according to the law of the binary search tree
+We can use the two-pointer method to solve this problem. Define two pointers $a$ and $b$, pointing to $0$ and $\sqrt{c}$ respectively. In each step, we calculate the value of $s = a^2 + b^2$, and then compare the size of $s$ and $c$. If $s = c$, we have found two integers $a$ and $b$ such that $a^2 + b^2 = c$. If $s < c$, we increase the value of $a$ by $1$. If $s > c$, we decrease the value of $b$ by $1$. We continue this process until we find the answer, or the value of $a$ is greater than the value of $b$, and return `false`.
+
+The time complexity is $O(\sqrt{c})$, where $c$ is the given non-negative integer. The space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -56,7 +74,7 @@ class Solution:
         return False
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -78,46 +96,30 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function judgeSquareSum(c: number): boolean {
-    let a = 0,
-        b = Math.floor(Math.sqrt(c));
-    while (a <= b) {
-        let sum = a ** 2 + b ** 2;
-        if (sum == c) return true;
-        if (sum < c) {
-            ++a;
-        } else {
-            --b;
-        }
-    }
-    return false;
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
 public:
     bool judgeSquareSum(int c) {
-        long a = 0, b = (long) sqrt(c);
+        long long a = 0, b = sqrt(c);
         while (a <= b) {
-            long s = a * a + b * b;
-            if (s == c) return true;
-            if (s < c)
+            long long s = a * a + b * b;
+            if (s == c) {
+                return true;
+            }
+            if (s < c) {
                 ++a;
-            else
+            } else {
                 --b;
+            }
         }
         return false;
     }
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func judgeSquareSum(c int) bool {
@@ -137,26 +139,46 @@ func judgeSquareSum(c int) bool {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function judgeSquareSum(c: number): boolean {
+    let [a, b] = [0, Math.floor(Math.sqrt(c))];
+    while (a <= b) {
+        const s = a * a + b * b;
+        if (s === c) {
+            return true;
+        }
+        if (s < c) {
+            ++a;
+        } else {
+            --b;
+        }
+    }
+    return false;
+}
+```
+
+#### Rust
 
 ```rust
 use std::cmp::Ordering;
+
 impl Solution {
     pub fn judge_square_sum(c: i32) -> bool {
-        let c = c as i64;
-        let mut left = 0;
-        let mut right = (c as f64).sqrt() as i64;
-        while left <= right {
-            let num = left * left + right * right;
-            match num.cmp(&c) {
-                Ordering::Less => {
-                    left += 1;
-                }
-                Ordering::Greater => {
-                    right -= 1;
-                }
+        let mut a: i64 = 0;
+        let mut b: i64 = (c as f64).sqrt() as i64;
+        while a <= b {
+            let s = a * a + b * b;
+            match s.cmp(&(c as i64)) {
                 Ordering::Equal => {
                     return true;
+                }
+                Ordering::Less => {
+                    a += 1;
+                }
+                Ordering::Greater => {
+                    b -= 1;
                 }
             }
         }
@@ -165,10 +187,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

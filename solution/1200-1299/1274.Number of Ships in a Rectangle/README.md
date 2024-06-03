@@ -1,10 +1,24 @@
-# [1274. 矩形内船只的数目](https://leetcode.cn/problems/number-of-ships-in-a-rectangle)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1274.Number%20of%20Ships%20in%20a%20Rectangle/README.md
+rating: 1997
+source: 第 14 场双周赛 Q4
+tags:
+    - 数组
+    - 分治
+    - 交互
+---
+
+<!-- problem:start -->
+
+# [1274. 矩形内船只的数目 🔒](https://leetcode.cn/problems/number-of-ships-in-a-rectangle)
 
 [English Version](/solution/1200-1299/1274.Number%20of%20Ships%20in%20a%20Rectangle/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><em>(此题是 <strong>交互式问题&nbsp;</strong>)</em></p>
 
@@ -49,21 +63,21 @@ ships = [[1,1],[2,2],[3,3],[5,5]], topRight = [4,4], bottomLeft = [0,0]
 
 <p>&nbsp;</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：递归 + 分治**
+### 方法一：递归 + 分治
 
-由于矩形内最多只有 $10$ 艘船，所以我们可以将矩形划分为四个子矩形，分别求出每个子矩形内船只的数目，然后将四个子矩形内船只的数目相加即可。如果一个子矩形内没有船只，那么就不需要再继续划分了。
+由于矩形内最多只有 $10$ 艘船，所以我们可以将矩形划分为四个子矩形，分别求出每个子矩形内船只的数目 🔒，然后将四个子矩形内船只的数目 🔒 相加即可。如果一个子矩形内没有船只，那么就不需要再继续划分了。
 
 时间复杂度 $O(C \times \log \max(m, n))$，空间复杂度 $O(\log \max(m, n))$。其中 $C$ 为船只的数目，而 $m$ 和 $n$ 分别为矩形的长和宽。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # """
@@ -101,9 +115,7 @@ class Solution:
         return dfs(topRight, bottomLeft)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -138,7 +150,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -175,7 +187,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -208,7 +220,7 @@ func countShips(sea Sea, topRight, bottomLeft []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -238,10 +250,8 @@ function countShips(sea: Sea, topRight: number[], bottomLeft: number[]): number 
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

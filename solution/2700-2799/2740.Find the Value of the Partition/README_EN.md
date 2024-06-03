@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2740.Find%20the%20Value%20of%20the%20Partition/README_EN.md
+rating: 1301
+source: Weekly Contest 350 Q2
+tags:
+    - Array
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2740. Find the Value of the Partition](https://leetcode.com/problems/find-the-value-of-the-partition)
 
 [中文文档](/solution/2700-2799/2740.Find%20the%20Value%20of%20the%20Partition/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>positive</strong> integer array <code>nums</code>.</p>
 
@@ -53,11 +68,21 @@ It can be proven that 9 is the minimum value out of all partitions.
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Sorting
+
+The problem requires us to minimize the partition value. Therefore, we can sort the array and then take the minimum difference between two adjacent numbers.
+
+The time complexity is $O(n \times \log n)$, and the space complexity is $O(\log n)$. Here, $n$ is the length of the array.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,7 +91,7 @@ class Solution:
         return min(b - a for a, b in pairwise(nums))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -81,7 +106,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -97,7 +122,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findValueOfPartition(nums []int) int {
@@ -110,10 +135,8 @@ func findValueOfPartition(nums []int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

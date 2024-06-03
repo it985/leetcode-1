@@ -1,8 +1,24 @@
-# [666. Path Sum IV](https://leetcode.com/problems/path-sum-iv)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0666.Path%20Sum%20IV/README_EN.md
+tags:
+    - Tree
+    - Depth-First Search
+    - Array
+    - Hash Table
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
+# [666. Path Sum IV 🔒](https://leetcode.com/problems/path-sum-iv)
 
 [中文文档](/solution/0600-0699/0666.Path%20Sum%20IV/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>If the depth of a tree is smaller than <code>5</code>, then this tree can be represented by an array of three-digit integers. For each integer in this array:</p>
 
@@ -44,13 +60,17 @@ The path sum is (3 + 1) = 4.
 	<li><code>nums</code> represents a valid binary tree with depth less than <code>5</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-DFS.
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +95,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -110,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -142,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func pathSum(nums []int) int {
@@ -173,10 +193,8 @@ func pathSum(nums []int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

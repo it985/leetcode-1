@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0013.Roman%20to%20Integer/README.md
+tags:
+    - 哈希表
+    - 数学
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [13. 罗马数字转整数](https://leetcode.cn/problems/roman-to-integer)
 
 [English Version](/solution/0000-0099/0013.Roman%20to%20Integer/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>罗马数字包含以下七种字符:&nbsp;<code>I</code>，&nbsp;<code>V</code>，&nbsp;<code>X</code>，&nbsp;<code>L</code>，<code>C</code>，<code>D</code>&nbsp;和&nbsp;<code>M</code>。</p>
 
@@ -78,9 +90,13 @@ M             1000</pre>
 	<li>关于罗马数字的详尽书写规则，可以参考 <a href="https://b2b.partcommunity.com/community/knowledge/zh_CN/detail/10753/%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97#knowledge_article">罗马数字 - Mathematics </a>。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-**方法一：哈希表 + 模拟**
+<!-- solution:start -->
+
+### 方法一：哈希表 + 模拟
 
 我们先用哈希表 $d$ 记录每个字符对应的数值，然后从左到右遍历字符串 $s$，如果当前字符对应的数值小于右边字符对应的数值，则减去当前字符对应的数值，否则加上当前字符对应的数值。
 
@@ -90,9 +106,7 @@ M             1000</pre>
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -101,9 +115,7 @@ class Solution:
         return sum((-1 if d[a] < d[b] else 1) * d[a] for a, b in pairwise(s)) + d[s[-1]]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -125,7 +137,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -150,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func romanToInt(s string) (ans int) {
@@ -167,7 +179,7 @@ func romanToInt(s string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function romanToInt(s: string): number {
@@ -189,7 +201,7 @@ function romanToInt(s: string): number {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 const romanToInt = function (s) {
@@ -211,7 +223,7 @@ const romanToInt = function (s) {
 };
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -234,7 +246,7 @@ public class Solution {
 }
 ```
 
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -267,10 +279,45 @@ class Solution {
 }
 ```
 
-### **...**
+#### Ruby
 
-```
+```rb
+# @param {String} s
+# @return {Integer}
+def roman_to_int(s)
+  hash = Hash[
+      'I' => 1,
+      'V' => 5,
+      'X' => 10,
+      'L' => 50,
+      'C' => 100,
+      'D' => 500,
+      'M' => 1000,
+      'IV' => 4,
+      'IX' => 9,
+      'XL' => 40,
+      'XC' => 90,
+      'CD' => 400,
+      'CM' => 900
+  ]
+  res = 0
+  i = 0
+  while i < s.length
+    if i < s.length - 1 && !hash[s[i..i+1]].nil?
+      res += hash[s[i..i+1]]
+      i += 2
+    else
+      res += hash[s[i]]
+      i += 1
+    end
+  end
 
+  res
+end
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

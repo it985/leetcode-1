@@ -1,12 +1,24 @@
-# [340. 至多包含 K 个不同字符的最长子串](https://leetcode.cn/problems/longest-substring-with-at-most-k-distinct-characters)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0340.Longest%20Substring%20with%20At%20Most%20K%20Distinct%20Characters/README.md
+tags:
+    - 哈希表
+    - 字符串
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
+# [340. 至多包含 K 个不同字符的最长子串 🔒](https://leetcode.cn/problems/longest-substring-with-at-most-k-distinct-characters)
 
 [English Version](/solution/0300-0399/0340.Longest%20Substring%20with%20At%20Most%20K%20Distinct%20Characters/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>给你一个字符串 <code>s</code> 和一个整数 <code>k</code> ，请你找出&nbsp;<strong>至多&nbsp;</strong>包含<em> <code>k</code></em> 个 <strong>不同</strong> 字符的最长子串，并返回该子串的长度。</p>
+<p>给你一个字符串 <code>s</code> 和一个整数 <code>k</code> ，请你找出&nbsp;<strong>至多&nbsp;</strong>包含<em> <code>k</code></em> 个 <strong>不同</strong> 字符的最长<span data-keyword="substring-nonempty">子串</span>，并返回该子串的长度。</p>
 
 <p>&nbsp;</p>
 
@@ -34,11 +46,13 @@
 	<li><code>0 &lt;= k &lt;= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：滑动窗口 + 哈希表**
+### 方法一：滑动窗口 + 哈希表
 
 我们可以使用滑动窗口的思想，维护一个滑动窗口，使得窗口内的字符串中不同字符的个数不超过 $k$ 个。窗口内不同字符个数的统计可以用哈希表 `cnt` 来维护。
 
@@ -48,9 +62,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -69,9 +81,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -97,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -121,7 +131,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func lengthOfLongestSubstringKDistinct(s string, k int) (ans int) {
@@ -142,10 +152,8 @@ func lengthOfLongestSubstringKDistinct(s string, k int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

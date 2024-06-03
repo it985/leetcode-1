@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0765.Couples%20Holding%20Hands/README_EN.md
+tags:
+    - Greedy
+    - Depth-First Search
+    - Breadth-First Search
+    - Union Find
+    - Graph
+---
+
+<!-- problem:start -->
+
 # [765. Couples Holding Hands](https://leetcode.com/problems/couples-holding-hands)
 
 [中文文档](/solution/0700-0799/0765.Couples%20Holding%20Hands/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are <code>n</code> couples sitting in <code>2n</code> seats arranged in a row and want to hold hands.</p>
 
@@ -38,11 +54,17 @@
 	<li>All the elements of <code>row</code> are <strong>unique</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -60,7 +82,7 @@ class Solution:
         return n - sum(i == find(i) for i in range(n))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -122,7 +144,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minSwapsCouples(row []int) int {
@@ -152,7 +174,7 @@ func minSwapsCouples(row []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minSwapsCouples(row: number[]): number {
@@ -181,7 +203,7 @@ function minSwapsCouples(row: number[]): number {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -216,10 +238,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

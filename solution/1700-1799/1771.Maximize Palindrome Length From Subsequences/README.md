@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1771.Maximize%20Palindrome%20Length%20From%20Subsequences/README.md
+rating: 2182
+source: 第 229 场周赛 Q4
+tags:
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [1771. 由子序列构造的最长回文串的长度](https://leetcode.cn/problems/maximize-palindrome-length-from-subsequences)
 
 [English Version](/solution/1700-1799/1771.Maximize%20Palindrome%20Length%20From%20Subsequences/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个字符串 <code>word1</code> 和 <code>word2</code> ，请你按下述方法构造一个字符串：</p>
 
@@ -49,11 +62,13 @@
 	<li><code>word1</code> 和 <code>word2</code> 由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们首先将字符串 `word1` 和 `word2` 连接起来，得到字符串 $s$，然后我们可以将问题转化为求字符串 $s$ 的最长回文子序列的长度。只不过这里在算最后的答案时，需要保证回文字符串中，至少有一个字符来自 `word1`，另一个字符来自 `word2`。
 
@@ -69,9 +84,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -93,9 +106,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -124,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -153,7 +164,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func longestPalindrome(word1 string, word2 string) (ans int) {
@@ -180,7 +191,7 @@ func longestPalindrome(word1 string, word2 string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function longestPalindrome(word1: string, word2: string): number {
@@ -207,7 +218,7 @@ function longestPalindrome(word1: string, word2: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -236,10 +247,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

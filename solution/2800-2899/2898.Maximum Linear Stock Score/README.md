@@ -1,10 +1,21 @@
-# [2898. 最大线性股票得分](https://leetcode.cn/problems/maximum-linear-stock-score)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2898.Maximum%20Linear%20Stock%20Score/README.md
+tags:
+    - 数组
+    - 哈希表
+---
+
+<!-- problem:start -->
+
+# [2898. 最大线性股票得分 🔒](https://leetcode.cn/problems/maximum-linear-stock-score)
 
 [English Version](/solution/2800-2899/2898.Maximum%20Linear%20Stock%20Score/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个 <strong>1-indexed</strong> 整数数组 <code>prices</code>，其中 <code>prices[i]</code> 是第 <code>i</code> 天某只股票的价格。你的任务是&nbsp;<strong>线性</strong>&nbsp;地选择 <code>prices</code>&nbsp;中的一些元素。</p>
 
@@ -55,11 +66,13 @@ prices[5] - prices[4] = 8 - 7 = 1。
 	<li><code>1 &lt;= prices[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们可以将式子进行变换，得到：
 
@@ -75,9 +88,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -88,9 +99,7 @@ class Solution:
         return max(cnt.values())
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +117,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -127,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxScore(prices []int) (ans int64) {
@@ -142,7 +151,20 @@ func maxScore(prices []int) (ans int64) {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function maxScore(prices: number[]): number {
+    const cnt: Map<number, number> = new Map();
+    for (let i = 0; i < prices.length; ++i) {
+        const j = prices[i] - i;
+        cnt.set(j, (cnt.get(j) || 0) + prices[i]);
+    }
+    return Math.max(...cnt.values());
+}
+```
+
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -162,23 +184,8 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function maxScore(prices: number[]): number {
-    const cnt: Map<number, number> = new Map();
-    for (let i = 0; i < prices.length; ++i) {
-        const j = prices[i] - i;
-        cnt.set(j, (cnt.get(j) || 0) + prices[i]);
-    }
-    return Math.max(...cnt.values());
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

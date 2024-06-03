@@ -1,10 +1,24 @@
-# [758. 字符串中的加粗单词](https://leetcode.cn/problems/bold-words-in-string)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0758.Bold%20Words%20in%20String/README.md
+tags:
+    - 字典树
+    - 数组
+    - 哈希表
+    - 字符串
+    - 字符串匹配
+---
+
+<!-- problem:start -->
+
+# [758. 字符串中的加粗单词 🔒](https://leetcode.cn/problems/bold-words-in-string)
 
 [English Version](/solution/0700-0799/0758.Bold%20Words%20in%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个关键词集合&nbsp;<code>words</code> 和一个字符串&nbsp;<code>s</code>，将所有 <code>s</code> 中出现的关键词&nbsp;<code>words[i]</code>&nbsp;加粗。所有在标签&nbsp;<code>&lt;b&gt;</code>&nbsp;和&nbsp;<code>&lt;b&gt;</code>&nbsp;中的字母都会加粗。</p>
 
@@ -42,19 +56,22 @@
 
 <p><strong>注：</strong>此题与「616 - 给字符串添加加粗标签」相同 - <a href="https://leetcode.cn/problems/add-bold-tag-in-string/">https://leetcode.cn/problems/add-bold-tag-in-string/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：前缀树 + 区间合并**
+### 方法一：前缀树 + 区间合并
 
-相似题目：[1065. 字符串的索引对](/solution/1000-1099/1065.Index%20Pairs%20of%20a%20String/README.md)、[616. 给字符串添加加粗标签](/solution/0600-0699/0616.Add%20Bold%20Tag%20in%20String/README.md)
+相似题目：
+
+-   [1065. 字符串的索引对](https://github.com/doocs/leetcode/blob/main/solution/1000-1099/1065.Index%20Pairs%20of%20a%20String/README.md)
+-   [616. 给字符串添加加粗标签](https://github.com/doocs/leetcode/blob/main/solution/0600-0699/0616.Add%20Bold%20Tag%20in%20String/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Trie:
@@ -118,9 +135,7 @@ class Solution:
         return ''.join(ans)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Trie {
@@ -199,7 +214,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Trie {
@@ -270,7 +285,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Trie struct {
@@ -348,10 +363,8 @@ func boldWords(words []string, s string) string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

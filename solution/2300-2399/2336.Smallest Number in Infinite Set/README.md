@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2336.Smallest%20Number%20in%20Infinite%20Set/README.md
+rating: 1375
+source: 第 301 场周赛 Q2
+tags:
+    - 设计
+    - 哈希表
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [2336. 无限集中的最小数字](https://leetcode.cn/problems/smallest-number-in-infinite-set)
 
 [English Version](/solution/2300-2399/2336.Smallest%20Number%20in%20Infinite%20Set/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>现有一个包含所有正整数的集合 <code>[1, 2, 3, 4, 5, ...]</code> 。</p>
 
@@ -48,11 +62,13 @@ smallestInfiniteSet.popSmallest(); // 返回 5 ，并将其从集合中移除。
 	<li>最多调用 <code>popSmallest</code> 和 <code>addBack</code> 方法 <strong>共计</strong> <code>1000</code> 次</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：有序集合 + 模拟**
+### 方法一：有序集合 + 模拟
 
 我们注意到，题目中集合的元素范围是 $[1, 1000]$，并且我们需要支持的操作有：
 
@@ -71,9 +87,7 @@ smallestInfiniteSet.popSmallest(); // 返回 5 ，并将其从集合中移除。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 from sortedcontainers import SortedSet
@@ -98,9 +112,7 @@ class SmallestInfiniteSet:
 # obj.addBack(num)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class SmallestInfiniteSet {
@@ -129,7 +141,7 @@ class SmallestInfiniteSet {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class SmallestInfiniteSet {
@@ -162,7 +174,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type SmallestInfiniteSet struct {
@@ -195,7 +207,7 @@ func (this *SmallestInfiniteSet) AddBack(num int) {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class SmallestInfiniteSet {
@@ -865,6 +877,53 @@ class TreeMultiSet<T = number> {
  */
 ```
 
+#### Rust
+
+```rust
+use std::collections::BTreeSet;
+
+struct SmallestInfiniteSet {
+    s: BTreeSet<i32>,
+}
+
+impl SmallestInfiniteSet {
+    fn new() -> Self {
+        let mut set = BTreeSet::new();
+        for i in 1..=1000 {
+            set.insert(i);
+        }
+        SmallestInfiniteSet { s: set }
+    }
+
+    fn pop_smallest(&mut self) -> i32 {
+        let x = *self.s.iter().next().unwrap();
+        self.s.remove(&x);
+        x
+    }
+
+    fn add_back(&mut self, num: i32) {
+        self.s.insert(num);
+    }
+}/**
+ * Your SmallestInfiniteSet object will be instantiated and called as such:
+ * let obj = SmallestInfiniteSet::new();
+ * let ret_1: i32 = obj.pop_smallest();
+ * obj.add_back(num);
+ */
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### TypeScript
+
 ```ts
 class SmallestInfiniteSet {
     private pq: typeof MinPriorityQueue;
@@ -901,45 +960,8 @@ class SmallestInfiniteSet {
  */
 ```
 
-### **Rust**
-
-```rust
-use std::collections::BTreeSet;
-
-struct SmallestInfiniteSet {
-    s: BTreeSet<i32>,
-}
-
-impl SmallestInfiniteSet {
-    fn new() -> Self {
-        let mut set = BTreeSet::new();
-        for i in 1..=1000 {
-            set.insert(i);
-        }
-        SmallestInfiniteSet { s: set }
-    }
-
-    fn pop_smallest(&mut self) -> i32 {
-        let x = *self.s.iter().next().unwrap();
-        self.s.remove(&x);
-        x
-    }
-
-    fn add_back(&mut self, num: i32) {
-        self.s.insert(num);
-    }
-}/**
- * Your SmallestInfiniteSet object will be instantiated and called as such:
- * let obj = SmallestInfiniteSet::new();
- * let ret_1: i32 = obj.pop_smallest();
- * obj.add_back(num);
- */
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

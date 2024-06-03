@@ -1,8 +1,16 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/lcp/LCP%2077.%20%E7%AC%A6%E6%96%87%E5%82%A8%E5%A4%87/README.md
+---
+
+<!-- problem:start -->
+
 # [LCP 77. 符文储备](https://leetcode.cn/problems/W2ZX4X)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 远征队在出发前需要携带一些「符文」，作为后续的冒险储备。`runes[i]` 表示第 `i` 枚符文的魔力值。
 
@@ -34,11 +42,13 @@
 -   `1 <= runes.length <= 10^4`
 -   `0 <= runes[i] <= 10^4`
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序**
+### 方法一：排序
 
 我们可以将符文按照魔力值从小到大排序，然后使用双指针维护一个滑动窗口，使得滑动窗口中的任意相邻的两块符文之间的魔力值相差不超过，找出满足条件的最大窗口长度即可。
 
@@ -46,9 +56,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -63,9 +71,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -84,7 +90,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -104,7 +110,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func runeReserve(runes []int) (ans int) {
@@ -121,7 +127,7 @@ func runeReserve(runes []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function runeReserve(runes: number[]): number {
@@ -139,10 +145,8 @@ function runeReserve(runes: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

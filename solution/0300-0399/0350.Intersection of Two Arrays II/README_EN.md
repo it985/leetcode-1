@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0350.Intersection%20of%20Two%20Arrays%20II/README_EN.md
+tags:
+    - Array
+    - Hash Table
+    - Two Pointers
+    - Binary Search
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [350. Intersection of Two Arrays II](https://leetcode.com/problems/intersection-of-two-arrays-ii)
 
 [中文文档](/solution/0300-0399/0350.Intersection%20of%20Two%20Arrays%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two integer arrays <code>nums1</code> and <code>nums2</code>, return <em>an array of their intersection</em>. Each element in the result must appear as many times as it shows in both arrays and you may return the result in <strong>any order</strong>.</p>
 
@@ -39,11 +55,17 @@
 	<li>What if elements of <code>nums2</code> are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -57,7 +79,7 @@ class Solution:
         return res
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -82,7 +104,89 @@ class Solution {
 }
 ```
 
-### **JavaScript**
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+        unordered_map<int, int> counter;
+        for (int num : nums1) ++counter[num];
+        vector<int> res;
+        for (int num : nums2) {
+            if (counter[num] > 0) {
+                --counter[num];
+                res.push_back(num);
+            }
+        }
+        return res;
+    }
+};
+```
+
+#### Go
+
+```go
+func intersect(nums1 []int, nums2 []int) []int {
+	counter := make(map[int]int)
+	for _, num := range nums1 {
+		counter[num]++
+	}
+	var res []int
+	for _, num := range nums2 {
+		if counter[num] > 0 {
+			counter[num]--
+			res = append(res, num)
+		}
+	}
+	return res
+}
+```
+
+#### TypeScript
+
+```ts
+function intersect(nums1: number[], nums2: number[]): number[] {
+    const map = new Map<number, number>();
+    for (const num of nums1) {
+        map.set(num, (map.get(num) ?? 0) + 1);
+    }
+
+    const res = [];
+    for (const num of nums2) {
+        if (map.has(num) && map.get(num) !== 0) {
+            res.push(num);
+            map.set(num, map.get(num) - 1);
+        }
+    }
+    return res;
+}
+```
+
+#### Rust
+
+```rust
+use std::collections::HashMap;
+impl Solution {
+    pub fn intersect(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
+        let mut map = HashMap::new();
+        for num in nums1.iter() {
+            *map.entry(num).or_insert(0) += 1;
+        }
+
+        let mut res = vec![];
+        for num in nums2.iter() {
+            if map.contains_key(num) && map.get(num).unwrap() != &0 {
+                map.insert(num, map.get(&num).unwrap() - 1);
+                res.push(*num);
+            }
+        }
+        res
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -106,114 +210,7 @@ var intersect = function (nums1, nums2) {
 };
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
-        unordered_map<int, int> counter;
-        for (int num : nums1) ++counter[num];
-        vector<int> res;
-        for (int num : nums2) {
-            if (counter[num] > 0) {
-                --counter[num];
-                res.push_back(num);
-            }
-        }
-        return res;
-    }
-};
-```
-
-### **Go**
-
-```go
-func intersect(nums1 []int, nums2 []int) []int {
-	counter := make(map[int]int)
-	for _, num := range nums1 {
-		counter[num]++
-	}
-	var res []int
-	for _, num := range nums2 {
-		if counter[num] > 0 {
-			counter[num]--
-			res = append(res, num)
-		}
-	}
-	return res
-}
-```
-
-### **TypeScript**
-
-```ts
-function intersect(nums1: number[], nums2: number[]): number[] {
-    const map = new Map<number, number>();
-    for (const num of nums1) {
-        map.set(num, (map.get(num) ?? 0) + 1);
-    }
-
-    const res = [];
-    for (const num of nums2) {
-        if (map.has(num) && map.get(num) !== 0) {
-            res.push(num);
-            map.set(num, map.get(num) - 1);
-        }
-    }
-    return res;
-}
-```
-
-### **Rust**
-
-```rust
-use std::collections::HashMap;
-impl Solution {
-    pub fn intersect(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
-        let mut map = HashMap::new();
-        for num in nums1.iter() {
-            *map.entry(num).or_insert(0) += 1;
-        }
-
-        let mut res = vec![];
-        for num in nums2.iter() {
-            if map.contains_key(num) && map.get(num).unwrap() != &0 {
-                map.insert(num, map.get(&num).unwrap() - 1);
-                res.push(*num);
-            }
-        }
-        res
-    }
-}
-```
-
-### **PHP**
-
-```php
-class Solution {
-    /**
-     * @param Integer[] $nums1
-     * @param Integer[] $nums2
-     * @return Integer[]
-     */
-    function intersect($nums1, $nums2) {
-        $rs = [];
-        for ($i = 0; $i < count($nums1); $i++) {
-            $hashtable[$nums1[$i]] += 1;
-        }
-        for ($j = 0; $j < count($nums2); $j++) {
-            if (isset($hashtable[$nums2[$j]]) && $hashtable[$nums2[$j]] > 0) {
-                array_push($rs, $nums2[$j]);
-                $hashtable[$nums2[$j]] -= 1;
-            }
-        }
-        return $rs;
-    }
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -246,10 +243,33 @@ public class Solution {
 }
 ```
 
-### **...**
+#### PHP
 
-```
-
+```php
+class Solution {
+    /**
+     * @param Integer[] $nums1
+     * @param Integer[] $nums2
+     * @return Integer[]
+     */
+    function intersect($nums1, $nums2) {
+        $rs = [];
+        for ($i = 0; $i < count($nums1); $i++) {
+            $hashtable[$nums1[$i]] += 1;
+        }
+        for ($j = 0; $j < count($nums2); $j++) {
+            if (isset($hashtable[$nums2[$j]]) && $hashtable[$nums2[$j]] > 0) {
+                array_push($rs, $nums2[$j]);
+                $hashtable[$nums2[$j]] -= 1;
+            }
+        }
+        return $rs;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

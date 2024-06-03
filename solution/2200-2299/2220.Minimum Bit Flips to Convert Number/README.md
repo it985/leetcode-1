@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2220.Minimum%20Bit%20Flips%20to%20Convert%20Number/README.md
+rating: 1282
+source: 第 75 场双周赛 Q1
+tags:
+    - 位运算
+---
+
+<!-- problem:start -->
+
 # [2220. 转换数字的最少位翻转次数](https://leetcode.cn/problems/minimum-bit-flips-to-convert-number)
 
 [English Version](/solution/2200-2299/2220.Minimum%20Bit%20Flips%20to%20Convert%20Number/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一次 <strong>位翻转</strong>&nbsp;定义为将数字&nbsp;<code>x</code>&nbsp;二进制中的一个位进行 <strong>翻转</strong>&nbsp;操作，即将&nbsp;<code>0</code>&nbsp;变成&nbsp;<code>1</code>&nbsp;，或者将&nbsp;<code>1</code>&nbsp;变成&nbsp;<code>0</code>&nbsp;。</p>
 
@@ -47,15 +59,17 @@
 	<li><code>0 &lt;= start, goal &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -68,9 +82,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -86,7 +98,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -103,7 +115,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minBitFlips(start int, goal int) int {
@@ -117,7 +129,7 @@ func minBitFlips(start int, goal int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minBitFlips(start: number, goal: number): number {
@@ -131,7 +143,7 @@ function minBitFlips(start: number, goal: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -147,7 +159,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 int minBitFlips(int start, int goal) {
@@ -161,10 +173,8 @@ int minBitFlips(int start, int goal) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

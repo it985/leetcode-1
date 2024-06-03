@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0630.Course%20Schedule%20III/README_EN.md
+tags:
+    - Greedy
+    - Array
+    - Sorting
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [630. Course Schedule III](https://leetcode.com/problems/course-schedule-iii)
 
 [中文文档](/solution/0600-0699/0630.Course%20Schedule%20III/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are <code>n</code> different online courses numbered from <code>1</code> to <code>n</code>. You are given an array <code>courses</code> where <code>courses[i] = [duration<sub>i</sub>, lastDay<sub>i</sub>]</code> indicate that the <code>i<sup>th</sup></code> course should be taken <b>continuously</b> for <code>duration<sub>i</sub></code> days and must be finished before or on <code>lastDay<sub>i</sub></code>.</p>
 
@@ -46,11 +61,17 @@ The 4<sup>th</sup> course cannot be taken now, since you will finish it on the 3
 	<li><code>1 &lt;= duration<sub>i</sub>, lastDay<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,7 +87,7 @@ class Solution:
         return len(pq)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -87,7 +108,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -112,7 +133,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func scheduleCourse(courses [][]int) int {
@@ -144,7 +165,7 @@ func (h *hp) push(v int) { heap.Push(h, v) }
 func (h *hp) pop() int   { return heap.Pop(h).(int) }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function scheduleCourse(courses: number[][]): number {
@@ -162,10 +183,8 @@ function scheduleCourse(courses: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

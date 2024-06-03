@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1512.Number%20of%20Good%20Pairs/README_EN.md
+rating: 1160
+source: Weekly Contest 197 Q1
+tags:
+    - Array
+    - Hash Table
+    - Math
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [1512. Number of Good Pairs](https://leetcode.com/problems/number-of-good-pairs)
 
 [中文文档](/solution/1500-1599/1512.Number%20of%20Good%20Pairs/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of integers <code>nums</code>, return <em>the number of <strong>good pairs</strong></em>.</p>
 
@@ -40,11 +57,17 @@
 	<li><code>1 &lt;= nums[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -57,14 +80,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def numIdenticalPairs(self, nums: List[int]) -> int:
-        cnt = Counter(nums)
-        return sum(v * (v - 1) for v in cnt.values()) >> 1
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -79,23 +95,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int numIdenticalPairs(int[] nums) {
-        int[] cnt = new int[101];
-        for (int x : nums) {
-            ++cnt[x];
-        }
-        int ans = 0;
-        for (int v : cnt) {
-            ans += v * (v - 1) / 2;
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -111,24 +111,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int numIdenticalPairs(vector<int>& nums) {
-        int cnt[101]{};
-        for (int& x : nums) {
-            ++cnt[x];
-        }
-        int ans = 0;
-        for (int v : cnt) {
-            ans += v * (v - 1) / 2;
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func numIdenticalPairs(nums []int) (ans int) {
@@ -141,20 +124,7 @@ func numIdenticalPairs(nums []int) (ans int) {
 }
 ```
 
-```go
-func numIdenticalPairs(nums []int) (ans int) {
-	cnt := [101]int{}
-	for _, x := range nums {
-		cnt[x]++
-	}
-	for _, v := range cnt {
-		ans += v * (v - 1) / 2
-	}
-	return
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numIdenticalPairs(nums: number[]): number {
@@ -167,21 +137,7 @@ function numIdenticalPairs(nums: number[]): number {
 }
 ```
 
-```ts
-function numIdenticalPairs(nums: number[]): number {
-    const cnt = new Array(101).fill(0);
-    for (const x of nums) {
-        ++cnt[x];
-    }
-    let ans = 0;
-    for (const v of cnt) {
-        ans += v * (v - 1);
-    }
-    return ans >> 1;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -197,50 +153,7 @@ impl Solution {
 }
 ```
 
-```rust
-impl Solution {
-    pub fn num_identical_pairs(nums: Vec<i32>) -> i32 {
-        let mut cnt = [0; 101];
-        for &num in nums.iter() {
-            cnt[num as usize] += 1;
-        }
-        let mut ans = 0;
-        for &v in cnt.iter() {
-            ans += (v * (v - 1)) / 2;
-        }
-        ans
-    }
-}
-```
-
-### **C**
-
-```c
-int numIdenticalPairs(int* nums, int numsSize) {
-    int cnt[101] = {0};
-    int ans = 0;
-    for (int i = 0; i < numsSize; i++) {
-        ans += cnt[nums[i]]++;
-    }
-    return ans;
-}
-```
-
-```c
-int numIdenticalPairs(int* nums, int numsSize) {
-    int cnt[101] = {0};
-    for (int i = 0; i < numsSize; i++) {
-        cnt[nums[i]]++;
-    }
-    int ans = 0;
-    for (int i = 0; i < 101; ++i) {
-        ans += cnt[i] * (cnt[i] - 1) / 2;
-    }
-    return ans;
-}
-```
-
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -262,10 +175,142 @@ class Solution {
 }
 ```
 
-### **...**
+#### C
 
-```
-
+```c
+int numIdenticalPairs(int* nums, int numsSize) {
+    int cnt[101] = {0};
+    int ans = 0;
+    for (int i = 0; i < numsSize; i++) {
+        ans += cnt[nums[i]]++;
+    }
+    return ans;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        cnt = Counter(nums)
+        return sum(v * (v - 1) for v in cnt.values()) >> 1
+```
+
+#### Java
+
+```java
+class Solution {
+    public int numIdenticalPairs(int[] nums) {
+        int[] cnt = new int[101];
+        for (int x : nums) {
+            ++cnt[x];
+        }
+        int ans = 0;
+        for (int v : cnt) {
+            ans += v * (v - 1) / 2;
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int numIdenticalPairs(vector<int>& nums) {
+        int cnt[101]{};
+        for (int& x : nums) {
+            ++cnt[x];
+        }
+        int ans = 0;
+        for (int v : cnt) {
+            ans += v * (v - 1) / 2;
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func numIdenticalPairs(nums []int) (ans int) {
+	cnt := [101]int{}
+	for _, x := range nums {
+		cnt[x]++
+	}
+	for _, v := range cnt {
+		ans += v * (v - 1) / 2
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function numIdenticalPairs(nums: number[]): number {
+    const cnt = new Array(101).fill(0);
+    for (const x of nums) {
+        ++cnt[x];
+    }
+    let ans = 0;
+    for (const v of cnt) {
+        ans += v * (v - 1);
+    }
+    return ans >> 1;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn num_identical_pairs(nums: Vec<i32>) -> i32 {
+        let mut cnt = [0; 101];
+        for &num in nums.iter() {
+            cnt[num as usize] += 1;
+        }
+        let mut ans = 0;
+        for &v in cnt.iter() {
+            ans += (v * (v - 1)) / 2;
+        }
+        ans
+    }
+}
+```
+
+#### C
+
+```c
+int numIdenticalPairs(int* nums, int numsSize) {
+    int cnt[101] = {0};
+    for (int i = 0; i < numsSize; i++) {
+        cnt[nums[i]]++;
+    }
+    int ans = 0;
+    for (int i = 0; i < 101; ++i) {
+        ans += cnt[i] * (cnt[i] - 1) / 2;
+    }
+    return ans;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

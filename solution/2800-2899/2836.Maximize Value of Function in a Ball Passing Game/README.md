@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2836.Maximize%20Value%20of%20Function%20in%20a%20Ball%20Passing%20Game/README.md
+rating: 2768
+source: 第 360 场周赛 Q4
+tags:
+    - 位运算
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2836. 在传球游戏中最大化函数值](https://leetcode.cn/problems/maximize-value-of-function-in-a-ball-passing-game)
 
 [English Version](/solution/2800-2899/2836.Maximize%20Value%20of%20Function%20in%20a%20Ball%20Passing%20Game/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个长度为 <code>n</code>&nbsp;下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>receiver</code>&nbsp;和一个整数&nbsp;<code>k</code>&nbsp;。</p>
 
@@ -134,11 +148,13 @@
 	<li><code>1 &lt;= k &lt;= 10<sup>10</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划 + 倍增**
+### 方法一：动态规划 + 倍增
 
 题目要我们寻找从每个玩家 $i$ 开始，传球 $k$ 次内所有接触过球玩家的编号之和的最大值。如果暴力求解，需要从 $i$ 开始向上遍历 $k$ 次，时间复杂度为 $O(k)$，显然会超时。
 
@@ -156,13 +172,11 @@
 
 相似题目：
 
--   [1483. 树节点的第 K 个祖先](/solution/1400-1499/1483.Kth%20Ancestor%20of%20a%20Tree%20Node/README.md)
+-   [1483. 树节点的第 K 个祖先](https://github.com/doocs/leetcode/blob/main/solution/1400-1499/1483.Kth%20Ancestor%20of%20a%20Tree%20Node/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -188,9 +202,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -225,7 +237,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -261,7 +273,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getMaxFunctionValue(receiver []int, k int64) (ans int64) {
@@ -295,10 +307,8 @@ func getMaxFunctionValue(receiver []int, k int64) (ans int64) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

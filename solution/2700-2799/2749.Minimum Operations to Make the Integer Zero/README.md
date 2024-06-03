@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2749.Minimum%20Operations%20to%20Make%20the%20Integer%20Zero/README.md
+rating: 2132
+source: 第 351 场周赛 Q2
+tags:
+    - 位运算
+    - 脑筋急转弯
+---
+
+<!-- problem:start -->
+
 # [2749. 得到整数零需要执行的最少操作数](https://leetcode.cn/problems/minimum-operations-to-make-the-integer-zero)
 
 [English Version](/solution/2700-2799/2749.Minimum%20Operations%20to%20Make%20the%20Integer%20Zero/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个整数：<code>num1</code> 和 <code>num2</code> 。</p>
 
@@ -45,11 +58,13 @@
 	<li><code>-10<sup>9</sup>&nbsp;&lt;= num2 &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举**
+### 方法一：枚举
 
 如果我们操作了 $k$ 次，那么问题实际上就变成了：判断 $num1 - k \times num2$ 能否拆分成 $k$ 个 $2^i$ 之和。
 
@@ -65,9 +80,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -81,9 +94,7 @@ class Solution:
         return -1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -123,7 +134,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func makeTheIntegerZero(num1 int, num2 int) int {
@@ -140,10 +151,8 @@ func makeTheIntegerZero(num1 int, num2 int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

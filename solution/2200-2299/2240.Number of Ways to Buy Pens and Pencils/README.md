@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2240.Number%20of%20Ways%20to%20Buy%20Pens%20and%20Pencils/README.md
+rating: 1399
+source: 第 76 场双周赛 Q2
+tags:
+    - 数学
+    - 枚举
+---
+
+<!-- problem:start -->
+
 # [2240. 买钢笔和铅笔的方案数](https://leetcode.cn/problems/number-of-ways-to-buy-pens-and-pencils)
 
 [English Version](/solution/2200-2299/2240.Number%20of%20Ways%20to%20Buy%20Pens%20and%20Pencils/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数&nbsp;<code>total</code>&nbsp;，表示你拥有的总钱数。同时给你两个整数&nbsp;<code>cost1</code> 和&nbsp;<code>cost2</code>&nbsp;，分别表示一支钢笔和一支铅笔的价格。你可以花费你部分或者全部的钱，去买任意数目的两种笔。</p>
 
@@ -38,11 +51,13 @@
 	<li><code>1 &lt;= total, cost1, cost2 &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举**
+### 方法一：枚举
 
 我们可以枚举购买钢笔的数量 $x$，对于每个 $x$，我们最多可以购买铅笔的数量为 $\frac{total - x \times cost1}{cost2}$，那么数量加 $1$ 即为 $x$ 的方案数。我们累加所有的 $x$ 的方案数，即为答案。
 
@@ -50,9 +65,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -64,9 +77,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -81,7 +92,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -97,7 +108,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func waysToBuyPensPencils(total int, cost1 int, cost2 int) (ans int64) {
@@ -109,7 +120,7 @@ func waysToBuyPensPencils(total int, cost1 int, cost2 int) (ans int64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function waysToBuyPensPencils(total: number, cost1: number, cost2: number): number {
@@ -122,7 +133,7 @@ function waysToBuyPensPencils(total: number, cost1: number, cost2: number): numb
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -136,10 +147,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

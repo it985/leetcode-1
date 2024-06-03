@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2876.Count%20Visited%20Nodes%20in%20a%20Directed%20Graph/README.md
+rating: 2209
+source: 第 365 场周赛 Q4
+tags:
+    - 图
+    - 记忆化搜索
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2876. 有向图访问计数](https://leetcode.cn/problems/count-visited-nodes-in-a-directed-graph)
 
 [English Version](/solution/2800-2899/2876.Count%20Visited%20Nodes%20in%20a%20Directed%20Graph/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>现有一个有向图，其中包含 <code>n</code> 个节点，节点编号从 <code>0</code> 到 <code>n - 1</code> 。此外，该图还包含了 <code>n</code> 条有向边。</p>
 
@@ -51,11 +65,13 @@
 	<li><code>edges[i] != i</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：基环树 + 遍历搜索**
+### 方法一：基环树 + 遍历搜索
 
 我们可以用一个数组 $ans$ 记录每个节点的答案，用一个数组 $vis$ 记录每个节点的访问次序。
 
@@ -68,9 +84,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -97,9 +111,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -130,46 +142,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    void dfs(int curr, List<Integer> edges, int[] ans) {
-
-        List<Integer> path = new ArrayList<>();
-        int prev = -1;
-        while (ans[curr] == 0) {
-            path.add(curr);
-            ans[curr] = prev == -1 ? -1 : ans[prev] - 1;
-            prev = curr;
-            curr = edges.get(curr);
-        }
-        int idx = path.size() - 1;
-        if (ans[curr] < 0) {
-            int cycle = ans[curr] - ans[path.get(idx)] + 1;
-            int start = ans[curr];
-            for (; idx >= 0 && ans[path.get(idx)] <= start; idx--) {
-                ans[path.get(idx)] = cycle;
-            }
-        }
-        for (; idx >= 0; idx--) {
-            ans[path.get(idx)] = ans[edges.get(path.get(idx))] + 1;
-        }
-    }
-
-    public int[] countVisitedNodes(List<Integer> edges) {
-        int n = edges.size();
-        int[] ans = new int[n];
-        for (int i = 0; i < n; i++) {
-            if (ans[i] > 0) {
-                continue;
-            }
-            dfs(i, edges, ans);
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -200,7 +173,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countVisitedNodes(edges []int) []int {
@@ -231,7 +204,7 @@ func countVisitedNodes(edges []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countVisitedNodes(edges: number[]): number[] {
@@ -260,10 +233,8 @@ function countVisitedNodes(edges: number[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

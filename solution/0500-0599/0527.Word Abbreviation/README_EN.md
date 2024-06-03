@@ -1,8 +1,24 @@
-# [527. Word Abbreviation](https://leetcode.com/problems/word-abbreviation)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0527.Word%20Abbreviation/README_EN.md
+tags:
+    - Greedy
+    - Trie
+    - Array
+    - String
+    - Sorting
+---
+
+<!-- problem:start -->
+
+# [527. Word Abbreviation 🔒](https://leetcode.com/problems/word-abbreviation)
 
 [中文文档](/solution/0500-0599/0527.Word%20Abbreviation/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of <strong>distinct</strong> strings <code>words</code>, return <em>the minimal possible <strong>abbreviations</strong> for every word</em>.</p>
 
@@ -41,9 +57,13 @@
 	<li>All the strings of <code>words</code> are <strong>unique</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Grouped Trie**
+<!-- solution:start -->
+
+### Solution 1: Grouped Trie
 
 We notice that if two words have the same abbreviation, their first and last letters must be the same, and their lengths must be the same. Therefore, we can group all words by length and last letter, and use a trie to store the information of each group of words.
 
@@ -60,7 +80,7 @@ The time complexity is $O(L)$, and the space complexity is $O(L)$. Here, $L$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Trie:
@@ -108,7 +128,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Trie {
@@ -162,7 +182,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Trie {
@@ -228,7 +248,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Trie struct {
@@ -288,7 +308,7 @@ func wordsAbbreviation(words []string) (ans []string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class Trie {
@@ -344,10 +364,8 @@ function wordsAbbreviation(words: string[]): string[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

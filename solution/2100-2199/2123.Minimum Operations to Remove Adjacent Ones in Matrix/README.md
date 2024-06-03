@@ -1,10 +1,22 @@
-# [2123. 使矩阵中的 1 互不相邻的最小操作数](https://leetcode.cn/problems/minimum-operations-to-remove-adjacent-ones-in-matrix)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2123.Minimum%20Operations%20to%20Remove%20Adjacent%20Ones%20in%20Matrix/README.md
+tags:
+    - 图
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
+# [2123. 使矩阵中的 1 互不相邻的最小操作数 🔒](https://leetcode.cn/problems/minimum-operations-to-remove-adjacent-ones-in-matrix)
 
 [English Version](/solution/2100-2199/2123.Minimum%20Operations%20to%20Remove%20Adjacent%20Ones%20in%20Matrix/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个 <strong>下标从 0 开始&nbsp;</strong>的矩阵 <code>grid</code>。每次操作，你可以把 <code>grid</code>&nbsp;中的 一个&nbsp;<code>1</code> 变成&nbsp;<code>0</code> 。</p>
 
@@ -47,11 +59,13 @@
 	<li><code>grid[i][j]</code> 是&nbsp;<code>0</code>&nbsp;或者&nbsp;<code>1</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：匈牙利算法**
+### 方法一：匈牙利算法
 
 我们注意到，如果矩阵中的两个 $1$ 相邻，那么它们一定属于不同的组。因此，我们可以把矩阵中所有的 $1$ 视为点，相邻的两个 $1$ 之间连一条边，构建二分图。
 
@@ -63,9 +77,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -102,9 +114,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -157,7 +167,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -208,7 +218,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumOperations(grid [][]int) (ans int) {
@@ -259,7 +269,7 @@ func minimumOperations(grid [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumOperations(grid: number[][]): number {
@@ -309,10 +319,8 @@ function minimumOperations(grid: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2635.Apply%20Transform%20Over%20Each%20Element%20in%20Array/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [2635. Apply Transform Over Each Element in Array](https://leetcode.com/problems/apply-transform-over-each-element-in-array)
 
 [中文文档](/solution/2600-2699/2635.Apply%20Transform%20Over%20Each%20Element%20in%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array&nbsp;<code>arr</code>&nbsp;and a mapping function&nbsp;<code>fn</code>, return&nbsp;a new array with a transformation applied to each element.</p>
 
@@ -46,9 +56,13 @@ The function increases each value in the array by one.
 	<li><code>fn</code> returns a number</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: traversal**
+<!-- solution:start -->
+
+### Solution 1: traversal
 
 We traverse the array $arr$, for each element $arr[i]$, replace it with $fn(arr[i], i)$. Finally, return the array $arr$.
 
@@ -56,7 +70,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array $arr$. The s
 
 <!-- tabs:start -->
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function map(arr: number[], fn: (n: number, i: number) => number): number[] {
@@ -67,10 +81,8 @@ function map(arr: number[], fn: (n: number, i: number) => number): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

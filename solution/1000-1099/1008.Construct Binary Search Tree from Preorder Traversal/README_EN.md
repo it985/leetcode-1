@@ -1,8 +1,27 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1008.Construct%20Binary%20Search%20Tree%20from%20Preorder%20Traversal/README_EN.md
+rating: 1562
+source: Weekly Contest 127 Q4
+tags:
+    - Stack
+    - Tree
+    - Binary Search Tree
+    - Array
+    - Binary Tree
+    - Monotonic Stack
+---
+
+<!-- problem:start -->
+
 # [1008. Construct Binary Search Tree from Preorder Traversal](https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal)
 
 [中文文档](/solution/1000-1099/1008.Construct%20Binary%20Search%20Tree%20from%20Preorder%20Traversal/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of integers preorder, which represents the <strong>preorder traversal</strong> of a BST (i.e., <strong>binary search tree</strong>), construct the tree and return <em>its root</em>.</p>
 
@@ -36,11 +55,17 @@
 	<li>All the values of <code>preorder</code> are <strong>unique</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -69,7 +94,7 @@ class Solution:
         return dfs(preorder)
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -114,7 +139,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -152,7 +177,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -187,7 +212,7 @@ func bstFromPreorder(preorder []int) *TreeNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -226,7 +251,7 @@ function bstFromPreorder(preorder: number[]): TreeNode | null {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -288,10 +313,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

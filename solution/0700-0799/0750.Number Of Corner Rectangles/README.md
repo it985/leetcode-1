@@ -1,10 +1,23 @@
-# [750. 角矩形的数量](https://leetcode.cn/problems/number-of-corner-rectangles)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0750.Number%20Of%20Corner%20Rectangles/README.md
+tags:
+    - 数组
+    - 数学
+    - 动态规划
+    - 矩阵
+---
+
+<!-- problem:start -->
+
+# [750. 角矩形的数量 🔒](https://leetcode.cn/problems/number-of-corner-rectangles)
 
 [English Version](/solution/0700-0799/0750.Number%20Of%20Corner%20Rectangles/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个只包含 <code>0</code> 和 <code>1</code> 的&nbsp;<code>m x n</code>&nbsp;整数矩阵&nbsp;<code>grid</code>&nbsp;，返回 <em>其中 「<strong>角矩形 」</strong>的数量</em> 。</p>
 
@@ -56,11 +69,13 @@
 	<li>网格中&nbsp;<code>1</code>&nbsp;的个数在&nbsp;<code>[1, 6000]</code> 范围内</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 枚举**
+### 方法一：哈希表 + 枚举
 
 我们枚举每一行作为矩形的下边，对于当前行，如果列 $i$ 和列 $j$ 都是 $1$，那么我们用哈希表找出此前的所有行中，有多少行的 $i$ 和 $j$ 列都是 $1$，那么就有多少个以 $(i, j)$ 为右下角的矩形，我们将其数量加入答案。然后将 $(i, j)$ 加入哈希表，继续枚举下一对 $(i, j)$。
 
@@ -68,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -88,9 +101,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -116,7 +127,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -142,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countCornerRectangles(grid [][]int) (ans int) {
@@ -166,7 +177,7 @@ func countCornerRectangles(grid [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countCornerRectangles(grid: number[][]): number {
@@ -190,10 +201,8 @@ function countCornerRectangles(grid: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

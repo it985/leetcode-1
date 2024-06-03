@@ -1,8 +1,26 @@
-# [1245. Tree Diameter](https://leetcode.com/problems/tree-diameter)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1245.Tree%20Diameter/README_EN.md
+rating: 1792
+source: Biweekly Contest 12 Q3
+tags:
+    - Tree
+    - Depth-First Search
+    - Breadth-First Search
+    - Graph
+    - Topological Sort
+---
+
+<!-- problem:start -->
+
+# [1245. Tree Diameter 🔒](https://leetcode.com/problems/tree-diameter)
 
 [中文文档](/solution/1200-1299/1245.Tree%20Diameter/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>The <strong>diameter</strong> of a tree is <strong>the number of edges</strong> in the longest path in that tree.</p>
 
@@ -37,11 +55,37 @@
 	<li><code>a<sub>i</sub> != b<sub>i</sub></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Two DFS
+
+First, perform DFS on any node to find the furthest node, then perform DFS again from this node to reach another furthest node. The node reached by the first DFS can be proven to be one end of the diameter of this graph, and the second DFS will reach the other end. Let's prove this theorem.
+
+Theorem: In a connected undirected acyclic graph, the furthest node that can be reached from any node must be one end of the diameter of the graph.
+
+Proof: Suppose this diameter is $\delta(s, t)$. There are two cases:
+
+1. When the starting node $y$ is on $\delta(s, t)$, suppose the furthest node $z$ reached is not any of $s, t$. At this time, connect $\delta(y, z)$ with $\delta(y, s)$ that does not overlap with it (you can also assume that the other direction of the diameter does not overlap), you can get a longer diameter, which contradicts the premise.
+1. When the starting node $y$ is not on $\delta(s, t)$, there are two cases:
+
+    - When the furthest node $z$ reached by $y$ crosses $\delta(s, t)$, mark the intersecting node as $x$. At this time, $\delta(y, z) = \delta(y, x) + \delta(x, z)$. And at this time $\delta(y, z) > \delta(y, t)$, so $\delta(x, z) > \delta(x, t)$. According to the conclusion of 1, this assumption is not established.
+    - When the furthest node $z$ reached by $y$ does not intersect with $\delta(s, t)$, define the first node on the simple path from $y$ to $t$ that also exists on the simple path $\delta(s, t)$ as $x$, and the last node on the simple path $\delta(y, z)$ as $x'$. As shown in the figure below. Then according to the assumption, $\delta(y, z) \geq \delta(y, t) \Rightarrow \delta(x', z) \geq \delta(x', x) + \delta(x, t)$. In this case, $\delta(x, z) \geq \delta(x, t)$, which does not match the premise that $\delta(s, t)$ corresponds to the diameter, so the furthest node $z$ of $y$ cannot be outside the path corresponding to the diameter from $s$ to $t$.
+
+    <img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1200-1299/1245.Tree%20Diameter/images/tree-diameter.svg">
+
+Therefore, the theorem holds.
+
+Similar problems:
+
+-   [1522. Diameter of N-Ary Tree](https://github.com/doocs/leetcode/blob/main/solution/1500-1599/1522.Diameter%20of%20N-Ary%20Tree/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -70,7 +114,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -111,7 +155,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -148,7 +192,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func treeDiameter(edges [][]int) int {
@@ -184,10 +228,8 @@ func treeDiameter(edges [][]int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

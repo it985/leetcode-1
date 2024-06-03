@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2937.Make%20Three%20Strings%20Equal/README.md
+rating: 1347
+source: 第 372 场周赛 Q1
+tags:
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2937. 使三个字符串相等](https://leetcode.cn/problems/make-three-strings-equal)
 
 [English Version](/solution/2900-2999/2937.Make%20Three%20Strings%20Equal/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你三个字符串 <code>s1</code>、<code>s2</code> 和 <code>s3</code>。 你可以根据需要对这三个字符串执行以下操作 <strong>任意次数</strong> <!-- notionvc: b5178de7-3318-4129-b7d9-726b47e90621 -->。</p>
 
@@ -38,11 +50,13 @@
 	<li><code>s1</code>、<code>s2</code> 和 <code>s3</code> 仅由小写英文字母组成。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举**
+### 方法一：枚举
 
 根据题目描述，我们知道，如果删除字符后的三个字符串相等，那么它们存在一个长度大于 $1$ 的公共前缀。因此，我们可以枚举公共前缀的位置 $i$，如果当前下标 $i$ 对应的三个字符不完全相等，那么公共前缀长度为 $i$，此时，我们判断 $i$ 是否为 $0$，若是，返回 $-1$，否则返回 $s - 3 \times i$，其中 $s$ 为三个字符串的长度和。
 
@@ -50,9 +64,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -65,9 +77,7 @@ class Solution:
         return s - 3 * n
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -84,7 +94,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -102,7 +112,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findMinimumOperations(s1 string, s2 string, s3 string) int {
@@ -120,7 +130,7 @@ func findMinimumOperations(s1 string, s2 string, s3 string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findMinimumOperations(s1: string, s2: string, s3: string): number {
@@ -135,10 +145,8 @@ function findMinimumOperations(s1: string, s2: string, s3: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

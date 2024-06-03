@@ -1,10 +1,24 @@
-# [1740. 找到二叉树中的距离](https://leetcode.cn/problems/find-distance-in-a-binary-tree)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1740.Find%20Distance%20in%20a%20Binary%20Tree/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 广度优先搜索
+    - 哈希表
+    - 二叉树
+---
+
+<!-- problem:start -->
+
+# [1740. 找到二叉树中的距离 🔒](https://leetcode.cn/problems/find-distance-in-a-binary-tree)
 
 [English Version](/solution/1700-1799/1740.Find%20Distance%20in%20a%20Binary%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一棵二叉树的根节点 <code>root</code> 以及两个整数 <code>p</code> 和 <code>q</code> ，返回该二叉树中值为 <code>p</code> 的结点与值为 <code>q</code> 的结点间的 <strong>距离 </strong>。</p>
 
@@ -44,17 +58,17 @@
 	<li><code>p</code> 和<code>q</code> 是树中结点的值.</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-先找到两个整数节点的最近公共祖先 g。然后累加节点 g 到节点 p 和节点 q 的距离即可。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -90,9 +104,7 @@ class Solution:
         return dfs(g, p) + dfs(g, q)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -148,7 +160,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -189,7 +201,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -234,10 +246,8 @@ func findDistance(root *TreeNode, p int, q int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

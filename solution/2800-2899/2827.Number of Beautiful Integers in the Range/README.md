@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2827.Number%20of%20Beautiful%20Integers%20in%20the%20Range/README.md
+rating: 2324
+source: 第 111 场双周赛 Q4
+tags:
+    - 数学
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2827. 范围中美丽整数的数目](https://leetcode.cn/problems/number-of-beautiful-integers-in-the-range)
 
 [English Version](/solution/2800-2899/2827.Number%20of%20Beautiful%20Integers%20in%20the%20Range/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你正整数&nbsp;<code>low</code>&nbsp;，<code>high</code>&nbsp;和&nbsp;<code>k</code>&nbsp;。</p>
 
@@ -61,11 +74,13 @@
 	<li><code>0 &lt; k &lt;= 20</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：数位 DP**
+### 方法一：数位 DP
 
 我们注意到，题目求的是区间 $[low, high]$ 内的美丽整数的个数，对于这种区间 $[l,..r]$ 的问题，我们通常可以考虑转化为求 $[1, r]$ 和 $[1, l-1]$ 的答案，然后相减即可。另外，题目中只涉及到不同数位之间的关系，而不涉及具体的数值，因此我们可以考虑使用数位 DP 来解决。
 
@@ -88,13 +103,11 @@
 
 相似题目：
 
--   [2719. 统计整数数目](/solution/2700-2799/2719.Count%20of%20Integers/README.md)
+-   [2719. 统计整数数目](https://github.com/doocs/leetcode/blob/main/solution/2700-2799/2719.Count%20of%20Integers/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -121,9 +134,7 @@ class Solution:
         return a - b
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -166,7 +177,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -208,7 +219,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfBeautifulIntegers(low int, high int, k int) int {
@@ -270,7 +281,7 @@ func g(m, n, k int) [][][]int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfBeautifulIntegers(low: number, high: number, k: number): number {
@@ -318,10 +329,8 @@ function numberOfBeautifulIntegers(low: number, high: number, k: number): number
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

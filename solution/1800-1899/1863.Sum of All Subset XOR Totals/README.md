@@ -1,10 +1,27 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1863.Sum%20of%20All%20Subset%20XOR%20Totals/README.md
+rating: 1372
+source: 第 241 场周赛 Q1
+tags:
+    - 位运算
+    - 数组
+    - 数学
+    - 回溯
+    - 组合数学
+    - 枚举
+---
+
+<!-- problem:start -->
+
 # [1863. 找出所有子集的异或总和再求和](https://leetcode.cn/problems/sum-of-all-subset-xor-totals)
 
 [English Version](/solution/1800-1899/1863.Sum%20of%20All%20Subset%20XOR%20Totals/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一个数组的<strong> 异或总和</strong> 定义为数组中所有元素按位 <code>XOR</code> 的结果；如果数组为 <strong>空</strong> ，则异或总和为 <code>0</code> 。</p>
 
@@ -64,11 +81,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 20</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二进制枚举**
+### 方法一：二进制枚举
 
 我们可以用二进制枚举的方法，枚举出所有的子集，然后计算每个子集的异或总和。
 
@@ -76,24 +95,9 @@
 
 时间复杂度 $O(n \times 2^n)$，其中 $n$ 是数组 $nums$ 的长度。空间复杂度 $O(1)$。
 
-**方法二：DFS**
-
-我们也可以使用深度优先搜索的方法，枚举出所有的子集，然后计算每个子集的异或总和。
-
-我们设计一个函数 $dfs(i, s)$，其中 $i$ 表示当前搜索到数组 $nums$ 的第 $i$ 个元素，$s$ 表示当前子集的异或总和。初始时，$i=0$, $s=0$。在搜索的过程中，每次我们都有两种选择：
-
--   将 $nums$ 的第 $i$ 个元素加入当前子集，即 $dfs(i+1, s \oplus nums[i])$；
--   将 $nums$ 的第 $i$ 个元素不加入当前子集，即 $dfs(i+1, s)$。
-
-当我们搜索完数组 $nums$ 的所有元素时，即 $i=n$ 时，当前子集的异或总和为 $s$，将其加到答案中即可。
-
-时间复杂度 $O(2^n)$，空间复杂度 $O(n)$。其中 $n$ 是数组 $nums$ 的长度。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -108,25 +112,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def subsetXORSum(self, nums: List[int]) -> int:
-        def dfs(i: int, s: int):
-            nonlocal ans
-            if i >= len(nums):
-                ans += s
-                return
-            dfs(i + 1, s)
-            dfs(i + 1, s ^ nums[i])
-
-        ans = 0
-        dfs(0, 0)
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -146,6 +132,129 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int subsetXORSum(vector<int>& nums) {
+        int n = nums.size();
+        int ans = 0;
+        for (int i = 0; i < 1 << n; ++i) {
+            int s = 0;
+            for (int j = 0; j < n; ++j) {
+                if (i >> j & 1) {
+                    s ^= nums[j];
+                }
+            }
+            ans += s;
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func subsetXORSum(nums []int) (ans int) {
+	n := len(nums)
+	for i := 0; i < 1<<n; i++ {
+		s := 0
+		for j, x := range nums {
+			if i>>j&1 == 1 {
+				s ^= x
+			}
+		}
+		ans += s
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function subsetXORSum(nums: number[]): number {
+    let ans = 0;
+    const n = nums.length;
+    for (let i = 0; i < 1 << n; ++i) {
+        let s = 0;
+        for (let j = 0; j < n; ++j) {
+            if ((i >> j) & 1) {
+                s ^= nums[j];
+            }
+        }
+        ans += s;
+    }
+    return ans;
+}
+```
+
+#### JavaScript
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var subsetXORSum = function (nums) {
+    let ans = 0;
+    const n = nums.length;
+    for (let i = 0; i < 1 << n; ++i) {
+        let s = 0;
+        for (let j = 0; j < n; ++j) {
+            if ((i >> j) & 1) {
+                s ^= nums[j];
+            }
+        }
+        ans += s;
+    }
+    return ans;
+};
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：DFS
+
+我们也可以使用深度优先搜索的方法，枚举出所有的子集，然后计算每个子集的异或总和。
+
+我们设计一个函数 $dfs(i, s)$，其中 $i$ 表示当前搜索到数组 $nums$ 的第 $i$ 个元素，$s$ 表示当前子集的异或总和。初始时，$i=0$, $s=0$。在搜索的过程中，每次我们都有两种选择：
+
+-   将 $nums$ 的第 $i$ 个元素加入当前子集，即 $dfs(i+1, s \oplus nums[i])$；
+-   将 $nums$ 的第 $i$ 个元素不加入当前子集，即 $dfs(i+1, s)$。
+
+当我们搜索完数组 $nums$ 的所有元素时，即 $i=n$ 时，当前子集的异或总和为 $s$，将其加到答案中即可。
+
+时间复杂度 $O(2^n)$，空间复杂度 $O(n)$。其中 $n$ 是数组 $nums$ 的长度。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def subsetXORSum(self, nums: List[int]) -> int:
+        def dfs(i: int, s: int):
+            nonlocal ans
+            if i >= len(nums):
+                ans += s
+                return
+            dfs(i + 1, s)
+            dfs(i + 1, s ^ nums[i])
+
+        ans = 0
+        dfs(0, 0)
+        return ans
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -169,27 +278,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int subsetXORSum(vector<int>& nums) {
-        int n = nums.size();
-        int ans = 0;
-        for (int i = 0; i < 1 << n; ++i) {
-            int s = 0;
-            for (int j = 0; j < n; ++j) {
-                if (i >> j & 1) {
-                    s ^= nums[j];
-                }
-            }
-            ans += s;
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -211,23 +300,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func subsetXORSum(nums []int) (ans int) {
-	n := len(nums)
-	for i := 0; i < 1<<n; i++ {
-		s := 0
-		for j, x := range nums {
-			if i>>j&1 == 1 {
-				s ^= x
-			}
-		}
-		ans += s
-	}
-	return
-}
-```
+#### Go
 
 ```go
 func subsetXORSum(nums []int) (ans int) {
@@ -246,24 +319,7 @@ func subsetXORSum(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function subsetXORSum(nums: number[]): number {
-    let ans = 0;
-    const n = nums.length;
-    for (let i = 0; i < 1 << n; ++i) {
-        let s = 0;
-        for (let j = 0; j < n; ++j) {
-            if ((i >> j) & 1) {
-                s ^= nums[j];
-            }
-        }
-        ans += s;
-    }
-    return ans;
-}
-```
+#### TypeScript
 
 ```ts
 function subsetXORSum(nums: number[]): number {
@@ -282,28 +338,7 @@ function subsetXORSum(nums: number[]): number {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var subsetXORSum = function (nums) {
-    let ans = 0;
-    const n = nums.length;
-    for (let i = 0; i < 1 << n; ++i) {
-        let s = 0;
-        for (let j = 0; j < n; ++j) {
-            if ((i >> j) & 1) {
-                s ^= nums[j];
-            }
-        }
-        ans += s;
-    }
-    return ans;
-};
-```
+#### JavaScript
 
 ```js
 /**
@@ -326,10 +361,8 @@ var subsetXORSum = function (nums) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

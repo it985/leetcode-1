@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0735.Asteroid%20Collision/README_EN.md
+tags:
+    - Stack
+    - Array
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [735. Asteroid Collision](https://leetcode.com/problems/asteroid-collision)
 
 [中文文档](/solution/0700-0799/0735.Asteroid%20Collision/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>We are given an array <code>asteroids</code> of integers representing asteroids in a row.</p>
 
@@ -44,9 +58,13 @@
 	<li><code>asteroids[i] != 0</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Stack**
+<!-- solution:start -->
+
+### Solution 1: Stack
 
 We traverse each asteroid $x$ from left to right. Since each asteroid may collide with multiple asteroids before it, we consider using a stack to store.
 
@@ -59,7 +77,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Where $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -78,7 +96,7 @@ class Solution:
         return stk
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -103,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -129,7 +147,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func asteroidCollision(asteroids []int) (stk []int) {
@@ -151,7 +169,7 @@ func asteroidCollision(asteroids []int) (stk []int) {
 }
 ```
 
-### TypeScript
+#### TypeScript
 
 ```ts
 function asteroidCollision(asteroids: number[]): number[] {
@@ -174,7 +192,7 @@ function asteroidCollision(asteroids: number[]): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -200,10 +218,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

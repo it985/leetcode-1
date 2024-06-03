@@ -1,8 +1,22 @@
-# [2534. Time Taken to Cross the Door](https://leetcode.com/problems/time-taken-to-cross-the-door)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2534.Time%20Taken%20to%20Cross%20the%20Door/README_EN.md
+tags:
+    - Queue
+    - Array
+    - Simulation
+---
+
+<!-- problem:start -->
+
+# [2534. Time Taken to Cross the Door 🔒](https://leetcode.com/problems/time-taken-to-cross-the-door)
 
 [中文文档](/solution/2500-2599/2534.Time%20Taken%20to%20Cross%20the%20Door/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are <code>n</code> persons numbered from <code>0</code> to <code>n - 1</code> and a door. Each person can enter or exit through the door once, taking one second.</p>
 
@@ -62,38 +76,42 @@
 	<li><code>state[i]</code> is either <code>0</code> or <code>1</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 
 ```
 
-### **Java**
+#### Java
 
 ```java
 
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 
 ```
 
-### **Go**
+#### Go
 
 ```go
 
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

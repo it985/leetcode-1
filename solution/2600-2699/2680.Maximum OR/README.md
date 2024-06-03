@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2680.Maximum%20OR/README.md
+rating: 1912
+source: 第 104 场双周赛 Q3
+tags:
+    - 贪心
+    - 位运算
+    - 数组
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [2680. 最大或值](https://leetcode.cn/problems/maximum-or)
 
 [English Version](/solution/2600-2699/2680.Maximum%20OR/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始长度为 <code>n</code>&nbsp;的整数数组&nbsp;<code>nums</code>&nbsp;和一个整数&nbsp;<code>k</code> 。每一次操作中，你可以选择一个数并将它乘&nbsp;<code>2</code>&nbsp;。</p>
 
@@ -40,11 +55,13 @@
 	<li><code>1 &lt;= k &lt;= 15</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 预处理**
+### 方法一：贪心 + 预处理
 
 我们注意到，为了使得答案最大，我们应该将 $k$ 次乘 $2$ 作用于同一个数。
 
@@ -56,9 +73,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -74,9 +89,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -96,7 +109,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -118,7 +131,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumOr(nums []int, k int) int64 {
@@ -136,7 +149,7 @@ func maximumOr(nums []int, k int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumOr(nums: number[], k: number): number {
@@ -154,7 +167,7 @@ function maximumOr(nums: number[], k: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -179,10 +192,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

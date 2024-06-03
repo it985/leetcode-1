@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0228.Summary%20Ranges/README_EN.md
+tags:
+    - Array
+---
+
+<!-- problem:start -->
+
 # [228. Summary Ranges](https://leetcode.com/problems/summary-ranges)
 
 [中文文档](/solution/0200-0299/0228.Summary%20Ranges/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>sorted unique</strong> integer array <code>nums</code>.</p>
 
@@ -51,9 +63,13 @@
 	<li><code>nums</code> is sorted in ascending order.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Two Pointers
 
 We can use two pointers $i$ and $j$ to find the left and right endpoints of each interval.
 
@@ -63,7 +79,7 @@ Time complexity $O(n)$, where $n$ is the length of the array. Space complexity $
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -83,7 +99,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -105,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -127,7 +143,48 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func summaryRanges(nums []int) (ans []string) {
+	f := func(i, j int) string {
+		if i == j {
+			return strconv.Itoa(nums[i])
+		}
+		return strconv.Itoa(nums[i]) + "->" + strconv.Itoa(nums[j])
+	}
+	for i, j, n := 0, 0, len(nums); i < n; i = j + 1 {
+		j = i
+		for j+1 < n && nums[j+1] == nums[j]+1 {
+			j++
+		}
+		ans = append(ans, f(i, j))
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function summaryRanges(nums: number[]): string[] {
+    const f = (i: number, j: number): string => {
+        return i === j ? `${nums[i]}` : `${nums[i]}->${nums[j]}`;
+    };
+    const n = nums.length;
+    const ans: string[] = [];
+    for (let i = 0, j = 0; i < n; i = j + 1) {
+        j = i;
+        while (j + 1 < n && nums[j + 1] === nums[j] + 1) {
+            ++j;
+        }
+        ans.push(f(i, j));
+    }
+    return ans;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -169,48 +226,7 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func summaryRanges(nums []int) (ans []string) {
-	f := func(i, j int) string {
-		if i == j {
-			return strconv.Itoa(nums[i])
-		}
-		return strconv.Itoa(nums[i]) + "->" + strconv.Itoa(nums[j])
-	}
-	for i, j, n := 0, 0, len(nums); i < n; i = j + 1 {
-		j = i
-		for j+1 < n && nums[j+1] == nums[j]+1 {
-			j++
-		}
-		ans = append(ans, f(i, j))
-	}
-	return
-}
-```
-
-### **TypeScript**
-
-```ts
-function summaryRanges(nums: number[]): string[] {
-    const f = (i: number, j: number): string => {
-        return i === j ? `${nums[i]}` : `${nums[i]}->${nums[j]}`;
-    };
-    const n = nums.length;
-    const ans: string[] = [];
-    for (let i = 0, j = 0; i < n; i = j + 1) {
-        j = i;
-        while (j + 1 < n && nums[j + 1] === nums[j] + 1) {
-            ++j;
-        }
-        ans.push(f(i, j));
-    }
-    return ans;
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -232,10 +248,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

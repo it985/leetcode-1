@@ -1,10 +1,23 @@
-# [490. 迷宫](https://leetcode.cn/problems/the-maze)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0490.The%20Maze/README.md
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
+# [490. 迷宫 🔒](https://leetcode.cn/problems/the-maze)
 
 [English Version](/solution/0400-0499/0490.The%20Maze/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 由空地（用 <code>0</code> 表示）和墙（用 <code>1</code> 表示）组成的迷宫 <code>maze</code> 中有一个球。球可以途经空地向<strong> 上、下、左、右 </strong>四个方向滚动，且在遇到墙壁前不会停止滚动。当球停下时，可以选择向下一个方向滚动。
 
@@ -60,19 +73,17 @@
 </div>
 </div>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-DFS 或 BFS。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-DFS：
+#### Python3
 
 ```python
 class Solution:
@@ -97,36 +108,7 @@ class Solution:
         return vis[destination[0]][destination[1]]
 ```
 
-BFS：
-
-```python
-class Solution:
-    def hasPath(
-        self, maze: List[List[int]], start: List[int], destination: List[int]
-    ) -> bool:
-        m, n = len(maze), len(maze[0])
-        q = deque([start])
-        rs, cs = start
-        vis = {(rs, cs)}
-        while q:
-            i, j = q.popleft()
-            for a, b in [[0, -1], [0, 1], [-1, 0], [1, 0]]:
-                x, y = i, j
-                while 0 <= x + a < m and 0 <= y + b < n and maze[x + a][y + b] == 0:
-                    x, y = x + a, y + b
-                if [x, y] == destination:
-                    return True
-                if (x, y) not in vis:
-                    vis.add((x, y))
-                    q.append((x, y))
-        return False
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-DFS：
+#### Java
 
 ```java
 class Solution {
@@ -168,44 +150,7 @@ class Solution {
 }
 ```
 
-BFS：
-
-```java
-class Solution {
-    public boolean hasPath(int[][] maze, int[] start, int[] destination) {
-        int m = maze.length;
-        int n = maze[0].length;
-        boolean[][] vis = new boolean[m][n];
-        vis[start[0]][start[1]] = true;
-        Deque<int[]> q = new LinkedList<>();
-        q.offer(start);
-        int[] dirs = {-1, 0, 1, 0, -1};
-        while (!q.isEmpty()) {
-            int[] p = q.poll();
-            int i = p[0], j = p[1];
-            for (int k = 0; k < 4; ++k) {
-                int x = i, y = j;
-                int a = dirs[k], b = dirs[k + 1];
-                while (
-                    x + a >= 0 && x + a < m && y + b >= 0 && y + b < n && maze[x + a][y + b] == 0) {
-                    x += a;
-                    y += b;
-                }
-                if (x == destination[0] && y == destination[1]) {
-                    return true;
-                }
-                if (!vis[x][y]) {
-                    vis[x][y] = true;
-                    q.offer(new int[] {x, y});
-                }
-            }
-        }
-        return false;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -244,6 +189,114 @@ public:
 };
 ```
 
+#### Go
+
+```go
+func hasPath(maze [][]int, start []int, destination []int) bool {
+	m, n := len(maze), len(maze[0])
+	vis := make([][]bool, m)
+	for i := range vis {
+		vis[i] = make([]bool, n)
+	}
+	var dfs func(i, j int)
+	dfs = func(i, j int) {
+		if vis[i][j] {
+			return
+		}
+		vis[i][j] = true
+		if i == destination[0] && j == destination[1] {
+			return
+		}
+		dirs := []int{-1, 0, 1, 0, -1}
+		for k := 0; k < 4; k++ {
+			x, y := i, j
+			a, b := dirs[k], dirs[k+1]
+			for x+a >= 0 && x+a < m && y+b >= 0 && y+b < n && maze[x+a][y+b] == 0 {
+				x += a
+				y += b
+			}
+			dfs(x, y)
+		}
+	}
+	dfs(start[0], start[1])
+	return vis[destination[0]][destination[1]]
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def hasPath(
+        self, maze: List[List[int]], start: List[int], destination: List[int]
+    ) -> bool:
+        m, n = len(maze), len(maze[0])
+        q = deque([start])
+        rs, cs = start
+        vis = {(rs, cs)}
+        while q:
+            i, j = q.popleft()
+            for a, b in [[0, -1], [0, 1], [-1, 0], [1, 0]]:
+                x, y = i, j
+                while 0 <= x + a < m and 0 <= y + b < n and maze[x + a][y + b] == 0:
+                    x, y = x + a, y + b
+                if [x, y] == destination:
+                    return True
+                if (x, y) not in vis:
+                    vis.add((x, y))
+                    q.append((x, y))
+        return False
+```
+
+#### Java
+
+```java
+class Solution {
+    public boolean hasPath(int[][] maze, int[] start, int[] destination) {
+        int m = maze.length;
+        int n = maze[0].length;
+        boolean[][] vis = new boolean[m][n];
+        vis[start[0]][start[1]] = true;
+        Deque<int[]> q = new LinkedList<>();
+        q.offer(start);
+        int[] dirs = {-1, 0, 1, 0, -1};
+        while (!q.isEmpty()) {
+            int[] p = q.poll();
+            int i = p[0], j = p[1];
+            for (int k = 0; k < 4; ++k) {
+                int x = i, y = j;
+                int a = dirs[k], b = dirs[k + 1];
+                while (
+                    x + a >= 0 && x + a < m && y + b >= 0 && y + b < n && maze[x + a][y + b] == 0) {
+                    x += a;
+                    y += b;
+                }
+                if (x == destination[0] && y == destination[1]) {
+                    return true;
+                }
+                if (!vis[x][y]) {
+                    vis[x][y] = true;
+                    q.offer(new int[] {x, y});
+                }
+            }
+        }
+        return false;
+    }
+}
+```
+
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -277,39 +330,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func hasPath(maze [][]int, start []int, destination []int) bool {
-	m, n := len(maze), len(maze[0])
-	vis := make([][]bool, m)
-	for i := range vis {
-		vis[i] = make([]bool, n)
-	}
-	var dfs func(i, j int)
-	dfs = func(i, j int) {
-		if vis[i][j] {
-			return
-		}
-		vis[i][j] = true
-		if i == destination[0] && j == destination[1] {
-			return
-		}
-		dirs := []int{-1, 0, 1, 0, -1}
-		for k := 0; k < 4; k++ {
-			x, y := i, j
-			a, b := dirs[k], dirs[k+1]
-			for x+a >= 0 && x+a < m && y+b >= 0 && y+b < n && maze[x+a][y+b] == 0 {
-				x += a
-				y += b
-			}
-			dfs(x, y)
-		}
-	}
-	dfs(start[0], start[1])
-	return vis[destination[0]][destination[1]]
-}
-```
+#### Go
 
 ```go
 func hasPath(maze [][]int, start []int, destination []int) bool {
@@ -344,10 +365,8 @@ func hasPath(maze [][]int, start []int, destination []int) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

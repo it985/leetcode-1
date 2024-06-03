@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1367.Linked%20List%20in%20Binary%20Tree/README_EN.md
+rating: 1649
+source: Weekly Contest 178 Q3
+tags:
+    - Tree
+    - Depth-First Search
+    - Breadth-First Search
+    - Linked List
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [1367. Linked List in Binary Tree](https://leetcode.com/problems/linked-list-in-binary-tree)
 
 [中文文档](/solution/1300-1399/1367.Linked%20List%20in%20Binary%20Tree/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a binary tree <code>root</code> and a&nbsp;linked list with&nbsp;<code>head</code>&nbsp;as the first node.&nbsp;</p>
 
@@ -47,11 +65,28 @@
 	<li><code>1 &lt;= Node.val&nbsp;&lt;= 100</code>&nbsp;for each node in the linked list and binary tree.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Recursion
+
+We design a recursive function $dfs(head, root)$, which indicates whether the linked list $head$ corresponds to a subpath on the path starting with $root$ in the binary tree. The logic of the function $dfs(head, root)$ is as follows:
+
+-   If the linked list $head$ is empty, it means that the linked list has been traversed, return `true`;
+-   If the binary tree $root$ is empty, it means that the binary tree has been traversed, but the linked list has not been traversed yet, return `false`;
+-   If the value of the binary tree $root$ is not equal to the value of the linked list $head$, return `false`;
+-   Otherwise, return $dfs(head.next, root.left)$ or $dfs(head.next, root.right)$.
+
+In the main function, we call $dfs(head, root)$ for each node of the binary tree. As long as one returns `true`, it means that the linked list is a subpath of the binary tree, return `true`; if all nodes return `false`, it means that the linked list is not a subpath of the binary tree, return `false`.
+
+The time complexity is $O(n^2)$, and the space complexity is $O(n)$. Where $n$ is the number of nodes in the binary tree.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -83,7 +118,7 @@ class Solution:
         )
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -131,7 +166,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -176,7 +211,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -212,7 +247,7 @@ func dfs(head *ListNode, root *TreeNode) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -259,7 +294,7 @@ function isSubPath(head: ListNode | null, root: TreeNode | null): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for singly-linked list.
@@ -330,10 +365,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

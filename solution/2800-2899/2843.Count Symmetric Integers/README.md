@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2843.Count%20Symmetric%20Integers/README.md
+rating: 1269
+source: 第 361 场周赛 Q1
+tags:
+    - 数学
+    - 枚举
+---
+
+<!-- problem:start -->
+
 # [2843. 统计对称整数的数目](https://leetcode.cn/problems/count-symmetric-integers)
 
 [English Version](/solution/2800-2899/2843.Count%20Symmetric%20Integers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个正整数 <code>low</code> 和 <code>high</code> 。</p>
 
@@ -38,11 +51,13 @@
 	<li><code>1 &lt;= low &lt;= high &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举**
+### 方法一：枚举
 
 我们枚举 $[low, high]$ 中的每个整数 $x$，判断其是否是对称整数。如果是，那么答案 $ans$ 增加 $1$。
 
@@ -50,9 +65,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -67,9 +80,7 @@ class Solution:
         return sum(f(x) for x in range(low, high + 1))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +110,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -127,7 +138,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countSymmetricIntegers(low int, high int) (ans int) {
@@ -154,7 +165,7 @@ func countSymmetricIntegers(low int, high int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countSymmetricIntegers(low: number, high: number): number {
@@ -180,10 +191,8 @@ function countSymmetricIntegers(low: number, high: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

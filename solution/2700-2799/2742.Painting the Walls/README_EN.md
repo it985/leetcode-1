@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2742.Painting%20the%20Walls/README_EN.md
+rating: 2424
+source: Weekly Contest 350 Q4
+tags:
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [2742. Painting the Walls](https://leetcode.com/problems/painting-the-walls)
 
 [中文文档](/solution/2700-2799/2742.Painting%20the%20Walls/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two <strong>0-indexed</strong> integer arrays,&nbsp;<code>cost</code> and <code>time</code>, of size <code>n</code> representing the costs and the time taken to paint <code>n</code> different walls respectively. There are two painters available:</p>
 
@@ -40,9 +55,13 @@
 	<li><code>1 &lt;= time[i] &lt;= 500</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Memorization**
+<!-- solution:start -->
+
+### Solution 1: Memorization
 
 We can consider whether each wall is painted by a paid painter or a free painter. Design a function $dfs(i, j)$, which means that from the $i$th wall, and the current remaining free painter working time is $j$, the minimum cost of painting all the remaining walls. Then the answer is $dfs(0, 0)$.
 
@@ -58,7 +77,7 @@ Time complexity $O(n^2)$, space complexity $O(n^2)$. Where $n$ is the length of 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +94,7 @@ class Solution:
         return dfs(0, 0)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +126,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -133,7 +152,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func paintWalls(cost []int, time []int) int {
@@ -162,7 +181,7 @@ func paintWalls(cost []int, time []int) int {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -205,10 +224,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

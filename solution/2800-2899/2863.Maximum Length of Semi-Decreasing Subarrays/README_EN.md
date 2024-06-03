@@ -1,8 +1,22 @@
-# [2863. Maximum Length of Semi-Decreasing Subarrays](https://leetcode.com/problems/maximum-length-of-semi-decreasing-subarrays)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2863.Maximum%20Length%20of%20Semi-Decreasing%20Subarrays/README_EN.md
+tags:
+    - Array
+    - Hash Table
+    - Sorting
+---
+
+<!-- problem:start -->
+
+# [2863. Maximum Length of Semi-Decreasing Subarrays 🔒](https://leetcode.com/problems/maximum-length-of-semi-decreasing-subarrays)
 
 [中文文档](/solution/2800-2899/2863.Maximum%20Length%20of%20Semi-Decreasing%20Subarrays/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code>.</p>
 
@@ -52,9 +66,13 @@ It can be shown that there aren&#39;t any subarrays with the given condition wit
 	<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table + Sorting**
+<!-- solution:start -->
+
+### Solution 1: Hash Table + Sorting
 
 The problem is essentially finding the maximum length of the inverse pairs. We can use a hash table $d$ to record the index $i$ corresponding to each number $x$ in the array.
 
@@ -64,7 +82,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -79,7 +97,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -118,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxSubarrayLength(nums []int) (ans int) {
@@ -141,7 +159,7 @@ func maxSubarrayLength(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxSubarrayLength(nums: number[]): number {
@@ -164,10 +182,8 @@ function maxSubarrayLength(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -20,7 +20,7 @@ public class Solution {
 
         ListNode cur = slow.next;
         slow.next = null;
-
+        
         ListNode pre = null;
         while (cur != null) {
             ListNode t = cur.next;

@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0138.Copy%20List%20with%20Random%20Pointer/README.md
+tags:
+    - 哈希表
+    - 链表
+---
+
+<!-- problem:start -->
+
 # [138. 随机链表的复制](https://leetcode.cn/problems/copy-list-with-random-pointer)
 
 [English Version](/solution/0100-0199/0138.Copy%20List%20with%20Random%20Pointer/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个长度为 <code>n</code> 的链表，每个节点包含一个额外增加的随机指针 <code>random</code> ，该指针可以指向链表中的任何节点或空节点。</p>
 
@@ -25,7 +36,7 @@
 
 <p>&nbsp;</p>
 
-<p><strong>示例 1：</strong></p>
+<p><strong class="example">示例 1：</strong></p>
 
 <p><img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0100-0199/0138.Copy%20List%20with%20Random%20Pointer/images/e1.png" style="height: 142px; width: 700px;" /></p>
 
@@ -34,7 +45,7 @@
 <strong>输出：</strong>[[7,null],[13,0],[11,4],[10,2],[1,0]]
 </pre>
 
-<p><strong>示例 2：</strong></p>
+<p><strong class="example">示例 2：</strong></p>
 
 <p><img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0100-0199/0138.Copy%20List%20with%20Random%20Pointer/images/e2.png" style="height: 114px; width: 700px;" /></p>
 
@@ -43,7 +54,7 @@
 <strong>输出：</strong>[[1,1],[2,1]]
 </pre>
 
-<p><strong>示例 3：</strong></p>
+<p><strong class="example">示例 3：</strong></p>
 
 <p><strong><img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0100-0199/0138.Copy%20List%20with%20Random%20Pointer/images/e3.png" style="height: 122px; width: 700px;" /></strong></p>
 
@@ -64,11 +75,13 @@
 
 <p>&nbsp;</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 遍历链表，将链表中的每个节点都复制一份，然后将原节点和复制节点的对应关系存储在哈希表中，同时连接好复制节点的 $next$ 指针。
 
@@ -76,21 +89,9 @@
 
 时间复杂度为 $O(n)$，空间复杂度为 $O(n)$。其中 $n$ 为链表的长度。
 
-**方法二：拼接 + 拆分**
-
-遍历链表，将链表中的每个节点都复制一份，然后将复制节点插入到原节点的后面。
-
-接下来再遍历链表，根据原节点的 $random$ 指针，将复制节点的 $random$ 指针连接好。
-
-最后再遍历链表，将链表拆分成原链表和复制链表。
-
-时间复杂度为 $O(n)$，空间复杂度为 $O(1)$。其中 $n$ 为链表的长度。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 """
@@ -121,6 +122,238 @@ class Solution:
             cur = cur.next
         return dummy.next
 ```
+
+#### Java
+
+```java
+/*
+// Definition for a Node.
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+*/
+class Solution {
+    public Node copyRandomList(Node head) {
+        Map<Node, Node> d = new HashMap<>();
+        Node dummy = new Node(0);
+        Node tail = dummy;
+        for (Node cur = head; cur != null; cur = cur.next) {
+            tail.next = new Node(cur.val);
+            tail = tail.next;
+            d.put(cur, tail);
+        }
+        tail = dummy.next;
+        for (Node cur = head; cur != null; cur = cur.next) {
+            tail.random = d.get(cur.random);
+            tail = tail.next;
+        }
+        return dummy.next;
+    }
+}
+```
+
+#### C++
+
+```cpp
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* next;
+    Node* random;
+
+    Node(int _val) {
+        val = _val;
+        next = NULL;
+        random = NULL;
+    }
+};
+*/
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        unordered_map<Node*, Node*> d;
+        Node* dummy = new Node(0);
+        Node* tail = dummy;
+        for (auto cur = head; cur; cur = cur->next) {
+            tail->next = new Node(cur->val);
+            tail = tail->next;
+            d[cur] = tail;
+        }
+        tail = dummy->next;
+        for (auto cur = head; cur; cur = cur->next) {
+            tail->random = d[cur->random];
+            tail = tail->next;
+        }
+        return dummy->next;
+    }
+};
+```
+
+#### Go
+
+```go
+/**
+ * Definition for a Node.
+ * type Node struct {
+ *     Val int
+ *     Next *Node
+ *     Random *Node
+ * }
+ */
+
+func copyRandomList(head *Node) *Node {
+	d := map[*Node]*Node{}
+	dummy := &Node{}
+	tail := dummy
+	for cur := head; cur != nil; cur = cur.Next {
+		tail.Next = &Node{Val: cur.Val}
+		tail = tail.Next
+		d[cur] = tail
+	}
+	tail = dummy.Next
+	for cur := head; cur != nil; cur = cur.Next {
+		tail.Random = d[cur.Random]
+		tail = tail.Next
+	}
+	return dummy.Next
+}
+```
+
+#### TypeScript
+
+```ts
+/**
+ * Definition for Node.
+ * class Node {
+ *     val: number
+ *     next: Node | null
+ *     random: Node | null
+ *     constructor(val?: number, next?: Node, random?: Node) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.next = (next===undefined ? null : next)
+ *         this.random = (random===undefined ? null : random)
+ *     }
+ * }
+ */
+
+function copyRandomList(head: Node | null): Node | null {
+    const map = new Map<Node, Node>();
+    let cur = head;
+    while (cur != null) {
+        map.set(cur, new Node(cur.val));
+        cur = cur.next;
+    }
+    cur = head;
+    while (cur != null) {
+        map.get(cur).next = map.get(cur.next) ?? null;
+        map.get(cur).random = map.get(cur.random) ?? null;
+        cur = cur.next;
+    }
+    return map.get(head);
+}
+```
+
+#### JavaScript
+
+```js
+/**
+ * // Definition for a Node.
+ * function Node(val, next, random) {
+ *    this.val = val;
+ *    this.next = next;
+ *    this.random = random;
+ * };
+ */
+
+/**
+ * @param {Node} head
+ * @return {Node}
+ */
+var copyRandomList = function (head) {
+    const d = new Map();
+    const dummy = new Node(0);
+    let tail = dummy;
+    for (let cur = head; cur; cur = cur.next) {
+        tail.next = new Node(cur.val);
+        tail = tail.next;
+        d.set(cur, tail);
+    }
+    tail = dummy.next;
+    for (let cur = head; cur; cur = cur.next) {
+        tail.random = d.get(cur.random);
+        tail = tail.next;
+    }
+    return dummy.next;
+};
+```
+
+#### C#
+
+```cs
+/*
+// Definition for a Node.
+public class Node {
+    public int val;
+    public Node next;
+    public Node random;
+
+    public Node(int _val) {
+        val = _val;
+        next = null;
+        random = null;
+    }
+}
+*/
+
+public class Solution {
+    public Node CopyRandomList(Node head) {
+        Dictionary<Node, Node> d = new Dictionary<Node, Node>();
+        Node dummy = new Node(0);
+        Node tail = dummy;
+        for (Node cur = head; cur != null; cur = cur.next) {
+            tail.next = new Node(cur.val);
+            tail = tail.next;
+            d[cur] = tail;
+        }
+        tail = dummy.next;
+        for (Node cur = head; cur != null; cur = cur.next) {
+            tail.random = cur.random == null ? null : d[cur.random];
+            tail = tail.next;
+        }
+        return dummy.next;
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：拼接 + 拆分
+
+遍历链表，将链表中的每个节点都复制一份，然后将复制节点插入到原节点的后面。
+
+接下来再遍历链表，根据原节点的 $random$ 指针，将复制节点的 $random$ 指针连接好。
+
+最后再遍历链表，将链表拆分成原链表和复制链表。
+
+时间复杂度为 $O(n)$，空间复杂度为 $O(1)$。其中 $n$ 为链表的长度。
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 """
@@ -159,44 +392,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```java
-/*
-// Definition for a Node.
-class Node {
-    int val;
-    Node next;
-    Node random;
-
-    public Node(int val) {
-        this.val = val;
-        this.next = null;
-        this.random = null;
-    }
-}
-*/
-class Solution {
-    public Node copyRandomList(Node head) {
-        Map<Node, Node> d = new HashMap<>();
-        Node dummy = new Node(0);
-        Node tail = dummy;
-        for (Node cur = head; cur != null; cur = cur.next) {
-            tail.next = new Node(cur.val);
-            tail = tail.next;
-            d.put(cur, tail);
-        }
-        tail = dummy.next;
-        for (Node cur = head; cur != null; cur = cur.next) {
-            tail.random = d.get(cur.random);
-            tail = tail.next;
-        }
-        return dummy.next;
-    }
-}
-```
+#### Java
 
 ```java
 /*
@@ -241,44 +437,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-/*
-// Definition for a Node.
-class Node {
-public:
-    int val;
-    Node* next;
-    Node* random;
-
-    Node(int _val) {
-        val = _val;
-        next = NULL;
-        random = NULL;
-    }
-};
-*/
-class Solution {
-public:
-    Node* copyRandomList(Node* head) {
-        unordered_map<Node*, Node*> d;
-        Node* dummy = new Node(0);
-        Node* tail = dummy;
-        for (auto cur = head; cur; cur = cur->next) {
-            tail->next = new Node(cur->val);
-            tail = tail->next;
-            d[cur] = tail;
-        }
-        tail = dummy->next;
-        for (auto cur = head; cur; cur = cur->next) {
-            tail->random = d[cur->random];
-            tail = tail->next;
-        }
-        return dummy->next;
-    }
-};
-```
+#### C++
 
 ```cpp
 /*
@@ -326,35 +485,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-/**
- * Definition for a Node.
- * type Node struct {
- *     Val int
- *     Next *Node
- *     Random *Node
- * }
- */
-
-func copyRandomList(head *Node) *Node {
-	d := map[*Node]*Node{}
-	dummy := &Node{}
-	tail := dummy
-	for cur := head; cur != nil; cur = cur.Next {
-		tail.Next = &Node{Val: cur.Val}
-		tail = tail.Next
-		d[cur] = tail
-	}
-	tail = dummy.Next
-	for cur := head; cur != nil; cur = cur.Next {
-		tail.Random = d[cur.Random]
-		tail = tail.Next
-	}
-	return dummy.Next
-}
-```
+#### Go
 
 ```go
 /**
@@ -392,43 +523,49 @@ func copyRandomList(head *Node) *Node {
 }
 ```
 
-### **C#**
+#### JavaScript
 
-```cs
-/*
-// Definition for a Node.
-public class Node {
-    public int val;
-    public Node next;
-    public Node random;
+```js
+/**
+ * // Definition for a Node.
+ * function Node(val, next, random) {
+ *    this.val = val;
+ *    this.next = next;
+ *    this.random = random;
+ * };
+ */
 
-    public Node(int _val) {
-        val = _val;
-        next = null;
-        random = null;
+/**
+ * @param {Node} head
+ * @return {Node}
+ */
+var copyRandomList = function (head) {
+    if (!head) {
+        return null;
     }
-}
-*/
-
-public class Solution {
-    public Node CopyRandomList(Node head) {
-        Dictionary<Node, Node> d = new Dictionary<Node, Node>();
-        Node dummy = new Node(0);
-        Node tail = dummy;
-        for (Node cur = head; cur != null; cur = cur.next) {
-            tail.next = new Node(cur.val);
-            tail = tail.next;
-            d[cur] = tail;
-        }
-        tail = dummy.next;
-        for (Node cur = head; cur != null; cur = cur.next) {
-            tail.random = cur.random == null ? null : d[cur.random];
-            tail = tail.next;
-        }
-        return dummy.next;
+    for (let cur = head; cur; ) {
+        const node = new Node(cur.val, cur.next, null);
+        cur.next = node;
+        cur = node.next;
     }
-}
+    for (let cur = head; cur; cur = cur.next.next) {
+        if (cur.random) {
+            cur.next.random = cur.random.next;
+        }
+    }
+    const ans = head.next;
+    for (let cur = head; cur; ) {
+        const nxt = cur.next;
+        if (nxt) {
+            cur.next = nxt.next;
+        }
+        cur = nxt;
+    }
+    return ans;
+};
 ```
+
+#### C#
 
 ```cs
 /*
@@ -474,118 +611,8 @@ public class Solution {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * // Definition for a Node.
- * function Node(val, next, random) {
- *    this.val = val;
- *    this.next = next;
- *    this.random = random;
- * };
- */
-
-/**
- * @param {Node} head
- * @return {Node}
- */
-var copyRandomList = function (head) {
-    const d = new Map();
-    const dummy = new Node(0);
-    let tail = dummy;
-    for (let cur = head; cur; cur = cur.next) {
-        tail.next = new Node(cur.val);
-        tail = tail.next;
-        d.set(cur, tail);
-    }
-    tail = dummy.next;
-    for (let cur = head; cur; cur = cur.next) {
-        tail.random = d.get(cur.random);
-        tail = tail.next;
-    }
-    return dummy.next;
-};
-```
-
-```js
-/**
- * // Definition for a Node.
- * function Node(val, next, random) {
- *    this.val = val;
- *    this.next = next;
- *    this.random = random;
- * };
- */
-
-/**
- * @param {Node} head
- * @return {Node}
- */
-var copyRandomList = function (head) {
-    if (!head) {
-        return null;
-    }
-    for (let cur = head; cur; ) {
-        const node = new Node(cur.val, cur.next, null);
-        cur.next = node;
-        cur = node.next;
-    }
-    for (let cur = head; cur; cur = cur.next.next) {
-        if (cur.random) {
-            cur.next.random = cur.random.next;
-        }
-    }
-    const ans = head.next;
-    for (let cur = head; cur; ) {
-        const nxt = cur.next;
-        if (nxt) {
-            cur.next = nxt.next;
-        }
-        cur = nxt;
-    }
-    return ans;
-};
-```
-
-### **TypeScript**
-
-```ts
-/**
- * Definition for Node.
- * class Node {
- *     val: number
- *     next: Node | null
- *     random: Node | null
- *     constructor(val?: number, next?: Node, random?: Node) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.next = (next===undefined ? null : next)
- *         this.random = (random===undefined ? null : random)
- *     }
- * }
- */
-
-function copyRandomList(head: Node | null): Node | null {
-    const map = new Map<Node, Node>();
-    let cur = head;
-    while (cur != null) {
-        map.set(cur, new Node(cur.val));
-        cur = cur.next;
-    }
-    cur = head;
-    while (cur != null) {
-        map.get(cur).next = map.get(cur.next) ?? null;
-        map.get(cur).random = map.get(cur.random) ?? null;
-        cur = cur.next;
-    }
-    return map.get(head);
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

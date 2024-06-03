@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2133.Check%20if%20Every%20Row%20and%20Column%20Contains%20All%20Numbers/README.md
+rating: 1264
+source: 第 275 场周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [2133. 检查是否每一行每一列都包含全部整数](https://leetcode.cn/problems/check-if-every-row-and-column-contains-all-numbers)
 
 [English Version](/solution/2100-2199/2133.Check%20if%20Every%20Row%20and%20Column%20Contains%20All%20Numbers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>对一个大小为 <code>n x n</code> 的矩阵而言，如果其每一行和每一列都包含从 <code>1</code> 到 <code>n</code> 的 <strong>全部</strong> 整数（含 <code>1</code> 和 <code>n</code>），则认为该矩阵是一个 <strong>有效</strong> 矩阵。</p>
 
@@ -44,15 +58,17 @@
 	<li><code>1 &lt;= matrix[i][j] &lt;= n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -75,9 +91,7 @@ class Solution:
         return True
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -108,28 +122,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```ts
-function checkValid(matrix: number[][]): boolean {
-    const n = matrix.length;
-    let rows = Array.from({ length: n }, () => new Array(n).fill(false));
-    let cols = Array.from({ length: n }, () => new Array(n).fill(false));
-    for (let i = 0; i < n; i++) {
-        for (let j = 0; j < n; j++) {
-            let cur = matrix[i][j];
-            if (rows[i][cur] || cols[j][cur]) return false;
-            rows[i][cur] = true;
-            cols[j][cur] = true;
-        }
-    }
-    return true;
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -157,7 +150,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func checkValid(matrix [][]int) bool {
@@ -186,10 +179,27 @@ func checkValid(matrix [][]int) bool {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
-
+```ts
+function checkValid(matrix: number[][]): boolean {
+    const n = matrix.length;
+    let rows = Array.from({ length: n }, () => new Array(n).fill(false));
+    let cols = Array.from({ length: n }, () => new Array(n).fill(false));
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            let cur = matrix[i][j];
+            if (rows[i][cur] || cols[j][cur]) return false;
+            rows[i][cur] = true;
+            cols[j][cur] = true;
+        }
+    }
+    return true;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

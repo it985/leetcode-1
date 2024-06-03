@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2660.Determine%20the%20Winner%20of%20a%20Bowling%20Game/README.md
+rating: 1324
+source: 第 343 场周赛 Q1
+tags:
+    - 数组
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [2660. 保龄球游戏的获胜者](https://leetcode.cn/problems/determine-the-winner-of-a-bowling-game)
 
 [English Version](/solution/2600-2699/2660.Determine%20the%20Winner%20of%20a%20Bowling%20Game/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个下标从 <strong>0</strong> 开始的整数数组 <code>player1</code> 和 <code>player2</code> ，分别表示玩家 1 和玩家 2 击中的瓶数。</p>
 
@@ -68,11 +81,13 @@ player1 的得分等于 player2 的得分，所以这一场比赛平局，答案
 	<li><code>0 &lt;= player1[i], player2[i] &lt;= 10</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们可以用一个函数 $f(arr)$ 计算出两个玩家的得分，分别记为 $a$ 和 $b$，然后根据 $a$ 和 $b$ 的大小关系返回答案即可。
 
@@ -80,9 +95,7 @@ player1 的得分等于 player2 的得分，所以这一场比赛平局，答案
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -98,9 +111,7 @@ class Solution:
         return 1 if a > b else (2 if b > a else 0)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -120,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -140,7 +151,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isWinner(player1 []int, player2 []int) int {
@@ -166,7 +177,7 @@ func isWinner(player1 []int, player2 []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function isWinner(player1: number[], player2: number[]): number {
@@ -186,7 +197,7 @@ function isWinner(player1: number[], player2: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -216,10 +227,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2114.Maximum%20Number%20of%20Words%20Found%20in%20Sentences/README.md
+rating: 1257
+source: 第 68 场双周赛 Q1
+tags:
+    - 数组
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2114. 句子中的最多单词数](https://leetcode.cn/problems/maximum-number-of-words-found-in-sentences)
 
 [English Version](/solution/2100-2199/2114.Maximum%20Number%20of%20Words%20Found%20in%20Sentences/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一个 <strong>句子</strong>&nbsp;由一些 <strong>单词</strong>&nbsp;以及它们之间的单个空格组成，句子的开头和结尾不会有多余空格。</p>
 
@@ -45,11 +58,13 @@
 	<li><code>sentences[i]</code>&nbsp;中所有单词由单个空格隔开。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：空格计数**
+### 方法一：空格计数
 
 我们遍历数组 `sentences`，对于每个句子，我们计算其中的空格数，那么单词数就是空格数加 $1$。最后返回最大的单词数即可。
 
@@ -57,9 +72,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -67,9 +80,7 @@ class Solution:
         return 1 + max(s.count(' ') for s in sentences)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -89,7 +100,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -105,7 +116,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func mostWordsFound(sentences []string) (ans int) {
@@ -119,7 +130,7 @@ func mostWordsFound(sentences []string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function mostWordsFound(sentences: string[]): number {
@@ -134,7 +145,7 @@ function mostWordsFound(sentences: string[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -154,7 +165,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 #define max(a, b) (((a) > (b)) ? (a) : (b))
@@ -175,10 +186,8 @@ int mostWordsFound(char** sentences, int sentencesSize) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

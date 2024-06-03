@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2190.Most%20Frequent%20Number%20Following%20Key%20In%20an%20Array/README_EN.md
+rating: 1289
+source: Biweekly Contest 73 Q1
+tags:
+    - Array
+    - Hash Table
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [2190. Most Frequent Number Following Key In an Array](https://leetcode.com/problems/most-frequent-number-following-key-in-an-array)
 
 [中文文档](/solution/2100-2199/2190.Most%20Frequent%20Number%20Following%20Key%20In%20an%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code>.<strong> </strong>You are also given an integer <code>key</code>, which is present in <code>nums</code>.</p>
 
@@ -45,11 +61,17 @@ target = 2 has the maximum number of occurrences following an occurrence of key,
 	<li>The test cases will be generated such that the answer is unique.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,7 +87,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -85,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -106,7 +128,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func mostFrequent(nums []int, key int) (ans int) {
@@ -125,7 +147,7 @@ func mostFrequent(nums []int, key int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function mostFrequent(nums: number[], key: number): number {
@@ -144,7 +166,7 @@ function mostFrequent(nums: number[], key: number): number {
 }
 ```
 
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -170,10 +192,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

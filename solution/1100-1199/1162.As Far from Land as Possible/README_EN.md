@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1162.As%20Far%20from%20Land%20as%20Possible/README_EN.md
+rating: 1666
+source: Weekly Contest 150 Q3
+tags:
+    - Breadth-First Search
+    - Array
+    - Dynamic Programming
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [1162. As Far from Land as Possible](https://leetcode.com/problems/as-far-from-land-as-possible)
 
 [中文文档](/solution/1100-1199/1162.As%20Far%20from%20Land%20as%20Possible/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an <code>n x n</code> <code>grid</code>&nbsp;containing only values <code>0</code> and <code>1</code>, where&nbsp;<code>0</code> represents water&nbsp;and <code>1</code> represents land, find a water cell such that its distance to the nearest land cell is maximized, and return the distance.&nbsp;If no land or water exists in the grid, return <code>-1</code>.</p>
 
@@ -35,9 +52,13 @@
 	<li><code>grid[i][j]</code>&nbsp;is <code>0</code> or <code>1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: BFS**
+<!-- solution:start -->
+
+### Solution 1: BFS
 
 We can add all land cells to the queue $q$. If the queue is empty, or the number of elements in the queue equals the number of cells in the grid, it means that the grid contains only land or ocean, so return $-1$.
 
@@ -51,29 +72,30 @@ The time complexity is $O(n^2)$, and the space complexity is $O(n^2)$. Here, $n$
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
     def maxDistance(self, grid: List[List[int]]) -> int:
         n = len(grid)
-        q = deque([(i, j) for i in range(n) for j in range(n) if grid[i][j] == 1])
+        q = deque((i, j) for i in range(n) for j in range(n) if grid[i][j])
         ans = -1
-        valid = False
+        if len(q) in (0, n * n):
+            return ans
+        dirs = (-1, 0, 1, 0, -1)
         while q:
-            ans += 1
             for _ in range(len(q)):
                 i, j = q.popleft()
-                for a, b in [[0, 1], [0, -1], [1, 0], [-1, 0]]:
-                    x, y = i + a, b + j
+                for a, b in pairwise(dirs):
+                    x, y = i + a, j + b
                     if 0 <= x < n and 0 <= y < n and grid[x][y] == 0:
-                        valid = True
                         grid[x][y] = 1
                         q.append((x, y))
-        return ans if valid else -1
+            ans += 1
+        return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -110,7 +132,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -149,7 +171,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxDistance(grid [][]int) int {
@@ -185,7 +207,7 @@ func maxDistance(grid [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxDistance(grid: number[][]): number {
@@ -221,10 +243,8 @@ function maxDistance(grid: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

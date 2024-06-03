@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0907.Sum%20of%20Subarray%20Minimums/README.md
+tags:
+    - 栈
+    - 数组
+    - 动态规划
+    - 单调栈
+---
+
+<!-- problem:start -->
+
 # [907. 子数组的最小值之和](https://leetcode.cn/problems/sum-of-subarray-minimums)
 
 [English Version](/solution/0900-0999/0907.Sum%20of%20Subarray%20Minimums/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个整数数组 <code>arr</code>，找到 <code>min(b)</code> 的总和，其中 <code>b</code> 的范围为 <code>arr</code> 的每个（连续）子数组。</p>
 
@@ -39,11 +52,13 @@
 
 <p> </p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：单调栈**
+### 方法一：单调栈
 
 题目要求的是每个子数组的最小值之和，实际上相当于，对于每个元素 $arr[i]$，求以 $arr[i]$ 为最小值的子数组的个数，然后乘以 $arr[i]$，最后求和。
 
@@ -77,9 +92,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -106,9 +119,7 @@ class Solution:
         return sum((i - left[i]) * (right[i] - i) * v for i, v in enumerate(arr)) % mod
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -149,7 +160,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -189,7 +200,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sumSubarrayMins(arr []int) (ans int) {
@@ -229,7 +240,7 @@ func sumSubarrayMins(arr []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumSubarrayMins(arr: number[]): number {
@@ -268,7 +279,7 @@ function sumSubarrayMins(arr: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::VecDeque;
@@ -314,61 +325,8 @@ impl Solution {
 }
 ```
 
-```rust
-const MOD: i64 = (1e9 as i64) + 7;
-
-impl Solution {
-    pub fn sum_subarray_mins(arr: Vec<i32>) -> i32 {
-        let n: usize = arr.len();
-        let mut ret: i64 = 0;
-        let mut left: Vec<i32> = vec![-1; n];
-        let mut right: Vec<i32> = vec![n as i32; n];
-        // Index stack, store the index of the value in the given array
-        let mut stack: Vec<i32> = Vec::new();
-
-        // Find the first element that's less than the current value for the left side
-        // The default value of which is -1
-        for i in 0..n {
-            while !stack.is_empty() && arr[*stack.last().unwrap() as usize] >= arr[i] {
-                stack.pop();
-            }
-            if !stack.is_empty() {
-                left[i] = *stack.last().unwrap();
-            }
-            stack.push(i as i32);
-        }
-
-        stack.clear();
-
-        // Find the first element that's less or equal than the current value for the right side
-        // The default value of which is n
-        for i in (0..n).rev() {
-            while !stack.is_empty() && arr[*stack.last().unwrap() as usize] > arr[i] {
-                stack.pop();
-            }
-            if !stack.is_empty() {
-                right[i] = *stack.last().unwrap();
-            }
-            stack.push(i as i32);
-        }
-
-        // Traverse the array, to find the sum
-        for i in 0..n {
-            ret +=
-                ((((right[i] - (i as i32)) * ((i as i32) - left[i])) as i64) * (arr[i] as i64)) %
-                MOD;
-            ret %= MOD;
-        }
-
-        (ret % (MOD as i64)) as i32
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

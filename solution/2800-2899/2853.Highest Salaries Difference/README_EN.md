@@ -1,8 +1,20 @@
-# [2853. Highest Salaries Difference](https://leetcode.com/problems/highest-salaries-difference)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2853.Highest%20Salaries%20Difference/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [2853. Highest Salaries Difference 🔒](https://leetcode.com/problems/highest-salaries-difference)
 
 [中文文档](/solution/2800-2899/2853.Highest%20Salaries%20Difference/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code><font face="monospace">Salaries</font></code></p>
 
@@ -54,15 +66,19 @@ Salaries table:
 - The Engineering and Marketing departments have the highest salaries of 102,000 and 53,000, respectively. Resulting in an absolute difference of 49,000.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: GROUP BY Clause**
+<!-- solution:start -->
+
+### Solution 1: GROUP BY Clause
 
 We can first calculate the highest salary for each department, and then calculate the difference between the two highest salaries.
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -76,3 +92,7 @@ FROM
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

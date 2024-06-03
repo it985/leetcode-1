@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1927.Sum%20Game/README.md
+rating: 2004
+source: 第 56 场双周赛 Q3
+tags:
+    - 贪心
+    - 数学
+    - 字符串
+    - 博弈
+---
+
+<!-- problem:start -->
+
 # [1927. 求和游戏](https://leetcode.cn/problems/sum-game)
 
 [English Version](/solution/1900-1999/1927.Sum%20Game/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>Alice 和 Bob 玩一个游戏，两人轮流行动，<strong>Alice 先手</strong> 。</p>
 
@@ -67,11 +82,13 @@ Bob 获胜，因为 9 + 3 + 2 + 9 = 5 + 9 + 2 + 7 。
 	<li><code>num</code> 只包含数字字符和 <code>'?'</code> 。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：分类讨论**
+### 方法一：分类讨论
 
 如果 `'?'` 的个数为奇数，那么 Alice 一定会获胜，因为她可以选择将最后一个 `'?'` 替换为任何一个数字，使得前一半的和与后一半的和不相等。
 
@@ -91,9 +108,7 @@ Bob 获胜，因为 9 + 3 + 2 + 9 = 5 + 9 + 2 + 7 。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -106,9 +121,7 @@ class Solution:
         return (cnt1 + cnt2) % 2 == 1 or s1 - s2 != 9 * (cnt2 - cnt1) // 2
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -135,7 +148,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -163,7 +176,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sumGame(num string) bool {
@@ -187,7 +200,7 @@ func sumGame(num string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumGame(num: string): boolean {
@@ -211,10 +224,8 @@ function sumGame(num: string): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

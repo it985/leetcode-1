@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2172.Maximum%20AND%20Sum%20of%20Array/README.md
+rating: 2392
+source: 第 280 场周赛 Q4
+tags:
+    - 位运算
+    - 数组
+    - 动态规划
+    - 状态压缩
+---
+
+<!-- problem:start -->
+
 # [2172. 数组的最大与和](https://leetcode.cn/problems/maximum-and-sum-of-array)
 
 [English Version](/solution/2100-2199/2172.Maximum%20AND%20Sum%20of%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个长度为&nbsp;<code>n</code>&nbsp;的整数数组&nbsp;<code>nums</code>&nbsp;和一个整数&nbsp;<code>numSlots</code>&nbsp;，满足<code>2 * numSlots &gt;= n</code>&nbsp;。总共有&nbsp;<code>numSlots</code>&nbsp;个篮子，编号为&nbsp;<code>1</code>&nbsp;到&nbsp;<code>numSlots</code>&nbsp;。</p>
 
@@ -46,11 +61,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 15</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：状态压缩 + 动态规划**
+### 方法一：状态压缩 + 动态规划
 
 由于每个篮子最多只能放两个数，我们不妨将篮子数乘以 $2$，这样每个篮子最多只能放一个数。
 
@@ -72,9 +89,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -92,9 +107,7 @@ class Solution:
         return max(f)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -120,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -146,7 +159,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumANDSum(nums []int, numSlots int) int {
@@ -168,7 +181,7 @@ func maximumANDSum(nums []int, numSlots int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumANDSum(nums: number[], numSlots: number): number {
@@ -193,10 +206,8 @@ function maximumANDSum(nums: number[], numSlots: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

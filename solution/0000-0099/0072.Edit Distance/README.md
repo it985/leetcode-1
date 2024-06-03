@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0072.Edit%20Distance/README.md
+tags:
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [72. 编辑距离](https://leetcode.cn/problems/edit-distance)
 
 [English Version](/solution/0000-0099/0072.Edit%20Distance/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个单词&nbsp;<code>word1</code> 和&nbsp;<code>word2</code>， <em>请返回将&nbsp;<code>word1</code>&nbsp;转换成&nbsp;<code>word2</code> 所使用的最少操作数</em> &nbsp;。</p>
 
@@ -51,11 +62,13 @@ exection -&gt; execution (插入 'u')
 	<li><code>word1</code> 和 <code>word2</code> 由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i][j]$ 表示将 $word1$ 的前 $i$ 个字符转换成 $word2$ 的前 $j$ 个字符所使用的最少操作数。初始时 $f[i][0] = i$, $f[0][j] = j$。其中 $i \in [1, m], j \in [0, n]$。
 
@@ -81,9 +94,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -102,9 +113,7 @@ class Solution:
         return f[m][n]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -129,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -155,7 +164,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minDistance(word1 string, word2 string) int {
@@ -181,7 +190,7 @@ func minDistance(word1 string, word2 string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minDistance(word1: string, word2: string): number {
@@ -207,7 +216,7 @@ function minDistance(word1: string, word2: string): number {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -238,10 +247,8 @@ var minDistance = function (word1, word2) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

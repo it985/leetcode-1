@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1546.Maximum%20Number%20of%20Non-Overlapping%20Subarrays%20With%20Sum%20Equals%20Target/README.md
+rating: 1855
+source: 第 201 场周赛 Q3
+tags:
+    - 贪心
+    - 数组
+    - 哈希表
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [1546. 和为目标值且不重叠的非空子数组的最大数目](https://leetcode.cn/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target)
 
 [English Version](/solution/1500-1599/1546.Maximum%20Number%20of%20Non-Overlapping%20Subarrays%20With%20Sum%20Equals%20Target/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个数组&nbsp;<code>nums</code>&nbsp;和一个整数&nbsp;<code>target</code>&nbsp;。</p>
 
@@ -48,11 +63,13 @@
 	<li><code>0 &lt;= target &lt;= 10^6</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 前缀和 + 哈希表**
+### 方法一：贪心 + 前缀和 + 哈希表
 
 我们遍历数组 $nums$，利用前缀和 + 哈希表的方法，寻找和为 $target$ 的子数组，若找到，则答案加一，然后我们将前缀和置为 $0$，继续遍历数组 $nums$，直到遍历完整个数组。
 
@@ -60,9 +77,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +98,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -110,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -135,7 +148,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxNonOverlapping(nums []int, target int) (ans int) {
@@ -156,7 +169,7 @@ func maxNonOverlapping(nums []int, target int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxNonOverlapping(nums: number[], target: number): number {
@@ -179,10 +192,8 @@ function maxNonOverlapping(nums: number[], target: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

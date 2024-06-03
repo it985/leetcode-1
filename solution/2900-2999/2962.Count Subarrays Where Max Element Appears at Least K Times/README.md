@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2962.Count%20Subarrays%20Where%20Max%20Element%20Appears%20at%20Least%20K%20Times/README.md
+rating: 1700
+source: 第 375 场周赛 Q3
+tags:
+    - 数组
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [2962. 统计最大元素出现至少 K 次的子数组](https://leetcode.cn/problems/count-subarrays-where-max-element-appears-at-least-k-times)
 
 [English Version](/solution/2900-2999/2962.Count%20Subarrays%20Where%20Max%20Element%20Appears%20at%20Least%20K%20Times/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code> 和一个 <strong>正整数</strong> <code>k</code> 。</p>
 
@@ -40,11 +53,13 @@
 	<li><code>1 &lt;= k &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双指针**
+### 方法一：双指针
 
 不妨记数组中的最大值为 $mx$。
 
@@ -56,9 +71,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,9 +90,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -103,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -128,7 +139,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countSubarrays(nums []int, k int) (ans int64) {
@@ -153,7 +164,7 @@ func countSubarrays(nums []int, k int) (ans int64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countSubarrays(nums: number[], k: number): number {
@@ -175,10 +186,8 @@ function countSubarrays(nums: number[], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

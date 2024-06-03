@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1573.Number%20of%20Ways%20to%20Split%20a%20String/README_EN.md
+rating: 1590
+source: Biweekly Contest 34 Q2
+tags:
+    - Math
+    - String
+---
+
+<!-- problem:start -->
+
 # [1573. Number of Ways to Split a String](https://leetcode.com/problems/number-of-ways-to-split-a-string)
 
 [中文文档](/solution/1500-1599/1573.Number%20of%20Ways%20to%20Split%20a%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a binary string <code>s</code>, you can split <code>s</code> into 3 <strong>non-empty</strong> strings <code>s1</code>, <code>s2</code>, and <code>s3</code> where <code>s1 + s2 + s3 = s</code>.</p>
 
@@ -47,11 +62,17 @@
 	<li><code>s[i]</code> is either <code>&#39;0&#39;</code> or <code>&#39;1&#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +96,7 @@ class Solution:
         return (i2 - i1) * (j2 - j1) % (10**9 + 7)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -116,7 +137,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -152,7 +173,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numWays(s string) int {
@@ -189,10 +210,8 @@ func numWays(s string) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

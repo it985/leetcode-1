@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1808.Maximize%20Number%20of%20Nice%20Divisors/README.md
+rating: 2070
+source: 第 234 场周赛 Q4
+tags:
+    - 递归
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [1808. 好因子的最大数目](https://leetcode.cn/problems/maximize-number-of-nice-divisors)
 
 [English Version](/solution/1800-1899/1808.Maximize%20Number%20of%20Nice%20Divisors/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个正整数 <code>primeFactors</code> 。你需要构造一个正整数 <code>n</code> ，它满足以下条件：</p>
 
@@ -44,11 +57,13 @@
 	<li><code>1 <= primeFactors <= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：问题转换 + 快速幂**
+### 方法一：问题转换 + 快速幂
 
 我们可以将 $n$ 进行质因数分解，即 $n = a_1^{k_1} \times a_2^{k_2} \times\cdots \times a_m^{k_m}$，其中 $a_i$ 为质因子，而 $k_i$ 为质因子 $a_i$ 的指数。由于 $n$ 的质因子个数不超过 $primeFactors$ 个，因此 $k_1 + k_2 + \cdots + k_m \leq primeFactors$。
 
@@ -67,9 +82,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -84,9 +97,7 @@ class Solution:
         return 2 * pow(3, primeFactors // 3, mod) % mod
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -118,7 +129,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -149,7 +160,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxNiceDivisors(primeFactors int) int {
@@ -177,7 +188,7 @@ func maxNiceDivisors(primeFactors int) int {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -210,10 +221,8 @@ var maxNiceDivisors = function (primeFactors) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

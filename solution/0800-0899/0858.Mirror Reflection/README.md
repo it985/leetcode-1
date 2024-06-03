@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0858.Mirror%20Reflection/README.md
+tags:
+    - 几何
+    - 数学
+    - 数论
+---
+
+<!-- problem:start -->
+
 # [858. 镜面反射](https://leetcode.cn/problems/mirror-reflection)
 
 [English Version](/solution/0800-0899/0858.Mirror%20Reflection/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>有一个特殊的正方形房间，每面墙上都有一面镜子。除西南角以外，每个角落都放有一个接受器，编号为&nbsp;<code>0</code>，&nbsp;<code>1</code>，以及&nbsp;<code>2</code>。</p>
 
@@ -36,11 +48,13 @@
 	<li><code>1 &lt;= q &lt;= p &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：数学**
+### 方法一：数学
 
 根据题意，光线在每次反射时，都会向上或向下移动 $q$ 的距离，向右移动 $p$ 的距离。而由于光线最后一定会遇到接收器，因此，我们需要找到一个最小的 $k$，使得 $k \times q$ 是 $p$ 的倍数。
 
@@ -52,9 +66,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -67,9 +79,7 @@ class Solution:
         return 0 if p == 1 else 2
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -89,7 +99,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -106,7 +116,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func mirrorReflection(p int, q int) int {
@@ -130,7 +140,7 @@ func gcd(a, b int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function mirrorReflection(p: number, q: number): number {
@@ -148,10 +158,8 @@ function gcd(a: number, b: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

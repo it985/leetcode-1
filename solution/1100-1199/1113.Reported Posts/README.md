@@ -1,10 +1,20 @@
-# [1113. 报告的记录](https://leetcode.cn/problems/reported-posts)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1113.Reported%20Posts/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1113. 报告的记录 🔒](https://leetcode.cn/problems/reported-posts)
 
 [English Version](/solution/1100-1199/1113.Reported%20Posts/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>动作表：<code>Actions</code></p>
 
@@ -66,13 +76,17 @@ Actions table:
 <strong>解释：</strong>注意，我们只关心举报帖数量非零的举报原因。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -83,3 +97,7 @@ GROUP BY 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0513.Find%20Bottom%20Left%20Tree%20Value/README_EN.md
+tags:
+    - Tree
+    - Depth-First Search
+    - Breadth-First Search
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [513. Find Bottom Left Tree Value](https://leetcode.com/problems/find-bottom-left-tree-value)
 
 [中文文档](/solution/0500-0599/0513.Find%20Bottom%20Left%20Tree%20Value/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>root</code> of a binary tree, return the leftmost value in the last row of the tree.</p>
 
@@ -29,11 +44,17 @@
 	<li><code>-2<sup>31</sup> &lt;= Node.val &lt;= 2<sup>31</sup> - 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -57,31 +78,7 @@ class Solution:
         return ans
 ```
 
-```python
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-class Solution:
-    def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
-        def dfs(root, curr):
-            if root is None:
-                return
-            dfs(root.left, curr + 1)
-            dfs(root.right, curr + 1)
-            nonlocal ans, mx
-            if mx < curr:
-                mx = curr
-                ans = root.val
-
-        ans = mx = 0
-        dfs(root, 1)
-        return ans
-```
-
-### **Java**
+#### Java
 
 ```java
 /**
@@ -121,46 +118,71 @@ class Solution {
 }
 ```
 
-```java
+#### C++
+
+```cpp
 /**
  * Definition for a binary tree node.
- * public class TreeNode {
+ * struct TreeNode {
  *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
  */
 class Solution {
-    private int ans = 0;
-    private int mx = 0;
-
-    public int findBottomLeftValue(TreeNode root) {
-        dfs(root, 1);
+public:
+    int findBottomLeftValue(TreeNode* root) {
+        queue<TreeNode*> q{{root}};
+        int ans = 0;
+        while (!q.empty()) {
+            ans = q.front()->val;
+            for (int i = q.size(); i; --i) {
+                TreeNode* node = q.front();
+                q.pop();
+                if (node->left) q.push(node->left);
+                if (node->right) q.push(node->right);
+            }
+        }
         return ans;
     }
+};
+```
 
-    private void dfs(TreeNode root, int curr) {
-        if (root == null) {
-            return;
-        }
-        dfs(root.left, curr + 1);
-        dfs(root.right, curr + 1);
-        if (mx < curr) {
-            mx = curr;
-            ans = root.val;
-        }
-    }
+#### Go
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func findBottomLeftValue(root *TreeNode) int {
+	q := []*TreeNode{root}
+	ans := 0
+	for len(q) > 0 {
+		ans = q[0].Val
+		for i := len(q); i > 0; i-- {
+			node := q[0]
+			q = q[1:]
+			if node.Left != nil {
+				q = append(q, node.Left)
+			}
+			if node.Right != nil {
+				q = append(q, node.Right)
+			}
+		}
+	}
+	return ans
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -196,167 +218,7 @@ function findBottomLeftValue(root: TreeNode | null): number {
 }
 ```
 
-```ts
-/**
- * Definition for a binary tree node.
- * class TreeNode {
- *     val: number
- *     left: TreeNode | null
- *     right: TreeNode | null
- *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.left = (left===undefined ? null : left)
- *         this.right = (right===undefined ? null : right)
- *     }
- * }
- */
-
-function findBottomLeftValue(root: TreeNode | null): number {
-    let mx = 0;
-    let ans = 0;
-
-    function dfs(root, curr) {
-        if (!root) {
-            return;
-        }
-        dfs(root.left, curr + 1);
-        dfs(root.right, curr + 1);
-        if (mx < curr) {
-            mx = curr;
-            ans = root.val;
-        }
-    }
-    dfs(root, 1);
-    return ans;
-}
-```
-
-### **C++**
-
-```cpp
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-class Solution {
-public:
-    int findBottomLeftValue(TreeNode* root) {
-        queue<TreeNode*> q{{root}};
-        int ans = 0;
-        while (!q.empty()) {
-            ans = q.front()->val;
-            for (int i = q.size(); i; --i) {
-                TreeNode* node = q.front();
-                q.pop();
-                if (node->left) q.push(node->left);
-                if (node->right) q.push(node->right);
-            }
-        }
-        return ans;
-    }
-};
-```
-
-```cpp
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-class Solution {
-public:
-    int ans = 0;
-    int mx = 0;
-    int findBottomLeftValue(TreeNode* root) {
-        dfs(root, 1);
-        return ans;
-    }
-
-    void dfs(TreeNode* root, int curr) {
-        if (!root) return;
-        dfs(root->left, curr + 1);
-        dfs(root->right, curr + 1);
-        if (mx < curr) {
-            mx = curr;
-            ans = root->val;
-        }
-    }
-};
-```
-
-### **Go**
-
-```go
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func findBottomLeftValue(root *TreeNode) int {
-	q := []*TreeNode{root}
-	ans := 0
-	for len(q) > 0 {
-		ans = q[0].Val
-		for i := len(q); i > 0; i-- {
-			node := q[0]
-			q = q[1:]
-			if node.Left != nil {
-				q = append(q, node.Left)
-			}
-			if node.Right != nil {
-				q = append(q, node.Right)
-			}
-		}
-	}
-	return ans
-}
-```
-
-```go
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func findBottomLeftValue(root *TreeNode) int {
-	ans, mx := 0, 0
-	var dfs func(*TreeNode, int)
-	dfs = func(root *TreeNode, curr int) {
-		if root == nil {
-			return
-		}
-		dfs(root.Left, curr+1)
-		dfs(root.Right, curr+1)
-		if mx < curr {
-			mx = curr
-			ans = root.Val
-		}
-	}
-	dfs(root, 1)
-	return ans
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -403,6 +265,187 @@ impl Solution {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
+        def dfs(root, curr):
+            if root is None:
+                return
+            dfs(root.left, curr + 1)
+            dfs(root.right, curr + 1)
+            nonlocal ans, mx
+            if mx < curr:
+                mx = curr
+                ans = root.val
+
+        ans = mx = 0
+        dfs(root, 1)
+        return ans
+```
+
+#### Java
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    private int ans = 0;
+    private int mx = 0;
+
+    public int findBottomLeftValue(TreeNode root) {
+        dfs(root, 1);
+        return ans;
+    }
+
+    private void dfs(TreeNode root, int curr) {
+        if (root == null) {
+            return;
+        }
+        dfs(root.left, curr + 1);
+        dfs(root.right, curr + 1);
+        if (mx < curr) {
+            mx = curr;
+            ans = root.val;
+        }
+    }
+}
+```
+
+#### C++
+
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int ans = 0;
+    int mx = 0;
+    int findBottomLeftValue(TreeNode* root) {
+        dfs(root, 1);
+        return ans;
+    }
+
+    void dfs(TreeNode* root, int curr) {
+        if (!root) return;
+        dfs(root->left, curr + 1);
+        dfs(root->right, curr + 1);
+        if (mx < curr) {
+            mx = curr;
+            ans = root->val;
+        }
+    }
+};
+```
+
+#### Go
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func findBottomLeftValue(root *TreeNode) int {
+	ans, mx := 0, 0
+	var dfs func(*TreeNode, int)
+	dfs = func(root *TreeNode, curr int) {
+		if root == nil {
+			return
+		}
+		dfs(root.Left, curr+1)
+		dfs(root.Right, curr+1)
+		if mx < curr {
+			mx = curr
+			ans = root.Val
+		}
+	}
+	dfs(root, 1)
+	return ans
+}
+```
+
+#### TypeScript
+
+```ts
+/**
+ * Definition for a binary tree node.
+ * class TreeNode {
+ *     val: number
+ *     left: TreeNode | null
+ *     right: TreeNode | null
+ *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.left = (left===undefined ? null : left)
+ *         this.right = (right===undefined ? null : right)
+ *     }
+ * }
+ */
+
+function findBottomLeftValue(root: TreeNode | null): number {
+    let mx = 0;
+    let ans = 0;
+
+    function dfs(root, curr) {
+        if (!root) {
+            return;
+        }
+        dfs(root.left, curr + 1);
+        dfs(root.right, curr + 1);
+        if (mx < curr) {
+            mx = curr;
+            ans = root.val;
+        }
+    }
+    dfs(root, 1);
+    return ans;
+}
+```
+
+#### Rust
+
 ```rust
 // Definition for a binary tree node.
 // #[derive(Debug, PartialEq, Eq)]
@@ -448,10 +491,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

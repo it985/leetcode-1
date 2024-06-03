@@ -1,10 +1,20 @@
-# [603. 连续空余座位](https://leetcode.cn/problems/consecutive-available-seats)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0603.Consecutive%20Available%20Seats/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [603. 连续空余座位 🔒](https://leetcode.cn/problems/consecutive-available-seats)
 
 [English Version](/solution/0600-0699/0603.Consecutive%20Available%20Seats/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表:&nbsp;<code>Cinema</code></p>
 
@@ -54,21 +64,19 @@ Cinema 表:
 | 5       |
 +---------+</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：自连接**
+### 方法一：自连接
 
 我们可以使用自连接的方式，将相邻的两个座位连接起来，然后筛选出连续空余的座位并去重排序即可。
 
-**方法二：窗口函数**
-
-我们也可以使用 `LAG` 和 `LEAD` 函数（或者 `SUM() OVER(ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)`）来获取相邻的座位信息，然后筛选出连续空余的座位并去重排序即可。
-
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -78,6 +86,20 @@ FROM
     JOIN Cinema AS b ON ABS(a.seat_id - b.seat_id) = 1 AND a.free AND b.free
 ORDER BY 1;
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：窗口函数
+
+我们也可以使用 `LAG` 和 `LEAD` 函数（或者 `SUM() OVER(ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)`）来获取相邻的座位信息，然后筛选出连续空余的座位并去重排序即可。
+
+<!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -93,6 +115,18 @@ SELECT seat_id
 FROM T
 WHERE a = 2 OR b = 2;
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法三
+
+<!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -113,3 +147,7 @@ ORDER BY 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

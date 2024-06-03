@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2138.Divide%20a%20String%20Into%20Groups%20of%20Size%20k/README_EN.md
+rating: 1273
+source: Weekly Contest 276 Q1
+tags:
+    - String
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [2138. Divide a String Into Groups of Size k](https://leetcode.com/problems/divide-a-string-into-groups-of-size-k)
 
 [中文文档](/solution/2100-2199/2138.Divide%20a%20String%20Into%20Groups%20of%20Size%20k/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A string <code>s</code> can be partitioned into groups of size <code>k</code> using the following procedure:</p>
 
@@ -50,11 +65,17 @@ Thus, the 4 groups formed are &quot;abc&quot;, &quot;def&quot;, &quot;ghi&quot;,
 	<li><code>fill</code> is a lowercase English letter.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -62,7 +83,7 @@ class Solution:
         return [s[i : i + k].ljust(k, fill) for i in range(0, len(s), k)]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -80,7 +101,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -96,7 +117,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func divideString(s string, k int, fill byte) []string {
@@ -112,16 +133,8 @@ func divideString(s string, k int, fill byte) []string {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

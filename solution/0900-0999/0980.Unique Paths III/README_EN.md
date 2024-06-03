@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0980.Unique%20Paths%20III/README_EN.md
+tags:
+    - Bit Manipulation
+    - Array
+    - Backtracking
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [980. Unique Paths III](https://leetcode.com/problems/unique-paths-iii)
 
 [中文文档](/solution/0900-0999/0980.Unique%20Paths%20III/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an <code>m x n</code> integer array <code>grid</code> where <code>grid[i][j]</code> could be:</p>
 
@@ -59,9 +74,13 @@ Note that the starting and ending square can be anywhere in the grid.
 	<li>There is exactly one starting cell and one ending cell.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Backtracking**
+<!-- solution:start -->
+
+### Solution 1: Backtracking
 
 We can first traverse the entire grid, find the starting point $(x, y)$, and count the number of blank spaces $cnt$.
 
@@ -77,7 +96,7 @@ The time complexity is $O(3^{m \times n})$, and the space complexity is $O(m \ti
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -102,7 +121,7 @@ class Solution:
         return dfs(*start, 0)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -151,7 +170,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -195,7 +214,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func uniquePathsIII(grid [][]int) int {
@@ -238,7 +257,7 @@ func uniquePathsIII(grid [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function uniquePathsIII(grid: number[][]): number {
@@ -279,10 +298,8 @@ function uniquePathsIII(grid: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

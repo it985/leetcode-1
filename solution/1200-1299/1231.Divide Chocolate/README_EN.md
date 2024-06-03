@@ -1,8 +1,23 @@
-# [1231. Divide Chocolate](https://leetcode.com/problems/divide-chocolate)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1231.Divide%20Chocolate/README_EN.md
+rating: 2029
+source: Biweekly Contest 11 Q4
+tags:
+    - Array
+    - Binary Search
+---
+
+<!-- problem:start -->
+
+# [1231. Divide Chocolate 🔒](https://leetcode.com/problems/divide-chocolate)
 
 [中文文档](/solution/1200-1299/1231.Divide%20Chocolate/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You have one chocolate bar that consists of some chunks. Each chunk has its own sweetness given by the array&nbsp;<code>sweetness</code>.</p>
 
@@ -45,11 +60,25 @@
 	<li><code>1 &lt;= sweetness[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Binary Search + Greedy
+
+We notice that if we can eat a piece of chocolate with sweetness $x$, then we can also eat all chocolates with sweetness less than or equal to $x$. This shows monotonicity, therefore, we can use binary search to find the maximum $x$ that satisfies the condition.
+
+We define the left boundary of the binary search as $l=0$, and the right boundary as $r=\sum_{i=0}^{n-1} sweetness[i]$. Each time, we take the middle value $mid$ of $l$ and $r$, and then determine whether we can eat a piece of chocolate with sweetness $mid$. If we can, then we try to eat a piece of chocolate with greater sweetness, i.e., let $l=mid$; otherwise, we try to eat a piece of chocolate with smaller sweetness, i.e., let $r=mid-1$. After the binary search ends, we return $l$.
+
+The key to the problem is how to determine whether we can eat a piece of chocolate with sweetness $x$. We can use a greedy approach, traverse the array from left to right, accumulate the current sweetness each time, when the accumulated sweetness is greater than or equal to $x$, the chocolate count $cnt$ is increased by $1$, and the accumulated sweetness is reset to zero. Finally, check whether $cnt$ is greater than $k$.
+
+The time complexity is $O(n \times \log \sum_{i=0}^{n-1} sweetness[i])$, and the space complexity is $O(1)$. Where $n$ is the length of the array.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -73,7 +102,7 @@ class Solution:
         return l
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +136,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -138,7 +167,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximizeSweetness(sweetness []int, k int) int {
@@ -169,7 +198,7 @@ func maximizeSweetness(sweetness []int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximizeSweetness(sweetness: number[], k: number): number {
@@ -199,10 +228,8 @@ function maximizeSweetness(sweetness: number[], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1640.Check%20Array%20Formation%20Through%20Concatenation/README_EN.md
+rating: 1524
+source: Weekly Contest 213 Q1
+tags:
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [1640. Check Array Formation Through Concatenation](https://leetcode.com/problems/check-array-formation-through-concatenation)
 
 [中文文档](/solution/1600-1699/1640.Check%20Array%20Formation%20Through%20Concatenation/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an array of <strong>distinct</strong> integers <code>arr</code> and an array of integer arrays <code>pieces</code>, where the integers in <code>pieces</code> are <strong>distinct</strong>. Your goal is to form <code>arr</code> by concatenating the arrays in <code>pieces</code> <strong>in any order</strong>. However, you are <strong>not</strong> allowed to reorder the integers in each array <code>pieces[i]</code>.</p>
 
@@ -45,11 +60,17 @@
 	<li>The integers in <code>pieces</code> are <strong>distinct</strong> (i.e., If we flatten pieces in a 1D array, all the integers in this array are distinct).</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -67,22 +88,7 @@ class Solution:
         return True
 ```
 
-```python
-class Solution:
-    def canFormArray(self, arr: List[int], pieces: List[List[int]]) -> bool:
-        d = {p[0]: p for p in pieces}
-        i, n = 0, len(arr)
-        while i < n:
-            if arr[i] not in d:
-                return False
-            p = d[arr[i]]
-            if arr[i : i + len(p)] != p:
-                return False
-            i += len(p)
-        return True
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -106,29 +112,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public boolean canFormArray(int[] arr, int[][] pieces) {
-        Map<Integer, int[]> d = new HashMap<>();
-        for (var p : pieces) {
-            d.put(p[0], p);
-        }
-        for (int i = 0; i < arr.length;) {
-            if (!d.containsKey(arr[i])) {
-                return false;
-            }
-            for (int v : d.get(arr[i])) {
-                if (arr[i++] != v) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -153,30 +137,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    bool canFormArray(vector<int>& arr, vector<vector<int>>& pieces) {
-        unordered_map<int, vector<int>> d;
-        for (auto& p : pieces) {
-            d[p[0]] = p;
-        }
-        for (int i = 0; i < arr.size();) {
-            if (!d.count(arr[i])) {
-                return false;
-            }
-            for (int& v : d[arr[i]]) {
-                if (arr[i++] != v) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func canFormArray(arr []int, pieces [][]int) bool {
@@ -197,57 +158,7 @@ func canFormArray(arr []int, pieces [][]int) bool {
 }
 ```
 
-```go
-func canFormArray(arr []int, pieces [][]int) bool {
-	d := map[int][]int{}
-	for _, p := range pieces {
-		d[p[0]] = p
-	}
-	for i := 0; i < len(arr); {
-		p, ok := d[arr[i]]
-		if !ok {
-			return false
-		}
-		for _, v := range p {
-			if arr[i] != v {
-				return false
-			}
-			i++
-		}
-	}
-	return true
-}
-```
-
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} arr
- * @param {number[][]} pieces
- * @return {boolean}
- */
-var canFormArray = function (arr, pieces) {
-    const d = new Map();
-    for (const p of pieces) {
-        d.set(p[0], p);
-    }
-    for (let i = 0; i < arr.length; ) {
-        if (!d.has(arr[i])) {
-            return false;
-        }
-        const p = d.get(arr[i]);
-        for (const v of p) {
-            if (arr[i++] != v) {
-                return false;
-            }
-        }
-    }
-    return true;
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canFormArray(arr: number[], pieces: number[][]): boolean {
@@ -270,7 +181,7 @@ function canFormArray(arr: number[], pieces: number[][]): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -302,10 +213,136 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+/**
+ * @param {number[]} arr
+ * @param {number[][]} pieces
+ * @return {boolean}
+ */
+var canFormArray = function (arr, pieces) {
+    const d = new Map();
+    for (const p of pieces) {
+        d.set(p[0], p);
+    }
+    for (let i = 0; i < arr.length; ) {
+        if (!d.has(arr[i])) {
+            return false;
+        }
+        const p = d.get(arr[i]);
+        for (const v of p) {
+            if (arr[i++] != v) {
+                return false;
+            }
+        }
+    }
+    return true;
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def canFormArray(self, arr: List[int], pieces: List[List[int]]) -> bool:
+        d = {p[0]: p for p in pieces}
+        i, n = 0, len(arr)
+        while i < n:
+            if arr[i] not in d:
+                return False
+            p = d[arr[i]]
+            if arr[i : i + len(p)] != p:
+                return False
+            i += len(p)
+        return True
+```
+
+#### Java
+
+```java
+class Solution {
+    public boolean canFormArray(int[] arr, int[][] pieces) {
+        Map<Integer, int[]> d = new HashMap<>();
+        for (var p : pieces) {
+            d.put(p[0], p);
+        }
+        for (int i = 0; i < arr.length;) {
+            if (!d.containsKey(arr[i])) {
+                return false;
+            }
+            for (int v : d.get(arr[i])) {
+                if (arr[i++] != v) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    bool canFormArray(vector<int>& arr, vector<vector<int>>& pieces) {
+        unordered_map<int, vector<int>> d;
+        for (auto& p : pieces) {
+            d[p[0]] = p;
+        }
+        for (int i = 0; i < arr.size();) {
+            if (!d.count(arr[i])) {
+                return false;
+            }
+            for (int& v : d[arr[i]]) {
+                if (arr[i++] != v) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+};
+```
+
+#### Go
+
+```go
+func canFormArray(arr []int, pieces [][]int) bool {
+	d := map[int][]int{}
+	for _, p := range pieces {
+		d[p[0]] = p
+	}
+	for i := 0; i < len(arr); {
+		p, ok := d[arr[i]]
+		if !ok {
+			return false
+		}
+		for _, v := range p {
+			if arr[i] != v {
+				return false
+			}
+			i++
+		}
+	}
+	return true
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

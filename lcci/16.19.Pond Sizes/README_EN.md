@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.19.Pond%20Sizes/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [16.19. Pond Sizes](https://leetcode.cn/problems/pond-sizes-lcci)
 
 [中文文档](/lcci/16.19.Pond%20Sizes/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You have an integer matrix representing a plot of land, where the value at that loca&shy;tion represents the height above sea level. A value of zero indicates water. A pond is a region of water connected vertically, horizontally, or diagonally. The size of the pond is the total number of connected water cells. Write a method to compute the sizes of all ponds in the matrix.</p>
 
@@ -35,9 +45,13 @@
 	<li><code>0 &lt; len(land[i]) &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: DFS**
+<!-- solution:start -->
+
+### Solution 1: DFS
 
 We can traverse each point $(i, j)$ in the integer matrix $land$. If the value of the point is $0$, we start a depth-first search from this point until we reach a point with a non-zero value. The number of points searched during this process is the size of the pond, which is added to the answer array.
 
@@ -49,7 +63,7 @@ The time complexity is $O(m \times n \times \log (m \times n))$, and the space c
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -67,7 +81,7 @@ class Solution:
         return sorted(dfs(i, j) for i in range(m) for j in range(n) if land[i][j] == 0)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -105,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -138,7 +152,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func pondSizes(land [][]int) (ans []int) {
@@ -168,7 +182,7 @@ func pondSizes(land [][]int) (ans []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function pondSizes(land: number[][]): number[] {
@@ -199,10 +213,47 @@ function pondSizes(land: number[][]): number[] {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    private var m: Int = 0
+    private var n: Int = 0
+    private var land: [[Int]] = []
 
+    func pondSizes(_ land: [[Int]]) -> [Int] {
+        self.land = land
+        m = land.count
+        n = land[0].count
+        var ans: [Int] = []
+
+        for i in 0..<m {
+            for j in 0..<n {
+                if self.land[i][j] == 0 {
+                    ans.append(dfs(i, j))
+                }
+            }
+        }
+        return ans.sorted()
+    }
+
+    private func dfs(_ i: Int, _ j: Int) -> Int {
+        var res = 1
+        self.land[i][j] = 1
+        for x in max(i - 1, 0)...min(i + 1, m - 1) {
+            for y in max(j - 1, 0)...min(j + 1, n - 1) {
+                if self.land[x][y] == 0 {
+                    res += dfs(x, y)
+                }
+            }
+        }
+        return res
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

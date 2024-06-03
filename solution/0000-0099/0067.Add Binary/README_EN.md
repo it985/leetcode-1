@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0067.Add%20Binary/README_EN.md
+tags:
+    - Bit Manipulation
+    - Math
+    - String
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [67. Add Binary](https://leetcode.com/problems/add-binary)
 
 [中文文档](/solution/0000-0099/0067.Add%20Binary/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two binary strings <code>a</code> and <code>b</code>, return <em>their sum as a binary string</em>.</p>
 
@@ -23,9 +38,13 @@
 	<li>Each string does not contain leading zeros except for the zero itself.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 We use a variable $carry$ to record the current carry, and two pointers $i$ and $j$ to point to the end of $a$ and $b$ respectively, and add them bit by bit from the end to the beginning.
 
@@ -33,7 +52,7 @@ The time complexity is $O(\max(m, n))$, where $m$ and $n$ are the lengths of str
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -41,20 +60,7 @@ class Solution:
         return bin(int(a, 2) + int(b, 2))[2:]
 ```
 
-```python
-class Solution:
-    def addBinary(self, a: str, b: str) -> str:
-        ans = []
-        i, j, carry = len(a) - 1, len(b) - 1, 0
-        while i >= 0 or j >= 0 or carry:
-            carry += (0 if i < 0 else int(a[i])) + (0 if j < 0 else int(b[j]))
-            carry, v = divmod(carry, 2)
-            ans.append(str(v))
-            i, j = i - 1, j - 1
-        return ''.join(ans[::-1])
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -71,7 +77,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -90,7 +96,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func addBinary(a string, b string) string {
@@ -113,7 +119,7 @@ func addBinary(a string, b string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function addBinary(a: string, b: string): string {
@@ -121,22 +127,7 @@ function addBinary(a: string, b: string): string {
 }
 ```
 
-```ts
-function addBinary(a: string, b: string): string {
-    let i = a.length - 1;
-    let j = b.length - 1;
-    let ans: number[] = [];
-    for (let carry = 0; i >= 0 || j >= 0 || carry; --i, --j) {
-        carry += (i >= 0 ? a[i] : '0').charCodeAt(0) - '0'.charCodeAt(0);
-        carry += (j >= 0 ? b[j] : '0').charCodeAt(0) - '0'.charCodeAt(0);
-        ans.push(carry % 2);
-        carry >>= 1;
-    }
-    return ans.reverse().join('');
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -164,7 +155,7 @@ impl Solution {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -185,10 +176,50 @@ public class Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        ans = []
+        i, j, carry = len(a) - 1, len(b) - 1, 0
+        while i >= 0 or j >= 0 or carry:
+            carry += (0 if i < 0 else int(a[i])) + (0 if j < 0 else int(b[j]))
+            carry, v = divmod(carry, 2)
+            ans.append(str(v))
+            i, j = i - 1, j - 1
+        return ''.join(ans[::-1])
 ```
 
+#### TypeScript
+
+```ts
+function addBinary(a: string, b: string): string {
+    let i = a.length - 1;
+    let j = b.length - 1;
+    let ans: number[] = [];
+    for (let carry = 0; i >= 0 || j >= 0 || carry; --i, --j) {
+        carry += (i >= 0 ? a[i] : '0').charCodeAt(0) - '0'.charCodeAt(0);
+        carry += (j >= 0 ? b[j] : '0').charCodeAt(0) - '0'.charCodeAt(0);
+        ans.push(carry % 2);
+        carry >>= 1;
+    }
+    return ans.reverse().join('');
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

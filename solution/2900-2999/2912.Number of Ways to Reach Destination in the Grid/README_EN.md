@@ -1,8 +1,22 @@
-# [2912. Number of Ways to Reach Destination in the Grid](https://leetcode.com/problems/number-of-ways-to-reach-destination-in-the-grid)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2912.Number%20of%20Ways%20to%20Reach%20Destination%20in%20the%20Grid/README_EN.md
+tags:
+    - Math
+    - Dynamic Programming
+    - Combinatorics
+---
+
+<!-- problem:start -->
+
+# [2912. Number of Ways to Reach Destination in the Grid 🔒](https://leetcode.com/problems/number-of-ways-to-reach-destination-in-the-grid)
 
 [中文文档](/solution/2900-2999/2912.Number%20of%20Ways%20to%20Reach%20Destination%20in%20the%20Grid/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two integers <code>n</code> and <code>m</code> which represent the size of a <strong>1-indexed </strong>grid. You are also given an integer <code>k</code>, a <strong>1-indexed</strong> integer array <code>source</code> and a <strong>1-indexed</strong> integer array <code>dest</code>, where <code>source</code> and <code>dest</code> are in the form <code>[x, y]</code> representing a cell on the given grid.</p>
 
@@ -56,9 +70,13 @@
 	<li><code>1 &lt;= source[2], dest[2] &lt;= m</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming
 
 We define the following states:
 
@@ -86,11 +104,13 @@ The time complexity is $O(k)$, where $k$ is the number of moves. The space compl
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
-    def numberOfWays(self, n: int, m: int, k: int, source: List[int], dest: List[int]) -> int:
+    def numberOfWays(
+        self, n: int, m: int, k: int, source: List[int], dest: List[int]
+    ) -> int:
         mod = 10**9 + 7
         a, b, c, d = 1, 0, 0, 0
         for _ in range(k):
@@ -104,9 +124,13 @@ class Solution:
         return b if source[1] == dest[1] else d
 ```
 
+#### Python3
+
 ```python
 class Solution:
-    def numberOfWays(self, n: int, m: int, k: int, source: List[int], dest: List[int]) -> int:
+    def numberOfWays(
+        self, n: int, m: int, k: int, source: List[int], dest: List[int]
+    ) -> int:
         mod = 10**9 + 7
         f = [1, 0, 0, 0]
         for _ in range(k):
@@ -121,7 +145,7 @@ class Solution:
         return f[1] if source[1] == dest[1] else f[3]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -145,7 +169,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -170,7 +194,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfWays(n int, m int, k int, source []int, dest []int) int {
@@ -199,10 +223,8 @@ func numberOfWays(n int, m int, k int, source []int, dest []int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

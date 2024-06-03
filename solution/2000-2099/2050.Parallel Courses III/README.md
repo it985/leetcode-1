@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2050.Parallel%20Courses%20III/README.md
+rating: 2084
+source: 第 264 场周赛 Q4
+tags:
+    - 图
+    - 拓扑排序
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2050. 并行课程 III](https://leetcode.cn/problems/parallel-courses-iii)
 
 [English Version](/solution/2000-2099/2050.Parallel%20Courses%20III/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数&nbsp;<code>n</code>&nbsp;，表示有&nbsp;<code>n</code>&nbsp;节课，课程编号从&nbsp;<code>1</code>&nbsp;到&nbsp;<code>n</code>&nbsp;。同时给你一个二维整数数组&nbsp;<code>relations</code>&nbsp;，其中&nbsp;<code>relations[j] = [prevCourse<sub>j</sub>, nextCourse<sub>j</sub>]</code>&nbsp;，表示课程&nbsp;<code>prevCourse<sub>j</sub></code>&nbsp;必须在课程&nbsp;<code>nextCourse<sub>j</sub></code>&nbsp;<strong>之前</strong>&nbsp;完成（先修课的关系）。同时给你一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>time</code>&nbsp;，其中&nbsp;<code>time[i]</code>&nbsp;表示完成第&nbsp;<code>(i+1)</code>&nbsp;门课程需要花费的 <strong>月份</strong>&nbsp;数。</p>
 
@@ -63,11 +78,13 @@
 	<li>先修课程图是一个有向无环图。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：拓扑排序 + 动态规划**
+### 方法一：拓扑排序 + 动态规划
 
 我们首先根据给定的先修课程关系，构建出一个有向无环图，对该图进行拓扑排序，然后根据拓扑排序的结果，使用动态规划求出完成所有课程所需要的最少时间。
 
@@ -78,7 +95,7 @@
 -   数组 $f$ 存储每个节点的最早完成时间，初始时 $f[i] = 0$；
 -   变量 $ans$ 记录最终的答案，初始时 $ans = 0$；
 
-当 $q$ 非空时，依次取出队首节点 $i$，遍历 $g[i]$ 中的每个节点 $j$，更新 $f[j] = max(f[j], f[i] + time[j])$，同时更新 $ans = \max(ans, f[j])$，并将 $j$ 的入度减 $1$，如果此时 $j$ 的入度为 $0$，则将 $j$ 加入队列 $q$ 中；
+当 $q$ 非空时，依次取出队首节点 $i$，遍历 $g[i]$ 中的每个节点 $j$，更新 $f[j] = \max(f[j], f[i] + time[j])$，同时更新 $ans = \max(ans, f[j])$，并将 $j$ 的入度减 $1$，如果此时 $j$ 的入度为 $0$，则将 $j$ 加入队列 $q$ 中；
 
 最终返回 $ans$。
 
@@ -86,9 +103,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -117,9 +132,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -158,7 +171,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -198,7 +211,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumTime(n int, relations [][]int, time []int) int {
@@ -235,7 +248,7 @@ func minimumTime(n int, relations [][]int, time []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumTime(n: number, relations: number[][], time: number[]): number {
@@ -271,10 +284,8 @@ function minimumTime(n: number, relations: number[][], time: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

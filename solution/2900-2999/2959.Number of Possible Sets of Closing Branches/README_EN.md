@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2959.Number%20of%20Possible%20Sets%20of%20Closing%20Branches/README_EN.md
+rating: 2077
+source: Biweekly Contest 119 Q4
+tags:
+    - Bit Manipulation
+    - Graph
+    - Enumeration
+    - Shortest Path
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [2959. Number of Possible Sets of Closing Branches](https://leetcode.com/problems/number-of-possible-sets-of-closing-branches)
 
 [中文文档](/solution/2900-2999/2959.Number%20of%20Possible%20Sets%20of%20Closing%20Branches/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is a company with <code>n</code> branches across the country, some of which are connected by roads. Initially, all branches are reachable from each other by traveling some roads.</p>
 
@@ -74,9 +92,13 @@ It can be proven, that there are only 2 possible sets of closing branches.
 	<li>All branches are reachable from each other by traveling some roads.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Binary Enumeration + Floyd Algorithm**
+<!-- solution:start -->
+
+### Solution 1: Binary Enumeration + Floyd Algorithm
 
 We notice that $n \leq 10$, so we might as well consider using the method of binary enumeration to enumerate all subsets of departments.
 
@@ -86,7 +108,7 @@ The time complexity is $O(2^n \times (n^3 + m))$, and the space complexity is $O
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -116,7 +138,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -161,7 +183,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -203,7 +225,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfSets(n int, maxDistance int, roads [][]int) (ans int) {
@@ -246,7 +268,7 @@ func numberOfSets(n int, maxDistance int, roads [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfSets(n: number, maxDistance: number, roads: number[][]): number {
@@ -283,10 +305,8 @@ function numberOfSets(n: number, maxDistance: number, roads: number[][]): number
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

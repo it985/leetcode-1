@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0721.Accounts%20Merge/README.md
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 并查集
+    - 数组
+    - 哈希表
+    - 字符串
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [721. 账户合并](https://leetcode.cn/problems/accounts-merge)
 
 [English Version](/solution/0700-0799/0721.Accounts%20Merge/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个列表 <code>accounts</code>，每个元素 <code>accounts[i]</code>&nbsp;是一个字符串列表，其中第一个元素 <code>accounts[i][0]</code>&nbsp;是&nbsp;<em>名称 (name)</em>，其余元素是 <em><strong>emails</strong> </em>表示该账户的邮箱地址。</p>
 
@@ -45,84 +61,17 @@
 	<li><code>accounts[i][j] (for j &gt; 0)</code> 是有效的邮箱地址</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-并查集。
-
-模板 1——朴素并查集：
-
-```python
-# 初始化，p存储每个点的父节点
-p = list(range(n))
-
-
-# 返回x的祖宗节点
-def find(x):
-    if p[x] != x:
-        # 路径压缩
-        p[x] = find(p[x])
-    return p[x]
-
-
-# 合并a和b所在的两个集合
-p[find(a)] = find(b)
-```
-
-模板 2——维护 size 的并查集：
-
-```python
-# 初始化，p存储每个点的父节点，size只有当节点是祖宗节点时才有意义，表示祖宗节点所在集合中，点的数量
-p = list(range(n))
-size = [1] * n
-
-
-# 返回x的祖宗节点
-def find(x):
-    if p[x] != x:
-        # 路径压缩
-        p[x] = find(p[x])
-    return p[x]
-
-
-# 合并a和b所在的两个集合
-if find(a) != find(b):
-    size[find(b)] += size[find(a)]
-    p[find(a)] = find(b)
-```
-
-模板 3——维护到祖宗节点距离的并查集：
-
-```python
-# 初始化，p存储每个点的父节点，d[x]存储x到p[x]的距离
-p = list(range(n))
-d = [0] * n
-
-
-# 返回x的祖宗节点
-def find(x):
-    if p[x] != x:
-        t = find(p[x])
-        d[x] += d[p[x]]
-        p[x] = t
-    return p[x]
-
-
-# 合并a和b所在的两个集合
-p[find(a)] = find(b)
-d[find(a)] = distance
-```
-
-对于本题，初始每个 account 是一个独立的集合。遍历 accounts 列表，若遇到相同的 email，则将两账户进行合并，遍历完毕得到并查集。
-
-接着对每个集合进行中的所有账户邮箱进行合并排序，最后返回账户名称以及对应的邮箱列表。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -155,9 +104,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -210,7 +157,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -261,10 +208,8 @@ public:
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

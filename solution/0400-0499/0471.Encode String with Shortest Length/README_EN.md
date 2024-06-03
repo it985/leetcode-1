@@ -1,8 +1,21 @@
-# [471. Encode String with Shortest Length](https://leetcode.com/problems/encode-string-with-shortest-length)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0471.Encode%20String%20with%20Shortest%20Length/README_EN.md
+tags:
+    - String
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
+# [471. Encode String with Shortest Length 🔒](https://leetcode.com/problems/encode-string-with-shortest-length)
 
 [中文文档](/solution/0400-0499/0471.Encode%20String%20with%20Shortest%20Length/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a string <code>s</code>, encode the string such that its encoded length is the shortest.</p>
 
@@ -43,11 +56,17 @@
 	<li><code>s</code> consists of only lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +94,7 @@ class Solution:
         return f[0][-1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -117,7 +136,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -157,7 +176,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func encode(s string) string {
@@ -195,7 +214,7 @@ func encode(s string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function encode(s: string): string {
@@ -230,10 +249,8 @@ function encode(s: string): string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

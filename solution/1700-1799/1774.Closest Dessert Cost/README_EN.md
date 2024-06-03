@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1774.Closest%20Dessert%20Cost/README_EN.md
+rating: 1701
+source: Weekly Contest 230 Q2
+tags:
+    - Array
+    - Dynamic Programming
+    - Backtracking
+---
+
+<!-- problem:start -->
+
 # [1774. Closest Dessert Cost](https://leetcode.com/problems/closest-dessert-cost)
 
 [中文文档](/solution/1700-1799/1774.Closest%20Dessert%20Cost/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You would like to make dessert and are preparing to buy the ingredients. You have <code>n</code> ice cream base flavors and <code>m</code> types of toppings to choose from. You must follow these rules when making your dessert:</p>
 
@@ -69,11 +85,17 @@ Total: 3 + 4 + 10 + 0 = 17. You cannot make a dessert with a total cost of 18.
 	<li><code>1 &lt;= target &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -91,8 +113,12 @@ class Solution:
         dfs(0, 0)
         arr.sort()
         d = ans = inf
+
+        # 选择一种冰激淋基料
         for x in baseCosts:
+            # 枚举子集和
             for y in arr:
+                # 二分查找
                 i = bisect_left(arr, target - x - y)
                 for j in (i, i - 1):
                     if 0 <= j < len(arr):
@@ -103,7 +129,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -116,8 +142,12 @@ class Solution {
         dfs(0, 0);
         Collections.sort(arr);
         int d = inf, ans = inf;
+
+        // 选择一种冰激淋基料
         for (int x : baseCosts) {
+            // 枚举子集和
             for (int y : arr) {
+                // 二分查找
                 int i = search(target - x - y);
                 for (int j : new int[] {i, i - 1}) {
                     if (j >= 0 && j < arr.size()) {
@@ -157,7 +187,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -176,8 +206,11 @@ public:
         dfs(0, 0);
         sort(arr.begin(), arr.end());
         int d = inf, ans = inf;
+        // 选择一种冰激淋基料
         for (int x : baseCosts) {
+            // 枚举子集和
             for (int y : arr) {
+                // 二分查找
                 int i = lower_bound(arr.begin(), arr.end(), target - x - y) - arr.begin();
                 for (int j = i - 1; j < i + 1; ++j) {
                     if (j >= 0 && j < arr.size()) {
@@ -195,7 +228,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func closestCost(baseCosts []int, toppingCosts []int, target int) int {
@@ -213,8 +246,11 @@ func closestCost(baseCosts []int, toppingCosts []int, target int) int {
 	sort.Ints(arr)
 	const inf = 1 << 30
 	ans, d := inf, inf
+	// 选择一种冰激淋基料
 	for _, x := range baseCosts {
+		// 枚举子集和
 		for _, y := range arr {
+			// 二分查找
 			i := sort.SearchInts(arr, target-x-y)
 			for j := i - 1; j < i+1; j++ {
 				if j >= 0 && j < len(arr) {
@@ -238,10 +274,34 @@ func abs(x int) int {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+const closestCost = function (baseCosts, toppingCosts, target) {
+    let closestDessertCost = -Infinity;
+    function dfs(dessertCost, j) {
+        const tarCurrDiff = Math.abs(target - dessertCost);
+        const tarCloseDiff = Math.abs(target - closestDessertCost);
+        if (tarCurrDiff < tarCloseDiff) {
+            closestDessertCost = dessertCost;
+        } else if (tarCurrDiff === tarCloseDiff && dessertCost < closestDessertCost) {
+            closestDessertCost = dessertCost;
+        }
+        if (dessertCost > target) return;
+        if (j === toppingCosts.length) return;
+        for (let count = 0; count <= 2; count++) {
+            dfs(dessertCost + count * toppingCosts[j], j + 1);
+        }
+    }
+    for (let i = 0; i < baseCosts.length; i++) {
+        dfs(baseCosts[i], 0);
+    }
+    return closestDessertCost;
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2033.Minimum%20Operations%20to%20Make%20a%20Uni-Value%20Grid/README_EN.md
+rating: 1671
+source: Weekly Contest 262 Q2
+tags:
+    - Array
+    - Math
+    - Matrix
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2033. Minimum Operations to Make a Uni-Value Grid](https://leetcode.com/problems/minimum-operations-to-make-a-uni-value-grid)
 
 [中文文档](/solution/2000-2099/2033.Minimum%20Operations%20to%20Make%20a%20Uni-Value%20Grid/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a 2D integer <code>grid</code> of size <code>m x n</code> and an integer <code>x</code>. In one operation, you can <strong>add</strong> <code>x</code> to or <strong>subtract</strong> <code>x</code> from any element in the <code>grid</code>.</p>
 
@@ -50,9 +67,13 @@ A total of 4 operations were used.
 	<li><code>1 &lt;= x, grid[i][j] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy**
+<!-- solution:start -->
+
+### Solution 1: Greedy
 
 Firstly, to make the grid a single-value grid, the remainder of all elements of the grid with $x$ must be the same.
 
@@ -62,7 +83,7 @@ The time complexity is $O((m \times n) \times \log (m \times n))$, and the space
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -79,7 +100,7 @@ class Solution:
         return sum(abs(v - mid) // x for v in nums)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -106,7 +127,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -134,7 +155,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minOperations(grid [][]int, x int) int {
@@ -165,10 +186,8 @@ func abs(x int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

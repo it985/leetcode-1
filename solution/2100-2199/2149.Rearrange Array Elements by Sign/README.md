@@ -1,14 +1,28 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2149.Rearrange%20Array%20Elements%20by%20Sign/README.md
+rating: 1235
+source: 第 277 场周赛 Q2
+tags:
+    - 数组
+    - 双指针
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [2149. 按符号重排数组](https://leetcode.cn/problems/rearrange-array-elements-by-sign)
 
 [English Version](/solution/2100-2199/2149.Rearrange%20Array%20Elements%20by%20Sign/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> ，数组长度为 <strong>偶数</strong> ，由数目相等的正整数和负整数组成。</p>
+<p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> ，数组长度为 <strong>偶数</strong> ，由数目 <strong>相等</strong> 的正整数和负整数组成。</p>
 
-<p>你需要 <strong>重排</strong> <code>nums</code> 中的元素，使修改后的数组满足下述条件：</p>
+<p>你需要返回满足下述条件的数组&nbsp;<code>nums</code>：</p>
 
 <ol>
 	<li>任意&nbsp;<strong>连续</strong> 的两个整数 <strong>符号相反</strong></li>
@@ -52,15 +66,21 @@ nums 中的正整数是 [3,1,2] ，负整数是 [-2,-5,-4] 。
 	<li><code>nums</code> 由 <strong>相等</strong> 数量的正整数和负整数组成</li>
 </ul>
 
+<p>&nbsp;</p>
+
+<p>不需要原地进行修改。</p>
+
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,9 +97,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -123,7 +141,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func rearrangeArray(nums []int) []int {
@@ -142,9 +160,7 @@ func rearrangeArray(nums []int) []int {
 }
 ```
 
-### **TypeScript**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### TypeScript
 
 ```ts
 function rearrangeArray(nums: number[]): number[] {
@@ -164,10 +180,8 @@ function rearrangeArray(nums: number[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

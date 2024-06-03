@@ -1,31 +1,47 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2937.Make%20Three%20Strings%20Equal/README_EN.md
+rating: 1347
+source: Weekly Contest 372 Q1
+tags:
+    - String
+---
+
+<!-- problem:start -->
+
 # [2937. Make Three Strings Equal](https://leetcode.com/problems/make-three-strings-equal)
 
 [中文文档](/solution/2900-2999/2937.Make%20Three%20Strings%20Equal/README.md)
 
 ## Description
 
-<p>You are given three strings <code>s1</code>, <code>s2</code>, and <code>s3</code>. You have to perform the following operation on these three strings <strong>as many times</strong> as you want<!-- notionvc: b5178de7-3318-4129-b7d9-726b47e90621 -->.</p>
+<!-- description:start -->
 
-<p>In one operation you can choose one of these three strings such that its length is at least <code>2</code><!-- notionvc: 3342ac46-33c8-4010-aacd-e58678ce31ef --> and delete the <strong>rightmost</strong> character of it.</p>
+<p>You are given three strings: <code>s1</code>, <code>s2</code>, and <code>s3</code>. In one operation you can choose one of these strings and delete its <strong>rightmost</strong> character. Note that you <strong>cannot</strong> completely empty a string.</p>
 
-<p>Return <em>the <strong>minimum</strong> number of operations you need to perform to make the three strings equal if there is a way to make them equal, otherwise, return </em><code>-1</code><em>.</em></p>
+<p>Return the <em>minimum number of operations</em> required to make the strings equal<em>. </em>If it is impossible to make them equal, return <code>-1</code>.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre>
-<strong>Input:</strong> s1 = &quot;abc&quot;, s2 = &quot;abb&quot;, s3 = &quot;ab&quot;
-<strong>Output:</strong> 2
-<strong>Explanation:</strong> Performing operations on s1 and s2 once will lead to three equal strings.
-It can be shown that there is no way to make them equal with less than two operations.</pre>
+<div class="example-block" style="border-color: var(--border-tertiary); border-left-width: 2px; color: var(--text-secondary); font-size: .875rem; margin-bottom: 1rem; margin-top: 1rem; overflow: visible; padding-left: 1rem;">
+<p><strong>Input: </strong><span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;">s1 = &quot;abc&quot;, s2 = &quot;abb&quot;, s3 = &quot;ab&quot;</span></p>
+
+<p><strong>Output: </strong><span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;">2</span></p>
+
+<p><strong>Explanation:&nbsp;</strong>Deleting the rightmost character from both <code>s1</code> and <code>s2</code> will result in three equal strings.</p>
+</div>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre>
-<strong>Input:</strong> s1 = &quot;dac&quot;, s2 = &quot;bac&quot;, s3 = &quot;cac&quot;
-<strong>Output:</strong> -1
-<strong>Explanation:</strong> Because the leftmost letters<!-- notionvc: 47239f7c-eec1-49f8-af79-c206ec88cb07 --> of s1 and s2 are not equal, they could not be equal after any number of operations. So the answer is -1.
-</pre>
+<div class="example-block" style="border-color: var(--border-tertiary); border-left-width: 2px; color: var(--text-secondary); font-size: .875rem; margin-bottom: 1rem; margin-top: 1rem; overflow: visible; padding-left: 1rem;">
+<p><strong>Input: </strong><span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;">s1 = &quot;dac&quot;, s2 = &quot;bac&quot;, s3 = &quot;cac&quot;</span></p>
+
+<p><strong>Output: </strong><span class="example-io" style="font-family: Menlo,sans-serif; font-size: 0.85rem;">-1</span></p>
+
+<p><strong>Explanation:</strong> Since the first letters of <code>s1</code> and <code>s2</code> differ, they cannot be made equal.</p>
+</div>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
@@ -35,9 +51,13 @@ It can be shown that there is no way to make them equal with less than two opera
 	<li><font face="monospace"><code>s1</code>,</font> <code><font face="monospace">s2</font></code><font face="monospace"> and</font> <code><font face="monospace">s3</font></code> consist only of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Enumeration
 
 According to the problem description, we know that if the three strings are equal after deleting characters, then they have a common prefix of length greater than $1$. Therefore, we can enumerate the position $i$ of the common prefix. If the three characters at the current index $i$ are not all equal, then the length of the common prefix is $i$. At this point, we check if $i$ is $0$. If it is, return $-1$. Otherwise, return $s - 3 \times i$, where $s$ is the sum of the lengths of the three strings.
 
@@ -45,7 +65,7 @@ The time complexity is $O(n)$, where $n$ is the minimum length of the three stri
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -58,7 +78,7 @@ class Solution:
         return s - 3 * n
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -75,7 +95,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -93,7 +113,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findMinimumOperations(s1 string, s2 string, s3 string) int {
@@ -111,7 +131,7 @@ func findMinimumOperations(s1 string, s2 string, s3 string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findMinimumOperations(s1: string, s2: string, s3: string): number {
@@ -126,10 +146,8 @@ function findMinimumOperations(s1: string, s2: string, s3: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

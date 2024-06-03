@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2374.Node%20With%20Highest%20Edge%20Score/README.md
+rating: 1418
+source: 第 306 场周赛 Q2
+tags:
+    - 图
+    - 哈希表
+---
+
+<!-- problem:start -->
+
 # [2374. 边积分最高的节点](https://leetcode.cn/problems/node-with-highest-edge-score)
 
 [English Version](/solution/2300-2399/2374.Node%20With%20Highest%20Edge%20Score/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个有向图，图中有 <code>n</code> 个节点，节点编号从 <code>0</code> 到 <code>n - 1</code> ，其中每个节点都 <strong>恰有一条</strong> 出边。</p>
 
@@ -49,11 +62,13 @@
 	<li><code>edges[i] != i</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：遍历计数**
+### 方法一：遍历计数
 
 定义 $cnt$，其中每个元素 $cnt[i]$ 表示到节点 $i$ 的所有节点编号之和。
 
@@ -63,9 +78,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,9 +93,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -103,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -125,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func edgeScore(edges []int) int {
@@ -144,7 +155,7 @@ func edgeScore(edges []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function edgeScore(edges: number[]): number {
@@ -163,11 +174,8 @@ function edgeScore(edges: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2962.Count%20Subarrays%20Where%20Max%20Element%20Appears%20at%20Least%20K%20Times/README_EN.md
+rating: 1700
+source: Weekly Contest 375 Q3
+tags:
+    - Array
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [2962. Count Subarrays Where Max Element Appears at Least K Times](https://leetcode.com/problems/count-subarrays-where-max-element-appears-at-least-k-times)
 
 [中文文档](/solution/2900-2999/2962.Count%20Subarrays%20Where%20Max%20Element%20Appears%20at%20Least%20K%20Times/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code> and a <strong>positive</strong> integer <code>k</code>.</p>
 
@@ -36,9 +51,13 @@
 	<li><code>1 &lt;= k &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Two Pointers
 
 Let's denote the maximum value in the array as $mx$.
 
@@ -50,7 +69,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array $nums$. The 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +88,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -93,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -118,7 +137,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countSubarrays(nums []int, k int) (ans int64) {
@@ -143,7 +162,7 @@ func countSubarrays(nums []int, k int) (ans int64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countSubarrays(nums: number[], k: number): number {
@@ -165,10 +184,8 @@ function countSubarrays(nums: number[], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

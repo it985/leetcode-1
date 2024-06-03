@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0783.Minimum%20Distance%20Between%20BST%20Nodes/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 广度优先搜索
+    - 二叉搜索树
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [783. 二叉搜索树节点最小距离](https://leetcode.cn/problems/minimum-distance-between-bst-nodes)
 
 [English Version](/solution/0700-0799/0783.Minimum%20Distance%20Between%20BST%20Nodes/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个二叉搜索树的根节点 <code>root</code> ，返回 <strong>树中任意两不同节点值之间的最小差值</strong> 。</p>
 
@@ -43,19 +57,19 @@
 </div>
 </div>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：中序遍历**
+### 方法一：中序遍历
 
 中序遍历二叉搜索树，获取当前节点与上个节点差值的最小值即可。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -80,9 +94,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -124,7 +136,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -160,7 +172,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -196,4 +208,28 @@ func abs(x int) int {
 }
 ```
 
+#### JavaScript
+
+```js
+var minDiffInBST = function (root) {
+    let ans = Number.MAX_SAFE_INTEGER,
+        prev = Number.MAX_SAFE_INTEGER;
+    const dfs = root => {
+        if (!root) {
+            return;
+        }
+        dfs(root.left);
+        ans = Math.min(ans, Math.abs(root.val - prev));
+        prev = root.val;
+        dfs(root.right);
+    };
+    dfs(root);
+    return ans;
+};
+```
+
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

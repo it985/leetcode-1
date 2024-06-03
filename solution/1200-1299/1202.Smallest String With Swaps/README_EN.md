@@ -1,8 +1,28 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1202.Smallest%20String%20With%20Swaps/README_EN.md
+rating: 1855
+source: Weekly Contest 155 Q3
+tags:
+    - Depth-First Search
+    - Breadth-First Search
+    - Union Find
+    - Array
+    - Hash Table
+    - String
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1202. Smallest String With Swaps](https://leetcode.com/problems/smallest-string-with-swaps)
 
 [中文文档](/solution/1200-1299/1202.Smallest%20String%20With%20Swaps/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>s</code>, and an array of pairs of indices in the string&nbsp;<code>pairs</code>&nbsp;where&nbsp;<code>pairs[i] =&nbsp;[a, b]</code>&nbsp;indicates 2 indices(0-indexed) of the string.</p>
 
@@ -52,9 +72,13 @@ Swap s[0] and s[1], s = &quot;abc&quot;
 	<li><code>s</code>&nbsp;only contains lower case English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Union-Find**
+<!-- solution:start -->
+
+### Solution 1: Union-Find
 
 We notice that the index pairs have transitivity, i.e., if $a$ and $b$ can be swapped, and $b$ and $c$ can be swapped, then $a$ and $c$ can also be swapped. Therefore, we can consider using a union-find data structure to maintain the connectivity of these index pairs, and sort the characters belonging to the same connected component in lexicographical order.
 
@@ -64,7 +88,7 @@ The time complexity is $O(n \times \log n + m \times \alpha(m))$, and the space 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -86,7 +110,7 @@ class Solution:
         return "".join(d[find(i)].pop() for i in range(n))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -127,7 +151,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -163,7 +187,75 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func smallestStringWithSwaps(s string, pairs [][]int) string {
+	n := len(s)
+	p := make([]int, n)
+	d := make([][]byte, n)
+	for i := range p {
+		p[i] = i
+	}
+	var find func(int) int
+	find = func(x int) int {
+		if p[x] != x {
+			p[x] = find(p[x])
+		}
+		return p[x]
+	}
+	for _, pair := range pairs {
+		a, b := pair[0], pair[1]
+		p[find(a)] = find(b)
+	}
+	cs := []byte(s)
+	for i, c := range cs {
+		j := find(i)
+		d[j] = append(d[j], c)
+	}
+	for i := range d {
+		sort.Slice(d[i], func(a, b int) bool { return d[i][a] > d[i][b] })
+	}
+	for i := range cs {
+		j := find(i)
+		cs[i] = d[j][len(d[j])-1]
+		d[j] = d[j][:len(d[j])-1]
+	}
+	return string(cs)
+}
+```
+
+#### TypeScript
+
+```ts
+function smallestStringWithSwaps(s: string, pairs: number[][]): string {
+    const n = s.length;
+    const p = new Array(n).fill(0).map((_, i) => i);
+    const find = (x: number): number => {
+        if (p[x] !== x) {
+            p[x] = find(p[x]);
+        }
+        return p[x];
+    };
+    const d: string[][] = new Array(n).fill(0).map(() => []);
+    for (const [a, b] of pairs) {
+        p[find(a)] = find(b);
+    }
+    for (let i = 0; i < n; ++i) {
+        d[find(i)].push(s[i]);
+    }
+    for (const e of d) {
+        e.sort((a, b) => b.charCodeAt(0) - a.charCodeAt(0));
+    }
+    const ans: string[] = [];
+    for (let i = 0; i < n; ++i) {
+        ans.push(d[find(i)].pop()!);
+    }
+    return ans.join('');
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -224,78 +316,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func smallestStringWithSwaps(s string, pairs [][]int) string {
-	n := len(s)
-	p := make([]int, n)
-	d := make([][]byte, n)
-	for i := range p {
-		p[i] = i
-	}
-	var find func(int) int
-	find = func(x int) int {
-		if p[x] != x {
-			p[x] = find(p[x])
-		}
-		return p[x]
-	}
-	for _, pair := range pairs {
-		a, b := pair[0], pair[1]
-		p[find(a)] = find(b)
-	}
-	cs := []byte(s)
-	for i, c := range cs {
-		j := find(i)
-		d[j] = append(d[j], c)
-	}
-	for i := range d {
-		sort.Slice(d[i], func(a, b int) bool { return d[i][a] > d[i][b] })
-	}
-	for i := range cs {
-		j := find(i)
-		cs[i] = d[j][len(d[j])-1]
-		d[j] = d[j][:len(d[j])-1]
-	}
-	return string(cs)
-}
-```
-
-### **TypeScript**
-
-```ts
-function smallestStringWithSwaps(s: string, pairs: number[][]): string {
-    const n = s.length;
-    const p = new Array(n).fill(0).map((_, i) => i);
-    const find = (x: number): number => {
-        if (p[x] !== x) {
-            p[x] = find(p[x]);
-        }
-        return p[x];
-    };
-    const d: string[][] = new Array(n).fill(0).map(() => []);
-    for (const [a, b] of pairs) {
-        p[find(a)] = find(b);
-    }
-    for (let i = 0; i < n; ++i) {
-        d[find(i)].push(s[i]);
-    }
-    for (const e of d) {
-        e.sort((a, b) => b.charCodeAt(0) - a.charCodeAt(0));
-    }
-    const ans: string[] = [];
-    for (let i = 0; i < n; ++i) {
-        ans.push(d[find(i)].pop()!);
-    }
-    return ans.join('');
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

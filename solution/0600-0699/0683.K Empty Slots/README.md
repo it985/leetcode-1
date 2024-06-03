@@ -1,10 +1,23 @@
-# [683. K 个关闭的灯泡](https://leetcode.cn/problems/k-empty-slots)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0683.K%20Empty%20Slots/README.md
+tags:
+    - 树状数组
+    - 数组
+    - 有序集合
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
+# [683. K 个关闭的灯泡 🔒](https://leetcode.cn/problems/k-empty-slots)
 
 [English Version](/solution/0600-0699/0683.K%20Empty%20Slots/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><code>n</code>&nbsp;个灯泡排成一行，编号从 <code>1</code> 到<meta charset="UTF-8" />&nbsp;<code>n</code>&nbsp;。最初，所有灯泡都关闭。每天&nbsp;<strong>只打开一个</strong>&nbsp;灯泡，直到<meta charset="UTF-8" />&nbsp;<code>n</code>&nbsp;天后所有灯泡都打开。</p>
 
@@ -46,11 +59,13 @@ bulbs = [1,3,2]，k = 1
 	<li><code>0 &lt;= k &lt;= 2 * 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：树状数组**
+### 方法一：树状数组
 
 我们可以使用树状数组来维护区间和，每一次打开灯泡，我们就在树状数组中更新对应位置的值，然后查询当前位置左边 $k$ 个灯泡是否都是关闭的，并且第 $k+1$ 个灯泡是否已经打开；或者查询当前位置右边 $k$ 个灯泡是否都是关闭的，并且第 $k+1$ 个灯泡是否已经打开。如果满足这两个条件之一，那么就说明当前位置是一个符合要求的位置，我们就可以返回当前的天数。
 
@@ -58,9 +73,7 @@ bulbs = [1,3,2]，k = 1
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class BinaryIndexedTree:
@@ -98,9 +111,7 @@ class Solution:
         return -1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -150,7 +161,7 @@ class BinaryIndexedTree {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class BinaryIndexedTree {
@@ -202,7 +213,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type BinaryIndexedTree struct {
@@ -249,7 +260,7 @@ func kEmptySlots(bulbs []int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class BinaryIndexedTree {
@@ -297,10 +308,8 @@ function kEmptySlots(bulbs: number[], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

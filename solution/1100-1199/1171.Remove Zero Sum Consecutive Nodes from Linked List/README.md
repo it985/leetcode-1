@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1171.Remove%20Zero%20Sum%20Consecutive%20Nodes%20from%20Linked%20List/README.md
+rating: 1782
+source: 第 151 场周赛 Q3
+tags:
+    - 哈希表
+    - 链表
+---
+
+<!-- problem:start -->
+
 # [1171. 从链表中删去总和值为零的连续节点](https://leetcode.cn/problems/remove-zero-sum-consecutive-nodes-from-linked-list)
 
 [English Version](/solution/1100-1199/1171.Remove%20Zero%20Sum%20Consecutive%20Nodes%20from%20Linked%20List/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个链表的头节点&nbsp;<code>head</code>，请你编写代码，反复删去链表中由 <strong>总和</strong>&nbsp;值为 <code>0</code> 的连续节点组成的序列，直到不存在这样的序列为止。</p>
 
@@ -44,11 +57,13 @@
 	<li>对于链表中的每个节点，节点的值：<code>-1000 &lt;= node.val &lt;= 1000</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：前缀和 + 哈希表**
+### 方法一：前缀和 + 哈希表
 
 若链表节点的两个前缀和相等，说明两个前缀和之间的连续节点序列的和为 $0$，那么可以消去这部分连续节点。
 
@@ -62,9 +77,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -89,9 +102,7 @@ class Solution:
         return dummy.next
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -127,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -164,7 +175,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -195,7 +206,7 @@ func removeZeroSumSublists(head *ListNode) *ListNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -227,7 +238,7 @@ function removeZeroSumSublists(head: ListNode | null): ListNode | null {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for singly-linked list.
@@ -273,10 +284,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1797.Design%20Authentication%20Manager/README.md
+rating: 1534
+source: 第 48 场双周赛 Q2
+tags:
+    - 设计
+    - 哈希表
+---
+
+<!-- problem:start -->
+
 # [1797. 设计一个验证系统](https://leetcode.cn/problems/design-authentication-manager)
 
 [English Version](/solution/1700-1799/1797.Design%20Authentication%20Manager/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你需要设计一个包含验证码的验证系统。每一次验证中，用户会收到一个新的验证码，这个验证码在 <code>currentTime</code> 时刻之后 <code>timeToLive</code> 秒过期。如果验证码被更新了，那么它会在 <code>currentTime</code> （可能与之前的 <code>currentTime</code> 不同）时刻延长 <code>timeToLive</code> 秒。</p>
 
@@ -56,11 +69,13 @@ authenticationManager.<code>countUnexpiredTokens</code>(15); // tokenId 为 "bbb
 	<li>所有函数的调用次数总共不超过 <code>2000</code> 次。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们可以简单维护一个哈希表 $d$，键为 `tokenId`，值为过期时间。
 
@@ -74,9 +89,7 @@ authenticationManager.<code>countUnexpiredTokens</code>(15); // tokenId 为 "bbb
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class AuthenticationManager:
@@ -103,9 +116,7 @@ class AuthenticationManager:
 # param_3 = obj.countUnexpiredTokens(currentTime)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class AuthenticationManager {
@@ -147,7 +158,7 @@ class AuthenticationManager {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class AuthenticationManager {
@@ -185,7 +196,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type AuthenticationManager struct {
@@ -227,7 +238,7 @@ func (this *AuthenticationManager) CountUnexpiredTokens(currentTime int) int {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class AuthenticationManager {
@@ -270,7 +281,7 @@ class AuthenticationManager {
  */
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -317,10 +328,8 @@ impl AuthenticationManager {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

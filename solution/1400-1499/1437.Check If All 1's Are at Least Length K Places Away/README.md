@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1437.Check%20If%20All%201%27s%20Are%20at%20Least%20Length%20K%20Places%20Away/README.md
+rating: 1193
+source: 第 187 场周赛 Q2
+tags:
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [1437. 是否所有 1 都至少相隔 k 个元素](https://leetcode.cn/problems/check-if-all-1s-are-at-least-length-k-places-away)
 
 [English Version](/solution/1400-1499/1437.Check%20If%20All%201%27s%20Are%20at%20Least%20Length%20K%20Places%20Away/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个由若干 <code>0</code> 和 <code>1</code> 组成的数组 <code>nums</code> 以及整数 <code>k</code>。如果所有 <code>1</code> 都至少相隔 <code>k</code> 个元素，则返回 <code>True</code> ；否则，返回 <code>False</code> 。</p>
 
@@ -48,11 +60,13 @@
 	<li><code>nums[i]</code> 的值为 <code>0</code> 或 <code>1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们可以遍历数组 $nums$，用变量 $j$ 记录上一个 $1$ 的下标，那么当前位置 $i$ 的元素为 $1$ 时，只需要判断 $i - j - 1$ 是否小于 $k$ 即可。如果小于 $k$，则说明存在两个 $1$ 之间的 $0$ 的个数小于 $k$，返回 `false`；否则，将 $j$ 更新为 $i$，继续遍历数组。
 
@@ -62,9 +76,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -78,9 +90,7 @@ class Solution:
         return True
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +109,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +129,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func kLengthApart(nums []int, k int) bool {
@@ -136,7 +146,7 @@ func kLengthApart(nums []int, k int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function kLengthApart(nums: number[], k: number): boolean {
@@ -153,10 +163,8 @@ function kLengthApart(nums: number[], k: number): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

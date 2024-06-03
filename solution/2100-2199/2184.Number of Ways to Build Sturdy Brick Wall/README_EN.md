@@ -1,8 +1,23 @@
-# [2184. Number of Ways to Build Sturdy Brick Wall](https://leetcode.com/problems/number-of-ways-to-build-sturdy-brick-wall)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2184.Number%20of%20Ways%20to%20Build%20Sturdy%20Brick%20Wall/README_EN.md
+tags:
+    - Bit Manipulation
+    - Array
+    - Dynamic Programming
+    - Bitmask
+---
+
+<!-- problem:start -->
+
+# [2184. Number of Ways to Build Sturdy Brick Wall 🔒](https://leetcode.com/problems/number-of-ways-to-build-sturdy-brick-wall)
 
 [中文文档](/solution/2100-2199/2184.Number%20of%20Ways%20to%20Build%20Sturdy%20Brick%20Wall/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given integers <code>height</code> and <code>width</code> which specify the dimensions of a brick wall you are building. You are also given a <strong>0-indexed</strong> array of <strong>unique</strong> integers <code>bricks</code>, where the <code>i<sup>th</sup></code> brick has a height of <code>1</code> and a width of <code>bricks[i]</code>. You have an <strong>infinite </strong>supply of each type of brick and bricks may <strong>not</strong> be rotated.</p>
 
@@ -41,11 +56,17 @@ There are no ways to build a sturdy wall because the only type of brick we have 
 	<li>All the values of <code>bricks</code> are <strong>unique</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -99,7 +120,7 @@ class Solution:
         return sum(dp[-1]) % mod
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -179,7 +200,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -254,7 +275,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func buildWall(height int, width int, bricks []int) int {
@@ -331,16 +352,8 @@ func buildWall(height int, width int, bricks []int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
-# [2436. 使子数组最大公约数大于一的最小分割数](https://leetcode.cn/problems/minimum-split-into-subarrays-with-gcd-greater-than-one)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2436.Minimum%20Split%20Into%20Subarrays%20With%20GCD%20Greater%20Than%20One/README.md
+tags:
+    - 贪心
+    - 数组
+    - 数学
+    - 动态规划
+    - 数论
+---
+
+<!-- problem:start -->
+
+# [2436. 使子数组最大公约数大于一的最小分割数 🔒](https://leetcode.cn/problems/minimum-split-into-subarrays-with-gcd-greater-than-one)
 
 [English Version](/solution/2400-2499/2436.Minimum%20Split%20Into%20Subarrays%20With%20GCD%20Greater%20Than%20One/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个由正整数组成的数组 <code>nums</code>。</p>
 
@@ -56,11 +70,13 @@
 	<li><code>2 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 数学**
+### 方法一：贪心 + 数学
 
 对于数组中的每个元素，如果它与前面的元素的最大公约数为 $1$，那么它需要作为一个新的子数组的第一个元素。否则，它可以与前面的元素放在同一个子数组中。
 
@@ -72,9 +88,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -88,9 +102,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -112,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -131,7 +143,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumSplits(nums []int) int {
@@ -154,7 +166,7 @@ func gcd(a, b int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumSplits(nums: number[]): number {
@@ -175,10 +187,8 @@ function gcd(a: number, b: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2811.Check%20if%20it%20is%20Possible%20to%20Split%20Array/README.md
+rating: 1543
+source: 第 357 场周赛 Q2
+tags:
+    - 贪心
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2811. 判断是否能拆分数组](https://leetcode.cn/problems/check-if-it-is-possible-to-split-array)
 
 [English Version](/solution/2800-2899/2811.Check%20if%20it%20is%20Possible%20to%20Split%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个长度为 <code>n</code> 的数组 <code>nums</code> 和一个整数 <code>m</code> 。请你判断能否执行一系列操作，将数组拆分成 <code>n</code> 个 <strong>非空 </strong>数组。</p>
 
@@ -64,11 +78,13 @@
 	<li><code>1 &lt;= m &lt;= 200</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索**
+### 方法一：记忆化搜索
 
 我们先预处理得到前缀和数组 $s$，其中 $s[i]$ 表示数组 $nums$ 的前 $i$ 个元素之和。
 
@@ -88,19 +104,9 @@
 
 时间复杂度 $O(n^3)$，空间复杂度 $O(n^2)$。其中 $n$ 是数组 $nums$ 的长度。
 
-**方法二：脑筋急转弯**
-
-不论如何操作，最终总会剩下一个 `length == 2` 的子数组，又因为元素数值不存在负数，所以随着分割操作的进行，子数组的长度和总和都会逐渐变小，其它 `length > 2` 子数组之和肯定要比该子数组之和更大，进而，我们只需要考虑，是否存在一个 `length == 2` 且总和大于等于 `m` 的子数组即可。
-
-> 📢 注意，当 `nums.length <= 2` 时，无需进行操作。
-
-时间复杂度 $O(n)$，空间复杂度 $O(1)$。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -120,9 +126,7 @@ class Solution:
         return dfs(0, len(nums) - 1)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -160,7 +164,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -196,7 +200,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canSplitArray(nums []int, m int) bool {
@@ -232,7 +236,7 @@ func canSplitArray(nums []int, m int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canSplitArray(nums: number[], m: number): boolean {
@@ -266,22 +270,7 @@ function canSplitArray(nums: number[], m: number): boolean {
 }
 ```
 
-```ts
-function canSplitArray(nums: number[], m: number): boolean {
-    const n = nums.length;
-    if (n <= 2) {
-        return true;
-    }
-    for (let i = 1; i < n; i++) {
-        if (nums[i - 1] + nums[i] >= m) {
-            return true;
-        }
-    }
-    return false;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -300,10 +289,41 @@ impl Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二：脑筋急转弯
+
+不论如何操作，最终总会剩下一个 `length == 2` 的子数组，又因为元素数值不存在负数，所以随着分割操作的进行，子数组的长度和总和都会逐渐变小，其它 `length > 2` 子数组之和肯定要比该子数组之和更大，进而，我们只需要考虑，是否存在一个 `length == 2` 且总和大于等于 `m` 的子数组即可。
+
+> 📢 注意，当 `nums.length <= 2` 时，无需进行操作。
+
+时间复杂度 $O(n)$，其中 $n$ 是数组 $nums$ 的长度。空间复杂度 $O(1)$。
+
+<!-- tabs:start -->
+
+#### TypeScript
+
+```ts
+function canSplitArray(nums: number[], m: number): boolean {
+    const n = nums.length;
+    if (n <= 2) {
+        return true;
+    }
+    for (let i = 1; i < n; i++) {
+        if (nums[i - 1] + nums[i] >= m) {
+            return true;
+        }
+    }
+    return false;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

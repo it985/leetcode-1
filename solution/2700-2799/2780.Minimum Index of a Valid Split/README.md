@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2780.Minimum%20Index%20of%20a%20Valid%20Split/README.md
+rating: 1549
+source: 第 354 场周赛 Q3
+tags:
+    - 数组
+    - 哈希表
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2780. 合法分割的最小下标](https://leetcode.cn/problems/minimum-index-of-a-valid-split)
 
 [English Version](/solution/2700-2799/2780.Minimum%20Index%20of%20a%20Valid%20Split/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>如果元素 <code>x</code>&nbsp;在长度为 <code>m</code>&nbsp;的整数数组 <code>arr</code>&nbsp;中满足 <code>freq(x) * 2 &gt; m</code>&nbsp;，那么我们称 <code>x</code>&nbsp;是 <strong>支配元素</strong>&nbsp;。其中&nbsp;<code>freq(x)</code>&nbsp;是 <code>x</code>&nbsp;在数组 <code>arr</code>&nbsp;中出现的次数。注意，根据这个定义，数组 <code>arr</code>&nbsp;<strong>最多</strong>&nbsp;只会有 <strong>一个</strong>&nbsp;支配元素。</p>
 
@@ -60,11 +74,13 @@
 	<li><code>nums</code>&nbsp;有且只有一个支配元素。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们用哈希表统计每个元素出现的次数，然后找出出现次数最多的元素 $x$，即为支配元素。要使得分割后的两个数组中都有支配元素，且支配元素相同，那么支配元素一定是 $x$。
 
@@ -74,9 +90,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -91,9 +105,7 @@ class Solution:
         return -1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -121,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -150,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumIndex(nums []int) int {
@@ -176,7 +188,7 @@ func minimumIndex(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumIndex(nums: number[]): number {
@@ -201,10 +213,8 @@ function minimumIndex(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

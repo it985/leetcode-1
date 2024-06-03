@@ -1,8 +1,22 @@
-# [2459. Sort Array by Moving Items to Empty Space](https://leetcode.com/problems/sort-array-by-moving-items-to-empty-space)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2459.Sort%20Array%20by%20Moving%20Items%20to%20Empty%20Space/README_EN.md
+tags:
+    - Greedy
+    - Array
+    - Sorting
+---
+
+<!-- problem:start -->
+
+# [2459. Sort Array by Moving Items to Empty Space 🔒](https://leetcode.com/problems/sort-array-by-moving-items-to-empty-space)
 
 [中文文档](/solution/2400-2499/2459.Sort%20Array%20by%20Moving%20Items%20to%20Empty%20Space/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code> of size <code>n</code> containing <strong>each</strong> element from <code>0</code> to <code>n - 1</code> (<strong>inclusive</strong>). Each of the elements from <code>1</code> to <code>n - 1</code> represents an item, and the element <code>0</code> represents an empty space.</p>
 
@@ -61,9 +75,13 @@ It can be proven that 2 is the minimum number of operations needed.
 	<li>All the values of <code>nums</code> are <strong>unique</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Permutation Cycle**
+<!-- solution:start -->
+
+### Solution 1: Permutation Cycle
 
 For a permutation cycle of length $m$, if $0$ is in the cycle, the number of swaps is $m-1$; otherwise, the number of swaps is $m+1$.
 
@@ -75,7 +93,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -100,7 +118,7 @@ class Solution:
         return min(a, b)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -138,7 +156,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -171,7 +189,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sortArray(nums []int) int {
@@ -206,16 +224,8 @@ func sortArray(nums []int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2410.Maximum%20Matching%20of%20Players%20With%20Trainers/README_EN.md
+rating: 1381
+source: Biweekly Contest 87 Q2
+tags:
+    - Greedy
+    - Array
+    - Two Pointers
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2410. Maximum Matching of Players With Trainers](https://leetcode.com/problems/maximum-matching-of-players-with-trainers)
 
 [中文文档](/solution/2400-2499/2410.Maximum%20Matching%20of%20Players%20With%20Trainers/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>players</code>, where <code>players[i]</code> represents the <strong>ability</strong> of the <code>i<sup>th</sup></code> player. You are also given a <strong>0-indexed</strong> integer array <code>trainers</code>, where <code>trainers[j]</code> represents the <strong>training capacity </strong>of the <code>j<sup>th</sup></code> trainer.</p>
 
@@ -41,9 +58,13 @@ Each player can only be matched with one trainer, so the maximum answer is 1.
 	<li><code>1 &lt;= players[i], trainers[j] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy + Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Greedy + Two Pointers
 
 Sort the athletes by their abilities in ascending order, and select the trainer with the smallest ability that is greater than or equal to the athlete's ability.
 
@@ -51,7 +72,7 @@ The time complexity is $O(n \times \log n + m \times \log m)$, and the space com
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -68,7 +89,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -114,7 +135,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func matchPlayersAndTrainers(players []int, trainers []int) int {
@@ -134,17 +155,8 @@ func matchPlayersAndTrainers(players []int, trainers []int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

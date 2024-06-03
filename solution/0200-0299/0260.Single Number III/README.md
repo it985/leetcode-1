@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0260.Single%20Number%20III/README.md
+tags:
+    - 位运算
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [260. 只出现一次的数字 III](https://leetcode.cn/problems/single-number-iii)
 
 [English Version](/solution/0200-0299/0260.Single%20Number%20III/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组&nbsp;<code>nums</code>，其中恰好有两个元素只出现一次，其余所有元素均出现两次。 找出只出现一次的那两个元素。你可以按 <strong>任意顺序</strong> 返回答案。</p>
 
@@ -44,11 +55,13 @@
 	<li>除两个只出现一次的整数外，<code>nums</code> 中的其他数字都出现两次</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：位运算**
+### 方法一：位运算
 
 异或运算有以下性质：
 
@@ -65,9 +78,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -82,9 +93,7 @@ class Solution:
         return [a, b]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -106,7 +115,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -129,7 +138,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func singleNumber(nums []int) []int {
@@ -149,7 +158,24 @@ func singleNumber(nums []int) []int {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function singleNumber(nums: number[]): number[] {
+    const xs = nums.reduce((a, b) => a ^ b);
+    const lb = xs & -xs;
+    let a = 0;
+    for (const x of nums) {
+        if (x & lb) {
+            a ^= x;
+        }
+    }
+    const b = xs ^ a;
+    return [a, b];
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -168,43 +194,7 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function singleNumber(nums: number[]): number[] {
-    const xs = nums.reduce((a, b) => a ^ b);
-    const lb = xs & -xs;
-    let a = 0;
-    for (const x of nums) {
-        if (x & lb) {
-            a ^= x;
-        }
-    }
-    const b = xs ^ a;
-    return [a, b];
-}
-```
-
-### **C#**
-
-```cs
-public class Solution {
-    public int[] SingleNumber(int[] nums) {
-        int xs = nums.Aggregate(0, (a, b) => a ^ b);
-        int lb = xs & -xs;
-        int a = 0;
-        foreach(int x in nums) {
-            if ((x & lb) != 0) {
-                a ^= x;
-            }
-        }
-        int b = xs ^ a;
-        return new int[] {a, b};
-    }
-}
-```
-
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -225,10 +215,27 @@ var singleNumber = function (nums) {
 };
 ```
 
-### **...**
+#### C#
 
-```
-
+```cs
+public class Solution {
+    public int[] SingleNumber(int[] nums) {
+        int xs = nums.Aggregate(0, (a, b) => a ^ b);
+        int lb = xs & -xs;
+        int a = 0;
+        foreach(int x in nums) {
+            if ((x & lb) != 0) {
+                a ^= x;
+            }
+        }
+        int b = xs ^ a;
+        return new int[] {a, b};
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

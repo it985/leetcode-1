@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0864.Shortest%20Path%20to%20Get%20All%20Keys/README.md
+tags:
+    - 位运算
+    - 广度优先搜索
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [864. 获取所有钥匙的最短路径](https://leetcode.cn/problems/shortest-path-to-get-all-keys)
 
 [English Version](/solution/0800-0899/0864.Shortest%20Path%20to%20Get%20All%20Keys/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个二维网格&nbsp;<code>grid</code>&nbsp;，其中：</p>
 
@@ -29,7 +42,7 @@
 <p><img src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0800-0899/0864.Shortest%20Path%20to%20Get%20All%20Keys/images/lc-keys2.jpg" /></p>
 
 <pre>
-<strong>输入：</strong>grid = ["@.a.#","###.#","b.A.B"]
+<strong>输入：</strong>grid = ["@.a..","###.#","b.A.B"]
 <strong>输出：</strong>8
 <strong>解释：</strong>目标是获得所有钥匙，而不是打开所有锁。
 </pre>
@@ -63,11 +76,13 @@
 	<li>每个钥匙正好打开一个对应的锁</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：状态压缩 + BFS**
+### 方法一：状态压缩 + BFS
 
 根据题意，我们需要从起点出发，往上下左右四个方向走，获取所有钥匙，最后返回获取所有钥匙所需要的移动的最少次数。若无法获取所有钥匙，返回 $-1$。
 
@@ -101,9 +116,7 @@ f   d c b
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -151,9 +164,7 @@ class Solution:
         return -1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -222,7 +233,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -280,7 +291,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func shortestPathAllKeys(grid []string) int {
@@ -341,10 +352,8 @@ func shortestPathAllKeys(grid []string) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

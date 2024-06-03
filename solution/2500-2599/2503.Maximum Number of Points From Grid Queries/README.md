@@ -1,10 +1,28 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2503.Maximum%20Number%20of%20Points%20From%20Grid%20Queries/README.md
+rating: 2195
+source: 第 323 场周赛 Q4
+tags:
+    - 广度优先搜索
+    - 并查集
+    - 数组
+    - 双指针
+    - 矩阵
+    - 排序
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [2503. 矩阵查询可获得的最大分数](https://leetcode.cn/problems/maximum-number-of-points-from-grid-queries)
 
 [English Version](/solution/2500-2599/2503.Maximum%20Number%20of%20Points%20From%20Grid%20Queries/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个大小为 <code>m x n</code> 的整数矩阵 <code>grid</code> 和一个大小为 <code>k</code> 的数组 <code>queries</code> 。</p>
 
@@ -50,11 +68,13 @@
 	<li><code>1 &lt;= grid[i][j], queries[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：离线查询 + BFS + 优先队列（小根堆）**
+### 方法一：离线查询 + BFS + 优先队列（小根堆）
 
 根据题目描述我们知道，每个查询相互独立，查询的顺序不影响结果，并且题目要我们每次从左上角开始，统计所有可以访问的、且值小于当前查询值的单元格的个数。
 
@@ -68,9 +88,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -95,44 +113,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def maxPoints(self, grid: List[List[int]], queries: List[int]) -> List[int]:
-        def find(x):
-            if p[x] != x:
-                p[x] = find(p[x])
-            return p[x]
-
-        def union(a, b):
-            pa, pb = find(a), find(b)
-            if pa == pb:
-                return
-            p[pa] = pb
-            size[pb] += size[pa]
-
-        m, n = len(grid), len(grid[0])
-        arr = sorted((grid[i][j], i, j) for i in range(m) for j in range(n))
-        k = len(queries)
-        ans = [0] * k
-        p = list(range(m * n))
-        size = [1] * len(p)
-        j = 0
-        for i, v in sorted(enumerate(queries), key=lambda x: x[1]):
-            while j < len(arr) and arr[j][0] < v:
-                _, a, b = arr[j]
-                for x, y in pairwise((-1, 0, 1, 0, -1)):
-                    c, d = a + x, b + y
-                    if 0 <= c < m and 0 <= d < n and grid[c][d] < v:
-                        union(a * n + b, c * n + d)
-                j += 1
-            if grid[0][0] < v:
-                ans[i] = size[find(0)]
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -172,7 +153,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -214,7 +195,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxPoints(grid [][]int, queries []int) []int {
@@ -263,10 +244,8 @@ func (h *hp) Push(v any)        { *h = append(*h, v.(tuple)) }
 func (h *hp) Pop() any          { a := *h; v := a[len(a)-1]; *h = a[:len(a)-1]; return v }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

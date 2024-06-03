@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1347.Minimum%20Number%20of%20Steps%20to%20Make%20Two%20Strings%20Anagram/README.md
+rating: 1330
+source: 第 175 场周赛 Q2
+tags:
+    - 哈希表
+    - 字符串
+    - 计数
+---
+
+<!-- problem:start -->
+
 # [1347. 制造字母异位词的最小步骤数](https://leetcode.cn/problems/minimum-number-of-steps-to-make-two-strings-anagram)
 
 [English Version](/solution/1300-1399/1347.Minimum%20Number%20of%20Steps%20to%20Make%20Two%20Strings%20Anagram/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个长度相等的字符串&nbsp;<code>s</code> 和 <code>t</code>。每一个步骤中，你可以选择将&nbsp;<code>t</code>&nbsp;中的 <strong>任一字符</strong> 替换为 <strong>另一个字符</strong>。</p>
 
@@ -57,11 +71,13 @@
 	<li><code>s</code> 和 <code>t</code>&nbsp;只包含小写英文字母</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：数组或哈希表**
+### 方法一：数组或哈希表
 
 我们可以使用数组或哈希表 `cnt` 统计字符串 $s$ 中每个字符出现的次数，然后遍历字符串 $t$，对于 $t$ 中的每个字符，如果 $cnt$ 中对应的字符出现的次数大于 $0$，则将 $cnt$ 中对应的字符出现的次数减 $1$，否则将答案加 $1$。
 
@@ -69,9 +85,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -86,9 +100,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +120,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -125,7 +137,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minSteps(s string, t string) (ans int) {
@@ -143,7 +155,7 @@ func minSteps(s string, t string) (ans int) {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -166,10 +178,8 @@ var minSteps = function (s, t) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

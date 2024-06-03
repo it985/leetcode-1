@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1316.Distinct%20Echo%20Substrings/README_EN.md
+rating: 1836
+source: Biweekly Contest 17 Q4
+tags:
+    - Trie
+    - String
+    - Hash Function
+    - Rolling Hash
+---
+
+<!-- problem:start -->
+
 # [1316. Distinct Echo Substrings](https://leetcode.com/problems/distinct-echo-substrings)
 
 [中文文档](/solution/1300-1399/1316.Distinct%20Echo%20Substrings/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Return the number of <strong>distinct</strong> non-empty substrings of <code>text</code>&nbsp;that can be written as the concatenation of some string with itself (i.e. it can be written as <code>a + a</code>&nbsp;where <code>a</code> is some string).</p>
 
@@ -31,11 +48,17 @@
 	<li><code>text</code>&nbsp;has only lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -63,7 +86,7 @@ class Solution:
         return len(vis)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 typedef unsigned long long ull;
@@ -137,7 +160,38 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func distinctEchoSubstrings(text string) int {
+	n := len(text)
+	base := 131
+	h := make([]int, n+10)
+	p := make([]int, n+10)
+	p[0] = 1
+	for i, c := range text {
+		t := int(c-'a') + 1
+		p[i+1] = p[i] * base
+		h[i+1] = h[i]*base + t
+	}
+	get := func(l, r int) int {
+		return h[r] - h[l-1]*p[r-l+1]
+	}
+	vis := map[int]bool{}
+	for i := 0; i < n-1; i++ {
+		for j := i + 1; j < n; j += 2 {
+			k := (i + j) >> 1
+			a, b := get(i+1, k+1), get(k+2, j+1)
+			if a == b {
+				vis[a] = true
+			}
+		}
+	}
+	return len(vis)
+}
+```
+
+#### Rust
 
 ```rust
 use std::collections::HashSet;
@@ -184,41 +238,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func distinctEchoSubstrings(text string) int {
-	n := len(text)
-	base := 131
-	h := make([]int, n+10)
-	p := make([]int, n+10)
-	p[0] = 1
-	for i, c := range text {
-		t := int(c-'a') + 1
-		p[i+1] = p[i] * base
-		h[i+1] = h[i]*base + t
-	}
-	get := func(l, r int) int {
-		return h[r] - h[l-1]*p[r-l+1]
-	}
-	vis := map[int]bool{}
-	for i := 0; i < n-1; i++ {
-		for j := i + 1; j < n; j += 2 {
-			k := (i + j) >> 1
-			a, b := get(i+1, k+1), get(k+2, j+1)
-			if a == b {
-				vis[a] = true
-			}
-		}
-	}
-	return len(vis)
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

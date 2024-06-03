@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2136.Earliest%20Possible%20Day%20of%20Full%20Bloom/README.md
+rating: 2033
+source: 第 275 场周赛 Q4
+tags:
+    - 贪心
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2136. 全部开花的最早一天](https://leetcode.cn/problems/earliest-possible-day-of-full-bloom)
 
 [English Version](/solution/2100-2199/2136.Earliest%20Possible%20Day%20of%20Full%20Bloom/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你有 <code>n</code> 枚花的种子。每枚种子必须先种下，才能开始生长、开花。播种需要时间，种子的生长也是如此。给你两个下标从 <strong>0</strong> 开始的整数数组 <code>plantTime</code> 和 <code>growTime</code> ，每个数组的长度都是 <code>n</code> ：</p>
 
@@ -62,11 +76,13 @@
 	<li><code>1 &lt;= plantTime[i], growTime[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 排序**
+### 方法一：贪心 + 排序
 
 根据题目描述，我们知道，每一天只能为一枚种子进行播种，因此不管什么播种顺序，所有种子的播种时间之和总是等于 $\sum_{i=0}^{n-1} plantTime[i]$。那么，为了让尽快让所有种子开花，我们应该尽快播种生长时间最长的种子。因此，我们可以对所有种子按照生长时间从大到小进行排序，然后依次进行播种。
 
@@ -74,9 +90,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -88,9 +102,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -111,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -131,7 +143,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func earliestFullBloom(plantTime []int, growTime []int) (ans int) {
@@ -150,7 +162,7 @@ func earliestFullBloom(plantTime []int, growTime []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function earliestFullBloom(plantTime: number[], growTime: number[]): number {
@@ -166,7 +178,7 @@ function earliestFullBloom(plantTime: number[], growTime: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -184,10 +196,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

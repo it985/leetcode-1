@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0118.Pascal%27s%20Triangle/README_EN.md
+tags:
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [118. Pascal's Triangle](https://leetcode.com/problems/pascals-triangle)
 
 [中文文档](/solution/0100-0199/0118.Pascal%27s%20Triangle/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer <code>numRows</code>, return the first numRows of <strong>Pascal&#39;s triangle</strong>.</p>
 
@@ -23,9 +36,13 @@
 	<li><code>1 &lt;= numRows &lt;= 30</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 First, we create an answer array $f$, and then set the first row of $f$ to $[1]$. Next, starting from the second row, the first and last elements of each row are $1$, and the other elements are calculated by $f[i][j] = f[i - 1][j - 1] + f[i - 1][j]$.
 
@@ -33,7 +50,7 @@ The time complexity is $O(n^2)$, and the space complexity is $O(n^2)$. Here, $n$
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -45,7 +62,7 @@ class Solution:
         return f
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -66,7 +83,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -88,7 +105,41 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func generate(numRows int) [][]int {
+	f := [][]int{[]int{1}}
+	for i := 0; i < numRows-1; i++ {
+		g := []int{1}
+		for j := 0; j < len(f[i])-1; j++ {
+			g = append(g, f[i][j]+f[i][j+1])
+		}
+		g = append(g, 1)
+		f = append(f, g)
+	}
+	return f
+}
+```
+
+#### TypeScript
+
+```ts
+function generate(numRows: number): number[][] {
+    const f: number[][] = [[1]];
+    for (let i = 0; i < numRows - 1; ++i) {
+        const g: number[] = [1];
+        for (let j = 0; j < f[i].length - 1; ++j) {
+            g.push(f[i][j] + f[i][j + 1]);
+        }
+        g.push(1);
+        f.push(g);
+    }
+    return f;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -111,41 +162,7 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func generate(numRows int) [][]int {
-	f := [][]int{[]int{1}}
-	for i := 0; i < numRows-1; i++ {
-		g := []int{1}
-		for j := 0; j < len(f[i])-1; j++ {
-			g = append(g, f[i][j]+f[i][j+1])
-		}
-		g = append(g, 1)
-		f = append(f, g)
-	}
-	return f
-}
-```
-
-### **TypeScript**
-
-```ts
-function generate(numRows: number): number[][] {
-    const f: number[][] = [[1]];
-    for (let i = 0; i < numRows - 1; ++i) {
-        const g: number[] = [1];
-        for (let j = 0; j < f[i].length - 1; ++j) {
-            g.push(f[i][j] + f[i][j + 1]);
-        }
-        g.push(1);
-        f.push(g);
-    }
-    return f;
-}
-```
-
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -166,10 +183,8 @@ var generate = function (numRows) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

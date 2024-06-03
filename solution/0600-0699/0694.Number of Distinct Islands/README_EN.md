@@ -1,8 +1,24 @@
-# [694. Number of Distinct Islands](https://leetcode.com/problems/number-of-distinct-islands)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0694.Number%20of%20Distinct%20Islands/README_EN.md
+tags:
+    - Depth-First Search
+    - Breadth-First Search
+    - Union Find
+    - Hash Table
+    - Hash Function
+---
+
+<!-- problem:start -->
+
+# [694. Number of Distinct Islands 🔒](https://leetcode.com/problems/number-of-distinct-islands)
 
 [中文文档](/solution/0600-0699/0694.Number%20of%20Distinct%20Islands/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an <code>m x n</code> binary matrix <code>grid</code>. An island is a group of <code>1</code>&#39;s (representing land) connected <strong>4-directionally</strong> (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.</p>
 
@@ -35,11 +51,17 @@
 	<li><code>grid[i][j]</code> is either <code>0</code> or <code>1</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,7 +88,7 @@ class Solution:
         return len(paths)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -145,7 +167,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numDistinctIslands(grid [][]int) int {
@@ -178,7 +200,7 @@ func numDistinctIslands(grid [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numDistinctIslands(grid: number[][]): number {
@@ -211,10 +233,8 @@ function numDistinctIslands(grid: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

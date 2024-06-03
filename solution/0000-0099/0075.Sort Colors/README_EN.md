@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0075.Sort%20Colors/README_EN.md
+tags:
+    - Array
+    - Two Pointers
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [75. Sort Colors](https://leetcode.com/problems/sort-colors)
 
 [中文文档](/solution/0000-0099/0075.Sort%20Colors/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array <code>nums</code> with <code>n</code> objects colored red, white, or blue, sort them <strong><a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank">in-place</a> </strong>so that objects of the same color are adjacent, with the colors in the order red, white, and blue.</p>
 
@@ -37,9 +51,13 @@
 <p>&nbsp;</p>
 <p><strong>Follow up:</strong>&nbsp;Could you come up with a one-pass algorithm using only&nbsp;constant extra space?</p>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Three Pointers**
+<!-- solution:start -->
+
+### Solution 1: Three Pointers
 
 We define three pointers $i$, $j$, and $k$. Pointer $i$ is used to point to the rightmost boundary of the elements with a value of $0$ in the array, and pointer $j$ is used to point to the leftmost boundary of the elements with a value of $2$ in the array. Initially, $i=-1$, $j=n$. Pointer $k$ is used to point to the current element being traversed, initially $k=0$.
 
@@ -55,7 +73,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array. Only one tr
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -73,7 +91,7 @@ class Solution:
                 k += 1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -118,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sortColors(nums []int) {
@@ -138,7 +156,7 @@ func sortColors(nums []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -163,7 +181,7 @@ function sortColors(nums: number[]): void {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -187,7 +205,7 @@ impl Solution {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -212,10 +230,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

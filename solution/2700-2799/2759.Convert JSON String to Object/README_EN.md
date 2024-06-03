@@ -1,10 +1,20 @@
-# [2759. Convert JSON String to Object](https://leetcode.com/problems/convert-json-string-to-object)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2759.Convert%20JSON%20String%20to%20Object/README_EN.md
+---
+
+<!-- problem:start -->
+
+# [2759. Convert JSON String to Object 🔒](https://leetcode.com/problems/convert-json-string-to-object)
 
 [中文文档](/solution/2700-2799/2759.Convert%20JSON%20String%20to%20Object/README.md)
 
 ## Description
 
-<p>Given a string <code>str</code>, return parsed JSON&nbsp;<code>parsedStr</code>.&nbsp;You may assume the <code>str</code>&nbsp;is a valid JSON string hence it only includes strings, numbers, arrays, objects, booleans, and null. <code>str</code>&nbsp;will not include invisible characters and escape characters. String values within the JSON will only contain alphanumeric characters.</p>
+<!-- description:start -->
+
+<p>Given a string <code>str</code>, return parsed JSON&nbsp;<code>parsedStr</code>.&nbsp;You may assume the <code>str</code>&nbsp;is a valid JSON string hence it only includes strings, numbers, arrays, objects, booleans, and null. <code>str</code>&nbsp;will not include invisible characters and escape characters.&nbsp;</p>
 
 <p>Please solve it without using the built-in&nbsp;<code>JSON.parse</code>&nbsp;method.</p>
 
@@ -38,11 +48,17 @@
 	<li><code>1 &lt;= str.length &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function jsonParse(str: string): any {
@@ -163,3 +179,7 @@ function jsonParse(str: string): any {
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

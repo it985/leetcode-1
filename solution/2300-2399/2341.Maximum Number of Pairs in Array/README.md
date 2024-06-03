@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2341.Maximum%20Number%20of%20Pairs%20in%20Array/README.md
+rating: 1184
+source: 第 302 场周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+    - 计数
+---
+
+<!-- problem:start -->
+
 # [2341. 数组能形成多少数对](https://leetcode.cn/problems/maximum-number-of-pairs-in-array)
 
 [English Version](/solution/2300-2399/2341.Maximum%20Number%20of%20Pairs%20in%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 。在一步操作中，你可以执行以下步骤：</p>
 
@@ -52,11 +66,13 @@ nums[0] 和 nums[1] 形成一个数对，并从 nums 中移除，nums = [2] 。
 	<li><code>0 &lt;= nums[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数**
+### 方法一：计数
 
 我们可以统计数组 `nums` 中每个数字 $x$ 出现的次数，记录在哈希表或数组 `cnt` 中。
 
@@ -70,9 +86,7 @@ nums[0] 和 nums[1] 形成一个数对，并从 nums 中移除，nums = [2] 。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -82,9 +96,7 @@ class Solution:
         return [s, len(nums) - s * 2]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -121,7 +133,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfPairs(nums []int) []int {
@@ -137,7 +149,7 @@ func numberOfPairs(nums []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfPairs(nums: number[]): number[] {
@@ -151,7 +163,7 @@ function numberOfPairs(nums: number[]): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -170,7 +182,42 @@ impl Solution {
 }
 ```
 
-### **C**
+#### JavaScript
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var numberOfPairs = function (nums) {
+    const cnt = new Array(101).fill(0);
+    for (const x of nums) {
+        ++cnt[x];
+    }
+    const s = cnt.reduce((a, b) => a + (b >> 1), 0);
+    return [s, nums.length - s * 2];
+};
+```
+
+#### C#
+
+```cs
+public class Solution {
+    public int[] NumberOfPairs(int[] nums) {
+        int[] cnt = new int[101];
+        foreach(int x in nums) {
+            ++cnt[x];
+        }
+        int s = 0;
+        foreach(int v in cnt) {
+            s += v / 2;
+        }
+        return new int[] {s, nums.Length - s * 2};
+    }
+}
+```
+
+#### C
 
 ```c
 /**
@@ -193,45 +240,8 @@ int* numberOfPairs(int* nums, int numsSize, int* returnSize) {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} nums
- * @return {number[]}
- */
-var numberOfPairs = function (nums) {
-    const cnt = new Array(101).fill(0);
-    for (const x of nums) {
-        ++cnt[x];
-    }
-    const s = cnt.reduce((a, b) => a + (b >> 1), 0);
-    return [s, nums.length - s * 2];
-};
-```
-
-### **C#**
-
-```cs
-public class Solution {
-    public int[] NumberOfPairs(int[] nums) {
-        int[] cnt = new int[101];
-        foreach(int x in nums) {
-            ++cnt[x];
-        }
-        int s = 0;
-        foreach(int v in cnt) {
-            s += v / 2;
-        }
-        return new int[] {s, nums.Length - s * 2};
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

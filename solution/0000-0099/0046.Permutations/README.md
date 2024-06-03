@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0046.Permutations/README.md
+tags:
+    - 数组
+    - 回溯
+---
+
+<!-- problem:start -->
+
 # [46. 全排列](https://leetcode.cn/problems/permutations)
 
 [English Version](/solution/0000-0099/0046.Permutations/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个不含重复数字的数组 <code>nums</code> ，返回其 <em>所有可能的全排列</em> 。你可以 <strong>按任意顺序</strong> 返回答案。</p>
 
@@ -41,11 +52,13 @@
 	<li><code>nums</code> 中的所有整数 <strong>互不相同</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS（回溯）**
+### 方法一：DFS（回溯）
 
 我们设计一个函数 $dfs(i)$ 表示已经填完了前 $i$ 个位置，现在需要填第 $i+1$ 个位置。枚举所有可能的数，如果这个数没有被填过，就填入这个数，然后继续填下一个位置，直到填完所有的位置。
 
@@ -53,19 +66,19 @@
 
 相似题目：
 
--   [47. 全排列 II](/solution/0000-0099/0047.Permutations%20II/README.md)
+-   [47. 全排列 II](https://github.com/doocs/leetcode/blob/main/solution/0000-0099/0047.Permutations%20II/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         return list(permutations(nums))
 ```
+
+#### Python3
 
 ```python
 class Solution:
@@ -89,32 +102,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def permute(self, nums: List[int]) -> List[List[int]]:
-        def dfs(i):
-            nonlocal mask
-            if i == n:
-                ans.append(t[:])
-                return
-            for j in range(n):
-                if (mask >> j & 1) == 0:
-                    mask |= 1 << j
-                    t[i] = nums[j]
-                    dfs(i + 1)
-                    mask ^= 1 << j
-
-        n = len(nums)
-        mask = 0
-        t = [0] * n
-        ans = []
-        dfs(0)
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -148,7 +136,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -178,7 +166,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func permute(nums []int) (ans [][]int) {
@@ -205,7 +193,53 @@ func permute(nums []int) (ans [][]int) {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function permute(nums: number[]): number[][] {
+    const n = nums.length;
+    const res: number[][] = [];
+    const dfs = (i: number) => {
+        if (i === n) {
+            res.push([...nums]);
+        }
+        for (let j = i; j < n; j++) {
+            [nums[i], nums[j]] = [nums[j], nums[i]];
+            dfs(i + 1);
+            [nums[i], nums[j]] = [nums[j], nums[i]];
+        }
+    };
+    dfs(0);
+    return res;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    fn dfs(i: usize, nums: &mut Vec<i32>, res: &mut Vec<Vec<i32>>) {
+        let n = nums.len();
+        if i == n {
+            res.push(nums.clone());
+            return;
+        }
+        for j in i..n {
+            nums.swap(i, j);
+            Self::dfs(i + 1, nums, res);
+            nums.swap(i, j);
+        }
+    }
+
+    pub fn permute(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
+        let mut res = vec![];
+        Self::dfs(0, &mut nums, &mut res);
+        res
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -237,7 +271,7 @@ var permute = function (nums) {
 };
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -267,96 +301,8 @@ public class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function permute(nums: number[]): number[][] {
-    const n = nums.length;
-    const res: number[][] = [];
-    const dfs = (i: number) => {
-        if (i === n) {
-            res.push([...nums]);
-        }
-        for (let j = i; j < n; j++) {
-            [nums[i], nums[j]] = [nums[j], nums[i]];
-            dfs(i + 1);
-            [nums[i], nums[j]] = [nums[j], nums[i]];
-        }
-    };
-    dfs(0);
-    return res;
-}
-```
-
-### **Rust**
-
-```rust
-impl Solution {
-    fn dfs(i: usize, nums: &mut Vec<i32>, res: &mut Vec<Vec<i32>>) {
-        let n = nums.len();
-        if i == n {
-            res.push(nums.clone());
-            return;
-        }
-        for j in i..n {
-            nums.swap(i, j);
-            Self::dfs(i + 1, nums, res);
-            nums.swap(i, j);
-        }
-    }
-
-    pub fn permute(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
-        let mut res = vec![];
-        Self::dfs(0, &mut nums, &mut res);
-        res
-    }
-}
-```
-
-```rust
-impl Solution {
-    #[allow(dead_code)]
-    pub fn permute(nums: Vec<i32>) -> Vec<Vec<i32>> {
-        let mut ret = Vec::new();
-        let mut cur_vec = Vec::new();
-        let mut vis = vec![false; nums.len() + 1];
-        Self::dfs(&nums, &mut vis, 0, &mut cur_vec, &mut ret);
-        ret
-    }
-
-    #[allow(dead_code)]
-    fn dfs(
-        nums: &Vec<i32>,
-        vis: &mut Vec<bool>,
-        index: i32,
-        cur_vec: &mut Vec<i32>,
-        ans: &mut Vec<Vec<i32>>
-    ) {
-        let n = nums.len();
-        if (index as usize) == n {
-            ans.push(cur_vec.clone());
-            return;
-        }
-        // Otherwise, let's iterate the nums vector
-        for i in 0..n {
-            if !vis[i] {
-                // If this number hasn't been visited, then visit it
-                vis[i] = true;
-                cur_vec.push(nums[i]);
-                Self::dfs(nums, vis, index + 1, cur_vec, ans);
-                // Reset the changes
-                cur_vec.pop().unwrap();
-                vis[i] = false;
-            }
-        }
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

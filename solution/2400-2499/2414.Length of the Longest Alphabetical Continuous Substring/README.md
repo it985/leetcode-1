@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2414.Length%20of%20the%20Longest%20Alphabetical%20Continuous%20Substring/README.md
+rating: 1221
+source: 第 311 场周赛 Q2
+tags:
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2414. 最长的字母序连续子字符串的长度](https://leetcode.cn/problems/length-of-the-longest-alphabetical-continuous-substring)
 
 [English Version](/solution/2400-2499/2414.Length%20of%20the%20Longest%20Alphabetical%20Continuous%20Substring/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><strong>字母序连续字符串</strong> 是由字母表中连续字母组成的字符串。换句话说，字符串 <code>"abcdefghijklmnopqrstuvwxyz"</code> 的任意子字符串都是 <strong>字母序连续字符串</strong> 。</p>
 
@@ -40,11 +52,13 @@
 	<li><code>s</code> 由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双指针**
+### 方法一：双指针
 
 我们用双指针 $i$ 和 $j$ 分别指向当前连续子字符串的起始位置和结束位置。遍历字符串 $s$，如果当前字符 $s[j]$ 比 $s[j-1]$ 大，则 $j$ 向右移动一位，否则更新 $i$ 为 $j$，并更新最长连续子字符串的长度。
 
@@ -52,9 +66,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -70,9 +82,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +101,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -111,7 +121,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func longestContinuousSubstring(s string) int {
@@ -128,26 +138,7 @@ func longestContinuousSubstring(s string) int {
 }
 ```
 
-### **C**
-
-```c
-#define max(a, b) (((a) > (b)) ? (a) : (b))
-
-int longestContinuousSubstring(char* s) {
-    int n = strlen(s);
-    int i = 0;
-    int res = 1;
-    for (int j = 1; j < n; j++) {
-        if (s[j] - s[j - 1] != 1) {
-            res = max(res, j - i);
-            i = j;
-        }
-    }
-    return max(res, n - i);
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function longestContinuousSubstring(s: string): number {
@@ -164,7 +155,7 @@ function longestContinuousSubstring(s: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -184,10 +175,27 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C
 
-```
+```c
+#define max(a, b) (((a) > (b)) ? (a) : (b))
 
+int longestContinuousSubstring(char* s) {
+    int n = strlen(s);
+    int i = 0;
+    int res = 1;
+    for (int j = 1; j < n; j++) {
+        if (s[j] - s[j - 1] != 1) {
+            res = max(res, j - i);
+            i = j;
+        }
+    }
+    return max(res, n - i);
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

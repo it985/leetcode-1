@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof2/%E5%89%91%E6%8C%87%20Offer%20II%20090.%20%E7%8E%AF%E5%BD%A2%E6%88%BF%E5%B1%8B%E5%81%B7%E7%9B%97/README.md
+---
+
+<!-- problem:start -->
+
 # [剑指 Offer II 090. 环形房屋偷盗](https://leetcode.cn/problems/PzWKhm)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一个专业的小偷，计划偷窃一个环形街道上沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都 <strong>围成一圈</strong> ，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，<strong>如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警</strong> 。</p>
 
@@ -46,11 +53,13 @@
 
 <p><meta charset="UTF-8" />注意：本题与主站 213&nbsp;题相同：&nbsp;<a href="https://leetcode.cn/problems/house-robber-ii/">https://leetcode.cn/problems/house-robber-ii/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 环状排列意味着第一个房屋和最后一个房屋中最多只能选择一个偷窃，因此可以把此环状排列房间问题约化为两个单排排列房屋子问题。
 
@@ -58,9 +67,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -76,9 +83,7 @@ class Solution:
         return max(_rob(nums[1:]), _rob(nums[:-1]))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -127,7 +132,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func rob(nums []int) int {
@@ -147,7 +152,7 @@ func robRange(nums []int, l, r int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function rob(nums: number[]): number {
@@ -166,7 +171,7 @@ function rob(nums: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -187,10 +192,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

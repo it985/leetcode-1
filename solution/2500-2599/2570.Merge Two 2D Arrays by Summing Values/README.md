@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2570.Merge%20Two%202D%20Arrays%20by%20Summing%20Values/README.md
+rating: 1281
+source: 第 333 场周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+    - 双指针
+---
+
+<!-- problem:start -->
+
 # [2570. 合并两个二维数组 - 求和法](https://leetcode.cn/problems/merge-two-2d-arrays-by-summing-values)
 
 [English Version](/solution/2500-2599/2570.Merge%20Two%202D%20Arrays%20by%20Summing%20Values/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个 <strong>二维</strong> 整数数组 <code>nums1</code> 和 <code>nums2.</code></p>
 
@@ -56,11 +70,13 @@
 	<li>数据均按 id 以严格递增顺序排列</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数 + 枚举**
+### 方法一：计数 + 枚举
 
 我们可以用一个哈希表或数组 `cnt` 统计两个数组中每个数字出现的次数。
 
@@ -70,9 +86,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -85,9 +99,7 @@ class Solution:
         return sorted(cnt.items())
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -116,7 +128,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -140,7 +152,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func mergeArrays(nums1 [][]int, nums2 [][]int) (ans [][]int) {
@@ -160,7 +172,7 @@ func mergeArrays(nums1 [][]int, nums2 [][]int) (ans [][]int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function mergeArrays(nums1: number[][], nums2: number[][]): number[][] {
@@ -182,7 +194,7 @@ function mergeArrays(nums1: number[][], nums2: number[][]): number[][] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -209,10 +221,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

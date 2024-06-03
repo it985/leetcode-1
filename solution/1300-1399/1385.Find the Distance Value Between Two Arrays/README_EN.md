@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1385.Find%20the%20Distance%20Value%20Between%20Two%20Arrays/README_EN.md
+rating: 1234
+source: Biweekly Contest 22 Q1
+tags:
+    - Array
+    - Two Pointers
+    - Binary Search
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1385. Find the Distance Value Between Two Arrays](https://leetcode.com/problems/find-the-distance-value-between-two-arrays)
 
 [中文文档](/solution/1300-1399/1385.Find%20the%20Distance%20Value%20Between%20Two%20Arrays/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two integer arrays <code>arr1</code> and <code>arr2</code>, and the integer <code>d</code>, <em>return the distance value between the two arrays</em>.</p>
 
@@ -55,11 +72,21 @@ For arr1[2]=8 we have:
 	<li><code>0 &lt;= d &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Sorting + Binary Search
+
+We can first sort the array $arr2$, then for each element $a$ in array $arr1$, use binary search to find the first element in array $arr2$ that is greater than or equal to $a-d$. If such an element exists and is less than or equal to $a+d$, it means that it does not meet the distance requirement. Otherwise, it meets the distance requirement. We accumulate the number of elements that meet the distance requirement, which is the answer.
+
+The time complexity is $O((m + n) \times \log n)$, and the space complexity is $O(\log n)$. Where $m$ and $n$ are the lengths of arrays $arr1$ and $arr2$, respectively.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -72,7 +99,7 @@ class Solution:
         return sum(check(a) for a in arr1)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +129,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -122,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findTheDistanceValue(arr1 []int, arr2 []int, d int) (ans int) {
@@ -137,7 +164,7 @@ func findTheDistanceValue(arr1 []int, arr2 []int, d int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findTheDistanceValue(arr1: number[], arr2: number[], d: number): number {
@@ -165,7 +192,7 @@ function findTheDistanceValue(arr1: number[], arr2: number[], d: number): number
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -197,10 +224,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

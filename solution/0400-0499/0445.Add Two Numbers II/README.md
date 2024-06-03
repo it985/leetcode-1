@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0445.Add%20Two%20Numbers%20II/README.md
+tags:
+    - 栈
+    - 链表
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [445. 两数相加 II](https://leetcode.cn/problems/add-two-numbers-ii)
 
 [English Version](/solution/0400-0499/0445.Add%20Two%20Numbers%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个 <strong>非空 </strong>链表来代表两个非负整数。数字最高位位于链表开始位置。它们的每个节点只存储一位数字。将这两数相加会返回一个新的链表。</p>
 
@@ -49,29 +61,19 @@
 
 <p><strong>进阶：</strong>如果输入链表不能翻转该如何解决？</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：翻转**
+### 方法一：翻转
 
 手动翻转链表 `l1` 与 `l2`，将此题转换为 [2. 两数相加](https://leetcode.cn/problems/add-two-numbers/)，相加过程一致。对于最后返回的结果链表也需要进行翻转，共计三次。
 
-**方法二：栈**
-
-我们可以使用两个栈 $s1$ 和 $s2$ 分别存储两个链表元素，然后同时遍历两个栈，并使用变量 $carry$ 表示当前是否有进位。
-
-遍历时，我们弹出对应栈的栈顶元素，计算它们与进位 $carry$ 的和，然后更新进位的值，并创建一个链表节点，插入答案链表的头部。如果两个栈都遍历结束，并且进位为 $0$ 时，遍历结束。
-
-最后我们返回答案链表的头节点即可。
-
-时间复杂度 $O(\max(m, n))$，空间复杂度 $O(m + n)$。其中 $m$ 和 $n$ 分别为两个链表的长度。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -101,9 +103,7 @@ class Solution:
         return dummy.next
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -140,7 +140,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -182,7 +182,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -222,7 +222,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -259,7 +259,7 @@ function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | nul
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for singly-linked list.
@@ -317,6 +317,26 @@ impl Solution {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：栈
+
+我们可以使用两个栈 $s1$ 和 $s2$ 分别存储两个链表元素，然后同时遍历两个栈，并使用变量 $carry$ 表示当前是否有进位。
+
+遍历时，我们弹出对应栈的栈顶元素，计算它们与进位 $carry$ 的和，然后更新进位的值，并创建一个链表节点，插入答案链表的头部。如果两个栈都遍历结束，并且进位为 $0$ 时，遍历结束。
+
+最后我们返回答案链表的头节点即可。
+
+时间复杂度 $O(\max(m, n))$，空间复杂度 $O(m + n)$。其中 $m$ 和 $n$ 分别为两个链表的长度。
+
+<!-- tabs:start -->
+
+#### Rust
+
 ```rust
 // Definition for singly-linked list.
 // #[derive(PartialEq, Eq, Clone, Debug)]
@@ -373,10 +393,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

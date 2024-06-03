@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2337.Move%20Pieces%20to%20Obtain%20a%20String/README.md
+rating: 1693
+source: 第 301 场周赛 Q3
+tags:
+    - 双指针
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2337. 移动片段得到字符串](https://leetcode.cn/problems/move-pieces-to-obtain-a-string)
 
 [English Version](/solution/2300-2399/2337.Move%20Pieces%20to%20Obtain%20a%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个字符串 <code>start</code> 和 <code>target</code> ，长度均为 <code>n</code> 。每个字符串 <strong>仅</strong> 由字符 <code>'L'</code>、<code>'R'</code> 和 <code>'_'</code> 组成，其中：</p>
 
@@ -55,11 +68,13 @@
 	<li><code>start</code> 和 <code>target</code> 由字符 <code>'L'</code>、<code>'R'</code> 和 <code>'_'</code> 组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双指针**
+### 方法一：双指针
 
 替换操作实际上是将 `L` 往左移动（`L` 左边为 `_` 时才能移动），`R` 往右移动（`R` 右边是 `_` 时才能移动），但 `L` 无法穿过 `R`。所以，如果去掉 `start` 和 `target` 中的所有 `_`，剩下的字符应该是相同的，否则返回 `false`。
 
@@ -72,13 +87,13 @@
 
 时间复杂度 $O(n)$，其中 $n$ 表示字符串 `start` 或 `target` 的长度。
 
-相似题目：[777. 在 LR 字符串中交换相邻字符](/solution/0700-0799/0777.Swap%20Adjacent%20in%20LR%20String/README.md)
+相似题目：
+
+-   [777. 在 LR 字符串中交换相邻字符](https://github.com/doocs/leetcode/blob/main/solution/0700-0799/0777.Swap%20Adjacent%20in%20LR%20String/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -97,30 +112,7 @@ class Solution:
         return True
 ```
 
-```python
-class Solution:
-    def canChange(self, start: str, target: str) -> bool:
-        n = len(start)
-        i = j = 0
-        while 1:
-            while i < n and start[i] == '_':
-                i += 1
-            while j < n and target[j] == '_':
-                j += 1
-            if i >= n and j >= n:
-                return True
-            if i >= n or j >= n or start[i] != target[j]:
-                return False
-            if start[i] == 'L' and i < j:
-                return False
-            if start[i] == 'R' and i > j:
-                return False
-            i, j = i + 1, j + 1
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -160,35 +152,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public boolean canChange(String start, String target) {
-        int n = start.length();
-        int i = 0, j = 0;
-        while (true) {
-            while (i < n && start.charAt(i) == '_') {
-                ++i;
-            }
-            while (j < n && target.charAt(j) == '_') {
-                ++j;
-            }
-            if (i == n && j == n) {
-                return true;
-            }
-            if (i == n || j == n || start.charAt(i) != target.charAt(j)) {
-                return false;
-            }
-            if (start.charAt(i) == 'L' && i < j || start.charAt(i) == 'R' && i > j) {
-                return false;
-            }
-            ++i;
-            ++j;
-        }
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 using pii = pair<int, int>;
@@ -221,27 +185,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    bool canChange(string start, string target) {
-        int n = start.size();
-        int i = 0, j = 0;
-        while (true) {
-            while (i < n && start[i] == '_') ++i;
-            while (j < n && target[j] == '_') ++j;
-            if (i == n && j == n) return true;
-            if (i == n || j == n || start[i] != target[j]) return false;
-            if (start[i] == 'L' && i < j) return false;
-            if (start[i] == 'R' && i > j) return false;
-            ++i;
-            ++j;
-        }
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func canChange(start string, target string) bool {
@@ -277,35 +221,7 @@ func canChange(start string, target string) bool {
 }
 ```
 
-```go
-func canChange(start string, target string) bool {
-	n := len(start)
-	i, j := 0, 0
-	for {
-		for i < n && start[i] == '_' {
-			i++
-		}
-		for j < n && target[j] == '_' {
-			j++
-		}
-		if i == n && j == n {
-			return true
-		}
-		if i == n || j == n || start[i] != target[j] {
-			return false
-		}
-		if start[i] == 'L' && i < j {
-			return false
-		}
-		if start[i] == 'R' && i > j {
-			return false
-		}
-		i, j = i+1, j+1
-	}
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canChange(start: string, target: string): boolean {
@@ -341,6 +257,123 @@ function canChange(start: string, target: string): boolean {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def canChange(self, start: str, target: str) -> bool:
+        n = len(start)
+        i = j = 0
+        while 1:
+            while i < n and start[i] == '_':
+                i += 1
+            while j < n and target[j] == '_':
+                j += 1
+            if i >= n and j >= n:
+                return True
+            if i >= n or j >= n or start[i] != target[j]:
+                return False
+            if start[i] == 'L' and i < j:
+                return False
+            if start[i] == 'R' and i > j:
+                return False
+            i, j = i + 1, j + 1
+```
+
+#### Java
+
+```java
+class Solution {
+    public boolean canChange(String start, String target) {
+        int n = start.length();
+        int i = 0, j = 0;
+        while (true) {
+            while (i < n && start.charAt(i) == '_') {
+                ++i;
+            }
+            while (j < n && target.charAt(j) == '_') {
+                ++j;
+            }
+            if (i == n && j == n) {
+                return true;
+            }
+            if (i == n || j == n || start.charAt(i) != target.charAt(j)) {
+                return false;
+            }
+            if (start.charAt(i) == 'L' && i < j || start.charAt(i) == 'R' && i > j) {
+                return false;
+            }
+            ++i;
+            ++j;
+        }
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    bool canChange(string start, string target) {
+        int n = start.size();
+        int i = 0, j = 0;
+        while (true) {
+            while (i < n && start[i] == '_') ++i;
+            while (j < n && target[j] == '_') ++j;
+            if (i == n && j == n) return true;
+            if (i == n || j == n || start[i] != target[j]) return false;
+            if (start[i] == 'L' && i < j) return false;
+            if (start[i] == 'R' && i > j) return false;
+            ++i;
+            ++j;
+        }
+    }
+};
+```
+
+#### Go
+
+```go
+func canChange(start string, target string) bool {
+	n := len(start)
+	i, j := 0, 0
+	for {
+		for i < n && start[i] == '_' {
+			i++
+		}
+		for j < n && target[j] == '_' {
+			j++
+		}
+		if i == n && j == n {
+			return true
+		}
+		if i == n || j == n || start[i] != target[j] {
+			return false
+		}
+		if start[i] == 'L' && i < j {
+			return false
+		}
+		if start[i] == 'R' && i > j {
+			return false
+		}
+		i, j = i+1, j+1
+	}
+}
+```
+
+#### TypeScript
+
 ```ts
 function canChange(start: string, target: string): boolean {
     const n = start.length;
@@ -367,10 +400,8 @@ function canChange(start: string, target: string): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

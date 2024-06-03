@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1140.Stone%20Game%20II/README.md
+rating: 2034
+source: 第 147 场周赛 Q4
+tags:
+    - 数组
+    - 数学
+    - 动态规划
+    - 博弈
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [1140. 石子游戏 II](https://leetcode.cn/problems/stone-game-ii)
 
 [English Version](/solution/1100-1199/1140.Stone%20Game%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>爱丽丝和鲍勃继续他们的石子游戏。许多堆石子&nbsp;<strong>排成一行</strong>，每堆都有正整数颗石子&nbsp;<code>piles[i]</code>。游戏以谁手中的石子最多来决出胜负。</p>
 
@@ -42,11 +58,13 @@
 	<li><meta charset="UTF-8" /><code>1 &lt;= piles[i]&nbsp;&lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：前缀和 + 记忆化搜索**
+### 方法一：前缀和 + 记忆化搜索
 
 由于玩家每次可以拿走前 $X$ 堆的所有石子，也就是说能拿走一个区间的石子，因此，我们可以先预处理出一个长度为 $n+1$ 的前缀和数组 $s$，其中 $s[i]$ 表示数组 `piles` 的前 $i$ 个元素的和。
 
@@ -65,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -85,25 +101,7 @@ class Solution:
         return dfs(0, 1)
 ```
 
-```python
-class Solution:
-    def stoneGameII(self, piles: List[int]) -> int:
-        @cache
-        def dfs(i: int, m: int = 1) -> int:
-            if i >= len(piles):
-                return 0
-            t = inf
-            for x in range(1, m << 1 | 1):
-                t = min(t, dfs(i + x, max(m, x)))
-            return s[-1] - s[i] - t
-
-        s = list(accumulate(piles, initial=0))
-        return dfs(0)
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -137,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -169,7 +167,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func stoneGameII(piles []int) int {
@@ -198,7 +196,7 @@ func stoneGameII(piles []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function stoneGameII(piles: number[]): number {
@@ -225,10 +223,36 @@ function stoneGameII(piles: number[]): number {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def stoneGameII(self, piles: List[int]) -> int:
+        @cache
+        def dfs(i: int, m: int = 1) -> int:
+            if i >= len(piles):
+                return 0
+            t = inf
+            for x in range(1, m << 1 | 1):
+                t = min(t, dfs(i + x, max(m, x)))
+            return s[-1] - s[i] - t
+
+        s = list(accumulate(piles, initial=0))
+        return dfs(0)
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

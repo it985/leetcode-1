@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2778.Sum%20of%20Squares%20of%20Special%20Elements/README.md
+rating: 1151
+source: 第 354 场周赛 Q1
+tags:
+    - 数组
+    - 枚举
+---
+
+<!-- problem:start -->
+
 # [2778. 特殊元素平方和](https://leetcode.cn/problems/sum-of-squares-of-special-elements)
 
 [English Version](/solution/2700-2799/2778.Sum%20of%20Squares%20of%20Special%20Elements/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>1</strong> 开始、长度为 <code>n</code> 的整数数组 <code>nums</code> 。</p>
 
@@ -40,11 +53,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举**
+### 方法一：枚举
 
 我们可以枚举数组中的每个元素，判断其是否为特殊元素，如果是则将其平方加入答案中。
 
@@ -52,9 +67,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -63,9 +76,7 @@ class Solution:
         return sum(x * x for i, x in enumerate(nums, 1) if n % i == 0)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -82,7 +93,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -100,7 +111,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sumOfSquares(nums []int) (ans int) {
@@ -114,7 +125,7 @@ func sumOfSquares(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumOfSquares(nums: number[]): number {
@@ -129,10 +140,8 @@ function sumOfSquares(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

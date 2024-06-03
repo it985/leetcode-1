@@ -1,10 +1,23 @@
-# [1121. 将数组分成几个递增序列](https://leetcode.cn/problems/divide-array-into-increasing-sequences)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1121.Divide%20Array%20Into%20Increasing%20Sequences/README.md
+rating: 1664
+source: 第 4 场双周赛 Q4
+tags:
+    - 数组
+    - 计数
+---
+
+<!-- problem:start -->
+
+# [1121. 将数组分成几个递增序列 🔒](https://leetcode.cn/problems/divide-array-into-increasing-sequences)
 
 [English Version](/solution/1100-1199/1121.Divide%20Array%20Into%20Increasing%20Sequences/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个 <strong>非递减</strong> 的正整数数组&nbsp;<code>nums</code>&nbsp;和整数&nbsp;<code>K</code>，判断该数组是否可以被分成一个或几个&nbsp;<strong>长度至少&nbsp;为 </strong><code>K</code><strong> 的 不相交的递增子序列</strong>。</p>
 
@@ -36,11 +49,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10^5</code></li>
 </ol>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：脑筋急转弯**
+### 方法一：脑筋急转弯
 
 我们假设可以将数组分成 $m$ 个长度至少为 $k$ 的严格递增子序列，如果数组中出现次数最多的数字的个数为 $cnt$，那么这 $cnt$ 个数字必须在不同的子序列中，所以 $m \geq cnt$，又因为 $m$ 个子序列的长度至少为 $k$，因此，子序列的个数越少越好，所以 $m = cnt$。那么 $cnt \times k \leq n$，才能满足题意。因此，我们只需要统计数组中出现次数最多的数字的个数 $cnt$，然后判断 $cnt \times k \leq n$ 即可。如果是，返回 `true`，否则返回 `false`。
 
@@ -48,9 +63,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -59,9 +72,7 @@ class Solution:
         return mx * k <= len(nums)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -76,24 +87,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public boolean canDivideIntoSubsequences(int[] nums, int k) {
-        int cnt = 0;
-        int a = 0;
-        for (int b : nums) {
-            cnt = a == b ? cnt + 1 : 1;
-            if (cnt * k > nums.length) {
-                return false;
-            }
-            a = b;
-        }
-        return true;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -113,7 +107,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canDivideIntoSubsequences(nums []int, k int) bool {
@@ -132,10 +126,37 @@ func canDivideIntoSubsequences(nums []int, k int) bool {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Java
+
+```java
+class Solution {
+    public boolean canDivideIntoSubsequences(int[] nums, int k) {
+        int cnt = 0;
+        int a = 0;
+        for (int b : nums) {
+            cnt = a == b ? cnt + 1 : 1;
+            if (cnt * k > nums.length) {
+                return false;
+            }
+            a = b;
+        }
+        return true;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

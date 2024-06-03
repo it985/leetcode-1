@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2306.Naming%20a%20Company/README.md
+rating: 2305
+source: 第 297 场周赛 Q4
+tags:
+    - 位运算
+    - 数组
+    - 哈希表
+    - 字符串
+    - 枚举
+---
+
+<!-- problem:start -->
+
 # [2306. 公司命名](https://leetcode.cn/problems/naming-a-company)
 
 [English Version](/solution/2300-2399/2306.Naming%20a%20Company/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串数组 <code>ideas</code> 表示在公司命名过程中使用的名字列表。公司命名流程如下：</p>
 
@@ -56,11 +72,13 @@
 	<li><code>ideas</code> 中的所有字符串 <strong>互不相同</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举计数**
+### 方法一：枚举计数
 
 我们定义 $f[i][j]$ 表示 $ideas$ 中以第 $i$ 个字母开头，替换为第 $j$ 个字母后，不在 $ideas$ 中的字符串的个数。初始时 $f[i][j] = 0$。另外，用一个哈希表 $s$ 记录 $ideas$ 中的字符串，方便我们开快速判断某个字符串是否在 $ideas$ 中。
 
@@ -74,9 +92,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -101,9 +117,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -139,7 +153,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -171,7 +185,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func distinctNames(ideas []string) (ans int64) {
@@ -205,7 +219,7 @@ func distinctNames(ideas []string) (ans int64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function distinctNames(ideas: string[]): number {
@@ -238,10 +252,8 @@ function distinctNames(ideas: string[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

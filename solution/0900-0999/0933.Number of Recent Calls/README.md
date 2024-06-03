@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0933.Number%20of%20Recent%20Calls/README.md
+tags:
+    - 设计
+    - 队列
+    - 数据流
+---
+
+<!-- problem:start -->
+
 # [933. 最近的请求次数](https://leetcode.cn/problems/number-of-recent-calls)
 
 [English Version](/solution/0900-0999/0933.Number%20of%20Recent%20Calls/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>写一个&nbsp;<code>RecentCounter</code>&nbsp;类来计算特定时间范围内最近的请求。</p>
 
@@ -46,11 +58,13 @@ recentCounter.ping(3002);  // requests = [1, <strong>100</strong>, <strong>3001<
 	<li>至多调用 <code>ping</code> 方法 <code>10<sup>4</sup></code> 次</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：队列**
+### 方法一：队列
 
 由题得知，`t` 是**严格递增**的，当一个元素不满足 `[t - 3000, t]` 条件时，在后续的请求当中，它也不可能满足。
 
@@ -58,15 +72,9 @@ recentCounter.ping(3002);  // requests = [1, <strong>100</strong>, <strong>3001<
 
 可以使用队列。每次将 `t` 进入队尾，同时从队头开始，依次移除小于 `t - 3000` 的元素。然后返回队列的大小（`q.size()`）即可。
 
-**方法二：二分查找**
-
-`t` 严格单调递增，非常适合用二分查找来定位 `[t-3000, t]` 的左右边界。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class RecentCounter:
@@ -85,24 +93,7 @@ class RecentCounter:
 # param_1 = obj.ping(t)
 ```
 
-```python
-class RecentCounter:
-    def __init__(self):
-        self.s = []
-
-    def ping(self, t: int) -> int:
-        self.s.append(t)
-        return len(self.s) - bisect_left(self.s, t - 3000)
-
-
-# Your RecentCounter object will be instantiated and called as such:
-# obj = RecentCounter()
-# param_1 = obj.ping(t)
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class RecentCounter {
@@ -138,7 +129,7 @@ class RecentCounter {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class RecentCounter {
@@ -162,28 +153,7 @@ public:
  */
 ```
 
-```cpp
-class RecentCounter {
-public:
-    vector<int> s;
-
-    RecentCounter() {
-    }
-
-    int ping(int t) {
-        s.push_back(t);
-        return s.size() - (lower_bound(s.begin(), s.end(), t - 3000) - s.begin());
-    }
-};
-
-/**
- * Your RecentCounter object will be instantiated and called as such:
- * RecentCounter* obj = new RecentCounter();
- * int param_1 = obj->ping(t);
- */
-```
-
-### **Go**
+#### Go
 
 ```go
 type RecentCounter struct {
@@ -209,93 +179,7 @@ func (this *RecentCounter) Ping(t int) int {
  */
 ```
 
-```go
-type RecentCounter struct {
-	s []int
-}
-
-func Constructor() RecentCounter {
-	return RecentCounter{[]int{}}
-}
-
-func (this *RecentCounter) Ping(t int) int {
-	this.s = append(this.s, t)
-	search := func(x int) int {
-		left, right := 0, len(this.s)
-		for left < right {
-			mid := (left + right) >> 1
-			if this.s[mid] >= x {
-				right = mid
-			} else {
-				left = mid + 1
-			}
-		}
-		return left
-	}
-	return len(this.s) - search(t-3000)
-}
-
-/**
- * Your RecentCounter object will be instantiated and called as such:
- * obj := Constructor();
- * param_1 := obj.Ping(t);
- */
-```
-
-### **JavaScript**
-
-```js
-var RecentCounter = function () {
-    this.q = [];
-};
-
-/**
- * @param {number} t
- * @return {number}
- */
-RecentCounter.prototype.ping = function (t) {
-    this.q.push(t);
-    while (this.q[0] < t - 3000) {
-        this.q.shift();
-    }
-    return this.q.length;
-};
-
-/**
- * Your RecentCounter object will be instantiated and called as such:
- * var obj = new RecentCounter()
- * var param_1 = obj.ping(t)
- */
-```
-
-### **C#**
-
-```cs
-public class RecentCounter {
-    private Queue<int> q = new Queue<int>();
-
-    public RecentCounter() {
-
-    }
-
-    public int Ping(int t) {
-        q.Enqueue(t);
-        while (q.Peek() < t - 3000)
-        {
-            q.Dequeue();
-        }
-        return q.Count;
-    }
-}
-
-/**
- * Your RecentCounter object will be instantiated and called as such:
- * RecentCounter obj = new RecentCounter();
- * int param_1 = obj.Ping(t);
- */
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class RecentCounter {
@@ -321,7 +205,7 @@ class RecentCounter {
  */
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::VecDeque;
@@ -357,10 +241,148 @@ impl RecentCounter {
  */
 ```
 
-### **...**
+#### JavaScript
 
+```js
+var RecentCounter = function () {
+    this.q = [];
+};
+
+/**
+ * @param {number} t
+ * @return {number}
+ */
+RecentCounter.prototype.ping = function (t) {
+    this.q.push(t);
+    while (this.q[0] < t - 3000) {
+        this.q.shift();
+    }
+    return this.q.length;
+};
+
+/**
+ * Your RecentCounter object will be instantiated and called as such:
+ * var obj = new RecentCounter()
+ * var param_1 = obj.ping(t)
+ */
 ```
 
+#### C#
+
+```cs
+public class RecentCounter {
+    private Queue<int> q = new Queue<int>();
+
+    public RecentCounter() {
+
+    }
+
+    public int Ping(int t) {
+        q.Enqueue(t);
+        while (q.Peek() < t - 3000)
+        {
+            q.Dequeue();
+        }
+        return q.Count;
+    }
+}
+
+/**
+ * Your RecentCounter object will be instantiated and called as such:
+ * RecentCounter obj = new RecentCounter();
+ * int param_1 = obj.Ping(t);
+ */
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：二分查找
+
+`t` 严格单调递增，非常适合用二分查找来定位 `[t-3000, t]` 的左右边界。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class RecentCounter:
+    def __init__(self):
+        self.s = []
+
+    def ping(self, t: int) -> int:
+        self.s.append(t)
+        return len(self.s) - bisect_left(self.s, t - 3000)
+
+
+# Your RecentCounter object will be instantiated and called as such:
+# obj = RecentCounter()
+# param_1 = obj.ping(t)
+```
+
+#### C++
+
+```cpp
+class RecentCounter {
+public:
+    vector<int> s;
+
+    RecentCounter() {
+    }
+
+    int ping(int t) {
+        s.push_back(t);
+        return s.size() - (lower_bound(s.begin(), s.end(), t - 3000) - s.begin());
+    }
+};
+
+/**
+ * Your RecentCounter object will be instantiated and called as such:
+ * RecentCounter* obj = new RecentCounter();
+ * int param_1 = obj->ping(t);
+ */
+```
+
+#### Go
+
+```go
+type RecentCounter struct {
+	s []int
+}
+
+func Constructor() RecentCounter {
+	return RecentCounter{[]int{}}
+}
+
+func (this *RecentCounter) Ping(t int) int {
+	this.s = append(this.s, t)
+	search := func(x int) int {
+		left, right := 0, len(this.s)
+		for left < right {
+			mid := (left + right) >> 1
+			if this.s[mid] >= x {
+				right = mid
+			} else {
+				left = mid + 1
+			}
+		}
+		return left
+	}
+	return len(this.s) - search(t-3000)
+}
+
+/**
+ * Your RecentCounter object will be instantiated and called as such:
+ * obj := Constructor();
+ * param_1 := obj.Ping(t);
+ */
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

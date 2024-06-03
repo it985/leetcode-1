@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1782.Count%20Pairs%20Of%20Nodes/README.md
+rating: 2457
+source: 第 47 场双周赛 Q4
+tags:
+    - 图
+    - 数组
+    - 双指针
+    - 二分查找
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1782. 统计点对的数目](https://leetcode.cn/problems/count-pairs-of-nodes)
 
 [English Version](/solution/1700-1799/1782.Count%20Pairs%20Of%20Nodes/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个无向图，无向图由整数&nbsp;<code>n</code>&nbsp;&nbsp;，表示图中节点的数目，和&nbsp;<code>edges</code>&nbsp;组成，其中&nbsp;<code>edges[i] = [u<sub>i</sub>, v<sub>i</sub>]</code>&nbsp;表示&nbsp;<code>u<sub>i</sub></code> 和&nbsp;<code>v<sub>i</sub></code><sub>&nbsp;</sub>之间有一条无向边。同时给你一个代表查询的整数数组&nbsp;<code>queries</code>&nbsp;。</p>
 
@@ -53,11 +69,13 @@ answers[1] = 5。所有的点对(a, b)中除了(3,4)边数等于3，其它点对
 	<li><code>0 &lt;= queries[j] &lt; edges.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 排序 + 二分查找**
+### 方法一：哈希表 + 排序 + 二分查找
 
 根据题目，我们可以知道，与点对 $(a, b)$ 相连的边数等于“与 $a$ 相连的边数”加上“与 $b$ 相连的边数”，再减去同时与 $a$ 和 $b$ 相连的边数。
 
@@ -69,9 +87,7 @@ answers[1] = 5。所有的点对(a, b)中除了(3,4)边数等于3，其它点对
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -99,9 +115,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -151,7 +165,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -188,7 +202,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countPairs(n int, edges [][]int, queries []int) []int {
@@ -223,7 +237,7 @@ func countPairs(n int, edges [][]int, queries []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countPairs(n: number, edges: number[][], queries: number[]): number[] {
@@ -268,10 +282,8 @@ function countPairs(n: number, edges: number[][], queries: number[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

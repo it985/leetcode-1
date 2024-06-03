@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1125.Smallest%20Sufficient%20Team/README_EN.md
+rating: 2250
+source: Weekly Contest 145 Q4
+tags:
+    - Bit Manipulation
+    - Array
+    - Dynamic Programming
+    - Bitmask
+---
+
+<!-- problem:start -->
+
 # [1125. Smallest Sufficient Team](https://leetcode.com/problems/smallest-sufficient-team)
 
 [中文文档](/solution/1100-1199/1125.Smallest%20Sufficient%20Team/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>In a project, you have a list of required skills <code>req_skills</code>, and a list of people. The <code>i<sup>th</sup></code> person <code>people[i]</code> contains a list of skills that the person has.</p>
 
@@ -41,9 +58,13 @@
 	<li>It is guaranteed a sufficient team exists.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: State Compression Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: State Compression Dynamic Programming
 
 We notice that the length of `req_skills` does not exceed $16$, so we can use a binary number of length no more than $16$ to represent whether each skill is mastered. Let's denote the length of `req_skills` as $m$ and the length of `people` as $n$.
 
@@ -65,7 +86,7 @@ The time complexity is $O(2^m \times n)$, and the space complexity is $O(2^m)$. 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -98,7 +119,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -142,7 +163,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -186,7 +207,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func smallestSufficientTeam(req_skills []string, people [][]string) (ans []int) {
@@ -228,7 +249,7 @@ func smallestSufficientTeam(req_skills []string, people [][]string) (ans []int) 
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function smallestSufficientTeam(req_skills: string[], people: string[][]): number[] {
@@ -269,10 +290,8 @@ function smallestSufficientTeam(req_skills: string[], people: string[][]): numbe
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

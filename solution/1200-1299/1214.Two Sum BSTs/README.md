@@ -1,10 +1,28 @@
-# [1214. 查找两棵二叉搜索树之和](https://leetcode.cn/problems/two-sum-bsts)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1214.Two%20Sum%20BSTs/README.md
+rating: 1389
+source: 第 10 场双周赛 Q2
+tags:
+    - 栈
+    - 树
+    - 深度优先搜索
+    - 二叉搜索树
+    - 双指针
+    - 二分查找
+    - 二叉树
+---
+
+<!-- problem:start -->
+
+# [1214. 查找两棵二叉搜索树之和 🔒](https://leetcode.cn/problems/two-sum-bsts)
 
 [English Version](/solution/1200-1299/1214.Two%20Sum%20BSTs/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给出两棵二叉搜索树的根节点&nbsp;<meta charset="UTF-8" /><code>root1</code>&nbsp;和<meta charset="UTF-8" />&nbsp;<code>root2</code>&nbsp;，请你从两棵树中各找出一个节点，使得这两个节点的值之和等于目标值&nbsp;<code>Target</code>。</p>
 
@@ -39,11 +57,13 @@
 	<li><code>-10<sup>9</sup>&nbsp;&lt;= Node.val, target &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：中序遍历 + 双指针**
+### 方法一：中序遍历 + 双指针
 
 我们分别对两棵树进行中序遍历，得到两个有序数组 $nums[0]$ 和 $nums[1]$，然后使用双指针的方法判断是否存在两个数的和为目标值。双指针判断方法如下：
 
@@ -55,9 +75,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -92,9 +110,7 @@ class Solution:
         return False
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -145,7 +161,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -190,7 +206,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -230,7 +246,7 @@ func twoSumBSTs(root1 *TreeNode, root2 *TreeNode, target int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -278,10 +294,8 @@ function twoSumBSTs(root1: TreeNode | null, root2: TreeNode | null, target: numb
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

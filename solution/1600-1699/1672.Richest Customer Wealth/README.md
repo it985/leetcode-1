@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1672.Richest%20Customer%20Wealth/README.md
+rating: 1182
+source: 第 217 场周赛 Q1
+tags:
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [1672. 最富有客户的资产总量](https://leetcode.cn/problems/richest-customer-wealth)
 
 [English Version](/solution/1600-1699/1672.Richest%20Customer%20Wealth/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个 <code>m x n</code> 的整数网格 <code>accounts</code> ，其中 <code>accounts[i][j]</code> 是第 <code>i​​​​​<sup>​​​​​​</sup>​</code> 位客户在第 <code>j</code> 家银行托管的资产数量。返回最富有客户所拥有的 <strong>资产总量</strong> 。</p>
 
@@ -49,21 +62,21 @@
 	<li><code>1 &lt;= accounts[i][j] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：求和**
+### 方法一：求和
 
-遍历 `accounts`，求出每一行的和，然后求出最大值。
+我们遍历 `accounts`，求出每一行的和的最大值即可。
 
-时间复杂度 $O(m\times n)$。
+时间复杂度 $O(m \times n)$，其中 $m$ 和 $n$ 分别为网格的行数和列数。空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -71,9 +84,7 @@ class Solution:
         return max(sum(v) for v in accounts)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -92,7 +103,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -107,7 +118,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumWealth(accounts [][]int) int {
@@ -125,7 +136,7 @@ func maximumWealth(accounts [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumWealth(accounts: number[][]): number {
@@ -140,7 +151,7 @@ function maximumWealth(accounts: number[][]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -154,42 +165,7 @@ impl Solution {
 }
 ```
 
-### **C**
-
-```c
-#define max(a, b) (((a) > (b)) ? (a) : (b))
-
-int maximumWealth(int** accounts, int accountsSize, int* accountsColSize) {
-    int ans = INT_MIN;
-    for (int i = 0; i < accountsSize; i++) {
-        int sum = 0;
-        for (int j = 0; j < accountsColSize[i]; j++) {
-            sum += accounts[i][j];
-        }
-        ans = max(ans, sum);
-    }
-    return ans;
-}
-```
-
-### **Kotlin**
-
-```kotlin
-class Solution {
-    fun maximumWealth(accounts: Array<IntArray>): Int {
-        var max = 0
-        for (account in accounts) {
-            val sum = account.sum()
-            if (sum > max) {
-                max = sum
-            }
-        }
-        return max
-    }
-}
-```
-
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -213,10 +189,43 @@ class Solution {
 }
 ```
 
-### **...**
+#### C
 
+```c
+#define max(a, b) (((a) > (b)) ? (a) : (b))
+
+int maximumWealth(int** accounts, int accountsSize, int* accountsColSize) {
+    int ans = INT_MIN;
+    for (int i = 0; i < accountsSize; i++) {
+        int sum = 0;
+        for (int j = 0; j < accountsColSize[i]; j++) {
+            sum += accounts[i][j];
+        }
+        ans = max(ans, sum);
+    }
+    return ans;
+}
 ```
 
+#### Kotlin
+
+```kotlin
+class Solution {
+    fun maximumWealth(accounts: Array<IntArray>): Int {
+        var max = 0
+        for (account in accounts) {
+            val sum = account.sum()
+            if (sum > max) {
+                max = sum
+            }
+        }
+        return max
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,21 @@
-# [2263. 数组变为有序的最小操作次数](https://leetcode.cn/problems/make-array-non-decreasing-or-non-increasing)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2263.Make%20Array%20Non-decreasing%20or%20Non-increasing/README.md
+tags:
+    - 贪心
+    - 动态规划
+---
+
+<!-- problem:start -->
+
+# [2263. 数组变为有序的最小操作次数 🔒](https://leetcode.cn/problems/make-array-non-decreasing-or-non-increasing)
 
 [English Version](/solution/2200-2299/2263.Make%20Array%20Non-decreasing%20or%20Non-increasing/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 。在一步操作中，你可以：</p>
 
@@ -60,11 +71,13 @@
 
 <p><strong>进阶：</strong>你可以设计并实现时间复杂度为 <code>O(n*log(n))</code> 的解法吗?</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i][j]$ 表示将数组 $nums$ 的前 $i$ 个元素变为非递减序列，且第 $i$ 个元素的值为 $j$ 所需的最小操作次数。由于数组 $nums$ 元素的取值范围为 $[0, 1000]$，因此我们可以将 $f$ 数组的第二维定义为 $1001$。
 
@@ -80,9 +93,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -101,9 +112,7 @@ class Solution:
         return min(solve(nums), solve(nums[::-1]))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -139,7 +148,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -167,7 +176,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func convertArray(nums []int) int {
@@ -206,16 +215,8 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

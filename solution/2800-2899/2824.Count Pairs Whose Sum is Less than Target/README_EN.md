@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2824.Count%20Pairs%20Whose%20Sum%20is%20Less%20than%20Target/README_EN.md
+rating: 1165
+source: Biweekly Contest 111 Q1
+tags:
+    - Array
+    - Two Pointers
+    - Binary Search
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2824. Count Pairs Whose Sum is Less than Target](https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target)
 
 [中文文档](/solution/2800-2899/2824.Count%20Pairs%20Whose%20Sum%20is%20Less%20than%20Target/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 Given a <strong>0-indexed</strong> integer array <code>nums</code> of length <code>n</code> and an integer <code>target</code>, return <em>the number of pairs</em> <code>(i, j)</code> <em>where</em> <code>0 &lt;= i &lt; j &lt; n</code> <em>and</em> <code>nums[i] + nums[j] &lt; target</code>.
 
@@ -45,9 +62,13 @@ Note that (0, 3) is not counted since nums[0] + nums[3] is not strictly less tha
 	<li><code>-50 &lt;= nums[i], target &lt;= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sorting + Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Sorting + Binary Search
 
 First, we sort the array $nums$. Then, for each $j$, we use binary search in the range $[0, j)$ to find the first index $i$ that is greater than or equal to $target - nums[j]$. All indices $k$ in the range $[0, i)$ meet the condition, so the answer increases by $i$.
 
@@ -57,7 +78,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(\log
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -70,7 +91,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -100,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -117,7 +138,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countPairs(nums []int, target int) (ans int) {
@@ -130,7 +151,7 @@ func countPairs(nums []int, target int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countPairs(nums: number[], target: number): number {
@@ -156,10 +177,8 @@ function countPairs(nums: number[], target: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

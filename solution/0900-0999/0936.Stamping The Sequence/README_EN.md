@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0936.Stamping%20The%20Sequence/README_EN.md
+tags:
+    - Stack
+    - Greedy
+    - Queue
+    - String
+---
+
+<!-- problem:start -->
+
 # [936. Stamping The Sequence](https://leetcode.com/problems/stamping-the-sequence)
 
 [中文文档](/solution/0900-0999/0936.Stamping%20The%20Sequence/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two strings <code>stamp</code> and <code>target</code>. Initially, there is a string <code>s</code> of length <code>target.length</code> with all <code>s[i] == &#39;?&#39;</code>.</p>
 
@@ -10,12 +25,14 @@
 
 <ul>
 	<li>For example, if <code>stamp = &quot;abc&quot;</code> and <code>target = &quot;abcba&quot;</code>, then <code>s</code> is <code>&quot;?????&quot;</code> initially. In one turn you can:
+
     <ul>
     	<li>place <code>stamp</code> at index <code>0</code> of <code>s</code> to obtain <code>&quot;abc??&quot;</code>,</li>
     	<li>place <code>stamp</code> at index <code>1</code> of <code>s</code> to obtain <code>&quot;?abc?&quot;</code>, or</li>
     	<li>place <code>stamp</code> at index <code>2</code> of <code>s</code> to obtain <code>&quot;??abc&quot;</code>.</li>
     </ul>
     Note that <code>stamp</code> must be fully contained in the boundaries of <code>s</code> in order to stamp (i.e., you cannot place <code>stamp</code> at index <code>3</code> of <code>s</code>).</li>
+
 </ul>
 
 <p>We want to convert <code>s</code> to <code>target</code> using <strong>at most</strong> <code>10 * target.length</code> turns.</p>
@@ -53,9 +70,13 @@
 	<li><code>stamp</code> and <code>target</code> consist of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Reverse Thinking + Topological Sorting**
+<!-- solution:start -->
+
+### Solution 1: Reverse Thinking + Topological Sorting
 
 If we operate on the sequence in a forward manner, it would be quite complicated because subsequent operations would overwrite previous ones. Therefore, we consider operating on the sequence in a reverse manner, i.e., starting from the target string $target$ and considering the process of turning $target$ into $?????$.
 
@@ -79,7 +100,7 @@ The time complexity is $O(n \times (n - m + 1))$, and the space complexity is $O
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -111,7 +132,7 @@ class Solution:
         return ans[::-1] if all(vis) else []
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -160,7 +181,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -209,7 +230,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func movesToStamp(stamp string, target string) (ans []int) {
@@ -261,7 +282,7 @@ func movesToStamp(stamp string, target string) (ans []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function movesToStamp(stamp: string, target: string): number[] {
@@ -306,7 +327,7 @@ function movesToStamp(stamp: string, target: string): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::VecDeque;
@@ -368,10 +389,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1793.Maximum%20Score%20of%20a%20Good%20Subarray/README_EN.md
+rating: 1945
+source: Weekly Contest 232 Q4
+tags:
+    - Stack
+    - Array
+    - Two Pointers
+    - Binary Search
+    - Monotonic Stack
+---
+
+<!-- problem:start -->
+
 # [1793. Maximum Score of a Good Subarray](https://leetcode.com/problems/maximum-score-of-a-good-subarray)
 
 [中文文档](/solution/1700-1799/1793.Maximum%20Score%20of%20a%20Good%20Subarray/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an array of integers <code>nums</code> <strong>(0-indexed)</strong> and an integer <code>k</code>.</p>
 
@@ -36,9 +54,13 @@
 	<li><code>0 &lt;= k &lt; nums.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Monotonic Stack**
+<!-- solution:start -->
+
+### Solution 1: Monotonic Stack
 
 We can enumerate each element $nums[i]$ in $nums$ as the minimum value of the subarray, and use a monotonic stack to find the first position $left[i]$ on the left that is less than $nums[i]$ and the first position $right[i]$ on the right that is less than or equal to $nums[i]$. Then, the score of the subarray with $nums[i]$ as the minimum value is $nums[i] \times (right[i] - left[i] - 1)$.
 
@@ -48,7 +70,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -78,7 +100,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -121,7 +143,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -163,7 +185,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumScore(nums []int, k int) (ans int) {
@@ -204,7 +226,7 @@ func maximumScore(nums []int, k int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumScore(nums: number[], k: number): number {
@@ -241,10 +263,8 @@ function maximumScore(nums: number[], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

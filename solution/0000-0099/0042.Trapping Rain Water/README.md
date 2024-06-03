@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0042.Trapping%20Rain%20Water/README.md
+tags:
+    - 栈
+    - 数组
+    - 双指针
+    - 动态规划
+    - 单调栈
+---
+
+<!-- problem:start -->
+
 # [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water)
 
 [English Version](/solution/0000-0099/0042.Trapping%20Rain%20Water/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定&nbsp;<code>n</code> 个非负整数表示每个宽度为 <code>1</code> 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。</p>
 
@@ -37,21 +51,21 @@
 	<li><code>0 &lt;= height[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
-我们定义 $left[i]$ 表示下标 $i$ 位置及其左边的最高柱子的高度，定义 $right[i]$ 表示下标 $i$ 位置及其右边的最高柱子的高度。那么下标 $i$ 位置能接的雨水量为 $\min(left[i], right[i]) - height[i]$。我们遍历数组，计算出 $left[i]$ 和 $right[i]$，最后答案为 $\sum_{i=0}^{n-1} min(left[i], right[i]) - height[i]$。
+我们定义 $left[i]$ 表示下标 $i$ 位置及其左边的最高柱子的高度，定义 $right[i]$ 表示下标 $i$ 位置及其右边的最高柱子的高度。那么下标 $i$ 位置能接的雨水量为 $\min(left[i], right[i]) - height[i]$。我们遍历数组，计算出 $left[i]$ 和 $right[i]$，最后答案为 $\sum_{i=0}^{n-1} \min(left[i], right[i]) - height[i]$。
 
 时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 为数组的长度。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -65,9 +79,7 @@ class Solution:
         return sum(min(l, r) - h for l, r, h in zip(left, right, height))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -90,7 +102,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -113,7 +125,45 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func trap(height []int) (ans int) {
+	n := len(height)
+	left := make([]int, n)
+	right := make([]int, n)
+	left[0], right[n-1] = height[0], height[n-1]
+	for i := 1; i < n; i++ {
+		left[i] = max(left[i-1], height[i])
+		right[n-i-1] = max(right[n-i], height[n-i-1])
+	}
+	for i, h := range height {
+		ans += min(left[i], right[i]) - h
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function trap(height: number[]): number {
+    const n = height.length;
+    const left: number[] = new Array(n).fill(height[0]);
+    const right: number[] = new Array(n).fill(height[n - 1]);
+    for (let i = 1; i < n; ++i) {
+        left[i] = Math.max(left[i - 1], height[i]);
+        right[n - i - 1] = Math.max(right[n - i], height[n - i - 1]);
+    }
+    let ans = 0;
+    for (let i = 0; i < n; ++i) {
+        ans += Math.min(left[i], right[i]) - height[i];
+    }
+    return ans;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -144,45 +194,7 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func trap(height []int) (ans int) {
-	n := len(height)
-	left := make([]int, n)
-	right := make([]int, n)
-	left[0], right[n-1] = height[0], height[n-1]
-	for i := 1; i < n; i++ {
-		left[i] = max(left[i-1], height[i])
-		right[n-i-1] = max(right[n-i], height[n-i-1])
-	}
-	for i, h := range height {
-		ans += min(left[i], right[i]) - h
-	}
-	return
-}
-```
-
-### **TypeScript**
-
-```ts
-function trap(height: number[]): number {
-    const n = height.length;
-    const left: number[] = new Array(n).fill(height[0]);
-    const right: number[] = new Array(n).fill(height[n - 1]);
-    for (let i = 1; i < n; ++i) {
-        left[i] = Math.max(left[i - 1], height[i]);
-        right[n - i - 1] = Math.max(right[n - i], height[n - i - 1]);
-    }
-    let ans = 0;
-    for (let i = 0; i < n; ++i) {
-        ans += Math.min(left[i], right[i]) - height[i];
-    }
-    return ans;
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -205,10 +217,52 @@ public class Solution {
 }
 ```
 
-### **...**
+#### PHP
 
-```
+```php
+class Solution {
+    /**
+     * @param integer[] $height
+     * @return integer
+     */
 
+    function trap($height) {
+        $n = count($height);
+
+        if ($n == 0) {
+            return 0;
+        }
+
+        $left = 0;
+        $right = $n - 1;
+        $leftMax = 0;
+        $rightMax = 0;
+        $ans = 0;
+
+        while ($left < $right) {
+            if ($height[$left] < $height[$right]) {
+                if ($height[$left] > $leftMax) {
+                    $leftMax = $height[$left];
+                } else {
+                    $ans += $leftMax - $height[$left];
+                }
+                $left++;
+            } else {
+                if ($height[$right] > $rightMax) {
+                    $rightMax = $height[$right];
+                } else {
+                    $ans += $rightMax - $height[$right];
+                }
+                $right--;
+            }
+        }
+        return $ans;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

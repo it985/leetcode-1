@@ -1,10 +1,22 @@
-# [1794. 统计距离最小的子串对个数](https://leetcode.cn/problems/count-pairs-of-equal-substrings-with-minimum-difference)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1794.Count%20Pairs%20of%20Equal%20Substrings%20With%20Minimum%20Difference/README.md
+tags:
+    - 贪心
+    - 哈希表
+    - 字符串
+---
+
+<!-- problem:start -->
+
+# [1794. 统计距离最小的子串对个数 🔒](https://leetcode.cn/problems/count-pairs-of-equal-substrings-with-minimum-difference)
 
 [English Version](/solution/1700-1799/1794.Count%20Pairs%20of%20Equal%20Substrings%20With%20Minimum%20Difference/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>输入数据为两个字符串<code>firstString</code> 和 <code>secondString</code>，两个字符串下标均从0开始，且均只包含小写的英文字符，请计算满足下列要求的下标四元组<code>(i,j,a,b)</code>的个数：</p>
 
@@ -44,11 +56,13 @@
 	<li>两个输入字符串均只包含小写英文字符.</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 哈希表**
+### 方法一：贪心 + 哈希表
 
 题目实际上要我们找到一个最小的下标 $i$ 和一个最大的下标 $j$，使得 $firstString[i]$ 与 $secondString[j]$ 相等，且 $i - j$ 的值是所有满足条件的下标对中最小的。
 
@@ -58,9 +72,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -78,9 +90,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +117,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -135,7 +145,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countQuadruples(firstString string, secondString string) (ans int) {
@@ -160,7 +170,7 @@ func countQuadruples(firstString string, secondString string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countQuadruples(firstString: string, secondString: string): number {
@@ -185,10 +195,8 @@ function countQuadruples(firstString: string, secondString: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,20 @@
-# [1077. 项目员工 III](https://leetcode.cn/problems/project-employees-iii)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1077.Project%20Employees%20III/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1077. 项目员工 III 🔒](https://leetcode.cn/problems/project-employees-iii)
 
 [English Version](/solution/1000-1099/1077.Project%20Employees%20III/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>项目表&nbsp;<code>Project</code>：</p>
 
@@ -78,17 +88,19 @@ Employee 表：
 +-------------+---------------+
 <strong>解释：</strong>employee_id 为 1 和 3 的员工在 project_id 为 1 的项目中拥有最丰富的经验。在 project_id 为 2 的项目中，employee_id 为 1 的员工拥有最丰富的经验。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：内连接 + 窗口函数**
+### 方法一：内连接 + 窗口函数
 
 我们先将 `Project` 表和 `Employee` 表进行内连接，然后使用窗口函数 `rank()` 对 `Project` 表进行分组，按照 `experience_years` 降序排列，最后取出每个项目中经验最丰富的雇员。
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -110,3 +122,7 @@ WHERE rk = 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

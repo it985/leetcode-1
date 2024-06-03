@@ -1,10 +1,25 @@
-# [2613. 美数对](https://leetcode.cn/problems/beautiful-pairs)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2613.Beautiful%20Pairs/README.md
+tags:
+    - 几何
+    - 数组
+    - 数学
+    - 分治
+    - 有序集合
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [2613. 美数对 🔒](https://leetcode.cn/problems/beautiful-pairs)
 
 [English Version](/solution/2600-2699/2613.Beautiful%20Pairs/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个长度相同的 <strong>下标从 0 开始</strong> 的整数数组 <code>nums1</code> 和 <code>nums2</code>&nbsp;，如果 <code>|nums1[i] - nums1[j]| + |nums2[i] - nums2[j]|</code> 在所有可能的下标对中是最小的，其中 <code>i &lt; j</code> ，则称下标对 <code>(i,j)</code> 为 <strong>美</strong> 数对，</p>
 
@@ -46,11 +61,13 @@
 	<li><code>0 &lt;= nums2<sub>i</sub>&nbsp;&lt;= nums2.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 分治**
+### 方法一：排序 + 分治
 
 本题相当于找出平面中两个点，使得它们的曼哈顿距离最小，如果有多个点满足条件，则返回下标字典序最小的点。
 
@@ -68,9 +85,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -112,9 +127,7 @@ class Solution:
         return [pi, pj]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -184,7 +197,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -255,7 +268,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func beautifulPair(nums1 []int, nums2 []int) []int {
@@ -325,7 +338,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function beautifulPair(nums1: number[], nums2: number[]): number[] {
@@ -396,10 +409,8 @@ function f(x: number, y: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

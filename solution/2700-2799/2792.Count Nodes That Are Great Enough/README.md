@@ -1,10 +1,23 @@
-# [2792. 计算满足条件的节点数](https://leetcode.cn/problems/count-nodes-that-are-great-enough)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2792.Count%20Nodes%20That%20Are%20Great%20Enough/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 分治
+    - 二叉树
+---
+
+<!-- problem:start -->
+
+# [2792. 计算足够大的节点数 🔒](https://leetcode.cn/problems/count-nodes-that-are-great-enough)
 
 [English Version](/solution/2700-2799/2792.Count%20Nodes%20That%20Are%20Great%20Enough/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一棵二叉树的根节点 <code>root</code> 和一个整数 <code>k</code> 。如果一个节点满足以下条件，则称其为 <strong>足够大</strong>&nbsp;：</p>
 
@@ -13,7 +26,7 @@
 	<li>它的值 <strong>大于</strong> 其子树中 <strong>至少</strong> <code>k</code> 个节点的值。</li>
 </ul>
 
-<p>返回满足条件的节点数。</p>
+<p>返回足够大的节点数。</p>
 
 <p>如果 <code>u == v</code> 或者 <code>v</code> 是 <code>u</code> 的祖先，则节点 <code>u</code> 在节点 <code>v</code> 的 <strong>子树</strong> 中。</p>
 
@@ -72,11 +85,13 @@
 	<li><code>1 &lt;= k &lt;= 10</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS + 大根堆**
+### 方法一：DFS + 大根堆
 
 我们可以使用 DFS 后序遍历整棵树，对于每个节点，我们维护一个大根堆，堆中存储该节点的所有子树中最小的 k 个节点的值，如果当前节点的值大于堆顶元素，那么该节点就是一个「足够大」的节点，我们将答案加一。
 
@@ -84,9 +99,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -119,9 +132,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -173,7 +184,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -219,7 +230,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -270,10 +281,8 @@ func (h *hp) push(v int) { heap.Push(h, v) }
 func (h *hp) pop() int   { return heap.Pop(h).(int) }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof2/%E5%89%91%E6%8C%87%20Offer%20II%20051.%20%E8%8A%82%E7%82%B9%E4%B9%8B%E5%92%8C%E6%9C%80%E5%A4%A7%E7%9A%84%E8%B7%AF%E5%BE%84/README.md
+---
+
+<!-- problem:start -->
+
 # [剑指 Offer II 051. 节点之和最大的路径](https://leetcode.cn/problems/jC7MId)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><strong>路径</strong> 被定义为一条从树中任意节点出发，沿父节点-子节点连接，达到任意节点的序列。同一个节点在一条路径序列中 <strong>至多出现一次</strong> 。该路径<strong> 至少包含一个 </strong>节点，且不一定经过根节点。</p>
 
@@ -44,11 +51,13 @@
 
 <p><meta charset="UTF-8" />注意：本题与主站 124&nbsp;题相同：&nbsp;<a href="https://leetcode.cn/problems/binary-tree-maximum-path-sum/">https://leetcode.cn/problems/binary-tree-maximum-path-sum/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：递归**
+### 方法一：递归
 
 我们思考二叉树递归问题的经典套路：
 
@@ -72,9 +81,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -99,9 +106,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -139,7 +144,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -172,7 +177,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -200,7 +205,7 @@ func maxPathSum(root *TreeNode) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -233,74 +238,7 @@ function maxPathSum(root: TreeNode | null): number {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
-/**
- * @param {TreeNode} root
- * @return {number}
- */
-var maxPathSum = function (root) {
-    let ans = -1001;
-    const dfs = root => {
-        if (!root) {
-            return 0;
-        }
-        const left = Math.max(0, dfs(root.left));
-        const right = Math.max(0, dfs(root.right));
-        ans = Math.max(ans, left + right + root.val);
-        return Math.max(left, right) + root.val;
-    };
-    dfs(root);
-    return ans;
-};
-```
-
-### **C#**
-
-```cs
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     public int val;
- *     public TreeNode left;
- *     public TreeNode right;
- *     public TreeNode(int val=0, TreeNode left=null, TreeNode right=null) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-public class Solution {
-    private int ans = -1001;
-
-    public int MaxPathSum(TreeNode root) {
-        dfs(root);
-        return ans;
-    }
-
-    private int dfs(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        int left = Math.Max(0, dfs(root.left));
-        int right = Math.Max(0, dfs(root.right));
-        ans = Math.Max(ans, left + right + root.val);
-        return root.val + Math.Max(left, right);
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -343,10 +281,75 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var maxPathSum = function (root) {
+    let ans = -1001;
+    const dfs = root => {
+        if (!root) {
+            return 0;
+        }
+        const left = Math.max(0, dfs(root.left));
+        const right = Math.max(0, dfs(root.right));
+        ans = Math.max(ans, left + right + root.val);
+        return Math.max(left, right) + root.val;
+    };
+    dfs(root);
+    return ans;
+};
 ```
 
+#### C#
+
+```cs
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     public int val;
+ *     public TreeNode left;
+ *     public TreeNode right;
+ *     public TreeNode(int val=0, TreeNode left=null, TreeNode right=null) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+public class Solution {
+    private int ans = -1001;
+
+    public int MaxPathSum(TreeNode root) {
+        dfs(root);
+        return ans;
+    }
+
+    private int dfs(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int left = Math.Max(0, dfs(root.left));
+        int right = Math.Max(0, dfs(root.right));
+        ans = Math.Max(ans, left + right + root.val);
+        return root.val + Math.Max(left, right);
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

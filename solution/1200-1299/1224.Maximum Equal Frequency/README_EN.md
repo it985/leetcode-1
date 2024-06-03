@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1224.Maximum%20Equal%20Frequency/README_EN.md
+rating: 2050
+source: Weekly Contest 158 Q4
+tags:
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [1224. Maximum Equal Frequency](https://leetcode.com/problems/maximum-equal-frequency)
 
 [中文文档](/solution/1200-1299/1224.Maximum%20Equal%20Frequency/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array <code>nums</code> of positive integers, return the longest possible length of an array prefix of <code>nums</code>, such that it is possible to remove <strong>exactly one</strong> element from this prefix so that every number that has appeared in it will have the same number of occurrences.</p>
 
@@ -32,9 +47,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Array or Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Array or Hash Table
 
 We use $cnt$ to record the number of times each element $v$ appears in $nums$, and $ccnt$ to record the number of times each count appears. The maximum number of times an element appears is represented by $mx$.
 
@@ -48,7 +67,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -71,7 +90,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -131,7 +150,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxEqualFreq(nums []int) int {
@@ -158,7 +177,7 @@ func maxEqualFreq(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxEqualFreq(nums: number[]): number {
@@ -198,10 +217,8 @@ function maxEqualFreq(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2810.Faulty%20Keyboard/README_EN.md
+rating: 1192
+source: Weekly Contest 357 Q1
+tags:
+    - String
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [2810. Faulty Keyboard](https://leetcode.com/problems/faulty-keyboard)
 
 [中文文档](/solution/2800-2899/2810.Faulty%20Keyboard/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Your laptop keyboard is faulty, and whenever you type a character <code>&#39;i&#39;</code> on it, it reverses the string that you have written. Typing other characters works as expected.</p>
 
@@ -51,11 +66,25 @@ Therefore, we return &quot;ponter&quot;.</pre>
 	<li><code>s[0] != &#39;i&#39;</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Simulation
+
+We directly simulate the keyboard input process, using a character array $t$ to record the text on the screen, initially $t$ is empty.
+
+For each character $c$ in string $s$, if $c$ is not the character $'i'$, then we add $c$ to the end of $t$; otherwise, we reverse all characters in $t$.
+
+The final answer is the string composed of characters in $t$.
+
+The time complexity is $O(n^2)$, and the space complexity is $O(n)$, where $n$ is the length of string $s$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +98,7 @@ class Solution:
         return "".join(t)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -87,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -106,7 +135,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func finalString(s string) string {
@@ -124,7 +153,7 @@ func finalString(s string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function finalString(s: string): string {
@@ -140,7 +169,7 @@ function finalString(s: string): string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -158,10 +187,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

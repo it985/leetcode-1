@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2535.Difference%20Between%20Element%20Sum%20and%20Digit%20Sum%20of%20an%20Array/README.md
+rating: 1222
+source: 第 328 场周赛 Q1
+tags:
+    - 数组
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [2535. 数组元素和与数字和的绝对差](https://leetcode.cn/problems/difference-between-element-sum-and-digit-sum-of-an-array)
 
 [English Version](/solution/2500-2599/2535.Difference%20Between%20Element%20Sum%20and%20Digit%20Sum%20of%20an%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个正整数数组 <code>nums</code> 。</p>
 
@@ -50,11 +63,13 @@ nums 的数字和是 1 + 2 + 3 + 4 = 10 。
 	<li><code>1 &lt;= nums[i] &lt;= 2000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们遍历数组 $nums$，计算元素和 $a$ 与数字和 $b$，最后返回 $|a - b|$ 即可。
 
@@ -62,9 +77,7 @@ nums 的数字和是 1 + 2 + 3 + 4 = 10 。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,9 +90,7 @@ class Solution:
         return abs(a - b)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -96,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -114,7 +125,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func differenceOfSum(nums []int) int {
@@ -136,7 +147,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function differenceOfSum(nums: number[]): number {
@@ -151,7 +162,7 @@ function differenceOfSum(nums: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -169,6 +180,34 @@ impl Solution {
     }
 }
 ```
+
+#### C
+
+```c
+int differenceOfSum(int* nums, int numsSize) {
+    int ans = 0;
+    for (int i = 0; i < numsSize; i++) {
+        ans += nums[i];
+        while (nums[i]) {
+            ans -= nums[i] % 10;
+            nums[i] /= 10;
+        }
+    }
+    return ans;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -189,26 +228,8 @@ impl Solution {
 }
 ```
 
-### **C**
-
-```c
-int differenceOfSum(int* nums, int numsSize) {
-    int ans = 0;
-    for (int i = 0; i < numsSize; i++) {
-        ans += nums[i];
-        while (nums[i]) {
-            ans -= nums[i] % 10;
-            nums[i] /= 10;
-        }
-    }
-    return ans;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

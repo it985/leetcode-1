@@ -1,8 +1,20 @@
-# [2686. Immediate Food Delivery III](https://leetcode.com/problems/immediate-food-delivery-iii)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2686.Immediate%20Food%20Delivery%20III/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [2686. Immediate Food Delivery III 🔒](https://leetcode.com/problems/immediate-food-delivery-iii)
 
 [中文文档](/solution/2600-2699/2686.Immediate%20Food%20Delivery%20III/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Delivery</code></p>
 
@@ -64,11 +76,17 @@ Delivery table:
 order_date is sorted in ascending order.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -80,3 +98,7 @@ ORDER BY order_date
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

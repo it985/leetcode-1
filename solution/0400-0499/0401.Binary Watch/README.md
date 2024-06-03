@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0401.Binary%20Watch/README.md
+tags:
+    - 位运算
+    - 回溯
+---
+
+<!-- problem:start -->
+
 # [401. 二进制手表](https://leetcode.cn/problems/binary-watch)
 
 [English Version](/solution/0400-0499/0401.Binary%20Watch/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>二进制手表顶部有 4 个 LED 代表<strong> 小时（0-11）</strong>，底部的 6 个 LED 代表<strong> 分钟（0-59）</strong>。每个 LED 代表一个 0 或 1，最低位在右侧。</p>
 
@@ -52,25 +63,21 @@
 	<li><code>0 &lt;= turnedOn &lt;= 10</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举组合**
+### 方法一：枚举组合
 
 题目可转换为求 i(`i∈[0,12)`) 和 j(`j∈[0,60)`) 所有可能的组合。
 
 合法组合需要满足的条件是：i 的二进制形式中 1 的个数加上 j 的二进制形式中 1 的个数，结果等于 turnedOn。
 
-**方法二：二进制枚举**
-
-利用 10 个二进制位表示手表，其中前 4 位代表小时，后 6 位代表分钟。枚举 `[0, 1 << 10)` 的所有数，找出合法的数。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,20 +90,7 @@ class Solution:
         ]
 ```
 
-```python
-class Solution:
-    def readBinaryWatch(self, turnedOn: int) -> List[str]:
-        ans = []
-        for i in range(1 << 10):
-            h, m = i >> 6, i & 0b111111
-            if h < 12 and m < 60 and i.bit_count() == turnedOn:
-                ans.append('{:d}:{:02d}'.format(h, m))
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -114,22 +108,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public List<String> readBinaryWatch(int turnedOn) {
-        List<String> ans = new ArrayList<>();
-        for (int i = 0; i < 1 << 10; ++i) {
-            int h = i >> 6, m = i & 0b111111;
-            if (h < 12 && m < 60 && Integer.bitCount(i) == turnedOn) {
-                ans.add(String.format("%d:%02d", h, m));
-            }
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -148,23 +127,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    vector<string> readBinaryWatch(int turnedOn) {
-        vector<string> ans;
-        for (int i = 0; i < 1 << 10; ++i) {
-            int h = i >> 6, m = i & 0b111111;
-            if (h < 12 && m < 60 && __builtin_popcount(i) == turnedOn) {
-                ans.push_back(to_string(h) + ":" + (m < 10 ? "0" : "") + to_string(m));
-            }
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func readBinaryWatch(turnedOn int) []string {
@@ -180,20 +143,7 @@ func readBinaryWatch(turnedOn int) []string {
 }
 ```
 
-```go
-func readBinaryWatch(turnedOn int) []string {
-	var ans []string
-	for i := 0; i < 1<<10; i++ {
-		h, m := i>>6, i&0b111111
-		if h < 12 && m < 60 && bits.OnesCount(uint(i)) == turnedOn {
-			ans = append(ans, fmt.Sprintf("%d:%02d", h, m))
-		}
-	}
-	return ans
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function readBinaryWatch(turnedOn: number): string[] {
@@ -229,7 +179,7 @@ function readBinaryWatch(turnedOn: number): string[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -280,10 +230,83 @@ impl Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：二进制枚举
+
+利用 10 个二进制位表示手表，其中前 4 位代表小时，后 6 位代表分钟。枚举 `[0, 1 << 10)` 的所有数，找出合法的数。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def readBinaryWatch(self, turnedOn: int) -> List[str]:
+        ans = []
+        for i in range(1 << 10):
+            h, m = i >> 6, i & 0b111111
+            if h < 12 and m < 60 and i.bit_count() == turnedOn:
+                ans.append('{:d}:{:02d}'.format(h, m))
+        return ans
 ```
 
+#### Java
+
+```java
+class Solution {
+    public List<String> readBinaryWatch(int turnedOn) {
+        List<String> ans = new ArrayList<>();
+        for (int i = 0; i < 1 << 10; ++i) {
+            int h = i >> 6, m = i & 0b111111;
+            if (h < 12 && m < 60 && Integer.bitCount(i) == turnedOn) {
+                ans.add(String.format("%d:%02d", h, m));
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<string> readBinaryWatch(int turnedOn) {
+        vector<string> ans;
+        for (int i = 0; i < 1 << 10; ++i) {
+            int h = i >> 6, m = i & 0b111111;
+            if (h < 12 && m < 60 && __builtin_popcount(i) == turnedOn) {
+                ans.push_back(to_string(h) + ":" + (m < 10 ? "0" : "") + to_string(m));
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func readBinaryWatch(turnedOn int) []string {
+	var ans []string
+	for i := 0; i < 1<<10; i++ {
+		h, m := i>>6, i&0b111111
+		if h < 12 && m < 60 && bits.OnesCount(uint(i)) == turnedOn {
+			ans = append(ans, fmt.Sprintf("%d:%02d", h, m))
+		}
+	}
+	return ans
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,22 @@
-# [2921. 具有递增价格的最大利润三元组 II](https://leetcode.cn/problems/maximum-profitable-triplets-with-increasing-prices-ii)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2921.Maximum%20Profitable%20Triplets%20With%20Increasing%20Prices%20II/README.md
+tags:
+    - 树状数组
+    - 线段树
+    - 数组
+---
+
+<!-- problem:start -->
+
+# [2921. 价格递增的最大利润三元组 II 🔒](https://leetcode.cn/problems/maximum-profitable-triplets-with-increasing-prices-ii)
 
 [English Version](/solution/2900-2999/2921.Maximum%20Profitable%20Triplets%20With%20Increasing%20Prices%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定长度为 <code>n</code>&nbsp; 的数组&nbsp;<code>prices</code>&nbsp;和&nbsp;<code>profits</code>&nbsp;（<strong>下标从 0 开始</strong>）。一个商店有&nbsp;<code>n</code>&nbsp;个商品，第&nbsp;<code>i</code>&nbsp;个商品的价格为&nbsp;<code>prices[i]</code>，利润为&nbsp;<code>profits[i]</code>。</p>
 
@@ -56,11 +68,13 @@
 	<li><code>1 &lt;= profits[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：树状数组**
+### 方法一：树状数组
 
 我们可以用两个树状数组分别维护每个价格左边以及右边的最大利润，然后枚举中间的价格，通过树状数组查询左右两边的最大利润，最后取最大值即可。
 
@@ -68,9 +82,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class BinaryIndexedTree:
@@ -114,9 +126,7 @@ class Solution:
         )
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class BinaryIndexedTree {
@@ -177,7 +187,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class BinaryIndexedTree {
@@ -238,7 +248,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type BinaryIndexedTree struct {
@@ -299,7 +309,7 @@ func maxProfit(prices []int, profits []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class BinaryIndexedTree {
@@ -361,7 +371,7 @@ function maxProfit(prices: number[], profits: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 struct BinaryIndexedTree {
@@ -430,10 +440,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

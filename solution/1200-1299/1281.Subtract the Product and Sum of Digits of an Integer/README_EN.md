@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1281.Subtract%20the%20Product%20and%20Sum%20of%20Digits%20of%20an%20Integer/README_EN.md
+rating: 1141
+source: Weekly Contest 166 Q1
+tags:
+    - Math
+---
+
+<!-- problem:start -->
+
 # [1281. Subtract the Product and Sum of Digits of an Integer](https://leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer)
 
 [中文文档](/solution/1200-1299/1281.Subtract%20the%20Product%20and%20Sum%20of%20Digits%20of%20an%20Integer/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 Given an integer number <code>n</code>, return the difference between the product of its digits and the sum of its digits.
 
@@ -36,9 +50,13 @@ Result = 32 - 11 = 21
 	<li><code>1 &lt;= n &lt;= 10^5</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 We use two variables $x$ and $y$ to record the product of the digits and the sum of the digits respectively. At the beginning, $x=1,y=0$.
 
@@ -50,7 +68,7 @@ The time complexity is $O(\log n)$, where $n$ is the given integer. The space co
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -63,14 +81,7 @@ class Solution:
         return x - y
 ```
 
-```python
-class Solution:
-    def subtractProductAndSum(self, n: int) -> int:
-        nums = list(map(int, str(n)))
-        return prod(nums) - sum(nums)
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -86,7 +97,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -103,7 +114,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func subtractProductAndSum(n int) int {
@@ -117,7 +128,7 @@ func subtractProductAndSum(n int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function subtractProductAndSum(n: number): number {
@@ -131,7 +142,7 @@ function subtractProductAndSum(n: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -149,22 +160,7 @@ impl Solution {
 }
 ```
 
-### **C**
-
-```c
-int subtractProductAndSum(int n) {
-    int x = 1;
-    int y = 0;
-    for (; n > 0; n /= 10) {
-        int v = n % 10;
-        x *= v;
-        y += v;
-    }
-    return x - y;
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -181,10 +177,42 @@ public class Solution {
 }
 ```
 
-### **...**
+#### C
 
-```
-
+```c
+int subtractProductAndSum(int n) {
+    int x = 1;
+    int y = 0;
+    for (; n > 0; n /= 10) {
+        int v = n % 10;
+        x *= v;
+        y += v;
+    }
+    return x - y;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def subtractProductAndSum(self, n: int) -> int:
+        nums = list(map(int, str(n)))
+        return prod(nums) - sum(nums)
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

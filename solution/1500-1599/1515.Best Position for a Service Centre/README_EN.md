@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1515.Best%20Position%20for%20a%20Service%20Centre/README_EN.md
+rating: 2156
+source: Weekly Contest 197 Q4
+tags:
+    - Geometry
+    - Math
+    - Randomized
+---
+
+<!-- problem:start -->
+
 # [1515. Best Position for a Service Centre](https://leetcode.com/problems/best-position-for-a-service-centre)
 
 [中文文档](/solution/1500-1599/1515.Best%20Position%20for%20a%20Service%20Centre/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A delivery company wants to build a new service center in a new city. The company knows the positions of all the customers in this city on a 2D-Map and wants to build the new center in a position such that <strong>the sum of the euclidean distances to all customers is minimum</strong>.</p>
 
@@ -38,11 +54,17 @@
 	<li><code>0 &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +97,7 @@ class Solution:
                 return dist
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -113,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -152,7 +174,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getMinDistSum(positions [][]int) float64 {
@@ -190,7 +212,7 @@ func getMinDistSum(positions [][]int) float64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function getMinDistSum(positions: number[][]): number {
@@ -228,10 +250,8 @@ function getMinDistSum(positions: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

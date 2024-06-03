@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0424.Longest%20Repeating%20Character%20Replacement/README_EN.md
+tags:
+    - Hash Table
+    - String
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [424. Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement)
 
 [中文文档](/solution/0400-0499/0424.Longest%20Repeating%20Character%20Replacement/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>s</code> and an integer <code>k</code>. You can choose any character of the string and change it to any other uppercase English character. You can perform this operation at most <code>k</code> times.</p>
 
@@ -35,11 +49,17 @@ There may exists other ways to achieve this answer too.</pre>
 	<li><code>0 &lt;= k &lt;= s.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -56,7 +76,7 @@ class Solution:
         return i - j
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -78,7 +98,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -100,7 +120,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func characterReplacement(s string, k int) int {
@@ -121,10 +141,8 @@ func characterReplacement(s string, k int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

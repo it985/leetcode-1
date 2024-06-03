@@ -1,8 +1,23 @@
-# [281. Zigzag Iterator](https://leetcode.com/problems/zigzag-iterator)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0281.Zigzag%20Iterator/README_EN.md
+tags:
+    - Design
+    - Queue
+    - Array
+    - Iterator
+---
+
+<!-- problem:start -->
+
+# [281. Zigzag Iterator 🔒](https://leetcode.com/problems/zigzag-iterator)
 
 [中文文档](/solution/0200-0299/0281.Zigzag%20Iterator/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two vectors of integers <code>v1</code> and <code>v2</code>, implement an iterator to return their elements alternately.</p>
 
@@ -60,11 +75,17 @@
 <strong>Output:</strong> [1,4,8,2,5,9,3,6,7]
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class ZigzagIterator:
@@ -96,7 +117,53 @@ class ZigzagIterator:
 # while i.hasNext(): v.append(i.next())
 ```
 
-### **Rust**
+#### Java
+
+```java
+public class ZigzagIterator {
+    private int cur;
+    private int size;
+    private List<Integer> indexes = new ArrayList<>();
+    private List<List<Integer>> vectors = new ArrayList<>();
+
+    public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
+        cur = 0;
+        size = 2;
+        indexes.add(0);
+        indexes.add(0);
+        vectors.add(v1);
+        vectors.add(v2);
+    }
+
+    public int next() {
+        List<Integer> vector = vectors.get(cur);
+        int index = indexes.get(cur);
+        int res = vector.get(index);
+        indexes.set(cur, index + 1);
+        cur = (cur + 1) % size;
+        return res;
+    }
+
+    public boolean hasNext() {
+        int start = cur;
+        while (indexes.get(cur) == vectors.get(cur).size()) {
+            cur = (cur + 1) % size;
+            if (start == cur) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+/**
+ * Your ZigzagIterator object will be instantiated and called as such:
+ * ZigzagIterator i = new ZigzagIterator(v1, v2);
+ * while (i.hasNext()) v[f()] = i.next();
+ */
+```
+
+#### Rust
 
 ```rust
 struct ZigzagIterator {
@@ -154,56 +221,8 @@ impl ZigzagIterator {
 }
 ```
 
-### **Java**
-
-```java
-public class ZigzagIterator {
-    private int cur;
-    private int size;
-    private List<Integer> indexes = new ArrayList<>();
-    private List<List<Integer>> vectors = new ArrayList<>();
-
-    public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
-        cur = 0;
-        size = 2;
-        indexes.add(0);
-        indexes.add(0);
-        vectors.add(v1);
-        vectors.add(v2);
-    }
-
-    public int next() {
-        List<Integer> vector = vectors.get(cur);
-        int index = indexes.get(cur);
-        int res = vector.get(index);
-        indexes.set(cur, index + 1);
-        cur = (cur + 1) % size;
-        return res;
-    }
-
-    public boolean hasNext() {
-        int start = cur;
-        while (indexes.get(cur) == vectors.get(cur).size()) {
-            cur = (cur + 1) % size;
-            if (start == cur) {
-                return false;
-            }
-        }
-        return true;
-    }
-}
-
-/**
- * Your ZigzagIterator object will be instantiated and called as such:
- * ZigzagIterator i = new ZigzagIterator(v1, v2);
- * while (i.hasNext()) v[f()] = i.next();
- */
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

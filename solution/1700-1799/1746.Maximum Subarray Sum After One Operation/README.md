@@ -1,10 +1,21 @@
-# [1746. 经过一次操作后的最大子数组和](https://leetcode.cn/problems/maximum-subarray-sum-after-one-operation)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1746.Maximum%20Subarray%20Sum%20After%20One%20Operation/README.md
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
+# [1746. 经过一次操作后的最大子数组和 🔒](https://leetcode.cn/problems/maximum-subarray-sum-after-one-operation)
 
 [English Version](/solution/1700-1799/1746.Maximum%20Subarray%20Sum%20After%20One%20Operation/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你有一个整数数组 <code>nums</code>。你只能将一个元素 <code>nums[i]</code> 替换为 <code>nums[i] * nums[i]</code>。</p>
 
@@ -35,11 +46,13 @@
 	<li><code>-10<sup>4</sup> <= nums[i] <= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i]$ 表示以 $nums[i]$ 结尾，且没有进行替换的最大子数组和，另外定义 $g[i]$ 表示以 $nums[i]$ 结尾，且进行了替换的最大子数组和。那么有如下状态转移方程：
 
@@ -58,9 +71,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -75,9 +86,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -96,7 +105,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -116,7 +125,23 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func maxSumAfterOperation(nums []int) int {
+	var f, g int
+	ans := -(1 << 30)
+	for _, x := range nums {
+		ff := max(f, 0) + x
+		gg := max(max(f, 0)+x*x, g+x)
+		f, g = ff, gg
+		ans = max(ans, max(f, g))
+	}
+	return ans
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -146,26 +171,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func maxSumAfterOperation(nums []int) int {
-	var f, g int
-	ans := -(1 << 30)
-	for _, x := range nums {
-		ff := max(f, 0) + x
-		gg := max(max(f, 0)+x*x, g+x)
-		f, g = ff, gg
-		ans = max(ans, max(f, g))
-	}
-	return ans
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

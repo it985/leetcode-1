@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2073.Time%20Needed%20to%20Buy%20Tickets/README.md
+rating: 1325
+source: 第 267 场周赛 Q1
+tags:
+    - 队列
+    - 数组
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [2073. 买票需要的时间](https://leetcode.cn/problems/time-needed-to-buy-tickets)
 
 [English Version](/solution/2000-2099/2073.Time%20Needed%20to%20Buy%20Tickets/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>有 <code>n</code> 个人前来排队买票，其中第 <code>0</code> 人站在队伍 <strong>最前方</strong> ，第 <code>(n - 1)</code> 人站在队伍 <strong>最后方</strong> 。</p>
 
@@ -47,17 +61,17 @@
 	<li><code>0 &lt;= k &lt; n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-第 k 个人买完之前，排在 k 后面的人最多能买 `tickets[k] - 1` 次，排在 k 前面的人最多能买 `tickets[k]` 次
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -71,9 +85,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +103,42 @@ class Solution {
 }
 ```
 
-### **TypeScript**
+#### C++
+
+```cpp
+class Solution {
+public:
+    int timeRequiredToBuy(vector<int>& tickets, int k) {
+        int ans = 0;
+        for (int i = 0; i < tickets.size(); ++i) {
+            if (i <= k) {
+                ans += min(tickets[k], tickets[i]);
+            } else {
+                ans += min(tickets[k] - 1, tickets[i]);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func timeRequiredToBuy(tickets []int, k int) int {
+	ans := 0
+	for i, t := range tickets {
+		if i <= k {
+			ans += min(tickets[k], t)
+		} else {
+			ans += min(tickets[k]-1, t)
+		}
+	}
+	return ans
+}
+```
+
+#### TypeScript
 
 ```ts
 function timeRequiredToBuy(tickets: number[], k: number): number {
@@ -119,45 +166,8 @@ function timeRequiredToBuy(tickets: number[], k: number): number {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int timeRequiredToBuy(vector<int>& tickets, int k) {
-        int ans = 0;
-        for (int i = 0; i < tickets.size(); ++i) {
-            if (i <= k) {
-                ans += min(tickets[k], tickets[i]);
-            } else {
-                ans += min(tickets[k] - 1, tickets[i]);
-            }
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
-
-```go
-func timeRequiredToBuy(tickets []int, k int) int {
-	ans := 0
-	for i, t := range tickets {
-		if i <= k {
-			ans += min(tickets[k], t)
-		} else {
-			ans += min(tickets[k]-1, t)
-		}
-	}
-	return ans
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0225.Implement%20Stack%20using%20Queues/README_EN.md
+tags:
+    - Stack
+    - Design
+    - Queue
+---
+
+<!-- problem:start -->
+
 # [225. Implement Stack using Queues](https://leetcode.com/problems/implement-stack-using-queues)
 
 [中文文档](/solution/0200-0299/0225.Implement%20Stack%20using%20Queues/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all the functions of a normal stack (<code>push</code>, <code>top</code>, <code>pop</code>, and <code>empty</code>).</p>
 
@@ -53,11 +67,26 @@ myStack.empty(); // return False
 <p>&nbsp;</p>
 <p><strong>Follow-up:</strong> Can you implement the stack using only one queue?</p>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Two Queues
+
+We use two queues $q_1$ and $q_2$, where $q_1$ is used to store the elements in the stack, and $q_2$ is used to assist in implementing the stack operations.
+
+-   `push` operation: Push the element into $q_2$, then pop the elements in $q_1$ one by one and push them into $q_2$, finally swap the references of $q_1$ and $q_2$. The time complexity is $O(n)$.
+-   `pop` operation: Directly pop the front element of $q_1$. The time complexity is $O(1)$.
+-   `top` operation: Directly return the front element of $q_1$. The time complexity is $O(1)$.
+-   `empty` operation: Check whether $q_1$ is empty. The time complexity is $O(1)$.
+
+The space complexity is $O(n)$, where $n$ is the number of elements in the stack.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class MyStack:
@@ -89,7 +118,7 @@ class MyStack:
 # param_4 = obj.empty()
 ```
 
-### **Java**
+#### Java
 
 ```java
 import java.util.Deque;
@@ -134,7 +163,7 @@ class MyStack {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class MyStack {
@@ -180,7 +209,92 @@ private:
  */
 ```
 
-### **Rust**
+#### Go
+
+```go
+type MyStack struct {
+	q1 []int
+	q2 []int
+}
+
+func Constructor() MyStack {
+	return MyStack{}
+}
+
+func (this *MyStack) Push(x int) {
+	this.q2 = append(this.q2, x)
+	for len(this.q1) > 0 {
+		this.q2 = append(this.q2, this.q1[0])
+		this.q1 = this.q1[1:]
+	}
+	this.q1, this.q2 = this.q2, this.q1
+}
+
+func (this *MyStack) Pop() int {
+	x := this.q1[0]
+	this.q1 = this.q1[1:]
+	return x
+}
+
+func (this *MyStack) Top() int {
+	return this.q1[0]
+}
+
+func (this *MyStack) Empty() bool {
+	return len(this.q1) == 0
+}
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * obj := Constructor();
+ * obj.Push(x);
+ * param_2 := obj.Pop();
+ * param_3 := obj.Top();
+ * param_4 := obj.Empty();
+ */
+```
+
+#### TypeScript
+
+```ts
+class MyStack {
+    q1: number[] = [];
+    q2: number[] = [];
+
+    constructor() {}
+
+    push(x: number): void {
+        this.q2.push(x);
+        while (this.q1.length) {
+            this.q2.push(this.q1.shift()!);
+        }
+        [this.q1, this.q2] = [this.q2, this.q1];
+    }
+
+    pop(): number {
+        return this.q1.shift()!;
+    }
+
+    top(): number {
+        return this.q1[0];
+    }
+
+    empty(): boolean {
+        return this.q1.length === 0;
+    }
+}
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * var obj = new MyStack()
+ * obj.push(x)
+ * var param_2 = obj.pop()
+ * var param_3 = obj.top()
+ * var param_4 = obj.empty()
+ */
+```
+
+#### Rust
 
 ```rust
 use std::collections::VecDeque;
@@ -234,95 +348,8 @@ impl MyStack {
 }
 ```
 
-### **Go**
-
-```go
-type MyStack struct {
-	q1 []int
-	q2 []int
-}
-
-func Constructor() MyStack {
-	return MyStack{}
-}
-
-func (this *MyStack) Push(x int) {
-	this.q2 = append(this.q2, x)
-	for len(this.q1) > 0 {
-		this.q2 = append(this.q2, this.q1[0])
-		this.q1 = this.q1[1:]
-	}
-	this.q1, this.q2 = this.q2, this.q1
-}
-
-func (this *MyStack) Pop() int {
-	x := this.q1[0]
-	this.q1 = this.q1[1:]
-	return x
-}
-
-func (this *MyStack) Top() int {
-	return this.q1[0]
-}
-
-func (this *MyStack) Empty() bool {
-	return len(this.q1) == 0
-}
-
-/**
- * Your MyStack object will be instantiated and called as such:
- * obj := Constructor();
- * obj.Push(x);
- * param_2 := obj.Pop();
- * param_3 := obj.Top();
- * param_4 := obj.Empty();
- */
-```
-
-### **TypeScript**
-
-```ts
-class MyStack {
-    q1: number[] = [];
-    q2: number[] = [];
-
-    constructor() {}
-
-    push(x: number): void {
-        this.q2.push(x);
-        while (this.q1.length) {
-            this.q2.push(this.q1.shift()!);
-        }
-        [this.q1, this.q2] = [this.q2, this.q1];
-    }
-
-    pop(): number {
-        return this.q1.shift()!;
-    }
-
-    top(): number {
-        return this.q1[0];
-    }
-
-    empty(): boolean {
-        return this.q1.length === 0;
-    }
-}
-
-/**
- * Your MyStack object will be instantiated and called as such:
- * var obj = new MyStack()
- * obj.push(x)
- * var param_2 = obj.pop()
- * var param_3 = obj.top()
- * var param_4 = obj.empty()
- */
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

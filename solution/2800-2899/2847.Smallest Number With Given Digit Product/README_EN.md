@@ -1,8 +1,21 @@
-# [2847. Smallest Number With Given Digit Product](https://leetcode.com/problems/smallest-number-with-given-digit-product)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2847.Smallest%20Number%20With%20Given%20Digit%20Product/README_EN.md
+tags:
+    - Greedy
+    - Math
+---
+
+<!-- problem:start -->
+
+# [2847. Smallest Number With Given Digit Product 🔒](https://leetcode.com/problems/smallest-number-with-given-digit-product)
 
 [中文文档](/solution/2800-2899/2847.Smallest%20Number%20With%20Given%20Digit%20Product/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a <strong>positive</strong> integer <code>n</code>, return <em>a string representing the <strong>smallest positive</strong> integer such that the product of its digits is equal to</em> <code>n</code><em>, or </em><code>&quot;-1&quot;</code><em> if no such number exists</em>.</p>
 
@@ -38,9 +51,13 @@
 	<li><code>1 &lt;= n &lt;= 10<sup>18</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Prime Factorization + Greedy**
+<!-- solution:start -->
+
+### Solution 1: Prime Factorization + Greedy
 
 We consider prime factorizing the number $n$. If there are prime factors greater than $9$ in $n$, then it is impossible to find a number that meets the conditions, because prime factors greater than $9$ cannot be obtained by multiplying numbers from $1$ to $9$. For example, $11$ cannot be obtained by multiplying numbers from $1$ to $9$. Therefore, we only need to consider whether there are prime factors greater than $9$ in $n$. If there are, return $-1$ directly.
 
@@ -50,7 +67,7 @@ The time complexity is $O(\log n)$, and the space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,7 +83,7 @@ class Solution:
         return ans if ans else "1"
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +111,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func smallestNumber(n int64) string {
@@ -147,10 +164,8 @@ func smallestNumber(n int64) string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

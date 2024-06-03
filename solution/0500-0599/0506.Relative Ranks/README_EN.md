@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0506.Relative%20Ranks/README_EN.md
+tags:
+    - Array
+    - Sorting
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [506. Relative Ranks](https://leetcode.com/problems/relative-ranks)
 
 [中文文档](/solution/0500-0599/0506.Relative%20Ranks/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>score</code> of size <code>n</code>, where <code>score[i]</code> is the score of the <code>i<sup>th</sup></code> athlete in a competition. All the scores are guaranteed to be <strong>unique</strong>.</p>
 
@@ -44,11 +58,17 @@
 	<li>All the values in <code>score</code> are <strong>unique</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -63,7 +83,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -84,7 +104,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -105,7 +125,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findRelativeRanks(score []int) []string {
@@ -130,10 +150,8 @@ func findRelativeRanks(score []int) []string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0713.Subarray%20Product%20Less%20Than%20K/README_EN.md
+tags:
+    - Array
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [713. Subarray Product Less Than K](https://leetcode.com/problems/subarray-product-less-than-k)
 
 [中文文档](/solution/0700-0799/0713.Subarray%20Product%20Less%20Than%20K/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of integers <code>nums</code> and an integer <code>k</code>, return <em>the number of contiguous subarrays where the product of all the elements in the subarray is strictly less than </em><code>k</code>.</p>
 
@@ -33,11 +46,17 @@ Note that [10, 5, 2] is not included as the product of 100 is not strictly less 
 	<li><code>0 &lt;= k &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -52,7 +71,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -70,7 +89,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -87,7 +106,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numSubarrayProductLessThanK(nums []int, k int) int {
@@ -103,7 +122,7 @@ func numSubarrayProductLessThanK(nums []int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numSubarrayProductLessThanK(nums: number[], k: number): number {
@@ -119,7 +138,7 @@ function numSubarrayProductLessThanK(nums: number[], k: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -146,7 +165,7 @@ impl Solution {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -169,10 +188,8 @@ var numSubarrayProductLessThanK = function (nums, k) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

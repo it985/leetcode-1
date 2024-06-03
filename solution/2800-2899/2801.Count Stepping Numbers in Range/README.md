@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2801.Count%20Stepping%20Numbers%20in%20Range/README.md
+rating: 2367
+source: 第 356 场周赛 Q4
+tags:
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2801. 统计范围内的步进数字数目](https://leetcode.cn/problems/count-stepping-numbers-in-range)
 
 [English Version](/solution/2800-2899/2801.Count%20Stepping%20Numbers%20in%20Range/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个正整数&nbsp;<code>low</code> 和&nbsp;<code>high</code>&nbsp;，都用字符串表示，请你统计闭区间 <code>[low, high]</code>&nbsp;内的 <strong>步进数字</strong>&nbsp;数目。</p>
 
@@ -41,11 +54,13 @@
 	<li><code>low</code> 和&nbsp;<code>high</code>&nbsp;都不含前导 0 。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：数位 DP**
+### 方法一：数位 DP
 
 我们注意到，题目求的是区间 $[low, high]$ 内的步进数的个数，对于这种区间 $[l,..r]$ 的问题，我们通常可以考虑转化为求 $[1, r]$ 和 $[1, l-1]$ 的答案，然后相减即可。另外，题目中只涉及到不同数位之间的关系，而不涉及具体的数值，因此我们可以考虑使用数位 DP 来解决。
 
@@ -68,13 +83,11 @@
 
 相似题目：
 
--   [2719. 统计整数数目](/solution/2700-2799/2719.Count%20of%20Integers/README.md)
+-   [2719. 统计整数数目](https://github.com/doocs/leetcode/blob/main/solution/2700-2799/2719.Count%20of%20Integers/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -101,9 +114,7 @@ class Solution:
         return (a - b) % mod
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 import java.math.BigInteger;
@@ -148,7 +159,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -200,7 +211,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countSteppingNumbers(low string, high string) int {
@@ -269,7 +280,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countSteppingNumbers(low: string, high: string): number {
@@ -311,10 +322,8 @@ function countSteppingNumbers(low: string, high: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

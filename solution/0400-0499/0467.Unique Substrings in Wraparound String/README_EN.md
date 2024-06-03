@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0467.Unique%20Substrings%20in%20Wraparound%20String/README_EN.md
+tags:
+    - String
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [467. Unique Substrings in Wraparound String](https://leetcode.com/problems/unique-substrings-in-wraparound-string)
 
 [中文文档](/solution/0400-0499/0467.Unique%20Substrings%20in%20Wraparound%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>We define the string <code>base</code> to be the infinite wraparound string of <code>&quot;abcdefghijklmnopqrstuvwxyz&quot;</code>, so <code>base</code> will look like this:</p>
 
@@ -45,11 +58,17 @@
 	<li><code>s</code> consists of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,7 +85,7 @@ class Solution:
         return sum(dp)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +110,53 @@ class Solution {
 }
 ```
 
-### **TypeScript**
+#### C++
+
+```cpp
+class Solution {
+public:
+    int findSubstringInWraproundString(string p) {
+        vector<int> dp(26);
+        int k = 0;
+        for (int i = 0; i < p.size(); ++i) {
+            char c = p[i];
+            if (i && (c - p[i - 1] + 26) % 26 == 1)
+                ++k;
+            else
+                k = 1;
+            dp[c - 'a'] = max(dp[c - 'a'], k);
+        }
+        int ans = 0;
+        for (int& v : dp) ans += v;
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func findSubstringInWraproundString(p string) int {
+	dp := make([]int, 26)
+	k := 0
+	for i := range p {
+		c := p[i]
+		if i > 0 && (c-p[i-1]+26)%26 == 1 {
+			k++
+		} else {
+			k = 1
+		}
+		dp[c-'a'] = max(dp[c-'a'], k)
+	}
+	ans := 0
+	for _, v := range dp {
+		ans += v
+	}
+	return ans
+}
+```
+
+#### TypeScript
 
 ```ts
 function findSubstringInWraproundString(p: string): number {
@@ -112,7 +177,7 @@ function findSubstringInWraproundString(p: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -136,56 +201,8 @@ impl Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int findSubstringInWraproundString(string p) {
-        vector<int> dp(26);
-        int k = 0;
-        for (int i = 0; i < p.size(); ++i) {
-            char c = p[i];
-            if (i && (c - p[i - 1] + 26) % 26 == 1)
-                ++k;
-            else
-                k = 1;
-            dp[c - 'a'] = max(dp[c - 'a'], k);
-        }
-        int ans = 0;
-        for (int& v : dp) ans += v;
-        return ans;
-    }
-};
-```
-
-### **Go**
-
-```go
-func findSubstringInWraproundString(p string) int {
-	dp := make([]int, 26)
-	k := 0
-	for i := range p {
-		c := p[i]
-		if i > 0 && (c-p[i-1]+26)%26 == 1 {
-			k++
-		} else {
-			k = 1
-		}
-		dp[c-'a'] = max(dp[c-'a'], k)
-	}
-	ans := 0
-	for _, v := range dp {
-		ans += v
-	}
-	return ans
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

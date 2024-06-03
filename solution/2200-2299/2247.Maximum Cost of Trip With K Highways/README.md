@@ -1,10 +1,23 @@
-# [2247. K 条高速公路的最大旅行费用](https://leetcode.cn/problems/maximum-cost-of-trip-with-k-highways)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2247.Maximum%20Cost%20of%20Trip%20With%20K%20Highways/README.md
+tags:
+    - 位运算
+    - 图
+    - 动态规划
+    - 状态压缩
+---
+
+<!-- problem:start -->
+
+# [2247. K 条高速公路的最大旅行费用 🔒](https://leetcode.cn/problems/maximum-cost-of-trip-with-k-highways)
 
 [English Version](/solution/2200-2299/2247.Maximum%20Cost%20of%20Trip%20With%20K%20Highways/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一系列高速公路连接从 <code>0</code> 到 <code>n - 1</code> 的 <code>n</code> 个城市。给定一个二维整数数组 <code>highways</code>，其中 <code>highways[i] = [city1<sub>i</sub>, city2<sub>i</sub>, toll<sub>i</sub>]</code> 表示有一条高速公路连接 <code>city1<sub>i</sub></code> 和<code>city2<sub>i</sub></code>，允许一辆汽车从 <code>city1<sub>i</sub></code> 前往 <code>city2<sub>i</sub></code>，<strong>反之亦然</strong>，费用为 <code>toll<sub>i</sub></code>。</p>
 
@@ -51,11 +64,13 @@
 	</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：状态压缩动态规划**
+### 方法一：状态压缩动态规划
 
 我们注意到，题目要求正好经过 $k$ 条公路，而每个城市最多只能访问一次，城市的数量为 $n$，因此，我们最多只能经过 $n - 1$ 条公路。所以，如果 $k \ge n$，那么我们无法满足题目要求，直接返回 $-1$ 即可。
 
@@ -77,9 +92,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -105,9 +118,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -150,7 +161,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -190,7 +201,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumCost(n int, highways [][]int, k int) int {
@@ -233,7 +244,7 @@ func maximumCost(n int, highways [][]int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumCost(n: number, highways: number[][], k: number): number {
@@ -279,10 +290,8 @@ function bitCount(i: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2151.Maximum%20Good%20People%20Based%20on%20Statements/README_EN.md
+rating: 1979
+source: Weekly Contest 277 Q4
+tags:
+    - Bit Manipulation
+    - Array
+    - Backtracking
+    - Enumeration
+---
+
+<!-- problem:start -->
+
 # [2151. Maximum Good People Based on Statements](https://leetcode.com/problems/maximum-good-people-based-on-statements)
 
 [中文文档](/solution/2100-2199/2151.Maximum%20Good%20People%20Based%20on%20Statements/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are two types of persons:</p>
 
@@ -84,11 +101,17 @@ Note that there is more than one way to arrive at this conclusion.
 	<li><code>statements[i][i] == 2</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -106,7 +129,7 @@ class Solution:
         return max(check(mask) for mask in range(1, 1 << len(statements)))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -137,7 +160,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -165,7 +188,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumGood(statements [][]int) int {
@@ -192,7 +215,7 @@ func maximumGood(statements [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumGood(statements: number[][]): number {
@@ -220,10 +243,8 @@ function maximumGood(statements: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1759.Count%20Number%20of%20Homogenous%20Substrings/README_EN.md
+rating: 1490
+source: Weekly Contest 228 Q2
+tags:
+    - Math
+    - String
+---
+
+<!-- problem:start -->
+
 # [1759. Count Number of Homogenous Substrings](https://leetcode.com/problems/count-number-of-homogenous-substrings)
 
 [中文文档](/solution/1700-1799/1759.Count%20Number%20of%20Homogenous%20Substrings/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a string <code>s</code>, return <em>the number of <strong>homogenous</strong> substrings of </em><code>s</code><em>.</em> Since the answer may be too large, return it <strong>modulo</strong> <code>10<sup>9</sup> + 7</code>.</p>
 
@@ -48,11 +63,17 @@
 	<li><code>s</code> consists of lowercase letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -71,18 +92,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def countHomogenous(self, s: str) -> int:
-        mod = 10**9 + 7
-        ans = cnt = 1
-        for a, b in pairwise(s):
-            cnt = cnt + 1 if a == b else 1
-            ans = (ans + cnt) % mod
-        return ans
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -105,23 +115,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    private static final int MOD = (int) 1e9 + 7;
-
-    public int countHomogenous(String s) {
-        int n = s.length();
-        int ans = 1, cnt = 1;
-        for (int i = 1; i < n; ++i) {
-            cnt = s.charAt(i) == s.charAt(i - 1) ? cnt + 1 : 1;
-            ans = (ans + cnt) % MOD;
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -143,24 +137,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    const int mod = 1e9 + 7;
-
-    int countHomogenous(string s) {
-        int n = s.size();
-        int ans = 1, cnt = 1;
-        for (int i = 1; i < n; ++i) {
-            cnt = s[i] == s[i - 1] ? cnt + 1 : 1;
-            ans = (ans + cnt) % mod;
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func countHomogenous(s string) (ans int) {
@@ -179,24 +156,7 @@ func countHomogenous(s string) (ans int) {
 }
 ```
 
-```go
-func countHomogenous(s string) int {
-	n := len(s)
-	const mod int = 1e9 + 7
-	ans, cnt := 1, 1
-	for i := 1; i < n; i++ {
-		if s[i] == s[i-1] {
-			cnt++
-		} else {
-			cnt = 1
-		}
-		ans = (ans + cnt) % mod
-	}
-	return ans
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countHomogenous(s: string): number {
@@ -213,7 +173,7 @@ function countHomogenous(s: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -234,23 +194,7 @@ impl Solution {
 }
 ```
 
-### **C**
-
-```c
-int countHomogenous(char* s) {
-    int MOD = 1e9 + 7;
-    int ans = 0;
-    for (int i = 0, j = 0; s[j]; j++) {
-        if (s[i] != s[j]) {
-            i = j;
-        }
-        ans = (ans + j - i + 1) % MOD;
-    }
-    return ans;
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -271,10 +215,103 @@ public class Solution {
 }
 ```
 
-### **...**
+#### C
 
-```
-
+```c
+int countHomogenous(char* s) {
+    int MOD = 1e9 + 7;
+    int ans = 0;
+    for (int i = 0, j = 0; s[j]; j++) {
+        if (s[i] != s[j]) {
+            i = j;
+        }
+        ans = (ans + j - i + 1) % MOD;
+    }
+    return ans;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def countHomogenous(self, s: str) -> int:
+        mod = 10**9 + 7
+        ans = cnt = 1
+        for a, b in pairwise(s):
+            cnt = cnt + 1 if a == b else 1
+            ans = (ans + cnt) % mod
+        return ans
+```
+
+#### Java
+
+```java
+class Solution {
+    private static final int MOD = (int) 1e9 + 7;
+
+    public int countHomogenous(String s) {
+        int n = s.length();
+        int ans = 1, cnt = 1;
+        for (int i = 1; i < n; ++i) {
+            cnt = s.charAt(i) == s.charAt(i - 1) ? cnt + 1 : 1;
+            ans = (ans + cnt) % MOD;
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    const int mod = 1e9 + 7;
+
+    int countHomogenous(string s) {
+        int n = s.size();
+        int ans = 1, cnt = 1;
+        for (int i = 1; i < n; ++i) {
+            cnt = s[i] == s[i - 1] ? cnt + 1 : 1;
+            ans = (ans + cnt) % mod;
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func countHomogenous(s string) int {
+	n := len(s)
+	const mod int = 1e9 + 7
+	ans, cnt := 1, 1
+	for i := 1; i < n; i++ {
+		if s[i] == s[i-1] {
+			cnt++
+		} else {
+			cnt = 1
+		}
+		ans = (ans + cnt) % mod
+	}
+	return ans
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

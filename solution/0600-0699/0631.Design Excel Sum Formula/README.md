@@ -1,10 +1,24 @@
-# [631. 设计 Excel 求和公式](https://leetcode.cn/problems/design-excel-sum-formula)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0631.Design%20Excel%20Sum%20Formula/README.md
+tags:
+    - 图
+    - 设计
+    - 拓扑排序
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
+# [631. 设计 Excel 求和公式 🔒](https://leetcode.cn/problems/design-excel-sum-formula)
 
 [English Version](/solution/0600-0699/0631.Design%20Excel%20Sum%20Formula/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请你设计 <strong>Excel</strong> 中的基本功能，并实现求和公式。</p>
 
@@ -91,32 +105,42 @@ excel.get(3, "C"); // 返回 6
 	<li>最多会对 <code>set</code> 、<code>get</code> 和 <code>sum</code> 进行 <code>100</code> 次调用。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 
 ```
 
-### **...**
+#### C++
+
+```cpp
 
 ```
+
+#### Go
+
+```go
 
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

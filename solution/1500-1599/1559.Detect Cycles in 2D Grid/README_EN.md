@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1559.Detect%20Cycles%20in%202D%20Grid/README_EN.md
+rating: 1837
+source: Biweekly Contest 33 Q4
+tags:
+    - Depth-First Search
+    - Breadth-First Search
+    - Union Find
+    - Array
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [1559. Detect Cycles in 2D Grid](https://leetcode.com/problems/detect-cycles-in-2d-grid)
 
 [中文文档](/solution/1500-1599/1559.Detect%20Cycles%20in%202D%20Grid/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a 2D array of characters <code>grid</code> of size <code>m x n</code>, you need to find if there exists any cycle consisting of the <strong>same value</strong> in <code>grid</code>.</p>
 
@@ -54,13 +72,17 @@
 	<li><code>grid</code> consists only of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-Union find.
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -83,7 +105,7 @@ class Solution:
         return False
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -123,7 +145,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -156,7 +178,41 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func containsCycle(grid [][]byte) bool {
+	m, n := len(grid), len(grid[0])
+	p := make([]int, m*n)
+	for i := range p {
+		p[i] = i
+	}
+	var find func(x int) int
+	find = func(x int) int {
+		if p[x] != x {
+			p[x] = find(p[x])
+		}
+		return p[x]
+	}
+	dirs := []int{1, 0, 1}
+	for i := 0; i < m; i++ {
+		for j := 0; j < n; j++ {
+			for k := 0; k < 2; k++ {
+				x, y := i+dirs[k], j+dirs[k+1]
+				if x < m && y < n && grid[x][y] == grid[i][j] {
+					if find(x*n+y) == find(i*n+j) {
+						return true
+					}
+					p[find(x*n+y)] = find(i*n + j)
+				}
+			}
+		}
+	}
+	return false
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -217,41 +273,7 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func containsCycle(grid [][]byte) bool {
-	m, n := len(grid), len(grid[0])
-	p := make([]int, m*n)
-	for i := range p {
-		p[i] = i
-	}
-	var find func(x int) int
-	find = func(x int) int {
-		if p[x] != x {
-			p[x] = find(p[x])
-		}
-		return p[x]
-	}
-	dirs := []int{1, 0, 1}
-	for i := 0; i < m; i++ {
-		for j := 0; j < n; j++ {
-			for k := 0; k < 2; k++ {
-				x, y := i+dirs[k], j+dirs[k+1]
-				if x < m && y < n && grid[x][y] == grid[i][j] {
-					if find(x*n+y) == find(i*n+j) {
-						return true
-					}
-					p[find(x*n+y)] = find(i*n + j)
-				}
-			}
-		}
-	}
-	return false
-}
-```
-
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -287,10 +309,8 @@ var containsCycle = function (grid) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

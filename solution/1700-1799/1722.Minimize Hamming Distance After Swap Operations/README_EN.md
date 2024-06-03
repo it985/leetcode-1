@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1722.Minimize%20Hamming%20Distance%20After%20Swap%20Operations/README_EN.md
+rating: 1892
+source: Weekly Contest 223 Q3
+tags:
+    - Depth-First Search
+    - Union Find
+    - Array
+---
+
+<!-- problem:start -->
+
 # [1722. Minimize Hamming Distance After Swap Operations](https://leetcode.com/problems/minimize-hamming-distance-after-swap-operations)
 
 [中文文档](/solution/1700-1799/1722.Minimize%20Hamming%20Distance%20After%20Swap%20Operations/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two integer arrays, <code>source</code> and <code>target</code>, both of length <code>n</code>. You are also given an array <code>allowedSwaps</code> where each <code>allowedSwaps[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> indicates that you are allowed to swap the elements at index <code>a<sub>i</sub></code> and index <code>b<sub>i</sub></code> <strong>(0-indexed)</strong> of array <code>source</code>. Note that you can swap elements at a specific pair of indices <strong>multiple</strong> times and in <strong>any</strong> order.</p>
 
@@ -51,9 +67,13 @@ The Hamming distance of source and target is 2 as they differ in 2 positions: in
 	<li><code>a<sub>i</sub> != b<sub>i</sub></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Union-Find + Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Union-Find + Hash Table
 
 We can consider each index as a node, and the element corresponding to each index as the value of the node. Then each element `[a_i, b_i]` in the given `allowedSwaps` represents an edge between index `a_i` and `b_i`. Therefore, we can use a union-find set to maintain these connected components.
 
@@ -63,7 +83,7 @@ The time complexity is $O(n \times \log n)$ or $O(n \times \alpha(n))$, and the 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -91,7 +111,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -131,7 +151,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -161,7 +181,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumHammingDistance(source []int, target []int, allowedSwaps [][]int) (ans int) {
@@ -199,7 +219,7 @@ func minimumHammingDistance(source []int, target []int, allowedSwaps [][]int) (a
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumHammingDistance(
@@ -240,10 +260,8 @@ function minimumHammingDistance(
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

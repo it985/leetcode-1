@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0985.Sum%20of%20Even%20Numbers%20After%20Queries/README.md
+tags:
+    - 数组
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [985. 查询后的偶数和](https://leetcode.cn/problems/sum-of-even-numbers-after-queries)
 
 [English Version](/solution/0900-0999/0985.Sum%20of%20Even%20Numbers%20After%20Queries/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给出一个整数数组&nbsp;<code>A</code>&nbsp;和一个查询数组&nbsp;<code>queries</code>。</p>
 
@@ -40,11 +51,13 @@
 	<li><code>0 &lt;= queries[i][1] &lt; A.length</code></li>
 </ol>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们用一个变量 $s$ 记录数组 $nums$ 中所有偶数的和。
 
@@ -58,9 +71,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -79,9 +90,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -111,7 +120,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -140,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sumEvenAfterQueries(nums []int, queries [][]int) (ans []int) {
@@ -165,7 +174,32 @@ func sumEvenAfterQueries(nums []int, queries [][]int) (ans []int) {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function sumEvenAfterQueries(nums: number[], queries: number[][]): number[] {
+    let s = 0;
+    for (const x of nums) {
+        if (x % 2 === 0) {
+            s += x;
+        }
+    }
+    const ans: number[] = [];
+    for (const [v, i] of queries) {
+        if (nums[i] % 2 === 0) {
+            s -= nums[i];
+        }
+        nums[i] += v;
+        if (nums[i] % 2 === 0) {
+            s += nums[i];
+        }
+        ans.push(s);
+    }
+    return ans;
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -195,35 +229,8 @@ var sumEvenAfterQueries = function (nums, queries) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function sumEvenAfterQueries(nums: number[], queries: number[][]): number[] {
-    let s = 0;
-    for (const x of nums) {
-        if (x % 2 === 0) {
-            s += x;
-        }
-    }
-    const ans: number[] = [];
-    for (const [v, i] of queries) {
-        if (nums[i] % 2 === 0) {
-            s -= nums[i];
-        }
-        nums[i] += v;
-        if (nums[i] % 2 === 0) {
-            s += nums[i];
-        }
-        ans.push(s);
-    }
-    return ans;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

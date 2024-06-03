@@ -1,10 +1,25 @@
-# [2870. 使数组为空的最少操作次数](https://leetcode.cn/problems/minimum-number-of-operations-to-make-array-empty/)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2870.Minimum%20Number%20of%20Operations%20to%20Make%20Array%20Empty/README.md
+rating: 1392
+source: 第 114 场双周赛 Q2
+tags:
+    - 贪心
+    - 数组
+    - 哈希表
+    - 计数
+---
+
+<!-- problem:start -->
+
+# [2870. 使数组为空的最少操作次数](https://leetcode.cn/problems/minimum-number-of-operations-to-make-array-empty)
 
 [English Version](/solution/2800-2899/2870.Minimum%20Number%20of%20Operations%20to%20Make%20Array%20Empty/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的正整数数组&nbsp;<code>nums</code>&nbsp;。</p>
 
@@ -49,11 +64,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 贪心**
+### 方法一：哈希表 + 贪心
 
 我们用一个哈希表 $count$ 统计数组中每个元素出现的次数，然后遍历哈希表，对于每个元素 $x$，如果 $x$ 出现的次数为 $c$，那么我们可以进行 $\lfloor \frac{c+2}{3} \rfloor$ 次操作，将 $x$ 删除，最后我们返回所有元素的操作次数之和即可。
 
@@ -61,9 +78,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,9 +92,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -110,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -132,7 +145,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minOperations(nums []int) (ans int) {
@@ -150,7 +163,7 @@ func minOperations(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minOperations(nums: number[]): number {
@@ -169,10 +182,8 @@ function minOperations(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

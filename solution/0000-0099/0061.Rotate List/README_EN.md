@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0061.Rotate%20List/README_EN.md
+tags:
+    - Linked List
+    - Two Pointers
+---
+
+<!-- problem:start -->
+
 # [61. Rotate List](https://leetcode.com/problems/rotate-list)
 
 [中文文档](/solution/0000-0099/0061.Rotate%20List/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>head</code> of a linked&nbsp;list, rotate the list to the right by <code>k</code> places.</p>
 
@@ -30,9 +43,13 @@
 	<li><code>0 &lt;= k &lt;= 2 * 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Fast and Slow Pointers + Link List Concatenation**
+<!-- solution:start -->
+
+### Solution 1: Fast and Slow Pointers + Link List Concatenation
 
 First, we check whether the number of nodes in the linked list is less than $2$. If so, we directly return $head$.
 
@@ -48,7 +65,7 @@ The time complexity is $O(n)$, where $n$ is the number of nodes in the linked li
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -79,7 +96,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -123,7 +140,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -169,7 +186,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -208,7 +225,7 @@ func rotateRight(head *ListNode, k int) *ListNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -253,53 +270,7 @@ function rotateRight(head: ListNode | null, k: number): ListNode | null {
 }
 ```
 
-### **C#**
-
-```cs
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     public int val;
- *     public ListNode next;
- *     public ListNode(int val=0, ListNode next=null) {
- *         this.val = val;
- *         this.next = next;
- *     }
- * }
- */
-public class Solution {
-    public ListNode RotateRight(ListNode head, int k) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        var cur = head;
-        int n = 0;
-        while (cur != null) {
-            cur = cur.next;
-            ++n;
-        }
-        k %= n;
-        if (k == 0) {
-            return head;
-        }
-        var fast = head;
-        var slow = head;
-        while (k-- > 0) {
-            fast = fast.next;
-        }
-        while (fast.next != null) {
-            fast = fast.next;
-            slow = slow.next;
-        }
-        var ans = slow.next;
-        slow.next = null;
-        fast.next = head;
-        return ans;
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for singly-linked list.
@@ -352,10 +323,54 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C#
 
-```
-
+```cs
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     public ListNode(int val=0, ListNode next=null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode RotateRight(ListNode head, int k) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        var cur = head;
+        int n = 0;
+        while (cur != null) {
+            cur = cur.next;
+            ++n;
+        }
+        k %= n;
+        if (k == 0) {
+            return head;
+        }
+        var fast = head;
+        var slow = head;
+        while (k-- > 0) {
+            fast = fast.next;
+        }
+        while (fast.next != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        var ans = slow.next;
+        slow.next = null;
+        fast.next = head;
+        return ans;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

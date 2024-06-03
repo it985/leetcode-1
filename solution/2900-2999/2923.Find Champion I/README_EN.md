@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2923.Find%20Champion%20I/README_EN.md
+rating: 1235
+source: Weekly Contest 370 Q1
+tags:
+    - Array
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [2923. Find Champion I](https://leetcode.com/problems/find-champion-i)
 
 [中文文档](/solution/2900-2999/2923.Find%20Champion%20I/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are <code>n</code> teams numbered from <code>0</code> to <code>n - 1</code> in a tournament.</p>
 
@@ -46,9 +61,13 @@ So team 1 will be the champion.
 	<li>The input is generated such that if team <code>a</code> is stronger than team <code>b</code> and team <code>b</code> is stronger than team <code>c</code>, then team <code>a</code> is stronger than team <code>c</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Enumeration
 
 We can enumerate each team $i$. If team $i$ has won every match, then team $i$ is the champion, and we can directly return $i$.
 
@@ -56,7 +75,7 @@ The time complexity is $O(n^2)$, where $n$ is the number of teams. The space com
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,7 +85,7 @@ class Solution:
                 return i
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -87,7 +106,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -109,7 +128,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findChampion(grid [][]int) int {
@@ -128,7 +147,7 @@ func findChampion(grid [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findChampion(grid: number[][]): number {
@@ -146,10 +165,8 @@ function findChampion(grid: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

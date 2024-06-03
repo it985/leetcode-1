@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2646.Minimize%20the%20Total%20Price%20of%20the%20Trips/README.md
+rating: 2238
+source: 第 341 场周赛 Q4
+tags:
+    - 树
+    - 深度优先搜索
+    - 图
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2646. 最小化旅行的价格总和](https://leetcode.cn/problems/minimize-the-total-price-of-the-trips)
 
 [English Version](/solution/2600-2699/2646.Minimize%20the%20Total%20Price%20of%20the%20Trips/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>现有一棵无向、无根的树，树中有 <code>n</code> 个节点，按从 <code>0</code> 到 <code>n - 1</code> 编号。给你一个整数 <code>n</code> 和一个长度为 <code>n - 1</code> 的二维整数数组 <code>edges</code> ，其中 <code>edges[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> 表示树中节点 <code>a<sub>i</sub></code> 和 <code>b<sub>i</sub></code> 之间存在一条边。</p>
 
@@ -57,11 +73,13 @@
 	<li><code>0 &lt;= start<sub>i</sub>, end<sub>i</sub>&nbsp;&lt;= n - 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：树形 DP**
+### 方法一：树形 DP
 
 我们可以统计每一次旅行经过的节点，记录在数组 $cnt$ 中，其中 $cnt[i]$ 表示所有旅行中经过节点 $i$ 的次数。我们设计一个函数 $dfs(i, fa, k)$，表示从节点 $i$ 开始搜索，最终到达节点 $k$，过程中记录所有经过的节点。其中 $fa$ 表示节点 $i$ 的父节点。
 
@@ -79,9 +97,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -117,9 +133,7 @@ class Solution:
         return min(dfs2(0, -1))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -180,7 +194,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -234,7 +248,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumTotalPrice(n int, edges [][]int, price []int, trips [][]int) int {
@@ -287,7 +301,7 @@ func minimumTotalPrice(n int, edges [][]int, price []int, trips [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumTotalPrice(
@@ -341,10 +355,8 @@ function minimumTotalPrice(
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

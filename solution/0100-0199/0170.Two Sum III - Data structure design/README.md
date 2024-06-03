@@ -1,10 +1,24 @@
-# [170. 两数之和 III - 数据结构设计](https://leetcode.cn/problems/two-sum-iii-data-structure-design)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0170.Two%20Sum%20III%20-%20Data%20structure%20design/README.md
+tags:
+    - 设计
+    - 数组
+    - 哈希表
+    - 双指针
+    - 数据流
+---
+
+<!-- problem:start -->
+
+# [170. 两数之和 III - 数据结构设计 🔒](https://leetcode.cn/problems/two-sum-iii-data-structure-design)
 
 [English Version](/solution/0100-0199/0170.Two%20Sum%20III%20-%20Data%20structure%20design/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>设计一个接收整数流的数据结构，该数据结构支持检查是否存在两数之和等于特定值。</p>
 
@@ -45,11 +59,13 @@ twoSum.find(7);  // 没有两个整数加起来等于 7 ，返回 false</pre>
 	<li>最多调用 <code>10<sup>4</sup></code> 次 <code>add</code> 和 <code>find</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们用哈希表 `cnt` 存储数字出现的次数。
 
@@ -66,14 +82,13 @@ twoSum.find(7);  // 没有两个整数加起来等于 7 ，返回 false</pre>
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class TwoSum:
+
     def __init__(self):
-        self.cnt = Counter()
+        self.cnt = defaultdict(int)
 
     def add(self, number: int) -> None:
         self.cnt[number] += 1
@@ -81,9 +96,8 @@ class TwoSum:
     def find(self, value: int) -> bool:
         for x, v in self.cnt.items():
             y = value - x
-            if y in self.cnt:
-                if x != y or v > 1:
-                    return True
+            if y in self.cnt and (x != y or v > 1):
+                return True
         return False
 
 
@@ -93,9 +107,7 @@ class TwoSum:
 # param_2 = obj.find(value)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class TwoSum {
@@ -112,10 +124,8 @@ class TwoSum {
         for (var e : cnt.entrySet()) {
             int x = e.getKey(), v = e.getValue();
             int y = value - x;
-            if (cnt.containsKey(y)) {
-                if (x != y || v > 1) {
-                    return true;
-                }
+            if (cnt.containsKey(y) && (x != y || v > 1)) {
+                return true;
             }
         }
         return false;
@@ -130,7 +140,7 @@ class TwoSum {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class TwoSum {
@@ -145,10 +155,8 @@ public:
     bool find(int value) {
         for (auto& [x, v] : cnt) {
             long y = (long) value - x;
-            if (cnt.count(y)) {
-                if (x != y || v > 1) {
-                    return true;
-                }
+            if (cnt.contains(y) && (x != y || v > 1)) {
+                return true;
             }
         }
         return false;
@@ -166,7 +174,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type TwoSum struct {
@@ -178,7 +186,7 @@ func Constructor() TwoSum {
 }
 
 func (this *TwoSum) Add(number int) {
-	this.cnt[number]++
+	this.cnt[number] += 1
 }
 
 func (this *TwoSum) Find(value int) bool {
@@ -199,10 +207,38 @@ func (this *TwoSum) Find(value int) bool {
  */
 ```
 
-### **...**
+#### TypeScript
 
-```
+```ts
+class TwoSum {
+    private cnt: Map<number, number> = new Map();
+    constructor() {}
 
+    add(number: number): void {
+        this.cnt.set(number, (this.cnt.get(number) || 0) + 1);
+    }
+
+    find(value: number): boolean {
+        for (const [x, v] of this.cnt) {
+            const y = value - x;
+            if (this.cnt.has(y) && (x !== y || v > 1)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+/**
+ * Your TwoSum object will be instantiated and called as such:
+ * var obj = new TwoSum()
+ * obj.add(number)
+ * var param_2 = obj.find(value)
+ */
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

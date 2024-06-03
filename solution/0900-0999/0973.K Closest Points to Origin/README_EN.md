@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0973.K%20Closest%20Points%20to%20Origin/README_EN.md
+tags:
+    - Geometry
+    - Array
+    - Math
+    - Divide and Conquer
+    - Quickselect
+    - Sorting
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin)
 
 [中文文档](/solution/0900-0999/0973.K%20Closest%20Points%20to%20Origin/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of <code>points</code> where <code>points[i] = [x<sub>i</sub>, y<sub>i</sub>]</code> represents a point on the <strong>X-Y</strong> plane and an integer <code>k</code>, return the <code>k</code> closest points to the origin <code>(0, 0)</code>.</p>
 
@@ -39,11 +57,17 @@ We only want the closest k = 1 points from the origin, so the answer is just [[-
 	<li><code>-10<sup>4</sup> &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -52,7 +76,7 @@ class Solution:
         return points[:k]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -67,7 +91,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -81,7 +105,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func kClosest(points [][]int, k int) [][]int {
@@ -93,7 +117,7 @@ func kClosest(points [][]int, k int) [][]int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function kClosest(points: number[][], k: number): number[][] {
@@ -101,7 +125,7 @@ function kClosest(points: number[][], k: number): number[][] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -114,10 +138,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

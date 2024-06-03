@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0446.Arithmetic%20Slices%20II%20-%20Subsequence/README_EN.md
+tags:
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [446. Arithmetic Slices II - Subsequence](https://leetcode.com/problems/arithmetic-slices-ii-subsequence)
 
 [中文文档](/solution/0400-0499/0446.Arithmetic%20Slices%20II%20-%20Subsequence/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code>, return <em>the number of all the <strong>arithmetic subsequences</strong> of</em> <code>nums</code>.</p>
 
@@ -53,11 +66,17 @@
 	<li><code>-2<sup>31</sup> &lt;= nums[i] &lt;= 2<sup>31</sup> - 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -72,7 +91,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -116,7 +135,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfArithmeticSlices(nums []int) (ans int) {
@@ -136,7 +155,7 @@ func numberOfArithmeticSlices(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfArithmeticSlices(nums: number[]): number {
@@ -155,10 +174,8 @@ function numberOfArithmeticSlices(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

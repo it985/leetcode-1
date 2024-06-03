@@ -1,10 +1,20 @@
-# [2066. 账户余额](https://leetcode.cn/problems/account-balance)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2066.Account%20Balance/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2066. 账户余额 🔒](https://leetcode.cn/problems/account-balance)
 
 [English Version](/solution/2000-2099/2066.Account%20Balance/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表名: <code>Transactions</code></p>
 
@@ -69,15 +79,17 @@ Transactions 表:
 - 2021-12-12 --&gt; 取出 7000. 余额变为 7000 - 7000 = 0.
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -93,3 +105,7 @@ ORDER BY 1, 2;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

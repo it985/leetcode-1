@@ -1,8 +1,21 @@
-# [2702. Minimum Operations to Make Numbers Non-positive](https://leetcode.com/problems/minimum-operations-to-make-numbers-non-positive)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2702.Minimum%20Operations%20to%20Make%20Numbers%20Non-positive/README_EN.md
+tags:
+    - Array
+    - Binary Search
+---
+
+<!-- problem:start -->
+
+# [2702. Minimum Operations to Make Numbers Non-positive 🔒](https://leetcode.com/problems/minimum-operations-to-make-numbers-non-positive)
 
 [中文文档](/solution/2700-2799/2702.Minimum%20Operations%20to%20Make%20Numbers%20Non-positive/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> and two integers <code>x</code> and <code>y</code>. In one operation, you must choose an index <code>i</code> such that <code>0 &lt;= i &lt; nums.length</code> and perform the following:</p>
 
@@ -43,9 +56,13 @@ Now, all the numbers in nums are non-positive. Therefore, we return 3.
 	<li><code>1 &lt;= y &lt; x &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Binary Search
 
 We notice that if an operation count $t$ can make all numbers less than or equal to $0$, then for any $t' > t$, the operation count $t'$ can also make all numbers less than or equal to $0$. Therefore, we can use binary search to find the minimum operation count.
 
@@ -53,7 +70,7 @@ We define the left boundary of the binary search as $l=0$, and the right boundar
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +92,7 @@ class Solution:
         return l
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -114,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -143,7 +160,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minOperations(nums []int, x int, y int) int {
@@ -170,7 +187,7 @@ func minOperations(nums []int, x int, y int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minOperations(nums: number[], x: number, y: number): number {
@@ -197,10 +214,8 @@ function minOperations(nums: number[], x: number, y: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

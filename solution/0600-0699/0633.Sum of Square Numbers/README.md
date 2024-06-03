@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0633.Sum%20of%20Square%20Numbers/README.md
+tags:
+    - 数学
+    - 双指针
+    - 二分查找
+---
+
+<!-- problem:start -->
+
 # [633. 平方数之和](https://leetcode.cn/problems/sum-of-square-numbers)
 
 [English Version](/solution/0600-0699/0633.Sum%20of%20Square%20Numbers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个非负整数&nbsp;<code>c</code>&nbsp;，你要判断是否存在两个整数 <code>a</code> 和 <code>b</code>，使得&nbsp;<code>a<sup>2</sup> + b<sup>2</sup> = c</code> 。</p>
 
@@ -33,21 +45,21 @@
 	<li><code>0 &lt;= c &lt;= 2<sup>31</sup> - 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-![](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0600-0699/0633.Sum%20of%20Square%20Numbers/images/table.png)
+### 方法一：数学 + 双指针
 
-上图为 a，b，c 之间的关系，这题其实就是在这张“表”里查找 c。
+我们可以使用双指针的方法来解决这个问题，定义两个指针 $a$ 和 $b$，分别指向 $0$ 和 $\sqrt{c}$。在每一步中，我们会计算 $s = a^2 + b^2$ 的值，然后比较 $s$ 与 $c$ 的大小。如果 $s = c$，我们就找到了两个整数 $a$ 和 $b$，使得 $a^2 + b^2 = c$。如果 $s < c$，我们将 $a$ 的值增加 $1$，如果 $s > c$，我们将 $b$ 的值减小 $1$。我们不断进行这个过程直到找到答案，或者 $a$ 的值大于 $b$ 的值，返回 `false`。
 
-从表的右上角看，不难发现它类似一棵二叉查找树，所以只需从右上角开始，按照二叉查找树的规律进行搜索。
+时间复杂度 $O(\sqrt{c})$，其中 $c$ 是给定的非负整数。空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -64,9 +76,7 @@ class Solution:
         return False
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -88,46 +98,30 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function judgeSquareSum(c: number): boolean {
-    let a = 0,
-        b = Math.floor(Math.sqrt(c));
-    while (a <= b) {
-        let sum = a ** 2 + b ** 2;
-        if (sum == c) return true;
-        if (sum < c) {
-            ++a;
-        } else {
-            --b;
-        }
-    }
-    return false;
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
 public:
     bool judgeSquareSum(int c) {
-        long a = 0, b = (long) sqrt(c);
+        long long a = 0, b = sqrt(c);
         while (a <= b) {
-            long s = a * a + b * b;
-            if (s == c) return true;
-            if (s < c)
+            long long s = a * a + b * b;
+            if (s == c) {
+                return true;
+            }
+            if (s < c) {
                 ++a;
-            else
+            } else {
                 --b;
+            }
         }
         return false;
     }
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func judgeSquareSum(c int) bool {
@@ -147,26 +141,46 @@ func judgeSquareSum(c int) bool {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function judgeSquareSum(c: number): boolean {
+    let [a, b] = [0, Math.floor(Math.sqrt(c))];
+    while (a <= b) {
+        const s = a * a + b * b;
+        if (s === c) {
+            return true;
+        }
+        if (s < c) {
+            ++a;
+        } else {
+            --b;
+        }
+    }
+    return false;
+}
+```
+
+#### Rust
 
 ```rust
 use std::cmp::Ordering;
+
 impl Solution {
     pub fn judge_square_sum(c: i32) -> bool {
-        let c = c as i64;
-        let mut left = 0;
-        let mut right = (c as f64).sqrt() as i64;
-        while left <= right {
-            let num = left * left + right * right;
-            match num.cmp(&c) {
-                Ordering::Less => {
-                    left += 1;
-                }
-                Ordering::Greater => {
-                    right -= 1;
-                }
+        let mut a: i64 = 0;
+        let mut b: i64 = (c as f64).sqrt() as i64;
+        while a <= b {
+            let s = a * a + b * b;
+            match s.cmp(&(c as i64)) {
                 Ordering::Equal => {
                     return true;
+                }
+                Ordering::Less => {
+                    a += 1;
+                }
+                Ordering::Greater => {
+                    b -= 1;
                 }
             }
         }
@@ -175,10 +189,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0898.Bitwise%20ORs%20of%20Subarrays/README.md
+tags:
+    - 位运算
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [898. 子数组按位或操作](https://leetcode.cn/problems/bitwise-ors-of-subarrays)
 
 [English Version](/solution/0800-0899/0898.Bitwise%20ORs%20of%20Subarrays/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>我们有一个非负整数数组<meta charset="UTF-8" />&nbsp;<code>arr</code>&nbsp;。</p>
 
@@ -52,11 +64,13 @@
 	<li><code>0 &lt;= nums[i]&nbsp;&lt;= 10<sup>9</sup></code>​​​​​​​</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 题目求的是子数组按位或操作的结果的数量，如果我们枚举子数组的结束位置 $i$，那么以 $i-1$ 结尾的子数组按位或操作的结果的数量最多不超过 $32$ 个。这是因为，按位或是一个单调递增的操作。
 
@@ -70,9 +84,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -85,9 +97,7 @@ class Solution:
         return len(ans)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -109,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -130,7 +140,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func subarrayBitwiseORs(arr []int) int {
@@ -150,7 +160,7 @@ func subarrayBitwiseORs(arr []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function subarrayBitwiseORs(arr: number[]): number {
@@ -172,10 +182,8 @@ function subarrayBitwiseORs(arr: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

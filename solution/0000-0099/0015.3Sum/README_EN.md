@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0015.3Sum/README_EN.md
+tags:
+    - Array
+    - Two Pointers
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [15. 3Sum](https://leetcode.com/problems/3sum)
 
 [中文文档](/solution/0000-0099/0015.3Sum/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array nums, return all the triplets <code>[nums[i], nums[j], nums[k]]</code> such that <code>i != j</code>, <code>i != k</code>, and <code>j != k</code>, and <code>nums[i] + nums[j] + nums[k] == 0</code>.</p>
 
@@ -46,9 +60,13 @@ Notice that the order of the output and the order of the triplets does not matte
 	<li><code>-10<sup>5</sup> &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sort + Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Sort + Two Pointers
 
 We notice that the problem does not require us to return the triplet in order, so we might as well sort the array first, which makes it easy to skip duplicate elements.
 
@@ -72,7 +90,7 @@ The time complexity is $O(n^2)$, and the space complexity is $O(\log n)$. The $n
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -102,7 +120,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -137,7 +155,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -173,7 +191,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func threeSum(nums []int) (ans [][]int) {
@@ -206,7 +224,7 @@ func threeSum(nums []int) (ans [][]int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function threeSum(nums: number[]): number[][] {
@@ -240,113 +258,7 @@ function threeSum(nums: number[]): number[][] {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} nums
- * @return {number[][]}
- */
-var threeSum = function (nums) {
-    const n = nums.length;
-    nums.sort((a, b) => a - b);
-    const ans = [];
-    for (let i = 0; i < n - 2 && nums[i] <= 0; ++i) {
-        if (i > 0 && nums[i] === nums[i - 1]) {
-            continue;
-        }
-        let j = i + 1;
-        let k = n - 1;
-        while (j < k) {
-            const x = nums[i] + nums[j] + nums[k];
-            if (x < 0) {
-                ++j;
-            } else if (x > 0) {
-                --k;
-            } else {
-                ans.push([nums[i], nums[j++], nums[k--]]);
-                while (j < k && nums[j] === nums[j - 1]) {
-                    ++j;
-                }
-                while (j < k && nums[k] === nums[k + 1]) {
-                    --k;
-                }
-            }
-        }
-    }
-    return ans;
-};
-```
-
-### **C#**
-
-```cs
-public class Solution {
-    public IList<IList<int>> ThreeSum(int[] nums) {
-        Array.Sort(nums);
-        int n = nums.Length;
-        IList<IList<int>> ans = new List<IList<int>>();
-        for (int i = 0; i < n - 2 && nums[i] <= 0; ++i) {
-            if (i > 0 && nums[i] == nums[i - 1]) {
-                continue;
-            }
-            int j = i + 1, k = n - 1;
-            while (j < k) {
-                int x = nums[i] + nums[j] + nums[k];
-                if (x < 0) {
-                    ++j;
-                } else if (x > 0) {
-                    --k;
-                } else {
-                    ans.Add(new List<int> { nums[i], nums[j--], nums[k--] });
-                    while (j < k && nums[j] == nums[j + 1]) {
-                        ++j;
-                    }
-                    while (j < k && nums[k] == nums[k + 1]) {
-                        --k;
-                    }
-                }
-            }
-        }
-        return ans;
-    }
-}
-```
-
-### **Ruby**
-
-```rb
-# @param {Integer[]} nums
-# @return {Integer[][]}
-def three_sum(nums)
-  res = []
-  nums.sort!
-
-  for i in 0..(nums.length - 3)
-    next if i > 0 && nums[i - 1] == nums[i]
-    j = i + 1
-    k = nums.length - 1
-    while j < k do
-      sum = nums[i] + nums[j] + nums[k]
-      if sum < 0
-        j += 1
-      elsif sum > 0
-        k -= 1
-      else
-        res += [[nums[i], nums[j], nums[k]]]
-        j += 1
-        k -= 1
-        j += 1 while nums[j] == nums[j - 1]
-        k -= 1 while nums[k] == nums[k + 1]
-      end
-    end
-  end
-
-  res
-end
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 use std::cmp::Ordering;
@@ -391,10 +303,154 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
+```js
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var threeSum = function (nums) {
+    const n = nums.length;
+    nums.sort((a, b) => a - b);
+    const ans = [];
+    for (let i = 0; i < n - 2 && nums[i] <= 0; ++i) {
+        if (i > 0 && nums[i] === nums[i - 1]) {
+            continue;
+        }
+        let j = i + 1;
+        let k = n - 1;
+        while (j < k) {
+            const x = nums[i] + nums[j] + nums[k];
+            if (x < 0) {
+                ++j;
+            } else if (x > 0) {
+                --k;
+            } else {
+                ans.push([nums[i], nums[j++], nums[k--]]);
+                while (j < k && nums[j] === nums[j - 1]) {
+                    ++j;
+                }
+                while (j < k && nums[k] === nums[k + 1]) {
+                    --k;
+                }
+            }
+        }
+    }
+    return ans;
+};
 ```
 
+#### C#
+
+```cs
+public class Solution {
+    public IList<IList<int>> ThreeSum(int[] nums) {
+        Array.Sort(nums);
+        int n = nums.Length;
+        IList<IList<int>> ans = new List<IList<int>>();
+        for (int i = 0; i < n - 2 && nums[i] <= 0; ++i) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            int j = i + 1, k = n - 1;
+            while (j < k) {
+                int x = nums[i] + nums[j] + nums[k];
+                if (x < 0) {
+                    ++j;
+                } else if (x > 0) {
+                    --k;
+                } else {
+                    ans.Add(new List<int> { nums[i], nums[j--], nums[k--] });
+                    while (j < k && nums[j] == nums[j + 1]) {
+                        ++j;
+                    }
+                    while (j < k && nums[k] == nums[k + 1]) {
+                        --k;
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### Ruby
+
+```rb
+# @param {Integer[]} nums
+# @return {Integer[][]}
+def three_sum(nums)
+  res = []
+  nums.sort!
+
+  for i in 0..(nums.length - 3)
+    next if i > 0 && nums[i - 1] == nums[i]
+    j = i + 1
+    k = nums.length - 1
+    while j < k do
+      sum = nums[i] + nums[j] + nums[k]
+      if sum < 0
+        j += 1
+      elsif sum > 0
+        k -= 1
+      else
+        res += [[nums[i], nums[j], nums[k]]]
+        j += 1
+        k -= 1
+        j += 1 while nums[j] == nums[j - 1]
+        k -= 1 while nums[k] == nums[k + 1]
+      end
+    end
+  end
+
+  res
+end
+```
+
+#### PHP
+
+```php
+class Solution {
+    /**
+     * @param Integer[] $nums
+     * @return Integer[][]
+     */
+    function threeSum($nums) {
+        sort($nums);
+        $ans = [];
+        $n = count($nums);
+        for ($i = 0; $i < $n - 2 && $nums[$i] <= 0; ++$i) {
+            if ($i > 0 && $nums[$i] == $nums[$i - 1]) {
+                continue;
+            }
+            $j = $i + 1;
+            $k = $n - 1;
+            while ($j < $k) {
+                $x = $nums[$i] + $nums[$j] + $nums[$k];
+                if ($x < 0) {
+                    ++$j;
+                } elseif ($x > 0) {
+                    --$k;
+                } else {
+                    $ans[] = [$nums[$i], $nums[$j++], $nums[$k--]];
+                    while ($j < $k && $nums[$j] == $nums[$j - 1]) {
+                        ++$j;
+                    }
+                    while ($j < $k && $nums[$k] == $nums[$k + 1]) {
+                        --$k;
+                    }
+                }
+            }
+        }
+        return $ans;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

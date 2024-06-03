@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1195.Fizz%20Buzz%20Multithreaded/README.md
+tags:
+    - 多线程
+---
+
+<!-- problem:start -->
+
 # [1195. 交替打印字符串](https://leetcode.cn/problems/fizz-buzz-multithreaded)
 
 [English Version](/solution/1100-1199/1195.Fizz%20Buzz%20Multithreaded/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>编写一个可以从 1 到 n 输出代表这个数字的字符串的程序，但是：</p>
 
@@ -46,23 +56,17 @@ class FizzBuzz {
 
 <p> </p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```python
-
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class FizzBuzz {
@@ -127,7 +131,7 @@ class FizzBuzz {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class FizzBuzz {
@@ -186,10 +190,8 @@ public:
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

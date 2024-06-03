@@ -1,8 +1,20 @@
-# [1142. User Activity for the Past 30 Days II](https://leetcode.com/problems/user-activity-for-the-past-30-days-ii)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1142.User%20Activity%20for%20the%20Past%2030%20Days%20II/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [1142. User Activity for the Past 30 Days II 🔒](https://leetcode.com/problems/user-activity-for-the-past-30-days-ii)
 
 [中文文档](/solution/1100-1199/1142.User%20Activity%20for%20the%20Past%2030%20Days%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Activity</code></p>
 
@@ -60,11 +72,17 @@ Activity table:
 <strong>Explanation:</strong> User 1 and 2 each had 1 session in the past 30 days while user 3 had 2 sessions so the average is (1 + 1 + 2) / 3 = 1.33.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -80,6 +98,18 @@ SELECT IFNULL(ROUND(AVG(sessions), 2), 0) AS average_sessions_per_user
 FROM T;
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### MySQL
+
 ```sql
 SELECT
     IFNULL(
@@ -91,3 +121,7 @@ WHERE DATEDIFF('2019-07-27', activity_date) < 30;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

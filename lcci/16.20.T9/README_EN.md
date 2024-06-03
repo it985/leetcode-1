@@ -1,11 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.20.T9/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [16.20. T9](https://leetcode.cn/problems/t9-lcci)
 
 [中文文档](/lcci/16.20.T9/README.md)
 
 ## Description
 
+<!-- description:start -->
+
 <p>On old cell phones, users typed on a numeric keypad and the phone would provide a list of words that matched these numbers. Each digit mapped to a set of 0&nbsp;- 4 letters. Implement an algo&shy;rithm to return a list of matching words, given a sequence of digits. You are provided a list of valid words. The mapping is shown in the diagram below:</p>
-![](./images/17_telephone_keypad.png)
+![](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcci/16.20.T9/images/17_telephone_keypad.png)
 <p><strong>Example 1:</strong></p>
 <pre>
 
@@ -29,9 +39,13 @@
 	<li><code>There are no number 0 and 1 in num</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Reverse Thinking**
+<!-- solution:start -->
+
+### Solution 1: Reverse Thinking
 
 We consider a forward solution, which traverses each digit in the string $num$, maps it to the corresponding letter, combines all the letters to obtain all possible words, and then compares them with the given word list. If the word is in the list, it is added to the answer. The time complexity of this solution is $O(4^n)$, where $n$ is the length of the string $num$, which will obviously time out.
 
@@ -41,7 +55,7 @@ The time complexity is $O(m \times n)$, and the space complexity is $O(C)$. Here
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -53,6 +67,8 @@ class Solution:
         return [w for w in words if check(w)]
 ```
 
+#### Python3
+
 ```python
 class Solution:
     def getValidT9Words(self, num: str, words: List[str]) -> List[str]:
@@ -60,7 +76,7 @@ class Solution:
         return [w for w in words if w.translate(trans) == num]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -89,7 +105,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -118,7 +134,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getValidT9Words(num string, words []string) (ans []string) {
@@ -143,7 +159,7 @@ func getValidT9Words(num string, words []string) (ans []string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function getValidT9Words(num: string, words: string[]): string[] {
@@ -170,10 +186,38 @@ function getValidT9Words(num: string, words: string[]): string[] {
 }
 ```
 
-### **...**
+#### Swift
 
-```
-
+```swift
+class Solution {
+    func getValidT9Words(_ num: String, _ words: [String]) -> [String] {
+        let s = "22233344455566677778889999"
+        var d = Array(repeating: 0, count: 26)
+        for i in 0..<26 {
+            d[i] = Int(s[s.index(s.startIndex, offsetBy: i)].asciiValue! - Character("0").asciiValue!)
+        }
+        var ans: [String] = []
+        let n = num.count
+        for w in words {
+            var ok = true
+            for i in 0..<n {
+                let numChar = Int(num[num.index(num.startIndex, offsetBy: i)].asciiValue! - Character("0").asciiValue!)
+                if d[Int(w[w.index(w.startIndex, offsetBy: i)].asciiValue! - Character("a").asciiValue!)] != numChar {
+                    ok = false
+                    break
+                }
+            }
+            if ok {
+                ans.append(w)
+            }
+        }
+        return ans
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

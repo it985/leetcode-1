@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0715.Range%20Module/README_EN.md
+tags:
+    - Design
+    - Segment Tree
+    - Ordered Set
+---
+
+<!-- problem:start -->
+
 # [715. Range Module](https://leetcode.com/problems/range-module)
 
 [中文文档](/solution/0700-0799/0715.Range%20Module/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A Range Module is a module that tracks ranges of numbers. Design a data structure to track the ranges represented as <strong>half-open intervals</strong> and query about them.</p>
 
@@ -44,9 +58,13 @@ rangeModule.queryRange(16, 17); // return True, (The number 16 in [16, 17) is st
 	<li>At most <code>10<sup>4</sup></code> calls will be made to <code>addRange</code>, <code>queryRange</code>, and <code>removeRange</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Segment Tree**
+<!-- solution:start -->
+
+### Solution 1: Segment Tree
 
 According to the problem description, we need to maintain a set of intervals, supporting operations of interval addition, deletion, and query. For the addition and deletion of intervals, we can use a segment tree to maintain the set of intervals.
 
@@ -63,7 +81,7 @@ In terms of time complexity, the time complexity of each operation is $O(\log n)
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Node:
@@ -143,6 +161,7 @@ class RangeModule:
     def removeRange(self, left: int, right: int) -> None:
         self.tree.modify(left, right - 1, -1)
 
+
 # Your RangeModule object will be instantiated and called as such:
 # obj = RangeModule()
 # obj.addRange(left,right)
@@ -150,7 +169,7 @@ class RangeModule:
 # obj.removeRange(left,right)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Node {
@@ -256,7 +275,7 @@ class RangeModule {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 template <class T>
@@ -385,7 +404,7 @@ public:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 const N int = 1e9
@@ -491,7 +510,7 @@ func (this *RangeModule) RemoveRange(left int, right int) {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class Node {
@@ -631,10 +650,8 @@ class RangeModule {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

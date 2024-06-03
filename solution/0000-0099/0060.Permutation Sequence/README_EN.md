@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0060.Permutation%20Sequence/README_EN.md
+tags:
+    - Recursion
+    - Math
+---
+
+<!-- problem:start -->
+
 # [60. Permutation Sequence](https://leetcode.com/problems/permutation-sequence)
 
 [中文文档](/solution/0000-0099/0060.Permutation%20Sequence/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>The set <code>[1, 2, 3, ...,&nbsp;n]</code> contains a total of <code>n!</code> unique permutations.</p>
 
@@ -38,9 +51,13 @@
 	<li><code>1 &lt;= k &lt;= n!</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Enumeration
 
 We know that the set $[1,2,..n]$ has a total of $n!$ permutations. If we determine the first digit, the number of permutations that the remaining digits can form is $(n-1)!$.
 
@@ -52,7 +69,7 @@ The time complexity is $O(n^2)$, and the space complexity is $O(n)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -74,7 +91,7 @@ class Solution:
         return ''.join(ans)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -103,7 +120,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -130,7 +147,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getPermutation(n int, k int) string {
@@ -157,36 +174,7 @@ func getPermutation(n int, k int) string {
 }
 ```
 
-### **C#**
-
-```cs
-public class Solution {
-    public string GetPermutation(int n, int k) {
-        var ans = new StringBuilder();
-        int vis = 0;
-        for (int i = 0; i < n; ++i) {
-            int fact = 1;
-            for (int j = 1; j < n - i; ++j) {
-                fact *= j;
-            }
-            for (int j = 1; j <= n; ++j) {
-                if (((vis >> j) & 1) == 0) {
-                    if (k > fact) {
-                        k -= fact;
-                    } else {
-                        ans.Append(j);
-                        vis |= 1 << j;
-                        break;
-                    }
-                }
-            }
-        }
-        return ans.ToString();
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -220,10 +208,64 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C#
 
+```cs
+public class Solution {
+    public string GetPermutation(int n, int k) {
+        var ans = new StringBuilder();
+        int vis = 0;
+        for (int i = 0; i < n; ++i) {
+            int fact = 1;
+            for (int j = 1; j < n - i; ++j) {
+                fact *= j;
+            }
+            for (int j = 1; j <= n; ++j) {
+                if (((vis >> j) & 1) == 0) {
+                    if (k > fact) {
+                        k -= fact;
+                    } else {
+                        ans.Append(j);
+                        vis |= 1 << j;
+                        break;
+                    }
+                }
+            }
+        }
+        return ans.ToString();
+    }
+}
 ```
 
+#### TypeScript
+
+```ts
+function getPermutation(n: number, k: number): string {
+    let ans = '';
+    const vis = Array.from({ length: n + 1 }, () => false);
+    for (let i = 0; i < n; i++) {
+        let fact = 1;
+        for (let j = 1; j < n - i; j++) {
+            fact *= j;
+        }
+        for (let j = 1; j <= n; j++) {
+            if (!vis[j]) {
+                if (k > fact) {
+                    k -= fact;
+                } else {
+                    ans += j;
+                    vis[j] = true;
+                    break;
+                }
+            }
+        }
+    }
+    return ans;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2905.Find%20Indices%20With%20Index%20and%20Value%20Difference%20II/README.md
+rating: 1763
+source: 第 367 场周赛 Q3
+tags:
+    - 数组
+    - 双指针
+---
+
+<!-- problem:start -->
+
 # [2905. 找出满足差值条件的下标 II](https://leetcode.cn/problems/find-indices-with-index-and-value-difference-ii)
 
 [English Version](/solution/2900-2999/2905.Find%20Indices%20With%20Index%20and%20Value%20Difference%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始、长度为 <code>n</code> 的整数数组 <code>nums</code> ，以及整数 <code>indexDifference</code> 和整数 <code>valueDifference</code> 。</p>
 
@@ -63,29 +76,17 @@ abs(0 - 0) &gt;= 0 且 abs(nums[0] - nums[0]) &gt;= 0 。
 	<li><code>0 &lt;= valueDifference &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-## Solutions
-
-**Solution 1: Two Pointers + Maintaining Maximum and Minimum Values**
-
-We use two pointers $i$ and $j$ to maintain a sliding window with a gap of $indexDifference$, where $j$ and $i$ point to the left and right boundaries of the window, respectively. Initially, $i$ points to $indexDifference$, and $j` points to $0$.
-
-We use $mi$ and $mx$ to maintain the indices of the minimum and maximum values to the left of pointer $j$.
-
-When pointer $i$ moves to the right, we need to update $mi$ and $mx$. If $nums[j] \lt nums[mi]$, then $mi$ is updated to $j$; if $nums[j] \gt nums[mx]$, then $mx$ is updated to $j$. After updating $mi$ and $mx$, we can determine whether we have found a pair of indices that satisfy the condition. If $nums[i] - nums[mi] \ge valueDifference$, then we have found a pair of indices $[mi, i]$ that satisfy the condition; if $nums[mx] - nums[i] >= valueDifference$, then we have found a pair of indices $[mx, i]$ that satisfy the condition.
-
-If pointer $i$ moves to the end of the array and we have not found a pair of indices that satisfy the condition, we return $[-1, -1]$.
-
-The time complexity is $O(n)$, where $n$ is the length of the array. The space complexity is $O(1)$.
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -106,9 +107,7 @@ class Solution:
         return [-1, -1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -135,7 +134,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -162,7 +161,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findIndices(nums []int, indexDifference int, valueDifference int) []int {
@@ -186,7 +185,7 @@ func findIndices(nums []int, indexDifference int, valueDifference int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findIndices(nums: number[], indexDifference: number, valueDifference: number): number[] {
@@ -210,10 +209,42 @@ function findIndices(nums: number[], indexDifference: number, valueDifference: n
 }
 ```
 
-### **...**
+#### Rust
 
-```
+```rust
+impl Solution {
+    pub fn find_indices(nums: Vec<i32>, index_difference: i32, value_difference: i32) -> Vec<i32> {
+        let index_difference = index_difference as usize;
+        let mut mi = 0;
+        let mut mx = 0;
 
+        for i in index_difference..nums.len() {
+            let j = i - index_difference;
+
+            if nums[j] < nums[mi] {
+                mi = j;
+            }
+
+            if nums[j] > nums[mx] {
+                mx = j;
+            }
+
+            if nums[i] - nums[mi] >= value_difference {
+                return vec![mi as i32, i as i32];
+            }
+
+            if nums[mx] - nums[i] >= value_difference {
+                return vec![mx as i32, i as i32];
+            }
+        }
+
+        vec![-1, -1]
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

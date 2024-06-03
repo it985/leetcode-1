@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0899.Orderly%20Queue/README_EN.md
+tags:
+    - Math
+    - String
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [899. Orderly Queue](https://leetcode.com/problems/orderly-queue)
 
 [中文文档](/solution/0800-0899/0899.Orderly%20Queue/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>s</code> and an integer <code>k</code>. You can choose one of the first <code>k</code> letters of <code>s</code> and append it at the end of the string.</p>
 
@@ -37,13 +51,13 @@ In the second move, we move the 3<sup>rd</sup> character &#39;c&#39; to the end,
 	<li><code>s</code> consist of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Preface**
+<!-- solution:start -->
 
-For any string, if any adjacent characters can be swapped, we can perform a bubble sort-like operation on the characters in the string, eventually obtaining a string sorted in ascending order.
-
-**Solution 1: Case-by-case Judgment**
+### Solution 1: Case-by-case Judgment
 
 If $k = 1$, we can only move the first character of the string to the end of the string each time, resulting in $|s|$ different states. We return the string with the smallest lexicographic order.
 
@@ -55,7 +69,7 @@ The time complexity is $O(n^2)$, and the space complexity is $O(n)$. Here, $n$ i
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +83,7 @@ class Solution:
         return "".join(sorted(s))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -92,7 +106,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -112,7 +126,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func orderlyQueue(s string, k int) string {
@@ -132,7 +146,7 @@ func orderlyQueue(s string, k int) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function orderlyQueue(s: string, k: number): string {
@@ -151,10 +165,8 @@ function orderlyQueue(s: string, k: number): string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

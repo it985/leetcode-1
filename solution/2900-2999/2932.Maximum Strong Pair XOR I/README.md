@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2932.Maximum%20Strong%20Pair%20XOR%20I/README.md
+rating: 1246
+source: 第 371 场周赛 Q1
+tags:
+    - 位运算
+    - 字典树
+    - 数组
+    - 哈希表
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [2932. 找出强数对的最大异或值 I](https://leetcode.cn/problems/maximum-strong-pair-xor-i)
 
 [English Version](/solution/2900-2999/2932.Maximum%20Strong%20Pair%20XOR%20I/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 。如果一对整数 <code>x</code> 和 <code>y</code> 满足以下条件，则称其为 <strong>强数对</strong> ：</p>
 
@@ -56,17 +72,110 @@
 	<li><code>1 &lt;= nums[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举**
+### 方法一：枚举
 
 我们可以枚举数组中的每一个数对 $(x, y)$，如果满足 $|x - y| \leq \min(x, y)$，那么这个数对就是一个强数对，我们可以计算这个数对的异或值，并更新答案。
 
 时间复杂度 $O(n^2)$，其中 $n$ 是数组 $nums$ 的长度。空间复杂度 $O(1)$。
 
-**方法二：排序 + 0-1 字典树**
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def maximumStrongPairXor(self, nums: List[int]) -> int:
+        return max(x ^ y for x in nums for y in nums if abs(x - y) <= min(x, y))
+```
+
+#### Java
+
+```java
+class Solution {
+    public int maximumStrongPairXor(int[] nums) {
+        int ans = 0;
+        for (int x : nums) {
+            for (int y : nums) {
+                if (Math.abs(x - y) <= Math.min(x, y)) {
+                    ans = Math.max(ans, x ^ y);
+                }
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int maximumStrongPairXor(vector<int>& nums) {
+        int ans = 0;
+        for (int x : nums) {
+            for (int y : nums) {
+                if (abs(x - y) <= min(x, y)) {
+                    ans = max(ans, x ^ y);
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func maximumStrongPairXor(nums []int) (ans int) {
+	for _, x := range nums {
+		for _, y := range nums {
+			if abs(x-y) <= min(x, y) {
+				ans = max(ans, x^y)
+			}
+		}
+	}
+	return
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+```
+
+#### TypeScript
+
+```ts
+function maximumStrongPairXor(nums: number[]): number {
+    let ans = 0;
+    for (const x of nums) {
+        for (const y of nums) {
+            if (Math.abs(x - y) <= Math.min(x, y)) {
+                ans = Math.max(ans, x ^ y);
+            }
+        }
+    }
+    return ans;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：排序 + 0-1 字典树
 
 观察不等式 $|x - y| \leq \min(x, y)$，其中涉及到绝对值以及最小值，我们不妨假设 $x \leq y$，则有 $y - x \leq x$，即 $y \leq 2x$。我们可以从小到大枚举 $y$，那么 $x$ 必须满足不等式 $y \leq 2x$。
 
@@ -76,15 +185,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```python
-class Solution:
-    def maximumStrongPairXor(self, nums: List[int]) -> int:
-        return max(x ^ y for x in nums for y in nums if abs(x - y) <= min(x, y))
-```
+#### Python3
 
 ```python
 class Trie:
@@ -137,25 +238,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```java
-class Solution {
-    public int maximumStrongPairXor(int[] nums) {
-        int ans = 0;
-        for (int x : nums) {
-            for (int y : nums) {
-                if (Math.abs(x - y) <= Math.min(x, y)) {
-                    ans = Math.max(ans, x ^ y);
-                }
-            }
-        }
-        return ans;
-    }
-}
-```
+#### Java
 
 ```java
 class Trie {
@@ -163,7 +246,6 @@ class Trie {
     private int cnt = 0;
 
     public Trie() {
-
     }
 
     public void insert(int x) {
@@ -220,24 +302,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int maximumStrongPairXor(vector<int>& nums) {
-        int ans = 0;
-        for (int x : nums) {
-            for (int y : nums) {
-                if (abs(x - y) <= min(x, y)) {
-                    ans = max(ans, x ^ y);
-                }
-            }
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Trie {
@@ -306,27 +371,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func maximumStrongPairXor(nums []int) (ans int) {
-	for _, x := range nums {
-		for _, y := range nums {
-			if abs(x-y) <= min(x, y) {
-				ans = max(ans, x^y)
-			}
-		}
-	}
-	return
-}
-
-func abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
-}
-```
+#### Go
 
 ```go
 type Trie struct {
@@ -389,21 +434,7 @@ func maximumStrongPairXor(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function maximumStrongPairXor(nums: number[]): number {
-    let ans = 0;
-    for (const x of nums) {
-        for (const y of nums) {
-            if (Math.abs(x - y) <= Math.min(x, y)) {
-                ans = Math.max(ans, x ^ y);
-            }
-        }
-    }
-    return ans;
-}
-```
+#### TypeScript
 
 ```ts
 class Trie {
@@ -472,10 +503,8 @@ function maximumStrongPairXor(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

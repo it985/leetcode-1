@@ -1,10 +1,21 @@
-# [265. 粉刷房子 II](https://leetcode.cn/problems/paint-house-ii)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0265.Paint%20House%20II/README.md
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
+# [265. 粉刷房子 II 🔒](https://leetcode.cn/problems/paint-house-ii)
 
 [English Version](/solution/0200-0299/0265.Paint%20House%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>假如有一排房子共有&nbsp;<code>n</code>&nbsp;幢，每个房子可以被粉刷成 <code>k</code>&nbsp;种颜色中的一种。房子粉刷成不同颜色的花费成本也是不同的。你需要粉刷所有的房子并且使其相邻的两个房子颜色不能相同。</p>
 
@@ -50,11 +61,13 @@
 
 <p><strong>进阶：</strong>您能否在&nbsp;<code>O(nk)</code> 的时间复杂度下解决此问题？</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 定义 $f[i][j]$ 表示粉刷前 $i$ 个房子，且最后一个房子被粉刷成第 $j$ 种颜色的最小花费。答案为 $\min_{0 \leq j < k} f[n][j]$。
 
@@ -70,9 +83,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -88,9 +99,7 @@ class Solution:
         return min(f)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -115,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -141,7 +150,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minCostII(costs [][]int) int {
@@ -170,10 +179,8 @@ func cp(arr []int) []int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

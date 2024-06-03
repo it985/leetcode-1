@@ -1,10 +1,27 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2947.Count%20Beautiful%20Substrings%20I/README.md
+rating: 1450
+source: 第 373 场周赛 Q2
+tags:
+    - 哈希表
+    - 数学
+    - 字符串
+    - 枚举
+    - 数论
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [2947. 统计美丽子字符串 I](https://leetcode.cn/problems/count-beautiful-substrings-i)
 
 [English Version](/solution/2900-2999/2947.Count%20Beautiful%20Substrings%20I/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串 <code>s</code> 和一个正整数 <code>k</code> 。</p>
 
@@ -70,15 +87,17 @@
 	<li><code>s</code> 仅由小写英文字母组成。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -96,9 +115,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -124,7 +141,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -152,7 +169,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func beautifulSubstrings(s string, k int) (ans int) {
@@ -175,7 +192,7 @@ func beautifulSubstrings(s string, k int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function beautifulSubstrings(s: string, k: number): number {
@@ -199,10 +216,8 @@ function beautifulSubstrings(s: string, k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

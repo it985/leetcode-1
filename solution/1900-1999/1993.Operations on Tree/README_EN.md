@@ -1,8 +1,27 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1993.Operations%20on%20Tree/README_EN.md
+rating: 1861
+source: Biweekly Contest 60 Q3
+tags:
+    - Tree
+    - Depth-First Search
+    - Breadth-First Search
+    - Design
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [1993. Operations on Tree](https://leetcode.com/problems/operations-on-tree)
 
 [中文文档](/solution/1900-1999/1993.Operations%20on%20Tree/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a tree with <code>n</code> nodes numbered from <code>0</code> to <code>n - 1</code> in the form of a parent array <code>parent</code> where <code>parent[i]</code> is the parent of the <code>i<sup>th</sup></code> node. The root of the tree is node <code>0</code>, so <code>parent[0] = -1</code> since it has no parent. You want to design a data structure that allows users to lock, unlock, and upgrade nodes in the tree.</p>
 
@@ -68,13 +87,17 @@ lockingTree.lock(0, 1); // return false because node 0 is already locked.
 	<li>At most <code>2000</code> calls <strong>in total</strong> will be made to <code>lock</code>, <code>unlock</code>, and <code>upgrade</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-DFS.
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class LockingTree:
@@ -128,7 +151,7 @@ class LockingTree:
 # param_3 = obj.upgrade(num,user)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class LockingTree {
@@ -201,7 +224,7 @@ class LockingTree {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class LockingTree {
@@ -273,7 +296,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type LockingTree struct {
@@ -346,7 +369,7 @@ func (this *LockingTree) Upgrade(num int, user int) bool {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class LockingTree {
@@ -417,10 +440,8 @@ class LockingTree {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

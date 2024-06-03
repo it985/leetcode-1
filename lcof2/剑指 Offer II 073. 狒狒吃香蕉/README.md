@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof2/%E5%89%91%E6%8C%87%20Offer%20II%20073.%20%E7%8B%92%E7%8B%92%E5%90%83%E9%A6%99%E8%95%89/README.md
+---
+
+<!-- problem:start -->
+
 # [剑指 Offer II 073. 狒狒吃香蕉](https://leetcode.cn/problems/nZZqjQ)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>狒狒喜欢吃香蕉。这里有&nbsp;<code>N</code>&nbsp;堆香蕉，第 <code>i</code> 堆中有&nbsp;<code>piles[i]</code>&nbsp;根香蕉。警卫已经离开了，将在&nbsp;<code>H</code>&nbsp;小时后回来。</p>
 
@@ -52,17 +59,17 @@
 
 <p><meta charset="UTF-8" />注意：本题与主站 875&nbsp;题相同：&nbsp;<a href="https://leetcode.cn/problems/koko-eating-bananas/">https://leetcode.cn/problems/koko-eating-bananas/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-二分查找。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -78,9 +85,7 @@ class Solution:
         return left
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -128,7 +133,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minEatingSpeed(piles []int, h int) int {
@@ -149,7 +154,7 @@ func minEatingSpeed(piles []int, h int) int {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -177,10 +182,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

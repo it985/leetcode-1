@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2742.Painting%20the%20Walls/README.md
+rating: 2424
+source: 第 350 场周赛 Q4
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2742. 给墙壁刷油漆](https://leetcode.cn/problems/painting-the-walls)
 
 [English Version](/solution/2700-2799/2742.Painting%20the%20Walls/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个长度为 <code>n</code>&nbsp;下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>cost</code> 和&nbsp;<code>time</code>&nbsp;，分别表示给&nbsp;<code>n</code>&nbsp;堵不同的墙刷油漆需要的开销和时间。你有两名油漆匠：</p>
 
@@ -42,11 +55,13 @@
 	<li><code>1 &lt;= time[i] &lt;= 500</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索**
+### 方法一：记忆化搜索
 
 我们可以考虑每一堵墙是给付费油漆匠刷还是给免费油漆匠刷，设计一个函数 $dfs(i, j)$，表示从第 $i$ 堵墙开始，且当前剩余的免费油漆匠工作时间为 $j$ 时，刷完剩余所有墙壁的最小开销。那么答案为 $dfs(0, 0)$。
 
@@ -62,9 +77,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -81,9 +94,7 @@ class Solution:
         return dfs(0, 0)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -115,7 +126,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -141,7 +152,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func paintWalls(cost []int, time []int) int {
@@ -170,7 +181,7 @@ func paintWalls(cost []int, time []int) int {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -213,10 +224,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

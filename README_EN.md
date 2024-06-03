@@ -14,16 +14,13 @@
 
 ## Introduction
 
-The Doocs LeetCode repository is a comprehensive collection of solutions to LeetCode questions in multiple programming languages. The repository contains solutions to LeetCode, LCOF, LCCI questions, and more in multiple programming languages.
-
-The repository is maintained by the Doocs community, and please give us a [star](https://github.com/doocs/leetcode) 🌟 if you like it.
+This project contains solutions for problems from LeetCode, "Coding Interviews (2nd Edition)", "Coding Interviews (Special Edition)", "Cracking the Coding Interview (6th Edition)", etc. All solutions are implemented in multiple programming languages, including but not limited to: Java, Python, C++, Go, TypeScript, Rust. We are working hard to update, welcome to Star 🌟 and follow [this project](https://github.com/doocs/leetcode) to get the latest updates.
 
 [中文文档](/README.md)
 
 ## Sites
 
--   Vercel: https://doocs-leetcode.vercel.app
--   GitHub Pages: https://doocs.github.io/leetcode
+https://doocs.github.io/leetcode
 
 ## Solutions
 
@@ -43,7 +40,6 @@ The repository is maintained by the Doocs community, and please give us a [star]
 
 -   [Find First and Last Position of Element in Sorted Array](/solution/0000-0099/0034.Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array/README_EN.md) - `Binary search`
 -   [Minimum Speed to Arrive on Time](/solution/1800-1899/1870.Minimum%20Speed%20to%20Arrive%20on%20Time/README_EN.md) - `Binary search`
--   [Find the Student that Will Replace the Chalk](/solution/1800-1899/1894.Find%20the%20Student%20that%20Will%20Replace%20the%20Chalk/README_EN.md) - `Binary search`
 -   [Maximum Number of Removable Characters](/solution/1800-1899/1898.Maximum%20Number%20of%20Removable%20Characters/README_EN.md) - `Binary search`
 -   [Sort an Array](/solution/0900-0999/0912.Sort%20an%20Array/README_EN.md) - `Quick Sort`, `Merge Sort`
 -   [Add Strings](/solution/0400-0499/0415.Add%20Strings/README_EN.md) - `Addition of large numbers`

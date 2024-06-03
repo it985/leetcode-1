@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0978.Longest%20Turbulent%20Subarray/README_EN.md
+tags:
+    - Array
+    - Dynamic Programming
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [978. Longest Turbulent Subarray](https://leetcode.com/problems/longest-turbulent-subarray)
 
 [中文文档](/solution/0900-0999/0978.Longest%20Turbulent%20Subarray/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>arr</code>, return <em>the length of a maximum size turbulent subarray of</em> <code>arr</code>.</p>
 
@@ -12,6 +26,7 @@
 
 <ul>
 	<li>For <code>i &lt;= k &lt; j</code>:
+
     <ul>
     	<li><code>arr[k] &gt; arr[k + 1]</code> when <code>k</code> is odd, and</li>
     	<li><code>arr[k] &lt; arr[k + 1]</code> when <code>k</code> is even.</li>
@@ -23,6 +38,7 @@
     	<li><code>arr[k] &lt; arr[k + 1]</code> when <code>k</code> is odd.</li>
     </ul>
     </li>
+
 </ul>
 
 <p>&nbsp;</p>
@@ -56,11 +72,17 @@
 	<li><code>0 &lt;= arr[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -74,7 +96,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -92,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -111,7 +133,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxTurbulenceSize(arr []int) int {
@@ -131,7 +153,7 @@ func maxTurbulenceSize(arr []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxTurbulenceSize(arr: number[]): number {
@@ -149,10 +171,8 @@ function maxTurbulenceSize(arr: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2968.Apply%20Operations%20to%20Maximize%20Frequency%20Score/README.md
+rating: 2444
+source: 第 376 场周赛 Q4
+tags:
+    - 数组
+    - 二分查找
+    - 前缀和
+    - 排序
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [2968. 执行操作使频率分数最大](https://leetcode.cn/problems/apply-operations-to-maximize-frequency-score)
 
 [English Version](/solution/2900-2999/2968.Apply%20Operations%20to%20Maximize%20Frequency%20Score/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums</code>&nbsp;和一个整数&nbsp;<code>k</code>&nbsp;。</p>
 
@@ -53,11 +69,13 @@
 	<li><code>0 &lt;= k &lt;= 10<sup>14</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 前缀和 + 二分查找**
+### 方法一：排序 + 前缀和 + 二分查找
 
 题目求的是在最多进行 $k$ 次操作的情况下，我们能得到的众数的最大频率。如果我们将数组 $nums$ 按照从小到大的顺序排列，那么最好就是将一段连续的数字都变成同一个数，这样可以使得操作次数较少，并且众数的频率较高。
 
@@ -89,9 +107,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -118,9 +134,7 @@ class Solution:
         return l
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -159,7 +173,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -201,7 +215,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxFrequencyScore(nums []int, k int64) int {
@@ -240,7 +254,7 @@ func maxFrequencyScore(nums []int, k int64) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxFrequencyScore(nums: number[], k: number): number {
@@ -277,10 +291,8 @@ function maxFrequencyScore(nums: number[], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

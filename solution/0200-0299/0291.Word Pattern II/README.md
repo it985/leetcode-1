@@ -1,10 +1,22 @@
-# [291. 单词规律 II](https://leetcode.cn/problems/word-pattern-ii)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0291.Word%20Pattern%20II/README.md
+tags:
+    - 哈希表
+    - 字符串
+    - 回溯
+---
+
+<!-- problem:start -->
+
+# [291. 单词规律 II 🔒](https://leetcode.cn/problems/word-pattern-ii)
 
 [English Version](/solution/0200-0299/0291.Word%20Pattern%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一种规律&nbsp;<code>pattern</code>&nbsp;和一个字符串&nbsp;<code>s</code>，请你判断&nbsp;<code>s</code>&nbsp;是否和<em>&nbsp;</em><code>pattern</code>&nbsp;的规律<strong>相匹配</strong>。</p>
 
@@ -46,15 +58,17 @@
 	<li><code>pattern</code> 和 <code>s</code> 由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -84,9 +98,7 @@ class Solution:
         return dfs(0, 0)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -137,7 +149,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -171,7 +183,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func wordPatternMatch(pattern string, s string) bool {
@@ -210,10 +222,8 @@ func wordPatternMatch(pattern string, s string) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

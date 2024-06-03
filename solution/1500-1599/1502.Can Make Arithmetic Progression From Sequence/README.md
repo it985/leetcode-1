@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1502.Can%20Make%20Arithmetic%20Progression%20From%20Sequence/README.md
+rating: 1154
+source: 第 196 场周赛 Q1
+tags:
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1502. 判断能否形成等差数列](https://leetcode.cn/problems/can-make-arithmetic-progression-from-sequence)
 
 [English Version](/solution/1500-1599/1502.Can%20Make%20Arithmetic%20Progression%20From%20Sequence/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个数字数组 <code>arr</code> 。</p>
 
@@ -37,29 +50,21 @@
 	<li><code>-10^6 &lt;= arr[i] &lt;= 10^6</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 遍历**
+### 方法一：排序 + 遍历
 
 我们可以先将数组 `arr` 排序，然后遍历数组，判断相邻两项的差是否相等即可。
 
 时间复杂度 $O(n \times \log n)$，空间复杂度 $O(\log n)$。其中 $n$ 为数组 `arr` 的长度。
 
-**方法二：哈希表 + 数学**
-
-我们先找出数组 $arr$ 中的最小值 $a$ 和最大值 $b$，如果数组 $arr$ 可以重排成等差数列，那么公差 $d = \frac{b - a}{n - 1}$ 必须为整数。
-
-我们可以用哈希表来记录数组 $arr$ 中的所有元素，然后遍历 $i \in [0, n)$，判断 $a + d \times i$ 是否在哈希表中，如果不在，说明数组 $arr$ 不能重排成等差数列，返回 `false`。否则遍历完数组后，返回 `true`。
-
-时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 为数组 `arr` 的长度。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -69,22 +74,7 @@ class Solution:
         return all(b - a == d for a, b in pairwise(arr))
 ```
 
-```python
-class Solution:
-    def canMakeArithmeticProgression(self, arr: List[int]) -> bool:
-        a = min(arr)
-        b = max(arr)
-        n = len(arr)
-        if (b - a) % (n - 1):
-            return False
-        d = (b - a) // (n - 1)
-        s = set(arr)
-        return all(a + d * i in s for i in range(n))
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -100,6 +90,140 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    bool canMakeArithmeticProgression(vector<int>& arr) {
+        sort(arr.begin(), arr.end());
+        int d = arr[1] - arr[0];
+        for (int i = 2; i < arr.size(); i++) {
+            if (arr[i] - arr[i - 1] != d) {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+```
+
+#### Go
+
+```go
+func canMakeArithmeticProgression(arr []int) bool {
+	sort.Ints(arr)
+	d := arr[1] - arr[0]
+	for i := 2; i < len(arr); i++ {
+		if arr[i]-arr[i-1] != d {
+			return false
+		}
+	}
+	return true
+}
+```
+
+#### TypeScript
+
+```ts
+function canMakeArithmeticProgression(arr: number[]): boolean {
+    arr.sort((a, b) => a - b);
+    const n = arr.length;
+    for (let i = 2; i < n; i++) {
+        if (arr[i - 2] - arr[i - 1] !== arr[i - 1] - arr[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn can_make_arithmetic_progression(mut arr: Vec<i32>) -> bool {
+        arr.sort();
+        let n = arr.len();
+        for i in 2..n {
+            if arr[i - 2] - arr[i - 1] != arr[i - 1] - arr[i] {
+                return false;
+            }
+        }
+        true
+    }
+}
+```
+
+#### JavaScript
+
+```js
+/**
+ * @param {number[]} arr
+ * @return {boolean}
+ */
+var canMakeArithmeticProgression = function (arr) {
+    arr.sort((a, b) => a - b);
+    for (let i = 1; i < arr.length - 1; i++) {
+        if (arr[i] << 1 != arr[i - 1] + arr[i + 1]) {
+            return false;
+        }
+    }
+    return true;
+};
+```
+
+#### C
+
+```c
+int cmp(const void* a, const void* b) {
+    return *(int*) a - *(int*) b;
+}
+
+bool canMakeArithmeticProgression(int* arr, int arrSize) {
+    qsort(arr, arrSize, sizeof(int), cmp);
+    for (int i = 2; i < arrSize; i++) {
+        if (arr[i - 2] - arr[i - 1] != arr[i - 1] - arr[i]) {
+            return 0;
+        }
+    }
+    return 1;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：哈希表 + 数学
+
+我们先找出数组 $arr$ 中的最小值 $a$ 和最大值 $b$，如果数组 $arr$ 可以重排成等差数列，那么公差 $d = \frac{b - a}{n - 1}$ 必须为整数。
+
+我们可以用哈希表来记录数组 $arr$ 中的所有元素，然后遍历 $i \in [0, n)$，判断 $a + d \times i$ 是否在哈希表中，如果不在，说明数组 $arr$ 不能重排成等差数列，返回 `false`。否则遍历完数组后，返回 `true`。
+
+时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 为数组 `arr` 的长度。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def canMakeArithmeticProgression(self, arr: List[int]) -> bool:
+        a = min(arr)
+        b = max(arr)
+        n = len(arr)
+        if (b - a) % (n - 1):
+            return False
+        d = (b - a) // (n - 1)
+        s = set(arr)
+        return all(a + d * i in s for i in range(n))
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -126,23 +250,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    bool canMakeArithmeticProgression(vector<int>& arr) {
-        sort(arr.begin(), arr.end());
-        int d = arr[1] - arr[0];
-        for (int i = 2; i < arr.size(); i++) {
-            if (arr[i] - arr[i - 1] != d) {
-                return false;
-            }
-        }
-        return true;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -165,20 +273,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func canMakeArithmeticProgression(arr []int) bool {
-	sort.Ints(arr)
-	d := arr[1] - arr[0]
-	for i := 2; i < len(arr); i++ {
-		if arr[i]-arr[i-1] != d {
-			return false
-		}
-	}
-	return true
-}
-```
+#### Go
 
 ```go
 func canMakeArithmeticProgression(arr []int) bool {
@@ -201,38 +296,7 @@ func canMakeArithmeticProgression(arr []int) bool {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} arr
- * @return {boolean}
- */
-var canMakeArithmeticProgression = function (arr) {
-    arr.sort((a, b) => a - b);
-    for (let i = 1; i < arr.length - 1; i++) {
-        if (arr[i] << 1 != arr[i - 1] + arr[i + 1]) {
-            return false;
-        }
-    }
-    return true;
-};
-```
-
-### **TypeScript**
-
-```ts
-function canMakeArithmeticProgression(arr: number[]): boolean {
-    arr.sort((a, b) => a - b);
-    const n = arr.length;
-    for (let i = 2; i < n; i++) {
-        if (arr[i - 2] - arr[i - 1] !== arr[i - 1] - arr[i]) {
-            return false;
-        }
-    }
-    return true;
-}
-```
+#### TypeScript
 
 ```ts
 function canMakeArithmeticProgression(arr: number[]): boolean {
@@ -261,22 +325,7 @@ function canMakeArithmeticProgression(arr: number[]): boolean {
 }
 ```
 
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn can_make_arithmetic_progression(mut arr: Vec<i32>) -> bool {
-        arr.sort();
-        let n = arr.len();
-        for i in 2..n {
-            if arr[i - 2] - arr[i - 1] != arr[i - 1] - arr[i] {
-                return false;
-            }
-        }
-        true
-    }
-}
-```
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -310,28 +359,8 @@ impl Solution {
 }
 ```
 
-### **C**
-
-```c
-int cmp(const void* a, const void* b) {
-    return *(int*) a - *(int*) b;
-}
-
-bool canMakeArithmeticProgression(int* arr, int arrSize) {
-    qsort(arr, arrSize, sizeof(int), cmp);
-    for (int i = 2; i < arrSize; i++) {
-        if (arr[i - 2] - arr[i - 1] != arr[i - 1] - arr[i]) {
-            return 0;
-        }
-    }
-    return 1;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

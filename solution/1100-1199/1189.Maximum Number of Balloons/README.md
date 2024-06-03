@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1189.Maximum%20Number%20of%20Balloons/README.md
+rating: 1181
+source: 第 154 场周赛 Q1
+tags:
+    - 哈希表
+    - 字符串
+    - 计数
+---
+
+<!-- problem:start -->
+
 # [1189. “气球” 的最大数量](https://leetcode.cn/problems/maximum-number-of-balloons)
 
 [English Version](/solution/1100-1199/1189.Maximum%20Number%20of%20Balloons/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串&nbsp;<code>text</code>，你需要使用 <code>text</code> 中的字母来拼凑尽可能多的单词&nbsp;<strong>&quot;balloon&quot;（气球）</strong>。</p>
 
@@ -43,11 +57,13 @@
 	<li><code>text</code>&nbsp;全部由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数**
+### 方法一：计数
 
 我们统计字符串 `text` 中每个字母出现的次数，然后将其中字母 `'o'` 和 `'l'` 的出现次数分别除以 2，这是因为单词 `balloon` 中字母 `'o'` 和 `'l'` 都出现了 2 次。
 
@@ -57,9 +73,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -70,9 +84,7 @@ class Solution:
         return min(cnt[c] for c in 'balon')
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -92,7 +104,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -114,7 +126,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxNumberOfBalloons(text string) int {
@@ -134,7 +146,7 @@ func maxNumberOfBalloons(text string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxNumberOfBalloons(text: string): number {
@@ -146,7 +158,7 @@ function maxNumberOfBalloons(text: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -183,7 +195,7 @@ impl Solution {
 }
 ```
 
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -213,10 +225,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

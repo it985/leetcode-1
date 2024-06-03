@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1871.Jump%20Game%20VII/README.md
+rating: 1896
+source: 第 242 场周赛 Q3
+tags:
+    - 字符串
+    - 动态规划
+    - 前缀和
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [1871. 跳跃游戏 VII](https://leetcode.cn/problems/jump-game-vii)
 
 [English Version](/solution/1800-1899/1871.Jump%20Game%20VII/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0 </strong>开始的二进制字符串 <code>s</code> 和两个整数 <code>minJump</code> 和 <code>maxJump</code> 。一开始，你在下标 <code>0</code> 处，且该位置的值一定为 <code>'0'</code> 。当同时满足如下条件时，你可以从下标 <code>i</code> 移动到下标 <code>j</code> 处：</p>
 
@@ -45,11 +60,13 @@
 	<li><code>1 <= minJump <= maxJump < s.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：前缀和 + 动态规划**
+### 方法一：前缀和 + 动态规划
 
 我们定义一个长度为 $n+1$ 的前缀和数组 $pre$，其中 $pre[i]$ 表示 $s$ 的前 $i$ 个位置中能够到达的个数。定义一个长度为 $n$ 的布尔数组 $f$，其中 $f[i]$ 表示 $s[i]$ 是否能够到达。初始时 $pre[1] = 1$，而 $f[0] = true$。
 
@@ -61,9 +78,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,9 +95,7 @@ class Solution:
         return f[-1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -105,7 +118,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -131,7 +144,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canReach(s string, minJump int, maxJump int) bool {
@@ -154,7 +167,7 @@ func canReach(s string, minJump int, maxJump int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canReach(s: string, minJump: number, maxJump: number): boolean {
@@ -174,7 +187,7 @@ function canReach(s: string, minJump: number, maxJump: number): boolean {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -200,10 +213,8 @@ var canReach = function (s, minJump, maxJump) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,20 @@
-# [1264. Page Recommendations](https://leetcode.com/problems/page-recommendations)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1264.Page%20Recommendations/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [1264. Page Recommendations 🔒](https://leetcode.com/problems/page-recommendations)
 
 [中文文档](/solution/1200-1299/1264.Page%20Recommendations/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Friendship</code></p>
 
@@ -88,15 +100,19 @@ Page 77 is suggested from both user 2 and user 3.
 Page 88 is not suggested because user 1 already likes it.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Union + Equi-Join + Subquery**
+<!-- solution:start -->
+
+### Solution 1: Union + Equi-Join + Subquery
 
 First, we query all users who are friends with `user_id = 1` and record them in the `T` table. Then, we query all pages that users in the `T` table like, and finally exclude the pages that `user_id = 1` likes.
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -113,6 +129,18 @@ FROM
 WHERE page_id NOT IN (SELECT page_id FROM Likes WHERE user_id = 1);
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### MySQL
+
 ```sql
 # Write your MySQL query statement below
 SELECT DISTINCT page_id AS recommended_page
@@ -127,3 +155,7 @@ WHERE
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2132.Stamping%20the%20Grid/README.md
+rating: 2364
+source: 第 69 场双周赛 Q4
+tags:
+    - 贪心
+    - 数组
+    - 矩阵
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [2132. 用邮票贴满网格图](https://leetcode.cn/problems/stamping-the-grid)
 
 [English Version](/solution/2100-2199/2132.Stamping%20the%20Grid/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个&nbsp;<code>m x n</code>&nbsp;的二进制矩阵&nbsp;<code>grid</code>&nbsp;，每个格子要么为&nbsp;<code>0</code>&nbsp;（空）要么为&nbsp;<code>1</code>&nbsp;（被占据）。</p>
 
@@ -54,11 +69,13 @@
 	<li><code>1 &lt;= stampHeight, stampWidth &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二维前缀和 + 二维差分**
+### 方法一：二维前缀和 + 二维差分
 
 根据题目描述，每一个空格子都必须被邮票覆盖，而且不能覆盖任何被占据的格子。因此，我们可以遍历二维矩阵，对于每个格子，如果以该格子为左上角的 $stampHeight \times stampWidth$ 的区域内的所有格子都是空格子（即没有被占据），那么我们就可以在该格子处放置一个邮票。
 
@@ -81,9 +98,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -112,9 +127,7 @@ class Solution:
         return True
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -151,7 +164,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -191,7 +204,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func possibleToStamp(grid [][]int, stampHeight int, stampWidth int) bool {
@@ -235,7 +248,7 @@ func possibleToStamp(grid [][]int, stampHeight int, stampWidth int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function possibleToStamp(grid: number[][], stampHeight: number, stampWidth: number): boolean {
@@ -273,7 +286,7 @@ function possibleToStamp(grid: number[][], stampHeight: number, stampWidth: numb
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -344,7 +357,7 @@ impl Solution {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -388,10 +401,8 @@ var possibleToStamp = function (grid, stampHeight, stampWidth) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
-# [1152. 用户网站访问行为分析](https://leetcode.cn/problems/analyze-user-website-visit-pattern)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1152.Analyze%20User%20Website%20Visit%20Pattern/README.md
+rating: 1850
+source: 第 6 场双周赛 Q3
+tags:
+    - 数组
+    - 哈希表
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [1152. 用户网站访问行为分析 🔒](https://leetcode.cn/problems/analyze-user-website-visit-pattern)
 
 [English Version](/solution/1100-1199/1152.Analyze%20User%20Website%20Visit%20Pattern/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个字符串数组&nbsp;<code>username</code>&nbsp;和&nbsp;<code>website</code>&nbsp;和一个整数数组&nbsp;<code>timestamp</code>&nbsp;。给定的数组长度相同，其中元组&nbsp;<code>[username[i], website[i], timestamp[i]]</code>&nbsp;表示用户&nbsp;<code>username[i]</code>&nbsp;在时间&nbsp;<code>timestamp[i]</code>&nbsp;访问了网站&nbsp;<code>website[i]</code>&nbsp;。</p>
 
@@ -63,11 +77,13 @@
 	<li>所有元组&nbsp;<code>[username[i]， timestamp[i]， website[i]</code>&nbsp;均<strong>&nbsp;不重复</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 排序**
+### 方法一：哈希表 + 排序
 
 我们先用哈希表 $d$ 记录每个用户访问的网站，然后遍历 $d$，对于每个用户，我们枚举其访问的所有三元组，统计去重三元组的出现次数，最后遍历所有三元组，返回出现次数最多的、字典序最小的三元组。
 
@@ -75,9 +91,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -104,9 +118,7 @@ class Solution:
         return sorted(cnt.items(), key=lambda x: (-x[1], x[0]))[0][0]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -163,7 +175,7 @@ class Node {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -218,7 +230,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func mostVisitedPattern(username []string, timestamp []int, website []string) []string {
@@ -262,10 +274,8 @@ type pair struct {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

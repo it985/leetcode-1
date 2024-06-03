@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1647.Minimum%20Deletions%20to%20Make%20Character%20Frequencies%20Unique/README_EN.md
+rating: 1509
+source: Weekly Contest 214 Q2
+tags:
+    - Greedy
+    - Hash Table
+    - String
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1647. Minimum Deletions to Make Character Frequencies Unique](https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique)
 
 [中文文档](/solution/1600-1699/1647.Minimum%20Deletions%20to%20Make%20Character%20Frequencies%20Unique/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A string <code>s</code> is called <strong>good</strong> if there are no two different characters in <code>s</code> that have the same <strong>frequency</strong>.</p>
 
@@ -44,11 +61,17 @@ Note that we only care about characters that are still in the string at the end 
 	<li><code>s</code>&nbsp;contains only lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,20 +89,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def minDeletions(self, s: str) -> int:
-        cnt = Counter(s)
-        vals = sorted(cnt.values(), reverse=True)
-        ans = 0
-        for i in range(1, len(vals)):
-            while vals[i] >= vals[i - 1] and vals[i] > 0:
-                vals[i] -= 1
-                ans += 1
-        return ans
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -101,32 +111,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int minDeletions(String s) {
-        int[] cnt = new int[26];
-        for (int i = 0; i < s.length(); ++i) {
-            ++cnt[s.charAt(i) - 'a'];
-        }
-        Arrays.sort(cnt);
-        int ans = 0, pre = 1 << 30;
-        for (int i = 25; i >= 0; --i) {
-            int v = cnt[i];
-            if (pre == 0) {
-                ans += v;
-            } else if (v >= pre) {
-                ans += v - pre + 1;
-                --pre;
-            } else {
-                pre = v;
-            }
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -147,30 +132,47 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int minDeletions(string s) {
-        vector<int> cnt(26);
-        for (char& c : s) ++cnt[c - 'a'];
-        sort(cnt.rbegin(), cnt.rend());
-        int ans = 0, pre = 1 << 30;
-        for (int& v : cnt) {
-            if (pre == 0) {
-                ans += v;
-            } else if (v >= pre) {
-                ans += v - pre + 1;
-                --pre;
-            } else {
-                pre = v;
-            }
-        }
-        return ans;
-    }
-};
+#### Go
+
+```go
+func minDeletions(s string) (ans int) {
+	cnt := make([]int, 26)
+	for _, c := range s {
+		cnt[c-'a']++
+	}
+	sort.Sort(sort.Reverse(sort.IntSlice(cnt)))
+	for i := 1; i < 26; i++ {
+		for cnt[i] >= cnt[i-1] && cnt[i] > 0 {
+			cnt[i]--
+			ans++
+		}
+	}
+	return
+}
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function minDeletions(s: string): number {
+    let map = {};
+    for (let c of s) {
+        map[c] = (map[c] || 0) + 1;
+    }
+    let ans = 0;
+    let vals: number[] = Object.values(map);
+    vals.sort((a, b) => a - b);
+    for (let i = 1; i < vals.length; ++i) {
+        while (vals[i] > 0 && i != vals.indexOf(vals[i])) {
+            --vals[i];
+            ++ans;
+        }
+    }
+    return ans;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -197,24 +199,84 @@ impl Solution {
 }
 ```
 
-### **Go**
+<!-- tabs:end -->
 
-```go
-func minDeletions(s string) (ans int) {
-	cnt := make([]int, 26)
-	for _, c := range s {
-		cnt[c-'a']++
-	}
-	sort.Sort(sort.Reverse(sort.IntSlice(cnt)))
-	for i := 1; i < 26; i++ {
-		for cnt[i] >= cnt[i-1] && cnt[i] > 0 {
-			cnt[i]--
-			ans++
-		}
-	}
-	return
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minDeletions(self, s: str) -> int:
+        cnt = Counter(s)
+        vals = sorted(cnt.values(), reverse=True)
+        ans = 0
+        for i in range(1, len(vals)):
+            while vals[i] >= vals[i - 1] and vals[i] > 0:
+                vals[i] -= 1
+                ans += 1
+        return ans
+```
+
+#### Java
+
+```java
+class Solution {
+    public int minDeletions(String s) {
+        int[] cnt = new int[26];
+        for (int i = 0; i < s.length(); ++i) {
+            ++cnt[s.charAt(i) - 'a'];
+        }
+        Arrays.sort(cnt);
+        int ans = 0, pre = 1 << 30;
+        for (int i = 25; i >= 0; --i) {
+            int v = cnt[i];
+            if (pre == 0) {
+                ans += v;
+            } else if (v >= pre) {
+                ans += v - pre + 1;
+                --pre;
+            } else {
+                pre = v;
+            }
+        }
+        return ans;
+    }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int minDeletions(string s) {
+        vector<int> cnt(26);
+        for (char& c : s) ++cnt[c - 'a'];
+        sort(cnt.rbegin(), cnt.rend());
+        int ans = 0, pre = 1 << 30;
+        for (int& v : cnt) {
+            if (pre == 0) {
+                ans += v;
+            } else if (v >= pre) {
+                ans += v - pre + 1;
+                --pre;
+            } else {
+                pre = v;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
 
 ```go
 func minDeletions(s string) (ans int) {
@@ -238,31 +300,8 @@ func minDeletions(s string) (ans int) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function minDeletions(s: string): number {
-    let map = {};
-    for (let c of s) {
-        map[c] = (map[c] || 0) + 1;
-    }
-    let ans = 0;
-    let vals: number[] = Object.values(map);
-    vals.sort((a, b) => a - b);
-    for (let i = 1; i < vals.length; ++i) {
-        while (vals[i] > 0 && i != vals.indexOf(vals[i])) {
-            --vals[i];
-            ++ans;
-        }
-    }
-    return ans;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1451.Rearrange%20Words%20in%20a%20Sentence/README_EN.md
+rating: 1309
+source: Weekly Contest 189 Q2
+tags:
+    - String
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1451. Rearrange Words in a Sentence](https://leetcode.com/problems/rearrange-words-in-a-sentence)
 
 [中文文档](/solution/1400-1499/1451.Rearrange%20Words%20in%20a%20Sentence/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a sentence&nbsp;<code>text</code> (A&nbsp;<em>sentence</em>&nbsp;is a string of space-separated words) in the following format:</p>
 
@@ -53,11 +68,17 @@ Output is ordered by length and the new first word starts with capital letter.
 	<li><code>1 &lt;= text.length &lt;= 10^5</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +90,7 @@ class Solution:
         return " ".join(words)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -83,7 +104,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -110,7 +131,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func arrangeWords(text string) string {
@@ -122,7 +143,35 @@ func arrangeWords(text string) string {
 }
 ```
 
-### **PHP**
+#### TypeScript
+
+```ts
+function arrangeWords(text: string): string {
+    let words: string[] = text.split(' ');
+    words[0] = words[0].toLowerCase();
+    words.sort((a, b) => a.length - b.length);
+    words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
+    return words.join(' ');
+}
+```
+
+#### JavaScript
+
+```js
+/**
+ * @param {string} text
+ * @return {string}
+ */
+var arrangeWords = function (text) {
+    let arr = text.split(' ');
+    arr[0] = arr[0].toLocaleLowerCase();
+    arr.sort((a, b) => a.length - b.length);
+    arr[0] = arr[0][0].toLocaleUpperCase() + arr[0].substr(1);
+    return arr.join(' ');
+};
+```
+
+#### PHP
 
 ```php
 class Solution {
@@ -147,38 +196,8 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function arrangeWords(text: string): string {
-    let words: string[] = text.split(' ');
-    words[0] = words[0].toLowerCase();
-    words.sort((a, b) => a.length - b.length);
-    words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
-    return words.join(' ');
-}
-```
-
-### **JavaScript**
-
-```js
-/**
- * @param {string} text
- * @return {string}
- */
-var arrangeWords = function (text) {
-    let arr = text.split(' ');
-    arr[0] = arr[0].toLocaleLowerCase();
-    arr.sort((a, b) => a.length - b.length);
-    arr[0] = arr[0][0].toLocaleUpperCase() + arr[0].substr(1);
-    return arr.join(' ');
-};
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0075.Sort%20Colors/README.md
+tags:
+    - 数组
+    - 双指针
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [75. 颜色分类](https://leetcode.cn/problems/sort-colors)
 
 [English Version](/solution/0000-0099/0075.Sort%20Colors/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个包含红色、白色和蓝色、共&nbsp;<code>n</code><em> </em>个元素的数组<meta charset="UTF-8" />&nbsp;<code>nums</code>&nbsp;，<strong><a href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95" target="_blank">原地</a></strong>对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。</p>
 
@@ -49,11 +61,13 @@
 	<li>你能想出一个仅使用常数空间的一趟扫描算法吗？</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：三指针**
+### 方法一：三指针
 
 我们定义三个指针 $i$, $j$ 和 $k$，其中指针 $i$ 用于指向数组中元素值为 $0$ 的最右边界，指针 $j$ 用于指向数组中元素值为 $2$ 的最左边界，初始时 $i=-1$, $j=n$。指针 $k$ 用于指向当前遍历的元素，初始时 $k=0$。
 
@@ -69,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -89,9 +101,7 @@ class Solution:
                 k += 1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -116,7 +126,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -136,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sortColors(nums []int) {
@@ -156,7 +166,7 @@ func sortColors(nums []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -181,7 +191,7 @@ function sortColors(nums: number[]): void {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -205,7 +215,7 @@ impl Solution {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -230,10 +240,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

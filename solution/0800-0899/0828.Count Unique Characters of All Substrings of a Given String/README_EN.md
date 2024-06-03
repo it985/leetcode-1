@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0828.Count%20Unique%20Characters%20of%20All%20Substrings%20of%20a%20Given%20String/README_EN.md
+tags:
+    - Hash Table
+    - String
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [828. Count Unique Characters of All Substrings of a Given String](https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-given-string)
 
 [中文文档](/solution/0800-0899/0828.Count%20Unique%20Characters%20of%20All%20Substrings%20of%20a%20Given%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Let&#39;s define a function <code>countUniqueChars(s)</code> that returns the number of unique characters in&nbsp;<code>s</code>.</p>
 
@@ -48,9 +62,13 @@ Sum of lengths of all substring is 1 + 1 + 1 + 2 + 2 + 3 = 10
 	<li><code>s</code> consists of uppercase English letters only.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Calculate the Contribution of Each Character**
+<!-- solution:start -->
+
+### Solution 1: Calculate the Contribution of Each Character
 
 For each character $c_i$ in the string $s$, when it appears only once in a substring, it contributes to the count of unique characters in that substring.
 
@@ -64,7 +82,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -80,7 +98,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -105,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -127,7 +145,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func uniqueLetterString(s string) (ans int) {
@@ -148,7 +166,7 @@ func uniqueLetterString(s string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function uniqueLetterString(s: string): number {
@@ -168,7 +186,7 @@ function uniqueLetterString(s: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -189,10 +207,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

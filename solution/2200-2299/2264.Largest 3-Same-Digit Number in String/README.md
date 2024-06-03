@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2264.Largest%203-Same-Digit%20Number%20in%20String/README.md
+rating: 1308
+source: 第 292 场周赛 Q1
+tags:
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2264. 字符串中最大的 3 位相同数字](https://leetcode.cn/problems/largest-3-same-digit-number-in-string)
 
 [English Version](/solution/2200-2299/2264.Largest%203-Same-Digit%20Number%20in%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串 <code>num</code> ，表示一个大整数。如果一个整数满足下述所有条件，则认为该整数是一个 <strong>优质整数</strong> ：</p>
 
@@ -58,11 +70,13 @@
 	<li><code>num</code> 仅由数字（<code>0</code> - <code>9</code>）组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举**
+### 方法一：枚举
 
 我们可以从大到小枚举每个数字 $i$，其中 $0 \le i \le 9$，然后判断连续的三个 $i$ 构成的字符串 $s$ 是否是 $num$ 的子串，若是，直接返回 $s$ 即可。
 
@@ -72,9 +86,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -85,9 +97,7 @@ class Solution:
         return ""
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -103,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -120,7 +130,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func largestGoodInteger(num string) string {
@@ -133,7 +143,7 @@ func largestGoodInteger(num string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function largestGoodInteger(num: string): string {
@@ -147,10 +157,8 @@ function largestGoodInteger(num: string): string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

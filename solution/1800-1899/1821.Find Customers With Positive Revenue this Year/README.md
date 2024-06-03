@@ -1,10 +1,20 @@
-# [1821. 寻找今年具有正收入的客户](https://leetcode.cn/problems/find-customers-with-positive-revenue-this-year)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1821.Find%20Customers%20With%20Positive%20Revenue%20this%20Year/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1821. 寻找今年具有正收入的客户 🔒](https://leetcode.cn/problems/find-customers-with-positive-revenue-this-year)
 
 [English Version](/solution/1800-1899/1821.Find%20Customers%20With%20Positive%20Revenue%20this%20Year/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code>Customers</code></p>
 
@@ -61,19 +71,19 @@ Customers
 客户 4 在 2021 年的收入等于 20 。
 因此，只有客户 1 和 4 在 2021 年有正收入。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：WHERE 子句**
+### 方法一：WHERE 子句
 
 我们可以直接使用 `WHERE` 子句来筛选出 `year` 为 `2021` 且 `revenue` 大于 $0$ 的客户。
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -84,3 +94,7 @@ WHERE year = '2021' AND revenue > 0;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

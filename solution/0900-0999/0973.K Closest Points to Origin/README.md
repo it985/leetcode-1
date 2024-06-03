@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0973.K%20Closest%20Points%20to%20Origin/README.md
+tags:
+    - 几何
+    - 数组
+    - 数学
+    - 分治
+    - 快速选择
+    - 排序
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [973. 最接近原点的 K 个点](https://leetcode.cn/problems/k-closest-points-to-origin)
 
 [English Version](/solution/0900-0999/0973.K%20Closest%20Points%20to%20Origin/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个数组 <code>points</code>&nbsp;，其中&nbsp;<code>points[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp;表示 <strong>X-Y</strong> 平面上的一个点，并且是一个整数 <code>k</code> ，返回离原点 <code>(0,0)</code> 最近的 <code>k</code> 个点。</p>
 
@@ -45,11 +61,13 @@
 	<li><code>-10<sup>4</sup>&nbsp;&lt; x<sub>i</sub>, y<sub>i</sub>&nbsp;&lt; 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：自定义排序**
+### 方法一：自定义排序
 
 我们将所有点按照与原点的距离从小到大排序，然后取前 $k$ 个点即可。
 
@@ -57,9 +75,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -68,9 +84,7 @@ class Solution:
         return points[:k]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -85,7 +99,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -99,7 +113,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func kClosest(points [][]int, k int) [][]int {
@@ -111,7 +125,7 @@ func kClosest(points [][]int, k int) [][]int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function kClosest(points: number[][], k: number): number[][] {
@@ -119,7 +133,7 @@ function kClosest(points: number[][], k: number): number[][] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -132,10 +146,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

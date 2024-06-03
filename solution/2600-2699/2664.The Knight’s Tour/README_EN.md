@@ -1,8 +1,22 @@
-# [2664. The Knight’s Tour](https://leetcode.com/problems/the-knights-tour)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2664.The%20Knight%E2%80%99s%20Tour/README_EN.md
+tags:
+    - Array
+    - Backtracking
+    - Matrix
+---
+
+<!-- problem:start -->
+
+# [2664. The Knight’s Tour 🔒](https://leetcode.com/problems/the-knights-tour)
 
 [中文文档](/solution/2600-2699/2664.The%20Knight%E2%80%99s%20Tour/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two positive integers <code>m</code> and <code>n</code> which are the height and width of a <strong>0-indexed</strong> 2D-array <code>board</code>, a pair of positive integers <code>(r, c)</code> which is the starting position of the knight on the board.</p>
 
@@ -39,11 +53,17 @@
 	<li>The inputs will be generated such that there exists at least one&nbsp;possible order of movements with the given condition</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +89,7 @@ class Solution:
         return g
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -111,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -144,7 +164,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func tourOfKnight(m int, n int, r int, c int) [][]int {
@@ -181,7 +201,7 @@ func tourOfKnight(m int, n int, r int, c int) [][]int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function tourOfKnight(m: number, n: number, r: number, c: number): number[][] {
@@ -211,7 +231,7 @@ function tourOfKnight(m: number, n: number, r: number, c: number): number[][] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -254,10 +274,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

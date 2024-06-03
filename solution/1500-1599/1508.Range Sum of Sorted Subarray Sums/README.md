@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1508.Range%20Sum%20of%20Sorted%20Subarray%20Sums/README.md
+rating: 1402
+source: 第 30 场双周赛 Q2
+tags:
+    - 数组
+    - 双指针
+    - 二分查找
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1508. 子数组和排序后的区间和](https://leetcode.cn/problems/range-sum-of-sorted-subarray-sums)
 
 [English Version](/solution/1500-1599/1508.Range%20Sum%20of%20Sorted%20Subarray%20Sums/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个数组&nbsp;<code>nums</code>&nbsp;，它包含&nbsp;<code>n</code>&nbsp;个正整数。你需要计算所有非空连续子数组的和，并将它们按升序排序，得到一个新的包含&nbsp;<code>n * (n + 1) / 2</code>&nbsp;个数字的数组。</p>
 
@@ -46,11 +61,13 @@
 	<li><code>1 &lt;= left &lt;= right&nbsp;&lt;= n * (n + 1) / 2</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序**
+### 方法一：排序
 
 按照题意生成 `arr` 数组，排序后，对 $[left-1,.. right-1]$ 范围的所有元素求和，得到结果。
 
@@ -58,9 +75,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -76,9 +91,7 @@ class Solution:
         return sum(arr[left - 1 : right]) % mod
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +115,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -127,7 +140,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func rangeSum(nums []int, n int, left int, right int) (ans int) {
@@ -148,10 +161,8 @@ func rangeSum(nums []int, n int, left int, right int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

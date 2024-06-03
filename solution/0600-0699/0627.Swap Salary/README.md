@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0627.Swap%20Salary/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
 # [627. 变更性别](https://leetcode.cn/problems/swap-salary)
 
 [English Version](/solution/0600-0699/0627.Swap%20Salary/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <div class="original__bRMd">
 <div>
@@ -62,13 +72,17 @@ Salary 表：
 </div>
 </div>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 UPDATE salary
@@ -78,6 +92,18 @@ SET sex = CASE sex
 END;
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### MySQL
+
 ```sql
 # Write your MySQL query statement below
 UPDATE Salary
@@ -85,3 +111,7 @@ SET sex = IF(sex = 'f', 'm', 'f');
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

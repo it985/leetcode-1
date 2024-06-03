@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0849.Maximize%20Distance%20to%20Closest%20Person/README.md
+tags:
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [849. 到最近的人的最大距离](https://leetcode.cn/problems/maximize-distance-to-closest-person)
 
 [English Version](/solution/0800-0899/0849.Maximize%20Distance%20to%20Closest%20Person/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个数组 <code>seats</code> 表示一排座位，其中 <code>seats[i] = 1</code> 代表有人坐在第 <code>i</code> 个座位上，<code>seats[i] = 0</code> 代表座位 <code>i</code> 上是空的（<strong>下标从 0 开始</strong>）。</p>
 
@@ -55,11 +65,13 @@
 	<li>至少有一个 <strong>座位上有人</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：一次遍历**
+### 方法一：一次遍历
 
 我们定义两个变量 $first$ 和 $last$ 分别表示第一个人和最后一个人的位置，用变量 $d$ 表示两个人之间的最大距离。
 
@@ -71,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -90,9 +100,7 @@ class Solution:
         return max(first, len(seats) - last - 1, d // 2)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -115,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,7 +147,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxDistToClosest(seats []int) int {
@@ -160,7 +168,7 @@ func maxDistToClosest(seats []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxDistToClosest(seats: number[]): number {
@@ -183,10 +191,8 @@ function maxDistToClosest(seats: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

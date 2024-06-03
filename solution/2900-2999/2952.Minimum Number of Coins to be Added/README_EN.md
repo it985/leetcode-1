@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2952.Minimum%20Number%20of%20Coins%20to%20be%20Added/README_EN.md
+rating: 1784
+source: Weekly Contest 374 Q2
+tags:
+    - Greedy
+    - Array
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2952. Minimum Number of Coins to be Added](https://leetcode.com/problems/minimum-number-of-coins-to-be-added)
 
 [中文文档](/solution/2900-2999/2952.Minimum%20Number%20of%20Coins%20to%20be%20Added/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>coins</code>, representing the values of the coins available, and an integer <code>target</code>.</p>
 
@@ -49,9 +65,13 @@ It can be shown that all integers from 1 to 20 are obtainable from the resulting
 	<li><code>1 &lt;= coins[i] &lt;= target</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy + Construction**
+<!-- solution:start -->
+
+### Solution 1: Greedy + Construction
 
 Suppose the current amount we need to construct is $s$, and we have already constructed all amounts in $[0,...,s-1]$. If there is a new coin $x$, we add it to the array, which can construct all amounts in $[x, s+x-1]$.
 
@@ -66,7 +86,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(\log
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -84,7 +104,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -125,7 +145,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumAddedCoins(coins []int, target int) (ans int) {
@@ -143,7 +163,7 @@ func minimumAddedCoins(coins []int, target int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumAddedCoins(coins: number[], target: number): number {
@@ -161,10 +181,8 @@ function minimumAddedCoins(coins: number[], target: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1448.Count%20Good%20Nodes%20in%20Binary%20Tree/README.md
+rating: 1360
+source: 第 26 场双周赛 Q3
+tags:
+    - 树
+    - 深度优先搜索
+    - 广度优先搜索
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [1448. 统计二叉树中好节点的数目](https://leetcode.cn/problems/count-good-nodes-in-binary-tree)
 
 [English Version](/solution/1400-1499/1448.Count%20Good%20Nodes%20in%20Binary%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一棵根为&nbsp;<code>root</code>&nbsp;的二叉树，请你返回二叉树中好节点的数目。</p>
 
@@ -47,11 +62,13 @@
 	<li>每个节点权值的范围是&nbsp;<code>[-10^4, 10^4]</code>&nbsp;。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们设计一个函数 $dfs(root, mx)$，表示从当前节点 $root$ 开始搜索好节点，其中 $mx$ 表示从根节点到当前节点的路径（不包括当前节点）上的最大值。
 
@@ -69,9 +86,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -97,9 +112,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -139,7 +152,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -174,7 +187,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -203,7 +216,7 @@ func goodNodes(root *TreeNode) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -238,10 +251,8 @@ function goodNodes(root: TreeNode | null): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

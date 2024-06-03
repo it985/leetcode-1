@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1095.Find%20in%20Mountain%20Array/README_EN.md
+rating: 1827
+source: Weekly Contest 142 Q3
+tags:
+    - Array
+    - Binary Search
+    - Interactive
+---
+
+<!-- problem:start -->
+
 # [1095. Find in Mountain Array](https://leetcode.com/problems/find-in-mountain-array)
 
 [中文文档](/solution/1000-1099/1095.Find%20in%20Mountain%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p><em>(This problem is an <strong>interactive problem</strong>.)</em></p>
 
@@ -54,11 +70,17 @@
 	<li><code>0 &lt;= mountain_arr.get(index) &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # """
@@ -93,7 +115,7 @@ class Solution:
         return search(l + 1, n - 1, -1) if ans == -1 else ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -140,7 +162,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -183,7 +205,94 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+/**
+ * // This is the MountainArray's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * type MountainArray struct {
+ * }
+ *
+ * func (this *MountainArray) get(index int) int {}
+ * func (this *MountainArray) length() int {}
+ */
+
+func findInMountainArray(target int, mountainArr *MountainArray) int {
+	n := mountainArr.length()
+	l, r := 0, n-1
+	for l < r {
+		mid := (l + r) >> 1
+		if mountainArr.get(mid) > mountainArr.get(mid+1) {
+			r = mid
+		} else {
+			l = mid + 1
+		}
+	}
+	search := func(l, r, k int) int {
+		for l < r {
+			mid := (l + r) >> 1
+			if k*mountainArr.get(mid) >= k*target {
+				r = mid
+			} else {
+				l = mid + 1
+			}
+		}
+		if mountainArr.get(l) == target {
+			return l
+		}
+		return -1
+	}
+	ans := search(0, l, 1)
+	if ans == -1 {
+		return search(l+1, n-1, -1)
+	}
+	return ans
+}
+```
+
+#### TypeScript
+
+```ts
+/**
+ * // This is the MountainArray's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * class Master {
+ *      get(index: number): number {}
+ *
+ *      length(): number {}
+ * }
+ */
+
+function findInMountainArray(target: number, mountainArr: MountainArray) {
+    const n = mountainArr.length();
+    let l = 0;
+    let r = n - 1;
+    while (l < r) {
+        const mid = (l + r) >> 1;
+        if (mountainArr.get(mid) > mountainArr.get(mid + 1)) {
+            r = mid;
+        } else {
+            l = mid + 1;
+        }
+    }
+    const search = (l: number, r: number, k: number): number => {
+        while (l < r) {
+            const mid = (l + r) >> 1;
+            if (k * mountainArr.get(mid) >= k * target) {
+                r = mid;
+            } else {
+                l = mid + 1;
+            }
+        }
+        return mountainArr.get(l) === target ? l : -1;
+    };
+    const ans = search(0, l, 1);
+    return ans === -1 ? search(l + 1, n - 1, -1) : ans;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -235,97 +344,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-/**
- * // This is the MountainArray's API interface.
- * // You should not implement it, or speculate about its implementation
- * type MountainArray struct {
- * }
- *
- * func (this *MountainArray) get(index int) int {}
- * func (this *MountainArray) length() int {}
- */
-
-func findInMountainArray(target int, mountainArr *MountainArray) int {
-	n := mountainArr.length()
-	l, r := 0, n-1
-	for l < r {
-		mid := (l + r) >> 1
-		if mountainArr.get(mid) > mountainArr.get(mid+1) {
-			r = mid
-		} else {
-			l = mid + 1
-		}
-	}
-	search := func(l, r, k int) int {
-		for l < r {
-			mid := (l + r) >> 1
-			if k*mountainArr.get(mid) >= k*target {
-				r = mid
-			} else {
-				l = mid + 1
-			}
-		}
-		if mountainArr.get(l) == target {
-			return l
-		}
-		return -1
-	}
-	ans := search(0, l, 1)
-	if ans == -1 {
-		return search(l+1, n-1, -1)
-	}
-	return ans
-}
-```
-
-### **TypeScript**
-
-```ts
-/**
- * // This is the MountainArray's API interface.
- * // You should not implement it, or speculate about its implementation
- * class Master {
- *      get(index: number): number {}
- *
- *      length(): number {}
- * }
- */
-
-function findInMountainArray(target: number, mountainArr: MountainArray) {
-    const n = mountainArr.length();
-    let l = 0;
-    let r = n - 1;
-    while (l < r) {
-        const mid = (l + r) >> 1;
-        if (mountainArr.get(mid) > mountainArr.get(mid + 1)) {
-            r = mid;
-        } else {
-            l = mid + 1;
-        }
-    }
-    const search = (l: number, r: number, k: number): number => {
-        while (l < r) {
-            const mid = (l + r) >> 1;
-            if (k * mountainArr.get(mid) >= k * target) {
-                r = mid;
-            } else {
-                l = mid + 1;
-            }
-        }
-        return mountainArr.get(l) === target ? l : -1;
-    };
-    const ans = search(0, l, 1);
-    return ans === -1 ? search(l + 1, n - 1, -1) : ans;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

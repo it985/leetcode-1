@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0839.Similar%20String%20Groups/README_EN.md
+tags:
+    - Depth-First Search
+    - Breadth-First Search
+    - Union Find
+    - Array
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [839. Similar String Groups](https://leetcode.com/problems/similar-string-groups)
 
 [中文文档](/solution/0800-0899/0839.Similar%20String%20Groups/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Two strings, <code>X</code> and <code>Y</code>, are considered similar if either they are identical or we can make them equivalent by swapping at most two letters (in distinct positions) within the string <code>X</code>.</p>
 
@@ -37,11 +54,17 @@
 	<li>All words in <code>strs</code> have the same length and are anagrams of each other.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -60,7 +83,7 @@ class Solution:
         return sum(i == find(i) for i in range(n))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -79,13 +102,24 @@ class Solution {
                 }
             }
         }
-        int ans = 0;
+        int res = 0;
         for (int i = 0; i < n; ++i) {
             if (i == find(i)) {
-                ++ans;
+                ++res;
             }
         }
-        return ans;
+        return res;
+    }
+
+    private boolean check(String a, String b) {
+        int cnt = 0;
+        int n = a.length();
+        for (int i = 0; i < n; ++i) {
+            if (a.charAt(i) != b.charAt(i)) {
+                ++cnt;
+            }
+        }
+        return cnt <= 2;
     }
 
     private int find(int x) {
@@ -94,20 +128,10 @@ class Solution {
         }
         return p[x];
     }
-
-    private boolean check(String a, String b) {
-        int cnt = 0;
-        for (int i = 0; i < a.length(); ++i) {
-            if (a.charAt(i) != b.charAt(i)) {
-                ++cnt;
-            }
-        }
-        return cnt <= 2;
-    }
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -144,7 +168,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numSimilarGroups(strs []string) int {
@@ -186,10 +210,8 @@ func numSimilarGroups(strs []string) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1566.Detect%20Pattern%20of%20Length%20M%20Repeated%20K%20or%20More%20Times/README_EN.md
+rating: 1486
+source: Weekly Contest 204 Q1
+tags:
+    - Array
+    - Enumeration
+---
+
+<!-- problem:start -->
+
 # [1566. Detect Pattern of Length M Repeated K or More Times](https://leetcode.com/problems/detect-pattern-of-length-m-repeated-k-or-more-times)
 
 [中文文档](/solution/1500-1599/1566.Detect%20Pattern%20of%20Length%20M%20Repeated%20K%20or%20More%20Times/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of positive integers <code>arr</code>, find a pattern of length <code>m</code> that is repeated <code>k</code> or more times.</p>
 
@@ -45,11 +60,17 @@
 	<li><code>2 &lt;= k &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,7 +87,7 @@ class Solution:
         return False
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -88,7 +109,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -111,7 +132,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func containsPattern(arr []int, m int, k int) bool {
@@ -131,7 +152,7 @@ func containsPattern(arr []int, m int, k int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function containsPattern(arr: number[], m: number, k: number): boolean {
@@ -151,10 +172,8 @@ function containsPattern(arr: number[], m: number, k: number): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

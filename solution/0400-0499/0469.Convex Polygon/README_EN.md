@@ -1,8 +1,21 @@
-# [469. Convex Polygon](https://leetcode.com/problems/convex-polygon)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0469.Convex%20Polygon/README_EN.md
+tags:
+    - Geometry
+    - Math
+---
+
+<!-- problem:start -->
+
+# [469. Convex Polygon 🔒](https://leetcode.com/problems/convex-polygon)
 
 [中文文档](/solution/0400-0499/0469.Convex%20Polygon/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an array of points on the <strong>X-Y</strong> plane <code>points</code> where <code>points[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>. The points form a polygon when joined sequentially.</p>
 
@@ -35,11 +48,17 @@
 	<li>All the given points are <strong>unique</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,7 +78,7 @@ class Solution:
         return True
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -87,7 +106,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -113,7 +132,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isConvex(points [][]int) bool {
@@ -136,10 +155,8 @@ func isConvex(points [][]int) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

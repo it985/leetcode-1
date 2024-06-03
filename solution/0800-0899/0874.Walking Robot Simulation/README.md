@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0874.Walking%20Robot%20Simulation/README.md
+tags:
+    - 数组
+    - 哈希表
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [874. 模拟行走机器人](https://leetcode.cn/problems/walking-robot-simulation)
 
 [English Version](/solution/0800-0899/0874.Walking%20Robot%20Simulation/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>机器人在一个无限大小的 XY 网格平面上行走，从点&nbsp;<code>(0, 0)</code> 处开始出发，面向北方。该机器人可以接收以下三种类型的命令 <code>commands</code> ：</p>
 
@@ -91,11 +103,13 @@
 	<li>答案保证小于 <code>2<sup>31</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 模拟**
+### 方法一：哈希表 + 模拟
 
 我们定义一个长度为 $5$ 的方向数组 $dirs=[0, 1, 0, -1, 0]$，数组中的相邻两个元素表示一个方向。即 $(dirs[0], dirs[1])$ 表示向北，而 $(dirs[1], dirs[2])$ 表示向东，以此类推。
 
@@ -115,9 +129,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -141,9 +153,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -181,7 +191,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -219,7 +229,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func robotSim(commands []int, obstacles [][]int) (ans int) {
@@ -247,7 +257,7 @@ func robotSim(commands []int, obstacles [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function robotSim(commands: number[], obstacles: number[][]): number {
@@ -278,10 +288,8 @@ function robotSim(commands: number[], obstacles: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0765.Couples%20Holding%20Hands/README.md
+tags:
+    - 贪心
+    - 深度优先搜索
+    - 广度优先搜索
+    - 并查集
+    - 图
+---
+
+<!-- problem:start -->
+
 # [765. 情侣牵手](https://leetcode.cn/problems/couples-holding-hands)
 
 [English Version](/solution/0700-0799/0765.Couples%20Holding%20Hands/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><code>n</code> 对情侣坐在连续排列的 <code>2n</code>&nbsp;个座位上，想要牵到对方的手。</p>
 
@@ -42,11 +56,13 @@
 	<li><code>row</code>&nbsp;中所有元素均<strong>无重复</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：并查集**
+### 方法一：并查集
 
 我们可以给每一对情侣编号，编号 $0$ 和 $1$ 的人对应情侣 $0$，编号 $2$ 和 $3$ 的人对应情侣 $1$...即编号为 $row[i]$ 对应的情侣编号为 $\lfloor \frac{row[i]}{2} \rfloor$。
 
@@ -60,9 +76,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,9 +94,7 @@ class Solution:
         return n - sum(i == find(i) for i in range(n))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -116,7 +128,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -144,7 +156,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minSwapsCouples(row []int) int {
@@ -174,7 +186,7 @@ func minSwapsCouples(row []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minSwapsCouples(row: number[]): number {
@@ -203,7 +215,7 @@ function minSwapsCouples(row: number[]): number {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -238,10 +250,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1450.Number%20of%20Students%20Doing%20Homework%20at%20a%20Given%20Time/README_EN.md
+rating: 1129
+source: Weekly Contest 189 Q1
+tags:
+    - Array
+---
+
+<!-- problem:start -->
+
 # [1450. Number of Students Doing Homework at a Given Time](https://leetcode.com/problems/number-of-students-doing-homework-at-a-given-time)
 
 [中文文档](/solution/1400-1499/1450.Number%20of%20Students%20Doing%20Homework%20at%20a%20Given%20Time/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two integer arrays <code>startTime</code> and <code>endTime</code> and given an integer <code>queryTime</code>.</p>
 
@@ -40,11 +54,17 @@ The third student started doing homework at time 3 and finished at time 7 and wa
 	<li><code>1 &lt;= queryTime &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -54,19 +74,7 @@ class Solution:
         return sum(a <= queryTime <= b for a, b in zip(startTime, endTime))
 ```
 
-```python
-class Solution:
-    def busyStudent(
-        self, startTime: List[int], endTime: List[int], queryTime: int
-    ) -> int:
-        c = [0] * 1010
-        for a, b in zip(startTime, endTime):
-            c[a] += 1
-            c[b + 1] -= 1
-        return sum(c[: queryTime + 1])
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -81,6 +89,107 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int busyStudent(vector<int>& startTime, vector<int>& endTime, int queryTime) {
+        int ans = 0;
+        for (int i = 0; i < startTime.size(); ++i) {
+            ans += startTime[i] <= queryTime && queryTime <= endTime[i];
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func busyStudent(startTime []int, endTime []int, queryTime int) int {
+	ans := 0
+	for i, a := range startTime {
+		b := endTime[i]
+		if a <= queryTime && queryTime <= b {
+			ans++
+		}
+	}
+	return ans
+}
+```
+
+#### TypeScript
+
+```ts
+function busyStudent(startTime: number[], endTime: number[], queryTime: number): number {
+    const n = startTime.length;
+    let res = 0;
+    for (let i = 0; i < n; i++) {
+        if (startTime[i] <= queryTime && endTime[i] >= queryTime) {
+            res++;
+        }
+    }
+    return res;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn busy_student(start_time: Vec<i32>, end_time: Vec<i32>, query_time: i32) -> i32 {
+        let mut res = 0;
+        for i in 0..start_time.len() {
+            if start_time[i] <= query_time && end_time[i] >= query_time {
+                res += 1;
+            }
+        }
+        res
+    }
+}
+```
+
+#### C
+
+```c
+int busyStudent(int* startTime, int startTimeSize, int* endTime, int endTimeSize, int queryTime) {
+    int res = 0;
+    for (int i = 0; i < startTimeSize; i++) {
+        if (startTime[i] <= queryTime && endTime[i] >= queryTime) {
+            res++;
+        }
+    }
+    return res;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def busyStudent(
+        self, startTime: List[int], endTime: List[int], queryTime: int
+    ) -> int:
+        c = [0] * 1010
+        for a, b in zip(startTime, endTime):
+            c[a] += 1
+            c[b + 1] -= 1
+        return sum(c[: queryTime + 1])
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -99,20 +208,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int busyStudent(vector<int>& startTime, vector<int>& endTime, int queryTime) {
-        int ans = 0;
-        for (int i = 0; i < startTime.size(); ++i) {
-            ans += startTime[i] <= queryTime && queryTime <= endTime[i];
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -132,20 +228,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func busyStudent(startTime []int, endTime []int, queryTime int) int {
-	ans := 0
-	for i, a := range startTime {
-		b := endTime[i]
-		if a <= queryTime && queryTime <= b {
-			ans++
-		}
-	}
-	return ans
-}
-```
+#### Go
 
 ```go
 func busyStudent(startTime []int, endTime []int, queryTime int) int {
@@ -163,55 +246,8 @@ func busyStudent(startTime []int, endTime []int, queryTime int) int {
 }
 ```
 
-### **C**
-
-```c
-int busyStudent(int* startTime, int startTimeSize, int* endTime, int endTimeSize, int queryTime) {
-    int res = 0;
-    for (int i = 0; i < startTimeSize; i++) {
-        if (startTime[i] <= queryTime && endTime[i] >= queryTime) {
-            res++;
-        }
-    }
-    return res;
-}
-```
-
-### **TypeScript**
-
-```ts
-function busyStudent(startTime: number[], endTime: number[], queryTime: number): number {
-    const n = startTime.length;
-    let res = 0;
-    for (let i = 0; i < n; i++) {
-        if (startTime[i] <= queryTime && endTime[i] >= queryTime) {
-            res++;
-        }
-    }
-    return res;
-}
-```
-
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn busy_student(start_time: Vec<i32>, end_time: Vec<i32>, query_time: i32) -> i32 {
-        let mut res = 0;
-        for i in 0..start_time.len() {
-            if start_time[i] <= query_time && end_time[i] >= query_time {
-                res += 1;
-            }
-        }
-        res
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

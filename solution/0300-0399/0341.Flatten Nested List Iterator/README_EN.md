@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0341.Flatten%20Nested%20List%20Iterator/README_EN.md
+tags:
+    - Stack
+    - Tree
+    - Depth-First Search
+    - Design
+    - Queue
+    - Iterator
+---
+
+<!-- problem:start -->
+
 # [341. Flatten Nested List Iterator](https://leetcode.com/problems/flatten-nested-list-iterator)
 
 [中文文档](/solution/0300-0399/0341.Flatten%20Nested%20List%20Iterator/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a nested list of integers <code>nestedList</code>. Each element is either an integer or a list whose elements may also be integers or other lists. Implement an iterator to flatten it.</p>
 
@@ -51,11 +68,17 @@ return res
 	<li>The values of the integers in the nested list is in the range <code>[-10<sup>6</sup>, 10<sup>6</sup>]</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # """
@@ -108,7 +131,7 @@ class NestedIterator:
 # while i.hasNext(): v.append(i.next())
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -168,7 +191,7 @@ public class NestedIterator implements Iterator<Integer> {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -225,7 +248,68 @@ private:
  */
 ```
 
-### **TypeScript**
+#### Go
+
+```go
+/**
+ * // This is the interface that allows for creating nested lists.
+ * // You should not implement it, or speculate about its implementation
+ * type NestedInteger struct {
+ * }
+ *
+ * // Return true if this NestedInteger holds a single integer, rather than a nested list.
+ * func (this NestedInteger) IsInteger() bool {}
+ *
+ * // Return the single integer that this NestedInteger holds, if it holds a single integer
+ * // The result is undefined if this NestedInteger holds a nested list
+ * // So before calling this method, you should have a check
+ * func (this NestedInteger) GetInteger() int {}
+ *
+ * // Set this NestedInteger to hold a single integer.
+ * func (n *NestedInteger) SetInteger(value int) {}
+ *
+ * // Set this NestedInteger to hold a nested list and adds a nested integer to it.
+ * func (this *NestedInteger) Add(elem NestedInteger) {}
+ *
+ * // Return the nested list that this NestedInteger holds, if it holds a nested list
+ * // The list length is zero if this NestedInteger holds a single integer
+ * // You can access NestedInteger's List element directly if you want to modify it
+ * func (this NestedInteger) GetList() []*NestedInteger {}
+ */
+
+type NestedIterator struct {
+	iterator      []int
+	index, length int
+}
+
+func Constructor(nestedList []*NestedInteger) *NestedIterator {
+	result := make([]int, 0)
+	var traversal func(nodes []*NestedInteger)
+	traversal = func(nodes []*NestedInteger) {
+		for _, child := range nodes {
+			if child.IsInteger() {
+				result = append(result, child.GetInteger())
+			} else {
+				traversal(child.GetList())
+			}
+		}
+	}
+	traversal(nestedList)
+	return &NestedIterator{iterator: result, index: 0, length: len(result)}
+}
+
+func (this *NestedIterator) Next() int {
+	res := this.iterator[this.index]
+	this.index++
+	return res
+}
+
+func (this *NestedIterator) HasNext() bool {
+	return this.index < this.length
+}
+```
+
+#### TypeScript
 
 ```ts
 /**
@@ -304,7 +388,7 @@ class NestedIterator {
  */
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // #[derive(Debug, PartialEq, Eq)]
@@ -357,70 +441,17 @@ impl NestedIterator {
  */
 ```
 
-### **Go**
+<!-- tabs:end -->
 
-recursion:
+<!-- solution:end -->
 
-```go
-/**
- * // This is the interface that allows for creating nested lists.
- * // You should not implement it, or speculate about its implementation
- * type NestedInteger struct {
- * }
- *
- * // Return true if this NestedInteger holds a single integer, rather than a nested list.
- * func (this NestedInteger) IsInteger() bool {}
- *
- * // Return the single integer that this NestedInteger holds, if it holds a single integer
- * // The result is undefined if this NestedInteger holds a nested list
- * // So before calling this method, you should have a check
- * func (this NestedInteger) GetInteger() int {}
- *
- * // Set this NestedInteger to hold a single integer.
- * func (n *NestedInteger) SetInteger(value int) {}
- *
- * // Set this NestedInteger to hold a nested list and adds a nested integer to it.
- * func (this *NestedInteger) Add(elem NestedInteger) {}
- *
- * // Return the nested list that this NestedInteger holds, if it holds a nested list
- * // The list length is zero if this NestedInteger holds a single integer
- * // You can access NestedInteger's List element directly if you want to modify it
- * func (this NestedInteger) GetList() []*NestedInteger {}
- */
+<!-- solution:start -->
 
-type NestedIterator struct {
-	iterator      []int
-	index, length int
-}
+### Solution 2
 
-func Constructor(nestedList []*NestedInteger) *NestedIterator {
-	result := make([]int, 0)
-	var traversal func(nodes []*NestedInteger)
-	traversal = func(nodes []*NestedInteger) {
-		for _, child := range nodes {
-			if child.IsInteger() {
-				result = append(result, child.GetInteger())
-			} else {
-				traversal(child.GetList())
-			}
-		}
-	}
-	traversal(nestedList)
-	return &NestedIterator{iterator: result, index: 0, length: len(result)}
-}
+<!-- tabs:start -->
 
-func (this *NestedIterator) Next() int {
-	res := this.iterator[this.index]
-	this.index++
-	return res
-}
-
-func (this *NestedIterator) HasNext() bool {
-	return this.index < this.length
-}
-```
-
-Expand directly:
+#### Go
 
 ```go
 /**
@@ -480,10 +511,8 @@ func (this *NestedIterator) HasNext() bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

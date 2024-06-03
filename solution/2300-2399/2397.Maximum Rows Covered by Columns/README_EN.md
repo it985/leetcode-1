@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2397.Maximum%20Rows%20Covered%20by%20Columns/README_EN.md
+rating: 1718
+source: Biweekly Contest 86 Q3
+tags:
+    - Bit Manipulation
+    - Array
+    - Backtracking
+    - Enumeration
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [2397. Maximum Rows Covered by Columns](https://leetcode.com/problems/maximum-rows-covered-by-columns)
 
 [中文文档](/solution/2300-2399/2397.Maximum%20Rows%20Covered%20by%20Columns/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> <code>m x n</code> binary matrix <code>matrix</code> and an integer <code>numSelect</code>, which denotes the number of <strong>distinct</strong> columns you must select from <code>matrix</code>.</p>
 
@@ -53,11 +71,23 @@ Therefore, we return 2.
 	<li><code>1 &lt;= numSelect&nbsp;&lt;= n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Binary Enumeration
+
+First, we convert each row of the matrix into a binary number and record it in the array $rows$. Here, $rows[i]$ represents the binary number corresponding to the $i$-th row, and the $j$-th bit of this binary number $rows[i]$ represents the value of the $i$-th row and $j$-th column.
+
+Next, we enumerate all $2^n$ column selection schemes, where $n$ is the number of columns in the matrix. For each column selection scheme, we check whether `numSelect` columns have been selected. If not, we skip it. Otherwise, we count how many rows in the matrix are covered by the selected columns, i.e., how many binary numbers $rows[i]$ are equal to the bitwise AND of $rows[i]$ and the column selection scheme $mask$. We then update the maximum number of rows.
+
+The time complexity is $O(2^n \times m)$, and the space complexity is $O(m)$. Where $m$ and $n$ are the number of rows and columns in the matrix, respectively.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -76,7 +106,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -140,7 +170,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumRows(matrix [][]int, numSelect int) (ans int) {
@@ -171,17 +201,47 @@ func maximumRows(matrix [][]int, numSelect int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
+function maximumRows(matrix: number[][], numSelect: number): number {
+    const [m, n] = [matrix.length, matrix[0].length];
+    const rows: number[] = Array(m).fill(0);
+    for (let i = 0; i < m; ++i) {
+        for (let j = 0; j < n; ++j) {
+            if (matrix[i][j]) {
+                rows[i] |= 1 << j;
+            }
+        }
+    }
+    let ans = 0;
+    for (let mask = 1; mask < 1 << n; ++mask) {
+        if (bitCount(mask) !== numSelect) {
+            continue;
+        }
+        let t = 0;
+        for (const x of rows) {
+            if ((x & mask) === x) {
+                ++t;
+            }
+        }
+        ans = Math.max(ans, t);
+    }
+    return ans;
+}
 
-```
-
-### **...**
-
-```
-
-
+function bitCount(i: number): number {
+    i = i - ((i >>> 1) & 0x55555555);
+    i = (i & 0x33333333) + ((i >>> 2) & 0x33333333);
+    i = (i + (i >>> 4)) & 0x0f0f0f0f;
+    i = i + (i >>> 8);
+    i = i + (i >>> 16);
+    return i & 0x3f;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

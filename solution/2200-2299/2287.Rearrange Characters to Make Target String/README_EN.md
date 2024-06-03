@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2287.Rearrange%20Characters%20to%20Make%20Target%20String/README_EN.md
+rating: 1299
+source: Weekly Contest 295 Q1
+tags:
+    - Hash Table
+    - String
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [2287. Rearrange Characters to Make Target String](https://leetcode.com/problems/rearrange-characters-to-make-target-string)
 
 [中文文档](/solution/2200-2299/2287.Rearrange%20Characters%20to%20Make%20Target%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two <strong>0-indexed</strong> strings <code>s</code> and <code>target</code>. You can take some letters from <code>s</code> and rearrange them to form new strings.</p>
 
@@ -51,11 +67,17 @@ We can make at most one copy of &quot;aaaaa&quot;, so we return 1.
 	<li><code>s</code> and <code>target</code> consist of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,7 +87,7 @@ class Solution:
         return min(cnt1[c] // v for c, v in cnt2.items())
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -89,7 +111,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -114,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func rearrangeCharacters(s string, target string) int {
@@ -135,7 +157,7 @@ func rearrangeCharacters(s string, target string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function rearrangeCharacters(s: string, target: string): number {
@@ -158,7 +180,7 @@ function rearrangeCharacters(s: string, target: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -182,7 +204,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 #define min(a, b) (((a) < (b)) ? (a) : (b))
@@ -206,10 +228,8 @@ int rearrangeCharacters(char* s, char* target) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

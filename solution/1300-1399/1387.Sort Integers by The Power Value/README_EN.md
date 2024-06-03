@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1387.Sort%20Integers%20by%20The%20Power%20Value/README_EN.md
+rating: 1506
+source: Biweekly Contest 22 Q3
+tags:
+    - Memoization
+    - Dynamic Programming
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1387. Sort Integers by The Power Value](https://leetcode.com/problems/sort-integers-by-the-power-value)
 
 [中文文档](/solution/1300-1399/1387.Sort%20Integers%20by%20The%20Power%20Value/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>The power of an integer <code>x</code> is defined as the number of steps needed to transform <code>x</code> into <code>1</code> using the following steps:</p>
 
@@ -51,11 +67,25 @@ The fourth number in the sorted array is 7.
 	<li><code>1 &lt;= k &lt;= hi - lo + 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Custom Sorting
+
+First, we define a function $f(x)$, which represents the number of steps required to change the number $x$ to $1$, i.e., the weight of the number $x$.
+
+Then, we sort all the numbers in the interval $[lo, hi]$ in ascending order of weight. If the weights are the same, we sort them in ascending order of the numbers themselves.
+
+Finally, we return the $k$-th number after sorting.
+
+The time complexity is $O(n \times \log n \times M)$, and the space complexity is $O(n)$. Where $n$ is the number of numbers in the interval $[lo, hi]$, and $M$ is the maximum value of $f(x)$. In this problem, the maximum value of $M$ is $178$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 @cache
@@ -75,7 +105,7 @@ class Solution:
         return sorted(range(lo, hi + 1), key=f)[k - 1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -105,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,7 +169,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getKth(lo int, hi int, k int) int {
@@ -168,7 +198,7 @@ func getKth(lo int, hi int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function getKth(lo: number, hi: number, k: number): number {
@@ -193,10 +223,8 @@ function getKth(lo: number, hi: number, k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

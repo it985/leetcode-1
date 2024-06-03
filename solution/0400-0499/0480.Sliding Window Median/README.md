@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0480.Sliding%20Window%20Median/README.md
+tags:
+    - 数组
+    - 哈希表
+    - 滑动窗口
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [480. 滑动窗口中位数](https://leetcode.cn/problems/sliding-window-median)
 
 [English Version](/solution/0400-0499/0480.Sliding%20Window%20Median/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>中位数是有序序列最中间的那个数。如果序列的长度是偶数，则没有最中间的数；此时中位数是最中间的两个数的平均数。</p>
 
@@ -45,11 +58,13 @@
 	<li>与真实值误差在 <code>10 ^ -5</code> 以内的答案将被视作正确答案。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双优先队列（大小根堆） + 延迟删除**
+### 方法一：双优先队列（大小根堆） + 延迟删除
 
 我们可以使用两个优先队列（大小根堆）维护当前窗口中的元素，其中一个优先队列存储当前窗口中较小的一半元素，另一个优先队列存储当前窗口中较大的一半元素。这样，当前窗口的中位数就是两个优先队列的堆顶元素的平均值或其中的一个。
 
@@ -75,9 +90,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class MedianFinder:
@@ -147,9 +160,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class MedianFinder {
@@ -238,7 +249,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class MedianFinder {
@@ -331,7 +342,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type MedianFinder struct {
@@ -434,10 +445,8 @@ func (h *hp) Pop() any {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

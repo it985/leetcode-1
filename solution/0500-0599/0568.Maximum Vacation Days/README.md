@@ -1,10 +1,22 @@
-# [568. 最大休假天数](https://leetcode.cn/problems/maximum-vacation-days)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0568.Maximum%20Vacation%20Days/README.md
+tags:
+    - 数组
+    - 动态规划
+    - 矩阵
+---
+
+<!-- problem:start -->
+
+# [568. 最大休假天数 🔒](https://leetcode.cn/problems/maximum-vacation-days)
 
 [English Version](/solution/0500-0599/0568.Maximum%20Vacation%20Days/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>力扣想让一个最优秀的员工在 <strong>N</strong> 个城市间旅行来收集算法问题。 但只工作不玩耍，聪明的孩子也会变傻，所以您可以在某些特定的城市和星期休假。您的工作就是安排旅行使得最大化你可以休假的天数，但是您需要遵守一些规则和限制。</p>
 
@@ -76,11 +88,13 @@ Ans = 7 + 7 + 7 = 21
 	<li><code>0 &lt;= days[i] &lt;= 7</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[k][j]$ 表示前 $k$ 周，且最后一周在城市 $j$ 休假的最长天数。初始时 $f[0][0]=0$，其它 $f[0][j]=-\infty$。答案为 $\max_{j=0}^{n-1} f[K][j]$。
 
@@ -92,9 +106,7 @@ Ans = 7 + 7 + 7 = 21
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -113,9 +125,7 @@ class Solution:
         return max(f[-1][j] for j in range(n))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -148,7 +158,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -179,7 +189,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxVacationDays(flights [][]int, days [][]int) (ans int) {
@@ -210,10 +220,8 @@ func maxVacationDays(flights [][]int, days [][]int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

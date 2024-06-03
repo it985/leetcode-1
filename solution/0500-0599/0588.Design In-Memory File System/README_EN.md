@@ -1,8 +1,23 @@
-# [588. Design In-Memory File System](https://leetcode.com/problems/design-in-memory-file-system)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0588.Design%20In-Memory%20File%20System/README_EN.md
+tags:
+    - Design
+    - Trie
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
+# [588. Design In-Memory File System 🔒](https://leetcode.com/problems/design-in-memory-file-system)
 
 [中文文档](/solution/0500-0599/0588.Design%20In-Memory%20File%20System/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Design a data structure that simulates an in-memory file system.</p>
 
@@ -58,11 +73,17 @@ fileSystem.readContentFromFile(&quot;/a/b/c/d&quot;); // return &quot;hello&quot
 	<li>At most <code>300</code> calls will be made to <code>ls</code>, <code>mkdir</code>,&nbsp;<code>addContentToFile</code>, and&nbsp;<code>readContentFromFile</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Trie:
@@ -128,7 +149,7 @@ class FileSystem:
 # param_4 = obj.readContentFromFile(filePath)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Trie {
@@ -216,7 +237,7 @@ class FileSystem {
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Trie struct {
@@ -312,10 +333,8 @@ func (this *FileSystem) ReadContentFromFile(filePath string) string {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

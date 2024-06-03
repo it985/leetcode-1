@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1090.Largest%20Values%20From%20Labels/README.md
+rating: 1501
+source: 第 141 场周赛 Q2
+tags:
+    - 贪心
+    - 数组
+    - 哈希表
+    - 计数
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1090. 受标签影响的最大值](https://leetcode.cn/problems/largest-values-from-labels)
 
 [English Version](/solution/1000-1099/1090.Largest%20Values%20From%20Labels/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>我们有一个&nbsp;<code>n</code>&nbsp;项的集合。给出两个整数数组&nbsp;<code>values</code>&nbsp;和 <code>labels</code>&nbsp;，第 <code>i</code> 个元素的值和标签分别是&nbsp;<code>values[i]</code>&nbsp;和&nbsp;<code>labels[i]</code>。还会给出两个整数&nbsp;<code>numWanted</code>&nbsp;和 <code>useLimit</code> 。</p>
 
@@ -56,11 +72,13 @@
 	<li><code>1 &lt;= numWanted, useLimit &lt;= n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 排序 + 哈希表**
+### 方法一：贪心 + 排序 + 哈希表
 
 根据题目描述，我们需要从 $n$ 个元素的集合中选出一个子集，子集元素个数不超过 $numWanted$，且子集中最多有相同标签的 $useLimit$ 项，使得子集的值之和最大。因此，我们应该贪心地选择集合中值较大的元素，同时记录每个标签出现的次数，当某个标签出现的次数达到 $useLimit$ 时，我们就不能再选择该标签对应的元素了。
 
@@ -72,9 +90,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -93,9 +109,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -121,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -148,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func largestValsFromLabels(values []int, labels []int, numWanted int, useLimit int) (ans int) {
@@ -171,7 +185,7 @@ func largestValsFromLabels(values []int, labels []int, numWanted int, useLimit i
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function largestValsFromLabels(
@@ -200,10 +214,8 @@ function largestValsFromLabels(
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

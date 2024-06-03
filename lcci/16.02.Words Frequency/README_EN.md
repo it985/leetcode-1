@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.02.Words%20Frequency/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [16.02. Words Frequency](https://leetcode.cn/problems/words-frequency-lcci)
 
 [中文文档](/lcci/16.02.Words%20Frequency/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Design a method to find the frequency of occurrences of any given word in a book. What if we were running this algorithm multiple times?</p>
 
@@ -40,9 +50,13 @@ wordsFrequency.get(&quot;pen&quot;); //returns 1
     <li><code>get</code>&nbsp;function will not be called more than&nbsp;100000 times.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Hash Table
 
 We use a hash table $cnt$ to count the number of occurrences of each word in $book$.
 
@@ -52,7 +66,7 @@ In terms of time complexity, the time complexity of initializing the hash table 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class WordsFrequency:
@@ -68,7 +82,7 @@ class WordsFrequency:
 # param_1 = obj.get(word)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class WordsFrequency {
@@ -92,7 +106,7 @@ class WordsFrequency {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class WordsFrequency {
@@ -118,7 +132,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type WordsFrequency struct {
@@ -144,35 +158,7 @@ func (this *WordsFrequency) Get(word string) int {
  */
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {string[]} book
- */
-var WordsFrequency = function (book) {
-    this.cnt = new Map();
-    for (const x of book) {
-        this.cnt.set(x, (this.cnt.get(x) || 0) + 1);
-    }
-};
-
-/**
- * @param {string} word
- * @return {number}
- */
-WordsFrequency.prototype.get = function (word) {
-    return this.cnt.get(word) || 0;
-};
-
-/**
- * Your WordsFrequency object will be instantiated and called as such:
- * var obj = new WordsFrequency(book)
- * var param_1 = obj.get(word)
- */
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class WordsFrequency {
@@ -198,7 +184,7 @@ class WordsFrequency {
  */
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -229,10 +215,54 @@ impl WordsFrequency {
  */
 ```
 
-### **...**
+#### JavaScript
 
+```js
+/**
+ * @param {string[]} book
+ */
+var WordsFrequency = function (book) {
+    this.cnt = new Map();
+    for (const x of book) {
+        this.cnt.set(x, (this.cnt.get(x) || 0) + 1);
+    }
+};
+
+/**
+ * @param {string} word
+ * @return {number}
+ */
+WordsFrequency.prototype.get = function (word) {
+    return this.cnt.get(word) || 0;
+};
+
+/**
+ * Your WordsFrequency object will be instantiated and called as such:
+ * var obj = new WordsFrequency(book)
+ * var param_1 = obj.get(word)
+ */
 ```
 
+#### Swift
+
+```swift
+class WordsFrequency {
+    private var cnt: [String: Int] = [:]
+
+    init(_ book: [String]) {
+        for word in book {
+            cnt[word, default: 0] += 1
+        }
+    }
+
+    func get(_ word: String) -> Int {
+        return cnt[word, default: 0]
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

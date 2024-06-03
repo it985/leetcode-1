@@ -1,10 +1,23 @@
-# [2313. 二叉树中得到结果所需的最少翻转次数](https://leetcode.cn/problems/minimum-flips-in-binary-tree-to-get-result)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2313.Minimum%20Flips%20in%20Binary%20Tree%20to%20Get%20Result/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 动态规划
+    - 二叉树
+---
+
+<!-- problem:start -->
+
+# [2313. 二叉树中得到结果所需的最少翻转次数 🔒](https://leetcode.cn/problems/minimum-flips-in-binary-tree-to-get-result)
 
 [English Version](/solution/2300-2399/2313.Minimum%20Flips%20in%20Binary%20Tree%20to%20Get%20Result/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定<strong>二叉树</strong>的根 <code>root</code>，具有以下属性:</p>
 
@@ -63,11 +76,13 @@
 	<li>非叶节点的值为<code>2</code>, <code>3</code>, <code>4</code>,&nbsp;<code>5</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：树形 DP + 分情况讨论**
+### 方法一：树形 DP + 分情况讨论
 
 我们定义一个函数 $dfs(root)$，它的返回值是一个长度为 $2$ 的数组，其中第一个表示将 $root$ 节点的值变成 `false` 所需要的最少翻转次数，第二个表示将 $root$ 节点的值变成 `true` 所需要的最少翻转次数。那么答案为 $dfs(root)[result]$。
 
@@ -87,9 +102,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -118,9 +131,7 @@ class Solution:
         return dfs(root)[int(result)]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -172,7 +183,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -221,7 +232,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -268,7 +279,7 @@ func minimumFlips(root *TreeNode, result bool) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -311,10 +322,8 @@ function minimumFlips(root: TreeNode | null, result: boolean): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

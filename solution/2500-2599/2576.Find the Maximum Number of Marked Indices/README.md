@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2576.Find%20the%20Maximum%20Number%20of%20Marked%20Indices/README.md
+rating: 1843
+source: 第 334 场周赛 Q3
+tags:
+    - 贪心
+    - 数组
+    - 双指针
+    - 二分查找
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2576. 求出最多标记下标](https://leetcode.cn/problems/find-the-maximum-number-of-marked-indices)
 
 [English Version](/solution/2500-2599/2576.Find%20the%20Maximum%20Number%20of%20Marked%20Indices/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums</code>&nbsp;。</p>
 
@@ -54,11 +70,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 双指针**
+### 方法一：贪心 + 双指针
 
 为了将下标尽可能多地标记，我们可以将数组 `nums` 排序，然后从左到右遍历数组，对于每个下标 $i$，我们在数组的右半部分找到第一个满足 $2 \times nums[i] \leq nums[j]$ 的下标 $j$，然后标记下标 $i$ 和 $j$。继续遍历下一个下标 $i$。当我们遍历完数组的右半部分时，说明标记已经完成，此时标记的下标数目即为答案。
 
@@ -66,9 +84,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -86,9 +102,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -109,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -131,7 +145,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxNumOfMarkedIndices(nums []int) (ans int) {
@@ -149,7 +163,7 @@ func maxNumOfMarkedIndices(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxNumOfMarkedIndices(nums: number[]): number {
@@ -168,10 +182,8 @@ function maxNumOfMarkedIndices(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

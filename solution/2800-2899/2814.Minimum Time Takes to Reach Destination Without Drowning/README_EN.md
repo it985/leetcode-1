@@ -1,8 +1,22 @@
-# [2814. Minimum Time Takes to Reach Destination Without Drowning](https://leetcode.com/problems/minimum-time-takes-to-reach-destination-without-drowning)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2814.Minimum%20Time%20Takes%20to%20Reach%20Destination%20Without%20Drowning/README_EN.md
+tags:
+    - Breadth-First Search
+    - Array
+    - Matrix
+---
+
+<!-- problem:start -->
+
+# [2814. Minimum Time Takes to Reach Destination Without Drowning 🔒](https://leetcode.com/problems/minimum-time-takes-to-reach-destination-without-drowning)
 
 [中文文档](/solution/2800-2899/2814.Minimum%20Time%20Takes%20to%20Reach%20Destination%20Without%20Drowning/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an <code>n * m</code> <strong>0-indexed</strong> grid of string <code>land</code>. Right now, you are standing at the cell that contains <code>&quot;S&quot;</code>, and you want to get to the cell containing <code>&quot;D&quot;</code>. There are three other types of cells in this land:</p>
 
@@ -67,11 +81,21 @@ So the answer would be -1.
 	<li><strong>Exactly</strong> one of the cells is equal to <code>&quot;D&quot;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Two BFS Traversals
+
+First, we run a BFS (Breadth-First Search) to calculate the shortest distance from each cell to the water, and record it in the array $g$. Then, we run another BFS starting from the cell $(s_i, s_j)$ to find the shortest distance to the target cell $(d_i, d_j)$. During this process, if the adjacent cell $(x, y)$ of the current cell $(i, j)$ satisfies $g[x][y] > t + 1$, then we can move from $(x, y)$ to $(i, j)$.
+
+The time complexity is $O(m \times n)$ and the space complexity is $O(m \times n)$. Where $m$ and $n$ are the number of rows and columns of the array $land$, respectively.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -129,7 +153,7 @@ class Solution:
         return -1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -198,7 +222,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -269,7 +293,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumSeconds(land [][]string) int {
@@ -343,7 +367,7 @@ func minimumSeconds(land [][]string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumSeconds(land: string[][]): number {
@@ -414,10 +438,8 @@ function minimumSeconds(land: string[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

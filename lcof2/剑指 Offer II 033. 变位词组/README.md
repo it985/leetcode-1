@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof2/%E5%89%91%E6%8C%87%20Offer%20II%20033.%20%E5%8F%98%E4%BD%8D%E8%AF%8D%E7%BB%84/README.md
+---
+
+<!-- problem:start -->
+
 # [剑指 Offer II 033. 变位词组](https://leetcode.cn/problems/sfvd7V)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个字符串数组 <code>strs</code> ，将&nbsp;<strong>变位词&nbsp;</strong>组合在一起。 可以按任意顺序返回结果列表。</p>
 
@@ -43,11 +50,13 @@
 
 <p><meta charset="UTF-8" />注意：本题与主站 49&nbsp;题相同：&nbsp;<a href="https://leetcode.cn/problems/group-anagrams/">https://leetcode.cn/problems/group-anagrams/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 1. 遍历字符串，对每个字符串按照**字符字典序**排序，得到一个新的字符串。
 2. 以新字符串为 `key`，`[str]` 为 `value`，存入哈希表当中（`HashMap<String, List<String>>`）。
@@ -65,17 +74,9 @@
 
 时间复杂度 $O(n\times k\times \log k)$。其中 $n$ 和 $k$ 分别是字符串数组的长度和字符串的最大长度。
 
-**方法二：计数**
-
-我们也可以将方法一中的排序部分改为计数，也就是说，将每个字符串 $s$ 中的字符以及出现的次数作为 `key`，将字符串 $s$ 作为 `value` 存入哈希表当中。
-
-时间复杂度 $O(n\times (k + C))$。其中 $n$ 和 $k$ 分别是字符串数组的长度和字符串的最大长度，而 $C$ 是字符集的大小，本题中 $C = 26$。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -87,21 +88,7 @@ class Solution:
         return list(d.values())
 ```
 
-```python
-class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        d = defaultdict(list)
-        for s in strs:
-            cnt = [0] * 26
-            for c in s:
-                cnt[ord(c) - ord('a')] += 1
-            d[tuple(cnt)].append(s)
-        return list(d.values())
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -117,6 +104,89 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string, vector<string>> d;
+        for (auto& s : strs) {
+            string k = s;
+            sort(k.begin(), k.end());
+            d[k].emplace_back(s);
+        }
+        vector<vector<string>> ans;
+        for (auto& [_, v] : d) ans.emplace_back(v);
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func groupAnagrams(strs []string) (ans [][]string) {
+	d := map[string][]string{}
+	for _, s := range strs {
+		t := []byte(s)
+		sort.Slice(t, func(i, j int) bool { return t[i] < t[j] })
+		k := string(t)
+		d[k] = append(d[k], s)
+	}
+	for _, v := range d {
+		ans = append(ans, v)
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function groupAnagrams(strs: string[]): string[][] {
+    const d: Map<string, string[]> = new Map();
+    for (const s of strs) {
+        const k = s.split('').sort().join('');
+        if (!d.has(k)) {
+            d.set(k, []);
+        }
+        d.get(k)!.push(s);
+    }
+    return Array.from(d.values());
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start-->
+
+### 方法二：计数
+
+我们也可以将方法一中的排序部分改为计数，也就是说，将每个字符串 $s$ 中的字符以及出现的次数作为 `key`，将字符串 $s$ 作为 `value` 存入哈希表当中。
+
+时间复杂度 $O(n\times (k + C))$。其中 $n$ 和 $k$ 分别是字符串数组的长度和字符串的最大长度，而 $C$ 是字符集的大小，本题中 $C = 26$。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        d = defaultdict(list)
+        for s in strs:
+            cnt = [0] * 26
+            for c in s:
+                cnt[ord(c) - ord('a')] += 1
+            d[tuple(cnt)].append(s)
+        return list(d.values())
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -141,24 +211,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        unordered_map<string, vector<string>> d;
-        for (auto& s : strs) {
-            string k = s;
-            sort(k.begin(), k.end());
-            d[k].emplace_back(s);
-        }
-        vector<vector<string>> ans;
-        for (auto& [_, v] : d) ans.emplace_back(v);
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -184,23 +237,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func groupAnagrams(strs []string) (ans [][]string) {
-	d := map[string][]string{}
-	for _, s := range strs {
-		t := []byte(s)
-		sort.Slice(t, func(i, j int) bool { return t[i] < t[j] })
-		k := string(t)
-		d[k] = append(d[k], s)
-	}
-	for _, v := range d {
-		ans = append(ans, v)
-	}
-	return
-}
-```
+#### Go
 
 ```go
 func groupAnagrams(strs []string) (ans [][]string) {
@@ -219,37 +256,8 @@ func groupAnagrams(strs []string) (ans [][]string) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function groupAnagrams(strs: string[]): string[][] {
-    const d: Map<string, string[]> = new Map();
-    for (const s of strs) {
-        const k = s.split('').sort().join('');
-        if (!d.has(k)) {
-            d.set(k, []);
-        }
-        d.get(k)!.push(s);
-    }
-    return Array.from(d.values());
-}
-```
-
-```ts
-function groupAnagrams(strs: string[]): string[][] {
-    const map = new Map<string, string[]>();
-    for (const str of strs) {
-        const k = str.split('').sort().join('');
-        map.set(k, (map.get(k) ?? []).concat([str]));
-    }
-    return [...map.values()];
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,22 @@
-# [1724. Checking Existence of Edge Length Limited Paths II](https://leetcode.com/problems/checking-existence-of-edge-length-limited-paths-ii)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1724.Checking%20Existence%20of%20Edge%20Length%20Limited%20Paths%20II/README_EN.md
+tags:
+    - Union Find
+    - Graph
+    - Minimum Spanning Tree
+---
+
+<!-- problem:start -->
+
+# [1724. Checking Existence of Edge Length Limited Paths II 🔒](https://leetcode.com/problems/checking-existence-of-edge-length-limited-paths-ii)
 
 [中文文档](/solution/1700-1799/1724.Checking%20Existence%20of%20Edge%20Length%20Limited%20Paths%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>An undirected graph of <code>n</code> nodes is defined by <code>edgeList</code>, where <code>edgeList[i] = [u<sub>i</sub>, v<sub>i</sub>, dis<sub>i</sub>]</code> denotes an edge between nodes <code>u<sub>i</sub></code> and <code>v<sub>i</sub></code> with distance <code>dis<sub>i</sub></code>. Note that there may be <strong>multiple</strong> edges between two nodes, and the graph may not be connected.</p>
 
@@ -47,11 +61,17 @@ distanceLimitedPathsExist.query(0, 5, 6); // return false. There are no paths fr
 	<li>At most&nbsp;<code>10<sup>4</sup></code> calls will be made to <code>query</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class PersistentUnionFind:
@@ -91,7 +111,7 @@ class DistanceLimitedPathsExist:
         return self.puf.find(p, limit) == self.puf.find(q, limit)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class PersistentUnionFind {
@@ -160,7 +180,7 @@ public class DistanceLimitedPathsExist {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class PersistentUnionFind {
@@ -235,7 +255,7 @@ public:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type PersistentUnionFind struct {
@@ -320,7 +340,7 @@ func (dle *DistanceLimitedPathsExist) Query(p, q, limit int) bool {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class PersistentUnionFind {
@@ -387,10 +407,8 @@ class DistanceLimitedPathsExist {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

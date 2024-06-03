@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0852.Peak%20Index%20in%20a%20Mountain%20Array/README_EN.md
+tags:
+    - Array
+    - Binary Search
+---
+
+<!-- problem:start -->
+
 # [852. Peak Index in a Mountain Array](https://leetcode.com/problems/peak-index-in-a-mountain-array)
 
 [中文文档](/solution/0800-0899/0852.Peak%20Index%20in%20a%20Mountain%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>An array <code>arr</code> is a <strong>mountain</strong> if the following properties hold:</p>
 
@@ -51,13 +64,17 @@
 	<li><code>arr</code> is <strong>guaranteed</strong> to be a mountain array.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-Binary search.
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -72,7 +89,7 @@ class Solution:
         return left
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +108,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -110,7 +127,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func peakIndexInMountainArray(arr []int) int {
@@ -127,29 +144,7 @@ func peakIndexInMountainArray(arr []int) int {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} arr
- * @return {number}
- */
-var peakIndexInMountainArray = function (arr) {
-    let left = 1;
-    let right = arr.length - 2;
-    while (left < right) {
-        const mid = (left + right) >> 1;
-        if (arr[mid] > arr[mid + 1]) {
-            right = mid;
-        } else {
-            left = mid + 1;
-        }
-    }
-    return left;
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function peakIndexInMountainArray(arr: number[]): number {
@@ -167,7 +162,7 @@ function peakIndexInMountainArray(arr: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -187,10 +182,30 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+/**
+ * @param {number[]} arr
+ * @return {number}
+ */
+var peakIndexInMountainArray = function (arr) {
+    let left = 1;
+    let right = arr.length - 2;
+    while (left < right) {
+        const mid = (left + right) >> 1;
+        if (arr[mid] < arr[mid + 1]) {
+            left = mid + 1;
+        } else {
+            right = mid;
+        }
+    }
+    return left;
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

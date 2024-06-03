@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2114.Maximum%20Number%20of%20Words%20Found%20in%20Sentences/README_EN.md
+rating: 1257
+source: Biweekly Contest 68 Q1
+tags:
+    - Array
+    - String
+---
+
+<!-- problem:start -->
+
 # [2114. Maximum Number of Words Found in Sentences](https://leetcode.com/problems/maximum-number-of-words-found-in-sentences)
 
 [中文文档](/solution/2100-2199/2114.Maximum%20Number%20of%20Words%20Found%20in%20Sentences/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A <strong>sentence</strong> is a list of <strong>words</strong> that are separated by a single space&nbsp;with no leading or trailing spaces.</p>
 
@@ -43,11 +58,17 @@ In this example, the second and third sentences (underlined) have the same numbe
 	<li>All the words in <code>sentences[i]</code> are separated by a single space.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -55,7 +76,7 @@ class Solution:
         return 1 + max(s.count(' ') for s in sentences)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -75,7 +96,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -91,7 +112,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func mostWordsFound(sentences []string) (ans int) {
@@ -105,7 +126,7 @@ func mostWordsFound(sentences []string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function mostWordsFound(sentences: string[]): number {
@@ -120,7 +141,7 @@ function mostWordsFound(sentences: string[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -140,7 +161,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 #define max(a, b) (((a) > (b)) ? (a) : (b))
@@ -161,10 +182,8 @@ int mostWordsFound(char** sentences, int sentencesSize) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

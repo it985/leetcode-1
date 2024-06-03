@@ -1,10 +1,20 @@
-# [1398. 购买了产品 A 和产品 B 却没有购买产品 C 的顾客](https://leetcode.cn/problems/customers-who-bought-products-a-and-b-but-not-c)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1398.Customers%20Who%20Bought%20Products%20A%20and%20B%20but%20Not%20C/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1398. 购买了产品 A 和产品 B 却没有购买产品 C 的顾客 🔒](https://leetcode.cn/problems/customers-who-bought-products-a-and-b-but-not-c)
 
 [English Version](/solution/1300-1399/1398.Customers%20Who%20Bought%20Products%20A%20and%20B%20but%20Not%20C/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>&nbsp;<code>Customers</code>&nbsp;表：</p>
 
@@ -81,17 +91,19 @@ Orders table:
 <strong>解释：</strong>
 只有 customer_id 为 3 的顾客购买了产品 A 和产品 B ，却没有购买产品 C 。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：LEFT JOIN + GROUP BY + HAVING**
+### 方法一：LEFT JOIN + GROUP BY + HAVING
 
-我们可以用 `LEFT JOIN` 将 `Customers` 表和 `Orders` 表连接起来，然后按照 `customer_id` 进行分组，最后筛选出购买了产品 A 和产品 B 却没有购买产品 C 的顾客。
+我们可以用 `LEFT JOIN` 将 `Customers` 表和 `Orders` 表连接起来，然后按照 `customer_id` 进行分组，最后筛选出购买了产品 A 和产品 B 却没有购买产品 C 的顾客 🔒。
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -105,3 +117,7 @@ ORDER BY 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

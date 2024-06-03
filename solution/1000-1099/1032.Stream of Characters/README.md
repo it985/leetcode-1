@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1032.Stream%20of%20Characters/README.md
+rating: 1970
+source: 第 133 场周赛 Q4
+tags:
+    - 设计
+    - 字典树
+    - 数组
+    - 字符串
+    - 数据流
+---
+
+<!-- problem:start -->
+
 # [1032. 字符流](https://leetcode.cn/problems/stream-of-characters)
 
 [English Version](/solution/1000-1099/1032.Stream%20of%20Characters/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>设计一个算法：接收一个字符流，并检查这些字符的后缀是否是字符串数组 <code>words</code> 中的一个字符串。</p>
 
@@ -56,11 +72,13 @@ streamChecker.query("l"); // 返回 True ，因为 'kl' 在 words 中
 	<li>最多调用查询 <code>4 * 10<sup>4</sup></code> 次</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：前缀树**
+### 方法一：前缀树
 
 我们可以根据初始化时的字符串数组 $words$ 构建前缀树，前缀树的每个节点包含两个属性：
 
@@ -75,9 +93,7 @@ streamChecker.query("l"); // 返回 True ，因为 'kl' 在 words 中
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Trie:
@@ -124,9 +140,7 @@ class StreamChecker:
 # param_1 = obj.query(letter)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Trie {
@@ -184,7 +198,7 @@ class StreamChecker {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Trie {
@@ -249,7 +263,7 @@ public:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Trie struct {
@@ -313,10 +327,8 @@ func (this *StreamChecker) Query(letter byte) bool {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

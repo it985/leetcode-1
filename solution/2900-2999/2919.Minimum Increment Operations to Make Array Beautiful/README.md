@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2919.Minimum%20Increment%20Operations%20to%20Make%20Array%20Beautiful/README.md
+rating: 2030
+source: 第 369 场周赛 Q3
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2919. 使数组变美的最小增量运算数](https://leetcode.cn/problems/minimum-increment-operations-to-make-array-beautiful)
 
 [English Version](/solution/2900-2999/2919.Minimum%20Increment%20Operations%20to%20Make%20Array%20Beautiful/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始、长度为 <code>n</code> 的整数数组 <code>nums</code> ，和一个整数 <code>k</code> 。</p>
 
@@ -71,11 +84,13 @@
 	<li><code>0 &lt;= k &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f$, $g$, $h$ 表示前 $i$ 项中，分别以最后三项作为子数组的最大值所需要的最小增量运算数，初始时 $f = 0$, $g = 0$, $h = 0$。
 
@@ -95,9 +110,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -108,9 +121,7 @@ class Solution:
         return min(f, g, h)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -127,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -145,7 +156,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minIncrementOperations(nums []int, k int) int64 {
@@ -157,7 +168,7 @@ func minIncrementOperations(nums []int, k int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minIncrementOperations(nums: number[], k: number): number {
@@ -169,10 +180,25 @@ function minIncrementOperations(nums: number[], k: number): number {
 }
 ```
 
-### **...**
+#### C#
 
-```
-
+```cs
+public class Solution {
+    public long MinIncrementOperations(int[] nums, int k) {
+        long f = 0, g = 0, h = 0;
+        foreach (int x in nums) {
+            long hh = Math.Min(Math.Min(f, g), h) + Math.Max(k - x, 0);
+            f = g;
+            g = h;
+            h = hh;
+        }
+        return Math.Min(Math.Min(f, g), h);
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

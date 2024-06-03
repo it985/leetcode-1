@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2841.Maximum%20Sum%20of%20Almost%20Unique%20Subarray/README.md
+rating: 1545
+source: 第 112 场双周赛 Q3
+tags:
+    - 数组
+    - 哈希表
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [2841. 几乎唯一子数组的最大和](https://leetcode.cn/problems/maximum-sum-of-almost-unique-subarray)
 
 [English Version](/solution/2800-2899/2841.Maximum%20Sum%20of%20Almost%20Unique%20Subarray/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组&nbsp;<code>nums</code>&nbsp;和两个正整数&nbsp;<code>m</code>&nbsp;和&nbsp;<code>k</code>&nbsp;。</p>
 
@@ -50,11 +64,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：滑动窗口 + 哈希表**
+### 方法一：滑动窗口 + 哈希表
 
 我们可以遍历数组 $nums$，维护一个大小为 $k$ 的窗口，用哈希表 $cnt$ 统计窗口中每个元素的出现次数，用变量 $s$ 统计窗口中所有元素的和。如果 $cnt$ 中不同元素的个数大于等于 $m$，那么我们就更新答案 $ans = \max(ans, s)$。
 
@@ -64,18 +80,14 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
     def maxSum(self, nums: List[int], m: int, k: int) -> int:
         cnt = Counter(nums[:k])
         s = sum(nums[:k])
-        ans = 0
-        if len(cnt) >= m:
-            ans = s
+        ans = s if len(cnt) >= m else 0
         for i in range(k, len(nums)):
             cnt[nums[i]] += 1
             cnt[nums[i - k]] -= 1
@@ -87,9 +99,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -101,10 +111,7 @@ class Solution {
             cnt.merge(nums.get(i), 1, Integer::sum);
             s += nums.get(i);
         }
-        long ans = 0;
-        if (cnt.size() >= m) {
-            ans = s;
-        }
+        long ans = cnt.size() >= m ? s : 0;
         for (int i = k; i < n; ++i) {
             cnt.merge(nums.get(i), 1, Integer::sum);
             if (cnt.merge(nums.get(i - k), -1, Integer::sum) == 0) {
@@ -120,7 +127,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -149,7 +156,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxSum(nums []int, m int, k int) int64 {
@@ -178,7 +185,7 @@ func maxSum(nums []int, m int, k int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxSum(nums: number[], m: number, k: number): number {
@@ -205,10 +212,55 @@ function maxSum(nums: number[], m: number, k: number): number {
 }
 ```
 
-### **...**
+#### C#
 
-```
+```cs
+public class Solution {
+    public long MaxSum(IList<int> nums, int m, int k) {
+        Dictionary<int, int> cnt = new Dictionary<int, int>();
+        int n = nums.Count;
+        long s = 0;
 
+        for (int i = 0; i < k; ++i) {
+            if (!cnt.ContainsKey(nums[i])) {
+                cnt[nums[i]] = 1;
+            }
+            else {
+                cnt[nums[i]]++;
+            }
+            s += nums[i];
+        }
+
+        long ans = cnt.Count >= m ? s : 0;
+
+        for (int i = k; i < n; ++i) {
+            if (!cnt.ContainsKey(nums[i])) {
+                cnt[nums[i]] = 1;
+            }
+            else {
+                cnt[nums[i]]++;
+            }
+            if (cnt.ContainsKey(nums[i - k])) {
+                cnt[nums[i - k]]--;
+                if (cnt[nums[i - k]] == 0) {
+                    cnt.Remove(nums[i - k]);
+                }
+            }
+
+            s += nums[i] - nums[i - k];
+
+            if (cnt.Count >= m) {
+                ans = Math.Max(ans, s);
+            }
+        }
+
+        return ans;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

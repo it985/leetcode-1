@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0454.4Sum%20II/README.md
+tags:
+    - 数组
+    - 哈希表
+---
+
+<!-- problem:start -->
+
 # [454. 四数相加 II](https://leetcode.cn/problems/4sum-ii)
 
 [English Version](/solution/0400-0499/0454.4Sum%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你四个整数数组 <code>nums1</code>、<code>nums2</code>、<code>nums3</code> 和 <code>nums4</code> ，数组长度都是 <code>n</code> ，请你计算有多少个元组 <code>(i, j, k, l)</code> 能满足：</p>
 
@@ -46,11 +57,13 @@
 	<li><code>-2<sup>28</sup> &lt;= nums1[i], nums2[i], nums3[i], nums4[i] &lt;= 2<sup>28</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们可以将数组 $nums1$ 和 $nums2$ 中的元素 $a$ 和 $b$ 相加，将所有可能的和存储在哈希表 $cnt$ 中，其中键为两数之和，值为两数之和出现的次数。
 
@@ -60,9 +73,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -73,9 +84,7 @@ class Solution:
         return sum(cnt[-(c + d)] for c in nums3 for d in nums4)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -97,7 +106,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -120,7 +129,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func fourSumCount(nums1 []int, nums2 []int, nums3 []int, nums4 []int) (ans int) {
@@ -139,7 +148,7 @@ func fourSumCount(nums1 []int, nums2 []int, nums3 []int, nums4 []int) (ans int) 
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function fourSumCount(nums1: number[], nums2: number[], nums3: number[], nums4: number[]): number {
@@ -161,10 +170,8 @@ function fourSumCount(nums1: number[], nums2: number[], nums3: number[], nums4: 
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

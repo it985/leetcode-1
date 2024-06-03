@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2255.Count%20Prefixes%20of%20a%20Given%20String/README.md
+rating: 1260
+source: 第 77 场双周赛 Q1
+tags:
+    - 数组
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2255. 统计是给定字符串前缀的字符串数目](https://leetcode.cn/problems/count-prefixes-of-a-given-string)
 
 [English Version](/solution/2200-2299/2255.Count%20Prefixes%20of%20a%20Given%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串数组&nbsp;<code>words</code>&nbsp;和一个字符串&nbsp;<code>s</code>&nbsp;，其中&nbsp;<code>words[i]</code> 和&nbsp;<code>s</code>&nbsp;只包含 <strong>小写英文字母</strong>&nbsp;。</p>
 
@@ -41,11 +54,13 @@ words 中是 s = "abc" 前缀的字符串为：
 	<li><code>words[i]</code> 和&nbsp;<code>s</code>&nbsp;<strong>只</strong>&nbsp;包含小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：遍历计数**
+### 方法一：遍历计数
 
 我们直接遍历数组 $words$，对于每个字符串 $w$，判断 $s$ 是否以 $w$ 为前缀，如果是则答案加一。
 
@@ -55,9 +70,7 @@ words 中是 s = "abc" 前缀的字符串为：
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -65,9 +78,7 @@ class Solution:
         return sum(s.startswith(w) for w in words)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -83,7 +94,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -98,7 +109,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countPrefixes(words []string, s string) (ans int) {
@@ -111,7 +122,7 @@ func countPrefixes(words []string, s string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countPrefixes(words: string[], s: string): number {
@@ -119,10 +130,8 @@ function countPrefixes(words: string[], s: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

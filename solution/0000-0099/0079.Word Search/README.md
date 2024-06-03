@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0079.Word%20Search/README.md
+tags:
+    - 数组
+    - 字符串
+    - 回溯
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [79. 单词搜索](https://leetcode.cn/problems/word-search)
 
 [English Version](/solution/0000-0099/0079.Word%20Search/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个 <code>m x n</code> 二维字符网格 <code>board</code> 和一个字符串单词 <code>word</code> 。如果 <code>word</code> 存在于网格中，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
 
@@ -49,11 +62,13 @@
 
 <p><strong>进阶：</strong>你可以使用搜索剪枝的技术来优化解决方案，使其在 <code>board</code> 更大的情况下可以更快解决问题？</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS(回溯)**
+### 方法一：DFS(回溯)
 
 我们可以枚举网格的每一个位置 $(i, j)$ 作为搜索的起点，然后从起点开始进行深度优先搜索，如果可以搜索到单词的末尾，就说明单词存在，否则说明单词不存在。
 
@@ -69,9 +84,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -95,9 +108,7 @@ class Solution:
         return any(dfs(i, j, 0) for i in range(m) for j in range(n))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -143,7 +154,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -181,7 +192,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func exist(board [][]byte, word string) bool {
@@ -217,7 +228,7 @@ func exist(board [][]byte, word string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function exist(board: string[][], word: string): boolean {
@@ -253,54 +264,7 @@ function exist(board: string[][], word: string): boolean {
 }
 ```
 
-### **C#**
-
-```cs
-public class Solution {
-    private int m;
-    private int n;
-    private char[][] board;
-    private string word;
-
-    public bool Exist(char[][] board, string word) {
-        m = board.Length;
-        n = board[0].Length;
-        this.board = board;
-        this.word = word;
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < n; ++j) {
-                if (dfs(i, j, 0)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    private bool dfs(int i, int j, int k) {
-        if (k == word.Length - 1) {
-            return board[i][j] == word[k];
-        }
-        if (board[i][j] != word[k]) {
-            return false;
-        }
-        char c = board[i][j];
-        board[i][j] = '0';
-        int[] dirs = { -1, 0, 1, 0, -1 };
-        for (int u = 0; u < 4; ++u) {
-            int x = i + dirs[u];
-            int y = j + dirs[u + 1];
-            if (x >= 0 && x < m && y >= 0 && y < n && board[x][y] != '0' && dfs(x, y, k + 1)) {
-                return true;
-            }
-        }
-        board[i][j] = c;
-        return false;
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -357,10 +321,55 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C#
 
-```
+```cs
+public class Solution {
+    private int m;
+    private int n;
+    private char[][] board;
+    private string word;
 
+    public bool Exist(char[][] board, string word) {
+        m = board.Length;
+        n = board[0].Length;
+        this.board = board;
+        this.word = word;
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (dfs(i, j, 0)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private bool dfs(int i, int j, int k) {
+        if (k == word.Length - 1) {
+            return board[i][j] == word[k];
+        }
+        if (board[i][j] != word[k]) {
+            return false;
+        }
+        char c = board[i][j];
+        board[i][j] = '0';
+        int[] dirs = { -1, 0, 1, 0, -1 };
+        for (int u = 0; u < 4; ++u) {
+            int x = i + dirs[u];
+            int y = j + dirs[u + 1];
+            if (x >= 0 && x < m && y >= 0 && y < n && board[x][y] != '0' && dfs(x, y, k + 1)) {
+                return true;
+            }
+        }
+        board[i][j] = c;
+        return false;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

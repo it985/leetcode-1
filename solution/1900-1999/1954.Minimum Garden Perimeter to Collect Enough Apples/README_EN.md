@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1954.Minimum%20Garden%20Perimeter%20to%20Collect%20Enough%20Apples/README_EN.md
+rating: 1758
+source: Weekly Contest 252 Q3
+tags:
+    - Math
+    - Binary Search
+---
+
+<!-- problem:start -->
+
 # [1954. Minimum Garden Perimeter to Collect Enough Apples](https://leetcode.com/problems/minimum-garden-perimeter-to-collect-enough-apples)
 
 [中文文档](/solution/1900-1999/1954.Minimum%20Garden%20Perimeter%20to%20Collect%20Enough%20Apples/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>In a garden represented as an infinite 2D grid, there is an apple tree planted at <strong>every</strong> integer coordinate. The apple tree planted at an integer coordinate <code>(i, j)</code> has <code>|i| + |j|</code> apples growing on it.</p>
 
@@ -49,11 +64,17 @@ The perimeter is 2 * 4 = 8.
 	<li><code>1 &lt;= neededApples &lt;= 10<sup>15</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -63,6 +84,71 @@ class Solution:
             x += 1
         return x * 8
 ```
+
+#### Java
+
+```java
+class Solution {
+    public long minimumPerimeter(long neededApples) {
+        long x = 1;
+        while (2 * x * (x + 1) * (2 * x + 1) < neededApples) {
+            ++x;
+        }
+        return 8 * x;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    long long minimumPerimeter(long long neededApples) {
+        long long x = 1;
+        while (2 * x * (x + 1) * (2 * x + 1) < neededApples) {
+            ++x;
+        }
+        return 8 * x;
+    }
+};
+```
+
+#### Go
+
+```go
+func minimumPerimeter(neededApples int64) int64 {
+	var x int64 = 1
+	for 2*x*(x+1)*(2*x+1) < neededApples {
+		x++
+	}
+	return 8 * x
+}
+```
+
+#### TypeScript
+
+```ts
+function minimumPerimeter(neededApples: number): number {
+    let x = 1;
+    while (2 * x * (x + 1) * (2 * x + 1) < neededApples) {
+        ++x;
+    }
+    return 8 * x;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -77,19 +163,7 @@ class Solution:
         return l * 8
 ```
 
-### **Java**
-
-```java
-class Solution {
-    public long minimumPerimeter(long neededApples) {
-        long x = 1;
-        while (2 * x * (x + 1) * (2 * x + 1) < neededApples) {
-            ++x;
-        }
-        return 8 * x;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -108,20 +182,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    long long minimumPerimeter(long long neededApples) {
-        long long x = 1;
-        while (2 * x * (x + 1) * (2 * x + 1) < neededApples) {
-            ++x;
-        }
-        return 8 * x;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -141,17 +202,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func minimumPerimeter(neededApples int64) int64 {
-	var x int64 = 1
-	for 2*x*(x+1)*(2*x+1) < neededApples {
-		x++
-	}
-	return 8 * x
-}
-```
+#### Go
 
 ```go
 func minimumPerimeter(neededApples int64) int64 {
@@ -168,17 +219,7 @@ func minimumPerimeter(neededApples int64) int64 {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function minimumPerimeter(neededApples: number): number {
-    let x = 1;
-    while (2 * x * (x + 1) * (2 * x + 1) < neededApples) {
-        ++x;
-    }
-    return 8 * x;
-}
-```
+#### TypeScript
 
 ```ts
 function minimumPerimeter(neededApples: number): number {
@@ -196,10 +237,8 @@ function minimumPerimeter(neededApples: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

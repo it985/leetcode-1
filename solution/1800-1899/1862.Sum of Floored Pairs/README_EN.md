@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1862.Sum%20of%20Floored%20Pairs/README_EN.md
+rating: 2170
+source: Biweekly Contest 52 Q4
+tags:
+    - Array
+    - Math
+    - Binary Search
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [1862. Sum of Floored Pairs](https://leetcode.com/problems/sum-of-floored-pairs)
 
 [中文文档](/solution/1800-1899/1862.Sum%20of%20Floored%20Pairs/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code>, return the sum of <code>floor(nums[i] / nums[j])</code> for all pairs of indices <code>0 &lt;= i, j &lt; nums.length</code> in the array. Since the answer may be too large, return it <strong>modulo</strong> <code>10<sup>9</sup> + 7</code>.</p>
 
@@ -38,9 +55,13 @@ We calculate the floor of the division for every pair of indices in the array th
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Prefix Sum of Value Range + Optimized Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Prefix Sum of Value Range + Optimized Enumeration
 
 First, we count the occurrences of each element in the array $nums$ and record them in the array $cnt$. Then, we calculate the prefix sum of the array $cnt$ and record it in the array $s$, i.e., $s[i]$ represents the count of elements less than or equal to $i$.
 
@@ -50,7 +71,7 @@ The time complexity is $O(M \times \log M)$, and the space complexity is $O(M)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -72,7 +93,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +125,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -134,7 +155,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sumOfFlooredPairs(nums []int) (ans int) {
@@ -160,7 +181,7 @@ func sumOfFlooredPairs(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumOfFlooredPairs(nums: number[]): number {
@@ -187,7 +208,7 @@ function sumOfFlooredPairs(nums: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -230,10 +251,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

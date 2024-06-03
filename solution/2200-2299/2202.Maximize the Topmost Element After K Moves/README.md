@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2202.Maximize%20the%20Topmost%20Element%20After%20K%20Moves/README.md
+rating: 1716
+source: 第 284 场周赛 Q3
+tags:
+    - 贪心
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [2202. K 次操作后最大化顶端元素](https://leetcode.cn/problems/maximize-the-topmost-element-after-k-moves)
 
 [English Version](/solution/2200-2299/2202.Maximize%20the%20Topmost%20Element%20After%20K%20Moves/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums</code>&nbsp;，它表示一个 <strong>栈</strong> ，其中 <code>nums[0]</code>&nbsp;是栈顶的元素。</p>
 
@@ -54,15 +67,17 @@
 	<li><code>0 &lt;= nums[i], k &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,9 +95,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -109,7 +122,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -129,7 +142,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumTop(nums []int, k int) int {
@@ -154,16 +167,8 @@ func maximumTop(nums []int, k int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

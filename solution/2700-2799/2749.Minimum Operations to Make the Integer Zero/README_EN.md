@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2749.Minimum%20Operations%20to%20Make%20the%20Integer%20Zero/README_EN.md
+rating: 2132
+source: Weekly Contest 351 Q2
+tags:
+    - Bit Manipulation
+    - Brainteaser
+---
+
+<!-- problem:start -->
+
 # [2749. Minimum Operations to Make the Integer Zero](https://leetcode.com/problems/minimum-operations-to-make-the-integer-zero)
 
 [中文文档](/solution/2700-2799/2749.Minimum%20Operations%20to%20Make%20the%20Integer%20Zero/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two integers <code>num1</code> and <code>num2</code>.</p>
 
@@ -41,11 +56,17 @@ It can be proven, that 3 is the minimum number of operations that we need to per
 	<li><code><font face="monospace">-10<sup>9</sup>&nbsp;&lt;= num2 &lt;= 10<sup>9</sup></font></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,7 +80,7 @@ class Solution:
         return -1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -78,7 +99,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -99,7 +120,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func makeTheIntegerZero(num1 int, num2 int) int {
@@ -116,10 +137,8 @@ func makeTheIntegerZero(num1 int, num2 int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

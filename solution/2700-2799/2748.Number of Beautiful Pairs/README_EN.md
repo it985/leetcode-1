@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2748.Number%20of%20Beautiful%20Pairs/README_EN.md
+rating: 1301
+source: Weekly Contest 351 Q1
+tags:
+    - Array
+    - Math
+    - Number Theory
+---
+
+<!-- problem:start -->
+
 # [2748. Number of Beautiful Pairs](https://leetcode.com/problems/number-of-beautiful-pairs)
 
 [中文文档](/solution/2700-2799/2748.Number%20of%20Beautiful%20Pairs/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed </strong>integer array <code>nums</code>. A pair of indices <code>i</code>, <code>j</code> where <code>0 &lt;=&nbsp;i &lt; j &lt; nums.length</code> is called beautiful if the <strong>first digit</strong> of <code>nums[i]</code> and the <strong>last digit</strong> of <code>nums[j]</code> are <strong>coprime</strong>.</p>
 
@@ -45,11 +61,17 @@ Thus, we return 2.
 	<li><code>nums[i] % 10 != 0</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -64,7 +86,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -115,7 +137,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countBeautifulPairs(nums []int) (ans int) {
@@ -142,7 +164,7 @@ func gcd(a, b int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countBeautifulPairs(nums: number[]): number {
@@ -170,10 +192,8 @@ function gcd(a: number, b: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

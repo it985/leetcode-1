@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0522.Longest%20Uncommon%20Subsequence%20II/README.md
+tags:
+    - 数组
+    - 哈希表
+    - 双指针
+    - 字符串
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [522. 最长特殊序列 II](https://leetcode.cn/problems/longest-uncommon-subsequence-ii)
 
 [English Version](/solution/0500-0599/0522.Longest%20Uncommon%20Subsequence%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定字符串列表&nbsp;<code>strs</code> ，返回其中 <strong>最长的特殊序列</strong>&nbsp;的长度。如果最长特殊序列不存在，返回 <code>-1</code> 。</p>
 
@@ -42,11 +56,13 @@
 	<li><code>strs[i]</code>&nbsp;只包含小写英文字母</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：判断子序列**
+### 方法一：判断子序列
 
 判断是否独有，只需要取字符串 $s$ 本身，与其他字符串比较即可。题目可以转化为：获取**非其他字符串子序列**的字符串的最大长度。若不存在，返回 -1。
 
@@ -54,9 +70,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -84,9 +98,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -120,7 +132,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -146,7 +158,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findLUSlength(strs []string) int {
@@ -178,10 +190,8 @@ func findLUSlength(strs []string) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

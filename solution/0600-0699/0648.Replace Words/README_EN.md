@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0648.Replace%20Words/README_EN.md
+tags:
+    - Trie
+    - Array
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [648. Replace Words](https://leetcode.com/problems/replace-words)
 
 [中文文档](/solution/0600-0699/0648.Replace%20Words/README.md)
 
 ## Description
 
-<p>In English, we have a concept called <strong>root</strong>, which can be followed by some other word to form another longer word - let&#39;s call this word <strong>successor</strong>. For example, when the <strong>root</strong> <code>&quot;an&quot;</code> is followed by the <strong>successor</strong> word <code>&quot;other&quot;</code>, we can form a new word <code>&quot;another&quot;</code>.</p>
+<!-- description:start -->
+
+<p>In English, we have a concept called <strong>root</strong>, which can be followed by some other word to form another longer word - let&#39;s call this word <strong>successor</strong>. For example, when the <strong>root</strong> <code>&quot;help&quot;</code> is followed by the <strong>successor</strong> word <code>&quot;ful&quot;</code>, we can form a new word <code>&quot;helpful&quot;</code>.</p>
 
 <p>Given a <code>dictionary</code> consisting of many <strong>roots</strong> and a <code>sentence</code> consisting of words separated by spaces, replace all the <strong>successors</strong> in the sentence with the <strong>root</strong> forming it. If a <strong>successor</strong> can be replaced by more than one <strong>root</strong>, replace it with the <strong>root</strong> that has <strong>the shortest length</strong>.</p>
 
@@ -40,11 +55,17 @@
 	<li><code>sentence</code> does not have leading or trailing spaces.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Trie:
@@ -85,7 +106,7 @@ class Solution:
         return " ".join(ans)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -107,56 +128,7 @@ class Solution {
 }
 ```
 
-```java
-class Trie {
-    private Trie[] children = new Trie[26];
-    private int ref = -1;
-
-    public void insert(String w, int i) {
-        Trie node = this;
-        for (int j = 0; j < w.length(); ++j) {
-            int idx = w.charAt(j) - 'a';
-            if (node.children[idx] == null) {
-                node.children[idx] = new Trie();
-            }
-            node = node.children[idx];
-        }
-        node.ref = i;
-    }
-
-    public int search(String w) {
-        Trie node = this;
-        for (int j = 0; j < w.length(); ++j) {
-            int idx = w.charAt(j) - 'a';
-            if (node.children[idx] == null) {
-                return -1;
-            }
-            node = node.children[idx];
-            if (node.ref != -1) {
-                return node.ref;
-            }
-        }
-        return -1;
-    }
-}
-
-class Solution {
-    public String replaceWords(List<String> dictionary, String sentence) {
-        Trie trie = new Trie();
-        for (int i = 0; i < dictionary.size(); ++i) {
-            trie.insert(dictionary.get(i), i);
-        }
-        List<String> ans = new ArrayList<>();
-        for (String w : sentence.split("\\s")) {
-            int idx = trie.search(w);
-            ans.add(idx == -1 ? w : dictionary.get(idx));
-        }
-        return String.join(" ", ans);
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Trie {
@@ -218,7 +190,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Trie struct {
@@ -275,7 +247,7 @@ func replaceWords(dictionary []string, sentence string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class Trie {
@@ -330,10 +302,69 @@ function replaceWords(dictionary: string[], sentence: string): string {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Java
+
+```java
+class Trie {
+    private Trie[] children = new Trie[26];
+    private int ref = -1;
+
+    public void insert(String w, int i) {
+        Trie node = this;
+        for (int j = 0; j < w.length(); ++j) {
+            int idx = w.charAt(j) - 'a';
+            if (node.children[idx] == null) {
+                node.children[idx] = new Trie();
+            }
+            node = node.children[idx];
+        }
+        node.ref = i;
+    }
+
+    public int search(String w) {
+        Trie node = this;
+        for (int j = 0; j < w.length(); ++j) {
+            int idx = w.charAt(j) - 'a';
+            if (node.children[idx] == null) {
+                return -1;
+            }
+            node = node.children[idx];
+            if (node.ref != -1) {
+                return node.ref;
+            }
+        }
+        return -1;
+    }
+}
+
+class Solution {
+    public String replaceWords(List<String> dictionary, String sentence) {
+        Trie trie = new Trie();
+        for (int i = 0; i < dictionary.size(); ++i) {
+            trie.insert(dictionary.get(i), i);
+        }
+        List<String> ans = new ArrayList<>();
+        for (String w : sentence.split("\\s")) {
+            int idx = trie.search(w);
+            ans.add(idx == -1 ? w : dictionary.get(idx));
+        }
+        return String.join(" ", ans);
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

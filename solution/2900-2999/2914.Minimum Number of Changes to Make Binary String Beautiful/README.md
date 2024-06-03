@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2914.Minimum%20Number%20of%20Changes%20to%20Make%20Binary%20String%20Beautiful/README.md
+rating: 1479
+source: 第 116 场双周赛 Q2
+tags:
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2914. 使二进制字符串变美丽的最少修改次数](https://leetcode.cn/problems/minimum-number-of-changes-to-make-binary-string-beautiful)
 
 [English Version](/solution/2900-2999/2914.Minimum%20Number%20of%20Changes%20to%20Make%20Binary%20String%20Beautiful/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个长度为偶数下标从 <strong>0</strong>&nbsp;开始的二进制字符串&nbsp;<code>s</code>&nbsp;。</p>
 
@@ -59,11 +71,13 @@
 	<li><code>s[i]</code>&nbsp;要么是&nbsp;<code>'0'</code>&nbsp;，要么是&nbsp;<code>'1'</code> 。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数**
+### 方法一：计数
 
 我们只需要遍历字符串 $s$ 的所有奇数下标 $1, 3, 5, \cdots$，如果当前奇数下标与前一个下标的字符不同，即 $s[i] \ne s[i - 1]$，那么就需要修改当前字符，使得 $s[i] = s[i - 1]$。因此，此时答案需要加 $1$。
 
@@ -73,9 +87,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +95,7 @@ class Solution:
         return sum(s[i] != s[i - 1] for i in range(1, len(s), 2))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +111,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -117,7 +127,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minChanges(s string) (ans int) {
@@ -130,7 +140,7 @@ func minChanges(s string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minChanges(s: string): number {
@@ -144,10 +154,8 @@ function minChanges(s: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

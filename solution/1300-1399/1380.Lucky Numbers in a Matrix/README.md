@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1380.Lucky%20Numbers%20in%20a%20Matrix/README.md
+rating: 1207
+source: 第 180 场周赛 Q1
+tags:
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [1380. 矩阵中的幸运数](https://leetcode.cn/problems/lucky-numbers-in-a-matrix)
 
 [English Version](/solution/1300-1399/1380.Lucky%20Numbers%20in%20a%20Matrix/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个 <code>m * n</code> 的矩阵，矩阵中的数字 <strong>各不相同</strong> 。请你按 <strong>任意</strong> 顺序返回矩阵中的所有幸运数。</p>
 
@@ -53,11 +66,13 @@
 	<li>矩阵中的所有元素都是不同的</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：维护行最小值和列最大值**
+### 方法一：维护行最小值和列最大值
 
 我们可以使用两个数组 $rows$ 和 $cols$ 记录矩阵中每一行的最小值和每一列的最大值，然后遍历矩阵中的每一个元素，检查该元素是否为所在行的最小值且为所在列的最大值，如果是则该元素为幸运数，我们将其加入答案数组。
 
@@ -67,9 +82,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -79,9 +92,7 @@ class Solution:
         return list(rows & cols)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -109,7 +120,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,7 +150,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func luckyNumbers(matrix [][]int) (ans []int) {
@@ -165,7 +176,7 @@ func luckyNumbers(matrix [][]int) (ans []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function luckyNumbers(matrix: number[][]): number[] {
@@ -191,7 +202,7 @@ function luckyNumbers(matrix: number[][]): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -221,10 +232,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

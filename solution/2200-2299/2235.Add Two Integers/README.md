@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2235.Add%20Two%20Integers/README.md
+tags:
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [2235. 两整数相加](https://leetcode.cn/problems/add-two-integers)
 
 [English Version](/solution/2200-2299/2235.Add%20Two%20Integers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 给你两个整数&nbsp;<code>num1</code> 和 <code>num2</code>，返回这两个整数的和。
 
@@ -34,17 +44,90 @@
 	<li><code>-100 &lt;= num1, num2 &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：使用加法运算符**
+### 方法一：使用加法运算符
 
 我们可以直接使用加法运算符 `+` 来计算两个整数的和。
 
 时间复杂度 $O(1)$，空间复杂度 $O(1)$。
 
-**方法二：位运算（不使用加法运算符）**
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def sum(self, num1: int, num2: int) -> int:
+        return num1 + num2
+```
+
+#### Java
+
+```java
+class Solution {
+    public int sum(int num1, int num2) {
+        return num1 + num2;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int sum(int num1, int num2) {
+        return num1 + num2;
+    }
+};
+```
+
+#### Go
+
+```go
+func sum(num1 int, num2 int) int {
+	return num1 + num2
+}
+```
+
+#### TypeScript
+
+```ts
+function sum(num1: number, num2: number): number {
+    return num1 + num2;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn sum(num1: i32, num2: i32) -> i32 {
+        num1 + num2
+    }
+}
+```
+
+#### C
+
+```c
+int sum(int num1, int num2) {
+    return num1 + num2;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：位运算（不使用加法运算符）
 
 我们也可以在不使用加法运算符的前提下，使用位运算来计算两个整数的和。
 
@@ -70,15 +153,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```python
-class Solution:
-    def sum(self, num1: int, num2: int) -> int:
-        return num1 + num2
-```
+#### Python3
 
 ```python
 class Solution:
@@ -90,17 +165,7 @@ class Solution:
         return num1 if num1 < 0x80000000 else ~(num1 ^ 0xFFFFFFFF)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```java
-class Solution {
-    public int sum(int num1, int num2) {
-        return num1 + num2;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -115,16 +180,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int sum(int num1, int num2) {
-        return num1 + num2;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -140,13 +196,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func sum(num1 int, num2 int) int {
-	return num1 + num2
-}
-```
+#### Go
 
 ```go
 func sum(num1 int, num2 int) int {
@@ -159,13 +209,7 @@ func sum(num1 int, num2 int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function sum(num1: number, num2: number): number {
-    return num1 + num2;
-}
-```
+#### TypeScript
 
 ```ts
 function sum(num1: number, num2: number): number {
@@ -178,15 +222,7 @@ function sum(num1: number, num2: number): number {
 }
 ```
 
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn sum(num1: i32, num2: i32) -> i32 {
-        num1 + num2
-    }
-}
-```
+#### Rust
 
 ```rust
 impl Solution {
@@ -203,18 +239,8 @@ impl Solution {
 }
 ```
 
-### **C**
-
-```c
-int sum(int num1, int num2) {
-    return num1 + num2;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

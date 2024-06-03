@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2933.High-Access%20Employees/README_EN.md
+rating: 1536
+source: Weekly Contest 371 Q2
+tags:
+    - Array
+    - Hash Table
+    - String
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2933. High-Access Employees](https://leetcode.com/problems/high-access-employees)
 
 [中文文档](/solution/2900-2999/2933.High-Access%20Employees/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a 2D <strong>0-indexed</strong> array of strings, <code>access_times</code>, with size <code>n</code>. For each <code>i</code> where <code>0 &lt;= i &lt;= n - 1</code>, <code>access_times[i][0]</code> represents the name of an employee, and <code>access_times[i][1]</code> represents the access time of that employee. All entries in <code>access_times</code> are within the same day.</p>
 
@@ -57,9 +74,13 @@ So the answer is [&quot;ab&quot;,&quot;cd&quot;].</pre>
 	<li><code>access_times[i][1]</code> consists only of <code>&#39;0&#39;</code> to <code>&#39;9&#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table + Sorting**
+<!-- solution:start -->
+
+### Solution 1: Hash Table + Sorting
 
 We use a hash table $d$ to store all access times of each employee, where the key is the employee's name, and the value is an integer array, representing all access times of the employee, which are the number of minutes from the start of the day at 00:00.
 
@@ -71,7 +92,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -87,7 +108,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -115,7 +136,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -143,7 +164,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findHighAccessEmployees(access_times [][]string) (ans []string) {
@@ -168,7 +189,7 @@ func findHighAccessEmployees(access_times [][]string) (ans []string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findHighAccessEmployees(access_times: string[][]): string[] {
@@ -196,10 +217,8 @@ function findHighAccessEmployees(access_times: string[][]): string[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,20 @@
-# [1867. Orders With Maximum Quantity Above Average](https://leetcode.com/problems/orders-with-maximum-quantity-above-average)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1867.Orders%20With%20Maximum%20Quantity%20Above%20Average/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [1867. Orders With Maximum Quantity Above Average 🔒](https://leetcode.com/problems/orders-with-maximum-quantity-above-average)
 
 [中文文档](/solution/1800-1899/1867.Orders%20With%20Maximum%20Quantity%20Above%20Average/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>OrdersDetails</code></p>
 
@@ -80,11 +92,17 @@ The maximum quantity of each order is:
 Orders 1 and 3 are imbalanced because they have a maximum quantity that exceeds the average quantity of every order.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -103,3 +121,7 @@ WHERE max_quantity > (SELECT MAX(avg_quantity) FROM t);
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

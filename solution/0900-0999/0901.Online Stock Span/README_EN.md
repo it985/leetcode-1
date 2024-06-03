@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0901.Online%20Stock%20Span/README_EN.md
+tags:
+    - Stack
+    - Design
+    - Data Stream
+    - Monotonic Stack
+---
+
+<!-- problem:start -->
+
 # [901. Online Stock Span](https://leetcode.com/problems/online-stock-span)
 
 [中文文档](/solution/0900-0999/0901.Online%20Stock%20Span/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Design an algorithm that collects daily price quotes for some stock and returns <strong>the span</strong> of that stock&#39;s price for the current day.</p>
 
@@ -49,9 +64,13 @@ stockSpanner.next(85);  // return 6
 	<li>At most <code>10<sup>4</sup></code> calls will be made to <code>next</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Monotonic Stack**
+<!-- solution:start -->
+
+### Solution 1: Monotonic Stack
 
 Based on the problem description, we know that for the current day's price $price$, we start from this price and look backwards to find the first price that is larger than this price. The difference in indices $cnt$ between these two prices is the span of the current day's price.
 
@@ -67,7 +86,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class StockSpanner:
@@ -87,7 +106,7 @@ class StockSpanner:
 # param_1 = obj.next(price)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class StockSpanner {
@@ -113,7 +132,7 @@ class StockSpanner {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class StockSpanner {
@@ -142,7 +161,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type StockSpanner struct {
@@ -172,7 +191,7 @@ type pair struct{ price, cnt int }
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class StockSpanner {
@@ -199,7 +218,7 @@ class StockSpanner {
  */
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::VecDeque;
@@ -233,10 +252,8 @@ impl StockSpanner {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof2/%E5%89%91%E6%8C%87%20Offer%20II%20001.%20%E6%95%B4%E6%95%B0%E9%99%A4%E6%B3%95/README.md
+---
+
+<!-- problem:start -->
+
 # [剑指 Offer II 001. 整数除法](https://leetcode.cn/problems/xoh6Oh)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个整数 <code>a</code> 和 <code>b</code> ，求它们的除法的商 <code>a/b</code> ，要求不得使用乘号 <code>'*'</code>、除号 <code>'/'</code> 以及求余符号 <code>'%'</code>&nbsp;。</p>
 
@@ -59,11 +66,13 @@
 
 <p>&nbsp;</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟 + 快速幂**
+### 方法一：模拟 + 快速幂
 
 除法本质上就是减法，题目要求我们计算出两个数相除之后的取整结果，其实就是计算被除数是多少个除数加上一个小于除数的数构成的。但是一次循环只能做一次减法，效率太低会导致超时，可借助快速幂的思想进行优化。
 
@@ -73,9 +82,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -99,9 +106,7 @@ class Solution:
         return ans if sign else -ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -131,7 +136,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -162,7 +167,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func divide(a int, b int) int {
@@ -200,7 +205,7 @@ func divide(a int, b int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function divide(a: number, b: number): number {
@@ -233,7 +238,7 @@ function divide(a: number, b: number): number {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -263,10 +268,38 @@ public class Solution {
 }
 ```
 
-### **...**
+#### Swift
 
-```
-
+```swift
+class Solution {
+    func divide(_ a: Int, _ b: Int) -> Int {
+        if b == 1 {
+            return a
+        }
+        if a == Int32.min && b == -1 {
+            return Int(Int32.max)
+        }
+        let sign = (a > 0 && b > 0) || (a < 0 && b < 0)
+        var a = a > 0 ? -a : a
+        let b = b > 0 ? -b : b
+        var ans = 0
+        while a <= b {
+            var x = b
+            var cnt = 1
+            while x >= (Int32.min >> 1) && a <= (x << 1) {
+                x <<= 1
+                cnt <<= 1
+            }
+            ans += cnt
+            a -= x
+        }
+        return sign ? ans : -ans
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

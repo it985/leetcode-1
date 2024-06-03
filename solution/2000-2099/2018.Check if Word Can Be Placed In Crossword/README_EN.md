@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2018.Check%20if%20Word%20Can%20Be%20Placed%20In%20Crossword/README_EN.md
+rating: 1929
+source: Weekly Contest 260 Q3
+tags:
+    - Array
+    - Enumeration
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [2018. Check if Word Can Be Placed In Crossword](https://leetcode.com/problems/check-if-word-can-be-placed-in-crossword)
 
 [中文文档](/solution/2000-2099/2018.Check%20if%20Word%20Can%20Be%20Placed%20In%20Crossword/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an <code>m x n</code> matrix <code>board</code>, representing the<strong> current </strong>state of a crossword puzzle. The crossword contains lowercase English letters (from solved words), <code>&#39; &#39;</code> to represent any <strong>empty </strong>cells, and <code>&#39;#&#39;</code> to represent any <strong>blocked</strong> cells.</p>
 
@@ -53,9 +69,13 @@
 	<li><code>word</code> will contain only lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Enumeration
 
 We can enumerate each position $(i, j)$ in the matrix, and judge whether we can place the word `word` from left to right or from right to left, or from top to bottom or from bottom to top, starting from this position.
 
@@ -78,7 +98,7 @@ The time complexity is $O(m \times n)$, and the space complexity is $O(1)$. Here
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -116,7 +136,7 @@ class Solution:
         return False
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -164,7 +184,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -202,7 +222,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func placeWordInCrossword(board [][]byte, word string) bool {
@@ -236,10 +256,8 @@ func placeWordInCrossword(board [][]byte, word string) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

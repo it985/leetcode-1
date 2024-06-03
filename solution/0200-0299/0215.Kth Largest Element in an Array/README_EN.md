@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0215.Kth%20Largest%20Element%20in%20an%20Array/README_EN.md
+tags:
+    - Array
+    - Divide and Conquer
+    - Quickselect
+    - Sorting
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array)
 
 [中文文档](/solution/0200-0299/0215.Kth%20Largest%20Element%20in%20an%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code> and an integer <code>k</code>, return <em>the</em> <code>k<sup>th</sup></code> <em>largest element in the array</em>.</p>
 
@@ -26,11 +42,21 @@
 	<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Sorting
+
+We can sort the array $nums$ in ascending order, and then get $nums[n-k]$.
+
+The time complexity is $O(n \times \log n)$, where $n$ is the length of the array $nums$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,7 +85,7 @@ class Solution:
         return quick_sort(0, n - 1, n - k)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -93,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +145,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findKthLargest(nums []int, k int) int {
@@ -157,7 +183,7 @@ func quickSort(nums []int, left, right, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findKthLargest(nums: number[], k: number): number {
@@ -188,7 +214,7 @@ function findKthLargest(nums: number[], k: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use rand::Rng;
@@ -222,6 +248,24 @@ impl Solution {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Partition
+
+We notice that it is not always necessary for the entire array to be in an ordered state. We only need **local order**. That is to say, if the elements in the position $[0..k)$ are sorted in descending order, then we can determine the result. Here we use **quick sort**.
+
+Quick sort has a characteristic that at the end of each loop, it can be determined that the $partition$ is definitely at the index position it should be. Therefore, based on it, we know whether the result value is in the left array or in the right array, and then sort that array.
+
+The time complexity is $O(n)$, where $n$ is the length of the array $nums$.
+
+<!-- tabs:start -->
+
+#### Rust
+
 ```rust
 use rand::Rng;
 
@@ -253,10 +297,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

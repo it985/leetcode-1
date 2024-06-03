@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1711.Count%20Good%20Meals/README_EN.md
+rating: 1797
+source: Weekly Contest 222 Q2
+tags:
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [1711. Count Good Meals](https://leetcode.com/problems/count-good-meals)
 
 [中文文档](/solution/1700-1799/1711.Count%20Good%20Meals/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A <strong>good meal</strong> is a meal that contains <strong>exactly two different food items</strong> with a sum of deliciousness equal to a power of two.</p>
 
@@ -37,9 +52,13 @@ Their respective sums are 4, 8, 8, and 16, all of which are powers of 2.
 	<li><code>0 &lt;= deliciousness[i] &lt;= 2<sup>20</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table + Enumeration of Powers of Two**
+<!-- solution:start -->
+
+### Solution 1: Hash Table + Enumeration of Powers of Two
 
 According to the problem, we need to count the number of combinations in the array where the sum of two numbers is a power of $2$. Directly enumerating all combinations has a time complexity of $O(n^2)$, which will definitely time out.
 
@@ -61,7 +80,7 @@ The time complexity is the same as the method above.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -79,21 +98,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def countPairs(self, deliciousness: List[int]) -> int:
-        mod = 10**9 + 7
-        cnt = Counter(deliciousness)
-        ans = 0
-        for i in range(22):
-            s = 1 << i
-            for a, m in cnt.items():
-                if (b := s - a) in cnt:
-                    ans += m * (m - 1) if a == b else m * cnt[b]
-        return (ans >> 1) % mod
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -113,6 +118,73 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    const int mod = 1e9 + 7;
+
+    int countPairs(vector<int>& deliciousness) {
+        int mx = *max_element(deliciousness.begin(), deliciousness.end()) << 1;
+        unordered_map<int, int> cnt;
+        int ans = 0;
+        for (auto& d : deliciousness) {
+            for (int s = 1; s <= mx; s <<= 1) {
+                ans = (ans + cnt[s - d]) % mod;
+            }
+            ++cnt[d];
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func countPairs(deliciousness []int) (ans int) {
+	mx := slices.Max(deliciousness) << 1
+	const mod int = 1e9 + 7
+	cnt := map[int]int{}
+	for _, d := range deliciousness {
+		for s := 1; s <= mx; s <<= 1 {
+			ans = (ans + cnt[s-d]) % mod
+		}
+		cnt[d]++
+	}
+	return
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def countPairs(self, deliciousness: List[int]) -> int:
+        mod = 10**9 + 7
+        cnt = Counter(deliciousness)
+        ans = 0
+        for i in range(22):
+            s = 1 << i
+            for a, m in cnt.items():
+                if (b := s - a) in cnt:
+                    ans += m * (m - 1) if a == b else m * cnt[b]
+        return (ans >> 1) % mod
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -141,27 +213,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    const int mod = 1e9 + 7;
-
-    int countPairs(vector<int>& deliciousness) {
-        int mx = *max_element(deliciousness.begin(), deliciousness.end()) << 1;
-        unordered_map<int, int> cnt;
-        int ans = 0;
-        for (auto& d : deliciousness) {
-            for (int s = 1; s <= mx; s <<= 1) {
-                ans = (ans + cnt[s - d]) % mod;
-            }
-            ++cnt[d];
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -186,22 +238,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func countPairs(deliciousness []int) (ans int) {
-	mx := slices.Max(deliciousness) << 1
-	const mod int = 1e9 + 7
-	cnt := map[int]int{}
-	for _, d := range deliciousness {
-		for s := 1; s <= mx; s <<= 1 {
-			ans = (ans + cnt[s-d]) % mod
-		}
-		cnt[d]++
-	}
-	return
-}
-```
+#### Go
 
 ```go
 func countPairs(deliciousness []int) (ans int) {
@@ -228,10 +265,8 @@ func countPairs(deliciousness []int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1462.Course%20Schedule%20IV/README.md
+rating: 1692
+source: 第 27 场双周赛 Q3
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 图
+    - 拓扑排序
+---
+
+<!-- problem:start -->
+
 # [1462. 课程表 IV](https://leetcode.cn/problems/course-schedule-iv)
 
 [English Version](/solution/1400-1499/1462.Course%20Schedule%20IV/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你总共需要上<meta charset="UTF-8" />&nbsp;<code>numCourses</code>&nbsp;门课，课程编号依次为 <code>0</code>&nbsp;到&nbsp;<code>numCourses-1</code>&nbsp;。你会得到一个数组&nbsp;<code>prerequisite</code> ，其中<meta charset="UTF-8" />&nbsp;<code>prerequisites[i] = [a<sub>i</sub>, b<sub>i</sub>]</code>&nbsp;表示如果你想选<meta charset="UTF-8" />&nbsp;<code>b<sub>i</sub></code> 课程，你<strong> 必须</strong> 先选<meta charset="UTF-8" />&nbsp;<code>a<sub>i</sub></code>&nbsp;课程。</p>
 
@@ -66,11 +81,13 @@
 	<li><code>u<sub>i</sub>&nbsp;!= v<sub>i</sub></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：Floyd 算法**
+### 方法一：Floyd 算法
 
 我们创建一个二维数组 $f$，其中 $f[i][j]$ 表示节点 $i$ 到节点 $j$ 是否可达。
 
@@ -84,25 +101,9 @@
 
 时间复杂度 $O(n^3)$，空间复杂度 $O(n^2)$。其中 $n$ 为节点数。
 
-**方法二：拓扑排序**
-
-与方法一类似，我们创建一个二维数组 $f$，其中 $f[i][j]$ 表示节点 $i$ 到节点 $j$ 是否可达。另外，我们创建一个邻接表 $g$，其中 $g[i]$ 表示节点 $i$ 的所有后继节点；创建一个数组 $indeg$，其中 $indeg[i]$ 表示节点 $i$ 的入度。
-
-接下来，我们遍历先修课程数组 $prerequisites$，对于其中的每一项 $[a, b]$，我们更新邻接表 $g$ 和入度数组 $indeg$。
-
-然后，我们使用拓扑排序计算出所有节点对之间的可达性。
-
-定义一个队列 $q$，初始时将所有入度为 $0$ 的节点加入队列中。随后不断进行以下操作：取出队首节点 $i$，然后遍历 $g[i]$ 中的所有节点 $j$，将 $f[i][j]$ 设为 $true$。接下来，我们枚举节点 $h$，如果 $f[h][i]$ 为 $true$，那么我们也将 $f[h][j]$ 设为 $true$。在这之后，我们将 $j$ 的入度减少 $1$。如果此时 $j$ 的入度为 $0$，那么我们就将 $j$ 加入队列中。
-
-在计算完所有节点对之间的可达性之后，对于每一个查询 $[a, b]$，我们直接返回 $f[a][b]$ 即可。
-
-时间复杂度 $O(n^2)$，空间复杂度 $O(n^2)$。其中 $n$ 为节点数。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -119,6 +120,124 @@ class Solution:
                         f[i][j] = True
         return [f[a][b] for a, b in queries]
 ```
+
+#### Java
+
+```java
+class Solution {
+    public List<Boolean> checkIfPrerequisite(int n, int[][] prerequisites, int[][] queries) {
+        boolean[][] f = new boolean[n][n];
+        for (var p : prerequisites) {
+            f[p[0]][p[1]] = true;
+        }
+        for (int k = 0; k < n; ++k) {
+            for (int i = 0; i < n; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    f[i][j] |= f[i][k] && f[k][j];
+                }
+            }
+        }
+        List<Boolean> ans = new ArrayList<>();
+        for (var q : queries) {
+            ans.add(f[q[0]][q[1]]);
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<bool> checkIfPrerequisite(int n, vector<vector<int>>& prerequisites, vector<vector<int>>& queries) {
+        bool f[n][n];
+        memset(f, false, sizeof(f));
+        for (auto& p : prerequisites) {
+            f[p[0]][p[1]] = true;
+        }
+        for (int k = 0; k < n; ++k) {
+            for (int i = 0; i < n; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    f[i][j] |= (f[i][k] && f[k][j]);
+                }
+            }
+        }
+        vector<bool> ans;
+        for (auto& q : queries) {
+            ans.push_back(f[q[0]][q[1]]);
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func checkIfPrerequisite(n int, prerequisites [][]int, queries [][]int) (ans []bool) {
+	f := make([][]bool, n)
+	for i := range f {
+		f[i] = make([]bool, n)
+	}
+	for _, p := range prerequisites {
+		f[p[0]][p[1]] = true
+	}
+	for k := 0; k < n; k++ {
+		for i := 0; i < n; i++ {
+			for j := 0; j < n; j++ {
+				f[i][j] = f[i][j] || (f[i][k] && f[k][j])
+			}
+		}
+	}
+	for _, q := range queries {
+		ans = append(ans, f[q[0]][q[1]])
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function checkIfPrerequisite(n: number, prerequisites: number[][], queries: number[][]): boolean[] {
+    const f = Array.from({ length: n }, () => Array(n).fill(false));
+    prerequisites.forEach(([a, b]) => (f[a][b] = true));
+    for (let k = 0; k < n; ++k) {
+        for (let i = 0; i < n; ++i) {
+            for (let j = 0; j < n; ++j) {
+                f[i][j] ||= f[i][k] && f[k][j];
+            }
+        }
+    }
+    return queries.map(([a, b]) => f[a][b]);
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：拓扑排序
+
+与方法一类似，我们创建一个二维数组 $f$，其中 $f[i][j]$ 表示节点 $i$ 到节点 $j$ 是否可达。另外，我们创建一个邻接表 $g$，其中 $g[i]$ 表示节点 $i$ 的所有后继节点；创建一个数组 $indeg$，其中 $indeg[i]$ 表示节点 $i$ 的入度。
+
+接下来，我们遍历先修课程数组 $prerequisites$，对于其中的每一项 $[a, b]$，我们更新邻接表 $g$ 和入度数组 $indeg$。
+
+然后，我们使用拓扑排序计算出所有节点对之间的可达性。
+
+定义一个队列 $q$，初始时将所有入度为 $0$ 的节点加入队列中。随后不断进行以下操作：取出队首节点 $i$，然后遍历 $g[i]$ 中的所有节点 $j$，将 $f[i][j]$ 设为 $true$。接下来，我们枚举节点 $h$，如果 $f[h][i]$ 为 $true$，那么我们也将 $f[h][j]$ 设为 $true$。在这之后，我们将 $j$ 的入度减少 $1$。如果此时 $j$ 的入度为 $0$，那么我们就将 $j$ 加入队列中。
+
+在计算完所有节点对之间的可达性之后，对于每一个查询 $[a, b]$，我们直接返回 $f[a][b]$ 即可。
+
+时间复杂度 $O(n^2)$，空间复杂度 $O(n^2)$。其中 $n$ 为节点数。
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -144,32 +263,7 @@ class Solution:
         return [f[a][b] for a, b in queries]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```java
-class Solution {
-    public List<Boolean> checkIfPrerequisite(int n, int[][] prerequisites, int[][] queries) {
-        boolean[][] f = new boolean[n][n];
-        for (var p : prerequisites) {
-            f[p[0]][p[1]] = true;
-        }
-        for (int k = 0; k < n; ++k) {
-            for (int i = 0; i < n; ++i) {
-                for (int j = 0; j < n; ++j) {
-                    f[i][j] |= f[i][k] && f[k][j];
-                }
-            }
-        }
-        List<Boolean> ans = new ArrayList<>();
-        for (var q : queries) {
-            ans.add(f[q[0]][q[1]]);
-        }
-        return ans;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -209,32 +303,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    vector<bool> checkIfPrerequisite(int n, vector<vector<int>>& prerequisites, vector<vector<int>>& queries) {
-        bool f[n][n];
-        memset(f, false, sizeof(f));
-        for (auto& p : prerequisites) {
-            f[p[0]][p[1]] = true;
-        }
-        for (int k = 0; k < n; ++k) {
-            for (int i = 0; i < n; ++ i) {
-                for (int j = 0; j < n; ++ j) {
-                    f[i][j] |= (f[i][k] && f[k][j]);
-                }
-            }
-        }
-        vector<bool> ans;
-        for (auto& q : queries) {
-            ans.push_back(f[q[0]][q[1]]);
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -276,30 +345,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func checkIfPrerequisite(n int, prerequisites [][]int, queries [][]int) (ans []bool) {
-	f := make([][]bool, n)
-	for i := range f {
-		f[i] = make([]bool, n)
-	}
-	for _, p := range prerequisites {
-		f[p[0]][p[1]] = true
-	}
-	for k := 0; k < n; k++ {
-		for i := 0; i < n; i++ {
-			for j := 0; j < n; j++ {
-				f[i][j] = f[i][j] || (f[i][k] && f[k][j])
-			}
-		}
-	}
-	for _, q := range queries {
-		ans = append(ans, f[q[0]][q[1]])
-	}
-	return
-}
-```
+#### Go
 
 ```go
 func checkIfPrerequisite(n int, prerequisites [][]int, queries [][]int) (ans []bool) {
@@ -341,22 +387,7 @@ func checkIfPrerequisite(n int, prerequisites [][]int, queries [][]int) (ans []b
 }
 ```
 
-### **TypeScript**
-
-```ts
-function checkIfPrerequisite(n: number, prerequisites: number[][], queries: number[][]): boolean[] {
-    const f = Array.from({ length: n }, () => Array(n).fill(false));
-    prerequisites.forEach(([a, b]) => (f[a][b] = true));
-    for (let k = 0; k < n; ++k) {
-        for (let i = 0; i < n; ++i) {
-            for (let j = 0; j < n; ++j) {
-                f[i][j] ||= f[i][k] && f[k][j];
-            }
-        }
-    }
-    return queries.map(([a, b]) => f[a][b]);
-}
-```
+#### TypeScript
 
 ```ts
 function checkIfPrerequisite(n: number, prerequisites: number[][], queries: number[][]): boolean[] {
@@ -389,10 +420,8 @@ function checkIfPrerequisite(n: number, prerequisites: number[][], queries: numb
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

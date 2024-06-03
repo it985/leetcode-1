@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1359.Count%20All%20Valid%20Pickup%20and%20Delivery%20Options/README.md
+rating: 1722
+source: 第 20 场双周赛 Q4
+tags:
+    - 数学
+    - 动态规划
+    - 组合数学
+---
+
+<!-- problem:start -->
+
 # [1359. 有效的快递序列数目](https://leetcode.cn/problems/count-all-valid-pickup-and-delivery-options)
 
 [English Version](/solution/1300-1399/1359.Count%20All%20Valid%20Pickup%20and%20Delivery%20Options/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你&nbsp;<code>n</code>&nbsp;笔订单，每笔订单都需要快递服务。</p>
 
@@ -47,11 +61,13 @@
 	<li><code>1 &lt;= n &lt;= 500</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i]$ 表示 $i$ 个订单的所有有效的收件/配送序列的数目。初始时 $f[1] = 1$。
 
@@ -65,13 +81,11 @@ $$
 
 我们注意到 $f[i]$ 的值只与 $f[i - 1]$ 有关，所以可以用一个变量代替数组，降低空间复杂度。
 
-时间复杂度 $O(n)$，空间复杂度 $O(1)$。其中 $n$ 为订单数目。
+时间复杂度 $O(n)$，其中 $n$ 为订单数目。空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +97,7 @@ class Solution:
         return f
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -100,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -116,7 +128,20 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func countOrders(n int) int {
+	const mod = 1e9 + 7
+	f := 1
+	for i := 2; i <= n; i++ {
+		f = f * i * (2*i - 1) % mod
+	}
+	return f
+}
+```
+
+#### Rust
 
 ```rust
 const MOD: i64 = (1e9 as i64) + 7;
@@ -133,23 +158,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func countOrders(n int) int {
-	const mod = 1e9 + 7
-	f := 1
-	for i := 2; i <= n; i++ {
-		f = f * i * (2*i - 1) % mod
-	}
-	return f
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

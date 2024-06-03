@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1521.Find%20a%20Value%20of%20a%20Mysterious%20Function%20Closest%20to%20Target/README_EN.md
+rating: 2383
+source: Weekly Contest 198 Q4
+tags:
+    - Bit Manipulation
+    - Segment Tree
+    - Array
+    - Binary Search
+---
+
+<!-- problem:start -->
+
 # [1521. Find a Value of a Mysterious Function Closest to Target](https://leetcode.com/problems/find-a-value-of-a-mysterious-function-closest-to-target)
 
 [中文文档](/solution/1500-1599/1521.Find%20a%20Value%20of%20a%20Mysterious%20Function%20Closest%20to%20Target/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p><img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1500-1599/1521.Find%20a%20Value%20of%20a%20Mysterious%20Function%20Closest%20to%20Target/images/change.png" style="width: 635px; height: 312px;" /></p>
 
@@ -45,9 +62,13 @@
 	<li><code>0 &lt;= target &lt;= 10<sup>7</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table + Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Hash Table + Enumeration
 
 According to the problem description, we know that the function $func(arr, l, r)$ is actually the bitwise AND result of the elements in the array $arr$ from index $l$ to $r$, i.e., $arr[l] \& arr[l + 1] \& \cdots \& arr[r]$.
 
@@ -55,9 +76,13 @@ If we fix the right endpoint $r$ each time, then the range of the left endpoint 
 
 The time complexity is $O(n \times \log M)$, and the space complexity is $O(\log M)$. Here, $n$ and $M$ are the length of the array $arr$ and the maximum value in the array $arr$, respectively.
 
+Similar problems:
+
+-   [3171. Find Subarray With Bitwise AND Closest to K](https://github.com/doocs/leetcode/blob/main/solution/3100-3199/3171.Find%20Subarray%20With%20Bitwise%20AND%20Closest%20to%20K/README_EN.md)
+
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -70,7 +95,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +144,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func closestToTarget(arr []int, target int) int {
@@ -146,7 +171,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function closestToTarget(arr: number[], target: number): number {
@@ -168,10 +193,8 @@ function closestToTarget(arr: number[], target: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

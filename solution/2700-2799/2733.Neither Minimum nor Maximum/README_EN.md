@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2733.Neither%20Minimum%20nor%20Maximum/README_EN.md
+rating: 1147
+source: Weekly Contest 349 Q1
+tags:
+    - Array
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2733. Neither Minimum nor Maximum](https://leetcode.com/problems/neither-minimum-nor-maximum)
 
 [中文文档](/solution/2700-2799/2733.Neither%20Minimum%20nor%20Maximum/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code> containing <strong>distinct</strong> <strong>positive</strong> integers, find and return <strong>any</strong> number from the array that is neither the <strong>minimum</strong> nor the <strong>maximum</strong> value in the array, or <strong><code>-1</code></strong> if there is no such number.</p>
 
@@ -42,29 +57,30 @@
 	<li>All values in <code>nums</code> are distinct</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Simulation
+
+First, we find the minimum and maximum values in the array, denoted as $mi$ and $mx$ respectively. Then, we traverse the array and find the first number that is not equal to $mi$ and not equal to $mx$, and return it.
+
+The time complexity is $O(n)$, where $n$ is the length of the array. The space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
-
-```python
-class Solution:
-    def findNonMinOrMax(self, nums: List[int]) -> int:
-        return -1 if len(nums) < 3 else sorted(nums)[1]
-```
+#### Python3
 
 ```python
 class Solution:
     def findNonMinOrMax(self, nums: List[int]) -> int:
         mi, mx = min(nums), max(nums)
-        for x in nums:
-            if x != mi and x != mx:
-                return x
-        return -1
+        return next((x for x in nums if x != mi and x != mx), -1)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -84,16 +100,15 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
 public:
     int findNonMinOrMax(vector<int>& nums) {
-        int mi = *min_element(nums.begin(), nums.end());
-        int mx = *max_element(nums.begin(), nums.end());
+        auto [mi, mx] = minmax_element(nums.begin(), nums.end());
         for (int x : nums) {
-            if (x != mi && x != mx) {
+            if (x != *mi && x != *mx) {
                 return x;
             }
         }
@@ -102,7 +117,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findNonMinOrMax(nums []int) int {
@@ -116,7 +131,7 @@ func findNonMinOrMax(nums []int) int {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -144,10 +159,30 @@ impl Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def findNonMinOrMax(self, nums: List[int]) -> int:
+        mi, mx = min(nums), max(nums)
+        for x in nums:
+            if x != mi and x != mx:
+                return x
+        return -1
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

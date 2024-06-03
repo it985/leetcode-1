@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0979.Distribute%20Coins%20in%20Binary%20Tree/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [979. 在二叉树中分配硬币](https://leetcode.cn/problems/distribute-coins-in-binary-tree)
 
 [English Version](/solution/0900-0999/0979.Distribute%20Coins%20in%20Binary%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个有 <code>n</code> 个结点的二叉树的根结点 <code>root</code> ，其中树中每个结点 <code>node</code> 都对应有 <code>node.val</code> 枚硬币。整棵树上一共有 <code>n</code> 枚硬币。</p>
 
@@ -41,11 +53,13 @@
 	<li>所有 <code>Node.val</code> 的值之和是 <code>n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们定义一个函数 $dfs(node)$，表示以 $node$ 为根节点的子树中，金币的超载量，即金币的数量减去节点数。如果 $dfs(node)$ 为正数，表示该子树中金币的数量多于节点数，需要将多余的金币移出该子树；如果 $dfs(node)$ 为负数，表示该子树中金币的数量少于节点数，需要将不足的金币移入该子树。
 
@@ -57,9 +71,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -83,9 +95,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -123,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -156,7 +166,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -189,7 +199,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -222,10 +232,8 @@ function distributeCoins(root: TreeNode | null): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

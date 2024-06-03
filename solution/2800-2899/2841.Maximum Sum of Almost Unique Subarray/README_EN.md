@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2841.Maximum%20Sum%20of%20Almost%20Unique%20Subarray/README_EN.md
+rating: 1545
+source: Biweekly Contest 112 Q3
+tags:
+    - Array
+    - Hash Table
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [2841. Maximum Sum of Almost Unique Subarray](https://leetcode.com/problems/maximum-sum-of-almost-unique-subarray)
 
 [中文文档](/solution/2800-2899/2841.Maximum%20Sum%20of%20Almost%20Unique%20Subarray/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code> and two positive integers <code>m</code> and <code>k</code>.</p>
 
@@ -46,9 +62,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sliding Window + Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Sliding Window + Hash Table
 
 We can traverse the array $nums$, maintain a window of size $k$, use a hash table $cnt$ to count the occurrence of each element in the window, and use a variable $s$ to sum all elements in the window. If the number of different elements in $cnt$ is greater than or equal to $m$, then we update the answer $ans = \max(ans, s)$.
 
@@ -58,16 +78,14 @@ The time complexity is $O(n)$, and the space complexity is $O(k)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
     def maxSum(self, nums: List[int], m: int, k: int) -> int:
         cnt = Counter(nums[:k])
         s = sum(nums[:k])
-        ans = 0
-        if len(cnt) >= m:
-            ans = s
+        ans = s if len(cnt) >= m else 0
         for i in range(k, len(nums)):
             cnt[nums[i]] += 1
             cnt[nums[i - k]] -= 1
@@ -79,7 +97,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -91,10 +109,7 @@ class Solution {
             cnt.merge(nums.get(i), 1, Integer::sum);
             s += nums.get(i);
         }
-        long ans = 0;
-        if (cnt.size() >= m) {
-            ans = s;
-        }
+        long ans = cnt.size() >= m ? s : 0;
         for (int i = k; i < n; ++i) {
             cnt.merge(nums.get(i), 1, Integer::sum);
             if (cnt.merge(nums.get(i - k), -1, Integer::sum) == 0) {
@@ -110,7 +125,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,7 +154,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxSum(nums []int, m int, k int) int64 {
@@ -168,7 +183,7 @@ func maxSum(nums []int, m int, k int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxSum(nums: number[], m: number, k: number): number {
@@ -195,10 +210,55 @@ function maxSum(nums: number[], m: number, k: number): number {
 }
 ```
 
-### **...**
+#### C#
 
-```
+```cs
+public class Solution {
+    public long MaxSum(IList<int> nums, int m, int k) {
+        Dictionary<int, int> cnt = new Dictionary<int, int>();
+        int n = nums.Count;
+        long s = 0;
 
+        for (int i = 0; i < k; ++i) {
+            if (!cnt.ContainsKey(nums[i])) {
+                cnt[nums[i]] = 1;
+            }
+            else {
+                cnt[nums[i]]++;
+            }
+            s += nums[i];
+        }
+
+        long ans = cnt.Count >= m ? s : 0;
+
+        for (int i = k; i < n; ++i) {
+            if (!cnt.ContainsKey(nums[i])) {
+                cnt[nums[i]] = 1;
+            }
+            else {
+                cnt[nums[i]]++;
+            }
+            if (cnt.ContainsKey(nums[i - k])) {
+                cnt[nums[i - k]]--;
+                if (cnt[nums[i - k]] == 0) {
+                    cnt.Remove(nums[i - k]);
+                }
+            }
+
+            s += nums[i] - nums[i - k];
+
+            if (cnt.Count >= m) {
+                ans = Math.Max(ans, s);
+            }
+        }
+
+        return ans;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

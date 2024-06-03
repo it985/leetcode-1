@@ -1,13 +1,27 @@
-# [1891. Cutting Ribbons](https://leetcode.com/problems/cutting-ribbons)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1891.Cutting%20Ribbons/README_EN.md
+tags:
+    - Array
+    - Binary Search
+---
+
+<!-- problem:start -->
+
+# [1891. Cutting Ribbons 🔒](https://leetcode.com/problems/cutting-ribbons)
 
 [中文文档](/solution/1800-1899/1891.Cutting%20Ribbons/README.md)
 
 ## Description
 
+<!-- description:start -->
+
 <p>You are given an integer array <code>ribbons</code>, where <code>ribbons[i]</code> represents the length of the <code>i<sup>th</sup></code> ribbon, and an integer <code>k</code>. You may cut any of the ribbons into any number of segments of <strong>positive integer</strong> lengths, or perform no cuts at all.</p>
 
 <ul>
 	<li>For example, if you have a ribbon of length <code>4</code>, you can:
+
     <ul>
     	<li>Keep the ribbon of length <code>4</code>,</li>
     	<li>Cut it into one ribbon of length <code>3</code> and one ribbon of length <code>1</code>,</li>
@@ -16,6 +30,7 @@
     	<li>Cut it into four ribbons of length <code>1</code>.</li>
     </ul>
     </li>
+
 </ul>
 
 <p>Your goal is to obtain <code>k</code> ribbons of all the <strong>same positive integer length</strong>. You are allowed to throw away any excess ribbon as a result of cutting.</p>
@@ -63,9 +78,13 @@ Now you have 4 ribbons of length 4.
 	<li><code>1 &lt;= k &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Binary Search
 
 We observe that if we can obtain $k$ ropes of length $x$, then we can also obtain $k$ ropes of length $x-1$. This implies that there is a monotonicity property, and we can use binary search to find the maximum length $x$ such that we can obtain $k$ ropes of length $x$.
 
@@ -77,7 +96,7 @@ The time complexity is $O(n \times \log M)$, where $n$ and $M$ are the number of
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -93,7 +112,7 @@ class Solution:
         return left
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -119,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -143,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxLength(ribbons []int, k int) int {
@@ -164,34 +183,7 @@ func maxLength(ribbons []int, k int) int {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} ribbons
- * @param {number} k
- * @return {number}
- */
-var maxLength = function (ribbons, k) {
-    let left = 0;
-    let right = Math.max(...ribbons);
-    while (left < right) {
-        const mid = (left + right + 1) >> 1;
-        let cnt = 0;
-        for (const x of ribbons) {
-            cnt += Math.floor(x / mid);
-        }
-        if (cnt >= k) {
-            left = mid;
-        } else {
-            right = mid - 1;
-        }
-    }
-    return left;
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxLength(ribbons: number[], k: number): number {
@@ -213,7 +205,7 @@ function maxLength(ribbons: number[], k: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -240,10 +232,35 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+/**
+ * @param {number[]} ribbons
+ * @param {number} k
+ * @return {number}
+ */
+var maxLength = function (ribbons, k) {
+    let left = 0;
+    let right = Math.max(...ribbons);
+    while (left < right) {
+        const mid = (left + right + 1) >> 1;
+        let cnt = 0;
+        for (const x of ribbons) {
+            cnt += Math.floor(x / mid);
+        }
+        if (cnt >= k) {
+            left = mid;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return left;
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

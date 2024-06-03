@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1771.Maximize%20Palindrome%20Length%20From%20Subsequences/README_EN.md
+rating: 2182
+source: Weekly Contest 229 Q4
+tags:
+    - String
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [1771. Maximize Palindrome Length From Subsequences](https://leetcode.com/problems/maximize-palindrome-length-from-subsequences)
 
 [中文文档](/solution/1700-1799/1771.Maximize%20Palindrome%20Length%20From%20Subsequences/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two strings, <code>word1</code> and <code>word2</code>. You want to construct a string in the following manner:</p>
 
@@ -48,9 +63,13 @@
 	<li><code>word1</code> and <code>word2</code> consist of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming
 
 First, we concatenate strings `word1` and `word2` to get string $s$. Then we can transform the problem into finding the length of the longest palindromic subsequence in string $s$. However, when calculating the final answer, we need to ensure that at least one character in the palindrome string comes from `word1` and another character comes from `word2`.
 
@@ -66,7 +85,7 @@ The time complexity is $O(n^2)$, and the space complexity is $O(n^2)$. Here, $n$
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -88,7 +107,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -117,7 +136,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -146,7 +165,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func longestPalindrome(word1 string, word2 string) (ans int) {
@@ -173,7 +192,7 @@ func longestPalindrome(word1 string, word2 string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function longestPalindrome(word1: string, word2: string): number {
@@ -200,7 +219,7 @@ function longestPalindrome(word1: string, word2: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -229,10 +248,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

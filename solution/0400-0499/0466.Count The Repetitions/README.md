@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0466.Count%20The%20Repetitions/README.md
+tags:
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [466. 统计重复个数](https://leetcode.cn/problems/count-the-repetitions)
 
 [English Version](/solution/0400-0499/0466.Count%20The%20Repetitions/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>定义 <code>str = [s, n]</code> 表示 <code>str</code> 由 <code>n</code> 个字符串 <code>s</code> 连接构成。</p>
 
@@ -48,11 +59,13 @@
 	<li><code>1 <= n1, n2 <= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：预处理 + 递推**
+### 方法一：预处理 + 递推
 
 我们预处理出以字符串 $s2$ 的每个位置 $i$ 开始匹配一个完整的 $s1$ 后，下一个位置 $j$ 以及经过了多少个 $s2$，即 $d[i] = (cnt, j)$，其中 $cnt$ 表示匹配了多少个 $s2$，而 $j$ 表示字符串 $s2$ 的下一个位置。
 
@@ -64,9 +77,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -92,9 +103,7 @@ class Solution:
         return ans // n2
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -124,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -155,7 +164,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getMaxRepetitions(s1 string, n1 int, s2 string, n2 int) (ans int) {
@@ -184,7 +193,7 @@ func getMaxRepetitions(s1 string, n1 int, s2 string, n2 int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function getMaxRepetitions(s1: string, n1: number, s2: string, n2: number): number {
@@ -212,10 +221,8 @@ function getMaxRepetitions(s1: string, n1: number, s2: string, n2: number): numb
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

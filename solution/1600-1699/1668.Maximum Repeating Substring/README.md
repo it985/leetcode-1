@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1668.Maximum%20Repeating%20Substring/README.md
+rating: 1395
+source: 第 40 场双周赛 Q1
+tags:
+    - 字符串
+    - 动态规划
+    - 字符串匹配
+---
+
+<!-- problem:start -->
+
 # [1668. 最大重复子字符串](https://leetcode.cn/problems/maximum-repeating-substring)
 
 [English Version](/solution/1600-1699/1668.Maximum%20Repeating%20Substring/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串 <code>sequence</code> ，如果字符串 <code>word</code> 连续重复 <code>k</code> 次形成的字符串是 <code>sequence</code> 的一个子字符串，那么单词 <code>word</code> 的 <strong>重复值为 <code>k</code></strong><strong> </strong>。单词 <code>word</code> 的 <strong>最</strong><strong>大重复值</strong> 是单词 <code>word</code> 在 <code>sequence</code> 中最大的重复值。如果 <code>word</code> 不是 <code>sequence</code> 的子串，那么重复值 <code>k</code> 为 <code>0</code> 。</p>
 
@@ -46,11 +60,13 @@
 	<li><code>sequence</code> 和 <code>word</code> 都只包含小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：直接枚举**
+### 方法一：直接枚举
 
 注意到字符串长度不超过 $100$，我们直接从大到小枚举 `word` 的重复次数 $k$，判断 `word` 重复该次数后是否是 `sequence` 的子串，是则直接返回当前的重复次数 $k$。
 
@@ -58,9 +74,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -70,9 +84,7 @@ class Solution:
                 return k
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -87,7 +99,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -108,7 +120,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxRepeating(sequence string, word string) int {
@@ -121,7 +133,44 @@ func maxRepeating(sequence string, word string) int {
 }
 ```
 
-### **C**
+#### TypeScript
+
+```ts
+function maxRepeating(sequence: string, word: string): number {
+    let n = sequence.length;
+    let m = word.length;
+    for (let k = Math.floor(n / m); k > 0; k--) {
+        if (sequence.includes(word.repeat(k))) {
+            return k;
+        }
+    }
+    return 0;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn max_repeating(sequence: String, word: String) -> i32 {
+        let n = sequence.len();
+        let m = word.len();
+        if n < m {
+            return 0;
+        }
+        let mut dp = vec![0; n - m + 1];
+        for i in 0..=n - m {
+            let s = &sequence[i..i + m];
+            if s == word {
+                dp[i] = (if (i as i32) - (m as i32) < 0 { 0 } else { dp[i - m] }) + 1;
+            }
+        }
+        *dp.iter().max().unwrap()
+    }
+}
+```
+
+#### C
 
 ```c
 #define max(a, b) (((a) > (b)) ? (a) : (b))
@@ -147,47 +196,8 @@ int maxRepeating(char* sequence, char* word) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function maxRepeating(sequence: string, word: string): number {
-    let n = sequence.length;
-    let m = word.length;
-    for (let k = Math.floor(n / m); k > 0; k--) {
-        if (sequence.includes(word.repeat(k))) {
-            return k;
-        }
-    }
-    return 0;
-}
-```
-
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn max_repeating(sequence: String, word: String) -> i32 {
-        let n = sequence.len();
-        let m = word.len();
-        if n < m {
-            return 0;
-        }
-        let mut dp = vec![0; n - m + 1];
-        for i in 0..=n - m {
-            let s = &sequence[i..i + m];
-            if s == word {
-                dp[i] = (if (i as i32) - (m as i32) < 0 { 0 } else { dp[i - m] }) + 1;
-            }
-        }
-        *dp.iter().max().unwrap()
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

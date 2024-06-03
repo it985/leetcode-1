@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0421.Maximum%20XOR%20of%20Two%20Numbers%20in%20an%20Array/README.md
+tags:
+    - 位运算
+    - 字典树
+    - 数组
+    - 哈希表
+---
+
+<!-- problem:start -->
+
 # [421. 数组中两个数的最大异或值](https://leetcode.cn/problems/maximum-xor-of-two-numbers-in-an-array)
 
 [English Version](/solution/0400-0499/0421.Maximum%20XOR%20of%20Two%20Numbers%20in%20an%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code> ，返回<em> </em><code>nums[i] XOR nums[j]</code> 的最大运算结果，其中 <code>0 ≤ i ≤ j &lt; n</code> 。</p>
 
@@ -37,11 +50,13 @@
 </div>
 </div>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：前缀树**
+### 方法一：前缀树
 
 题目是求两个元素的异或最大值，可以从最高位开始考虑。
 
@@ -53,9 +68,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Trie:
@@ -93,16 +106,13 @@ class Solution:
         return max(trie.search(x) for x in nums)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Trie {
     private Trie[] children = new Trie[2];
 
     public Trie() {
-
     }
 
     public void insert(int x) {
@@ -145,7 +155,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Trie {
@@ -196,7 +206,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Trie struct {
@@ -243,7 +253,7 @@ func findMaximumXOR(nums []int) (ans int) {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 struct Trie {
@@ -297,10 +307,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

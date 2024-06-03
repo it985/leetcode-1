@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2141.Maximum%20Running%20Time%20of%20N%20Computers/README.md
+rating: 2265
+source: 第 276 场周赛 Q4
+tags:
+    - 贪心
+    - 数组
+    - 二分查找
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2141. 同时运行 N 台电脑的最长时间](https://leetcode.cn/problems/maximum-running-time-of-n-computers)
 
 [English Version](/solution/2100-2199/2141.Maximum%20Running%20Time%20of%20N%20Computers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你有&nbsp;<code>n</code>&nbsp;台电脑。给你整数&nbsp;<code>n</code>&nbsp;和一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>batteries</code>&nbsp;，其中第&nbsp;<code>i</code>&nbsp;个电池可以让一台电脑 <strong>运行&nbsp;</strong><code>batteries[i]</code>&nbsp;分钟。你想使用这些电池让&nbsp;<strong>全部</strong>&nbsp;<code>n</code>&nbsp;台电脑 <b>同时</b>&nbsp;运行。</p>
 
@@ -52,11 +67,13 @@
 	<li><code>1 &lt;= batteries[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找**
+### 方法一：二分查找
 
 我们注意到，如果我们可以让 $n$ 台电脑同时运行 $t$ 分钟，那么我们也可以让 $n$ 台电脑同时运行 $t' \le t$ 分钟，这存在着单调性。因此，我们可以使用二分查找的方法找到最大的 $t$。
 
@@ -68,9 +85,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -85,9 +100,7 @@ class Solution:
         return l
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -113,7 +126,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -140,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxRunTime(n int, batteries []int) int64 {
@@ -164,7 +177,7 @@ func maxRunTime(n int, batteries []int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxRunTime(n: number, batteries: number[]): number {
@@ -189,7 +202,7 @@ function maxRunTime(n: number, batteries: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -243,10 +256,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/03.02.Min%20Stack/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [03.02. Min Stack](https://leetcode.cn/problems/min-stack-lcci)
 
 [中文文档](/lcci/03.02.Min%20Stack/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>How would you design a stack which, in addition to push and pop, has a function min which returns the minimum element? Push, pop and min should all operate in 0(1) time.</p>
 
@@ -26,42 +36,60 @@ minStack.top();      --&gt; return 0.
 
 minStack.getMin();   --&gt; return -2.</pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Double Stack
+
+We use two stacks to implement this, where `stk1` is used to store data, and `stk2` is used to store the current minimum value in the stack. Initially, `stk2` stores a very large value.
+
+-   When we push an element `x` into the stack, we push `x` into `stk1`, and push `min(x, stk2[-1])` into `stk2`.
+-   When we pop an element from the stack, we pop the top elements of both `stk1` and `stk2`.
+-   When we want to get the top element in the current stack, we just need to return the top element of `stk1`.
+-   When we want to get the minimum value in the current stack, we just need to return the top element of `stk2`.
+
+For each operation, the time complexity is $O(1)$, and the space complexity is $O(n)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class MinStack:
     def __init__(self):
-        self.stk1 = []
-        self.stk2 = [inf]
+        """
+        initialize your data structure here.
+        """
+        self.s = []
+        self.mins = [inf]
 
-    def push(self, x: int) -> None:
-        self.stk1.append(x)
-        self.stk2.append(min(x, self.stk2[-1]))
+    def push(self, val: int) -> None:
+        self.s.append(val)
+        self.mins.append(min(self.mins[-1], val))
 
     def pop(self) -> None:
-        self.stk1.pop()
-        self.stk2.pop()
+        self.s.pop()
+        self.mins.pop()
 
     def top(self) -> int:
-        return self.stk1[-1]
+        return self.s[-1]
 
     def getMin(self) -> int:
-        return self.stk2[-1]
+        return self.mins[-1]
 
 
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack()
-# obj.push(x)
+# obj.push(val)
 # obj.pop()
 # param_3 = obj.top()
 # param_4 = obj.getMin()
 ```
 
-### **Java**
+#### Java
 
 ```java
 class MinStack {
@@ -102,7 +130,7 @@ class MinStack {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class MinStack {
@@ -145,7 +173,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type MinStack struct {
@@ -186,34 +214,33 @@ func (this *MinStack) GetMin() int {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class MinStack {
-    stk1: number[];
-    stk2: number[];
-
+    stack: number[];
+    mins: number[];
     constructor() {
-        this.stk1 = [];
-        this.stk2 = [Infinity];
+        this.stack = [];
+        this.mins = [];
     }
 
     push(x: number): void {
-        this.stk1.push(x);
-        this.stk2.push(Math.min(x, this.stk2[this.stk2.length - 1]));
+        this.stack.push(x);
+        this.mins.push(Math.min(this.getMin(), x));
     }
 
     pop(): void {
-        this.stk1.pop();
-        this.stk2.pop();
+        this.stack.pop();
+        this.mins.pop();
     }
 
     top(): number {
-        return this.stk1[this.stk1.length - 1];
+        return this.stack[this.stack.length - 1];
     }
 
     getMin(): number {
-        return this.stk2[this.stk2.length - 1];
+        return this.mins.length == 0 ? Infinity : this.mins[this.mins.length - 1];
     }
 }
 
@@ -227,7 +254,7 @@ class MinStack {
  */
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::VecDeque;
@@ -277,7 +304,7 @@ impl MinStack {
  */
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class MinStack {
@@ -318,10 +345,50 @@ public class MinStack {
  */
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class MinStack {
+    private var stk1: [Int]
+    private var stk2: [Int]
 
+    init() {
+        stk1 = []
+        stk2 = [Int.max]
+    }
+
+    func push(_ x: Int) {
+        stk1.append(x)
+
+        stk2.append(min(x, stk2.last!))
+    }
+
+    func pop() {
+        stk1.removeLast()
+        stk2.removeLast()
+    }
+
+    func top() -> Int {
+        return stk1.last!
+    }
+
+    func getMin() -> Int {
+        return stk2.last!
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * let obj = MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * let param_3 = obj.top();
+ * let param_4 = obj.getMin();
+ */
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

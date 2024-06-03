@@ -1,10 +1,22 @@
-# [663. 均匀树划分](https://leetcode.cn/problems/equal-tree-partition)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0663.Equal%20Tree%20Partition/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 二叉树
+---
+
+<!-- problem:start -->
+
+# [663. 均匀树划分 🔒](https://leetcode.cn/problems/equal-tree-partition)
 
 [English Version](/solution/0600-0699/0663.Equal%20Tree%20Partition/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一棵二叉树的根节点 <code>root</code>，如果你可以通过去掉原始树上的一条边将树分成两棵节点值之和相等的子树，则返回 <code>true</code>。</p>
 
@@ -34,17 +46,17 @@
 	<li><code>-10<sup>5</sup> &lt;= Node.val &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-后序遍历，记录每个子树的和。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -70,9 +82,7 @@ class Solution:
         return s // 2 in seen
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -116,7 +126,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -151,7 +161,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -189,10 +199,8 @@ func checkEqualTree(root *TreeNode) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

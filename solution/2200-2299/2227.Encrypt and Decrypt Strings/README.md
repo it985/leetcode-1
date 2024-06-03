@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2227.Encrypt%20and%20Decrypt%20Strings/README.md
+rating: 1944
+source: 第 287 场周赛 Q4
+tags:
+    - 设计
+    - 字典树
+    - 数组
+    - 哈希表
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2227. 加密解密字符串](https://leetcode.cn/problems/encrypt-and-decrypt-strings)
 
 [English Version](/solution/2200-2299/2227.Encrypt%20and%20Decrypt%20Strings/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符数组 <code>keys</code> ，由若干 <strong>互不相同</strong> 的字符组成。还有一个字符串数组 <code>values</code> ，内含若干长度为 2 的字符串。另给你一个字符串数组 <code>dictionary</code> ，包含解密后所有允许的原字符串。请你设计并实现一个支持加密及解密下标从 <strong>0</strong> 开始字符串的数据结构。</p>
 
@@ -69,17 +85,17 @@ encrypter.decrypt("eizfeiam"); // return 2.
 	<li>至多调用 <code>encrypt</code> 和 <code>decrypt</code> <strong>总计</strong> <code>200</code> 次</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Encrypter:
@@ -105,9 +121,7 @@ class Encrypter:
 # param_2 = obj.decrypt(word2)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Encrypter {
@@ -148,7 +162,7 @@ class Encrypter {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Encrypter {
@@ -183,7 +197,7 @@ public:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Encrypter struct {
@@ -228,16 +242,8 @@ func (this *Encrypter) Decrypt(word2 string) int {
  */
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

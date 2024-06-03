@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0096.Unique%20Binary%20Search%20Trees/README_EN.md
+tags:
+    - Tree
+    - Binary Search Tree
+    - Math
+    - Dynamic Programming
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [96. Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees)
 
 [中文文档](/solution/0000-0099/0096.Unique%20Binary%20Search%20Trees/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer <code>n</code>, return <em>the number of structurally unique <strong>BST&#39;</strong>s (binary search trees) which has exactly </em><code>n</code><em> nodes of unique values from</em> <code>1</code> <em>to</em> <code>n</code>.</p>
 
@@ -28,9 +44,13 @@
 	<li><code>1 &lt;= n &lt;= 19</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming
 
 We define $f[i]$ to represent the number of binary search trees that can be generated from $[1, i]$. Initially, $f[0] = 1$, and the answer is $f[n]$.
 
@@ -42,7 +62,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -54,7 +74,7 @@ class Solution:
         return f[n]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -71,7 +91,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -89,7 +109,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numTrees(n int) int {
@@ -104,7 +124,22 @@ func numTrees(n int) int {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function numTrees(n: number): number {
+    const f: number[] = Array(n + 1).fill(0);
+    f[0] = 1;
+    for (let i = 1; i <= n; ++i) {
+        for (let j = 0; j < i; ++j) {
+            f[i] += f[j] * f[i - j - 1];
+        }
+    }
+    return f[n];
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -122,22 +157,7 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function numTrees(n: number): number {
-    const f: number[] = Array(n + 1).fill(0);
-    f[0] = 1;
-    for (let i = 1; i <= n; ++i) {
-        for (let j = 0; j < i; ++j) {
-            f[i] += f[j] * f[i - j - 1];
-        }
-    }
-    return f[n];
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -154,10 +174,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0861.Score%20After%20Flipping%20Matrix/README.md
+tags:
+    - 贪心
+    - 位运算
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [861. 翻转矩阵后的得分](https://leetcode.cn/problems/score-after-flipping-matrix)
 
 [English Version](/solution/0800-0899/0861.Score%20After%20Flipping%20Matrix/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个大小为 <code>m x n</code> 的二元矩阵 <code>grid</code> ，矩阵中每个元素的值为 <code>0</code> 或 <code>1</code> 。</p>
 
@@ -45,11 +58,13 @@
 	<li><code>grid[i][j]</code> 为 <code>0</code> 或 <code>1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 我们注意到，对于任意一个翻转方案，翻转的次序不影响最后的结果。因此我们可以先考虑所有的行翻转，再考虑所有的列翻转。
 
@@ -61,9 +76,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,9 +93,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -135,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func matrixScore(grid [][]int) int {
@@ -162,7 +173,7 @@ func matrixScore(grid [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function matrixScore(grid: number[][]): number {
@@ -187,7 +198,7 @@ function matrixScore(grid: number[][]): number {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -215,10 +226,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

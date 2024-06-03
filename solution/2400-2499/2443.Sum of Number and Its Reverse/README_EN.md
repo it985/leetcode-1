@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2443.Sum%20of%20Number%20and%20Its%20Reverse/README_EN.md
+rating: 1376
+source: Weekly Contest 315 Q3
+tags:
+    - Math
+    - Enumeration
+---
+
+<!-- problem:start -->
+
 # [2443. Sum of Number and Its Reverse](https://leetcode.com/problems/sum-of-number-and-its-reverse)
 
 [中文文档](/solution/2400-2499/2443.Sum%20of%20Number%20and%20Its%20Reverse/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a <strong>non-negative</strong> integer <code>num</code>, return <code>true</code><em> if </em><code>num</code><em> can be expressed as the sum of any <strong>non-negative</strong> integer and its reverse, or </em><code>false</code><em> otherwise.</em></p>
 
@@ -38,9 +53,13 @@
 	<li><code>0 &lt;= num &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Brute Force Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Brute Force Enumeration
 
 Enumerate $k$ in the range $[0,.., num]$, and check whether $k + reverse(k)$ equals $num$.
 
@@ -48,7 +67,7 @@ The time complexity is $O(n \times \log n)$, where $n$ is the size of $num$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -56,7 +75,7 @@ class Solution:
         return any(k + int(str(k)[::-1]) == num for k in range(num + 1))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -77,7 +96,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -99,7 +118,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sumOfNumberAndReverse(num int) bool {
@@ -117,26 +136,7 @@ func sumOfNumberAndReverse(num int) bool {
 }
 ```
 
-### **C**
-
-```c
-bool sumOfNumberAndReverse(int num) {
-    for (int i = 0; i <= num; i++) {
-        int t = i;
-        int j = 0;
-        while (t > 0) {
-            j = j * 10 + t % 10;
-            t /= 10;
-        }
-        if (i + j == num) {
-            return 1;
-        }
-    }
-    return 0;
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumOfNumberAndReverse(num: number): boolean {
@@ -149,7 +149,7 @@ function sumOfNumberAndReverse(num: number): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -175,10 +175,27 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C
 
-```
-
+```c
+bool sumOfNumberAndReverse(int num) {
+    for (int i = 0; i <= num; i++) {
+        int t = i;
+        int j = 0;
+        while (t > 0) {
+            j = j * 10 + t % 10;
+            t /= 10;
+        }
+        if (i + j == num) {
+            return 1;
+        }
+    }
+    return 0;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

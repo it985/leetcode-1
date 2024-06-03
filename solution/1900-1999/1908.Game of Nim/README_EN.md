@@ -1,8 +1,25 @@
-# [1908. Game of Nim](https://leetcode.com/problems/game-of-nim)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1908.Game%20of%20Nim/README_EN.md
+tags:
+    - Bit Manipulation
+    - Brainteaser
+    - Array
+    - Math
+    - Dynamic Programming
+    - Game Theory
+---
+
+<!-- problem:start -->
+
+# [1908. Game of Nim 🔒](https://leetcode.com/problems/game-of-nim)
 
 [中文文档](/solution/1900-1999/1908.Game%20of%20Nim/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Alice and Bob take turns playing a game with <strong>Alice starting first</strong>.</p>
 
@@ -58,11 +75,17 @@
 <p>&nbsp;</p>
 <p><strong>Follow-up:</strong> Could you find a linear time solution? Although the linear time solution may be beyond the scope of an interview, it could be interesting to know.</p>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -81,7 +104,7 @@ class Solution:
         return dfs(tuple(piles))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -129,7 +152,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -169,7 +192,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func nimGame(piles []int) bool {
@@ -210,7 +233,7 @@ func nimGame(piles []int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function nimGame(piles: number[]): boolean {
@@ -249,10 +272,8 @@ function nimGame(piles: number[]): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

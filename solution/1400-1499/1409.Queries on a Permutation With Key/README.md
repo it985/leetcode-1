@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1409.Queries%20on%20a%20Permutation%20With%20Key/README.md
+rating: 1334
+source: 第 184 场周赛 Q2
+tags:
+    - 树状数组
+    - 数组
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [1409. 查询带键的排列](https://leetcode.cn/problems/queries-on-a-permutation-with-key)
 
 [English Version](/solution/1400-1499/1409.Queries%20on%20a%20Permutation%20With%20Key/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个正整数数组&nbsp;<code>queries</code> ，其取值范围在&nbsp;<code>1</code> 到 <code>m</code> 之间。 请你根据以下规则按顺序处理所有&nbsp;<code>queries[i]</code>（从 <code>i=0</code> 到 <code>i=queries.length-1</code>）：</p>
 
@@ -54,11 +68,13 @@
 	<li><code>1 &lt;= queries[i] &lt;= m</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 题目数据规模不大，可以直接模拟。
 
@@ -79,9 +95,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -95,6 +109,91 @@ class Solution:
             p.insert(0, v)
         return ans
 ```
+
+#### Java
+
+```java
+class Solution {
+    public int[] processQueries(int[] queries, int m) {
+        List<Integer> p = new LinkedList<>();
+        for (int i = 1; i <= m; ++i) {
+            p.add(i);
+        }
+        int[] ans = new int[queries.length];
+        int i = 0;
+        for (int v : queries) {
+            int j = p.indexOf(v);
+            ans[i++] = j;
+            p.remove(j);
+            p.add(0, v);
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> processQueries(vector<int>& queries, int m) {
+        vector<int> p(m);
+        iota(p.begin(), p.end(), 1);
+        vector<int> ans;
+        for (int v : queries) {
+            int j = 0;
+            for (int i = 0; i < m; ++i) {
+                if (p[i] == v) {
+                    j = i;
+                    break;
+                }
+            }
+            ans.push_back(j);
+            p.erase(p.begin() + j);
+            p.insert(p.begin(), v);
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func processQueries(queries []int, m int) []int {
+	p := make([]int, m)
+	for i := range p {
+		p[i] = i + 1
+	}
+	ans := []int{}
+	for _, v := range queries {
+		j := 0
+		for i := range p {
+			if p[i] == v {
+				j = i
+				break
+			}
+		}
+		ans = append(ans, j)
+		p = append(p[:j], p[j+1:]...)
+		p = append([]int{v}, p...)
+	}
+	return ans
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class BinaryIndexedTree:
@@ -138,29 +237,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```java
-class Solution {
-    public int[] processQueries(int[] queries, int m) {
-        List<Integer> p = new LinkedList<>();
-        for (int i = 1; i <= m; ++i) {
-            p.add(i);
-        }
-        int[] ans = new int[queries.length];
-        int i = 0;
-        for (int v : queries) {
-            int j = p.indexOf(v);
-            ans[i++] = j;
-            p.remove(j);
-            p.add(0, v);
-        }
-        return ans;
-    }
-}
-```
+#### Java
 
 ```java
 class BinaryIndexedTree {
@@ -217,31 +294,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    vector<int> processQueries(vector<int>& queries, int m) {
-        vector<int> p(m);
-        iota(p.begin(), p.end(), 1);
-        vector<int> ans;
-        for (int v : queries) {
-            int j = 0;
-            for (int i = 0; i < m; ++i) {
-                if (p[i] == v) {
-                    j = i;
-                    break;
-                }
-            }
-            ans.push_back(j);
-            p.erase(p.begin() + j);
-            p.insert(p.begin(), v);
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class BinaryIndexedTree {
@@ -298,30 +351,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func processQueries(queries []int, m int) []int {
-	p := make([]int, m)
-	for i := range p {
-		p[i] = i + 1
-	}
-	ans := []int{}
-	for _, v := range queries {
-		j := 0
-		for i := range p {
-			if p[i] == v {
-				j = i
-				break
-			}
-		}
-		ans = append(ans, j)
-		p = append(p[:j], p[j+1:]...)
-		p = append([]int{v}, p...)
-	}
-	return ans
-}
-```
+#### Go
 
 ```go
 type BinaryIndexedTree struct {
@@ -374,10 +404,8 @@ func processQueries(queries []int, m int) []int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

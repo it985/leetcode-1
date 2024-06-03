@@ -1,10 +1,25 @@
-# [1586. 二叉搜索树迭代器 II](https://leetcode.cn/problems/binary-search-tree-iterator-ii)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1586.Binary%20Search%20Tree%20Iterator%20II/README.md
+tags:
+    - 栈
+    - 树
+    - 设计
+    - 二叉搜索树
+    - 二叉树
+    - 迭代器
+---
+
+<!-- problem:start -->
+
+# [1586. 二叉搜索树迭代器 II 🔒](https://leetcode.cn/problems/binary-search-tree-iterator-ii)
 
 [English Version](/solution/1500-1599/1586.Binary%20Search%20Tree%20Iterator%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>实现二叉搜索树（BST）的<a href="https://baike.baidu.com/item/中序遍历/757281?fr=aladdin">中序遍历</a>迭代器&nbsp;<code>BSTIterator</code>&nbsp;类：</p>
 
@@ -61,11 +76,13 @@ bSTIterator.prev(); // 状态变为 [3, 7, &lt;u&gt;9&lt;/u&gt;, 15, 20], 返回
 	<li>最多调用&nbsp;10<sup>5</sup>&nbsp;次&nbsp;<code>hasNext</code>、&nbsp;<code>next</code>、&nbsp;<code>hasPrev</code>&nbsp;和&nbsp;<code>prev</code>&nbsp;。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：中序遍历 + 数组**
+### 方法一：中序遍历 + 数组
 
 我们可以使用中序遍历将二叉搜索树的所有节点的值存储到数组 $nums$ 中，然后使用数组实现迭代器。我们定义一个指针 $i$，初始时 $i = -1$，表示指向数组 $nums$ 中的一个元素。每次调用 $next()$ 时，我们将 $i$ 的值加 $1$，并返回 $nums[i]$；每次调用 $prev()$ 时，我们将 $i$ 的值减 $1$，并返回 $nums[i]$。
 
@@ -73,9 +90,7 @@ bSTIterator.prev(); // 状态变为 [3, 7, &lt;u&gt;9&lt;/u&gt;, 15, 20], 返回
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -121,9 +136,7 @@ class BSTIterator:
 # param_4 = obj.prev()
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -185,7 +198,7 @@ class BSTIterator {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -247,7 +260,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -306,7 +319,7 @@ func (this *BSTIterator) Prev() int {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -370,10 +383,8 @@ class BSTIterator {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

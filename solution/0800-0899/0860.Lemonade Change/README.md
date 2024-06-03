@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0860.Lemonade%20Change/README.md
+tags:
+    - 贪心
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [860. 柠檬水找零](https://leetcode.cn/problems/lemonade-change)
 
 [English Version](/solution/0800-0899/0860.Lemonade%20Change/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在柠檬水摊上，每一杯柠檬水的售价为&nbsp;<code>5</code>&nbsp;美元。顾客排队购买你的产品，（按账单 <code>bills</code> 支付的顺序）一次购买一杯。</p>
 
@@ -49,11 +60,13 @@
 	<li><code>bills[i]</code>&nbsp;不是&nbsp;<code>5</code>&nbsp;就是&nbsp;<code>10</code>&nbsp;或是&nbsp;<code>20</code>&nbsp;</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 模拟**
+### 方法一：贪心 + 模拟
 
 我们从前往后遍历账单数组 $bills$，对于当前遍历到的账单：
 
@@ -68,9 +81,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -93,9 +104,7 @@ class Solution:
         return True
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -126,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -156,7 +165,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func lemonadeChange(bills []int) bool {
@@ -183,7 +192,7 @@ func lemonadeChange(bills []int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function lemonadeChange(bills: number[]): boolean {
@@ -215,7 +224,7 @@ function lemonadeChange(bills: number[]): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -249,10 +258,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

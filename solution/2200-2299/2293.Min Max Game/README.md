@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2293.Min%20Max%20Game/README.md
+rating: 1241
+source: 第 296 场周赛 Q1
+tags:
+    - 数组
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [2293. 极大极小游戏](https://leetcode.cn/problems/min-max-game)
 
 [English Version](/solution/2200-2299/2293.Min%20Max%20Game/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> ，其长度是 <code>2</code> 的幂。</p>
 
@@ -54,11 +67,13 @@
 	<li><code>nums.length</code> 是 <code>2</code> 的幂</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 根据题意，我们可以模拟整个过程，最后剩下的数字即为答案。在实现上，我们不需要额外创建数组，直接在原数组上进行操作即可。
 
@@ -66,9 +81,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -82,9 +95,7 @@ class Solution:
         return nums[0]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +130,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minMaxGame(nums []int) int {
@@ -138,7 +149,7 @@ func minMaxGame(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minMaxGame(nums: number[]): number {
@@ -154,7 +165,7 @@ function minMaxGame(nums: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -174,7 +185,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 #define min(a, b) (((a) < (b)) ? (a) : (b))
@@ -193,10 +204,8 @@ int minMaxGame(int* nums, int numsSize) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

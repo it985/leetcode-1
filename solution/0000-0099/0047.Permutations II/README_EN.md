@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0047.Permutations%20II/README_EN.md
+tags:
+    - Array
+    - Backtracking
+---
+
+<!-- problem:start -->
+
 # [47. Permutations II](https://leetcode.com/problems/permutations-ii)
 
 [中文文档](/solution/0000-0099/0047.Permutations%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a collection of numbers, <code>nums</code>,&nbsp;that might contain duplicates, return <em>all possible unique permutations <strong>in any order</strong>.</em></p>
 
@@ -32,9 +45,13 @@
 	<li><code>-10 &lt;= nums[i] &lt;= 10</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sorting + Backtracking**
+<!-- solution:start -->
+
+### Solution 1: Sorting + Backtracking
 
 We can first sort the array, which allows us to place duplicate numbers together, making it easier for us to remove duplicates.
 
@@ -49,11 +66,11 @@ The time complexity is $O(n \times n!)$, and the space complexity is $O(n)$. Her
 
 Similar problems:
 
--   [46. Permutations](/solution/0000-0099/0046.Permutations/README_EN.md)
+-   [46. Permutations](https://github.com/doocs/leetcode/blob/main/solution/0000-0099/0046.Permutations/README_EN.md)
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -79,7 +96,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -115,7 +132,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -147,7 +164,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func permuteUnique(nums []int) (ans [][]int) {
@@ -176,7 +193,7 @@ func permuteUnique(nums []int) (ans [][]int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function permuteUnique(nums: number[]): number[][] {
@@ -205,7 +222,38 @@ function permuteUnique(nums: number[]): number[][] {
 }
 ```
 
-### **C#**
+#### Rust
+
+```rust
+use std::collections::HashSet;
+impl Solution {
+    fn dfs(i: usize, nums: &mut Vec<i32>, res: &mut Vec<Vec<i32>>) {
+        let n = nums.len();
+        if i == n {
+            res.push(nums.clone());
+            return;
+        }
+        let mut set = HashSet::new();
+        for j in i..n {
+            if set.contains(&nums[j]) {
+                continue;
+            }
+            set.insert(nums[j]);
+            nums.swap(i, j);
+            Self::dfs(i + 1, nums, res);
+            nums.swap(i, j);
+        }
+    }
+
+    pub fn permute_unique(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
+        let mut res = vec![];
+        Self::dfs(0, &mut nums, &mut res);
+        res
+    }
+}
+```
+
+#### C#
 
 ```cs
 public class Solution {
@@ -242,41 +290,8 @@ public class Solution {
 }
 ```
 
-### **Rust**
-
-```rust
-use std::collections::HashSet;
-impl Solution {
-    fn dfs(i: usize, nums: &mut Vec<i32>, res: &mut Vec<Vec<i32>>) {
-        let n = nums.len();
-        if i == n {
-            res.push(nums.clone());
-            return;
-        }
-        let mut set = HashSet::new();
-        for j in i..n {
-            if set.contains(&nums[j]) {
-                continue;
-            }
-            set.insert(nums[j]);
-            nums.swap(i, j);
-            Self::dfs(i + 1, nums, res);
-            nums.swap(i, j);
-        }
-    }
-
-    pub fn permute_unique(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
-        let mut res = vec![];
-        Self::dfs(0, &mut nums, &mut res);
-        res
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

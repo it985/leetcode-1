@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1991.Find%20the%20Middle%20Index%20in%20Array/README_EN.md
+rating: 1302
+source: Biweekly Contest 60 Q1
+tags:
+    - Array
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [1991. Find the Middle Index in Array](https://leetcode.com/problems/find-the-middle-index-in-array)
 
 [中文文档](/solution/1900-1999/1991.Find%20the%20Middle%20Index%20in%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a <strong>0-indexed</strong> integer array <code>nums</code>, find the <strong>leftmost</strong> <code>middleIndex</code> (i.e., the smallest amongst all the possible ones).</p>
 
@@ -50,11 +65,17 @@ The sum of the numbers after index 2 is: 0
 <p>&nbsp;</p>
 <p><strong>Note:</strong> This question is the same as&nbsp;724:&nbsp;<a href="https://leetcode.com/problems/find-pivot-index/" target="_blank">https://leetcode.com/problems/find-pivot-index/</a></p>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -68,7 +89,7 @@ class Solution:
         return -1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -86,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -105,26 +126,43 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findMiddleIndex(nums []int) int {
-	var left, right int
-	for _, x := range nums {
-		right += x
+	s := 0
+	for _, num := range nums {
+		s += num
 	}
-	for i, x := range nums {
-		right -= x
-		if left == right {
+	total := 0
+	for i, num := range nums {
+		total += num
+		if total-num == s-total {
 			return i
 		}
-		left += x
 	}
 	return -1
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function findMiddleIndex(nums: number[]): number {
+    let left = 0,
+        right = nums.reduce((a, b) => a + b);
+    for (let i = 0; i < nums.length; ++i) {
+        right -= nums[i];
+        if (left == right) {
+            return i;
+        }
+        left += nums[i];
+    }
+    return -1;
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -145,27 +183,8 @@ var findMiddleIndex = function (nums) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function findMiddleIndex(nums: number[]): number {
-    let left = 0,
-        right = nums.reduce((a, b) => a + b);
-    for (let i = 0; i < nums.length; ++i) {
-        right -= nums[i];
-        if (left == right) {
-            return i;
-        }
-        left += nums[i];
-    }
-    return -1;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

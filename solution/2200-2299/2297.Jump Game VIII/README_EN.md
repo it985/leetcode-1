@@ -1,8 +1,25 @@
-# [2297. Jump Game VIII](https://leetcode.com/problems/jump-game-viii)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2297.Jump%20Game%20VIII/README_EN.md
+tags:
+    - Stack
+    - Graph
+    - Array
+    - Dynamic Programming
+    - Shortest Path
+    - Monotonic Stack
+---
+
+<!-- problem:start -->
+
+# [2297. Jump Game VIII 🔒](https://leetcode.com/problems/jump-game-viii)
 
 [中文文档](/solution/2200-2299/2297.Jump%20Game%20VIII/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> of length <code>n</code>. You are initially standing at index <code>0</code>. You can jump from index <code>i</code> to index <code>j</code> where <code>i &lt; j</code> if:</p>
 
@@ -49,11 +66,17 @@ The total cost is 2. Note that you cannot jump directly from index 0 to index 2 
 	<li><code>0 &lt;= nums[i], costs[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -84,7 +107,7 @@ class Solution:
         return f[n - 1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -125,7 +148,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -165,7 +188,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minCost(nums []int, costs []int) int64 {
@@ -204,7 +227,7 @@ func minCost(nums []int, costs []int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minCost(nums: number[], costs: number[]): number {
@@ -241,10 +264,8 @@ function minCost(nums: number[], costs: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

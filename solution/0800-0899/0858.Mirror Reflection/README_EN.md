@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0858.Mirror%20Reflection/README_EN.md
+tags:
+    - Geometry
+    - Math
+    - Number Theory
+---
+
+<!-- problem:start -->
+
 # [858. Mirror Reflection](https://leetcode.com/problems/mirror-reflection)
 
 [中文文档](/solution/0800-0899/0858.Mirror%20Reflection/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is a special square room with mirrors on each of the four walls. Except for the southwest corner, there are receptors on each of the remaining corners, numbered <code>0</code>, <code>1</code>, and <code>2</code>.</p>
 
@@ -35,11 +49,17 @@
 	<li><code>1 &lt;= q &lt;= p &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -52,7 +72,7 @@ class Solution:
         return 0 if p == 1 else 2
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -72,7 +92,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -89,7 +109,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func mirrorReflection(p int, q int) int {
@@ -113,7 +133,7 @@ func gcd(a, b int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function mirrorReflection(p: number, q: number): number {
@@ -131,10 +151,8 @@ function gcd(a: number, b: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2053.Kth%20Distinct%20String%20in%20an%20Array/README.md
+rating: 1350
+source: 第 64 场双周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+    - 字符串
+    - 计数
+---
+
+<!-- problem:start -->
+
 # [2053. 数组中第 K 个独一无二的字符串](https://leetcode.cn/problems/kth-distinct-string-in-an-array)
 
 [English Version](/solution/2000-2099/2053.Kth%20Distinct%20String%20in%20an%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><strong>独一无二的字符串</strong>&nbsp;指的是在一个数组中只出现过 <strong>一次</strong>&nbsp;的字符串。</p>
 
@@ -51,17 +66,17 @@ arr 中所有字符串都是独一无二的，所以返回第 1 个字符串 "aa
 	<li><code>arr[i]</code>&nbsp;只包含小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-哈希表计数。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -75,9 +90,7 @@ class Solution:
         return ''
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -118,7 +131,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func kthDistinct(arr []string, k int) string {
@@ -138,10 +151,8 @@ func kthDistinct(arr []string, k int) string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

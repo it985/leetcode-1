@@ -1,8 +1,23 @@
-# [1772. Sort Features by Popularity](https://leetcode.com/problems/sort-features-by-popularity)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1772.Sort%20Features%20by%20Popularity/README_EN.md
+tags:
+    - Array
+    - Hash Table
+    - String
+    - Sorting
+---
+
+<!-- problem:start -->
+
+# [1772. Sort Features by Popularity 🔒](https://leetcode.com/problems/sort-features-by-popularity)
 
 [中文文档](/solution/1700-1799/1772.Sort%20Features%20by%20Popularity/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string array <code>features</code> where <code>features[i]</code> is a single word that represents the name of a feature of the latest product you are working on. You have made a survey where users have reported which features they like. You are given a string array <code>responses</code>, where each <code>responses[i]</code> is a string containing space-separated words.</p>
 
@@ -41,9 +56,13 @@
 	<li><code>responses[i]</code> has no leading or trailing spaces.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table + Custom Sorting**
+<!-- solution:start -->
+
+### Solution 1: Hash Table + Custom Sorting
 
 We traverse `responses`, and for each word in `responses[i]`, we temporarily store it in a hash table `vis`. Next, we record the words in `vis` into the hash table `cnt`, recording the number of times each word appears.
 
@@ -53,7 +72,7 @@ The time complexity is $O(n \times \log n)$, where $n$ is the length of `feature
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,7 +84,7 @@ class Solution:
         return sorted(features, key=lambda w: -cnt[w])
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +117,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -132,7 +151,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sortFeatures(features []string, responses []string) []string {
@@ -151,7 +170,7 @@ func sortFeatures(features []string, responses []string) []string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sortFeatures(features: string[], responses: string[]): string[] {
@@ -177,10 +196,8 @@ function sortFeatures(features: string[], responses: string[]): string[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

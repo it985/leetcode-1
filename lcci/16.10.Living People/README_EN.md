@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.10.Living%20People/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [16.10. Living People](https://leetcode.cn/problems/living-people-lcci)
 
 [中文文档](/lcci/16.10.Living%20People/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a list of people with their birth and death years, implement a method to compute the year with the most number of people alive. You may assume that all people were born between 1900 and 2000 (inclusive). If a person was alive during any portion of that year, they should be included in that year&#39;s count. For example, Person (birth= 1908, death= 1909) is included in the counts for both 1908 and 1909.</p>
 
@@ -29,9 +39,13 @@ death = {1948, 1951, 2000}
 	<li><code>birth[i] &lt;= death[i]</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Difference Array**
+<!-- solution:start -->
+
+### Solution 1: Difference Array
 
 The problem is actually about performing addition and subtraction operations on a continuous interval, and then finding the maximum value. This can be solved using a difference array.
 
@@ -43,7 +57,7 @@ The time complexity is $O(n)$, and the space complexity is $O(C)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -63,7 +77,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -90,7 +104,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -118,7 +132,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxAliveYear(birth []int, death []int) (ans int) {
@@ -142,7 +156,7 @@ func maxAliveYear(birth []int, death []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxAliveYear(birth: number[], death: number[]): number {
@@ -166,7 +180,7 @@ function maxAliveYear(birth: number[], death: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -193,10 +207,39 @@ impl Solution {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    func maxAliveYear(_ birth: [Int], _ death: [Int]) -> Int {
+        let base = 1900
+        var delta = Array(repeating: 0, count: 102) // Array to hold the changes
 
+        for i in 0..<birth.count {
+            let start = birth[i] - base
+            let end = death[i] - base
+            delta[start] += 1
+            if end + 1 < delta.count {
+                delta[end + 1] -= 1
+            }
+        }
+
+        var maxAlive = 0, currentAlive = 0, maxYear = 0
+        for year in 0..<delta.count {
+            currentAlive += delta[year]
+            if currentAlive > maxAlive {
+                maxAlive = currentAlive
+                maxYear = year + base
+            }
+        }
+
+        return maxYear
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

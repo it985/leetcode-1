@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1488.Avoid%20Flood%20in%20The%20City/README_EN.md
+rating: 1973
+source: Weekly Contest 194 Q3
+tags:
+    - Greedy
+    - Array
+    - Hash Table
+    - Binary Search
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [1488. Avoid Flood in The City](https://leetcode.com/problems/avoid-flood-in-the-city)
 
 [中文文档](/solution/1400-1499/1488.Avoid%20Flood%20in%20The%20City/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Your country has an infinite number of lakes. Initially, all the lakes are empty, but when it rains over the <code>nth</code> lake, the <code>nth</code> lake becomes full of water. If it rains over a lake that is <strong>full of water</strong>, there will be a <strong>flood</strong>. Your goal is to avoid floods in any lake.</p>
 
@@ -69,9 +87,13 @@ After that, it will rain over lakes [1,2]. It&#39;s easy to prove that no matter
 	<li><code>0 &lt;= rains[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy + Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Greedy + Binary Search
 
 We store all sunny days in the $sunny$ array or a sorted set, and use the hash table $rainy$ to record the last rainy day for each lake. We initialize the answer array $ans$ with each element set to $-1$.
 
@@ -83,7 +105,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 from sortedcontainers import SortedList
@@ -110,7 +132,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -142,7 +164,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -174,7 +196,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func avoidFlood(rains []int) []int {
@@ -205,7 +227,7 @@ func avoidFlood(rains []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function avoidFlood(rains: number[]): number[] {
@@ -724,10 +746,8 @@ class TreeSet<T = number> {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0908.Smallest%20Range%20I/README.md
+tags:
+    - 数组
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [908. 最小差值 I](https://leetcode.cn/problems/smallest-range-i)
 
 [English Version](/solution/0900-0999/0908.Smallest%20Range%20I/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code>，和一个整数 <code>k</code> 。</p>
 
@@ -50,15 +61,23 @@
 	<li><code>0 &lt;= k &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一：数学
+
+根据题目描述，我们可以将数组中的最大值加上 $k$，最小值减去 $k$，这样可以使得数组中的最大值和最小值之差变小。
+
+因此，最终的答案就是 $\max(nums) - \min(nums) - 2 \times k$。
+
+时间复杂度 $O(n)$，其中 $n$ 为数组 `nums` 的长度。空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -67,9 +86,7 @@ class Solution:
         return max(0, mx - mi - k * 2)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -85,7 +102,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -97,7 +114,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func smallestRangeI(nums []int, k int) int {
@@ -106,17 +123,17 @@ func smallestRangeI(nums []int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function smallestRangeI(nums: number[], k: number): number {
-    const max = nums.reduce((r, v) => Math.max(r, v));
-    const min = nums.reduce((r, v) => Math.min(r, v));
-    return Math.max(max - min - k * 2, 0);
+    const mx = Math.max(...nums);
+    const mi = Math.min(...nums);
+    return Math.max(mx - mi - k * 2, 0);
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -128,10 +145,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

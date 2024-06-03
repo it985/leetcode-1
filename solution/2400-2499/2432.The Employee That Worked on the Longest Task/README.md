@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2432.The%20Employee%20That%20Worked%20on%20the%20Longest%20Task/README.md
+rating: 1266
+source: 第 314 场周赛 Q1
+tags:
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [2432. 处理用时最长的那个任务的员工](https://leetcode.cn/problems/the-employee-that-worked-on-the-longest-task)
 
 [English Version](/solution/2400-2499/2432.The%20Employee%20That%20Worked%20on%20the%20Longest%20Task/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>共有 <code>n</code> 位员工，每位员工都有一个从 <code>0</code> 到 <code>n - 1</code> 的唯一 id 。</p>
 
@@ -72,11 +84,13 @@
 	<li><code>leaveTime<sub>i</sub></code> 按严格递增顺序排列</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：直接遍历**
+### 方法一：直接遍历
 
 我们用变量 $last$ 记录上一个任务的结束时间，用变量 $mx$ 记录最长的工作时间，用变量 $ans$ 记录工作时间最长且 $id$ 最小的员工。初始时，三个变量均为 $0$。
 
@@ -88,9 +102,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -104,9 +116,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -127,7 +137,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -148,7 +158,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func hardestWorker(n int, logs [][]int) (ans int) {
@@ -166,7 +176,45 @@ func hardestWorker(n int, logs [][]int) (ans int) {
 }
 ```
 
-### **C**
+#### TypeScript
+
+```ts
+function hardestWorker(n: number, logs: number[][]): number {
+    let [ans, mx, last] = [0, 0, 0];
+    for (let [uid, t] of logs) {
+        t -= last;
+        if (mx < t || (mx == t && ans > uid)) {
+            ans = uid;
+            mx = t;
+        }
+        last += t;
+    }
+    return ans;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn hardest_worker(n: i32, logs: Vec<Vec<i32>>) -> i32 {
+        let mut res = 0;
+        let mut max = 0;
+        let mut pre = 0;
+        for log in logs.iter() {
+            let t = log[1] - pre;
+            if t > max || (t == max && res > log[0]) {
+                res = log[0];
+                max = t;
+            }
+            pre = log[1];
+        }
+        res
+    }
+}
+```
+
+#### C
 
 ```c
 #define min(a, b) (((a) < (b)) ? (a) : (b))
@@ -187,43 +235,17 @@ int hardestWorker(int n, int** logs, int logsSize, int* logsColSize) {
 }
 ```
 
-### **TypeScript**
+<!-- tabs:end -->
 
-```ts
-function hardestWorker(n: number, logs: number[][]): number {
-    let [ans, mx, last] = [0, 0, 0];
-    for (let [uid, t] of logs) {
-        t -= last;
-        if (mx < t || (mx == t && ans > uid)) {
-            ans = uid;
-            mx = t;
-        }
-        last += t;
-    }
-    return ans;
-}
-```
+<!-- solution:end -->
 
-### **Rust**
+<!-- solution:start -->
 
-```rust
-impl Solution {
-    pub fn hardest_worker(n: i32, logs: Vec<Vec<i32>>) -> i32 {
-        let mut res = 0;
-        let mut max = 0;
-        let mut pre = 0;
-        for log in logs.iter() {
-            let t = log[1] - pre;
-            if t > max || (t == max && res > log[0]) {
-                res = log[0];
-                max = t;
-            }
-            pre = log[1];
-        }
-        res
-    }
-}
-```
+### 方法二
+
+<!-- tabs:start -->
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -250,10 +272,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

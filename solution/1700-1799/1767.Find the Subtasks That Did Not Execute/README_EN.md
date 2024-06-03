@@ -1,8 +1,20 @@
-# [1767. Find the Subtasks That Did Not Execute](https://leetcode.com/problems/find-the-subtasks-that-did-not-execute)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1767.Find%20the%20Subtasks%20That%20Did%20Not%20Execute/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [1767. Find the Subtasks That Did Not Execute 🔒](https://leetcode.com/problems/find-the-subtasks-that-did-not-execute)
 
 [中文文档](/solution/1700-1799/1767.Find%20the%20Subtasks%20That%20Did%20Not%20Execute/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Tasks</code></p>
 
@@ -79,15 +91,19 @@ Task 2 was divided into 2 subtasks (1, 2). No subtask was executed successfully,
 Task 3 was divided into 4 subtasks (1, 2, 3, 4). All of the subtasks were executed successfully.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Recursive Table Generation + Left Join**
+<!-- solution:start -->
+
+### Solution 1: Recursive Table Generation + Left Join
 
 We can generate a table recursively that contains all pairs of (parent task, child task), and then use a left join to find the pairs that have not been executed.
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -113,3 +129,7 @@ WHERE Executed.subtask_id IS NULL;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

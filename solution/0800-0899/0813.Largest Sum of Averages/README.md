@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0813.Largest%20Sum%20of%20Averages/README.md
+tags:
+    - 数组
+    - 动态规划
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [813. 最大平均值和的分组](https://leetcode.cn/problems/largest-sum-of-averages)
 
 [English Version](/solution/0800-0899/0813.Largest%20Sum%20of%20Averages/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定数组&nbsp;<code>nums</code>&nbsp;和一个整数&nbsp;<code>k</code>&nbsp;。我们将给定的数组&nbsp;<code>nums</code>&nbsp;分成 <strong>最多</strong>&nbsp;<code>k</code>&nbsp;个非空子数组，且数组内部是连续的&nbsp;。&nbsp;<strong>分数</strong> 由每个子数组内的平均值的总和构成。</p>
 
@@ -42,11 +54,13 @@ nums 的最优分组是[9], [1, 2, 3], [9]. 得到的分数是 9 + (1 + 2 + 3) /
 	<li><code>1 &lt;= k &lt;= nums.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：前缀和 + 记忆化搜索**
+### 方法一：前缀和 + 记忆化搜索
 
 我们可以先预处理得到前缀和数组 $s$，方便快速得到子数组的和。
 
@@ -64,9 +78,7 @@ nums 的最优分组是[9], [1, 2, 3], [9]. 得到的分数是 9 + (1 + 2 + 3) /
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -88,9 +100,7 @@ class Solution:
         return dfs(0, k)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -128,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -156,7 +166,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func largestSumOfAverages(nums []int, k int) float64 {
@@ -189,10 +199,8 @@ func largestSumOfAverages(nums []int, k int) float64 {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

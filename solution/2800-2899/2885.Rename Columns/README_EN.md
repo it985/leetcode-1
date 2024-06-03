@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2885.Rename%20Columns/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [2885. Rename Columns](https://leetcode.com/problems/rename-columns)
 
 [中文文档](/solution/2800-2899/2885.Rename%20Columns/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <pre>
 DataFrame <code>students</code>
@@ -53,26 +63,37 @@ DataFrame <code>students</code>
 <strong>Explanation:</strong> 
 The column names are changed accordingly.</pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Pandas**
+#### Python3
 
 ```python
 import pandas as pd
 
 
 def renameColumns(students: pd.DataFrame) -> pd.DataFrame:
-    students.rename(columns={'id': 'student_id', 'first': 'first_name', 'last': 'last_name', 'age': 'age_in_years'},
-                    inplace=True)
+    students.rename(
+        columns={
+            'id': 'student_id',
+            'first': 'first_name',
+            'last': 'last_name',
+            'age': 'age_in_years',
+        },
+        inplace=True,
+    )
     return students
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

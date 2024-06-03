@@ -1,10 +1,27 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2762.Continuous%20Subarrays/README.md
+rating: 1940
+source: 第 352 场周赛 Q3
+tags:
+    - 队列
+    - 数组
+    - 有序集合
+    - 滑动窗口
+    - 单调队列
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [2762. 不间断子数组](https://leetcode.cn/problems/continuous-subarrays)
 
 [English Version](/solution/2700-2799/2762.Continuous%20Subarrays/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums</code>&nbsp;。<code>nums</code>&nbsp;的一个子数组如果满足以下条件，那么它是 <strong>不间断</strong> 的：</p>
 
@@ -53,11 +70,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：有序列表 + 双指针**
+### 方法一：有序列表 + 双指针
 
 我们可以用双指针 $i$ 和 $j$ 维护当前子数组的左右端点，用一个有序列表维护当前子数组的所有元素。
 
@@ -69,9 +88,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 from sortedcontainers import SortedList
@@ -90,9 +107,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -116,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -137,7 +152,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func continuousSubarrays(nums []int) (ans int64) {
@@ -169,10 +184,8 @@ func continuousSubarrays(nums []int) (ans int64) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0064.Minimum%20Path%20Sum/README_EN.md
+tags:
+    - Array
+    - Dynamic Programming
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [64. Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum)
 
 [中文文档](/solution/0000-0099/0064.Minimum%20Path%20Sum/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a <code>m x n</code> <code>grid</code> filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.</p>
 
@@ -34,9 +48,13 @@
 	<li><code>0 &lt;= grid[i][j] &lt;= 200</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming
 
 We define $f[i][j]$ to represent the minimum path sum from the top left corner to $(i, j)$. Initially, $f[0][0] = grid[0][0]$, and the answer is $f[m - 1][n - 1]$.
 
@@ -52,7 +70,7 @@ The time complexity is $O(m \times n)$, and the space complexity is $O(m \times 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -70,7 +88,7 @@ class Solution:
         return f[-1][-1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +137,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minPathSum(grid [][]int) int {
@@ -144,7 +162,7 @@ func minPathSum(grid [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minPathSum(grid: number[][]): number {
@@ -169,31 +187,30 @@ function minPathSum(grid: number[][]): number {
 }
 ```
 
-### **C#**
+#### Rust
 
-```cs
-public class Solution {
-    public int MinPathSum(int[][] grid) {
-        int m = grid.Length, n = grid[0].Length;
-        int[,] f = new int[m, n];
-        f[0, 0] = grid[0][0];
-        for (int i = 1; i < m; ++i) {
-            f[i, 0] = f[i - 1, 0] + grid[i][0];
+```rust
+impl Solution {
+    pub fn min_path_sum(mut grid: Vec<Vec<i32>>) -> i32 {
+        let m = grid.len();
+        let n = grid[0].len();
+        for i in 1..m {
+            grid[i][0] += grid[i - 1][0];
         }
-        for (int j = 1; j < n; ++j) {
-            f[0, j] = f[0, j - 1] + grid[0][j];
+        for i in 1..n {
+            grid[0][i] += grid[0][i - 1];
         }
-        for (int i = 1; i < m; ++i) {
-            for (int j = 1; j < n; ++j) {
-                f[i, j] = Math.Min(f[i - 1, j], f[i, j - 1]) + grid[i][j];
+        for i in 1..m {
+            for j in 1..n {
+                grid[i][j] += grid[i][j - 1].min(grid[i - 1][j]);
             }
         }
-        return f[m - 1, n - 1];
+        grid[m - 1][n - 1]
     }
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -222,33 +239,32 @@ var minPathSum = function (grid) {
 };
 ```
 
-### **Rust**
+#### C#
 
-```rust
-impl Solution {
-    pub fn min_path_sum(mut grid: Vec<Vec<i32>>) -> i32 {
-        let m = grid.len();
-        let n = grid[0].len();
-        for i in 1..m {
-            grid[i][0] += grid[i - 1][0];
+```cs
+public class Solution {
+    public int MinPathSum(int[][] grid) {
+        int m = grid.Length, n = grid[0].Length;
+        int[,] f = new int[m, n];
+        f[0, 0] = grid[0][0];
+        for (int i = 1; i < m; ++i) {
+            f[i, 0] = f[i - 1, 0] + grid[i][0];
         }
-        for i in 1..n {
-            grid[0][i] += grid[0][i - 1];
+        for (int j = 1; j < n; ++j) {
+            f[0, j] = f[0, j - 1] + grid[0][j];
         }
-        for i in 1..m {
-            for j in 1..n {
-                grid[i][j] += grid[i][j - 1].min(grid[i - 1][j]);
+        for (int i = 1; i < m; ++i) {
+            for (int j = 1; j < n; ++j) {
+                f[i, j] = Math.Min(f[i - 1, j], f[i, j - 1]) + grid[i][j];
             }
         }
-        grid[m - 1][n - 1]
+        return f[m - 1, n - 1];
     }
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

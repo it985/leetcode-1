@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1281.Subtract%20the%20Product%20and%20Sum%20of%20Digits%20of%20an%20Integer/README.md
+rating: 1141
+source: 第 166 场周赛 Q1
+tags:
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [1281. 整数的各位积和之差](https://leetcode.cn/problems/subtract-the-product-and-sum-of-digits-of-an-integer)
 
 [English Version](/solution/1200-1299/1281.Subtract%20the%20Product%20and%20Sum%20of%20Digits%20of%20an%20Integer/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数&nbsp;<code>n</code>，请你帮忙计算并返回该整数「各位数字之积」与「各位数字之和」的差。</p>
 
@@ -38,11 +50,13 @@
 	<li><code>1 &lt;= n &lt;= 10^5</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们用两个变量 $x$ 和 $y$ 分别记录各位数之积、各位数之和，初始时 $x=1,y=0$。
 
@@ -54,9 +68,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -69,16 +81,7 @@ class Solution:
         return x - y
 ```
 
-```python
-class Solution:
-    def subtractProductAndSum(self, n: int) -> int:
-        nums = list(map(int, str(n)))
-        return prod(nums) - sum(nums)
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +97,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -111,7 +114,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func subtractProductAndSum(n int) int {
@@ -125,7 +128,7 @@ func subtractProductAndSum(n int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function subtractProductAndSum(n: number): number {
@@ -139,7 +142,7 @@ function subtractProductAndSum(n: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -157,22 +160,7 @@ impl Solution {
 }
 ```
 
-### **C**
-
-```c
-int subtractProductAndSum(int n) {
-    int x = 1;
-    int y = 0;
-    for (; n > 0; n /= 10) {
-        int v = n % 10;
-        x *= v;
-        y += v;
-    }
-    return x - y;
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -189,10 +177,42 @@ public class Solution {
 }
 ```
 
-### **...**
+#### C
 
-```
-
+```c
+int subtractProductAndSum(int n) {
+    int x = 1;
+    int y = 0;
+    for (; n > 0; n /= 10) {
+        int v = n % 10;
+        x *= v;
+        y += v;
+    }
+    return x - y;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def subtractProductAndSum(self, n: int) -> int:
+        nums = list(map(int, str(n)))
+        return prod(nums) - sum(nums)
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

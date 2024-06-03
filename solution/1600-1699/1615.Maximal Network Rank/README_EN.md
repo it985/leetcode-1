@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1615.Maximal%20Network%20Rank/README_EN.md
+rating: 1521
+source: Weekly Contest 210 Q2
+tags:
+    - Graph
+---
+
+<!-- problem:start -->
+
 # [1615. Maximal Network Rank](https://leetcode.com/problems/maximal-network-rank)
 
 [中文文档](/solution/1600-1699/1615.Maximal%20Network%20Rank/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is an infrastructure of <code>n</code> cities with some number of <code>roads</code> connecting these cities. Each <code>roads[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> indicates that there is a bidirectional road between cities <code>a<sub>i</sub></code> and <code>b<sub>i</sub></code>.</p>
 
@@ -53,11 +67,17 @@
 	<li>Each&nbsp;pair of cities has <strong>at most one</strong> road connecting them.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -74,19 +94,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def maximalNetworkRank(self, n: int, roads: List[List[int]]) -> int:
-        g = [[0] * n for _ in range(n)]
-        cnt = [0] * n
-        for a, b in roads:
-            g[a][b] = g[b][a] = 1
-            cnt[a] += 1
-            cnt[b] += 1
-        return max(cnt[a] + cnt[b] - g[a][b] for a in range(n) for b in range(a + 1, n))
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -111,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -138,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximalNetworkRank(n int, roads [][]int) (ans int) {
@@ -162,7 +170,7 @@ func maximalNetworkRank(n int, roads [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximalNetworkRank(n: number, roads: number[][]): number {
@@ -184,10 +192,32 @@ function maximalNetworkRank(n: number, roads: number[][]): number {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def maximalNetworkRank(self, n: int, roads: List[List[int]]) -> int:
+        g = [[0] * n for _ in range(n)]
+        cnt = [0] * n
+        for a, b in roads:
+            g[a][b] = g[b][a] = 1
+            cnt[a] += 1
+            cnt[b] += 1
+        return max(cnt[a] + cnt[b] - g[a][b] for a in range(n) for b in range(a + 1, n))
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

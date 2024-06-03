@@ -1,10 +1,21 @@
-# [634. 寻找数组的错位排列](https://leetcode.cn/problems/find-the-derangement-of-an-array)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0634.Find%20the%20Derangement%20of%20An%20Array/README.md
+tags:
+    - 数学
+    - 动态规划
+---
+
+<!-- problem:start -->
+
+# [634. 寻找数组的错位排列 🔒](https://leetcode.cn/problems/find-the-derangement-of-an-array)
 
 [English Version](/solution/0600-0699/0634.Find%20the%20Derangement%20of%20An%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在组合数学中，如果一个排列中所有元素都不在原先的位置上，那么这个排列就被称为 <strong>错位排列</strong> 。</p>
 
@@ -35,11 +46,13 @@
 	<li><code>1 &lt;= n &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i]$ 表示长度为 $i$ 的数组的错位排列的数量。初始时 $f[0] = 1$, $f[1] = 0$。答案即为 $f[n]$。
 
@@ -56,15 +69,11 @@ $$
 
 最终答案即为 $f[n]$。注意答案的取模操作。
 
-我们发现，状态转移方程中只与 $f[i - 1]$ 和 $f[i - 2]$ 有关，因此我们可以使用两个变量 $a$ 和 $b$ 来分别表示 $f[i - 1]$ 和 $f[i - 2]$，从而将空间复杂度降低到 $O(1)$。
-
-时间复杂度 $O(n)$，空间复杂度 $O(1)$。其中 $n$ 为数组的长度。
+时间复杂度 $O(n)$，其中 $n$ 为数组的长度。空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -76,19 +85,7 @@ class Solution:
         return f[n]
 ```
 
-```python
-class Solution:
-    def findDerangement(self, n: int) -> int:
-        mod = 10**9 + 7
-        a, b = 1, 0
-        for i in range(2, n + 1):
-            a, b = b, ((i - 1) * (a + b)) % mod
-        return b
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -104,22 +101,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int findDerangement(int n) {
-        final int mod = (int) 1e9 + 7;
-        long a = 1, b = 0;
-        for (int i = 2; i <= n; ++i) {
-            long c = (i - 1) * (a + b) % mod;
-            a = b;
-            b = c;
-        }
-        return (int) b;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -137,6 +119,63 @@ public:
 };
 ```
 
+#### Go
+
+```go
+func findDerangement(n int) int {
+	f := make([]int, n+1)
+	f[0] = 1
+	const mod = 1e9 + 7
+	for i := 2; i <= n; i++ {
+		f[i] = (i - 1) * (f[i-1] + f[i-2]) % mod
+	}
+	return f[n]
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：动态规划（空间优化）
+
+我们发现，状态转移方程中只与 $f[i - 1]$ 和 $f[i - 2]$ 有关，因此我们可以使用两个变量 $a$ 和 $b$ 来分别表示 $f[i - 1]$ 和 $f[i - 2]$，从而将空间复杂度降低到 $O(1)$。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def findDerangement(self, n: int) -> int:
+        mod = 10**9 + 7
+        a, b = 1, 0
+        for i in range(2, n + 1):
+            a, b = b, ((i - 1) * (a + b)) % mod
+        return b
+```
+
+#### Java
+
+```java
+class Solution {
+    public int findDerangement(int n) {
+        final int mod = (int) 1e9 + 7;
+        long a = 1, b = 0;
+        for (int i = 2; i <= n; ++i) {
+            long c = (i - 1) * (a + b) % mod;
+            a = b;
+            b = c;
+        }
+        return (int) b;
+    }
+}
+```
+
+#### C++
+
 ```cpp
 class Solution {
 public:
@@ -153,19 +192,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func findDerangement(n int) int {
-	f := make([]int, n+1)
-	f[0] = 1
-	const mod = 1e9 + 7
-	for i := 2; i <= n; i++ {
-		f[i] = (i - 1) * (f[i-1] + f[i-2]) % mod
-	}
-	return f[n]
-}
-```
+#### Go
 
 ```go
 func findDerangement(n int) int {
@@ -178,10 +205,8 @@ func findDerangement(n int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

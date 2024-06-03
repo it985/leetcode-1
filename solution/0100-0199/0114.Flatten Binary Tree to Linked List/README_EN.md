@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0114.Flatten%20Binary%20Tree%20to%20Linked%20List/README_EN.md
+tags:
+    - Stack
+    - Tree
+    - Depth-First Search
+    - Linked List
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [114. Flatten Binary Tree to Linked List](https://leetcode.com/problems/flatten-binary-tree-to-linked-list)
 
 [中文文档](/solution/0100-0199/0114.Flatten%20Binary%20Tree%20to%20Linked%20List/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>root</code> of a binary tree, flatten the tree into a &quot;linked list&quot;:</p>
 
@@ -44,9 +60,13 @@
 <p>&nbsp;</p>
 <strong>Follow up:</strong> Can you flatten the tree in-place (with <code>O(1)</code> extra space)?
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Find Predecessor Node**
+<!-- solution:start -->
+
+### Solution 1: Find Predecessor Node
 
 The visit order of preorder traversal is "root, left subtree, right subtree". After the last node of the left subtree is visited, the right subtree node of the root node will be visited next.
 
@@ -56,7 +76,7 @@ The time complexity is $O(n)$, where $n$ is the number of nodes in the tree. The
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -81,7 +101,7 @@ class Solution:
             root = root.right
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -103,11 +123,16 @@ class Solution {
     public void flatten(TreeNode root) {
         while (root != null) {
             if (root.left != null) {
+                // 找到当前节点左子树的最右节点
                 TreeNode pre = root.left;
                 while (pre.right != null) {
                     pre = pre.right;
                 }
+
+                // 将左子树的最右节点指向原来的右子树
                 pre.right = root.right;
+
+                // 将当前节点指向左子树
                 root.right = root.left;
                 root.left = null;
             }
@@ -117,7 +142,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -150,7 +175,70 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func flatten(root *TreeNode) {
+	for root != nil {
+		if root.Left != nil {
+			pre := root.Left
+			for pre.Right != nil {
+				pre = pre.Right
+			}
+			pre.Right = root.Right
+			root.Right = root.Left
+			root.Left = nil
+		}
+		root = root.Right
+	}
+}
+```
+
+#### TypeScript
+
+```ts
+/**
+ * Definition for a binary tree node.
+ * class TreeNode {
+ *     val: number
+ *     left: TreeNode | null
+ *     right: TreeNode | null
+ *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.left = (left===undefined ? null : left)
+ *         this.right = (right===undefined ? null : right)
+ *     }
+ * }
+ */
+
+/**
+ Do not return anything, modify root in-place instead.
+ */
+function flatten(root: TreeNode | null): void {
+    while (root !== null) {
+        if (root.left !== null) {
+            let pre = root.left;
+            while (pre.right !== null) {
+                pre = pre.right;
+            }
+            pre.right = root.right;
+            root.right = root.left;
+            root.left = null;
+        }
+        root = root.right;
+    }
+}
+```
+
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -207,95 +295,7 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func flatten(root *TreeNode) {
-	for root != nil {
-		if root.Left != nil {
-			pre := root.Left
-			for pre.Right != nil {
-				pre = pre.Right
-			}
-			pre.Right = root.Right
-			root.Right = root.Left
-			root.Left = nil
-		}
-		root = root.Right
-	}
-}
-```
-
-```go
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func flatten(root *TreeNode) {
-	for root != nil {
-		left, right := root.Left, root.Right
-		root.Left = nil
-		if left != nil {
-			root.Right = left
-			for left.Right != nil {
-				left = left.Right
-			}
-			left.Right = right
-		}
-		root = root.Right
-	}
-}
-```
-
-### **TypeScript**
-
-```ts
-/**
- * Definition for a binary tree node.
- * class TreeNode {
- *     val: number
- *     left: TreeNode | null
- *     right: TreeNode | null
- *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.left = (left===undefined ? null : left)
- *         this.right = (right===undefined ? null : right)
- *     }
- * }
- */
-
-/**
- Do not return anything, modify root in-place instead.
- */
-function flatten(root: TreeNode | null): void {
-    while (root !== null) {
-        if (root.left !== null) {
-            let pre = root.left;
-            while (pre.right !== null) {
-                pre = pre.right;
-            }
-            pre.right = root.right;
-            root.right = root.left;
-            root.left = null;
-        }
-        root = root.right;
-    }
-}
-```
-
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -326,10 +326,45 @@ var flatten = function (root) {
 };
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Go
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func flatten(root *TreeNode) {
+	for root != nil {
+		left, right := root.Left, root.Right
+		root.Left = nil
+		if left != nil {
+			root.Right = left
+			for left.Right != nil {
+				left = left.Right
+			}
+			left.Right = right
+		}
+		root = root.Right
+	}
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

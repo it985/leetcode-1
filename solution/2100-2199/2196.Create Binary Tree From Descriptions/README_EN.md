@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2196.Create%20Binary%20Tree%20From%20Descriptions/README_EN.md
+rating: 1643
+source: Weekly Contest 283 Q3
+tags:
+    - Tree
+    - Array
+    - Hash Table
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [2196. Create Binary Tree From Descriptions](https://leetcode.com/problems/create-binary-tree-from-descriptions)
 
 [中文文档](/solution/2100-2199/2196.Create%20Binary%20Tree%20From%20Descriptions/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a 2D integer array <code>descriptions</code> where <code>descriptions[i] = [parent<sub>i</sub>, child<sub>i</sub>, isLeft<sub>i</sub>]</code> indicates that <code>parent<sub>i</sub></code> is the <strong>parent</strong> of <code>child<sub>i</sub></code> in a <strong>binary</strong> tree of <strong>unique</strong> values. Furthermore,</p>
 
@@ -45,11 +62,17 @@ The resulting binary tree is shown in the diagram.
 	<li>The binary tree described by <code>descriptions</code> is valid.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -77,7 +100,7 @@ class Solution:
                 return node
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -124,7 +147,83 @@ class Solution {
 }
 ```
 
-### **TypeScript**
+#### C++
+
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* createBinaryTree(vector<vector<int>>& descriptions) {
+        unordered_map<int, TreeNode*> m;
+        unordered_set<int> vis;
+        for (auto& d : descriptions) {
+            int p = d[0], c = d[1], left = d[2];
+            if (!m.count(p)) m[p] = new TreeNode(p);
+            if (!m.count(c)) m[c] = new TreeNode(c);
+            if (left)
+                m[p]->left = m[c];
+            else
+                m[p]->right = m[c];
+            vis.insert(c);
+        }
+        for (auto& [v, node] : m) {
+            if (!vis.count(v)) return node;
+        }
+        return nullptr;
+    }
+};
+```
+
+#### Go
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func createBinaryTree(descriptions [][]int) *TreeNode {
+	m := make(map[int]*TreeNode)
+	vis := make(map[int]bool)
+	for _, d := range descriptions {
+		p, c, left := d[0], d[1], d[2]
+		if m[p] == nil {
+			m[p] = &TreeNode{Val: p}
+		}
+		if m[c] == nil {
+			m[c] = &TreeNode{Val: c}
+		}
+		if left == 1 {
+			m[p].Left = m[c]
+		} else {
+			m[p].Right = m[c]
+		}
+		vis[c] = true
+	}
+
+	for v, node := range m {
+		if !vis[v] {
+			return node
+		}
+	}
+	return nil
+}
+```
+
+#### TypeScript
 
 ```ts
 /**
@@ -173,7 +272,7 @@ function createBinaryTree(descriptions: number[][]): TreeNode | null {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -238,86 +337,8 @@ impl Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-class Solution {
-public:
-    TreeNode* createBinaryTree(vector<vector<int>>& descriptions) {
-        unordered_map<int, TreeNode*> m;
-        unordered_set<int> vis;
-        for (auto& d : descriptions) {
-            int p = d[0], c = d[1], left = d[2];
-            if (!m.count(p)) m[p] = new TreeNode(p);
-            if (!m.count(c)) m[c] = new TreeNode(c);
-            if (left)
-                m[p]->left = m[c];
-            else
-                m[p]->right = m[c];
-            vis.insert(c);
-        }
-        for (auto& [v, node] : m) {
-            if (!vis.count(v)) return node;
-        }
-        return nullptr;
-    }
-};
-```
-
-### **Go**
-
-```go
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func createBinaryTree(descriptions [][]int) *TreeNode {
-	m := make(map[int]*TreeNode)
-	vis := make(map[int]bool)
-	for _, d := range descriptions {
-		p, c, left := d[0], d[1], d[2]
-		if m[p] == nil {
-			m[p] = &TreeNode{Val: p}
-		}
-		if m[c] == nil {
-			m[c] = &TreeNode{Val: c}
-		}
-		if left == 1 {
-			m[p].Left = m[c]
-		} else {
-			m[p].Right = m[c]
-		}
-		vis[c] = true
-	}
-
-	for v, node := range m {
-		if !vis[v] {
-			return node
-		}
-	}
-	return nil
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

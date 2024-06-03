@@ -1,8 +1,23 @@
-# [1428. Leftmost Column with at Least a One](https://leetcode.com/problems/leftmost-column-with-at-least-a-one)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1428.Leftmost%20Column%20with%20at%20Least%20a%20One/README_EN.md
+tags:
+    - Array
+    - Binary Search
+    - Interactive
+    - Matrix
+---
+
+<!-- problem:start -->
+
+# [1428. Leftmost Column with at Least a One 🔒](https://leetcode.com/problems/leftmost-column-with-at-least-a-one)
 
 [中文文档](/solution/1400-1499/1428.Leftmost%20Column%20with%20at%20Least%20a%20One/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A <strong>row-sorted binary matrix</strong> means that all elements are <code>0</code> or <code>1</code> and each row of the matrix is sorted in non-decreasing order.</p>
 
@@ -52,9 +67,13 @@
 	<li><code>mat[i]</code> is sorted in non-decreasing order.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Binary Search
 
 First, we call `BinaryMatrix.dimensions()` to get the number of rows $m$ and columns $n$ of the matrix. Then for each row, we use binary search to find the column number $j$ where the leftmost $1$ is located. The smallest $j$ value that satisfies all rows is the answer. If there is no such column, return $-1$.
 
@@ -62,7 +81,7 @@ The time complexity is $O(m \times \log n)$, where $m$ and $n$ are the number of
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # """
@@ -84,7 +103,7 @@ class Solution:
         return -1 if ans >= n else ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -118,7 +137,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -154,7 +173,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -189,7 +208,7 @@ func leftMostColumnWithOne(binaryMatrix BinaryMatrix) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -221,7 +240,7 @@ function leftMostColumnWithOne(binaryMatrix: BinaryMatrix) {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 /**
@@ -263,7 +282,7 @@ impl Solution {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 /**
@@ -297,10 +316,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

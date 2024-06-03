@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2262.Total%20Appeal%20of%20A%20String/README.md
+rating: 2033
+source: 第 291 场周赛 Q4
+tags:
+    - 哈希表
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2262. 字符串的总引力](https://leetcode.cn/problems/total-appeal-of-a-string)
 
 [English Version](/solution/2200-2299/2262.Total%20Appeal%20of%20A%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>字符串的 <strong>引力</strong> 定义为：字符串中 <strong>不同</strong> 字符的数量。</p>
 
@@ -52,11 +66,13 @@
 	<li><code>s</code> 由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举**
+### 方法一：枚举
 
 我们可以枚举以每个字符 $s[i]$ 结尾的字符串，计算其引力值之和 $t$，最后将所有 $t$ 相加即可。
 
@@ -73,9 +89,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -90,9 +104,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -112,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -131,7 +143,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func appealSum(s string) int64 {
@@ -150,7 +162,7 @@ func appealSum(s string) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function appealSum(s: string): number {
@@ -168,10 +180,8 @@ function appealSum(s: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

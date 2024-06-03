@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0219.Contains%20Duplicate%20II/README.md
+tags:
+    - 数组
+    - 哈希表
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [219. 存在重复元素 II](https://leetcode.cn/problems/contains-duplicate-ii)
 
 [English Version](/solution/0200-0299/0219.Contains%20Duplicate%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组&nbsp;<code>nums</code> 和一个整数&nbsp;<code>k</code> ，判断数组中是否存在两个 <strong>不同的索引</strong><em>&nbsp;</em><code>i</code>&nbsp;和<em>&nbsp;</em><code>j</code> ，满足 <code>nums[i] == nums[j]</code> 且 <code>abs(i - j) &lt;= k</code> 。如果存在，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
 
@@ -40,11 +52,13 @@
 	<li><code>0 &lt;= k &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们用哈希表 $d$ 存放最近遍历到的数以及对应的下标。
 
@@ -56,9 +70,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -71,9 +83,7 @@ class Solution:
         return False
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -90,7 +100,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -108,7 +118,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func containsNearbyDuplicate(nums []int, k int) bool {
@@ -123,7 +133,22 @@ func containsNearbyDuplicate(nums []int, k int) bool {
 }
 ```
 
-### **C#**
+#### TypeScript
+
+```ts
+function containsNearbyDuplicate(nums: number[], k: number): boolean {
+    const d: Map<number, number> = new Map();
+    for (let i = 0; i < nums.length; ++i) {
+        if (d.has(nums[i]) && i - d.get(nums[i])! <= k) {
+            return true;
+        }
+        d.set(nums[i], i);
+    }
+    return false;
+}
+```
+
+#### C#
 
 ```cs
 public class Solution {
@@ -140,22 +165,7 @@ public class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function containsNearbyDuplicate(nums: number[], k: number): boolean {
-    const d: Map<number, number> = new Map();
-    for (let i = 0; i < nums.length; ++i) {
-        if (d.has(nums[i]) && i - d.get(nums[i])! <= k) {
-            return true;
-        }
-        d.set(nums[i], i);
-    }
-    return false;
-}
-```
-
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -178,10 +188,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

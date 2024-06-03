@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0909.Snakes%20and%20Ladders/README.md
+tags:
+    - 广度优先搜索
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [909. 蛇梯棋](https://leetcode.cn/problems/snakes-and-ladders)
 
 [English Version](/solution/0900-0999/0909.Snakes%20and%20Ladders/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个大小为 <code>n x n</code> 的整数矩阵 <code>board</code> ，方格按从&nbsp;<code>1</code> 到 <code>n<sup>2</sup></code> 编号，编号遵循 <a href="https://baike.baidu.com/item/%E7%89%9B%E8%80%95%E5%BC%8F%E8%BD%AC%E8%A1%8C%E4%B9%A6%E5%86%99%E6%B3%95/17195786">转行交替方式</a><strong> </strong>，<strong>从左下角开始</strong>&nbsp;（即，从 <code>board[n - 1][0]</code> 开始）每一行交替方向。</p>
 
@@ -14,12 +26,14 @@
 
 <ul>
 	<li>选定目标方格 <code>next</code> ，目标方格的编号符合范围&nbsp;<code>[curr + 1, min(curr + 6, n<sup>2</sup>)]</code> 。
+
     <ul>
     	<li>该选择模拟了掷 <strong>六面体骰子</strong> 的情景，无论棋盘大小如何，玩家最多只能有 6 个目的地。</li>
     </ul>
     </li>
     <li>传送玩家：如果目标方格 <code>next</code> 处存在蛇或梯子，那么玩家会传送到蛇或梯子的目的地。否则，玩家传送到目标方格 <code>next</code> 。&nbsp;</li>
     <li>当玩家到达编号 <code>n<sup>2</sup></code> 的方格时，游戏结束。</li>
+
 </ul>
 
 <p><code>r</code> 行 <code>c</code> 列的棋盘，按前述方法编号，棋盘格中可能存在 “蛇” 或 “梯子”；如果 <code>board[r][c] != -1</code>，那个蛇或梯子的目的地将会是 <code>board[r][c]</code>。编号为 <code>1</code> 和 <code>n<sup>2</sup></code> 的方格上没有蛇或梯子。</p>
@@ -66,17 +80,17 @@
 	<li>编号为 <code>1</code> 和 <code>n<sup>2</sup></code> 的方格上没有蛇或梯子</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：BFS**
+### 方法一：BFS
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -107,9 +121,7 @@ class Solution:
         return -1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -156,7 +168,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -198,7 +210,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func snakesAndLadders(board [][]int) int {
@@ -240,10 +252,8 @@ func snakesAndLadders(board [][]int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

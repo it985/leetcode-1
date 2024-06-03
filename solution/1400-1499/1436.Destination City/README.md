@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1436.Destination%20City/README.md
+rating: 1192
+source: 第 187 场周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [1436. 旅行终点站](https://leetcode.cn/problems/destination-city)
 
 [English Version](/solution/1400-1499/1436.Destination%20City/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一份旅游线路图，该线路图中的旅行线路用数组 <code>paths</code> 表示，其中 <code>paths[i] = [cityA<sub>i</sub>, cityB<sub>i</sub>]</code> 表示该线路将会从 <code>cityA<sub>i</sub></code> 直接前往 <code>cityB<sub>i</sub></code> 。请你找出这次旅行的终点站，即没有任何可以通往其他城市的线路的城市<em>。</em></p>
 
@@ -52,11 +66,13 @@
 	<li>所有字符串均由大小写英文字母和空格字符组成。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 将所有起点存入哈希表中，然后遍历所有终点，找出没出现在哈希表中的终点，即为答案。
 
@@ -64,9 +80,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -75,9 +89,7 @@ class Solution:
         return next(b for _, b in paths if b not in s)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -96,7 +108,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -116,7 +128,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func destCity(paths [][]string) string {
@@ -133,7 +145,41 @@ func destCity(paths [][]string) string {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function destCity(paths: string[][]): string {
+    const set = new Set(paths.map(([a]) => a));
+    for (const [_, b] of paths) {
+        if (!set.has(b)) {
+            return b;
+        }
+    }
+    return '';
+}
+```
+
+#### Rust
+
+```rust
+use std::collections::HashSet;
+impl Solution {
+    pub fn dest_city(paths: Vec<Vec<String>>) -> String {
+        let set = paths
+            .iter()
+            .map(|v| &v[0])
+            .collect::<HashSet<&String>>();
+        for path in paths.iter() {
+            if !set.contains(&path[1]) {
+                return path[1].clone();
+            }
+        }
+        String::new()
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -154,41 +200,7 @@ var destCity = function (paths) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function destCity(paths: string[][]): string {
-    const set = new Set(paths.map(([a]) => a));
-    for (const [_, b] of paths) {
-        if (!set.has(b)) {
-            return b;
-        }
-    }
-    return '';
-}
-```
-
-### **Rust**
-
-```rust
-use std::collections::HashSet;
-impl Solution {
-    pub fn dest_city(paths: Vec<Vec<String>>) -> String {
-        let set = paths
-            .iter()
-            .map(|v| &v[0])
-            .collect::<HashSet<&String>>();
-        for path in paths.iter() {
-            if !set.contains(&path[1]) {
-                return path[1].clone();
-            }
-        }
-        String::new()
-    }
-}
-```
-
-### **C**
+#### C
 
 ```c
 char* destCity(char*** paths, int pathsSize, int* pathsColSize) {
@@ -208,10 +220,8 @@ char* destCity(char*** paths, int pathsSize, int* pathsColSize) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

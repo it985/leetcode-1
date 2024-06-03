@@ -1,10 +1,20 @@
-# [2324. 产品销售分析 IV](https://leetcode.cn/problems/product-sales-analysis-iv)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2324.Product%20Sales%20Analysis%20IV/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2324. 产品销售分析 IV 🔒](https://leetcode.cn/problems/product-sales-analysis-iv)
 
 [English Version](/solution/2300-2399/2324.Product%20Sales%20Analysis%20IV/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Sales</code></p>
 
@@ -91,15 +101,17 @@ Product 表:
 用户 102 在产品 1、2、3 上花的钱最多。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -123,3 +135,7 @@ WHERE rk = 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

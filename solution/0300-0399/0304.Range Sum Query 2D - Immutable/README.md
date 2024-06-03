@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0304.Range%20Sum%20Query%202D%20-%20Immutable/README.md
+tags:
+    - 设计
+    - 数组
+    - 矩阵
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [304. 二维区域和检索 - 矩阵不可变](https://leetcode.cn/problems/range-sum-query-2d-immutable)
 
 [English Version](/solution/0300-0399/0304.Range%20Sum%20Query%202D%20-%20Immutable/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><big><small>给定一个二维矩阵 <code>matrix</code>，</small></big>以下类型的多个请求：</p>
 
@@ -53,11 +66,13 @@ numMatrix.sumRegion(1, 2, 2, 4); // return 12 (蓝色矩形框的元素总和)
 	<li><meta charset="UTF-8" />最多调用 <code>10<sup>4</sup></code> 次&nbsp;<code>sumRegion</code> 方法</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二维前缀和**
+### 方法一：二维前缀和
 
 我们用 $s[i + 1][j + 1]$ 表示第 $i$ 行第 $j$ 列左上部分所有元素之和，下标 $i$ 和 $j$ 均从 $0$ 开始。可以得到以下前缀和公式：
 
@@ -73,13 +88,11 @@ $$
 
 我们在初始化方法中预处理出前缀和数组 $s$，在查询方法中直接返回上述公式的结果即可。
 
-初始化的时间复杂度为 $O(m\times n)$，查询的时间复杂度为 $O(1)$。
+初始化的时间复杂度为 $O(m \times n)$，查询的时间复杂度为 $O(1)$。空间复杂度为 $O(m \times n)$。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class NumMatrix:
@@ -106,9 +119,7 @@ class NumMatrix:
 # param_1 = obj.sumRegion(row1,col1,row2,col2)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class NumMatrix {
@@ -136,7 +147,7 @@ class NumMatrix {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class NumMatrix {
@@ -165,9 +176,77 @@ public:
  */
 ```
 
-### **Rust**
+#### Go
+
+```go
+type NumMatrix struct {
+	s [][]int
+}
+
+func Constructor(matrix [][]int) NumMatrix {
+	m, n := len(matrix), len(matrix[0])
+	s := make([][]int, m+1)
+	for i := range s {
+		s[i] = make([]int, n+1)
+	}
+	for i, row := range matrix {
+		for j, v := range row {
+			s[i+1][j+1] = s[i+1][j] + s[i][j+1] - s[i][j] + v
+		}
+	}
+	return NumMatrix{s}
+}
+
+func (this *NumMatrix) SumRegion(row1 int, col1 int, row2 int, col2 int) int {
+	return this.s[row2+1][col2+1] - this.s[row2+1][col1] - this.s[row1][col2+1] + this.s[row1][col1]
+}
+
+/**
+ * Your NumMatrix object will be instantiated and called as such:
+ * obj := Constructor(matrix);
+ * param_1 := obj.SumRegion(row1,col1,row2,col2);
+ */
+```
+
+#### TypeScript
+
+```ts
+class NumMatrix {
+    private s: number[][];
+
+    constructor(matrix: number[][]) {
+        const m = matrix.length;
+        const n = matrix[0].length;
+        this.s = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0));
+        for (let i = 0; i < m; ++i) {
+            for (let j = 0; j < n; ++j) {
+                this.s[i + 1][j + 1] =
+                    this.s[i + 1][j] + this.s[i][j + 1] - this.s[i][j] + matrix[i][j];
+            }
+        }
+    }
+
+    sumRegion(row1: number, col1: number, row2: number, col2: number): number {
+        return (
+            this.s[row2 + 1][col2 + 1] -
+            this.s[row2 + 1][col1] -
+            this.s[row1][col2 + 1] +
+            this.s[row1][col1]
+        );
+    }
+}
+
+/**
+ * Your NumMatrix object will be instantiated and called as such:
+ * var obj = new NumMatrix(matrix)
+ * var param_1 = obj.sumRegion(row1,col1,row2,col2)
+ */
+```
+
+#### Rust
 
 ```rust
+
 /**
  * Your NumMatrix object will be instantiated and called as such:
  * let obj = NumMatrix::new(matrix);
@@ -230,39 +309,7 @@ impl NumMatrix {
 }
 ```
 
-### **Go**
-
-```go
-type NumMatrix struct {
-	s [][]int
-}
-
-func Constructor(matrix [][]int) NumMatrix {
-	m, n := len(matrix), len(matrix[0])
-	s := make([][]int, m+1)
-	for i := range s {
-		s[i] = make([]int, n+1)
-	}
-	for i, row := range matrix {
-		for j, v := range row {
-			s[i+1][j+1] = s[i+1][j] + s[i][j+1] - s[i][j] + v
-		}
-	}
-	return NumMatrix{s}
-}
-
-func (this *NumMatrix) SumRegion(row1 int, col1 int, row2 int, col2 int) int {
-	return this.s[row2+1][col2+1] - this.s[row2+1][col1] - this.s[row1][col2+1] + this.s[row1][col1]
-}
-
-/**
- * Your NumMatrix object will be instantiated and called as such:
- * obj := Constructor(matrix);
- * param_1 := obj.SumRegion(row1,col1,row2,col2);
- */
-```
-
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -303,45 +350,8 @@ NumMatrix.prototype.sumRegion = function (row1, col1, row2, col2) {
  */
 ```
 
-### **TypeScript**
-
-```ts
-class NumMatrix {
-    private s: number[][];
-
-    constructor(matrix: number[][]) {
-        const m = matrix.length;
-        const n = matrix[0].length;
-        this.s = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0));
-        for (let i = 0; i < m; ++i) {
-            for (let j = 0; j < n; ++j) {
-                this.s[i + 1][j + 1] =
-                    this.s[i + 1][j] + this.s[i][j + 1] - this.s[i][j] + matrix[i][j];
-            }
-        }
-    }
-
-    sumRegion(row1: number, col1: number, row2: number, col2: number): number {
-        return (
-            this.s[row2 + 1][col2 + 1] -
-            this.s[row2 + 1][col1] -
-            this.s[row1][col2 + 1] +
-            this.s[row1][col1]
-        );
-    }
-}
-
-/**
- * Your NumMatrix object will be instantiated and called as such:
- * var obj = new NumMatrix(matrix)
- * var param_1 = obj.sumRegion(row1,col1,row2,col2)
- */
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

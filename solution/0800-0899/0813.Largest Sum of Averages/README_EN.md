@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0813.Largest%20Sum%20of%20Averages/README_EN.md
+tags:
+    - Array
+    - Dynamic Programming
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [813. Largest Sum of Averages](https://leetcode.com/problems/largest-sum-of-averages)
 
 [中文文档](/solution/0800-0899/0813.Largest%20Sum%20of%20Averages/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code> and an integer <code>k</code>. You can partition the array into <strong>at most</strong> <code>k</code> non-empty adjacent subarrays. The <strong>score</strong> of a partition is the sum of the averages of each subarray.</p>
 
@@ -38,11 +52,17 @@ That partition would lead to a score of 5 + 2 + 6 = 13, which is worse.
 	<li><code>1 &lt;= k &lt;= nums.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -64,7 +84,7 @@ class Solution:
         return dfs(0, k)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +122,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -130,7 +150,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func largestSumOfAverages(nums []int, k int) float64 {
@@ -163,10 +183,8 @@ func largestSumOfAverages(nums []int, k int) float64 {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

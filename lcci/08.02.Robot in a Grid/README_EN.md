@@ -1,11 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/08.02.Robot%20in%20a%20Grid/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [08.02. Robot in a Grid](https://leetcode.cn/problems/robot-in-a-grid-lcci)
 
 [中文文档](/lcci/08.02.Robot%20in%20a%20Grid/README.md)
 
 ## Description
 
+<!-- description:start -->
+
 <p>Imagine a robot sitting on the upper left corner of grid with r rows and c columns. The robot can only move in two directions, right and down, but certain cells are &quot;off limits&quot; such that the robot cannot step on them. Design an algorithm to find a path for the robot from the top left to the bottom right.</p>
-![](./images/robot_maze.png)
+![](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcci/08.02.Robot%20in%20a%20Grid/images/robot_maze.png)
 <p>&quot;off limits&quot; and empty grid are represented by&nbsp;<code>1</code> and&nbsp;<code>0</code>&nbsp;respectively.</p>
 <p>Return a valid path, consisting of row number and column number of grids in the path.</p>
 <p><strong>Example&nbsp;1:</strong></p>
@@ -30,9 +40,13 @@
 	<li><code>r,&nbsp;c &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: DFS (Depth-First Search)**
+<!-- solution:start -->
+
+### Solution 1: DFS (Depth-First Search)
 
 We can use depth-first search to solve this problem. We start from the top left corner and move right or down until we reach the bottom right corner. If at some step, we find that the current position is an obstacle, or the current position is already in the path, then we return. Otherwise, we add the current position to the path and mark the current position as visited, then continue to move right or down.
 
@@ -42,7 +56,7 @@ The time complexity is $O(m \times n)$, and the space complexity is $O(m \times 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -62,7 +76,7 @@ class Solution:
         return ans if dfs(0, 0) else []
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -93,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +133,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func pathWithObstacles(obstacleGrid [][]int) [][]int {
@@ -145,7 +159,7 @@ func pathWithObstacles(obstacleGrid [][]int) [][]int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function pathWithObstacles(obstacleGrid: number[][]): number[][] {
@@ -171,7 +185,7 @@ function pathWithObstacles(obstacleGrid: number[][]): number[][] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -202,10 +216,39 @@ impl Solution {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    private var ans = [[Int]]()
+    private var g: [[Int]] = []
+    private var m: Int = 0
+    private var n: Int = 0
 
+    func pathWithObstacles(_ obstacleGrid: [[Int]]) -> [[Int]] {
+        g = obstacleGrid
+        m = g.count
+        n = g[0].count
+        return dfs(0, 0) ? ans : []
+    }
+
+    private func dfs(_ i: Int, _ j: Int) -> Bool {
+        if i >= m || j >= n || g[i][j] == 1 {
+            return false
+        }
+        ans.append([i, j])
+        g[i][j] = 1
+        if (i == m - 1 && j == n - 1) || dfs(i + 1, j) || dfs(i, j + 1) {
+            return true
+        }
+        ans.removeLast()
+        return false
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

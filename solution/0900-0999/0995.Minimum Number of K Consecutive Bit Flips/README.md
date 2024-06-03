@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0995.Minimum%20Number%20of%20K%20Consecutive%20Bit%20Flips/README.md
+tags:
+    - 位运算
+    - 队列
+    - 数组
+    - 前缀和
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [995. K 连续位的最小翻转次数](https://leetcode.cn/problems/minimum-number-of-k-consecutive-bit-flips)
 
 [English Version](/solution/0900-0999/0995.Minimum%20Number%20of%20K%20Consecutive%20Bit%20Flips/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个二进制数组 <code>nums</code> 和一个整数 <code>k</code> 。</p>
 
@@ -52,11 +66,13 @@
 	<li><code>1 &lt;= k &lt;= nums.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：差分数组**
+### 方法一：差分数组
 
 我们注意到，对于若干个连续的元素进行反转，其结果与对这些元素进行反转的次序无关。因此我们可以贪心地考虑每个位置需要进行反转的次数。
 
@@ -70,9 +86,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -92,9 +106,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -119,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -146,7 +158,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minKBitFlips(nums []int, k int) int {
@@ -169,7 +181,7 @@ func minKBitFlips(nums []int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minKBitFlips(nums: number[], k: number): number {
@@ -192,7 +204,7 @@ function minKBitFlips(nums: number[], k: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -218,10 +230,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

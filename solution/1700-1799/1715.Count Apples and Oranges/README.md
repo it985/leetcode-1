@@ -1,10 +1,20 @@
-# [1715. 苹果和橘子的个数](https://leetcode.cn/problems/count-apples-and-oranges)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1715.Count%20Apples%20and%20Oranges/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1715. 苹果和橘子的个数 🔒](https://leetcode.cn/problems/count-apples-and-oranges)
 
 [English Version](/solution/1700-1799/1715.Count%20Apples%20and%20Oranges/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：&nbsp;<code>Boxes</code></p>
 
@@ -89,15 +99,17 @@ Chests 表：
 苹果的总个数 = 6 + 24 + 27 + 27 + 17 + 14 + 36 = 151
 橘子的总个数 = 15 + 25 + 8 + 28 + 15 + 15 + 17 = 123</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-“`LEFT JOIN` + `IFNULL`”实现。
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -110,3 +122,7 @@ FROM
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

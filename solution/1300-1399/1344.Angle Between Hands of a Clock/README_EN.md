@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1344.Angle%20Between%20Hands%20of%20a%20Clock/README_EN.md
+rating: 1324
+source: Biweekly Contest 19 Q3
+tags:
+    - Math
+---
+
+<!-- problem:start -->
+
 # [1344. Angle Between Hands of a Clock](https://leetcode.com/problems/angle-between-hands-of-a-clock)
 
 [中文文档](/solution/1300-1399/1344.Angle%20Between%20Hands%20of%20a%20Clock/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two numbers, <code>hour</code> and <code>minutes</code>, return <em>the smaller angle (in degrees) formed between the </em><code>hour</code><em> and the </em><code>minute</code><em> hand</em>.</p>
 
@@ -38,17 +52,17 @@
 	<li><code>0 &lt;= minutes &lt;= 59</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-**Solution 1: Mathematics**
-
-The hour hand moves 30 degrees every hour and an additional 0.5 degrees for each minute. The minute hand moves 6 degrees every minute. If the angle between the hands is greater than 180 degrees, take its difference from 360 degrees to ensure the smallest angle is obtained.
-
-The time complexity is $O(1)$ and the space complexity is $O(1)$.
-
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,7 +73,7 @@ class Solution:
         return min(diff, 360 - diff)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -72,7 +86,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -86,7 +100,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func angleClock(hour int, minutes int) float64 {
@@ -97,7 +111,7 @@ func angleClock(hour int, minutes int) float64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function angleClock(hour: number, minutes: number): number {
@@ -108,10 +122,8 @@ function angleClock(hour: number, minutes: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1944.Number%20of%20Visible%20People%20in%20a%20Queue/README.md
+rating: 2104
+source: 第 57 场双周赛 Q4
+tags:
+    - 栈
+    - 数组
+    - 单调栈
+---
+
+<!-- problem:start -->
+
 # [1944. 队列中可以看到的人数](https://leetcode.cn/problems/number-of-visible-people-in-a-queue)
 
 [English Version](/solution/1900-1999/1944.Number%20of%20Visible%20People%20in%20a%20Queue/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>有&nbsp;<code>n</code>&nbsp;个人排成一个队列，<strong>从左到右</strong>&nbsp;编号为&nbsp;<code>0</code>&nbsp;到&nbsp;<code>n - 1</code>&nbsp;。给你以一个整数数组&nbsp;<code>heights</code>&nbsp;，每个整数 <strong>互不相同</strong>，<code>heights[i]</code>&nbsp;表示第&nbsp;<code>i</code>&nbsp;个人的高度。</p>
 
@@ -48,11 +62,13 @@
 	<li><code>heights</code>&nbsp;中所有数 <strong>互不相同</strong>&nbsp;。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：单调栈**
+### 方法一：单调栈
 
 我们观察发现，对于第 $i$ 个人来说，他能看到的人一定是按从左到右高度严格单调递增的。
 
@@ -68,13 +84,11 @@
 
 相似题目：
 
--   [2282. 在一个网格中可以看到的人数](/solution/2200-2299/2282.Number%20of%20People%20That%20Can%20Be%20Seen%20in%20a%20Grid/README.md)
+-   [2282. 在一个网格中可以看到的人数](https://github.com/doocs/leetcode/blob/main/solution/2200-2299/2282.Number%20of%20People%20That%20Can%20Be%20Seen%20in%20a%20Grid/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -92,9 +106,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -117,7 +129,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -141,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canSeePersonsCount(heights []int) []int {
@@ -162,7 +174,7 @@ func canSeePersonsCount(heights []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canSeePersonsCount(heights: number[]): number[] {
@@ -183,7 +195,7 @@ function canSeePersonsCount(heights: number[]): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -206,7 +218,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 /**
@@ -232,10 +244,8 @@ int* canSeePersonsCount(int* heights, int heightsSize, int* returnSize) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

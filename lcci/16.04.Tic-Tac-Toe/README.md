@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.04.Tic-Tac-Toe/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 16.04. 井字游戏](https://leetcode.cn/problems/tic-tac-toe-lcci)
 
 [English Version](/lcci/16.04.Tic-Tac-Toe/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>设计一个算法，判断玩家是否赢了井字游戏。输入是一个 N x N 的数组棋盘，由字符&quot; &quot;，&quot;X&quot;和&quot;O&quot;组成，其中字符&quot; &quot;代表一个空位。</p>
 <p>以下是井字游戏的规则：</p>
@@ -37,11 +45,13 @@
 	<li>输入一定遵循井字棋规则</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数**
+### 方法一：计数
 
 对于每个格子，如果是 `X`，我们不妨将计数加 $1$，如果是 `O`，我们不妨将计数减 $1$。那么当某个格子所在的行、列或者对角线的计数的绝对值等于 $n$ 时，说明当前玩家在该行、列或者对角线上放置了 $n$ 个相同字符，游戏结束，返回对应的字符即可。
 
@@ -53,9 +63,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,14 +85,17 @@ class Solution:
                     dg += v
                 if i + j + 1 == n:
                     udg += v
-                if abs(rows[i]) == n or abs(cols[j]) == n or abs(dg) == n or abs(udg) == n:
+                if (
+                    abs(rows[i]) == n
+                    or abs(cols[j]) == n
+                    or abs(dg) == n
+                    or abs(udg) == n
+                ):
                     return c
         return 'Pending' if has_empty_grid else 'Draw'
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -121,7 +132,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -157,7 +168,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func tictactoe(board []string) string {
@@ -203,7 +214,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function tictactoe(board: string[]): string {
@@ -242,10 +253,46 @@ function tictactoe(board: string[]): string {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    func tictactoe(_ board: [String]) -> String {
+        let n = board.count
+        var rows = Array(repeating: 0, count: n)
+        var cols = Array(repeating: 0, count: n)
+        var diagonal = 0, antiDiagonal = 0
+        var hasEmptyGrid = false
 
+        for i in 0..<n {
+            for j in 0..<n {
+                let c = Array(board[i])[j]
+                if c == " " {
+                    hasEmptyGrid = true
+                    continue
+                }
+                let value = c == "X" ? 1 : -1
+                rows[i] += value
+                cols[j] += value
+                if i == j {
+                    diagonal += value
+                }
+                if i + j == n - 1 {
+                    antiDiagonal += value
+                }
+                if abs(rows[i]) == n || abs(cols[j]) == n || abs(diagonal) == n || abs(antiDiagonal) == n {
+                    return String(c)
+                }
+            }
+        }
+
+        return hasEmptyGrid ? "Pending" : "Draw"
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

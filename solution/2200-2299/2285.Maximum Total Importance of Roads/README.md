@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2285.Maximum%20Total%20Importance%20of%20Roads/README.md
+rating: 1496
+source: 第 79 场双周赛 Q3
+tags:
+    - 贪心
+    - 图
+    - 排序
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [2285. 道路的最大总重要性](https://leetcode.cn/problems/maximum-total-importance-of-roads)
 
 [English Version](/solution/2200-2299/2285.Maximum%20Total%20Importance%20of%20Roads/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数&nbsp;<code>n</code>&nbsp;，表示一个国家里的城市数目。城市编号为&nbsp;<code>0</code>&nbsp;到&nbsp;<code>n - 1</code>&nbsp;。</p>
 
@@ -60,11 +75,13 @@
 	<li>没有重复道路。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 排序**
+### 方法一：贪心 + 排序
 
 考虑每个城市对所有道路的总重要性的贡献度，按贡献度从小到大排序，为城市依次分配 $[1, 2, ..., n]$。
 
@@ -72,9 +89,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -87,9 +102,7 @@ class Solution:
         return sum(i * v for i, v in enumerate(deg, 1))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -109,7 +122,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -128,7 +141,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumImportance(n int, roads [][]int) int64 {
@@ -146,16 +159,8 @@ func maximumImportance(n int, roads [][]int) int64 {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2287.Rearrange%20Characters%20to%20Make%20Target%20String/README.md
+rating: 1299
+source: 第 295 场周赛 Q1
+tags:
+    - 哈希表
+    - 字符串
+    - 计数
+---
+
+<!-- problem:start -->
+
 # [2287. 重排字符形成目标字符串](https://leetcode.cn/problems/rearrange-characters-to-make-target-string)
 
 [English Version](/solution/2200-2299/2287.Rearrange%20Characters%20to%20Make%20Target%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个下标从 <strong>0</strong> 开始的字符串 <code>s</code> 和 <code>target</code> 。你可以从 <code>s</code> 取出一些字符并将其重排，得到若干新的字符串。</p>
 
@@ -52,11 +66,13 @@
 	<li><code>s</code> 和 <code>target</code> 由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数**
+### 方法一：计数
 
 我们统计字符串 `s` 和 `target` 中每个字符出现的次数，记为 `cnt1` 和 `cnt2`。对于 `target` 中的每个字符，我们计算 `cnt1` 中该字符出现的次数除以 `cnt2` 中该字符出现的次数，取最小值即可。
 
@@ -64,9 +80,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -76,9 +90,7 @@ class Solution:
         return min(cnt1[c] // v for c, v in cnt2.items())
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -127,7 +139,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func rearrangeCharacters(s string, target string) int {
@@ -148,7 +160,7 @@ func rearrangeCharacters(s string, target string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function rearrangeCharacters(s: string, target: string): number {
@@ -171,7 +183,7 @@ function rearrangeCharacters(s: string, target: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -195,7 +207,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 #define min(a, b) (((a) < (b)) ? (a) : (b))
@@ -219,10 +231,8 @@ int rearrangeCharacters(char* s, char* target) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

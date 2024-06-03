@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2924.Find%20Champion%20II/README.md
+rating: 1430
+source: 第 370 场周赛 Q2
+tags:
+    - 图
+---
+
+<!-- problem:start -->
+
 # [2924. 找到冠军 II](https://leetcode.cn/problems/find-champion-ii)
 
 [English Version](/solution/2900-2999/2924.Find%20Champion%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一场比赛中共有 <code>n</code> 支队伍，按从 <code>0</code> 到&nbsp; <code>n - 1</code> 编号。每支队伍也是 <strong>有向无环图（DAG）</strong> 上的一个节点。</p>
 
@@ -60,11 +72,13 @@
 	<li>生成的输入满足：如果 <code>a</code> 队比 <code>b</code> 队强，<code>b</code> 队比 <code>c</code> 队强，那么 <code>a</code> 队比 <code>c</code> 队强</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：统计入度**
+### 方法一：统计入度
 
 根据题目描述，我们只需要统计每个节点的入度，记录在数组 $indeg$ 中。如果只有一个节点的入度为 $0$，那么这个节点就是冠军，否则不存在唯一的冠军。
 
@@ -72,9 +86,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -85,9 +97,7 @@ class Solution:
         return -1 if indeg.count(0) != 1 else indeg.index(0)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +118,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -131,7 +141,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findChampion(n int, edges [][]int) int {
@@ -153,7 +163,7 @@ func findChampion(n int, edges [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findChampion(n: number, edges: number[][]): number {
@@ -172,10 +182,8 @@ function findChampion(n: number, edges: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

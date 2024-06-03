@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1611.Minimum%20One%20Bit%20Operations%20to%20Make%20Integers%20Zero/README_EN.md
+rating: 2345
+source: Weekly Contest 209 Q4
+tags:
+    - Bit Manipulation
+    - Memoization
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [1611. Minimum One Bit Operations to Make Integers Zero](https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero)
 
 [中文文档](/solution/1600-1699/1611.Minimum%20One%20Bit%20Operations%20to%20Make%20Integers%20Zero/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer <code>n</code>, you must transform it into <code>0</code> using the following operations any number of times:</p>
 
@@ -43,11 +59,17 @@
 	<li><code>0 &lt;= n &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,15 +81,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def minimumOneBitOperations(self, n: int) -> int:
-        if n == 0:
-            return 0
-        return n ^ self.minimumOneBitOperations(n >> 1)
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -81,18 +95,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int minimumOneBitOperations(int n) {
-        if (n == 0) {
-            return 0;
-        }
-        return n ^ minimumOneBitOperations(n >> 1);
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -107,19 +110,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int minimumOneBitOperations(int n) {
-        if (n == 0) {
-            return 0;
-        }
-        return n ^ minimumOneBitOperations(n >> 1);
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func minimumOneBitOperations(n int) (ans int) {
@@ -130,16 +121,7 @@ func minimumOneBitOperations(n int) (ans int) {
 }
 ```
 
-```go
-func minimumOneBitOperations(n int) int {
-	if n == 0 {
-		return 0
-	}
-	return n ^ minimumOneBitOperations(n>>1)
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumOneBitOperations(n: number): number {
@@ -151,6 +133,66 @@ function minimumOneBitOperations(n: number): number {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minimumOneBitOperations(self, n: int) -> int:
+        if n == 0:
+            return 0
+        return n ^ self.minimumOneBitOperations(n >> 1)
+```
+
+#### Java
+
+```java
+class Solution {
+    public int minimumOneBitOperations(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        return n ^ minimumOneBitOperations(n >> 1);
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int minimumOneBitOperations(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        return n ^ minimumOneBitOperations(n >> 1);
+    }
+};
+```
+
+#### Go
+
+```go
+func minimumOneBitOperations(n int) int {
+	if n == 0 {
+		return 0
+	}
+	return n ^ minimumOneBitOperations(n>>1)
+}
+```
+
+#### TypeScript
+
 ```ts
 function minimumOneBitOperations(n: number): number {
     if (n === 0) {
@@ -160,10 +202,8 @@ function minimumOneBitOperations(n: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

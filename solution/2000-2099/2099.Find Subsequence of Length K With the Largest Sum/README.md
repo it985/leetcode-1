@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2099.Find%20Subsequence%20of%20Length%20K%20With%20the%20Largest%20Sum/README.md
+rating: 1447
+source: 第 67 场双周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+    - 排序
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [2099. 找到和最大的长度为 K 的子序列](https://leetcode.cn/problems/find-subsequence-of-length-k-with-the-largest-sum)
 
 [English Version](/solution/2000-2099/2099.Find%20Subsequence%20of%20Length%20K%20With%20the%20Largest%20Sum/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组&nbsp;<code>nums</code>&nbsp;和一个整数&nbsp;<code>k</code>&nbsp;。你需要找到&nbsp;<code>nums</code>&nbsp;中长度为 <code>k</code>&nbsp;的 <strong>子序列</strong>&nbsp;，且这个子序列的&nbsp;<strong>和最大&nbsp;</strong>。</p>
 
@@ -48,19 +63,17 @@
 	<li><code>1 &lt;= k &lt;= nums.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-两次排序。
-
-先按照数字大小**对下标进行排序**，然后取出倒数 k 个下标（对应的数字是数组中前 k 个数字），对下标进行排序。最后将排序后的下标依次映射成数字，得到结果数组。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -70,9 +83,7 @@ class Solution:
         return [nums[i] for i in sorted(idx[-k:])]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -97,7 +108,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -117,7 +128,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxSubsequence(nums []int, k int) []int {
@@ -135,18 +146,8 @@ func maxSubsequence(nums []int, k int) []int {
 }
 ```
 
-### **TypeScript**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

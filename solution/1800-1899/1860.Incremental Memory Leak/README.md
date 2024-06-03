@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1860.Incremental%20Memory%20Leak/README.md
+rating: 1387
+source: 第 52 场双周赛 Q2
+tags:
+    - 数学
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [1860. 增长的内存泄露](https://leetcode.cn/problems/incremental-memory-leak)
 
 [English Version](/solution/1800-1899/1860.Incremental%20Memory%20Leak/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个整数 <code>memory1</code> 和 <code>memory2</code> 分别表示两个内存条剩余可用内存的位数。现在有一个程序每秒递增的速度消耗着内存。</p>
 
@@ -45,11 +58,13 @@
 	<li><code>0 &lt;= memory1, memory2 &lt;= 2<sup>31</sup> - 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们直接模拟内存的分配。
 
@@ -63,9 +78,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,9 +93,7 @@ class Solution:
         return [i, memory1, memory2]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -100,7 +111,58 @@ class Solution {
 }
 ```
 
-### **JavaScript**
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> memLeak(int memory1, int memory2) {
+        int i = 1;
+        for (; i <= max(memory1, memory2); ++i) {
+            if (memory1 >= memory2) {
+                memory1 -= i;
+            } else {
+                memory2 -= i;
+            }
+        }
+        return {i, memory1, memory2};
+    }
+};
+```
+
+#### Go
+
+```go
+func memLeak(memory1 int, memory2 int) []int {
+	i := 1
+	for ; i <= memory1 || i <= memory2; i++ {
+		if memory1 >= memory2 {
+			memory1 -= i
+		} else {
+			memory2 -= i
+		}
+	}
+	return []int{i, memory1, memory2}
+}
+```
+
+#### TypeScript
+
+```ts
+function memLeak(memory1: number, memory2: number): number[] {
+    let i = 1;
+    for (; i <= Math.max(memory1, memory2); ++i) {
+        if (memory1 >= memory2) {
+            memory1 -= i;
+        } else {
+            memory2 -= i;
+        }
+    }
+    return [i, memory1, memory2];
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -121,61 +183,8 @@ var memLeak = function (memory1, memory2) {
 };
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    vector<int> memLeak(int memory1, int memory2) {
-        int i = 1;
-        for (; i <= max(memory1, memory2); ++i) {
-            if (memory1 >= memory2) {
-                memory1 -= i;
-            } else {
-                memory2 -= i;
-            }
-        }
-        return {i, memory1, memory2};
-    }
-};
-```
-
-### **Go**
-
-```go
-func memLeak(memory1 int, memory2 int) []int {
-	i := 1
-	for ; i <= memory1 || i <= memory2; i++ {
-		if memory1 >= memory2 {
-			memory1 -= i
-		} else {
-			memory2 -= i
-		}
-	}
-	return []int{i, memory1, memory2}
-}
-```
-
-### **TypeScript**
-
-```ts
-function memLeak(memory1: number, memory2: number): number[] {
-    let i = 1;
-    for (; i <= Math.max(memory1, memory2); ++i) {
-        if (memory1 >= memory2) {
-            memory1 -= i;
-        } else {
-            memory2 -= i;
-        }
-    }
-    return [i, memory1, memory2];
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

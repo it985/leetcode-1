@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0725.Split%20Linked%20List%20in%20Parts/README_EN.md
+tags:
+    - Linked List
+---
+
+<!-- problem:start -->
+
 # [725. Split Linked List in Parts](https://leetcode.com/problems/split-linked-list-in-parts)
 
 [中文文档](/solution/0700-0799/0725.Split%20Linked%20List%20in%20Parts/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>head</code> of a singly linked list and an integer <code>k</code>, split the linked list into <code>k</code> consecutive linked list parts.</p>
 
@@ -41,11 +53,17 @@ The input has been split into consecutive parts with size difference at most 1, 
 	<li><code>1 &lt;= k &lt;= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -75,7 +93,7 @@ class Solution:
         return res
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -94,6 +112,8 @@ class Solution {
             ++n;
             cur = cur.next;
         }
+        // width 表示每一部分至少含有的结点个数
+        // remainder 表示前 remainder 部分，每一部分多出一个数
         int width = n / k, remainder = n % k;
         ListNode[] res = new ListNode[k];
         cur = root;
@@ -116,10 +136,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

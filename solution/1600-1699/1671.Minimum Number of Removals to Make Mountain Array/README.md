@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1671.Minimum%20Number%20of%20Removals%20to%20Make%20Mountain%20Array/README.md
+rating: 1912
+source: 第 40 场双周赛 Q4
+tags:
+    - 贪心
+    - 数组
+    - 二分查找
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [1671. 得到山形数组的最少删除次数](https://leetcode.cn/problems/minimum-number-of-removals-to-make-mountain-array)
 
 [English Version](/solution/1600-1699/1671.Minimum%20Number%20of%20Removals%20to%20Make%20Mountain%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>我们定义&nbsp;<code>arr</code>&nbsp;是 <b>山形数组</b>&nbsp;当且仅当它满足：</p>
 
@@ -48,11 +63,13 @@
 	<li>题目保证&nbsp;<code>nums</code> 删除一些元素后一定能得到山形数组。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 本题可以转化为求最长上升子序列和最长下降子序列。
 
@@ -64,9 +81,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -85,9 +100,7 @@ class Solution:
         return n - max(a + b - 1 for a, b in zip(left, right) if a > 1 and b > 1)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -122,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -155,7 +168,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumMountainRemovals(nums []int) int {
@@ -188,7 +201,7 @@ func minimumMountainRemovals(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumMountainRemovals(nums: number[]): number {
@@ -219,9 +232,9 @@ function minimumMountainRemovals(nums: number[]): number {
 }
 ```
 
-### **TypeScript**
+#### Rust
 
-```ts
+```rust
 impl Solution {
     pub fn minimum_mountain_removals(nums: Vec<i32>) -> i32 {
         let n = nums.len();
@@ -254,10 +267,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

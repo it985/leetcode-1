@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0674.Longest%20Continuous%20Increasing%20Subsequence/README_EN.md
+tags:
+    - Array
+---
+
+<!-- problem:start -->
+
 # [674. Longest Continuous Increasing Subsequence](https://leetcode.com/problems/longest-continuous-increasing-subsequence)
 
 [中文文档](/solution/0600-0699/0674.Longest%20Continuous%20Increasing%20Subsequence/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an unsorted array of integers <code>nums</code>, return <em>the length of the longest <strong>continuous increasing subsequence</strong> (i.e. subarray)</em>. The subsequence must be <strong>strictly</strong> increasing.</p>
 
@@ -36,9 +48,13 @@ increasing.
 	<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: One-pass Scan**
+<!-- solution:start -->
+
+### Solution 1: One-pass Scan
 
 We can traverse the array $nums$, using a variable $cnt$ to record the length of the current consecutive increasing sequence. Initially, $cnt = 1$.
 
@@ -48,15 +64,9 @@ After the traversal ends, we return the answer $ans$.
 
 The time complexity is $O(n)$, where $n$ is the length of the array $nums$. The space complexity is $O(1)$.
 
-**Solution 2: Two Pointers**
-
-We can also use two pointers $i$ and $j$ to find each consecutive increasing sequence, and find the length of the longest consecutive increasing sequence as the answer.
-
-The time complexity is $O(n)$, where $n$ is the length of the array $nums$. The space complexity is $O(1)$.
-
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -71,21 +81,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def findLengthOfLCIS(self, nums: List[int]) -> int:
-        ans, n = 1, len(nums)
-        i = 0
-        while i < n:
-            j = i + 1
-            while j < n and nums[j - 1] < nums[j]:
-                j += 1
-            ans = max(ans, j - i)
-            i = j
-        return ans
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -103,25 +99,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int findLengthOfLCIS(int[] nums) {
-        int ans = 1;
-        int n = nums.length;
-        for (int i = 0; i < n;) {
-            int j = i + 1;
-            while (j < n && nums[j - 1] < nums[j]) {
-                ++j;
-            }
-            ans = Math.max(ans, j - i);
-            i = j;
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -140,26 +118,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int findLengthOfLCIS(vector<int>& nums) {
-        int ans = 1;
-        int n = nums.size();
-        for (int i = 0; i < n;) {
-            int j = i + 1;
-            while (j < n && nums[j - 1] < nums[j]) {
-                ++j;
-            }
-            ans = max(ans, j - i);
-            i = j;
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func findLengthOfLCIS(nums []int) int {
@@ -176,23 +135,23 @@ func findLengthOfLCIS(nums []int) int {
 }
 ```
 
-```go
-func findLengthOfLCIS(nums []int) int {
-	ans := 1
-	n := len(nums)
-	for i := 0; i < n; {
-		j := i + 1
-		for j < n && nums[j-1] < nums[j] {
-			j++
-		}
-		ans = max(ans, j-i)
-		i = j
-	}
-	return ans
+#### TypeScript
+
+```ts
+function findLengthOfLCIS(nums: number[]): number {
+    let [ans, cnt] = [1, 1];
+    for (let i = 1; i < nums.length; ++i) {
+        if (nums[i - 1] < nums[i]) {
+            ans = Math.max(ans, ++cnt);
+        } else {
+            cnt = 1;
+        }
+    }
+    return ans;
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -212,58 +171,7 @@ impl Solution {
 }
 ```
 
-```rust
-impl Solution {
-    pub fn find_length_of_lcis(nums: Vec<i32>) -> i32 {
-        let mut ans = 1;
-        let n = nums.len();
-        let mut i = 0;
-        while i < n {
-            let mut j = i + 1;
-            while j < n && nums[j - 1] < nums[j] {
-                j += 1;
-            }
-            ans = ans.max(j - i);
-            i = j;
-        }
-        ans as i32
-    }
-}
-```
-
-### **TypeScript**
-
-```ts
-function findLengthOfLCIS(nums: number[]): number {
-    let [ans, cnt] = [1, 1];
-    for (let i = 1; i < nums.length; ++i) {
-        if (nums[i - 1] < nums[i]) {
-            ans = Math.max(ans, ++cnt);
-        } else {
-            cnt = 1;
-        }
-    }
-    return ans;
-}
-```
-
-```ts
-function findLengthOfLCIS(nums: number[]): number {
-    let ans = 1;
-    const n = nums.length;
-    for (let i = 0; i < n; ) {
-        let j = i + 1;
-        while (j < n && nums[j - 1] < nums[j]) {
-            ++j;
-        }
-        ans = Math.max(ans, j - i);
-        i = j;
-    }
-    return ans;
-}
-```
-
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -285,6 +193,136 @@ class Solution {
     }
 }
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Two Pointers
+
+We can also use two pointers $i$ and $j$ to find each consecutive increasing sequence, and find the length of the longest consecutive increasing sequence as the answer.
+
+The time complexity is $O(n)$, where $n$ is the length of the array $nums$. The space complexity is $O(1)$.
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def findLengthOfLCIS(self, nums: List[int]) -> int:
+        ans, n = 1, len(nums)
+        i = 0
+        while i < n:
+            j = i + 1
+            while j < n and nums[j - 1] < nums[j]:
+                j += 1
+            ans = max(ans, j - i)
+            i = j
+        return ans
+```
+
+#### Java
+
+```java
+class Solution {
+    public int findLengthOfLCIS(int[] nums) {
+        int ans = 1;
+        int n = nums.length;
+        for (int i = 0; i < n;) {
+            int j = i + 1;
+            while (j < n && nums[j - 1] < nums[j]) {
+                ++j;
+            }
+            ans = Math.max(ans, j - i);
+            i = j;
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int findLengthOfLCIS(vector<int>& nums) {
+        int ans = 1;
+        int n = nums.size();
+        for (int i = 0; i < n;) {
+            int j = i + 1;
+            while (j < n && nums[j - 1] < nums[j]) {
+                ++j;
+            }
+            ans = max(ans, j - i);
+            i = j;
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func findLengthOfLCIS(nums []int) int {
+	ans := 1
+	n := len(nums)
+	for i := 0; i < n; {
+		j := i + 1
+		for j < n && nums[j-1] < nums[j] {
+			j++
+		}
+		ans = max(ans, j-i)
+		i = j
+	}
+	return ans
+}
+```
+
+#### TypeScript
+
+```ts
+function findLengthOfLCIS(nums: number[]): number {
+    let ans = 1;
+    const n = nums.length;
+    for (let i = 0; i < n; ) {
+        let j = i + 1;
+        while (j < n && nums[j - 1] < nums[j]) {
+            ++j;
+        }
+        ans = Math.max(ans, j - i);
+        i = j;
+    }
+    return ans;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn find_length_of_lcis(nums: Vec<i32>) -> i32 {
+        let mut ans = 1;
+        let n = nums.len();
+        let mut i = 0;
+        while i < n {
+            let mut j = i + 1;
+            while j < n && nums[j - 1] < nums[j] {
+                j += 1;
+            }
+            ans = ans.max(j - i);
+            i = j;
+        }
+        ans as i32
+    }
+}
+```
+
+#### PHP
 
 ```php
 class Solution {
@@ -309,10 +347,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

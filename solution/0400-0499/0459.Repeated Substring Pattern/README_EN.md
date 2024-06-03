@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0459.Repeated%20Substring%20Pattern/README_EN.md
+tags:
+    - String
+    - String Matching
+---
+
+<!-- problem:start -->
+
 # [459. Repeated Substring Pattern](https://leetcode.com/problems/repeated-substring-pattern)
 
 [中文文档](/solution/0400-0499/0459.Repeated%20Substring%20Pattern/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a string <code>s</code>, check if it can be constructed by taking a substring of it and appending multiple copies of the substring together.</p>
 
@@ -38,11 +51,17 @@
 	<li><code>s</code> consists of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -50,7 +69,7 @@ class Solution:
         return (s + s).index(s, 1) < len(s)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -61,7 +80,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -72,7 +91,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func repeatedSubstringPattern(s string) bool {
@@ -80,13 +99,35 @@ func repeatedSubstringPattern(s string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function repeatedSubstringPattern(s: string): boolean {
     return (s + s).slice(1, (s.length << 1) - 1).includes(s);
 }
 ```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn repeated_substring_pattern(s: String) -> bool {
+        (s.clone() + &s)[1..s.len() * 2 - 1].contains(&s)
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### TypeScript
 
 ```ts
 function repeatedSubstringPattern(s: string): boolean {
@@ -111,20 +152,8 @@ function repeatedSubstringPattern(s: string): boolean {
 }
 ```
 
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn repeated_substring_pattern(s: String) -> bool {
-        (s.clone() + &s)[1..s.len() * 2 - 1].contains(&s)
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

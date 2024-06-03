@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0743.Network%20Delay%20Time/README.md
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 图
+    - 最短路
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [743. 网络延迟时间](https://leetcode.cn/problems/network-delay-time)
 
 [English Version](/solution/0700-0799/0743.Network%20Delay%20Time/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>有 <code>n</code> 个网络节点，标记为&nbsp;<code>1</code>&nbsp;到 <code>n</code>。</p>
 
@@ -51,35 +65,19 @@
 	<li>所有 <code>(u<sub>i</sub>, v<sub>i</sub>)</code> 对都 <strong>互不相同</strong>（即，不含重复边）</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-设 n 表示点数，m 表示边数。
-
-**方法一：朴素 Dijkstra 算法**
+### 方法一：朴素 Dijkstra 算法
 
 时间复杂度 $O(n^2+m)$。
 
-**方法二：堆优化 Dijkstra 算法**
-
-时间复杂度 $O(m\log n)$。
-
-**方法三：Bellman Ford 算法**
-
-时间复杂度 $O(nm)$。
-
-**方法四：SPFA 算法**
-
-时间复杂度，平均情况下 $O(m)$，最坏情况下 $O(nm)$。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-朴素 Dijkstra 算法：
+#### Python3
 
 ```python
 class Solution:
@@ -103,77 +101,7 @@ class Solution:
         return -1 if ans == INF else ans
 ```
 
-堆优化 Dijkstra 算法：
-
-```python
-class Solution:
-    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
-        INF = 0x3F3F
-        g = defaultdict(list)
-        for u, v, w in times:
-            g[u - 1].append((v - 1, w))
-        dist = [INF] * n
-        dist[k - 1] = 0
-        q = [(0, k - 1)]
-        while q:
-            _, u = heappop(q)
-            for v, w in g[u]:
-                if dist[v] > dist[u] + w:
-                    dist[v] = dist[u] + w
-                    heappush(q, (dist[v], v))
-        ans = max(dist)
-        return -1 if ans == INF else ans
-```
-
-Bellman Ford 算法：
-
-```python
-class Solution:
-    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
-        INF = 0x3F3F
-        dist = [INF] * n
-        dist[k - 1] = 0
-        for _ in range(n):
-            backup = dist[:]
-            for u, v, w in times:
-                dist[v - 1] = min(dist[v - 1], dist[u - 1] + w)
-        ans = max(dist)
-        return -1 if ans == INF else ans
-```
-
-SPFA 算法：
-
-```python
-class Solution:
-    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
-        INF = 0x3F3F
-        dist = [INF] * n
-        vis = [False] * n
-        g = defaultdict(list)
-        for u, v, w in times:
-            g[u - 1].append((v - 1, w))
-        k -= 1
-        dist[k] = 0
-        q = deque([k])
-        vis[k] = True
-        while q:
-            u = q.popleft()
-            vis[u] = False
-            for v, w in g[u]:
-                if dist[v] > dist[u] + w:
-                    dist[v] = dist[u] + w
-                    if not vis[v]:
-                        q.append(v)
-                        vis[v] = True
-        ans = max(dist)
-        return -1 if ans == INF else ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-朴素 Dijkstra 算法：
+#### Java
 
 ```java
 class Solution {
@@ -212,121 +140,38 @@ class Solution {
 }
 ```
 
-堆优化 Dijkstra 算法：
+#### C++
 
-```java
+```cpp
 class Solution {
-    private static final int INF = 0x3f3f;
+public:
+    const int inf = 0x3f3f;
 
-    public int networkDelayTime(int[][] times, int n, int k) {
-        List<int[]>[] g = new List[n];
-        int[] dist = new int[n];
-        for (int i = 0; i < n; ++i) {
-            dist[i] = INF;
-            g[i] = new ArrayList<>();
-        }
-        for (int[] t : times) {
-            g[t[0] - 1].add(new int[] {t[1] - 1, t[2]});
-        }
-        dist[k - 1] = 0;
-        PriorityQueue<int[]> q = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
-        q.offer(new int[] {0, k - 1});
-        while (!q.isEmpty()) {
-            int[] p = q.poll();
-            int u = p[1];
-            for (int[] ne : g[u]) {
-                int v = ne[0], w = ne[1];
-                if (dist[v] > dist[u] + w) {
-                    dist[v] = dist[u] + w;
-                    q.offer(new int[] {dist[v], v});
-                }
-            }
-        }
-        int ans = 0;
-        for (int d : dist) {
-            ans = Math.max(ans, d);
-        }
-        return ans == INF ? -1 : ans;
-    }
-}
-```
-
-Bellman Ford 算法：
-
-```java
-class Solution {
-    private static final int INF = 0x3f3f;
-
-    public int networkDelayTime(int[][] times, int n, int k) {
-        int[] dist = new int[n];
-        int[] backup = new int[n];
-        Arrays.fill(dist, INF);
+    int networkDelayTime(vector<vector<int>>& times, int n, int k) {
+        vector<vector<int>> g(n, vector<int>(n, inf));
+        for (auto& t : times) g[t[0] - 1][t[1] - 1] = t[2];
+        vector<bool> vis(n);
+        vector<int> dist(n, inf);
         dist[k - 1] = 0;
         for (int i = 0; i < n; ++i) {
-            System.arraycopy(dist, 0, backup, 0, n);
-            for (int[] t : times) {
-                int u = t[0] - 1, v = t[1] - 1, w = t[2];
-                dist[v] = Math.min(dist[v], backup[u] + w);
-            }
-        }
-        int ans = 0;
-        for (int i = 0; i < n; ++i) {
-            ans = Math.max(ans, dist[i]);
-        }
-        return ans == INF ? -1 : ans;
-    }
-}
-```
-
-SPFA 算法：
-
-```java
-class Solution {
-    private static final int INF = 0x3f3f;
-
-    public int networkDelayTime(int[][] times, int n, int k) {
-        int[] dist = new int[n];
-        boolean[] vis = new boolean[n];
-        List<int[]>[] g = new List[n];
-        for (int i = 0; i < n; ++i) {
-            dist[i] = INF;
-            g[i] = new ArrayList<>();
-        }
-        for (int[] t : times) {
-            int u = t[0] - 1, v = t[1] - 1, w = t[2];
-            g[u].add(new int[] {v, w});
-        }
-        --k;
-        dist[k] = 0;
-        Deque<Integer> q = new ArrayDeque<>();
-        q.offer(k);
-        vis[k] = true;
-        while (!q.isEmpty()) {
-            int u = q.poll();
-            vis[u] = false;
-            for (int[] ne : g[u]) {
-                int v = ne[0], w = ne[1];
-                if (dist[v] > dist[u] + w) {
-                    dist[v] = dist[u] + w;
-                    if (!vis[v]) {
-                        q.offer(v);
-                        vis[v] = true;
-                    }
+            int t = -1;
+            for (int j = 0; j < n; ++j) {
+                if (!vis[j] && (t == -1 || dist[t] > dist[j])) {
+                    t = j;
                 }
             }
+            vis[t] = true;
+            for (int j = 0; j < n; ++j) {
+                dist[j] = min(dist[j], dist[t] + g[t][j]);
+            }
         }
-        int ans = 0;
-        for (int i = 0; i < n; ++i) {
-            ans = Math.max(ans, dist[i]);
-        }
-        return ans == INF ? -1 : ans;
+        int ans = *max_element(dist.begin(), dist.end());
+        return ans == inf ? -1 : ans;
     }
-}
+};
 ```
 
-### **Go**
-
-朴素 Dijkstra 算法：
+#### Go
 
 ```go
 func networkDelayTime(times [][]int, n int, k int) int {
@@ -365,7 +210,112 @@ func networkDelayTime(times [][]int, n int, k int) int {
 }
 ```
 
-堆优化 Dijkstra 算法：
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：堆优化 Dijkstra 算法
+
+时间复杂度 $O(m\log n)$。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
+        INF = 0x3F3F
+        g = defaultdict(list)
+        for u, v, w in times:
+            g[u - 1].append((v - 1, w))
+        dist = [INF] * n
+        dist[k - 1] = 0
+        q = [(0, k - 1)]
+        while q:
+            _, u = heappop(q)
+            for v, w in g[u]:
+                if dist[v] > dist[u] + w:
+                    dist[v] = dist[u] + w
+                    heappush(q, (dist[v], v))
+        ans = max(dist)
+        return -1 if ans == INF else ans
+```
+
+#### Java
+
+```java
+class Solution {
+    private static final int INF = 0x3f3f;
+
+    public int networkDelayTime(int[][] times, int n, int k) {
+        List<int[]>[] g = new List[n];
+        int[] dist = new int[n];
+        for (int i = 0; i < n; ++i) {
+            dist[i] = INF;
+            g[i] = new ArrayList<>();
+        }
+        for (int[] t : times) {
+            g[t[0] - 1].add(new int[] {t[1] - 1, t[2]});
+        }
+        dist[k - 1] = 0;
+        PriorityQueue<int[]> q = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
+        q.offer(new int[] {0, k - 1});
+        while (!q.isEmpty()) {
+            int[] p = q.poll();
+            int u = p[1];
+            for (int[] ne : g[u]) {
+                int v = ne[0], w = ne[1];
+                if (dist[v] > dist[u] + w) {
+                    dist[v] = dist[u] + w;
+                    q.offer(new int[] {dist[v], v});
+                }
+            }
+        }
+        int ans = 0;
+        for (int d : dist) {
+            ans = Math.max(ans, d);
+        }
+        return ans == INF ? -1 : ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    const int inf = 0x3f3f;
+
+    int networkDelayTime(vector<vector<int>>& times, int n, int k) {
+        vector<vector<vector<int>>> g(n);
+        for (auto& t : times) g[t[0] - 1].push_back({t[1] - 1, t[2]});
+        vector<int> dist(n, inf);
+        dist[k - 1] = 0;
+        priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> q;
+        q.push({0, k - 1});
+        while (!q.empty()) {
+            auto p = q.top();
+            q.pop();
+            int u = p[1];
+            for (auto& ne : g[u]) {
+                int v = ne[0], w = ne[1];
+                if (dist[v] > dist[u] + w) {
+                    dist[v] = dist[u] + w;
+                    q.push({dist[v], v});
+                }
+            }
+        }
+        int ans = *max_element(dist.begin(), dist.end());
+        return ans == inf ? -1 : ans;
+    }
+};
+```
+
+#### Go
 
 ```go
 const Inf = 0x3f3f3f3f
@@ -425,7 +375,85 @@ func networkDelayTime(times [][]int, n int, k int) int {
 }
 ```
 
-Bellman Ford 算法：
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法三：Bellman Ford 算法
+
+时间复杂度 $O(nm)$。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
+        INF = 0x3F3F
+        dist = [INF] * n
+        dist[k - 1] = 0
+        for _ in range(n):
+            backup = dist[:]
+            for u, v, w in times:
+                dist[v - 1] = min(dist[v - 1], dist[u - 1] + w)
+        ans = max(dist)
+        return -1 if ans == INF else ans
+```
+
+#### Java
+
+```java
+class Solution {
+    private static final int INF = 0x3f3f;
+
+    public int networkDelayTime(int[][] times, int n, int k) {
+        int[] dist = new int[n];
+        int[] backup = new int[n];
+        Arrays.fill(dist, INF);
+        dist[k - 1] = 0;
+        for (int i = 0; i < n; ++i) {
+            System.arraycopy(dist, 0, backup, 0, n);
+            for (int[] t : times) {
+                int u = t[0] - 1, v = t[1] - 1, w = t[2];
+                dist[v] = Math.min(dist[v], backup[u] + w);
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < n; ++i) {
+            ans = Math.max(ans, dist[i]);
+        }
+        return ans == INF ? -1 : ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int inf = 0x3f3f;
+
+    int networkDelayTime(vector<vector<int>>& times, int n, int k) {
+        vector<int> dist(n, inf);
+        dist[k - 1] = 0;
+        for (int i = 0; i < n; ++i) {
+            vector<int> backup = dist;
+            for (auto& e : times) {
+                int u = e[0] - 1, v = e[1] - 1, w = e[2];
+                dist[v] = min(dist[v], backup[u] + w);
+            }
+        }
+        int ans = *max_element(dist.begin(), dist.end());
+        return ans == inf ? -1 : ans;
+    }
+};
+```
+
+#### Go
 
 ```go
 func networkDelayTime(times [][]int, n int, k int) int {
@@ -451,7 +479,131 @@ func networkDelayTime(times [][]int, n int, k int) int {
 }
 ```
 
-SPFA 算法：
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法四
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
+        INF = 0x3F3F
+        dist = [INF] * n
+        vis = [False] * n
+        g = defaultdict(list)
+        for u, v, w in times:
+            g[u - 1].append((v - 1, w))
+        k -= 1
+        dist[k] = 0
+        q = deque([k])
+        vis[k] = True
+        while q:
+            u = q.popleft()
+            vis[u] = False
+            for v, w in g[u]:
+                if dist[v] > dist[u] + w:
+                    dist[v] = dist[u] + w
+                    if not vis[v]:
+                        q.append(v)
+                        vis[v] = True
+        ans = max(dist)
+        return -1 if ans == INF else ans
+```
+
+#### Java
+
+```java
+class Solution {
+    private static final int INF = 0x3f3f;
+
+    public int networkDelayTime(int[][] times, int n, int k) {
+        int[] dist = new int[n];
+        boolean[] vis = new boolean[n];
+        List<int[]>[] g = new List[n];
+        for (int i = 0; i < n; ++i) {
+            dist[i] = INF;
+            g[i] = new ArrayList<>();
+        }
+        for (int[] t : times) {
+            int u = t[0] - 1, v = t[1] - 1, w = t[2];
+            g[u].add(new int[] {v, w});
+        }
+        --k;
+        dist[k] = 0;
+        Deque<Integer> q = new ArrayDeque<>();
+        q.offer(k);
+        vis[k] = true;
+        while (!q.isEmpty()) {
+            int u = q.poll();
+            vis[u] = false;
+            for (int[] ne : g[u]) {
+                int v = ne[0], w = ne[1];
+                if (dist[v] > dist[u] + w) {
+                    dist[v] = dist[u] + w;
+                    if (!vis[v]) {
+                        q.offer(v);
+                        vis[v] = true;
+                    }
+                }
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < n; ++i) {
+            ans = Math.max(ans, dist[i]);
+        }
+        return ans == INF ? -1 : ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    const int inf = 0x3f3f;
+
+    int networkDelayTime(vector<vector<int>>& times, int n, int k) {
+        vector<int> dist(n, inf);
+        vector<vector<vector<int>>> g(n);
+        for (auto& e : times) {
+            int u = e[0] - 1, v = e[1] - 1, w = e[2];
+            g[u].push_back({v, w});
+        }
+        vector<bool> vis(n);
+        --k;
+        queue<int> q{{k}};
+        vis[k] = true;
+        dist[k] = 0;
+        while (!q.empty()) {
+            int u = q.front();
+            q.pop();
+            vis[u] = false;
+            for (auto& ne : g[u]) {
+                int v = ne[0], w = ne[1];
+                if (dist[v] > dist[u] + w) {
+                    dist[v] = dist[u] + w;
+                    if (!vis[v]) {
+                        q.push(v);
+                        vis[v] = true;
+                    }
+                }
+            }
+        }
+        int ans = *max_element(dist.begin(), dist.end());
+        return ans == inf ? -1 : ans;
+    }
+};
+```
+
+#### Go
 
 ```go
 func networkDelayTime(times [][]int, n int, k int) int {
@@ -493,138 +645,8 @@ func networkDelayTime(times [][]int, n int, k int) int {
 }
 ```
 
-### **C++**
-
-朴素 Dijkstra 算法：
-
-```cpp
-class Solution {
-public:
-    const int inf = 0x3f3f;
-
-    int networkDelayTime(vector<vector<int>>& times, int n, int k) {
-        vector<vector<int>> g(n, vector<int>(n, inf));
-        for (auto& t : times) g[t[0] - 1][t[1] - 1] = t[2];
-        vector<bool> vis(n);
-        vector<int> dist(n, inf);
-        dist[k - 1] = 0;
-        for (int i = 0; i < n; ++i) {
-            int t = -1;
-            for (int j = 0; j < n; ++j) {
-                if (!vis[j] && (t == -1 || dist[t] > dist[j])) {
-                    t = j;
-                }
-            }
-            vis[t] = true;
-            for (int j = 0; j < n; ++j) {
-                dist[j] = min(dist[j], dist[t] + g[t][j]);
-            }
-        }
-        int ans = *max_element(dist.begin(), dist.end());
-        return ans == inf ? -1 : ans;
-    }
-};
-```
-
-堆优化 Dijkstra 算法：
-
-```cpp
-class Solution {
-public:
-    const int inf = 0x3f3f;
-
-    int networkDelayTime(vector<vector<int>>& times, int n, int k) {
-        vector<vector<vector<int>>> g(n);
-        for (auto& t : times) g[t[0] - 1].push_back({t[1] - 1, t[2]});
-        vector<int> dist(n, inf);
-        dist[k - 1] = 0;
-        priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> q;
-        q.push({0, k - 1});
-        while (!q.empty()) {
-            auto p = q.top();
-            q.pop();
-            int u = p[1];
-            for (auto& ne : g[u]) {
-                int v = ne[0], w = ne[1];
-                if (dist[v] > dist[u] + w) {
-                    dist[v] = dist[u] + w;
-                    q.push({dist[v], v});
-                }
-            }
-        }
-        int ans = *max_element(dist.begin(), dist.end());
-        return ans == inf ? -1 : ans;
-    }
-};
-```
-
-Bellman Ford 算法：
-
-```cpp
-class Solution {
-public:
-    int inf = 0x3f3f;
-
-    int networkDelayTime(vector<vector<int>>& times, int n, int k) {
-        vector<int> dist(n, inf);
-        dist[k - 1] = 0;
-        for (int i = 0; i < n; ++i) {
-            vector<int> backup = dist;
-            for (auto& e : times) {
-                int u = e[0] - 1, v = e[1] - 1, w = e[2];
-                dist[v] = min(dist[v], backup[u] + w);
-            }
-        }
-        int ans = *max_element(dist.begin(), dist.end());
-        return ans == inf ? -1 : ans;
-    }
-};
-```
-
-SPFA 算法：
-
-```cpp
-class Solution {
-public:
-    const int inf = 0x3f3f;
-
-    int networkDelayTime(vector<vector<int>>& times, int n, int k) {
-        vector<int> dist(n, inf);
-        vector<vector<vector<int>>> g(n);
-        for (auto& e : times) {
-            int u = e[0] - 1, v = e[1] - 1, w = e[2];
-            g[u].push_back({v, w});
-        }
-        vector<bool> vis(n);
-        --k;
-        queue<int> q{{k}};
-        vis[k] = true;
-        dist[k] = 0;
-        while (!q.empty()) {
-            int u = q.front();
-            q.pop();
-            vis[u] = false;
-            for (auto& ne : g[u]) {
-                int v = ne[0], w = ne[1];
-                if (dist[v] > dist[u] + w) {
-                    dist[v] = dist[u] + w;
-                    if (!vis[v]) {
-                        q.push(v);
-                        vis[v] = true;
-                    }
-                }
-            }
-        }
-        int ans = *max_element(dist.begin(), dist.end());
-        return ans == inf ? -1 : ans;
-    }
-};
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

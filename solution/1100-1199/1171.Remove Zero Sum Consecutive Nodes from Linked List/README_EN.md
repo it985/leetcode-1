@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1171.Remove%20Zero%20Sum%20Consecutive%20Nodes%20from%20Linked%20List/README_EN.md
+rating: 1782
+source: Weekly Contest 151 Q3
+tags:
+    - Hash Table
+    - Linked List
+---
+
+<!-- problem:start -->
+
 # [1171. Remove Zero Sum Consecutive Nodes from Linked List](https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list)
 
 [中文文档](/solution/1100-1199/1171.Remove%20Zero%20Sum%20Consecutive%20Nodes%20from%20Linked%20List/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>head</code> of a linked list, we repeatedly delete consecutive sequences of nodes that sum to <code>0</code> until there are no such sequences.</p>
 
@@ -41,9 +56,13 @@
 	<li>Each node in the linked list has <code>-1000 &lt;= node.val &lt;= 1000</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Prefix Sum + Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Prefix Sum + Hash Table
 
 If two prefix sums of the linked list are equal, it means that the sum of the continuous node sequence between the two prefix sums is $0$, so we can remove this part of the continuous nodes.
 
@@ -57,7 +76,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -82,7 +101,7 @@ class Solution:
         return dummy.next
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -118,7 +137,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -155,7 +174,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -186,7 +205,7 @@ func removeZeroSumSublists(head *ListNode) *ListNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -218,7 +237,7 @@ function removeZeroSumSublists(head: ListNode | null): ListNode | null {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for singly-linked list.
@@ -264,10 +283,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

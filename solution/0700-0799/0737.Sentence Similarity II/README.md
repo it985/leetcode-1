@@ -1,10 +1,25 @@
-# [737. 句子相似性 II](https://leetcode.cn/problems/sentence-similarity-ii)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0737.Sentence%20Similarity%20II/README.md
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 并查集
+    - 数组
+    - 哈希表
+    - 字符串
+---
+
+<!-- problem:start -->
+
+# [737. 句子相似性 II 🔒](https://leetcode.cn/problems/sentence-similarity-ii)
 
 [English Version](/solution/0700-0799/0737.Sentence%20Similarity%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>我们可以将一个句子表示为一个单词数组，例如，句子 <code>I am happy with leetcode"</code>可以表示为&nbsp;<code>arr = ["I","am",happy","with","leetcode"]</code></p>
 
@@ -61,84 +76,17 @@
 	<li><code>x<sub>i</sub></code>&nbsp;和&nbsp;<code>y<sub>i</sub></code>&nbsp;只含英文字母</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-并查集。
-
-模板 1——朴素并查集：
-
-```python
-# 初始化，p存储每个点的父节点
-p = list(range(n))
-
-
-# 返回x的祖宗节点
-def find(x):
-    if p[x] != x:
-        # 路径压缩
-        p[x] = find(p[x])
-    return p[x]
-
-
-# 合并a和b所在的两个集合
-p[find(a)] = find(b)
-```
-
-模板 2——维护 size 的并查集：
-
-```python
-# 初始化，p存储每个点的父节点，size只有当节点是祖宗节点时才有意义，表示祖宗节点所在集合中，点的数量
-p = list(range(n))
-size = [1] * n
-
-
-# 返回x的祖宗节点
-def find(x):
-    if p[x] != x:
-        # 路径压缩
-        p[x] = find(p[x])
-    return p[x]
-
-
-# 合并a和b所在的两个集合
-if find(a) != find(b):
-    size[find(b)] += size[find(a)]
-    p[find(a)] = find(b)
-```
-
-模板 3——维护到祖宗节点距离的并查集：
-
-```python
-# 初始化，p存储每个点的父节点，d[x]存储x到p[x]的距离
-p = list(range(n))
-d = [0] * n
-
-
-# 返回x的祖宗节点
-def find(x):
-    if p[x] != x:
-        t = find(p[x])
-        d[x] += d[p[x]]
-        p[x] = t
-    return p[x]
-
-
-# 合并a和b所在的两个集合
-p[find(a)] = find(b)
-d[find(a)] = distance
-```
-
-对于本题，将相似对的所有单词转换为下标，然后套用并查集模板，将相似对合并。
-
-接着遍历 `sentence1`, `sentence2`，若对应的单词相同，直接 continue；若对应的单词不在相似对单词中，或者两单词不在同一个集合中，直接返回 false。否则遍历结束返回 true。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -178,9 +126,7 @@ class Solution:
         return True
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -229,7 +175,47 @@ class Solution {
 }
 ```
 
-### **Go**
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> p;
+    bool areSentencesSimilarTwo(vector<string>& sentence1, vector<string>& sentence2, vector<vector<string>>& similarPairs) {
+        if (sentence1.size() != sentence2.size())
+            return false;
+        int n = similarPairs.size();
+        p.resize(n << 1);
+        for (int i = 0; i < p.size(); ++i)
+            p[i] = i;
+        unordered_map<string, int> words;
+        int idx = 0;
+        for (auto e : similarPairs) {
+            string a = e[0], b = e[1];
+            if (!words.count(a))
+                words[a] = idx++;
+            if (!words.count(b))
+                words[b] = idx++;
+            p[find(words[a])] = find(words[b]);
+        }
+        for (int i = 0; i < sentence1.size(); ++i) {
+            if (sentence1[i] == sentence2[i])
+                continue;
+            if (!words.count(sentence1[i]) || !words.count(sentence2[i]) || find(words[sentence1[i]]) != find(words[sentence2[i]]))
+                return false;
+        }
+        return true;
+    }
+
+    int find(int x) {
+        if (p[x] != x)
+            p[x] = find(p[x]);
+        return p[x];
+    }
+};
+```
+
+#### Go
 
 ```go
 var p []int
@@ -276,10 +262,8 @@ func find(x int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

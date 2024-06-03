@@ -1,8 +1,23 @@
-# [1215. Stepping Numbers](https://leetcode.com/problems/stepping-numbers)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1215.Stepping%20Numbers/README_EN.md
+rating: 1674
+source: Biweekly Contest 10 Q3
+tags:
+    - Breadth-First Search
+    - Backtracking
+---
+
+<!-- problem:start -->
+
+# [1215. Stepping Numbers 🔒](https://leetcode.com/problems/stepping-numbers)
 
 [中文文档](/solution/1200-1299/1215.Stepping%20Numbers/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A <strong>stepping number</strong> is an integer such that all of its adjacent digits have an absolute difference of exactly <code>1</code>.</p>
 
@@ -34,9 +49,13 @@
 	<li><code>0 &lt;= low &lt;= high &lt;= 2 * 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: BFS**
+<!-- solution:start -->
+
+### Solution 1: BFS
 
 First, if $low$ is $0$, we need to add $0$ to the answer.
 
@@ -46,7 +65,7 @@ The time complexity is $O(10 \times 2^{\log M})$, and the space complexity is $O
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +88,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -103,7 +122,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,7 +158,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countSteppingNumbers(low int, high int) []int {
@@ -169,7 +188,7 @@ func countSteppingNumbers(low int, high int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countSteppingNumbers(low: number, high: number): number[] {
@@ -201,10 +220,8 @@ function countSteppingNumbers(low: number, high: number): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

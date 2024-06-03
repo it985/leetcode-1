@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2656.Maximum%20Sum%20With%20Exactly%20K%20Elements/README_EN.md
+rating: 1213
+source: Biweekly Contest 103 Q1
+tags:
+    - Greedy
+    - Array
+---
+
+<!-- problem:start -->
+
 # [2656. Maximum Sum With Exactly K Elements](https://leetcode.com/problems/maximum-sum-with-exactly-k-elements)
 
 [中文文档](/solution/2600-2699/2656.Maximum%20Sum%20With%20Exactly%20K%20Elements/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> and an integer <code>k</code>. Your task is to perform the following operation <strong>exactly</strong> <code>k</code> times in order to maximize your score:</p>
 
@@ -59,9 +74,13 @@ It can be proven, that 11 is the maximum answer that we can achieve.
 .spoilerbutton[value="Hide Message"] + .spoiler {padding:5px;}
 </style>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy + Mathematics**
+<!-- solution:start -->
+
+### Solution 1: Greedy + Mathematics
 
 We notice that to make the final score maximum, we should make each choice as large as possible. Therefore, we select the largest element $x$ in the array for the first time, $x+1$ for the second time, $x+2$ for the third time, and so on, until the $k$th time we select $x+k-1$. This way of selection ensures that the element selected each time is the largest in the current array, so the final score is also the largest. The answer is $k$ $x$ sum plus $0+1+2+\cdots+(k-1)$, that is, $k \times x + (k - 1) \times k / 2$.
 
@@ -69,7 +88,7 @@ Time complexity is $O(n)$, where $n$ is the length of the array. Space complexit
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -78,7 +97,7 @@ class Solution:
         return k * x + k * (k - 1) // 2
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -92,7 +111,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -104,7 +123,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximizeSum(nums []int, k int) int {
@@ -113,7 +132,7 @@ func maximizeSum(nums []int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximizeSum(nums: number[], k: number): number {
@@ -122,7 +141,7 @@ function maximizeSum(nums: number[], k: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -140,6 +159,18 @@ impl Solution {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Rust
+
 ```rust
 impl Solution {
     pub fn maximize_sum(nums: Vec<i32>, k: i32) -> i32 {
@@ -150,10 +181,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

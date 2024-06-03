@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1813.Sentence%20Similarity%20III/README_EN.md
+rating: 1588
+source: Biweekly Contest 49 Q2
+tags:
+    - Array
+    - Two Pointers
+    - String
+---
+
+<!-- problem:start -->
+
 # [1813. Sentence Similarity III](https://leetcode.com/problems/sentence-similarity-iii)
 
 [中文文档](/solution/1800-1899/1813.Sentence%20Similarity%20III/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A sentence is a list of words that are separated by a single space with no leading or trailing spaces. For example, <code>&quot;Hello World&quot;</code>, <code>&quot;HELLO&quot;</code>, <code>&quot;hello world hello world&quot;</code> are all sentences. Words consist of <strong>only</strong> uppercase and lowercase English letters.</p>
 
@@ -44,9 +60,13 @@
 	<li>The words in <code>sentence1</code> and <code>sentence2</code> are separated by a single space.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Two Pointers
 
 We split the two sentences into two word arrays `words1` and `words2` by spaces. Let the lengths of `words1` and `words2` be $m$ and $n$, respectively, and assume that $m \ge nn.
 
@@ -58,7 +78,7 @@ The time complexity is $O(L)$, and the space complexity is $O(L)$, where $L$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -76,7 +96,7 @@ class Solution:
         return i + j >= n
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -135,7 +155,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func areSentencesSimilar(sentence1 string, sentence2 string) bool {
@@ -155,7 +175,7 @@ func areSentencesSimilar(sentence1 string, sentence2 string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function areSentencesSimilar(sentence1: string, sentence2: string): boolean {
@@ -176,10 +196,8 @@ function areSentencesSimilar(sentence1: string, sentence2: string): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

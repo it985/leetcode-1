@@ -1,10 +1,23 @@
-# [2819. 购买巧克力后的最小相对损失](https://leetcode.cn/problems/minimum-relative-loss-after-buying-chocolates)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2819.Minimum%20Relative%20Loss%20After%20Buying%20Chocolates/README.md
+tags:
+    - 数组
+    - 二分查找
+    - 前缀和
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [2819. 购买巧克力后的最小相对损失 🔒](https://leetcode.cn/problems/minimum-relative-loss-after-buying-chocolates)
 
 [English Version](/solution/2800-2899/2819.Minimum%20Relative%20Loss%20After%20Buying%20Chocolates/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>现给定一个整数数组 <code>prices</code>，表示巧克力的价格；以及一个二维整数数组 <code>queries</code>，其中 <code>queries[i] = [ki, mi]</code>。</p>
 
@@ -68,11 +81,13 @@
 	<li><code>1 &lt;= m<sub>i</sub> &lt;= n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 二分查找 + 前缀和**
+### 方法一：排序 + 二分查找 + 前缀和
 
 根据题目描述，我们可以知道：
 
@@ -90,9 +105,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -122,9 +135,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -170,7 +181,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -209,7 +220,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumRelativeLosses(prices []int, queries [][]int) []int64 {
@@ -246,7 +257,7 @@ func minimumRelativeLosses(prices []int, queries [][]int) []int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumRelativeLosses(prices: number[], queries: number[][]): number[] {
@@ -295,10 +306,8 @@ function minimumRelativeLosses(prices: number[], queries: number[][]): number[] 
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,27 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2713.Maximum%20Strictly%20Increasing%20Cells%20in%20a%20Matrix/README_EN.md
+rating: 2387
+source: Weekly Contest 347 Q4
+tags:
+    - Memoization
+    - Array
+    - Binary Search
+    - Dynamic Programming
+    - Matrix
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2713. Maximum Strictly Increasing Cells in a Matrix](https://leetcode.com/problems/maximum-strictly-increasing-cells-in-a-matrix)
 
 [中文文档](/solution/2700-2799/2713.Maximum%20Strictly%20Increasing%20Cells%20in%20a%20Matrix/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a <strong>1-indexed</strong>&nbsp;<code>m x n</code> integer matrix <code>mat</code>, you can select any cell in the matrix as your <strong>starting cell</strong>.</p>
 
@@ -54,11 +73,17 @@
 	<li><code>-10<sup>5</sup>&nbsp;&lt;= mat[i][j] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -82,7 +107,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -117,7 +142,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -150,7 +175,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxIncreasingCells(mat [][]int) (ans int) {
@@ -184,10 +209,8 @@ func maxIncreasingCells(mat [][]int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

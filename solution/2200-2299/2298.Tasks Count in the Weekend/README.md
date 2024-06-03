@@ -1,10 +1,20 @@
-# [2298. 周末任务计数](https://leetcode.cn/problems/tasks-count-in-the-weekend)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2298.Tasks%20Count%20in%20the%20Weekend/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2298. 周末任务计数 🔒](https://leetcode.cn/problems/tasks-count-in-the-weekend)
 
 [English Version](/solution/2200-2299/2298.Tasks%20Count%20in%20the%20Weekend/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Tasks</code></p>
 
@@ -66,19 +76,19 @@ Task 6 是在周日提交的。
 3 个任务是在工作日提交的。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：WEEKDAY() 函数**
+### 方法一：WEEKDAY() 函数
 
 `WEEKDAY()` 函数返回日期的工作日编号，从 0 开始，0 表示星期一，1 表示星期二，以此类推，6 表示星期日。
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -89,3 +99,7 @@ FROM Tasks;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

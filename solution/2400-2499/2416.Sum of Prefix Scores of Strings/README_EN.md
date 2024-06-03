@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2416.Sum%20of%20Prefix%20Scores%20of%20Strings/README_EN.md
+rating: 1725
+source: Weekly Contest 311 Q4
+tags:
+    - Trie
+    - Array
+    - String
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [2416. Sum of Prefix Scores of Strings](https://leetcode.com/problems/sum-of-prefix-scores-of-strings)
 
 [中文文档](/solution/2400-2499/2416.Sum%20of%20Prefix%20Scores%20of%20Strings/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an array <code>words</code> of size <code>n</code> consisting of <strong>non-empty</strong> strings.</p>
 
@@ -56,9 +73,13 @@ Each prefix has a score of one, so the total is answer[0] = 1 + 1 + 1 + 1 = 4.
 	<li><code>words[i]</code> consists of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Trie**
+<!-- solution:start -->
+
+### Solution 1: Trie
 
 Use a trie to maintain the prefixes of all strings and the occurrence count of each prefix.
 
@@ -68,7 +89,7 @@ The time complexity is $O(n \times m)$. Here, $n$ and $m$ are the length of the 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Trie:
@@ -105,7 +126,7 @@ class Solution:
         return [trie.search(w) for w in words]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Trie {
@@ -154,7 +175,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Trie {
@@ -206,7 +227,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Trie struct {
@@ -256,7 +277,7 @@ func sumPrefixScores(words []string) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumPrefixScores(words: string[]): number[] {
@@ -281,6 +302,18 @@ function sumPrefixScores(words: string[]): number[] {
     });
 }
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### TypeScript
 
 ```ts
 class Trie {
@@ -332,11 +365,8 @@ function sumPrefixScores(words: string[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

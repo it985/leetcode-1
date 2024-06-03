@@ -1,8 +1,23 @@
-# [2307. Check for Contradictions in Equations](https://leetcode.com/problems/check-for-contradictions-in-equations)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2307.Check%20for%20Contradictions%20in%20Equations/README_EN.md
+tags:
+    - Depth-First Search
+    - Union Find
+    - Graph
+    - Array
+---
+
+<!-- problem:start -->
+
+# [2307. Check for Contradictions in Equations 🔒](https://leetcode.com/problems/check-for-contradictions-in-equations)
 
 [中文文档](/solution/2300-2399/2307.Check%20for%20Contradictions%20in%20Equations/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a 2D array of strings <code>equations</code> and an array of real numbers <code>values</code>, where <code>equations[i] = [A<sub>i</sub>, B<sub>i</sub>]</code> and <code>values[i]</code> means that <code>A<sub>i</sub> / B<sub>i</sub> = values[i]</code>.</p>
 
@@ -51,9 +66,13 @@ Since the third equation is code / et = 0.5, we get a contradiction.
 	<li><code>values[i]</code> has a maximum of 2 decimal places.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Weighted Union-Find**
+<!-- solution:start -->
+
+### Solution 1: Weighted Union-Find
 
 First, we convert the strings into integers starting from $0$. Then, we traverse all the equations, map the two strings in each equation to the corresponding integers $a$ and $b$. If these two integers are not in the same set, we merge them into the same set and record the weights of the two integers, which is the ratio of $a$ to $b$. If these two integers are in the same set, we check whether their weights satisfy the equation. If not, we return `true`.
 
@@ -61,11 +80,11 @@ The time complexity is $O(n \times \log n)$ or $O(n \times \alpha(n))$, and the 
 
 Similar problems:
 
--   [399. Evaluate Division](/solution/0300-0399/0399.Evaluate%20Division/README_EN.md)
+-   [399. Evaluate Division](https://github.com/doocs/leetcode/blob/main/solution/0300-0399/0399.Evaluate%20Division/README_EN.md)
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -100,7 +119,7 @@ class Solution:
         return False
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -149,7 +168,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -191,7 +210,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func checkContradictions(equations [][]string, values []float64) bool {
@@ -243,7 +262,7 @@ func checkContradictions(equations [][]string, values []float64) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function checkContradictions(equations: string[][], values: number[]): boolean {
@@ -291,10 +310,8 @@ function checkContradictions(equations: string[][], values: number[]): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

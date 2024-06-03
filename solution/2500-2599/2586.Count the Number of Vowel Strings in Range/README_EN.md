@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2586.Count%20the%20Number%20of%20Vowel%20Strings%20in%20Range/README_EN.md
+rating: 1178
+source: Weekly Contest 336 Q1
+tags:
+    - Array
+    - String
+---
+
+<!-- problem:start -->
+
 # [2586. Count the Number of Vowel Strings in Range](https://leetcode.com/problems/count-the-number-of-vowel-strings-in-range)
 
 [中文文档](/solution/2500-2599/2586.Count%20the%20Number%20of%20Vowel%20Strings%20in%20Range/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> array of string <code>words</code> and two integers <code>left</code> and <code>right</code>.</p>
 
@@ -46,9 +61,13 @@ The number of vowel strings in the mentioned range is 3.
 	<li><code>0 &lt;= left &lt;= right &lt; words.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 We just need to traverse the string in the interval $[left,.. right]$, and check if it starts and ends with a vowel. If so, the answer plus one.
 
@@ -58,7 +77,7 @@ The time complexity is $O(m)$, and the space complexity is $O(1)$. Where $m = ri
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -68,7 +87,7 @@ class Solution:
         )
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -89,7 +108,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -108,7 +127,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func vowelStrings(words []string, left int, right int) (ans int) {
@@ -124,7 +143,7 @@ func vowelStrings(words []string, left int, right int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function vowelStrings(words: string[], left: number, right: number): number {
@@ -140,7 +159,7 @@ function vowelStrings(words: string[], left: number, right: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -162,10 +181,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

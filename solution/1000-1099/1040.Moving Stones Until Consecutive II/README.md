@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1040.Moving%20Stones%20Until%20Consecutive%20II/README.md
+rating: 2455
+source: 第 135 场周赛 Q4
+tags:
+    - 数组
+    - 数学
+    - 双指针
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1040. 移动石子直到连续 II](https://leetcode.cn/problems/moving-stones-until-consecutive-ii)
 
 [English Version](/solution/1000-1099/1040.Moving%20Stones%20Until%20Consecutive%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在一个长度 <strong>无限 </strong>的数轴上，第 <code>i</code> 颗石子的位置为 <code>stones[i]</code>。如果一颗石子的位置最小/最大，那么该石子被称作 <strong>端点石子 </strong>。</p>
 
@@ -57,11 +72,13 @@
 
 <p> </p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 分类讨论 + 双指针**
+### 方法一：排序 + 分类讨论 + 双指针
 
 我们先对数组 `stones` 进行升序排序，接下来分别考虑最大移动次数 $mx$ 和最小移动次数 $mi$。
 
@@ -77,9 +94,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -98,9 +113,7 @@ class Solution:
         return [mi, mx]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -124,7 +137,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -149,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numMovesStonesII(stones []int) []int {
@@ -172,7 +185,7 @@ func numMovesStonesII(stones []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numMovesStonesII(stones: number[]): number[] {
@@ -194,10 +207,8 @@ function numMovesStonesII(stones: number[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

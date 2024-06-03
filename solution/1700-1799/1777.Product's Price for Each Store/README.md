@@ -1,10 +1,20 @@
-# [1777. 每家商店的产品价格](https://leetcode.cn/problems/products-price-for-each-store)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1777.Product%27s%20Price%20for%20Each%20Store/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1777. 每家商店的产品价格 🔒](https://leetcode.cn/problems/products-price-for-each-store)
 
 [English Version](/solution/1700-1799/1777.Product%27s%20Price%20for%20Each%20Store/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code>Products</code></p>
 
@@ -56,13 +66,17 @@ Products 表：
 产品 1 的价格在商店 1 为 70 ，商店 3 的产品 1 价格为 80 ，但在商店 2 中没有销售。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -76,3 +90,7 @@ GROUP BY 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

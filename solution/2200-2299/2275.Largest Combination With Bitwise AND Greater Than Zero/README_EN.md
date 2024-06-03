@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2275.Largest%20Combination%20With%20Bitwise%20AND%20Greater%20Than%20Zero/README_EN.md
+rating: 1642
+source: Weekly Contest 293 Q3
+tags:
+    - Bit Manipulation
+    - Array
+    - Hash Table
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [2275. Largest Combination With Bitwise AND Greater Than Zero](https://leetcode.com/problems/largest-combination-with-bitwise-and-greater-than-zero)
 
 [中文文档](/solution/2200-2299/2275.Largest%20Combination%20With%20Bitwise%20AND%20Greater%20Than%20Zero/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>The <strong>bitwise AND</strong> of an array <code>nums</code> is the bitwise AND of all integers in <code>nums</code>.</p>
 
@@ -45,11 +62,17 @@ The size of the combination is 2, so we return 2.
 	<li><code>1 &lt;= candidates[i] &lt;= 10<sup>7</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -63,7 +86,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -81,7 +104,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function largestCombination(candidates: number[]): number {
@@ -98,10 +121,8 @@ function largestCombination(candidates: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

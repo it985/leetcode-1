@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2957.Remove%20Adjacent%20Almost-Equal%20Characters/README.md
+rating: 1429
+source: 第 119 场双周赛 Q2
+tags:
+    - 贪心
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2957. 消除相邻近似相等字符](https://leetcode.cn/problems/remove-adjacent-almost-equal-characters)
 
 [English Version](/solution/2900-2999/2957.Remove%20Adjacent%20Almost-Equal%20Characters/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的字符串&nbsp;<code>word</code>&nbsp;。</p>
 
@@ -51,11 +65,13 @@
 	<li><code>word</code>&nbsp;只包含小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 我们从下标 $1$ 开始遍历字符串 $word$，如果 $word[i]$ 和 $word[i - 1]$ 相邻近似相等，那么我们就贪心地将 $word[i]$ 替换成一个与 $word[i - 1]$ 和 $word[i + 1]$ 都不相等的字符（可以不执行替换操作，记录操作次数即可）。然后，我们跳过 $word[i + 1]$，继续遍历字符串 $word$。
 
@@ -65,9 +81,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +97,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -120,7 +132,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func removeAlmostEqualCharacters(word string) (ans int) {
@@ -141,7 +153,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function removeAlmostEqualCharacters(word: string): number {
@@ -156,10 +168,8 @@ function removeAlmostEqualCharacters(word: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

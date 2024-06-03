@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1122.Relative%20Sort%20Array/README.md
+rating: 1188
+source: 第 145 场周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+    - 计数排序
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1122. 数组的相对排序](https://leetcode.cn/problems/relative-sort-array)
 
 [English Version](/solution/1100-1199/1122.Relative%20Sort%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个数组，<code>arr1</code> 和&nbsp;<code>arr2</code>，<code>arr2</code>&nbsp;中的元素各不相同，<code>arr2</code> 中的每个元素都出现在&nbsp;<code>arr1</code>&nbsp;中。</p>
 
@@ -37,11 +52,13 @@
 	<li><code>arr2</code> 中的每个元素&nbsp;<code>arr2[i]</code>&nbsp;都出现在&nbsp;<code>arr1</code>&nbsp;中</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：自定义排序**
+### 方法一：自定义排序
 
 我们先用哈希表 $pos$ 记录数组 $arr2$ 中每个元素的位置。然后，我们将数组 $arr1$ 中的每个元素映射成一个二元组 $(pos.get(x, 1000 + x), x)$，并对二元组进行排序。最后我们取出所有二元组的第二个元素并返回即可。
 
@@ -49,9 +66,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -60,9 +75,7 @@ class Solution:
         return sorted(arr1, key=lambda x: pos.get(x, 1000 + x))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -84,7 +97,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -108,7 +121,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func relativeSortArray(arr1 []int, arr2 []int) []int {
@@ -134,7 +147,7 @@ func relativeSortArray(arr1 []int, arr2 []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function relativeSortArray(arr1: number[], arr2: number[]): number[] {
@@ -152,10 +165,8 @@ function relativeSortArray(arr1: number[], arr2: number[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

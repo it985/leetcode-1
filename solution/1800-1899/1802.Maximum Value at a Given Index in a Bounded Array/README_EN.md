@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1802.Maximum%20Value%20at%20a%20Given%20Index%20in%20a%20Bounded%20Array/README_EN.md
+rating: 1929
+source: Weekly Contest 233 Q3
+tags:
+    - Greedy
+    - Binary Search
+---
+
+<!-- problem:start -->
+
 # [1802. Maximum Value at a Given Index in a Bounded Array](https://leetcode.com/problems/maximum-value-at-a-given-index-in-a-bounded-array)
 
 [中文文档](/solution/1800-1899/1802.Maximum%20Value%20at%20a%20Given%20Index%20in%20a%20Bounded%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given three positive integers:&nbsp;<code>n</code>, <code>index</code>, and <code>maxSum</code>. You want to construct an array <code>nums</code> (<strong>0-indexed</strong>)<strong> </strong>that satisfies the following conditions:</p>
 
@@ -43,9 +58,13 @@ There are no arrays that satisfy all the conditions and have nums[2] == 3, so 2 
 	<li><code>0 &lt;= index &lt; n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Binary Search
 
 According to the problem description, if we determine the value of $nums[index]$ as $x$, we can find a minimum array sum. That is, the elements on the left side of $index$ in the array decrease from $x-1$ to $1$, and if there are remaining elements, the remaining elements are all $1$; similarly, the elements at $index$ and on the right side of the array decrease from $x$ to $1$, and if there are remaining elements, the remaining elements are all $1$.
 
@@ -64,7 +83,7 @@ The time complexity is $O(\log M)$, where $M=maxSum$. The space complexity is $O
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -84,7 +103,7 @@ class Solution:
         return left
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +126,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -130,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxValue(n int, index int, maxSum int) int {
@@ -147,10 +166,8 @@ func maxValue(n int, index int, maxSum int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

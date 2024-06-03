@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2830.Maximize%20the%20Profit%20as%20the%20Salesman/README_EN.md
+rating: 1851
+source: Weekly Contest 359 Q3
+tags:
+    - Array
+    - Hash Table
+    - Binary Search
+    - Dynamic Programming
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2830. Maximize the Profit as the Salesman](https://leetcode.com/problems/maximize-the-profit-as-the-salesman)
 
 [中文文档](/solution/2800-2899/2830.Maximize%20the%20Profit%20as%20the%20Salesman/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer <code>n</code> representing the number of houses on a number line, numbered from <code>0</code> to <code>n - 1</code>.</p>
 
@@ -46,9 +64,13 @@ It can be proven that 10 is the maximum amount of gold we can achieve.
 	<li><code>1 &lt;= gold<sub>i</sub> &lt;= 10<sup>3</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sorting + Binary Search + Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: Sorting + Binary Search + Dynamic Programming
 
 We sort all the purchase offers by $end$ in ascending order, and then use dynamic programming to solve the problem.
 
@@ -60,7 +82,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -74,7 +96,7 @@ class Solution:
         return f[-1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -109,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -134,7 +156,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximizeTheProfit(n int, offers [][]int) int {
@@ -153,7 +175,7 @@ func maximizeTheProfit(n int, offers [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximizeTheProfit(n: number, offers: number[][]): number {
@@ -182,10 +204,8 @@ function maximizeTheProfit(n: number, offers: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

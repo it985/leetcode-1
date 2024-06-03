@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0029.Divide%20Two%20Integers/README_EN.md
+tags:
+    - Bit Manipulation
+    - Math
+---
+
+<!-- problem:start -->
+
 # [29. Divide Two Integers](https://leetcode.com/problems/divide-two-integers)
 
 [中文文档](/solution/0000-0099/0029.Divide%20Two%20Integers/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two integers <code>dividend</code> and <code>divisor</code>, divide two integers <strong>without</strong> using multiplication, division, and mod operator.</p>
 
@@ -37,9 +50,13 @@
 	<li><code>divisor != 0</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation + Fast Power**
+<!-- solution:start -->
+
+### Solution 1: Simulation + Fast Power
 
 Division is essentially subtraction. The problem requires us to calculate the integer result after dividing two numbers, which is actually calculating how many divisors and a number less than the divisor constitute the dividend. However, only one subtraction can be done in one loop, which is too inefficient and will lead to timeout. This can be optimized by using the idea of fast power.
 
@@ -49,7 +66,7 @@ Assuming the dividend is $a$ and the divisor is $b$, the time complexity is $O(\
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -73,7 +90,7 @@ class Solution:
         return ans if sign else -ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -103,7 +120,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -134,7 +151,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func divide(a int, b int) int {
@@ -172,7 +189,7 @@ func divide(a int, b int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function divide(a: number, b: number): number {
@@ -205,7 +222,7 @@ function divide(a: number, b: number): number {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -235,10 +252,48 @@ public class Solution {
 }
 ```
 
-### **...**
+#### PHP
 
-```
+```php
+class Solution {
+    /**
+     * @param integer $a
+     * @param integer $b
+     * @return integer
+     */
 
+    function divide($a, $b) {
+        if ($b == 0) {
+            throw new Exception('Can not divide by 0');
+        } elseif ($a == 0) {
+            return 0;
+        }
+        if ($a == -2147483648 && $b == -1) {
+            return 2147483647;
+        }
+        $sign = $a < 0 != $b < 0;
+
+        $a = abs($a);
+        $b = abs($b);
+        $ans = 0;
+        while ($a >= $b) {
+            $x = $b;
+            $cnt = 1;
+            while ($a >= $x << 1) {
+                $x <<= 1;
+                $cnt <<= 1;
+            }
+            $a -= $x;
+            $ans += $cnt;
+        }
+
+        return $sign ? -$ans : $ans;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

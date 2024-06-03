@@ -1,8 +1,21 @@
-# [1842. Next Palindrome Using Same Digits](https://leetcode.com/problems/next-palindrome-using-same-digits)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1842.Next%20Palindrome%20Using%20Same%20Digits/README_EN.md
+tags:
+    - Two Pointers
+    - String
+---
+
+<!-- problem:start -->
+
+# [1842. Next Palindrome Using Same Digits 🔒](https://leetcode.com/problems/next-palindrome-using-same-digits)
 
 [中文文档](/solution/1800-1899/1842.Next%20Palindrome%20Using%20Same%20Digits/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a numeric string <code>num</code>, representing a very large <strong>palindrome</strong>.</p>
 
@@ -43,9 +56,13 @@
 	<li><code>num</code> is a <strong>palindrome</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Find the Next Permutation of the First Half**
+<!-- solution:start -->
+
+### Solution 1: Find the Next Permutation of the First Half
 
 According to the problem description, we only need to find the next permutation of the first half of the string, then traverse the first half and symmetrically assign values to the second half.
 
@@ -53,7 +70,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Where $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -81,7 +98,7 @@ class Solution:
         return "".join(nums)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -125,7 +142,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -145,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func nextPalindrome(num string) string {
@@ -181,7 +198,7 @@ func nextPermutation(nums []byte) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function nextPalindrome(num: string): string {
@@ -217,10 +234,8 @@ function nextPermutation(nums: string[]): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

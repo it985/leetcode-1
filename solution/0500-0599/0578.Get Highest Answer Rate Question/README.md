@@ -1,10 +1,20 @@
-# [578. 查询回答率最高的问题](https://leetcode.cn/problems/get-highest-answer-rate-question)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0578.Get%20Highest%20Answer%20Rate%20Question/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [578. 查询回答率最高的问题 🔒](https://leetcode.cn/problems/get-highest-answer-rate-question)
 
 [English Version](/solution/0500-0599/0578.Get%20Highest%20Answer%20Rate%20Question/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><code>SurveyLog</code> 表：</p>
 
@@ -64,13 +74,17 @@ SurveyLog table:
 </div>
 </div>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -80,6 +94,18 @@ GROUP BY 1
 ORDER BY SUM(action = 'answer') / SUM(action = 'show') DESC, 1
 LIMIT 1;
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 WITH
@@ -98,3 +124,7 @@ LIMIT 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

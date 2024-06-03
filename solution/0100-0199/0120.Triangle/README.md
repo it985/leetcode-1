@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0120.Triangle/README.md
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [120. 三角形最小路径和](https://leetcode.cn/problems/triangle)
 
 [English Version](/solution/0100-0199/0120.Triangle/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个三角形 <code>triangle</code> ，找出自顶向下的最小路径和。</p>
 
@@ -51,11 +62,13 @@
 	<li>你可以只使用 <code>O(n)</code> 的额外空间（<code>n</code> 为三角形的总行数）来解决这个问题吗？</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i][j]$ 表示从三角形底部走到位置 $(i, j)$ 的最小路径和。这里的位置 $(i, j)$ 指的是三角形中第 $i$ 行第 $j$ 列（均从 $0$ 开始编号）的位置。那么我们有如下的状态转移方程：
 
@@ -73,9 +86,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -88,32 +99,7 @@ class Solution:
         return f[0][0]
 ```
 
-```python
-class Solution:
-    def minimumTotal(self, triangle: List[List[int]]) -> int:
-        n = len(triangle)
-        f = [0] * (n + 1)
-        for i in range(n - 1, -1, -1):
-            for j in range(i + 1):
-                f[j] = min(f[j], f[j + 1]) + triangle[i][j]
-        return f[0]
-```
-
-```python
-class Solution:
-    def minimumTotal(self, triangle: List[List[int]]) -> int:
-        n = len(triangle)
-        for i in range(n - 2, -1, -1):
-            for j in range(i + 1):
-                triangle[i][j] = (
-                    min(triangle[i + 1][j], triangle[i + 1][j + 1]) + triangle[i][j]
-                )
-        return triangle[0][0]
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -130,22 +116,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int minimumTotal(List<List<Integer>> triangle) {
-        for (int i = triangle.size() - 2; i >= 0; --i) {
-            for (int j = 0; j <= i; ++j) {
-                int x = triangle.get(i).get(j);
-                int y = Math.min(triangle.get(i + 1).get(j), triangle.get(i + 1).get(j + 1));
-                triangle.get(i).set(j, x + y);
-            }
-        }
-        return triangle.get(0).get(0);
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -164,21 +135,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int minimumTotal(vector<vector<int>>& triangle) {
-        for (int i = triangle.size() - 2; ~i; --i) {
-            for (int j = 0; j <= i; ++j) {
-                triangle[i][j] += min(triangle[i + 1][j], triangle[i + 1][j + 1]);
-            }
-        }
-        return triangle[0][0];
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func minimumTotal(triangle [][]int) int {
@@ -193,18 +150,7 @@ func minimumTotal(triangle [][]int) int {
 }
 ```
 
-```go
-func minimumTotal(triangle [][]int) int {
-	for i := len(triangle) - 2; i >= 0; i-- {
-		for j := 0; j <= i; j++ {
-			triangle[i][j] += min(triangle[i+1][j], triangle[i+1][j+1])
-		}
-	}
-	return triangle[0][0]
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumTotal(triangle: number[][]): number {
@@ -219,18 +165,7 @@ function minimumTotal(triangle: number[][]): number {
 }
 ```
 
-```ts
-function minimumTotal(triangle: number[][]): number {
-    for (let i = triangle.length - 2; ~i; --i) {
-        for (let j = 0; j <= i; ++j) {
-            triangle[i][j] += Math.min(triangle[i + 1][j], triangle[i + 1][j + 1]);
-        }
-    }
-    return triangle[0][0];
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -247,6 +182,90 @@ impl Solution {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        n = len(triangle)
+        f = [0] * (n + 1)
+        for i in range(n - 1, -1, -1):
+            for j in range(i + 1):
+                f[j] = min(f[j], f[j + 1]) + triangle[i][j]
+        return f[0]
+```
+
+#### Java
+
+```java
+class Solution {
+    public int minimumTotal(List<List<Integer>> triangle) {
+        for (int i = triangle.size() - 2; i >= 0; --i) {
+            for (int j = 0; j <= i; ++j) {
+                int x = triangle.get(i).get(j);
+                int y = Math.min(triangle.get(i + 1).get(j), triangle.get(i + 1).get(j + 1));
+                triangle.get(i).set(j, x + y);
+            }
+        }
+        return triangle.get(0).get(0);
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        for (int i = triangle.size() - 2; ~i; --i) {
+            for (int j = 0; j <= i; ++j) {
+                triangle[i][j] += min(triangle[i + 1][j], triangle[i + 1][j + 1]);
+            }
+        }
+        return triangle[0][0];
+    }
+};
+```
+
+#### Go
+
+```go
+func minimumTotal(triangle [][]int) int {
+	for i := len(triangle) - 2; i >= 0; i-- {
+		for j := 0; j <= i; j++ {
+			triangle[i][j] += min(triangle[i+1][j], triangle[i+1][j+1])
+		}
+	}
+	return triangle[0][0]
+}
+```
+
+#### TypeScript
+
+```ts
+function minimumTotal(triangle: number[][]): number {
+    for (let i = triangle.length - 2; ~i; --i) {
+        for (let j = 0; j <= i; ++j) {
+            triangle[i][j] += Math.min(triangle[i + 1][j], triangle[i + 1][j + 1]);
+        }
+    }
+    return triangle[0][0];
+}
+```
+
+#### Rust
+
 ```rust
 impl Solution {
     pub fn minimum_total(triangle: Vec<Vec<i32>>) -> i32 {
@@ -261,10 +280,32 @@ impl Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法三
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        n = len(triangle)
+        for i in range(n - 2, -1, -1):
+            for j in range(i + 1):
+                triangle[i][j] = (
+                    min(triangle[i + 1][j], triangle[i + 1][j + 1]) + triangle[i][j]
+                )
+        return triangle[0][0]
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

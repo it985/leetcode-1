@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0985.Sum%20of%20Even%20Numbers%20After%20Queries/README_EN.md
+tags:
+    - Array
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [985. Sum of Even Numbers After Queries](https://leetcode.com/problems/sum-of-even-numbers-after-queries)
 
 [中文文档](/solution/0900-0999/0985.Sum%20of%20Even%20Numbers%20After%20Queries/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code> and an array <code>queries</code> where <code>queries[i] = [val<sub>i</sub>, index<sub>i</sub>]</code>.</p>
 
@@ -41,11 +54,17 @@ After adding 2 to nums[3], the array is [-2,-1,3,6], and the sum of even values 
 	<li><code>0 &lt;= index<sub>i</sub> &lt; nums.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -64,7 +83,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -123,7 +142,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sumEvenAfterQueries(nums []int, queries [][]int) (ans []int) {
@@ -148,7 +167,32 @@ func sumEvenAfterQueries(nums []int, queries [][]int) (ans []int) {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function sumEvenAfterQueries(nums: number[], queries: number[][]): number[] {
+    let s = 0;
+    for (const x of nums) {
+        if (x % 2 === 0) {
+            s += x;
+        }
+    }
+    const ans: number[] = [];
+    for (const [v, i] of queries) {
+        if (nums[i] % 2 === 0) {
+            s -= nums[i];
+        }
+        nums[i] += v;
+        if (nums[i] % 2 === 0) {
+            s += nums[i];
+        }
+        ans.push(s);
+    }
+    return ans;
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -178,35 +222,8 @@ var sumEvenAfterQueries = function (nums, queries) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function sumEvenAfterQueries(nums: number[], queries: number[][]): number[] {
-    let s = 0;
-    for (const x of nums) {
-        if (x % 2 === 0) {
-            s += x;
-        }
-    }
-    const ans: number[] = [];
-    for (const [v, i] of queries) {
-        if (nums[i] % 2 === 0) {
-            s -= nums[i];
-        }
-        nums[i] += v;
-        if (nums[i] % 2 === 0) {
-            s += nums[i];
-        }
-        ans.push(s);
-    }
-    return ans;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1905.Count%20Sub%20Islands/README_EN.md
+rating: 1678
+source: Weekly Contest 246 Q3
+tags:
+    - Depth-First Search
+    - Breadth-First Search
+    - Union Find
+    - Array
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [1905. Count Sub Islands](https://leetcode.com/problems/count-sub-islands)
 
 [中文文档](/solution/1900-1999/1905.Count%20Sub%20Islands/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two <code>m x n</code> binary matrices <code>grid1</code> and <code>grid2</code> containing only <code>0</code>&#39;s (representing water) and <code>1</code>&#39;s (representing land). An <strong>island</strong> is a group of <code>1</code>&#39;s connected <strong>4-directionally</strong> (horizontal or vertical). Any cells outside of the grid are considered water cells.</p>
 
@@ -39,9 +57,13 @@ The 1s colored red in grid2 are those considered to be part of a sub-island. The
 	<li><code>grid1[i][j]</code> and <code>grid2[i][j]</code> are either <code>0</code> or <code>1</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: DFS**
+<!-- solution:start -->
+
+### Solution 1: DFS
 
 We can traverse each cell $(i, j)$ in the matrix `grid2`. If the value of the cell is $1$, we start a depth-first search from this cell, set the value of all cells connected to this cell to $0$, and record whether the corresponding cell in `grid1` is also $1$ for all cells connected to this cell. If it is $1$, it means that this cell is also an island in `grid1`, otherwise it is not. Finally, we count the number of sub-islands in `grid2`.
 
@@ -49,7 +71,7 @@ The time complexity is $O(m \times n)$, and the space complexity is $O(m \times 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -68,29 +90,7 @@ class Solution:
         return sum(dfs(i, j) for i in range(m) for j in range(n) if grid2[i][j])
 ```
 
-```python
-class Solution:
-    def countSubIslands(self, grid1: List[List[int]], grid2: List[List[int]]) -> int:
-        def bfs(i: int, j: int) -> int:
-            ok = grid1[i][j]
-            q = deque([(i, j)])
-            grid2[i][j] = 0
-            while q:
-                i, j = q.popleft()
-                for a, b in pairwise(dirs):
-                    x, y = i + a, j + b
-                    if 0 <= x < m and 0 <= y < n and grid2[x][y]:
-                        q.append((x, y))
-                        ok = ok & grid1[x][y]
-                        grid2[x][y] = 0
-            return ok
-
-        m, n = len(grid1), len(grid1[0])
-        dirs = (-1, 0, 1, 0, -1)
-        return sum(bfs(i, j) for i in range(m) for j in range(n) if grid2[i][j])
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -130,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -162,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countSubIslands(grid1 [][]int, grid2 [][]int) (ans int) {
@@ -191,7 +191,7 @@ func countSubIslands(grid1 [][]int, grid2 [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countSubIslands(grid1: number[][], grid2: number[][]): number {
@@ -220,10 +220,42 @@ function countSubIslands(grid1: number[][], grid2: number[][]): number {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def countSubIslands(self, grid1: List[List[int]], grid2: List[List[int]]) -> int:
+        def bfs(i: int, j: int) -> int:
+            ok = grid1[i][j]
+            q = deque([(i, j)])
+            grid2[i][j] = 0
+            while q:
+                i, j = q.popleft()
+                for a, b in pairwise(dirs):
+                    x, y = i + a, j + b
+                    if 0 <= x < m and 0 <= y < n and grid2[x][y]:
+                        q.append((x, y))
+                        ok = ok & grid1[x][y]
+                        grid2[x][y] = 0
+            return ok
+
+        m, n = len(grid1), len(grid1[0])
+        dirs = (-1, 0, 1, 0, -1)
+        return sum(bfs(i, j) for i in range(m) for j in range(n) if grid2[i][j])
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

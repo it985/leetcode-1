@@ -1,8 +1,27 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1863.Sum%20of%20All%20Subset%20XOR%20Totals/README_EN.md
+rating: 1372
+source: Weekly Contest 241 Q1
+tags:
+    - Bit Manipulation
+    - Array
+    - Math
+    - Backtracking
+    - Combinatorics
+    - Enumeration
+---
+
+<!-- problem:start -->
+
 # [1863. Sum of All Subset XOR Totals](https://leetcode.com/problems/sum-of-all-subset-xor-totals)
 
 [中文文档](/solution/1800-1899/1863.Sum%20of%20All%20Subset%20XOR%20Totals/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>The <strong>XOR total</strong> of an array is defined as the bitwise <code>XOR</code> of<strong> all its elements</strong>, or <code>0</code> if the array is<strong> empty</strong>.</p>
 
@@ -63,9 +82,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 20</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Binary Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Binary Enumeration
 
 We can use binary enumeration to enumerate all subsets, and then calculate the XOR sum of each subset.
 
@@ -73,22 +96,9 @@ Specifically, we enumerate $i$ in the range $[0, 2^n)$, where $n$ is the length 
 
 The time complexity is $O(n \times 2^n)$, where $n$ is the length of the array $nums$. The space complexity is $O(1)$.
 
-**Solution 2: DFS (Depth-First Search)**
-
-We can also use depth-first search to enumerate all subsets, and then calculate the XOR sum of each subset.
-
-We design a function $dfs(i, s)$, where $i$ represents the current search to the $i$th element of the array $nums$, and $s$ represents the XOR sum of the current subset. Initially, $i=0$, $s=0$. During the search, we have two choices each time:
-
--   Add the $i$th element of $nums$ to the current subset, i.e., $dfs(i+1, s \oplus nums[i])$;
--   Do not add the $i$th element of $nums$ to the current subset, i.e., $dfs(i+1, s)$.
-
-When we have searched all elements of the array $nums$, i.e., $i=n$, the XOR sum of the current subset is $s$, and we can add it to the answer.
-
-The time complexity is $O(2^n)$, and the space complexity is $O(n)$. Where $n$ is the length of the array $nums$.
-
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -103,23 +113,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def subsetXORSum(self, nums: List[int]) -> int:
-        def dfs(i: int, s: int):
-            nonlocal ans
-            if i >= len(nums):
-                ans += s
-                return
-            dfs(i + 1, s)
-            dfs(i + 1, s ^ nums[i])
-
-        ans = 0
-        dfs(0, 0)
-        return ans
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -139,6 +133,129 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int subsetXORSum(vector<int>& nums) {
+        int n = nums.size();
+        int ans = 0;
+        for (int i = 0; i < 1 << n; ++i) {
+            int s = 0;
+            for (int j = 0; j < n; ++j) {
+                if (i >> j & 1) {
+                    s ^= nums[j];
+                }
+            }
+            ans += s;
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func subsetXORSum(nums []int) (ans int) {
+	n := len(nums)
+	for i := 0; i < 1<<n; i++ {
+		s := 0
+		for j, x := range nums {
+			if i>>j&1 == 1 {
+				s ^= x
+			}
+		}
+		ans += s
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function subsetXORSum(nums: number[]): number {
+    let ans = 0;
+    const n = nums.length;
+    for (let i = 0; i < 1 << n; ++i) {
+        let s = 0;
+        for (let j = 0; j < n; ++j) {
+            if ((i >> j) & 1) {
+                s ^= nums[j];
+            }
+        }
+        ans += s;
+    }
+    return ans;
+}
+```
+
+#### JavaScript
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var subsetXORSum = function (nums) {
+    let ans = 0;
+    const n = nums.length;
+    for (let i = 0; i < 1 << n; ++i) {
+        let s = 0;
+        for (let j = 0; j < n; ++j) {
+            if ((i >> j) & 1) {
+                s ^= nums[j];
+            }
+        }
+        ans += s;
+    }
+    return ans;
+};
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: DFS (Depth-First Search)
+
+We can also use depth-first search to enumerate all subsets, and then calculate the XOR sum of each subset.
+
+We design a function $dfs(i, s)$, where $i$ represents the current search to the $i$th element of the array $nums$, and $s$ represents the XOR sum of the current subset. Initially, $i=0$, $s=0$. During the search, we have two choices each time:
+
+-   Add the $i$th element of $nums$ to the current subset, i.e., $dfs(i+1, s \oplus nums[i])$;
+-   Do not add the $i$th element of $nums$ to the current subset, i.e., $dfs(i+1, s)$.
+
+When we have searched all elements of the array $nums$, i.e., $i=n$, the XOR sum of the current subset is $s$, and we can add it to the answer.
+
+The time complexity is $O(2^n)$, and the space complexity is $O(n)$. Where $n$ is the length of the array $nums$.
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def subsetXORSum(self, nums: List[int]) -> int:
+        def dfs(i: int, s: int):
+            nonlocal ans
+            if i >= len(nums):
+                ans += s
+                return
+            dfs(i + 1, s)
+            dfs(i + 1, s ^ nums[i])
+
+        ans = 0
+        dfs(0, 0)
+        return ans
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -162,27 +279,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int subsetXORSum(vector<int>& nums) {
-        int n = nums.size();
-        int ans = 0;
-        for (int i = 0; i < 1 << n; ++i) {
-            int s = 0;
-            for (int j = 0; j < n; ++j) {
-                if (i >> j & 1) {
-                    s ^= nums[j];
-                }
-            }
-            ans += s;
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -204,23 +301,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func subsetXORSum(nums []int) (ans int) {
-	n := len(nums)
-	for i := 0; i < 1<<n; i++ {
-		s := 0
-		for j, x := range nums {
-			if i>>j&1 == 1 {
-				s ^= x
-			}
-		}
-		ans += s
-	}
-	return
-}
-```
+#### Go
 
 ```go
 func subsetXORSum(nums []int) (ans int) {
@@ -239,24 +320,7 @@ func subsetXORSum(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function subsetXORSum(nums: number[]): number {
-    let ans = 0;
-    const n = nums.length;
-    for (let i = 0; i < 1 << n; ++i) {
-        let s = 0;
-        for (let j = 0; j < n; ++j) {
-            if ((i >> j) & 1) {
-                s ^= nums[j];
-            }
-        }
-        ans += s;
-    }
-    return ans;
-}
-```
+#### TypeScript
 
 ```ts
 function subsetXORSum(nums: number[]): number {
@@ -275,28 +339,7 @@ function subsetXORSum(nums: number[]): number {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var subsetXORSum = function (nums) {
-    let ans = 0;
-    const n = nums.length;
-    for (let i = 0; i < 1 << n; ++i) {
-        let s = 0;
-        for (let j = 0; j < n; ++j) {
-            if ((i >> j) & 1) {
-                s ^= nums[j];
-            }
-        }
-        ans += s;
-    }
-    return ans;
-};
-```
+#### JavaScript
 
 ```js
 /**
@@ -319,10 +362,8 @@ var subsetXORSum = function (nums) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

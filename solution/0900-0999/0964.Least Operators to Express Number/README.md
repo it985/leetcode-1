@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0964.Least%20Operators%20to%20Express%20Number/README.md
+tags:
+    - 记忆化搜索
+    - 数学
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [964. 表示数字的最少运算符](https://leetcode.cn/problems/least-operators-to-express-number)
 
 [English Version](/solution/0900-0999/0964.Least%20Operators%20to%20Express%20Number/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个正整数 <code>x</code>，我们将会写出一个形如&nbsp;<code>x (op1) x (op2) x (op3) x ...</code>&nbsp;的表达式，其中每个运算符&nbsp;<code>op1</code>，<code>op2</code>，… 可以是加、减、乘、除（<code>+</code>，<code>-</code>，<code>*</code>，或是&nbsp;<code>/</code>）之一。例如，对于&nbsp;<code>x = 3</code>，我们可以写出表达式&nbsp;<code>3 * 3 / 3 + 3 - 3</code>，该式的值为 3 。</p>
 
@@ -53,11 +65,13 @@
 	<li><code>1 &lt;= target &lt;= 2 * 10<sup>8</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索**
+### 方法一：记忆化搜索
 
 我们定义一个函数 $dfs(v)$，表示用 $x$ 凑成数字 $v$ 所需要的最少运算符数量。那么答案就是 $dfs(target)$。
 
@@ -76,9 +90,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -97,9 +109,7 @@ class Solution:
         return dfs(target)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -134,7 +144,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -166,7 +176,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func leastOpsExpressTarget(x int, target int) int {
@@ -196,7 +206,7 @@ func leastOpsExpressTarget(x int, target int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function leastOpsExpressTarget(x: number, target: number): number {
@@ -225,10 +235,8 @@ function leastOpsExpressTarget(x: number, target: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0530.Minimum%20Absolute%20Difference%20in%20BST/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 广度优先搜索
+    - 二叉搜索树
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [530. 二叉搜索树的最小绝对差](https://leetcode.cn/problems/minimum-absolute-difference-in-bst)
 
 [English Version](/solution/0500-0599/0530.Minimum%20Absolute%20Difference%20in%20BST/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个二叉搜索树的根节点 <code>root</code> ，返回 <strong>树中任意两不同节点值之间的最小差值</strong> 。</p>
 
@@ -39,19 +53,19 @@
 
 <p><strong>注意：</strong>本题与 783 <a href="https://leetcode.cn/problems/minimum-distance-between-bst-nodes/">https://leetcode.cn/problems/minimum-distance-between-bst-nodes/</a> 相同</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：中序遍历**
+### 方法一：中序遍历
 
 中序遍历二叉搜索树，获取当前节点与上个节点差值的最小值即可。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -76,9 +90,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -120,7 +132,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -156,7 +168,43 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func getMinimumDifference(root *TreeNode) int {
+	inf := 0x3f3f3f3f
+	ans, prev := inf, inf
+	var dfs func(*TreeNode)
+	dfs = func(root *TreeNode) {
+		if root == nil {
+			return
+		}
+		dfs(root.Left)
+		ans = min(ans, abs(prev-root.Val))
+		prev = root.Val
+		dfs(root.Right)
+	}
+	dfs(root)
+	return ans
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+```
+
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -205,40 +253,45 @@ impl Solution {
 }
 ```
 
-### **Go**
+#### TypeScript
 
-```go
+```ts
 /**
  * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
+ * class TreeNode {
+ *     val: number
+ *     left: TreeNode | null
+ *     right: TreeNode | null
+ *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.left = (left===undefined ? null : left)
+ *         this.right = (right===undefined ? null : right)
+ *     }
  * }
  */
-func getMinimumDifference(root *TreeNode) int {
-	inf := 0x3f3f3f3f
-	ans, prev := inf, inf
-	var dfs func(*TreeNode)
-	dfs = func(root *TreeNode) {
-		if root == nil {
-			return
-		}
-		dfs(root.Left)
-		ans = min(ans, abs(prev-root.Val))
-		prev = root.Val
-		dfs(root.Right)
-	}
-	dfs(root)
-	return ans
-}
+function getMinimumDifference(root: TreeNode | null): number {
+    if (!root) return 0;
 
-func abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
+    let prev = Number.MIN_SAFE_INTEGER;
+    let min = Number.MAX_SAFE_INTEGER;
+
+    const dfs = (node: TreeNode | null) => {
+        if (!node) return;
+
+        dfs(node.left);
+        min = Math.min(min, node.val - prev);
+        prev = node.val;
+        dfs(node.right);
+    };
+
+    dfs(root);
+
+    return min;
 }
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

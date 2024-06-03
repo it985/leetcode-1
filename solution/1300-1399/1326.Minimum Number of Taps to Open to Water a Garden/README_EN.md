@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1326.Minimum%20Number%20of%20Taps%20to%20Open%20to%20Water%20a%20Garden/README_EN.md
+rating: 1885
+source: Weekly Contest 172 Q4
+tags:
+    - Greedy
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [1326. Minimum Number of Taps to Open to Water a Garden](https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden)
 
 [中文文档](/solution/1300-1399/1326.Minimum%20Number%20of%20Taps%20to%20Open%20to%20Water%20a%20Garden/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is a one-dimensional garden on the x-axis. The garden starts at the point <code>0</code> and ends at the point <code>n</code>. (i.e., the&nbsp;length of the garden is <code>n</code>).</p>
 
@@ -44,11 +60,17 @@ Opening Only the second tap will water the whole garden [0,5]
 	<li><code>0 &lt;= ranges[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +91,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -95,7 +117,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -122,7 +144,58 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func minTaps(n int, ranges []int) (ans int) {
+	last := make([]int, n+1)
+	for i, x := range ranges {
+		l, r := max(0, i-x), i+x
+		last[l] = max(last[l], r)
+	}
+	var pre, mx int
+	for i, j := range last[:n] {
+		mx = max(mx, j)
+		if mx <= i {
+			return -1
+		}
+		if pre == i {
+			ans++
+			pre = mx
+		}
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function minTaps(n: number, ranges: number[]): number {
+    const last = new Array(n + 1).fill(0);
+    for (let i = 0; i < n + 1; ++i) {
+        const l = Math.max(0, i - ranges[i]);
+        const r = i + ranges[i];
+        last[l] = Math.max(last[l], r);
+    }
+    let ans = 0;
+    let mx = 0;
+    let pre = 0;
+    for (let i = 0; i < n; ++i) {
+        mx = Math.max(mx, last[i]);
+        if (mx <= i) {
+            return -1;
+        }
+        if (pre == i) {
+            ++ans;
+            pre = mx;
+        }
+    }
+    return ans;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -161,61 +234,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func minTaps(n int, ranges []int) (ans int) {
-	last := make([]int, n+1)
-	for i, x := range ranges {
-		l, r := max(0, i-x), i+x
-		last[l] = max(last[l], r)
-	}
-	var pre, mx int
-	for i, j := range last[:n] {
-		mx = max(mx, j)
-		if mx <= i {
-			return -1
-		}
-		if pre == i {
-			ans++
-			pre = mx
-		}
-	}
-	return
-}
-```
-
-### **TypeScript**
-
-```ts
-function minTaps(n: number, ranges: number[]): number {
-    const last = new Array(n + 1).fill(0);
-    for (let i = 0; i < n + 1; ++i) {
-        const l = Math.max(0, i - ranges[i]);
-        const r = i + ranges[i];
-        last[l] = Math.max(last[l], r);
-    }
-    let ans = 0;
-    let mx = 0;
-    let pre = 0;
-    for (let i = 0; i < n; ++i) {
-        mx = Math.max(mx, last[i]);
-        if (mx <= i) {
-            return -1;
-        }
-        if (pre == i) {
-            ++ans;
-            pre = mx;
-        }
-    }
-    return ans;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

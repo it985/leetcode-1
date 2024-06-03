@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/08.05.Recursive%20Mulitply/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [08.05. Recursive Mulitply](https://leetcode.cn/problems/recursive-mulitply-lcci)
 
 [中文文档](/lcci/08.05.Recursive%20Mulitply/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Write a recursive function to multiply two positive integers without using the * operator. You can use addition, subtraction, and bit shifting, but you should minimize the number of those operations.</p>
 <p><strong>Example 1:</strong></p>
@@ -26,9 +36,13 @@
 	<li>The result will not overflow.</li>
 </ol>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Recursion + Bit Manipulation**
+<!-- solution:start -->
+
+### Solution 1: Recursion + Bit Manipulation
 
 First, we check if $B$ is $1$. If it is, we directly return $A$.
 
@@ -38,7 +52,7 @@ The time complexity is $O(\log n)$, and the space complexity is $O(\log n)$. Her
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -50,7 +64,7 @@ class Solution:
         return self.multiply(A, B >> 1) << 1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -66,7 +80,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -83,7 +97,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func multiply(A int, B int) int {
@@ -97,7 +111,7 @@ func multiply(A int, B int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function multiply(A: number, B: number): number {
@@ -111,7 +125,7 @@ function multiply(A: number, B: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -127,10 +141,24 @@ impl Solution {
 }
 ```
 
-### **...**
+#### Swift
 
-```
-
+```swift
+class Solution {
+    func multiply(_ A: Int, _ B: Int) -> Int {
+        if B == 1 {
+            return A
+        }
+        if (B & 1) == 1 {
+            return (multiply(A, B >> 1) << 1) + A
+        }
+        return multiply(A, B >> 1) << 1
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

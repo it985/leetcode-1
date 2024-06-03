@@ -1,8 +1,23 @@
-# [2445. Number of Nodes With Value One](https://leetcode.com/problems/number-of-nodes-with-value-one)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2445.Number%20of%20Nodes%20With%20Value%20One/README_EN.md
+tags:
+    - Tree
+    - Depth-First Search
+    - Breadth-First Search
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
+# [2445. Number of Nodes With Value One 🔒](https://leetcode.com/problems/number-of-nodes-with-value-one)
 
 [中文文档](/solution/2400-2499/2445.Number%20of%20Nodes%20With%20Value%20One/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is an <strong>undirected</strong> connected tree with <code>n</code> nodes labeled from <code>1</code> to <code>n</code> and <code>n - 1</code> edges. You are given the integer <code>n</code>. The parent node of a node with a label <code>v</code> is the node with the label <code>floor (v / 2)</code>. The root of the tree is the node with the label <code>1</code>.</p>
 
@@ -49,9 +64,13 @@ After processing the queries, there are one red node (node with value 1): 2.
 	<li><code>1 &lt;= queries[i] &lt;= n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 According to the problem description, we can simulate the process of each query, that is, reverse the values of the query node and its subtree nodes. Finally, count the number of nodes with a value of 1.
 
@@ -61,7 +80,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -81,7 +100,7 @@ class Solution:
         return sum(tree)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -116,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -141,7 +160,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfNodes(n int, queries []int) int {
@@ -172,16 +191,8 @@ func numberOfNodes(n int, queries []int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
-# [308. 二维区域和检索 - 可变](https://leetcode.cn/problems/range-sum-query-2d-mutable)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0308.Range%20Sum%20Query%202D%20-%20Mutable/README.md
+tags:
+    - 设计
+    - 树状数组
+    - 线段树
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
+# [308. 二维区域和检索 - 可变 🔒](https://leetcode.cn/problems/range-sum-query-2d-mutable)
 
 [English Version](/solution/0300-0399/0308.Range%20Sum%20Query%202D%20-%20Mutable/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个二维矩阵 <code>matrix</code> ，处理以下类型的多个查询:</p>
 
@@ -57,11 +71,13 @@ numMatrix.sumRegion(2, 1, 4, 3); // 返回 10 (即，右侧红色矩形的和)
 	<li>最多调用<code>10<sup>4</sup></code> 次&nbsp;<code>sumRegion</code> 和 <code>update</code> 方法</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：树状数组**
+### 方法一：树状数组
 
 树状数组，也称作“二叉索引树”（Binary Indexed Tree）或 Fenwick 树。 它可以高效地实现如下两个操作：
 
@@ -72,22 +88,9 @@ numMatrix.sumRegion(2, 1, 4, 3); // 返回 10 (即，右侧红色矩形的和)
 
 对于本题，可以构建二维树状数组。
 
-**方法二：线段树**
-
-线段树将整个区间分割为多个不连续的子区间，子区间的数量不超过 `log(width)`。更新某个元素的值，只需要更新 `log(width)` 个区间，并且这些区间都包含在一个包含该元素的大区间内。
-
--   线段树的每个节点代表一个区间；
--   线段树具有唯一的根节点，代表的区间是整个统计范围，如 `[1, N]`；
--   线段树的每个叶子节点代表一个长度为 1 的元区间 `[x, x]`；
--   对于每个内部节点 `[l, r]`，它的左儿子是 `[l, mid]`，右儿子是 `[mid + 1, r]`, 其中 `mid = ⌊(l + r) / 2⌋` (即向下取整)。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-树状数组：
+#### Python3
 
 ```python
 class BinaryIndexedTree:
@@ -140,7 +143,242 @@ class NumMatrix:
 # param_2 = obj.sumRegion(row1,col1,row2,col2)
 ```
 
-线段树：
+#### Java
+
+```java
+class BinaryIndexedTree {
+    private int n;
+    private int[] c;
+
+    public BinaryIndexedTree(int n) {
+        this.n = n;
+        c = new int[n + 1];
+    }
+
+    public void update(int x, int delta) {
+        while (x <= n) {
+            c[x] += delta;
+            x += lowbit(x);
+        }
+    }
+
+    public int query(int x) {
+        int s = 0;
+        while (x > 0) {
+            s += c[x];
+            x -= lowbit(x);
+        }
+        return s;
+    }
+
+    public static int lowbit(int x) {
+        return x & -x;
+    }
+}
+
+class NumMatrix {
+    private BinaryIndexedTree[] trees;
+
+    public NumMatrix(int[][] matrix) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        trees = new BinaryIndexedTree[m];
+        for (int i = 0; i < m; ++i) {
+            BinaryIndexedTree tree = new BinaryIndexedTree(n);
+            for (int j = 0; j < n; ++j) {
+                tree.update(j + 1, matrix[i][j]);
+            }
+            trees[i] = tree;
+        }
+    }
+
+    public void update(int row, int col, int val) {
+        BinaryIndexedTree tree = trees[row];
+        int prev = tree.query(col + 1) - tree.query(col);
+        tree.update(col + 1, val - prev);
+    }
+
+    public int sumRegion(int row1, int col1, int row2, int col2) {
+        int s = 0;
+        for (int i = row1; i <= row2; ++i) {
+            BinaryIndexedTree tree = trees[i];
+            s += tree.query(col2 + 1) - tree.query(col1);
+        }
+        return s;
+    }
+}
+
+/**
+ * Your NumMatrix object will be instantiated and called as such:
+ * NumMatrix obj = new NumMatrix(matrix);
+ * obj.update(row,col,val);
+ * int param_2 = obj.sumRegion(row1,col1,row2,col2);
+ */
+```
+
+#### C++
+
+```cpp
+class BinaryIndexedTree {
+public:
+    int n;
+    vector<int> c;
+
+    BinaryIndexedTree(int _n)
+        : n(_n)
+        , c(_n + 1) {}
+
+    void update(int x, int delta) {
+        while (x <= n) {
+            c[x] += delta;
+            x += lowbit(x);
+        }
+    }
+
+    int query(int x) {
+        int s = 0;
+        while (x > 0) {
+            s += c[x];
+            x -= lowbit(x);
+        }
+        return s;
+    }
+
+    int lowbit(int x) {
+        return x & -x;
+    }
+};
+
+class NumMatrix {
+public:
+    vector<BinaryIndexedTree*> trees;
+
+    NumMatrix(vector<vector<int>>& matrix) {
+        int m = matrix.size();
+        int n = matrix[0].size();
+        trees.resize(m);
+        for (int i = 0; i < m; ++i) {
+            BinaryIndexedTree* tree = new BinaryIndexedTree(n);
+            for (int j = 0; j < n; ++j) tree->update(j + 1, matrix[i][j]);
+            trees[i] = tree;
+        }
+    }
+
+    void update(int row, int col, int val) {
+        BinaryIndexedTree* tree = trees[row];
+        int prev = tree->query(col + 1) - tree->query(col);
+        tree->update(col + 1, val - prev);
+    }
+
+    int sumRegion(int row1, int col1, int row2, int col2) {
+        int s = 0;
+        for (int i = row1; i <= row2; ++i) {
+            BinaryIndexedTree* tree = trees[i];
+            s += tree->query(col2 + 1) - tree->query(col1);
+        }
+        return s;
+    }
+};
+
+/**
+ * Your NumMatrix object will be instantiated and called as such:
+ * NumMatrix* obj = new NumMatrix(matrix);
+ * obj->update(row,col,val);
+ * int param_2 = obj->sumRegion(row1,col1,row2,col2);
+ */
+```
+
+#### Go
+
+```go
+type BinaryIndexedTree struct {
+	n int
+	c []int
+}
+
+func newBinaryIndexedTree(n int) *BinaryIndexedTree {
+	c := make([]int, n+1)
+	return &BinaryIndexedTree{n, c}
+}
+
+func (this *BinaryIndexedTree) lowbit(x int) int {
+	return x & -x
+}
+
+func (this *BinaryIndexedTree) update(x, delta int) {
+	for x <= this.n {
+		this.c[x] += delta
+		x += this.lowbit(x)
+	}
+}
+
+func (this *BinaryIndexedTree) query(x int) int {
+	s := 0
+	for x > 0 {
+		s += this.c[x]
+		x -= this.lowbit(x)
+	}
+	return s
+}
+
+type NumMatrix struct {
+	trees []*BinaryIndexedTree
+}
+
+func Constructor(matrix [][]int) NumMatrix {
+	n := len(matrix[0])
+	var trees []*BinaryIndexedTree
+	for _, row := range matrix {
+		tree := newBinaryIndexedTree(n)
+		for j, v := range row {
+			tree.update(j+1, v)
+		}
+		trees = append(trees, tree)
+	}
+	return NumMatrix{trees}
+}
+
+func (this *NumMatrix) Update(row int, col int, val int) {
+	tree := this.trees[row]
+	prev := tree.query(col+1) - tree.query(col)
+	tree.update(col+1, val-prev)
+}
+
+func (this *NumMatrix) SumRegion(row1 int, col1 int, row2 int, col2 int) int {
+	s := 0
+	for i := row1; i <= row2; i++ {
+		tree := this.trees[i]
+		s += tree.query(col2+1) - tree.query(col1)
+	}
+	return s
+}
+
+/**
+ * Your NumMatrix object will be instantiated and called as such:
+ * obj := Constructor(matrix);
+ * obj.Update(row,col,val);
+ * param_2 := obj.SumRegion(row1,col1,row2,col2);
+ */
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：线段树
+
+线段树将整个区间分割为多个不连续的子区间，子区间的数量不超过 `log(width)`。更新某个元素的值，只需要更新 `log(width)` 个区间，并且这些区间都包含在一个包含该元素的大区间内。
+
+-   线段树的每个节点代表一个区间；
+-   线段树具有唯一的根节点，代表的区间是整个统计范围，如 `[1, N]`；
+-   线段树的每个叶子节点代表一个长度为 1 的元区间 `[x, x]`；
+-   对于每个内部节点 `[l, r]`，它的左儿子是 `[l, mid]`，右儿子是 `[mid + 1, r]`, 其中 `mid = ⌊(l + r) / 2⌋` (即向下取整)。
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Node:
@@ -215,84 +453,7 @@ class NumMatrix:
 # param_2 = obj.sumRegion(row1,col1,row2,col2)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-树状数组：
-
-```java
-class BinaryIndexedTree {
-    private int n;
-    private int[] c;
-
-    public BinaryIndexedTree(int n) {
-        this.n = n;
-        c = new int[n + 1];
-    }
-
-    public void update(int x, int delta) {
-        while (x <= n) {
-            c[x] += delta;
-            x += lowbit(x);
-        }
-    }
-
-    public int query(int x) {
-        int s = 0;
-        while (x > 0) {
-            s += c[x];
-            x -= lowbit(x);
-        }
-        return s;
-    }
-
-    public static int lowbit(int x) {
-        return x & -x;
-    }
-}
-
-class NumMatrix {
-    private BinaryIndexedTree[] trees;
-
-    public NumMatrix(int[][] matrix) {
-        int m = matrix.length;
-        int n = matrix[0].length;
-        trees = new BinaryIndexedTree[m];
-        for (int i = 0; i < m; ++i) {
-            BinaryIndexedTree tree = new BinaryIndexedTree(n);
-            for (int j = 0; j < n; ++j) {
-                tree.update(j + 1, matrix[i][j]);
-            }
-            trees[i] = tree;
-        }
-    }
-
-    public void update(int row, int col, int val) {
-        BinaryIndexedTree tree = trees[row];
-        int prev = tree.query(col + 1) - tree.query(col);
-        tree.update(col + 1, val - prev);
-    }
-
-    public int sumRegion(int row1, int col1, int row2, int col2) {
-        int s = 0;
-        for (int i = row1; i <= row2; ++i) {
-            BinaryIndexedTree tree = trees[i];
-            s += tree.query(col2 + 1) - tree.query(col1);
-        }
-        return s;
-    }
-}
-
-/**
- * Your NumMatrix object will be instantiated and called as such:
- * NumMatrix obj = new NumMatrix(matrix);
- * obj.update(row,col,val);
- * int param_2 = obj.sumRegion(row1,col1,row2,col2);
- */
-```
-
-线段树：
+#### Java
 
 ```java
 class Node {
@@ -396,81 +557,7 @@ class NumMatrix {
  */
 ```
 
-### **C++**
-
-树状数组：
-
-```cpp
-class BinaryIndexedTree {
-public:
-    int n;
-    vector<int> c;
-
-    BinaryIndexedTree(int _n)
-        : n(_n)
-        , c(_n + 1) {}
-
-    void update(int x, int delta) {
-        while (x <= n) {
-            c[x] += delta;
-            x += lowbit(x);
-        }
-    }
-
-    int query(int x) {
-        int s = 0;
-        while (x > 0) {
-            s += c[x];
-            x -= lowbit(x);
-        }
-        return s;
-    }
-
-    int lowbit(int x) {
-        return x & -x;
-    }
-};
-
-class NumMatrix {
-public:
-    vector<BinaryIndexedTree*> trees;
-
-    NumMatrix(vector<vector<int>>& matrix) {
-        int m = matrix.size();
-        int n = matrix[0].size();
-        trees.resize(m);
-        for (int i = 0; i < m; ++i) {
-            BinaryIndexedTree* tree = new BinaryIndexedTree(n);
-            for (int j = 0; j < n; ++j) tree->update(j + 1, matrix[i][j]);
-            trees[i] = tree;
-        }
-    }
-
-    void update(int row, int col, int val) {
-        BinaryIndexedTree* tree = trees[row];
-        int prev = tree->query(col + 1) - tree->query(col);
-        tree->update(col + 1, val - prev);
-    }
-
-    int sumRegion(int row1, int col1, int row2, int col2) {
-        int s = 0;
-        for (int i = row1; i <= row2; ++i) {
-            BinaryIndexedTree* tree = trees[i];
-            s += tree->query(col2 + 1) - tree->query(col1);
-        }
-        return s;
-    }
-};
-
-/**
- * Your NumMatrix object will be instantiated and called as such:
- * NumMatrix* obj = new NumMatrix(matrix);
- * obj->update(row,col,val);
- * int param_2 = obj->sumRegion(row1,col1,row2,col2);
- */
-```
-
-线段树：
+#### C++
 
 ```cpp
 class Node {
@@ -563,85 +650,8 @@ public:
  */
 ```
 
-### **Go**
-
-树状数组：
-
-```go
-type BinaryIndexedTree struct {
-	n int
-	c []int
-}
-
-func newBinaryIndexedTree(n int) *BinaryIndexedTree {
-	c := make([]int, n+1)
-	return &BinaryIndexedTree{n, c}
-}
-
-func (this *BinaryIndexedTree) lowbit(x int) int {
-	return x & -x
-}
-
-func (this *BinaryIndexedTree) update(x, delta int) {
-	for x <= this.n {
-		this.c[x] += delta
-		x += this.lowbit(x)
-	}
-}
-
-func (this *BinaryIndexedTree) query(x int) int {
-	s := 0
-	for x > 0 {
-		s += this.c[x]
-		x -= this.lowbit(x)
-	}
-	return s
-}
-
-type NumMatrix struct {
-	trees []*BinaryIndexedTree
-}
-
-func Constructor(matrix [][]int) NumMatrix {
-	n := len(matrix[0])
-	var trees []*BinaryIndexedTree
-	for _, row := range matrix {
-		tree := newBinaryIndexedTree(n)
-		for j, v := range row {
-			tree.update(j+1, v)
-		}
-		trees = append(trees, tree)
-	}
-	return NumMatrix{trees}
-}
-
-func (this *NumMatrix) Update(row int, col int, val int) {
-	tree := this.trees[row]
-	prev := tree.query(col+1) - tree.query(col)
-	tree.update(col+1, val-prev)
-}
-
-func (this *NumMatrix) SumRegion(row1 int, col1 int, row2 int, col2 int) int {
-	s := 0
-	for i := row1; i <= row2; i++ {
-		tree := this.trees[i]
-		s += tree.query(col2+1) - tree.query(col1)
-	}
-	return s
-}
-
-/**
- * Your NumMatrix object will be instantiated and called as such:
- * obj := Constructor(matrix);
- * obj.Update(row,col,val);
- * param_2 := obj.SumRegion(row1,col1,row2,col2);
- */
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

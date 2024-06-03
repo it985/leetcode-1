@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2845.Count%20of%20Interesting%20Subarrays/README.md
+rating: 2073
+source: 第 361 场周赛 Q3
+tags:
+    - 数组
+    - 哈希表
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [2845. 统计趣味子数组的数目](https://leetcode.cn/problems/count-of-interesting-subarrays)
 
 [English Version](/solution/2800-2899/2845.Count%20of%20Interesting%20Subarrays/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> ，以及整数 <code>modulo</code> 和整数 <code>k</code> 。</p>
 
@@ -64,11 +78,13 @@
 	<li><code>0 &lt;= k &lt; modulo</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 前缀和**
+### 方法一：哈希表 + 前缀和
 
 题目要求一个区间内满足 $nums[i] \bmod modulo = k$ 的索引 $i$ 的数量，我们可以将数组 $nums$ 转换为一个 $0-1$ 数组 $arr$，其中 $arr[i] = 1$ 表示 $nums[i] \bmod modulo = k$，否则 $arr[i] = 0$。
 
@@ -84,9 +100,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -102,9 +116,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -128,7 +140,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -153,7 +165,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countInterestingSubarrays(nums []int, modulo int, k int) (ans int64) {
@@ -175,7 +187,7 @@ func countInterestingSubarrays(nums []int, modulo int, k int) (ans int64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countInterestingSubarrays(nums: number[], modulo: number, k: number): number {
@@ -196,10 +208,8 @@ function countInterestingSubarrays(nums: number[], modulo: number, k: number): n
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

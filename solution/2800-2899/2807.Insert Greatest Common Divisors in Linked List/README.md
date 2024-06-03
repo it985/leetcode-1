@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2807.Insert%20Greatest%20Common%20Divisors%20in%20Linked%20List/README.md
+rating: 1279
+source: 第 110 场双周赛 Q2
+tags:
+    - 链表
+    - 数学
+    - 数论
+---
+
+<!-- problem:start -->
+
 # [2807. 在链表中插入最大公约数](https://leetcode.cn/problems/insert-greatest-common-divisors-in-linked-list)
 
 [English Version](/solution/2800-2899/2807.Insert%20Greatest%20Common%20Divisors%20in%20Linked%20List/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个链表的头&nbsp;<code>head</code>&nbsp;，每个结点包含一个整数值。</p>
 
@@ -48,21 +62,21 @@
 	<li><code>1 &lt;= Node.val &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
-我们用两个指针 $pre$ 和 $cur$ 分别指向当前遍历到的结点和下一个结点，那么我们只需要在 $pre$ 和 $cur$ 之间插入一个新的结点即可。因此，每次计算出 $pre$ 和 $cur$ 的最大公约数 $x$，然后在 $pre$ 和 $cur$ 之间插入一个值为 $x$ 的新结点，然后更新 $pre$ 和 $cur$ 即可。当 $cur$ 为空时，说明已经遍历完了链表，此时返回链表的头结点即可。
+我们用两个指针 $pre$ 和 $cur$ 分别指向当前遍历到的结点和下一个结点，那么我们只需要在 $pre$ 和 $cur$ 之间插入一个新的结点即可。因此，每次计算出 $pre$ 和 $cur$ 的最大公约数 $x$，然后在 $pre$ 和 $cur$ 之间插入一个值为 $x$ 的新结点，然后更新 $pre = cur$，并且 $cur = cur.next$，继续遍历链表，直到 $cur$ 为空。
 
-时间复杂度 $O(n \times \log M)$，其中 $n$ 是链表的长度，而 $M$ 是链表中结点的最大值。空间复杂度 $O(1)$。
+时间复杂度 $O(n \times \log M)$，其中 $n$ 是链表的长度，而 $M$ 是链表中结点的最大值。忽略结果链表的空间消耗，空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -82,9 +96,7 @@ class Solution:
         return head
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -99,12 +111,10 @@ class Solution:
  */
 class Solution {
     public ListNode insertGreatestCommonDivisors(ListNode head) {
-        ListNode pre = head, cur = head.next;
-        while (cur != null) {
+        for (ListNode pre = head, cur = head.next; cur != null; cur = cur.next) {
             int x = gcd(pre.val, cur.val);
             pre.next = new ListNode(x, cur);
             pre = cur;
-            cur = cur.next;
         }
         return head;
     }
@@ -118,7 +128,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -135,19 +145,17 @@ class Solution {
 public:
     ListNode* insertGreatestCommonDivisors(ListNode* head) {
         ListNode* pre = head;
-        ListNode* cur = head->next;
-        while (cur) {
+        for (ListNode* cur = head->next; cur; cur = cur->next) {
             int x = gcd(pre->val, cur->val);
             pre->next = new ListNode(x, cur);
             pre = cur;
-            cur = cur->next;
         }
         return head;
     }
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -158,11 +166,10 @@ public:
  * }
  */
 func insertGreatestCommonDivisors(head *ListNode) *ListNode {
-	pre, cur := head, head.Next
-	for cur != nil {
+	for pre, cur := head, head.Next; cur != nil; cur = cur.Next {
 		x := gcd(pre.Val, cur.Val)
 		pre.Next = &ListNode{x, cur}
-		pre, cur = cur, cur.Next
+		pre = cur
 	}
 	return head
 }
@@ -175,7 +182,7 @@ func gcd(a, b int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -191,13 +198,10 @@ func gcd(a, b int) int {
  */
 
 function insertGreatestCommonDivisors(head: ListNode | null): ListNode | null {
-    let pre = head;
-    let cur = head.next;
-    while (cur) {
+    for (let pre = head, cur = head.next; cur; cur = cur.next) {
         const x = gcd(pre.val, cur.val);
         pre.next = new ListNode(x, cur);
         pre = cur;
-        cur = cur.next;
     }
     return head;
 }
@@ -210,10 +214,8 @@ function gcd(a: number, b: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

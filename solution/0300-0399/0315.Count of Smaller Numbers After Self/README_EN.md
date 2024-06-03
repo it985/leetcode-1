@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0315.Count%20of%20Smaller%20Numbers%20After%20Self/README_EN.md
+tags:
+    - Binary Indexed Tree
+    - Segment Tree
+    - Array
+    - Binary Search
+    - Divide and Conquer
+    - Ordered Set
+    - Merge Sort
+---
+
+<!-- problem:start -->
+
 # [315. Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self)
 
 [中文文档](/solution/0300-0399/0315.Count%20of%20Smaller%20Numbers%20After%20Self/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code>, return<em> an integer array </em><code>counts</code><em> where </em><code>counts[i]</code><em> is the number of smaller elements to the right of </em><code>nums[i]</code>.</p>
 
@@ -41,15 +59,17 @@ To the right of 1 there is <b>0</b> smaller element.
 	<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-Binary Indexed Tree or Segment Tree.
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
-
-Binary Indexed Tree:
+#### Python3
 
 ```python
 class BinaryIndexedTree:
@@ -86,6 +106,188 @@ class Solution:
             ans.append(tree.query(x - 1))
         return ans[::-1]
 ```
+
+#### Java
+
+```java
+class Solution {
+    public List<Integer> countSmaller(int[] nums) {
+        Set<Integer> s = new HashSet<>();
+        for (int v : nums) {
+            s.add(v);
+        }
+        List<Integer> alls = new ArrayList<>(s);
+        alls.sort(Comparator.comparingInt(a -> a));
+        int n = alls.size();
+        Map<Integer, Integer> m = new HashMap<>(n);
+        for (int i = 0; i < n; ++i) {
+            m.put(alls.get(i), i + 1);
+        }
+        BinaryIndexedTree tree = new BinaryIndexedTree(n);
+        LinkedList<Integer> ans = new LinkedList<>();
+        for (int i = nums.length - 1; i >= 0; --i) {
+            int x = m.get(nums[i]);
+            tree.update(x, 1);
+            ans.addFirst(tree.query(x - 1));
+        }
+        return ans;
+    }
+}
+
+class BinaryIndexedTree {
+    private int n;
+    private int[] c;
+
+    public BinaryIndexedTree(int n) {
+        this.n = n;
+        c = new int[n + 1];
+    }
+
+    public void update(int x, int delta) {
+        while (x <= n) {
+            c[x] += delta;
+            x += lowbit(x);
+        }
+    }
+
+    public int query(int x) {
+        int s = 0;
+        while (x > 0) {
+            s += c[x];
+            x -= lowbit(x);
+        }
+        return s;
+    }
+
+    public static int lowbit(int x) {
+        return x & -x;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class BinaryIndexedTree {
+public:
+    int n;
+    vector<int> c;
+
+    BinaryIndexedTree(int _n)
+        : n(_n)
+        , c(_n + 1) {}
+
+    void update(int x, int delta) {
+        while (x <= n) {
+            c[x] += delta;
+            x += lowbit(x);
+        }
+    }
+
+    int query(int x) {
+        int s = 0;
+        while (x > 0) {
+            s += c[x];
+            x -= lowbit(x);
+        }
+        return s;
+    }
+
+    int lowbit(int x) {
+        return x & -x;
+    }
+};
+
+class Solution {
+public:
+    vector<int> countSmaller(vector<int>& nums) {
+        unordered_set<int> s(nums.begin(), nums.end());
+        vector<int> alls(s.begin(), s.end());
+        sort(alls.begin(), alls.end());
+        unordered_map<int, int> m;
+        int n = alls.size();
+        for (int i = 0; i < n; ++i) m[alls[i]] = i + 1;
+        BinaryIndexedTree* tree = new BinaryIndexedTree(n);
+        vector<int> ans(nums.size());
+        for (int i = nums.size() - 1; i >= 0; --i) {
+            int x = m[nums[i]];
+            tree->update(x, 1);
+            ans[i] = tree->query(x - 1);
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+type BinaryIndexedTree struct {
+	n int
+	c []int
+}
+
+func newBinaryIndexedTree(n int) *BinaryIndexedTree {
+	c := make([]int, n+1)
+	return &BinaryIndexedTree{n, c}
+}
+
+func (this *BinaryIndexedTree) lowbit(x int) int {
+	return x & -x
+}
+
+func (this *BinaryIndexedTree) update(x, delta int) {
+	for x <= this.n {
+		this.c[x] += delta
+		x += this.lowbit(x)
+	}
+}
+
+func (this *BinaryIndexedTree) query(x int) int {
+	s := 0
+	for x > 0 {
+		s += this.c[x]
+		x -= this.lowbit(x)
+	}
+	return s
+}
+
+func countSmaller(nums []int) []int {
+	s := make(map[int]bool)
+	for _, v := range nums {
+		s[v] = true
+	}
+	var alls []int
+	for v := range s {
+		alls = append(alls, v)
+	}
+	sort.Ints(alls)
+	m := make(map[int]int)
+	for i, v := range alls {
+		m[v] = i + 1
+	}
+	ans := make([]int, len(nums))
+	tree := newBinaryIndexedTree(len(alls))
+	for i := len(nums) - 1; i >= 0; i-- {
+		x := m[nums[i]]
+		tree.update(x, 1)
+		ans[i] = tree.query(x - 1)
+	}
+	return ans
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Node:
@@ -148,67 +350,7 @@ class Solution:
         return ans[::-1]
 ```
 
-### **Java**
-
-Binary Indexed Tree:
-
-```java
-class Solution {
-    public List<Integer> countSmaller(int[] nums) {
-        Set<Integer> s = new HashSet<>();
-        for (int v : nums) {
-            s.add(v);
-        }
-        List<Integer> alls = new ArrayList<>(s);
-        alls.sort(Comparator.comparingInt(a -> a));
-        int n = alls.size();
-        Map<Integer, Integer> m = new HashMap<>(n);
-        for (int i = 0; i < n; ++i) {
-            m.put(alls.get(i), i + 1);
-        }
-        BinaryIndexedTree tree = new BinaryIndexedTree(n);
-        LinkedList<Integer> ans = new LinkedList<>();
-        for (int i = nums.length - 1; i >= 0; --i) {
-            int x = m.get(nums[i]);
-            tree.update(x, 1);
-            ans.addFirst(tree.query(x - 1));
-        }
-        return ans;
-    }
-}
-
-class BinaryIndexedTree {
-    private int n;
-    private int[] c;
-
-    public BinaryIndexedTree(int n) {
-        this.n = n;
-        c = new int[n + 1];
-    }
-
-    public void update(int x, int delta) {
-        while (x <= n) {
-            c[x] += delta;
-            x += lowbit(x);
-        }
-    }
-
-    public int query(int x) {
-        int s = 0;
-        while (x > 0) {
-            s += c[x];
-            x -= lowbit(x);
-        }
-        return s;
-    }
-
-    public static int lowbit(int x) {
-        return x & -x;
-    }
-}
-```
-
-Segment Tree:
+#### Java
 
 ```java
 class Solution {
@@ -298,63 +440,7 @@ class SegmentTree {
 }
 ```
 
-### **C++**
-
-Binary Indexed Tree:
-
-```cpp
-class BinaryIndexedTree {
-public:
-    int n;
-    vector<int> c;
-
-    BinaryIndexedTree(int _n)
-        : n(_n)
-        , c(_n + 1) {}
-
-    void update(int x, int delta) {
-        while (x <= n) {
-            c[x] += delta;
-            x += lowbit(x);
-        }
-    }
-
-    int query(int x) {
-        int s = 0;
-        while (x > 0) {
-            s += c[x];
-            x -= lowbit(x);
-        }
-        return s;
-    }
-
-    int lowbit(int x) {
-        return x & -x;
-    }
-};
-
-class Solution {
-public:
-    vector<int> countSmaller(vector<int>& nums) {
-        unordered_set<int> s(nums.begin(), nums.end());
-        vector<int> alls(s.begin(), s.end());
-        sort(alls.begin(), alls.end());
-        unordered_map<int, int> m;
-        int n = alls.size();
-        for (int i = 0; i < n; ++i) m[alls[i]] = i + 1;
-        BinaryIndexedTree* tree = new BinaryIndexedTree(n);
-        vector<int> ans(nums.size());
-        for (int i = nums.size() - 1; i >= 0; --i) {
-            int x = m[nums[i]];
-            tree->update(x, 1);
-            ans[i] = tree->query(x - 1);
-        }
-        return ans;
-    }
-};
-```
-
-Segment Tree:
+#### C++
 
 ```cpp
 class Node {
@@ -431,70 +517,69 @@ public:
 };
 ```
 
-### **Go**
-
-Binary Indexed Tree:
+#### Go
 
 ```go
-type BinaryIndexedTree struct {
-	n int
-	c []int
+type Pair struct {
+	val   int
+	index int
 }
 
-func newBinaryIndexedTree(n int) *BinaryIndexedTree {
-	c := make([]int, n+1)
-	return &BinaryIndexedTree{n, c}
-}
-
-func (this *BinaryIndexedTree) lowbit(x int) int {
-	return x & -x
-}
-
-func (this *BinaryIndexedTree) update(x, delta int) {
-	for x <= this.n {
-		this.c[x] += delta
-		x += this.lowbit(x)
-	}
-}
-
-func (this *BinaryIndexedTree) query(x int) int {
-	s := 0
-	for x > 0 {
-		s += this.c[x]
-		x -= this.lowbit(x)
-	}
-	return s
-}
+var (
+	tmp   []Pair
+	count []int
+)
 
 func countSmaller(nums []int) []int {
-	s := make(map[int]bool)
-	for _, v := range nums {
-		s[v] = true
+	tmp, count = make([]Pair, len(nums)), make([]int, len(nums))
+	array := make([]Pair, len(nums))
+	for i, v := range nums {
+		array[i] = Pair{val: v, index: i}
 	}
-	var alls []int
-	for v := range s {
-		alls = append(alls, v)
-	}
-	sort.Ints(alls)
-	m := make(map[int]int)
-	for i, v := range alls {
-		m[v] = i + 1
-	}
-	ans := make([]int, len(nums))
-	tree := newBinaryIndexedTree(len(alls))
-	for i := len(nums) - 1; i >= 0; i-- {
-		x := m[nums[i]]
-		tree.update(x, 1)
-		ans[i] = tree.query(x - 1)
-	}
-	return ans
+	sorted(array, 0, len(array)-1)
+	return count
 }
-```
 
-### **...**
+func sorted(arr []Pair, low, high int) {
+	if low >= high {
+		return
+	}
+	mid := low + (high-low)/2
+	sorted(arr, low, mid)
+	sorted(arr, mid+1, high)
+	merge(arr, low, mid, high)
+}
 
-```
-
+func merge(arr []Pair, low, mid, high int) {
+	left, right := low, mid+1
+	idx := low
+	for left <= mid && right <= high {
+		if arr[left].val <= arr[right].val {
+			count[arr[left].index] += right - mid - 1
+			tmp[idx], left = arr[left], left+1
+		} else {
+			tmp[idx], right = arr[right], right+1
+		}
+		idx++
+	}
+	for left <= mid {
+		count[arr[left].index] += right - mid - 1
+		tmp[idx] = arr[left]
+		idx, left = idx+1, left+1
+	}
+	for right <= high {
+		tmp[idx] = arr[right]
+		idx, right = idx+1, right+1
+	}
+	// 排序
+	for i := low; i <= high; i++ {
+		arr[i] = tmp[i]
+	}
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

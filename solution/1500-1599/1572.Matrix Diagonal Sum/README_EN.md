@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1572.Matrix%20Diagonal%20Sum/README_EN.md
+rating: 1280
+source: Biweekly Contest 34 Q1
+tags:
+    - Array
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [1572. Matrix Diagonal Sum](https://leetcode.com/problems/matrix-diagonal-sum)
 
 [中文文档](/solution/1500-1599/1572.Matrix%20Diagonal%20Sum/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a&nbsp;square&nbsp;matrix&nbsp;<code>mat</code>, return the sum of the matrix diagonals.</p>
 
@@ -46,11 +61,17 @@ Notice that element mat[1][1] = 5 is counted only once.
 	<li><code>1 &lt;= mat[i][j] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -63,7 +84,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -79,7 +100,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -96,7 +117,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func diagonalSum(mat [][]int) (ans int) {
@@ -111,7 +132,7 @@ func diagonalSum(mat [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function diagonalSum(mat: number[][]): number {
@@ -125,21 +146,7 @@ function diagonalSum(mat: number[][]): number {
 }
 ```
 
-```ts
-function diagonalSum(mat: number[][]): number {
-    const n = mat.length;
-    let ans = 0;
-    for (let i = 0; i < n; i++) {
-        ans += mat[i][i] + mat[i][n - 1 - i];
-    }
-    if (n & 1) {
-        ans -= mat[n >> 1][n >> 1];
-    }
-    return ans;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -157,7 +164,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 int diagonalSum(int** mat, int matSize, int* matColSize) {
@@ -172,10 +179,34 @@ int diagonalSum(int** mat, int matSize, int* matColSize) {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### TypeScript
+
+```ts
+function diagonalSum(mat: number[][]): number {
+    const n = mat.length;
+    let ans = 0;
+    for (let i = 0; i < n; i++) {
+        ans += mat[i][i] + mat[i][n - 1 - i];
+    }
+    if (n & 1) {
+        ans -= mat[n >> 1][n >> 1];
+    }
+    return ans;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

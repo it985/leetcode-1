@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0241.Different%20Ways%20to%20Add%20Parentheses/README.md
+tags:
+    - 递归
+    - 记忆化搜索
+    - 数学
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [241. 为运算表达式设计优先级](https://leetcode.cn/problems/different-ways-to-add-parentheses)
 
 [English Version](/solution/0200-0299/0241.Different%20Ways%20to%20Add%20Parentheses/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个由数字和运算符组成的字符串&nbsp;<code>expression</code> ，按不同优先级组合数字和运算符，计算并返回所有可能组合的结果。你可以 <strong>按任意顺序</strong> 返回答案。</p>
 
@@ -45,17 +59,17 @@
 	<li>输入表达式中的所有整数值在范围 <code>[0, 99]</code>&nbsp;</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索**
+### 方法一：记忆化搜索
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -81,9 +95,7 @@ class Solution:
         return dfs(expression)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -126,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -166,7 +178,7 @@ private:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 var memo = map[string][]int{}
@@ -205,10 +217,74 @@ func dfs(exp string) []int {
 }
 ```
 
-### **...**
+#### C#
 
-```
+```cs
+using System.Collections.Generic;
 
+public class Solution {
+    public IList<int> DiffWaysToCompute(string input) {
+        var values = new List<int>();
+        var operators = new List<char>();
+        var sum = 0;
+        foreach (var ch in input)
+        {
+            if (ch == '+' || ch == '-' || ch == '*')
+            {
+                values.Add(sum);
+                operators.Add(ch);
+                sum = 0;
+            }
+            else
+            {
+                sum = sum * 10 + ch - '0';
+            }
+        }
+        values.Add(sum);
+
+        var f = new List<int>[values.Count, values.Count];
+        for (var i = 0; i < values.Count; ++i)
+        {
+            f[i, i] = new List<int> { values[i] };
+        }
+
+        for (var diff = 1; diff < values.Count; ++diff)
+        {
+            for (var left = 0; left + diff < values.Count; ++left)
+            {
+                var right = left + diff;
+                f[left, right] = new List<int>();
+                for (var i = left; i < right; ++i)
+                {
+                    foreach (var leftValue in f[left, i])
+                    {
+                        foreach (var rightValue in f[i + 1, right])
+                        {
+                            switch (operators[i])
+                            {
+                                case '+':
+                                    f[left, right].Add(leftValue + rightValue);
+                                    break;
+                                case '-':
+                                    f[left, right].Add(leftValue - rightValue);
+                                    break;
+                                case '*':
+                                    f[left, right].Add(leftValue * rightValue);
+                                    break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return f[0, values.Count - 1];
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

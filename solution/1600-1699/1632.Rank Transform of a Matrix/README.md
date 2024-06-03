@@ -1,10 +1,27 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1632.Rank%20Transform%20of%20a%20Matrix/README.md
+rating: 2529
+source: 第 212 场周赛 Q4
+tags:
+    - 并查集
+    - 图
+    - 拓扑排序
+    - 数组
+    - 矩阵
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1632. 矩阵转换后的秩](https://leetcode.cn/problems/rank-transform-of-a-matrix)
 
 [English Version](/solution/1600-1699/1632.Rank%20Transform%20of%20a%20Matrix/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个 <code>m x n</code> 的矩阵 <code>matrix</code> ，请你返回一个新的矩阵<em> </em><code>answer</code> ，其中<em> </em><code>answer[row][col]</code> 是 <code>matrix[row][col]</code> 的秩。</p>
 
@@ -70,13 +87,15 @@ matrix[1][1] 的秩为 3 ，因为 matrix[1][1] > matrix[0][1]， matrix[1][1] >
 	<li><code>-10<sup>9</sup> <= matrix[row][col] <= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 并查集**
+### 方法一：排序 + 并查集
 
-我们先考虑简化情形：没有相同的元素。那么显然最小的元素的秩为 $1$，第二小的元素则要考虑是否和最小元素同行或同列。于是得到贪心解法：从小到大遍历元素，并维护每行、每列的最大秩，该元素的秩即为同行、同列的最大秩加 $1$。见题目：[2371. 最小化网格中的最大值](/solution/2300-2399/2371.Minimize%20Maximum%20Value%20in%20a%20Grid/README.md)。
+我们先考虑简化情形：没有相同的元素。那么显然最小的元素的秩为 $1$，第二小的元素则要考虑是否和最小元素同行或同列。于是得到贪心解法：从小到大遍历元素，并维护每行、每列的最大秩，该元素的秩即为同行、同列的最大秩加 $1$。见题目：[2371. 最小化网格中的最大值](https://github.com/doocs/leetcode/blob/main/solution/2300-2399/2371.Minimize%20Maximum%20Value%20in%20a%20Grid/README.md)。
 
 存在相同元素时则较为复杂，假设两个相同元素同行（或同列），那么就要考虑到两个元素分别对应的行（或列）的最大秩。同时还可能出现联动，比如元素 `a` 和 `b` 同行，`b` 和 `c` 同列，那么要同时考虑这三个元素。
 
@@ -86,9 +105,7 @@ matrix[1][1] 的秩为 3 ，因为 matrix[1][1] > matrix[0][1]， matrix[1][1] >
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class UnionFind:
@@ -141,9 +158,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class UnionFind {
@@ -223,7 +238,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class UnionFind {
@@ -298,7 +313,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type unionFind struct {
@@ -385,10 +400,8 @@ func matrixRankTransform(matrix [][]int) [][]int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0636.Exclusive%20Time%20of%20Functions/README_EN.md
+tags:
+    - Stack
+    - Array
+---
+
+<!-- problem:start -->
+
 # [636. Exclusive Time of Functions](https://leetcode.com/problems/exclusive-time-of-functions)
 
 [中文文档](/solution/0600-0699/0636.Exclusive%20Time%20of%20Functions/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>On a <strong>single-threaded</strong> CPU, we execute a program containing <code>n</code> functions. Each function has a unique ID between <code>0</code> and <code>n-1</code>.</p>
 
@@ -68,11 +81,17 @@ So function 0 spends 2 + 4 + 1 = 7 units of total time executing, and function 1
 	<li>Each function has an <code>&quot;end&quot;</code> log for each <code>&quot;start&quot;</code> log.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -96,7 +115,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -125,7 +144,64 @@ class Solution {
 }
 ```
 
-### **TypeScript**
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> exclusiveTime(int n, vector<string>& logs) {
+        vector<int> ans(n);
+        stack<int> stk;
+        int curr = -1;
+        for (auto& log : logs) {
+            char type[10];
+            int fid, ts;
+            sscanf(log.c_str(), "%d:%[^:]:%d", &fid, type, &ts);
+            if (type[0] == 's') {
+                if (!stk.empty()) ans[stk.top()] += ts - curr;
+                curr = ts;
+                stk.push(fid);
+            } else {
+                fid = stk.top();
+                stk.pop();
+                ans[fid] += ts - curr + 1;
+                curr = ts + 1;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func exclusiveTime(n int, logs []string) []int {
+	ans := make([]int, n)
+	stk := []int{}
+	curr := 1
+	for _, log := range logs {
+		t := strings.Split(log, ":")
+		fid, _ := strconv.Atoi(t[0])
+		ts, _ := strconv.Atoi(t[2])
+		if t[1][0] == 's' {
+			if len(stk) > 0 {
+				ans[stk[len(stk)-1]] += ts - curr
+			}
+			stk = append(stk, fid)
+			curr = ts
+		} else {
+			fid := stk[len(stk)-1]
+			stk = stk[:len(stk)-1]
+			ans[fid] += ts - curr + 1
+			curr = ts + 1
+		}
+	}
+	return ans
+}
+```
+
+#### TypeScript
 
 ```ts
 function exclusiveTime(n: number, logs: string[]): number[] {
@@ -155,67 +231,8 @@ function exclusiveTime(n: number, logs: string[]): number[] {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    vector<int> exclusiveTime(int n, vector<string>& logs) {
-        vector<int> ans(n);
-        stack<int> stk;
-        int curr = -1;
-        for (auto& log : logs) {
-            char type[10];
-            int fid, ts;
-            sscanf(log.c_str(), "%d:%[^:]:%d", &fid, type, &ts);
-            if (type[0] == 's') {
-                if (!stk.empty()) ans[stk.top()] += ts - curr;
-                curr = ts;
-                stk.push(fid);
-            } else {
-                fid = stk.top();
-                stk.pop();
-                ans[fid] += ts - curr + 1;
-                curr = ts + 1;
-            }
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
-
-```go
-func exclusiveTime(n int, logs []string) []int {
-	ans := make([]int, n)
-	stk := []int{}
-	curr := 1
-	for _, log := range logs {
-		t := strings.Split(log, ":")
-		fid, _ := strconv.Atoi(t[0])
-		ts, _ := strconv.Atoi(t[2])
-		if t[1][0] == 's' {
-			if len(stk) > 0 {
-				ans[stk[len(stk)-1]] += ts - curr
-			}
-			stk = append(stk, fid)
-			curr = ts
-		} else {
-			fid := stk[len(stk)-1]
-			stk = stk[:len(stk)-1]
-			ans[fid] += ts - curr + 1
-			curr = ts + 1
-		}
-	}
-	return ans
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

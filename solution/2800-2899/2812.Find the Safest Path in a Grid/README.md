@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2812.Find%20the%20Safest%20Path%20in%20a%20Grid/README.md
+rating: 2153
+source: 第 357 场周赛 Q3
+tags:
+    - 广度优先搜索
+    - 并查集
+    - 数组
+    - 二分查找
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [2812. 找出最安全路径](https://leetcode.cn/problems/find-the-safest-path-in-a-grid)
 
 [English Version](/solution/2800-2899/2812.Find%20the%20Safest%20Path%20in%20a%20Grid/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始、大小为 <code>n x n</code> 的二维矩阵 <code>grid</code> ，其中 <code>(r, c)</code> 表示：</p>
 
@@ -66,11 +82,13 @@
 	<li><code>grid</code> 至少存在一个小偷</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：多源 BFS + 排序 + 并查集**
+### 方法一：多源 BFS + 排序 + 并查集
 
 我们可以先找出所有小偷的位置，然后从这些位置开始进行多源 BFS，得到每个位置到小偷的最短距离，然后按照距离从大到小排序，将每个位置逐个加入并查集，如果最终起点和终点在同一个连通分量中，那么当前距离就是答案。
 
@@ -78,9 +96,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class UnionFind:
@@ -140,9 +156,7 @@ class Solution:
         return 0
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -233,7 +247,7 @@ class UnionFind {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class UnionFind {
@@ -316,7 +330,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type unionFind struct {
@@ -409,7 +423,7 @@ func maximumSafenessFactor(grid [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class UnionFind {
@@ -494,65 +508,7 @@ function maximumSafenessFactor(grid: number[][]): number {
 }
 ```
 
-```ts
-function maximumSafenessFactor(grid: number[][]): number {
-    const n = grid.length;
-    const g = Array.from({ length: n }, () => new Array(n).fill(-1));
-    const vis = Array.from({ length: n }, () => new Array(n).fill(false));
-    let q: [number, number][] = [];
-    for (let i = 0; i < n; i++) {
-        for (let j = 0; j < n; j++) {
-            if (grid[i][j] === 1) {
-                q.push([i, j]);
-            }
-        }
-    }
-    let level = 0;
-    while (q.length) {
-        const t: [number, number][] = [];
-        for (const [x, y] of q) {
-            if (x < 0 || y < 0 || x === n || y === n || g[x][y] !== -1) {
-                continue;
-            }
-            g[x][y] = level;
-            t.push([x + 1, y]);
-            t.push([x - 1, y]);
-            t.push([x, y + 1]);
-            t.push([x, y - 1]);
-        }
-        q = t;
-        level++;
-    }
-    const dfs = (i: number, j: number, v: number) => {
-        if (i < 0 || j < 0 || i === n || j === n || vis[i][j] || g[i][j] <= v) {
-            return false;
-        }
-        vis[i][j] = true;
-        return (
-            (i === n - 1 && j === n - 1) ||
-            dfs(i + 1, j, v) ||
-            dfs(i, j + 1, v) ||
-            dfs(i - 1, j, v) ||
-            dfs(i, j - 1, v)
-        );
-    };
-
-    let left = 0;
-    let right = level;
-    while (left < right) {
-        vis.forEach(v => v.fill(false));
-        const mid = (left + right) >>> 1;
-        if (dfs(0, 0, mid)) {
-            left = mid + 1;
-        } else {
-            right = mid;
-        }
-    }
-    return right;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::VecDeque;
@@ -620,10 +576,78 @@ impl Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### TypeScript
+
+```ts
+function maximumSafenessFactor(grid: number[][]): number {
+    const n = grid.length;
+    const g = Array.from({ length: n }, () => new Array(n).fill(-1));
+    const vis = Array.from({ length: n }, () => new Array(n).fill(false));
+    let q: [number, number][] = [];
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            if (grid[i][j] === 1) {
+                q.push([i, j]);
+            }
+        }
+    }
+    let level = 0;
+    while (q.length) {
+        const t: [number, number][] = [];
+        for (const [x, y] of q) {
+            if (x < 0 || y < 0 || x === n || y === n || g[x][y] !== -1) {
+                continue;
+            }
+            g[x][y] = level;
+            t.push([x + 1, y]);
+            t.push([x - 1, y]);
+            t.push([x, y + 1]);
+            t.push([x, y - 1]);
+        }
+        q = t;
+        level++;
+    }
+    const dfs = (i: number, j: number, v: number) => {
+        if (i < 0 || j < 0 || i === n || j === n || vis[i][j] || g[i][j] <= v) {
+            return false;
+        }
+        vis[i][j] = true;
+        return (
+            (i === n - 1 && j === n - 1) ||
+            dfs(i + 1, j, v) ||
+            dfs(i, j + 1, v) ||
+            dfs(i - 1, j, v) ||
+            dfs(i, j - 1, v)
+        );
+    };
+
+    let left = 0;
+    let right = level;
+    while (left < right) {
+        vis.forEach(v => v.fill(false));
+        const mid = (left + right) >>> 1;
+        if (dfs(0, 0, mid)) {
+            left = mid + 1;
+        } else {
+            right = mid;
+        }
+    }
+    return right;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

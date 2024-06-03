@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0605.Can%20Place%20Flowers/README.md
+tags:
+    - 贪心
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [605. 种花问题](https://leetcode.cn/problems/can-place-flowers)
 
 [English Version](/solution/0600-0699/0605.Can%20Place%20Flowers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>假设有一个很长的花坛，一部分地块种植了花，另一部分却没有。可是，花不能种植在相邻的地块上，它们会争夺水源，两者都会死去。</p>
 
@@ -37,11 +48,13 @@
 	<li><code>0 &lt;= n &lt;= flowerbed.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 我们直接遍历数组 $flowerbed$，对于每个位置 $i$，如果 $flowerbed[i]=0$，并且其左右相邻位置都为 $0$，则我们可以在该位置种花，否则不能。最后我们统计可以种下的花的数量，如果其不小于 $n$，则返回 $true$，否则返回 $false$。
 
@@ -49,9 +62,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -64,9 +75,7 @@ class Solution:
         return n <= 0
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -85,7 +94,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -105,7 +114,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canPlaceFlowers(flowerbed []int, n int) bool {
@@ -127,7 +136,7 @@ func canPlaceFlowers(flowerbed []int, n int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canPlaceFlowers(flowerbed: number[], n: number): boolean {
@@ -144,7 +153,28 @@ function canPlaceFlowers(flowerbed: number[], n: number): boolean {
 }
 ```
 
-### **PHP**
+#### Rust
+
+```rust
+impl Solution {
+    pub fn can_place_flowers(flowerbed: Vec<i32>, n: i32) -> bool {
+        let (mut flowers, mut cnt) = (vec![0], 0);
+        flowers.append(&mut flowerbed.clone());
+        flowers.push(0);
+
+        for i in 1..flowers.len() - 1 {
+            let (l, r) = (flowers[i - 1], flowers[i + 1]);
+            if l + flowers[i] + r == 0 {
+                flowers[i] = 1;
+                cnt += 1;
+            }
+        }
+        cnt >= n
+    }
+}
+```
+
+#### PHP
 
 ```php
 class Solution {
@@ -169,31 +199,8 @@ class Solution {
 }
 ```
 
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn can_place_flowers(flowerbed: Vec<i32>, n: i32) -> bool {
-        let (mut flowers, mut cnt) = (vec![0], 0);
-        flowers.append(&mut flowerbed.clone());
-        flowers.push(0);
-
-        for i in 1..flowers.len() - 1 {
-            let (l, r) = (flowers[i - 1], flowers[i + 1]);
-            if l + flowers[i] + r == 0 {
-                flowers[i] = 1;
-                cnt += 1;
-            }
-        }
-        cnt >= n
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

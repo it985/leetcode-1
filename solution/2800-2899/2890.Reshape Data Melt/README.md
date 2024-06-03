@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2890.Reshape%20Data%20Melt/README.md
+---
+
+<!-- problem:start -->
+
 # [2890. 重塑数据：融合](https://leetcode.cn/problems/reshape-data-melt)
 
 [English Version](/solution/2800-2899/2890.Reshape%20Data%20Melt/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <pre>
 DataFrame <code>report</code>
@@ -52,15 +60,17 @@ DataFrame <code>report</code>
 DataFrame 已从宽格式重塑为长格式。每一行表示一个季度内产品的销售情况。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Pandas**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 import pandas as pd
@@ -70,10 +80,8 @@ def meltTable(report: pd.DataFrame) -> pd.DataFrame:
     return pd.melt(report, id_vars=['product'], var_name='quarter', value_name='sales')
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

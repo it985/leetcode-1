@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1458.Max%20Dot%20Product%20of%20Two%20Subsequences/README_EN.md
+rating: 1823
+source: Weekly Contest 190 Q4
+tags:
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [1458. Max Dot Product of Two Subsequences](https://leetcode.com/problems/max-dot-product-of-two-subsequences)
 
 [中文文档](/solution/1400-1499/1458.Max%20Dot%20Product%20of%20Two%20Subsequences/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two arrays <code>nums1</code>&nbsp;and <code><font face="monospace">nums2</font></code><font face="monospace">.</font></p>
 
@@ -43,13 +58,17 @@ Their dot product is -1.</pre>
 	<li><code>-1000 &lt;= nums1[i], nums2[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-Dynamic Programming.
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -63,7 +82,7 @@ class Solution:
         return dp[-1][-1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -85,7 +104,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -105,7 +124,30 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func maxDotProduct(nums1 []int, nums2 []int) int {
+	m, n := len(nums1), len(nums2)
+	dp := make([][]int, m+1)
+	for i := range dp {
+		dp[i] = make([]int, n+1)
+		for j := range dp[i] {
+			dp[i][j] = math.MinInt32
+		}
+	}
+	for i := 1; i <= m; i++ {
+		for j := 1; j <= n; j++ {
+			v := nums1[i-1] * nums2[j-1]
+			dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+			dp[i][j] = max(dp[i][j], max(0, dp[i-1][j-1])+v)
+		}
+	}
+	return dp[m][n]
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -130,33 +172,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func maxDotProduct(nums1 []int, nums2 []int) int {
-	m, n := len(nums1), len(nums2)
-	dp := make([][]int, m+1)
-	for i := range dp {
-		dp[i] = make([]int, n+1)
-		for j := range dp[i] {
-			dp[i][j] = math.MinInt32
-		}
-	}
-	for i := 1; i <= m; i++ {
-		for j := 1; j <= n; j++ {
-			v := nums1[i-1] * nums2[j-1]
-			dp[i][j] = max(dp[i-1][j], dp[i][j-1])
-			dp[i][j] = max(dp[i][j], max(0, dp[i-1][j-1])+v)
-		}
-	}
-	return dp[m][n]
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

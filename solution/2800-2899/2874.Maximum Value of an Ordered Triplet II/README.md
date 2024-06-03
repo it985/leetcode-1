@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2874.Maximum%20Value%20of%20an%20Ordered%20Triplet%20II/README.md
+rating: 1583
+source: 第 365 场周赛 Q2
+tags:
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [2874. 有序三元组中的最大值 II](https://leetcode.cn/problems/maximum-value-of-an-ordered-triplet-ii)
 
 [English Version](/solution/2800-2899/2874.Maximum%20Value%20of%20an%20Ordered%20Triplet%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 。</p>
 
@@ -49,11 +61,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：维护前缀最大值和最大差值**
+### 方法一：维护前缀最大值和最大差值
 
 我们可以用两个变量 $mx$ 和 $mx\_diff$ 分别维护前缀最大值和最大差值。遍历数组时，更新这两个变量，答案为所有 $mx\_diff \times nums[i]$ 的最大值。
 
@@ -61,9 +75,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -76,9 +88,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -95,10 +105,9 @@ class Solution {
         return ans;
     }
 }
-
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -116,7 +125,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumTripletValue(nums []int) int64 {
@@ -130,7 +139,7 @@ func maximumTripletValue(nums []int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumTripletValue(nums: number[]): number {
@@ -144,10 +153,8 @@ function maximumTripletValue(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

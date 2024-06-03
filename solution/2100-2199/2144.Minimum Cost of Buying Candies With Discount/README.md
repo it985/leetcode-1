@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2144.Minimum%20Cost%20of%20Buying%20Candies%20With%20Discount/README.md
+rating: 1260
+source: 第 70 场双周赛 Q1
+tags:
+    - 贪心
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2144. 打折购买糖果的最小开销](https://leetcode.cn/problems/minimum-cost-of-buying-candies-with-discount)
 
 [English Version](/solution/2100-2199/2144.Minimum%20Cost%20of%20Buying%20Candies%20With%20Discount/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一家商店正在打折销售糖果。每购买 <strong>两个</strong>&nbsp;糖果，商店会 <strong>免费</strong>&nbsp;送一个糖果。</p>
 
@@ -57,11 +71,13 @@
 	<li><code>1 &lt;= cost[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 我们可以先将糖果按照价格从高到低排序，然后每三个糖果中取两个糖果，这样可以保证免费获得的糖果价格最高，从而使得总开销最小。
 
@@ -69,9 +85,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,9 +94,7 @@ class Solution:
         return sum(cost) - sum(cost[2::3])
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -100,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +131,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumCost(cost []int) (ans int) {
@@ -134,7 +146,7 @@ func minimumCost(cost []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumCost(cost: number[]): number {
@@ -150,10 +162,8 @@ function minimumCost(cost: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

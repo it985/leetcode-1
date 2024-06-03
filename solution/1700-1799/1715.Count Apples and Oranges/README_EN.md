@@ -1,8 +1,20 @@
-# [1715. Count Apples and Oranges](https://leetcode.com/problems/count-apples-and-oranges)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1715.Count%20Apples%20and%20Oranges/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [1715. Count Apples and Oranges 🔒](https://leetcode.com/problems/count-apples-and-oranges)
 
 [中文文档](/solution/1700-1799/1715.Count%20Apples%20and%20Oranges/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Boxes</code></p>
 
@@ -87,13 +99,17 @@ Total number of apples = 6 + 24 + 27 + 27 + 17 + 14 + 36 = 151
 Total number of oranges = 15 + 25 + 8 + 28 + 15 + 15 + 17 = 123
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-`LEFT JOIN` and `IFNULL`.
-
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -106,3 +122,7 @@ FROM
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0372.Super%20Pow/README.md
+tags:
+    - 数学
+    - 分治
+---
+
+<!-- problem:start -->
+
 # [372. 超级次方](https://leetcode.cn/problems/super-pow)
 
 [English Version](/solution/0300-0399/0372.Super%20Pow/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你的任务是计算 <code>a<sup>b</sup></code> 对 <code>1337</code> 取模，<code>a</code> 是一个正整数，<code>b</code> 是一个非常大的正整数且会以数组形式给出。</p>
 
@@ -49,11 +60,13 @@
 	<li><code>b</code> 不含前导 0</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：快速幂**
+### 方法一：快速幂
 
 我们初始化答案变量 $ans = 1$。
 
@@ -65,9 +78,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,9 +91,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -110,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -138,7 +147,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func superPow(a int, b []int) int {
@@ -162,7 +171,7 @@ func superPow(a int, b []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function superPow(a: number, b: number[]): number {
@@ -186,10 +195,8 @@ function superPow(a: number, b: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

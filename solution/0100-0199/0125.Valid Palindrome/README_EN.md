@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0125.Valid%20Palindrome/README_EN.md
+tags:
+    - Two Pointers
+    - String
+---
+
+<!-- problem:start -->
+
 # [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome)
 
 [中文文档](/solution/0100-0199/0125.Valid%20Palindrome/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A phrase is a <strong>palindrome</strong> if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.</p>
 
@@ -42,9 +55,13 @@ Since an empty string reads the same forward and backward, it is a palindrome.
 	<li><code>s</code> consists only of printable ASCII characters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Two Pointers
 
 We use two pointers $i$ and $j$ to point to the two ends of the string $s$, and then loop through the following process until $i \geq j$:
 
@@ -59,7 +76,7 @@ The time complexity is $O(n)$, where $n$ is the length of the string $s$. The sp
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -77,7 +94,7 @@ class Solution:
         return True
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -100,7 +117,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -124,7 +141,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isPalindrome(s string) bool {
@@ -155,53 +172,7 @@ func tolower(ch byte) byte {
 }
 ```
 
-### **C#**
-
-```cs
-public class Solution {
-    public bool IsPalindrome(string s) {
-        int i = 0, j = s.Length - 1;
-        while (i < j) {
-            if (!char.IsLetterOrDigit(s[i])) {
-                ++i;
-            } else if (!char.IsLetterOrDigit(s[j])) {
-                --j;
-            } else if (char.ToLower(s[i++]) != char.ToLower(s[j--])) {
-                return false;
-            }
-        }
-        return true;
-    }
-}
-```
-
-### **JavaScript**
-
-```js
-/**
- * @param {string} s
- * @return {boolean}
- */
-var isPalindrome = function (s) {
-    let i = 0;
-    let j = s.length - 1;
-    while (i < j) {
-        if (!/[a-zA-Z0-9]/.test(s[i])) {
-            ++i;
-        } else if (!/[a-zA-Z0-9]/.test(s[j])) {
-            --j;
-        } else if (s[i].toLowerCase() !== s[j].toLowerCase()) {
-            return false;
-        } else {
-            ++i;
-            --j;
-        }
-    }
-    return true;
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function isPalindrome(s: string): boolean {
@@ -223,7 +194,7 @@ function isPalindrome(s: string): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -252,7 +223,53 @@ impl Solution {
 }
 ```
 
-### **PHP**
+#### JavaScript
+
+```js
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindrome = function (s) {
+    let i = 0;
+    let j = s.length - 1;
+    while (i < j) {
+        if (!/[a-zA-Z0-9]/.test(s[i])) {
+            ++i;
+        } else if (!/[a-zA-Z0-9]/.test(s[j])) {
+            --j;
+        } else if (s[i].toLowerCase() !== s[j].toLowerCase()) {
+            return false;
+        } else {
+            ++i;
+            --j;
+        }
+    }
+    return true;
+};
+```
+
+#### C#
+
+```cs
+public class Solution {
+    public bool IsPalindrome(string s) {
+        int i = 0, j = s.Length - 1;
+        while (i < j) {
+            if (!char.IsLetterOrDigit(s[i])) {
+                ++i;
+            } else if (!char.IsLetterOrDigit(s[j])) {
+                --j;
+            } else if (char.ToLower(s[i++]) != char.ToLower(s[j--])) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+#### PHP
 
 ```php
 class Solution {
@@ -278,10 +295,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

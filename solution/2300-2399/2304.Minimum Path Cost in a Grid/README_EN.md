@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2304.Minimum%20Path%20Cost%20in%20a%20Grid/README_EN.md
+rating: 1658
+source: Weekly Contest 297 Q2
+tags:
+    - Array
+    - Dynamic Programming
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [2304. Minimum Path Cost in a Grid](https://leetcode.com/problems/minimum-path-cost-in-a-grid)
 
 [中文文档](/solution/2300-2399/2304.Minimum%20Path%20Cost%20in%20a%20Grid/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> <code>m x n</code> integer matrix <code>grid</code> consisting of <strong>distinct</strong> integers from <code>0</code> to <code>m * n - 1</code>. You can move in this matrix from a cell to any other cell in the <strong>next</strong> row. That is, if you are in cell <code>(x, y)</code> such that <code>x &lt; m - 1</code>, you can move to any of the cells <code>(x + 1, 0)</code>, <code>(x + 1, 1)</code>, ..., <code>(x + 1, n - 1)</code>. <strong>Note</strong> that it is not possible to move from cells in the last row.</p>
 
@@ -47,9 +63,13 @@ So the total cost of this path is 5 + 1 = 6.
 	<li><code>1 &lt;= moveCost[i][j] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming
 
 We define $f[i][j]$ to represent the minimum path cost from the first row to the $i$th row and $j$th column. Since we can only move from a column in the previous row to a column in the current row, the value of $f[i][j]$ can be transferred from $f[i - 1][k]$, where the range of $k$ is $[0, n - 1]$. Therefore, the state transition equation is:
 
@@ -67,7 +87,7 @@ The time complexity is $O(m \times n^2)$, and the space complexity is $O(n)$. He
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -83,7 +103,7 @@ class Solution:
         return min(f)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -112,7 +132,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -135,7 +155,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minPathCost(grid [][]int, moveCost [][]int) int {
@@ -155,7 +175,27 @@ func minPathCost(grid [][]int, moveCost [][]int) int {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function minPathCost(grid: number[][], moveCost: number[][]): number {
+    const m = grid.length;
+    const n = grid[0].length;
+    const f = grid[0];
+    for (let i = 1; i < m; ++i) {
+        const g: number[] = Array(n).fill(Infinity);
+        for (let j = 0; j < n; ++j) {
+            for (let k = 0; k < n; ++k) {
+                g[j] = Math.min(g[j], f[k] + moveCost[grid[i - 1][k]][j] + grid[i][j]);
+            }
+        }
+        f.splice(0, n, ...g);
+    }
+    return Math.min(...f);
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -179,30 +219,8 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function minPathCost(grid: number[][], moveCost: number[][]): number {
-    const m = grid.length;
-    const n = grid[0].length;
-    const f = grid[0];
-    for (let i = 1; i < m; ++i) {
-        const g: number[] = Array(n).fill(Infinity);
-        for (let j = 0; j < n; ++j) {
-            for (let k = 0; k < n; ++k) {
-                g[j] = Math.min(g[j], f[k] + moveCost[grid[i - 1][k]][j] + grid[i][j]);
-            }
-        }
-        f.splice(0, n, ...g);
-    }
-    return Math.min(...f);
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1833.Maximum%20Ice%20Cream%20Bars/README.md
+rating: 1252
+source: 第 237 场周赛 Q2
+tags:
+    - 贪心
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1833. 雪糕的最大数量](https://leetcode.cn/problems/maximum-ice-cream-bars)
 
 [English Version](/solution/1800-1899/1833.Maximum%20Ice%20Cream%20Bars/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>夏日炎炎，小男孩 Tony 想买一些雪糕消消暑。</p>
 
@@ -53,11 +67,13 @@
 	<li><code>1 &lt;= coins &lt;= 10<sup>8</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 排序**
+### 方法一：贪心 + 排序
 
 要买尽可能多的雪糕，且可以按任意顺序购买，因此，我们应该优先选择定价小的雪糕。
 
@@ -67,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -82,9 +96,7 @@ class Solution:
         return len(costs)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +131,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxIceCream(costs []int, coins int) int {
@@ -134,7 +146,7 @@ func maxIceCream(costs []int, coins int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxIceCream(costs: number[], coins: number): number {
@@ -150,7 +162,7 @@ function maxIceCream(costs: number[], coins: number): number {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -171,10 +183,8 @@ var maxIceCream = function (costs, coins) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

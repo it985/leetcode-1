@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0260.Single%20Number%20III/README_EN.md
+tags:
+    - Bit Manipulation
+    - Array
+---
+
+<!-- problem:start -->
+
 # [260. Single Number III](https://leetcode.com/problems/single-number-iii)
 
 [中文文档](/solution/0200-0299/0260.Single%20Number%20III/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code>, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once. You can return the answer in <strong>any order</strong>.</p>
 
@@ -40,9 +53,13 @@
 	<li>Each integer in <code>nums</code> will appear twice, only two integers will appear once.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Bitwise Operation**
+<!-- solution:start -->
+
+### Solution 1: Bitwise Operation
 
 The XOR operation has the following properties:
 
@@ -59,7 +76,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array. The space c
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -74,7 +91,7 @@ class Solution:
         return [a, b]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -96,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func singleNumber(nums []int) []int {
@@ -139,7 +156,24 @@ func singleNumber(nums []int) []int {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function singleNumber(nums: number[]): number[] {
+    const xs = nums.reduce((a, b) => a ^ b);
+    const lb = xs & -xs;
+    let a = 0;
+    for (const x of nums) {
+        if (x & lb) {
+            a ^= x;
+        }
+    }
+    const b = xs ^ a;
+    return [a, b];
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -158,43 +192,7 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function singleNumber(nums: number[]): number[] {
-    const xs = nums.reduce((a, b) => a ^ b);
-    const lb = xs & -xs;
-    let a = 0;
-    for (const x of nums) {
-        if (x & lb) {
-            a ^= x;
-        }
-    }
-    const b = xs ^ a;
-    return [a, b];
-}
-```
-
-### **C#**
-
-```cs
-public class Solution {
-    public int[] SingleNumber(int[] nums) {
-        int xs = nums.Aggregate(0, (a, b) => a ^ b);
-        int lb = xs & -xs;
-        int a = 0;
-        foreach(int x in nums) {
-            if ((x & lb) != 0) {
-                a ^= x;
-            }
-        }
-        int b = xs ^ a;
-        return new int[] {a, b};
-    }
-}
-```
-
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -215,10 +213,27 @@ var singleNumber = function (nums) {
 };
 ```
 
-### **...**
+#### C#
 
-```
-
+```cs
+public class Solution {
+    public int[] SingleNumber(int[] nums) {
+        int xs = nums.Aggregate(0, (a, b) => a ^ b);
+        int lb = xs & -xs;
+        int a = 0;
+        foreach(int x in nums) {
+            if ((x & lb) != 0) {
+                a ^= x;
+            }
+        }
+        int b = xs ^ a;
+        return new int[] {a, b};
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2744.Find%20Maximum%20Number%20of%20String%20Pairs/README.md
+rating: 1405
+source: 第 107 场双周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+    - 字符串
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [2744. 最大字符串配对数目](https://leetcode.cn/problems/find-maximum-number-of-string-pairs)
 
 [English Version](/solution/2700-2799/2744.Find%20Maximum%20Number%20of%20String%20Pairs/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的数组&nbsp;<code>words</code>&nbsp;，数组中包含 <strong>互不相同</strong>&nbsp;的字符串。</p>
 
@@ -61,25 +76,25 @@
 	<li><code>words[i]</code>&nbsp;只包含小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们可以用哈希表 $cnt$ 来存储数组 $words$ 中每个字符串的反转字符串出现的次数。
 
-遍历数组 $words$，对于每个字符串 $w$，我们直接将 $cnt[w]$ 的值加到答案中，然后将 $w$ 的反转字符串出现的次数加 $1$。
+遍历数组 $words$，对于每个字符串 $w$，我们将其反转字符串 $w$ 的出现次数加到答案中，然后将 $w$ 的出现次数加 $1$。
 
-遍历结束后，即可得到最大匹配数目。
+最后返回答案。
 
-时间复杂度 $O(L)$，空间复杂度 $O(L)$，其中 $L$ 是数组 $words$ 中字符串的长度之和。
+时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 是数组 $words$ 的长度。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -87,83 +102,77 @@ class Solution:
         cnt = Counter()
         ans = 0
         for w in words:
-            ans += cnt[w]
-            cnt[w[::-1]] += 1
+            ans += cnt[w[::-1]]
+            cnt[w] += 1
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
     public int maximumNumberOfStringPairs(String[] words) {
-        Map<String, Integer> cnt = new HashMap<>(words.length);
+        Map<Integer, Integer> cnt = new HashMap<>();
         int ans = 0;
-        for (String w : words) {
-            ans += cnt.getOrDefault(w, 0);
-            cnt.merge(new StringBuilder(w).reverse().toString(), 1, Integer::sum);
+        for (var w : words) {
+            int a = w.charAt(0) - 'a', b = w.charAt(1) - 'a';
+            ans += cnt.getOrDefault(b << 5 | a, 0);
+            cnt.merge(a << 5 | b, 1, Integer::sum);
         }
         return ans;
     }
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
 public:
     int maximumNumberOfStringPairs(vector<string>& words) {
-        unordered_map<string, int> cnt;
+        unordered_map<int, int> cnt;
         int ans = 0;
         for (auto& w : words) {
-            ans += cnt[w];
-            reverse(w.begin(), w.end());
-            cnt[w]++;
+            int a = w[0] - 'a', b = w[1] - 'a';
+            ans += cnt[b << 5 | a];
+            cnt[a << 5 | b]++;
         }
         return ans;
     }
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumNumberOfStringPairs(words []string) (ans int) {
-	cnt := map[string]int{}
+	cnt := map[int]int{}
 	for _, w := range words {
-		ans += cnt[w]
-		s := []byte(w)
-		for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
-			s[i], s[j] = s[j], s[i]
-		}
-		cnt[string(s)]++
+		a, b := int(w[0]-'a'), int(w[1]-'a')
+		ans += cnt[b<<5|a]
+		cnt[a<<5|b]++
 	}
 	return
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumNumberOfStringPairs(words: string[]): number {
-    const cnt: Map<string, number> = new Map();
+    const cnt: { [key: number]: number } = {};
     let ans = 0;
     for (const w of words) {
-        ans += cnt.get(w) || 0;
-        const s = w.split('').reverse().join('');
-        cnt.set(s, (cnt.get(s) || 0) + 1);
+        const [a, b] = [w.charCodeAt(0) - 97, w.charCodeAt(w.length - 1) - 97];
+        ans += cnt[(b << 5) | a] || 0;
+        cnt[(a << 5) | b] = (cnt[(a << 5) | b] || 0) + 1;
     }
     return ans;
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

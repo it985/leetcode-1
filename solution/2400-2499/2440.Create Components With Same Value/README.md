@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2440.Create%20Components%20With%20Same%20Value/README.md
+rating: 2460
+source: 第 89 场双周赛 Q4
+tags:
+    - 树
+    - 深度优先搜索
+    - 数组
+    - 数学
+    - 枚举
+---
+
+<!-- problem:start -->
+
 # [2440. 创建价值相同的连通块](https://leetcode.cn/problems/create-components-with-same-value)
 
 [English Version](/solution/2400-2499/2440.Create%20Components%20With%20Same%20Value/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>有一棵&nbsp;<code>n</code>&nbsp;个节点的无向树，节点编号为&nbsp;<code>0</code>&nbsp;到&nbsp;<code>n - 1</code>&nbsp;。</p>
 
@@ -46,11 +62,13 @@
 	<li><code>edges</code>&nbsp;表示一棵合法的树。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举连通块的个数**
+### 方法一：枚举连通块的个数
 
 假设连通块的个数为 $k$，那么要删除的边数为 $k-1$，每个连通块的价值为 $\frac{s}{k}$，其中 $s$ 为 $nums$ 所有节点的值之和。
 
@@ -64,9 +82,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -98,9 +114,7 @@ class Solution:
         return 0
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -165,7 +179,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -206,7 +220,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func componentValue(nums []int, edges [][]int) int {
@@ -254,16 +268,8 @@ func componentValue(nums []int, edges [][]int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

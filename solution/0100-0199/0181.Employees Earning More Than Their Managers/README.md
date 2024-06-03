@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0181.Employees%20Earning%20More%20Than%20Their%20Managers/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
 # [181. 超过经理收入的员工](https://leetcode.cn/problems/employees-earning-more-than-their-managers)
 
 [English Version](/solution/0100-0199/0181.Employees%20Earning%20More%20Than%20Their%20Managers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code>Employee</code>&nbsp;</p>
 
@@ -52,36 +62,17 @@ Employee 表:
 +----------+
 <strong>解释:</strong> Joe 是唯一挣得比经理多的雇员。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-```sql
-SELECT Name AS Employee
-FROM Employee AS Curr
-WHERE
-    Salary > (
-        SELECT Salary
-        FROM Employee
-        WHERE Id = Curr.ManagerId
-    );
-```
-
-```sql
-# Write your MySQL query statement below
-SELECT
-    e1.name AS Employee
-FROM
-    Employee AS e1
-    JOIN Employee AS e2 ON e1.managerId = e2.id
-WHERE e1.salary > e2.salary;
-```
-
-### **Pandas**
+#### Python3
 
 ```python
 import pandas as pd
@@ -94,4 +85,43 @@ def find_employees(employee: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame({"Employee": emp})
 ```
 
+#### MySQL
+
+```sql
+SELECT Name AS Employee
+FROM Employee AS Curr
+WHERE
+    Salary > (
+        SELECT Salary
+        FROM Employee
+        WHERE Id = Curr.ManagerId
+    );
+```
+
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### MySQL
+
+```sql
+# Write your MySQL query statement below
+SELECT
+    e1.name AS Employee
+FROM
+    Employee AS e1
+    JOIN Employee AS e2 ON e1.managerId = e2.id
+WHERE e1.salary > e2.salary;
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

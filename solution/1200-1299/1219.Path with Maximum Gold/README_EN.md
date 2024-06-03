@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1219.Path%20with%20Maximum%20Gold/README_EN.md
+rating: 1663
+source: Weekly Contest 157 Q3
+tags:
+    - Array
+    - Backtracking
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [1219. Path with Maximum Gold](https://leetcode.com/problems/path-with-maximum-gold)
 
 [中文文档](/solution/1200-1299/1219.Path%20with%20Maximum%20Gold/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>In a gold mine <code>grid</code> of size <code>m x n</code>, each cell in this mine has an integer representing the amount of gold in that cell, <code>0</code> if it is empty.</p>
 
@@ -54,9 +70,13 @@ Path to get the maximum gold, 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5 -&gt; 6 -&gt; 7.
 	<li>There are at most <strong>25 </strong>cells containing gold.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: DFS**
+<!-- solution:start -->
+
+### Solution 1: DFS
 
 We can enumerate each cell as the starting point, and then start a depth-first search from the starting point. During the search process, whenever we encounter a non-zero cell, we turn it into zero and continue the search. When we can no longer continue the search, we calculate the total amount of gold in the current path, then turn the current cell back into a non-zero cell, thus performing backtracking.
 
@@ -64,7 +84,7 @@ The time complexity is $O(m \times n \times 3^k)$, where $k$ is the maximum leng
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -83,7 +103,7 @@ class Solution:
         return max(dfs(i, j) for i in range(m) for j in range(n))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -121,7 +141,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -149,7 +169,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getMaximumGold(grid [][]int) (ans int) {
@@ -178,7 +198,7 @@ func getMaximumGold(grid [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function getMaximumGold(grid: number[][]): number {
@@ -204,7 +224,7 @@ function getMaximumGold(grid: number[][]): number {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -234,10 +254,8 @@ var getMaximumGold = function (grid) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

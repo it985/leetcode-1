@@ -1,10 +1,22 @@
-# [2422. 使用合并操作将数组转换为回文序列](https://leetcode.cn/problems/merge-operations-to-turn-array-into-a-palindrome)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2422.Merge%20Operations%20to%20Turn%20Array%20Into%20a%20Palindrome/README.md
+tags:
+    - 贪心
+    - 数组
+    - 双指针
+---
+
+<!-- problem:start -->
+
+# [2422. 使用合并操作将数组转换为回文序列 🔒](https://leetcode.cn/problems/merge-operations-to-turn-array-into-a-palindrome)
 
 [English Version](/solution/2400-2499/2422.Merge%20Operations%20to%20Turn%20Array%20Into%20a%20Palindrome/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个由&nbsp;<strong>正整数&nbsp;</strong>组成的数组 <code>nums</code>。</p>
 
@@ -12,10 +24,12 @@
 
 <ul>
 	<li>选择任意两个&nbsp;<strong>相邻&nbsp;</strong>的元素并用它们的&nbsp;<strong>和</strong>&nbsp;<strong>替换&nbsp;</strong>它们。
+
     <ul>
     	<li>例如，如果 <code>nums = [1,<u>2,3</u>,1]</code>，则可以应用一个操作使其变为 <code>[1,5,1]</code>。</li>
     </ul>
     </li>
+
 </ul>
 
 <p>返回<em>将数组转换为&nbsp;<strong>回文序列&nbsp;</strong>所需的&nbsp;<strong>最小&nbsp;</strong>操作数。</em></p>
@@ -51,11 +65,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 双指针**
+### 方法一：贪心 + 双指针
 
 定义两个指针 $i$ 和 $j$，分别指向数组的首尾，用变量 $a$ 和 $b$ 分别表示首尾两个元素的值，变量 $ans$ 表示操作次数。
 
@@ -71,9 +87,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -96,9 +110,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -123,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -149,7 +161,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumOperations(nums []int) int {
@@ -174,16 +186,8 @@ func minimumOperations(nums []int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

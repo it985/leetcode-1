@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0233.Number%20of%20Digit%20One/README_EN.md
+tags:
+    - Recursion
+    - Math
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [233. Number of Digit One](https://leetcode.com/problems/number-of-digit-one)
 
 [中文文档](/solution/0200-0299/0233.Number%20of%20Digit%20One/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer <code>n</code>, count <em>the total number of digit </em><code>1</code><em> appearing in all non-negative integers less than or equal to</em> <code>n</code>.</p>
 
@@ -28,13 +42,17 @@
 	<li><code>0 &lt;= n &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-simple digital dp problem (or it can be solved by finding a rule)
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -58,7 +76,7 @@ class Solution:
         return dfs(l, 0, True)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -97,7 +115,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -135,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countDigitOne(n int) int {
@@ -182,7 +200,7 @@ func countDigitOne(n int) int {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -204,10 +222,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0638.Shopping%20Offers/README.md
+tags:
+    - 位运算
+    - 记忆化搜索
+    - 数组
+    - 动态规划
+    - 回溯
+    - 状态压缩
+---
+
+<!-- problem:start -->
+
 # [638. 大礼包](https://leetcode.cn/problems/shopping-offers)
 
 [English Version](/solution/0600-0699/0638.Shopping%20Offers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在 LeetCode 商店中， 有 <code>n</code> 件在售的物品。每件物品都有对应的价格。然而，也有一些大礼包，每个大礼包以优惠的价格捆绑销售一组物品。</p>
 
@@ -51,15 +66,17 @@
 	<li><code>0 <= special[i][j] <= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +100,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -120,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -150,7 +165,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func shoppingOffers(price []int, special [][]int, needs []int) int {
@@ -188,10 +203,8 @@ func shoppingOffers(price []int, special [][]int, needs []int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

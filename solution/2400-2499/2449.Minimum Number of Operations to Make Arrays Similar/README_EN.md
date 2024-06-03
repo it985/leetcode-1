@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2449.Minimum%20Number%20of%20Operations%20to%20Make%20Arrays%20Similar/README_EN.md
+rating: 2076
+source: Weekly Contest 316 Q4
+tags:
+    - Greedy
+    - Array
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2449. Minimum Number of Operations to Make Arrays Similar](https://leetcode.com/problems/minimum-number-of-operations-to-make-arrays-similar)
 
 [中文文档](/solution/2400-2499/2449.Minimum%20Number%20of%20Operations%20to%20Make%20Arrays%20Similar/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two positive integer arrays <code>nums</code> and <code>target</code>, of the same length.</p>
 
@@ -56,9 +72,13 @@ It can be shown that 2 is the minimum number of operations needed.
 	<li>It is possible to make <code>nums</code> similar to <code>target</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Odd-Even Classification + Sorting**
+<!-- solution:start -->
+
+### Solution 1: Odd-Even Classification + Sorting
 
 Notice that, because each operation will only increase or decrease the value of an element by $2$, the parity of the element will not change.
 
@@ -72,7 +92,7 @@ The time complexity is $O(n \times \log n)$, where $n$ is the length of the arra
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -82,7 +102,7 @@ class Solution:
         return sum(abs(a - b) for a, b in zip(nums, target)) // 4
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -119,7 +139,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -151,7 +171,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func makeSimilar(nums []int, target []int) int64 {
@@ -190,7 +210,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function makeSimilar(nums: number[], target: number[]): number {
@@ -231,10 +251,8 @@ function makeSimilar(nums: number[], target: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,20 @@
-# [1076. Project Employees II](https://leetcode.com/problems/project-employees-ii)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1076.Project%20Employees%20II/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [1076. Project Employees II 🔒](https://leetcode.com/problems/project-employees-ii)
 
 [中文文档](/solution/1000-1099/1076.Project%20Employees%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Project</code></p>
 
@@ -75,11 +87,17 @@ Employee table:
 <strong>Explanation:</strong> The first project has 3 employees while the second one has 2.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -93,6 +111,18 @@ HAVING
         GROUP BY project_id
     );
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -110,3 +140,7 @@ WHERE rk = 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

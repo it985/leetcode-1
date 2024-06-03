@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2761.Prime%20Pairs%20With%20Target%20Sum/README_EN.md
+rating: 1504
+source: Weekly Contest 352 Q2
+tags:
+    - Array
+    - Math
+    - Enumeration
+    - Number Theory
+---
+
+<!-- problem:start -->
+
 # [2761. Prime Pairs With Target Sum](https://leetcode.com/problems/prime-pairs-with-target-sum)
 
 [中文文档](/solution/2700-2799/2761.Prime%20Pairs%20With%20Target%20Sum/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer <code>n</code>. We say that two integers <code>x</code> and <code>y</code> form a prime number pair if:</p>
 
@@ -41,9 +58,13 @@ These pairs are [3,7] and [5,5], and we return them in the sorted order as descr
 	<li><code>1 &lt;= n &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Preprocessing + Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Preprocessing + Enumeration
 
 First, we pre-process all the prime numbers within the range of $n$, and record them in the array $primes$, where $primes[i]$ is `true` if $i$ is a prime number.
 
@@ -55,7 +76,7 @@ The time complexity is $O(n \log \log n)$ and the space complexity is $O(n)$, wh
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -73,7 +94,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +120,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -126,7 +147,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findPrimePairs(n int) (ans [][]int) {
@@ -151,7 +172,7 @@ func findPrimePairs(n int) (ans [][]int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findPrimePairs(n: number): number[][] {
@@ -174,10 +195,8 @@ function findPrimePairs(n: number): number[][] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

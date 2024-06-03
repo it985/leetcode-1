@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0682.Baseball%20Game/README_EN.md
+tags:
+    - Stack
+    - Array
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [682. Baseball Game](https://leetcode.com/problems/baseball-game)
 
 [中文文档](/solution/0600-0699/0682.Baseball%20Game/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are keeping the scores for a baseball game with strange rules. At the beginning of the game, you start with an empty record.</p>
 
@@ -10,6 +24,7 @@
 
 <ul>
 	<li>An integer <code>x</code>.
+
     <ul>
     	<li>Record a new score of <code>x</code>.</li>
     </ul>
@@ -29,6 +44,7 @@
     	<li>Invalidate the previous score, removing it from the record.</li>
     </ul>
     </li>
+
 </ul>
 
 <p>Return <em>the sum of all the scores on the record after applying all the operations</em>.</p>
@@ -88,11 +104,17 @@ Since the record is empty, the total sum is 0.
 	<li>For operations <code>&quot;C&quot;</code> and <code>&quot;D&quot;</code>, there will always be at least one previous score on the record.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -110,7 +132,7 @@ class Solution:
         return sum(stk)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -135,7 +157,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -160,7 +182,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func calPoints(ops []string) int {
@@ -187,7 +209,7 @@ func calPoints(ops []string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function calPoints(ops: string[]): number {
@@ -208,7 +230,7 @@ function calPoints(ops: string[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -236,10 +258,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

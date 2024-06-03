@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2467.Most%20Profitable%20Path%20in%20a%20Tree/README.md
+rating: 2053
+source: 第 91 场双周赛 Q3
+tags:
+    - 树
+    - 深度优先搜索
+    - 广度优先搜索
+    - 图
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [2467. 树上最大得分和路径](https://leetcode.cn/problems/most-profitable-path-in-a-tree)
 
 [English Version](/solution/2400-2499/2467.Most%20Profitable%20Path%20in%20a%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一个 <code>n</code>&nbsp;个节点的无向树，节点编号为&nbsp;<code>0</code>&nbsp;到&nbsp;<code>n - 1</code>&nbsp;，树的根结点是&nbsp;<code>0</code>&nbsp;号节点。给你一个长度为 <code>n - 1</code>&nbsp;的二维整数数组&nbsp;<code>edges</code>&nbsp;，其中&nbsp;<code>edges[i] = [a<sub>i</sub>, b<sub>i</sub>]</code>&nbsp;，表示节点&nbsp;<code>a<sub>i</sub></code> 和&nbsp;<code>b<sub>i</sub></code>&nbsp;在树中有一条边。</p>
 
@@ -80,11 +96,13 @@ Alice 按照路径 0-&gt;1 移动，同时 Bob 按照路径 1-&gt;0 移动。
 	<li><code>amount[i]</code>&nbsp;是范围&nbsp;<code>[-10<sup>4</sup>, 10<sup>4</sup>]</code>&nbsp;之间的一个&nbsp;<strong>偶数</strong>&nbsp;。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：两次 DFS**
+### 方法一：两次 DFS
 
 根据题意，我们可以知道，Bob 的移动路径是固定的，即从节点 $bob$ 出发，最终到达节点 $0$。因此，我们可以先跑一遍 DFS，求出 Bob 到达每个节点的时间，记在数组 $ts$ 中。
 
@@ -100,9 +118,7 @@ Alice 按照路径 0-&gt;1 移动，同时 Bob 按照路径 1-&gt;0 移动。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -145,9 +161,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -207,7 +221,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -255,7 +269,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func mostProfitablePath(edges [][]int, bob int, amount []int) int {
@@ -309,16 +323,8 @@ func mostProfitablePath(edges [][]int, bob int, amount []int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

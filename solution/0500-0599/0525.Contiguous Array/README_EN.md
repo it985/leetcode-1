@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0525.Contiguous%20Array/README_EN.md
+tags:
+    - Array
+    - Hash Table
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [525. Contiguous Array](https://leetcode.com/problems/contiguous-array)
 
 [中文文档](/solution/0500-0599/0525.Contiguous%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a binary array <code>nums</code>, return <em>the maximum length of a contiguous subarray with an equal number of </em><code>0</code><em> and </em><code>1</code>.</p>
 
@@ -31,11 +45,17 @@
 	<li><code>nums[i]</code> is either <code>0</code> or <code>1</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -51,7 +71,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -72,7 +92,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -93,7 +113,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findMaxLength(nums []int) int {
@@ -114,7 +134,7 @@ func findMaxLength(nums []int) int {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -135,10 +155,8 @@ var findMaxLength = function (nums) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

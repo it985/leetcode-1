@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0630.Course%20Schedule%20III/README.md
+tags:
+    - 贪心
+    - 数组
+    - 排序
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [630. 课程表 III](https://leetcode.cn/problems/course-schedule-iii)
 
 [English Version](/solution/0600-0699/0630.Course%20Schedule%20III/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>这里有 <code>n</code> 门不同的在线课程，按从 <code>1</code> 到 <code>n</code>&nbsp;编号。给你一个数组 <code>courses</code> ，其中 <code>courses[i] = [duration<sub>i</sub>, lastDay<sub>i</sub>]</code> 表示第 <code>i</code> 门课将会 <strong>持续</strong> 上 <code>duration<sub>i</sub></code> 天课，并且必须在不晚于 <code>lastDay<sub>i</sub></code> 的时候完成。</p>
 
@@ -49,11 +62,13 @@
 	<li><code>1 &lt;= duration<sub>i</sub>, lastDay<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 优先队列（大根堆）**
+### 方法一：贪心 + 优先队列（大根堆）
 
 我们可以按照课程的结束时间进行升序排序，每次选择结束时间最早的课程进行上课。
 
@@ -65,9 +80,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +96,7 @@ class Solution:
         return len(pq)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -106,7 +117,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -131,7 +142,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func scheduleCourse(courses [][]int) int {
@@ -163,7 +174,7 @@ func (h *hp) push(v int) { heap.Push(h, v) }
 func (h *hp) pop() int   { return heap.Pop(h).(int) }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function scheduleCourse(courses: number[][]): number {
@@ -181,10 +192,8 @@ function scheduleCourse(courses: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

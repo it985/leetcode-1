@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0318.Maximum%20Product%20of%20Word%20Lengths/README.md
+tags:
+    - 位运算
+    - 数组
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [318. 最大单词长度乘积](https://leetcode.cn/problems/maximum-product-of-word-lengths)
 
 [English Version](/solution/0300-0399/0318.Maximum%20Product%20of%20Word%20Lengths/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串数组&nbsp;<code>words</code> ，找出并返回 <code>length(words[i]) * length(words[j])</code>&nbsp;的最大值，并且这两个单词不含有公共字母。如果不存在这样的两个单词，返回 <code>0</code> 。</p>
 
@@ -42,11 +54,13 @@
 	<li><code>words[i]</code>&nbsp;仅包含小写字母</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：位运算**
+### 方法一：位运算
 
 题目需要我们找到两个没有公共字母的字符串，使得它们的长度乘积最大。我们可以将每个字符串用一个二进制数 $mask[i]$ 表示，这个二进制数的每一位表示字符串中是否含有某个字母。如果两个字符串没有公共字母，那么这两个字符串对应的二进制数的按位与的结果为 $0$，即 $mask[i] \& mask[j] = 0$。
 
@@ -58,9 +72,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -76,26 +88,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def maxProduct(self, words: List[str]) -> int:
-        mask = defaultdict(int)
-        ans = 0
-        for s in words:
-            a = len(s)
-            x = 0
-            for c in s:
-                x |= 1 << (ord(c) - ord("a"))
-            for y, b in mask.items():
-                if (x & y) == 0:
-                    ans = max(ans, a * b)
-            mask[x] = max(mask[x], a)
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -117,6 +110,103 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int maxProduct(vector<string>& words) {
+        int n = words.size();
+        int mask[n];
+        memset(mask, 0, sizeof(mask));
+        int ans = 0;
+        for (int i = 0; i < n; ++i) {
+            for (char& c : words[i]) {
+                mask[i] |= 1 << (c - 'a');
+            }
+            for (int j = 0; j < i; ++j) {
+                if ((mask[i] & mask[j]) == 0) {
+                    ans = max(ans, (int) (words[i].size() * words[j].size()));
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func maxProduct(words []string) (ans int) {
+	n := len(words)
+	mask := make([]int, n)
+	for i, s := range words {
+		for _, c := range s {
+			mask[i] |= 1 << (c - 'a')
+		}
+		for j, t := range words[:i] {
+			if mask[i]&mask[j] == 0 {
+				ans = max(ans, len(s)*len(t))
+			}
+		}
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function maxProduct(words: string[]): number {
+    const n = words.length;
+    const mask: number[] = Array(n).fill(0);
+    let ans = 0;
+    for (let i = 0; i < n; ++i) {
+        for (const c of words[i]) {
+            mask[i] |= 1 << (c.charCodeAt(0) - 'a'.charCodeAt(0));
+        }
+        for (let j = 0; j < i; ++j) {
+            if ((mask[i] & mask[j]) === 0) {
+                ans = Math.max(ans, words[i].length * words[j].length);
+            }
+        }
+    }
+    return ans;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def maxProduct(self, words: List[str]) -> int:
+        mask = defaultdict(int)
+        ans = 0
+        for s in words:
+            a = len(s)
+            x = 0
+            for c in s:
+                x |= 1 << (ord(c) - ord("a"))
+            for y, b in mask.items():
+                if (x & y) == 0:
+                    ans = max(ans, a * b)
+            mask[x] = max(mask[x], a)
+        return ans
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -142,30 +232,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int maxProduct(vector<string>& words) {
-        int n = words.size();
-        int mask[n];
-        memset(mask, 0, sizeof(mask));
-        int ans = 0;
-        for (int i = 0; i < n; ++i) {
-            for (char& c : words[i]) {
-                mask[i] |= 1 << (c - 'a');
-            }
-            for (int j = 0; j < i; ++j) {
-                if ((mask[i] & mask[j]) == 0) {
-                    ans = max(ans, (int) (words[i].size() * words[j].size()));
-                }
-            }
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -191,25 +258,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func maxProduct(words []string) (ans int) {
-	n := len(words)
-	mask := make([]int, n)
-	for i, s := range words {
-		for _, c := range s {
-			mask[i] |= 1 << (c - 'a')
-		}
-		for j, t := range words[:i] {
-			if mask[i]&mask[j] == 0 {
-				ans = max(ans, len(s)*len(t))
-			}
-		}
-	}
-	return
-}
-```
+#### Go
 
 ```go
 func maxProduct(words []string) (ans int) {
@@ -231,26 +280,7 @@ func maxProduct(words []string) (ans int) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function maxProduct(words: string[]): number {
-    const n = words.length;
-    const mask: number[] = Array(n).fill(0);
-    let ans = 0;
-    for (let i = 0; i < n; ++i) {
-        for (const c of words[i]) {
-            mask[i] |= 1 << (c.charCodeAt(0) - 'a'.charCodeAt(0));
-        }
-        for (let j = 0; j < i; ++j) {
-            if ((mask[i] & mask[j]) === 0) {
-                ans = Math.max(ans, words[i].length * words[j].length);
-            }
-        }
-    }
-    return ans;
-}
-```
+#### TypeScript
 
 ```ts
 function maxProduct(words: string[]): number {
@@ -273,10 +303,8 @@ function maxProduct(words: string[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

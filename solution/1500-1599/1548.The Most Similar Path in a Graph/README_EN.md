@@ -1,8 +1,21 @@
-# [1548. The Most Similar Path in a Graph](https://leetcode.com/problems/the-most-similar-path-in-a-graph)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1548.The%20Most%20Similar%20Path%20in%20a%20Graph/README_EN.md
+tags:
+    - Graph
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
+# [1548. The Most Similar Path in a Graph 🔒](https://leetcode.com/problems/the-most-similar-path-in-a-graph)
 
 [中文文档](/solution/1500-1599/1548.The%20Most%20Similar%20Path%20in%20a%20Graph/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>We have <code>n</code> cities and <code>m</code> bi-directional <code>roads</code> where <code>roads[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> connects city <code>a<sub>i</sub></code> with city <code>b<sub>i</sub></code>. Each city has a name consisting of exactly three upper-case English letters given in the string array <code>names</code>. Starting at any city <code>x</code>, you can reach any city <code>y</code> where <code>y != x</code> (i.e., the cities and the roads are forming an undirected connected graph).</p>
 
@@ -65,9 +78,13 @@ It&#39;s equivalent to [&quot;ATL&quot;,&quot;DXB&quot;,&quot;HND&quot;,&quot;DX
 <p>&nbsp;</p>
 <p><strong>Follow up:</strong> If each node can be visited only once in the path, What should you change in your solution?</p>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming
 
 We first build an adjacency list $g$ based on the given roads, where $g[i]$ represents the list of cities directly connected to city $i$.
 
@@ -85,7 +102,7 @@ The time complexity is $O(m \times n^2)$, and the space complexity is $O(m \time
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -120,7 +137,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -172,7 +189,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -221,7 +238,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func mostSimilar(n int, roads [][]int, names []string, targetPath []string) []int {
@@ -280,7 +297,7 @@ func mostSimilar(n int, roads [][]int, names []string, targetPath []string) []in
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function mostSimilar(
@@ -328,10 +345,8 @@ function mostSimilar(
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

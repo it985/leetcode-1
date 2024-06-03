@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2262.Total%20Appeal%20of%20A%20String/README_EN.md
+rating: 2033
+source: Weekly Contest 291 Q4
+tags:
+    - Hash Table
+    - String
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [2262. Total Appeal of A String](https://leetcode.com/problems/total-appeal-of-a-string)
 
 [中文文档](/solution/2200-2299/2262.Total%20Appeal%20of%20A%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>The <b>appeal</b> of a string is the number of <strong>distinct</strong> characters found in the string.</p>
 
@@ -50,9 +66,13 @@ The total sum is 4 + 6 + 6 + 4 = 20.
 	<li><code>s</code> consists of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Enumeration
 
 We can enumerate all the substrings that end with each character $s[i]$ and calculate their gravitational value sum $t$. Finally, we add up all the $t$ to get the total gravitational value sum.
 
@@ -69,7 +89,7 @@ The time complexity is $O(n)$, and the space complexity is $O(|\Sigma|)$, where 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -84,7 +104,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -123,7 +143,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func appealSum(s string) int64 {
@@ -142,7 +162,7 @@ func appealSum(s string) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function appealSum(s: string): number {
@@ -160,10 +180,8 @@ function appealSum(s: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

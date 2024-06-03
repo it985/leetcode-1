@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2896.Apply%20Operations%20to%20Make%20Two%20Strings%20Equal/README.md
+rating: 2172
+source: 第 366 场周赛 Q3
+tags:
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2896. 执行操作使两个字符串相等](https://leetcode.cn/problems/apply-operations-to-make-two-strings-equal)
 
 [English Version](/solution/2800-2899/2896.Apply%20Operations%20to%20Make%20Two%20Strings%20Equal/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个下标从 <strong>0</strong>&nbsp;开始的二进制字符串&nbsp;<code>s1</code> 和&nbsp;<code>s2</code>&nbsp;，两个字符串的长度都是&nbsp;<code>n</code>&nbsp;，再给你一个正整数&nbsp;<code>x</code>&nbsp;。</p>
 
@@ -51,11 +64,13 @@
 	<li><code>s1</code> 和&nbsp;<code>s2</code>&nbsp;只包含字符&nbsp;<code>'0'</code> 和&nbsp;<code>'1'</code> 。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索**
+### 方法一：记忆化搜索
 
 我们注意到，由于每次操作都是反转两个字符，因此，如果不同的字符个数为奇数，那么无法使两个字符串相等，直接返回 $-1$。否则，我们将两个字符串中不同的字符的下标存入数组 $idx$ 中，记数组长度为 $m$。
 
@@ -79,9 +94,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -103,9 +116,7 @@ class Solution:
         return dfs(0, m - 1)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -144,37 +155,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int minOperations(String s1, String s2, int x) {
-        int n = s1.length();
-        int inf = 50_000;
-        int one = inf, two = inf, last = inf;
-        int done = 0;
-        for (int i = 0; i < n; i++) {
-            if (s1.charAt(i) == s2.charAt(i)) {
-                one = Math.min(one, last);
-                last = last + 1;
-                two = two + 1;
-                continue;
-            }
-            if (done < n) {
-                one = Math.min(two + 1, done + x);
-                last = Math.min(two + x, done);
-                done = two = inf;
-                continue;
-            }
-            done = Math.min(one + x, last + 1);
-            two = one;
-            one = last = inf;
-            continue;
-        }
-        return done == inf ? -1 : done;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -210,7 +191,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minOperations(s1 string, s2 string, x int) int {
@@ -248,7 +229,7 @@ func minOperations(s1 string, s2 string, x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minOperations(s1: string, s2: string, x: number): number {
@@ -282,10 +263,50 @@ function minOperations(s1: string, s2: string, x: number): number {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Java
+
+```java
+class Solution {
+    public int minOperations(String s1, String s2, int x) {
+        int n = s1.length();
+        int inf = 50_000;
+        int one = inf, two = inf, last = inf;
+        int done = 0;
+        for (int i = 0; i < n; i++) {
+            if (s1.charAt(i) == s2.charAt(i)) {
+                one = Math.min(one, last);
+                last = last + 1;
+                two = two + 1;
+                continue;
+            }
+            if (done < n) {
+                one = Math.min(two + 1, done + x);
+                last = Math.min(two + x, done);
+                done = two = inf;
+                continue;
+            }
+            done = Math.min(one + x, last + 1);
+            two = one;
+            one = last = inf;
+            continue;
+        }
+        return done == inf ? -1 : done;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

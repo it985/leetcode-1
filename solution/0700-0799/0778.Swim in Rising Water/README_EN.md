@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0778.Swim%20in%20Rising%20Water/README_EN.md
+tags:
+    - Depth-First Search
+    - Breadth-First Search
+    - Union Find
+    - Array
+    - Binary Search
+    - Matrix
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [778. Swim in Rising Water](https://leetcode.com/problems/swim-in-rising-water)
 
 [中文文档](/solution/0700-0799/0778.Swim%20in%20Rising%20Water/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an <code>n x n</code> integer matrix <code>grid</code> where each value <code>grid[i][j]</code> represents the elevation at that point <code>(i, j)</code>.</p>
 
@@ -43,11 +61,17 @@ We need to wait until time 16 so that (0, 0) and (4, 4) are connected.
 	<li>Each value <code>grid[i][j]</code> is <strong>unique</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -74,7 +98,7 @@ class Solution:
         return -1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -119,41 +143,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function swimInWater(grid: number[][]): number {
-    const m = grid.length,
-        n = grid[0].length;
-    let visited = Array.from({ length: m }, () => new Array(n).fill(false));
-    let ans = 0;
-    let stack = [[0, 0, grid[0][0]]];
-    const dir = [
-        [0, 1],
-        [0, -1],
-        [1, 0],
-        [-1, 0],
-    ];
-
-    while (stack.length) {
-        let [i, j] = stack.shift();
-        ans = Math.max(grid[i][j], ans);
-        if (i == m - 1 && j == n - 1) break;
-        for (let [dx, dy] of dir) {
-            let x = i + dx,
-                y = j + dy;
-            if (x < m && x > -1 && y < n && y > -1 && !visited[x][y]) {
-                visited[x][y] = true;
-                stack.push([x, y, grid[x][y]]);
-            }
-        }
-        stack.sort((a, b) => a[2] - b[2]);
-    }
-    return ans;
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -188,7 +178,80 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func swimInWater(grid [][]int) int {
+	n := len(grid)
+	p := make([]int, n*n)
+	for i := range p {
+		p[i] = i
+	}
+	hi := make([]int, n*n)
+	for i, row := range grid {
+		for j, h := range row {
+			hi[h] = i*n + j
+		}
+	}
+	var find func(x int) int
+	find = func(x int) int {
+		if p[x] != x {
+			p[x] = find(p[x])
+		}
+		return p[x]
+	}
+	dirs := []int{-1, 0, 1, 0, -1}
+	for t := 0; t < n*n; t++ {
+		i, j := hi[t]/n, hi[t]%n
+		for k := 0; k < 4; k++ {
+			x, y := i+dirs[k], j+dirs[k+1]
+			if x >= 0 && x < n && y >= 0 && y < n && grid[x][y] <= t {
+				p[find(x*n+y)] = find(hi[t])
+			}
+			if find(0) == find(n*n-1) {
+				return t
+			}
+		}
+	}
+	return -1
+}
+```
+
+#### TypeScript
+
+```ts
+function swimInWater(grid: number[][]): number {
+    const m = grid.length,
+        n = grid[0].length;
+    let visited = Array.from({ length: m }, () => new Array(n).fill(false));
+    let ans = 0;
+    let stack = [[0, 0, grid[0][0]]];
+    const dir = [
+        [0, 1],
+        [0, -1],
+        [1, 0],
+        [-1, 0],
+    ];
+
+    while (stack.length) {
+        let [i, j] = stack.shift();
+        ans = Math.max(grid[i][j], ans);
+        if (i == m - 1 && j == n - 1) break;
+        for (let [dx, dy] of dir) {
+            let x = i + dx,
+                y = j + dy;
+            if (x < m && x > -1 && y < n && y > -1 && !visited[x][y]) {
+                visited[x][y] = true;
+                stack.push([x, y, grid[x][y]]);
+            }
+        }
+        stack.sort((a, b) => a[2] - b[2]);
+    }
+    return ans;
+}
+```
+
+#### Rust
 
 ```rust
 const DIR: [(i32, i32); 4] = [
@@ -271,49 +334,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func swimInWater(grid [][]int) int {
-	n := len(grid)
-	p := make([]int, n*n)
-	for i := range p {
-		p[i] = i
-	}
-	hi := make([]int, n*n)
-	for i, row := range grid {
-		for j, h := range row {
-			hi[h] = i*n + j
-		}
-	}
-	var find func(x int) int
-	find = func(x int) int {
-		if p[x] != x {
-			p[x] = find(p[x])
-		}
-		return p[x]
-	}
-	dirs := []int{-1, 0, 1, 0, -1}
-	for t := 0; t < n*n; t++ {
-		i, j := hi[t]/n, hi[t]%n
-		for k := 0; k < 4; k++ {
-			x, y := i+dirs[k], j+dirs[k+1]
-			if x >= 0 && x < n && y >= 0 && y < n && grid[x][y] <= t {
-				p[find(x*n+y)] = find(hi[t])
-			}
-			if find(0) == find(n*n-1) {
-				return t
-			}
-		}
-	}
-	return -1
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

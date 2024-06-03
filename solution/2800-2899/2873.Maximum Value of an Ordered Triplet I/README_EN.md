@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2873.Maximum%20Value%20of%20an%20Ordered%20Triplet%20I/README_EN.md
+rating: 1270
+source: Weekly Contest 365 Q1
+tags:
+    - Array
+---
+
+<!-- problem:start -->
+
 # [2873. Maximum Value of an Ordered Triplet I](https://leetcode.com/problems/maximum-value-of-an-ordered-triplet-i)
 
 [中文文档](/solution/2800-2899/2873.Maximum%20Value%20of%20an%20Ordered%20Triplet%20I/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code>.</p>
 
@@ -45,9 +59,13 @@ It can be shown that there are no ordered triplets of indices with a value great
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Maintain Maximum Prefix Value and Maximum Difference**
+<!-- solution:start -->
+
+### Solution 1: Maintain Maximum Prefix Value and Maximum Difference
 
 We can use two variables $mx$ and $mx\_diff$ to maintain the maximum prefix value and maximum difference, respectively. When traversing the array, we update these two variables, and the answer is the maximum value of all $mx\_diff \times nums[i]$.
 
@@ -55,7 +73,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array. The space c
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -68,7 +86,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -85,10 +103,9 @@ class Solution {
         return ans;
     }
 }
-
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -106,7 +123,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumTripletValue(nums []int) int64 {
@@ -120,7 +137,7 @@ func maximumTripletValue(nums []int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumTripletValue(nums: number[]): number {
@@ -134,10 +151,8 @@ function maximumTripletValue(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

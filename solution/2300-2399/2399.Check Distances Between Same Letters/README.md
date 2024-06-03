@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2399.Check%20Distances%20Between%20Same%20Letters/README.md
+rating: 1243
+source: 第 309 场周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2399. 检查相同字母间的距离](https://leetcode.cn/problems/check-distances-between-same-letters)
 
 [English Version](/solution/2300-2399/2399.Check%20Distances%20Between%20Same%20Letters/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的字符串 <code>s</code> ，该字符串仅由小写英文字母组成，<code>s</code> 中的每个字母都 <strong>恰好</strong> 出现 <strong>两次</strong> 。另给你一个下标从 <strong>0</strong> 开始、长度为 <code>26</code> 的的整数数组 <code>distance</code> 。</p>
 
@@ -49,11 +63,13 @@
 	<li><code>0 &lt;= distance[i] &lt;= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：数组或哈希表**
+### 方法一：数组或哈希表
 
 我们可以用哈希表 $d$ 记录每个字母出现的下标，然后遍历哈希表，判断每个字母的下标之差是否等于 `distance` 中对应的值。如果出现不等的情况，直接返回 `false`。如果遍历结束后，没有出现不等的情况，返回 `true`。
 
@@ -61,9 +77,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -76,9 +90,7 @@ class Solution:
         return True
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -96,7 +108,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -115,7 +127,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func checkDistances(s string, distance []int) bool {
@@ -131,24 +143,7 @@ func checkDistances(s string, distance []int) bool {
 }
 ```
 
-### **C**
-
-```c
-bool checkDistances(char* s, int* distance, int distanceSize) {
-    int n = strlen(s);
-    int d[26] = {0};
-    for (int i = 0; i < n; i++) {
-        int j = s[i] - 'a';
-        if (d[j] > 0 && i - d[j] != distance[j]) {
-            return false;
-        }
-        d[j] = i + 1;
-    }
-    return true;
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function checkDistances(s: string, distance: number[]): boolean {
@@ -165,7 +160,7 @@ function checkDistances(s: string, distance: number[]): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -186,11 +181,25 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C
 
-```
-
-
+```c
+bool checkDistances(char* s, int* distance, int distanceSize) {
+    int n = strlen(s);
+    int d[26] = {0};
+    for (int i = 0; i < n; i++) {
+        int j = s[i] - 'a';
+        if (d[j] > 0 && i - d[j] != distance[j]) {
+            return false;
+        }
+        d[j] = i + 1;
+    }
+    return true;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

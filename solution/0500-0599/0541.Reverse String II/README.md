@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0541.Reverse%20String%20II/README.md
+tags:
+    - 双指针
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [541. 反转字符串 II](https://leetcode.cn/problems/reverse-string-ii)
 
 [English Version](/solution/0500-0599/0541.Reverse%20String%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个字符串 <code>s</code> 和一个整数 <code>k</code>，从字符串开头算起，每计数至 <code>2k</code> 个字符，就反转这 <code>2k</code> 字符中的前 <code>k</code> 个字符。</p>
 
@@ -39,15 +50,17 @@
 	<li><code>1 &lt;= k &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -58,9 +71,7 @@ class Solution:
         return ''.join(t)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -78,7 +89,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -92,7 +103,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func reverseStr(s string, k int) string {
@@ -106,10 +117,8 @@ func reverseStr(s string, k int) string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

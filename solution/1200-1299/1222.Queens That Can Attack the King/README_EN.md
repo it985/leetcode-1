@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1222.Queens%20That%20Can%20Attack%20the%20King/README_EN.md
+rating: 1391
+source: Weekly Contest 158 Q2
+tags:
+    - Array
+    - Matrix
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [1222. Queens That Can Attack the King](https://leetcode.com/problems/queens-that-can-attack-the-king)
 
 [中文文档](/solution/1200-1299/1222.Queens%20That%20Can%20Attack%20the%20King/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>On a <strong>0-indexed</strong> <code>8 x 8</code> chessboard, there can be multiple black queens and one white king.</p>
 
@@ -37,9 +53,13 @@
 	<li>All the given positions are <strong>unique</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Direct Search**
+<!-- solution:start -->
+
+### Solution 1: Direct Search
 
 First, we store all the positions of the queens in a hash table or a two-dimensional array $s$.
 
@@ -51,7 +71,7 @@ The time complexity is $O(n^2)$, and the space complexity is $O(n^2)$. In this p
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -73,7 +93,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -136,7 +156,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func queensAttacktheKing(queens [][]int, king []int) (ans [][]int) {
@@ -164,7 +184,7 @@ func queensAttacktheKing(queens [][]int, king []int) (ans [][]int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function queensAttacktheKing(queens: number[][], king: number[]): number[][] {
@@ -191,10 +211,8 @@ function queensAttacktheKing(queens: number[][], king: number[]): number[][] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

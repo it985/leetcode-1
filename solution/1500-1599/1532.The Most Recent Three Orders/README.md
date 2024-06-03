@@ -1,10 +1,20 @@
-# [1532. 最近的三笔订单](https://leetcode.cn/problems/the-most-recent-three-orders)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1532.The%20Most%20Recent%20Three%20Orders/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1532. 最近的三笔订单 🔒](https://leetcode.cn/problems/the-most-recent-three-orders)
 
 [English Version](/solution/1500-1599/1532.The%20Most%20Recent%20Three%20Orders/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code>Customers</code></p>
 
@@ -107,17 +117,19 @@ Marwan 只有 1 笔订单。
 	<li>你能写出最近&nbsp;<code>n</code>&nbsp;笔订单的通用解决方案吗?</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：等值连接 + 窗口函数**
+### 方法一：等值连接 + 窗口函数
 
 我们可以使用等值连接，将 `Customers` 表和 `Orders` 表按照 `customer_id` 进行连接，然后使用 `row_number()` 窗口函数来为每个消费者的订单按照 `order_date` 降序排列，并为每个消费者的订单添加一个序号，最后筛选出序号小于等于 $3$ 的订单即可。
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -140,3 +152,7 @@ ORDER BY 1, 2, 4 DESC;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

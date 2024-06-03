@@ -1,10 +1,20 @@
-# [1555. 银行账户概要](https://leetcode.cn/problems/bank-account-summary)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1555.Bank%20Account%20Summary/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1555. 银行账户概要 🔒](https://leetcode.cn/problems/bank-account-summary)
 
 [English Version](/solution/1500-1599/1555.Bank%20Account%20Summary/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>用户表：&nbsp;<code>Users</code></p>
 
@@ -89,18 +99,22 @@ Users</code> 表：
 | 3          | Winston    | 9900       | No                    |
 | 4          | Luis       | 800        | No                    |
 +------------+------------+------------+-----------------------+
-Moustafa 在 "2020-08-01" 支付了 400 并在 "2020-08-03" 收到了 200 ，当前额度 (100 -400 +200) = -100
-Jonathan 在 "2020-08-02" 收到了 500 并在 "2020-08-08" 支付了 200 ，当前额度 (200 +500 -200) = 500
-Winston 在 "2020-08-01" 收到了 400 并在 "2020-08-03" 支付了 500 ，当前额度 (10000 +400 -500) = 9900
-Luis 未收到任何转账信息，额度 = 800</pre>
+Moustafa 在 "2020-08-01" 支付了 $400 并在 "2020-08-03" 收到了 $200 ，当前额度 (100 -400 +200) = -$100
+Jonathan 在 "2020-08-02" 收到了 $500 并在 "2020-08-08" 支付了 $200 ，当前额度 (200 +500 -200) = $500
+Winston 在 "2020-08-01" 收到了 $400 并在 "2020-08-03" 支付了 $500 ，当前额度 (10000 +400 -500) = $9900
+Luis 未收到任何转账信息，额度 = $800</pre>
+
+<!-- description:end -->
 
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -122,3 +136,7 @@ GROUP BY t.user_id;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

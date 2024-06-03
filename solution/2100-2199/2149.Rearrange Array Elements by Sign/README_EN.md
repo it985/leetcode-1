@@ -1,12 +1,28 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2149.Rearrange%20Array%20Elements%20by%20Sign/README_EN.md
+rating: 1235
+source: Weekly Contest 277 Q2
+tags:
+    - Array
+    - Two Pointers
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [2149. Rearrange Array Elements by Sign](https://leetcode.com/problems/rearrange-array-elements-by-sign)
 
 [中文文档](/solution/2100-2199/2149.Rearrange%20Array%20Elements%20by%20Sign/README.md)
 
 ## Description
 
+<!-- description:start -->
+
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> of <strong>even</strong> length consisting of an <strong>equal</strong> number of positive and negative integers.</p>
 
-<p>You should <strong>rearrange</strong> the elements of <code>nums</code> such that the modified array follows the given conditions:</p>
+<p>You should return the array of nums such that the the array follows the given conditions:</p>
 
 <ol>
 	<li>Every <strong>consecutive pair</strong> of integers have <strong>opposite signs</strong>.</li>
@@ -48,11 +64,20 @@ So nums is rearranged to [1,-1].
 	<li><code>nums</code> consists of <strong>equal</strong> number of positive and negative integers.</li>
 </ul>
 
+<p>&nbsp;</p>
+It is not required to do the modifications in-place.
+
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +94,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -113,7 +138,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func rearrangeArray(nums []int) []int {
@@ -132,7 +157,7 @@ func rearrangeArray(nums []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function rearrangeArray(nums: number[]): number[] {
@@ -152,10 +177,8 @@ function rearrangeArray(nums: number[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

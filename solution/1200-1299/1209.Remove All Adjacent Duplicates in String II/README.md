@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1209.Remove%20All%20Adjacent%20Duplicates%20in%20String%20II/README.md
+rating: 1541
+source: 第 156 场周赛 Q3
+tags:
+    - 栈
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [1209. 删除字符串中的所有相邻重复项 II](https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string-ii)
 
 [English Version](/solution/1200-1299/1209.Remove%20All%20Adjacent%20Duplicates%20in%20String%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串&nbsp;<code>s</code>，「<code>k</code> 倍重复项删除操作」将会从 <code>s</code>&nbsp;中选择&nbsp;<code>k</code>&nbsp;个相邻且相等的字母，并删除它们，使被删去的字符串的左侧和右侧连在一起。</p>
 
@@ -47,11 +60,13 @@
 	<li><code>s</code>&nbsp;中只含有小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：栈**
+### 方法一：栈
 
 我们可以遍历字符串 $s$，维护一个栈，栈中存储的是字符和该字符出现的次数。当遍历到字符 $c$ 时，如果栈顶元素的字符和 $c$ 相同，则将栈顶元素的次数加一，否则将字符 $c$ 和次数 $1$ 入栈。当栈顶元素的次数等于 $k$ 时，将栈顶元素出栈。
 
@@ -61,9 +76,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -87,24 +100,7 @@ class Solution:
         return "".join(ans)
 ```
 
-```python
-class Solution:
-    def removeDuplicates(self, s: str, k: int) -> str:
-        stk = []
-        for c in s:
-            if stk and stk[-1][0] == c:
-                stk[-1][1] = (stk[-1][1] + 1) % k
-                if stk[-1][1] == 0:
-                    stk.pop()
-            else:
-                stk.append([c, 1])
-        ans = [c * v for c, v in stk]
-        return "".join(ans)
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -134,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -160,7 +156,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func removeDuplicates(s string, k int) string {
@@ -190,10 +186,35 @@ type pair struct {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def removeDuplicates(self, s: str, k: int) -> str:
+        stk = []
+        for c in s:
+            if stk and stk[-1][0] == c:
+                stk[-1][1] = (stk[-1][1] + 1) % k
+                if stk[-1][1] == 0:
+                    stk.pop()
+            else:
+                stk.append([c, 1])
+        ans = [c * v for c, v in stk]
+        return "".join(ans)
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

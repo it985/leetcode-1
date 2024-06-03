@@ -1,10 +1,21 @@
-# [2291. 最大股票收益](https://leetcode.cn/problems/maximum-profit-from-trading-stocks)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2291.Maximum%20Profit%20From%20Trading%20Stocks/README.md
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
+# [2291. 最大股票收益 🔒](https://leetcode.cn/problems/maximum-profit-from-trading-stocks)
 
 [English Version](/solution/2200-2299/2291.Maximum%20Profit%20From%20Trading%20Stocks/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个下标从 <strong>0</strong>&nbsp;开始的数组 <code>present</code> 和 <code>future</code> ，<code>present[i]</code> 和 <code>future[i]</code> 分别代表第 <code>i</code> 支股票现在和将来的价格。每支股票你最多购买 <strong>一次</strong> ，你的预算为 <code>budget</code> 。</p>
 
@@ -47,11 +58,13 @@
 	<li><code>0 &lt;= budget &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i][j]$ 表示前 $i$ 支股票，预算为 $j$ 时的最大收益。那么答案就是 $f[n][budget]$。
 
@@ -68,9 +81,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -84,19 +95,7 @@ class Solution:
         return f[-1][-1]
 ```
 
-```python
-class Solution:
-    def maximumProfit(self, present: List[int], future: List[int], budget: int) -> int:
-        f = [0] * (budget + 1)
-        for a, b in zip(present, future):
-            for j in range(budget, a - 1, -1):
-                f[j] = max(f[j], f[j - a] + b - a)
-        return f[-1]
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -117,23 +116,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int maximumProfit(int[] present, int[] future, int budget) {
-        int n = present.length;
-        int[] f = new int[budget + 1];
-        for (int i = 0; i < n; ++i) {
-            int a = present[i], b = future[i];
-            for (int j = budget; j >= a; --j) {
-                f[j] = Math.max(f[j], f[j - a] + b - a);
-            }
-        }
-        return f[budget];
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -155,25 +138,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int maximumProfit(vector<int>& present, vector<int>& future, int budget) {
-        int n = present.size();
-        int f[budget + 1];
-        memset(f, 0, sizeof f);
-        for (int i = 0; i < n; ++i) {
-            int a = present[i], b = future[i];
-            for (int j = budget; j >= a; --j) {
-                f[j] = max(f[j], f[j - a] + b - a);
-            }
-        }
-        return f[budget];
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func maximumProfit(present []int, future []int, budget int) int {
@@ -194,19 +159,7 @@ func maximumProfit(present []int, future []int, budget int) int {
 }
 ```
 
-```go
-func maximumProfit(present []int, future []int, budget int) int {
-	f := make([]int, budget+1)
-	for i, a := range present {
-		for j := budget; j >= a; j-- {
-			f[j] = max(f[j], f[j-a]+future[i]-a)
-		}
-	}
-	return f[budget]
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumProfit(present: number[], future: number[], budget: number): number {
@@ -221,10 +174,82 @@ function maximumProfit(present: number[], future: number[], budget: number): num
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def maximumProfit(self, present: List[int], future: List[int], budget: int) -> int:
+        f = [0] * (budget + 1)
+        for a, b in zip(present, future):
+            for j in range(budget, a - 1, -1):
+                f[j] = max(f[j], f[j - a] + b - a)
+        return f[-1]
 ```
 
+#### Java
+
+```java
+class Solution {
+    public int maximumProfit(int[] present, int[] future, int budget) {
+        int n = present.length;
+        int[] f = new int[budget + 1];
+        for (int i = 0; i < n; ++i) {
+            int a = present[i], b = future[i];
+            for (int j = budget; j >= a; --j) {
+                f[j] = Math.max(f[j], f[j - a] + b - a);
+            }
+        }
+        return f[budget];
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int maximumProfit(vector<int>& present, vector<int>& future, int budget) {
+        int n = present.size();
+        int f[budget + 1];
+        memset(f, 0, sizeof f);
+        for (int i = 0; i < n; ++i) {
+            int a = present[i], b = future[i];
+            for (int j = budget; j >= a; --j) {
+                f[j] = max(f[j], f[j - a] + b - a);
+            }
+        }
+        return f[budget];
+    }
+};
+```
+
+#### Go
+
+```go
+func maximumProfit(present []int, future []int, budget int) int {
+	f := make([]int, budget+1)
+	for i, a := range present {
+		for j := budget; j >= a; j-- {
+			f[j] = max(f[j], f[j-a]+future[i]-a)
+		}
+	}
+	return f[budget]
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

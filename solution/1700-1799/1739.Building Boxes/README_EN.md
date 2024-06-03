@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1739.Building%20Boxes/README_EN.md
+rating: 2198
+source: Weekly Contest 225 Q4
+tags:
+    - Greedy
+    - Math
+    - Binary Search
+---
+
+<!-- problem:start -->
+
 # [1739. Building Boxes](https://leetcode.com/problems/building-boxes)
 
 [中文文档](/solution/1700-1799/1739.Building%20Boxes/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You have a cubic storeroom where the width, length, and height of the room are all equal to <code>n</code> units. You are asked to place <code>n</code> boxes in this room where each box is a cube of unit side length. There are however some rules to placing the boxes:</p>
 
@@ -53,9 +69,13 @@ These boxes are placed in the corner of the room, where the corner is on the bac
 	<li><code>1 &lt;= n &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Mathematical Rule**
+<!-- solution:start -->
+
+### Solution 1: Mathematical Rule
 
 According to the problem description, the box with the highest number of layers needs to be placed in the corner of the wall, and the arrangement of the boxes is in a step-like shape, which can minimize the number of boxes touching the ground.
 
@@ -67,7 +87,7 @@ The time complexity is $O(\sqrt{n})$, where $n$ is the number of boxes given in 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -86,7 +106,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -109,7 +129,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -133,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumBoxes(n int) int {
@@ -154,10 +174,8 @@ func minimumBoxes(n int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

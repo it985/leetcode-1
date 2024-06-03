@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1187.Make%20Array%20Strictly%20Increasing/README.md
+rating: 2315
+source: 第 153 场周赛 Q4
+tags:
+    - 数组
+    - 二分查找
+    - 动态规划
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1187. 使数组严格递增](https://leetcode.cn/problems/make-array-strictly-increasing)
 
 [English Version](/solution/1100-1199/1187.Make%20Array%20Strictly%20Increasing/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个整数数组&nbsp;<code>arr1</code> 和 <code>arr2</code>，返回使&nbsp;<code>arr1</code>&nbsp;严格递增所需要的最小「操作」数（可能为 0）。</p>
 
@@ -48,11 +63,13 @@
 
 <p>&nbsp;</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i]$ 表示将 $arr1[0,..,i]$ 转换为严格递增数组，且 $arr1[i]$ 不替换的最小操作数。因此，我们在 $arr1$ 设置首尾两个哨兵 $-\infty$ 和 $\infty$。最后一个数一定是不替换，因此 $f[n-1]$ 即为答案。我们初始化 $f[0]=0$，其余 $f[i]=\infty$。
 
@@ -66,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -94,9 +109,7 @@ class Solution:
         return -1 if f[n - 1] >= inf else f[n - 1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -145,7 +158,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -175,7 +188,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func makeArrayIncreasing(arr1 []int, arr2 []int) int {
@@ -215,7 +228,7 @@ func makeArrayIncreasing(arr1 []int, arr2 []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function makeArrayIncreasing(arr1: number[], arr2: number[]): number {
@@ -260,7 +273,7 @@ function makeArrayIncreasing(arr1: number[], arr2: number[]): number {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -311,10 +324,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

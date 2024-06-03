@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1207.Unique%20Number%20of%20Occurrences/README.md
+rating: 1195
+source: 第 156 场周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+---
+
+<!-- problem:start -->
+
 # [1207. 独一无二的出现次数](https://leetcode.cn/problems/unique-number-of-occurrences)
 
 [English Version](/solution/1200-1299/1207.Unique%20Number%20of%20Occurrences/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组&nbsp;<code>arr</code>，请你帮忙统计数组中每个数的出现次数。</p>
 
@@ -39,11 +52,13 @@
 	<li><code>-1000 &lt;= arr[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们用哈希表 $cnt$ 统计数组 $arr$ 中每个数的出现次数，然后用哈希表 $vis$ 统计出现次数的种类，最后判断 $cnt$ 和 $vis$ 的大小是否相等即可。
 
@@ -51,9 +66,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -62,9 +75,7 @@ class Solution:
         return len(set(cnt.values())) == len(cnt)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -78,7 +89,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -100,7 +111,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func uniqueOccurrences(arr []int) bool {
@@ -119,7 +130,7 @@ func uniqueOccurrences(arr []int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function uniqueOccurrences(arr: number[]): boolean {
@@ -131,10 +142,8 @@ function uniqueOccurrences(arr: number[]): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

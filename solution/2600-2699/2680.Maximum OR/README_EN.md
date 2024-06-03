@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2680.Maximum%20OR/README_EN.md
+rating: 1912
+source: Biweekly Contest 104 Q3
+tags:
+    - Greedy
+    - Bit Manipulation
+    - Array
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [2680. Maximum OR](https://leetcode.com/problems/maximum-or)
 
 [中文文档](/solution/2600-2699/2680.Maximum%20OR/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> of length <code>n</code> and an integer <code>k</code>. In an operation, you can choose an element and multiply it by <code>2</code>.</p>
 
@@ -36,9 +53,13 @@
 	<li><code>1 &lt;= k &lt;= 15</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy + Preprocessing**
+<!-- solution:start -->
+
+### Solution 1: Greedy + Preprocessing
 
 We notice that in order to maximize the answer, we should apply $k$ times of bitwise OR to the same number.
 
@@ -50,7 +71,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,7 +87,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -86,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -108,7 +129,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumOr(nums []int, k int) int64 {
@@ -126,7 +147,7 @@ func maximumOr(nums []int, k int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumOr(nums: number[], k: number): number {
@@ -144,7 +165,7 @@ function maximumOr(nums: number[], k: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -169,10 +190,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

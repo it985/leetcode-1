@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2255.Count%20Prefixes%20of%20a%20Given%20String/README_EN.md
+rating: 1260
+source: Biweekly Contest 77 Q1
+tags:
+    - Array
+    - String
+---
+
+<!-- problem:start -->
+
 # [2255. Count Prefixes of a Given String](https://leetcode.com/problems/count-prefixes-of-a-given-string)
 
 [中文文档](/solution/2200-2299/2255.Count%20Prefixes%20of%20a%20Given%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string array <code>words</code> and a string <code>s</code>, where <code>words[i]</code> and <code>s</code> comprise only of <strong>lowercase English letters</strong>.</p>
 
@@ -39,9 +54,13 @@ Note that the same string can occur multiple times in words, and it should be co
 	<li><code>words[i]</code> and <code>s</code> consist of lowercase English letters <strong>only</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Traversal Counting**
+<!-- solution:start -->
+
+### Solution 1: Traversal Counting
 
 We directly traverse the array words, and for each string w, we check if s starts with w as a prefix. If it does, we increment the answer by one.
 
@@ -51,7 +70,7 @@ The time complexity is $O(m \times n)$, where $m$ and $n$ are the lengths of the
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,7 +78,7 @@ class Solution:
         return sum(s.startswith(w) for w in words)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -75,7 +94,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -90,7 +109,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countPrefixes(words []string, s string) (ans int) {
@@ -103,7 +122,7 @@ func countPrefixes(words []string, s string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countPrefixes(words: string[], s: string): number {
@@ -111,10 +130,8 @@ function countPrefixes(words: string[], s: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

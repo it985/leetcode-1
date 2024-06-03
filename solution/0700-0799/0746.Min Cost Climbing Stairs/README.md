@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0746.Min%20Cost%20Climbing%20Stairs/README.md
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [746. 使用最小花费爬楼梯](https://leetcode.cn/problems/min-cost-climbing-stairs)
 
 [English Version](/solution/0700-0799/0746.Min%20Cost%20Climbing%20Stairs/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>cost</code> ，其中 <code>cost[i]</code> 是从楼梯第 <code>i</code> 个台阶向上爬需要支付的费用。一旦你支付此费用，即可选择向上爬一个或者两个台阶。</p>
 
@@ -48,11 +59,13 @@
 	<li><code>0 &lt;= cost[i] &lt;= 999</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i]$ 表示到达第 $i$ 个阶梯所需要的最小花费，初始时 $f[0] = f[1] = 0$，答案即为 $f[n]$。
 
@@ -70,9 +83,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -84,18 +95,7 @@ class Solution:
         return f[n]
 ```
 
-```python
-class Solution:
-    def minCostClimbingStairs(self, cost: List[int]) -> int:
-        f = g = 0
-        for i in range(2, len(cost) + 1):
-            f, g = g, min(f + cost[i - 2], g + cost[i - 1])
-        return g
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -109,6 +109,86 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int minCostClimbingStairs(vector<int>& cost) {
+        int n = cost.size();
+        vector<int> f(n + 1);
+        for (int i = 2; i <= n; ++i) {
+            f[i] = min(f[i - 2] + cost[i - 2], f[i - 1] + cost[i - 1]);
+        }
+        return f[n];
+    }
+};
+```
+
+#### Go
+
+```go
+func minCostClimbingStairs(cost []int) int {
+	n := len(cost)
+	f := make([]int, n+1)
+	for i := 2; i <= n; i++ {
+		f[i] = min(f[i-1]+cost[i-1], f[i-2]+cost[i-2])
+	}
+	return f[n]
+}
+```
+
+#### TypeScript
+
+```ts
+function minCostClimbingStairs(cost: number[]): number {
+    const n = cost.length;
+    const f: number[] = Array(n + 1).fill(0);
+    for (let i = 2; i <= n; ++i) {
+        f[i] = Math.min(f[i - 1] + cost[i - 1], f[i - 2] + cost[i - 2]);
+    }
+    return f[n];
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn min_cost_climbing_stairs(cost: Vec<i32>) -> i32 {
+        let n = cost.len();
+        let mut f = vec![0; n + 1];
+        for i in 2..=n {
+            f[i] = std::cmp::min(f[i - 2] + cost[i - 2], f[i - 1] + cost[i - 1]);
+        }
+        f[n]
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        f = g = 0
+        for i in range(2, len(cost) + 1):
+            f, g = g, min(f + cost[i - 2], g + cost[i - 1])
+        return g
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -124,21 +204,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int minCostClimbingStairs(vector<int>& cost) {
-        int n = cost.size();
-        vector<int> f(n + 1);
-        for (int i = 2; i <= n; ++i) {
-            f[i] = min(f[i - 2] + cost[i - 2], f[i - 1] + cost[i - 1]);
-        }
-        return f[n];
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -155,18 +221,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func minCostClimbingStairs(cost []int) int {
-	n := len(cost)
-	f := make([]int, n+1)
-	for i := 2; i <= n; i++ {
-		f[i] = min(f[i-1]+cost[i-1], f[i-2]+cost[i-2])
-	}
-	return f[n]
-}
-```
+#### Go
 
 ```go
 func minCostClimbingStairs(cost []int) int {
@@ -178,18 +233,7 @@ func minCostClimbingStairs(cost []int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function minCostClimbingStairs(cost: number[]): number {
-    const n = cost.length;
-    const f: number[] = Array(n + 1).fill(0);
-    for (let i = 2; i <= n; ++i) {
-        f[i] = Math.min(f[i - 1] + cost[i - 1], f[i - 2] + cost[i - 2]);
-    }
-    return f[n];
-}
-```
+#### TypeScript
 
 ```ts
 function minCostClimbingStairs(cost: number[]): number {
@@ -202,20 +246,7 @@ function minCostClimbingStairs(cost: number[]): number {
 }
 ```
 
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn min_cost_climbing_stairs(cost: Vec<i32>) -> i32 {
-        let n = cost.len();
-        let mut f = vec![0; n + 1];
-        for i in 2..=n {
-            f[i] = std::cmp::min(f[i - 2] + cost[i - 2], f[i - 1] + cost[i - 1]);
-        }
-        f[n]
-    }
-}
-```
+#### Rust
 
 ```rust
 impl Solution {
@@ -231,10 +262,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

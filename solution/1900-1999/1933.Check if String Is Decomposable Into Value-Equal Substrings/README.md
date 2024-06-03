@@ -1,10 +1,20 @@
-# [1933. 判断字符串是否可分解为值均等的子串](https://leetcode.cn/problems/check-if-string-is-decomposable-into-value-equal-substrings)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1933.Check%20if%20String%20Is%20Decomposable%20Into%20Value-Equal%20Substrings/README.md
+tags:
+    - 字符串
+---
+
+<!-- problem:start -->
+
+# [1933. 判断字符串是否可分解为值均等的子串 🔒](https://leetcode.cn/problems/check-if-string-is-decomposable-into-value-equal-substrings)
 
 [English Version](/solution/1900-1999/1933.Check%20if%20String%20Is%20Decomposable%20Into%20Value-Equal%20Substrings/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一个字符串的所有字符都是一样的，被称作等值字符串。</p>
 
@@ -51,11 +61,13 @@
 	<li><code>s</code> 仅包含数字。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双指针**
+### 方法一：双指针
 
 遍历字符串 $s$，用双指针 $i$ 和 $j$ 统计每个等值子字符串的长度。若长度模 $3$ 余 $1$，说明该子字符串长度不符合要求，返回 `false`；若长度模 $3$ 余 $2$，说明出现了长度为 $2$ 的子字符串，若此前已经出现过长度为 $2$ 的子字符串，返回 `false`，否则将 $j$ 的值赋给 $i$，继续遍历。
 
@@ -65,9 +77,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -87,23 +97,7 @@ class Solution:
         return cnt2 == 1
 ```
 
-```python
-class Solution:
-    def isDecomposable(self, s: str) -> bool:
-        cnt2 = 0
-        for _, g in groupby(s):
-            m = len(list(g))
-            if m % 3 == 1:
-                return False
-            cnt2 += m % 3 == 2
-            if cnt2 > 1:
-                return False
-        return cnt2 == 1
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -128,7 +122,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -154,7 +148,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isDecomposable(s string) bool {
@@ -180,7 +174,7 @@ func isDecomposable(s string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function isDecomposable(s: string): boolean {
@@ -203,10 +197,34 @@ function isDecomposable(s: string): boolean {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def isDecomposable(self, s: str) -> bool:
+        cnt2 = 0
+        for _, g in groupby(s):
+            m = len(list(g))
+            if m % 3 == 1:
+                return False
+            cnt2 += m % 3 == 2
+            if cnt2 > 1:
+                return False
+        return cnt2 == 1
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

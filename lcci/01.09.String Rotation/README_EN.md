@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/01.09.String%20Rotation/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [01.09. String Rotation](https://leetcode.cn/problems/string-rotation-lcci)
 
 [中文文档](/lcci/01.09.String%20Rotation/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two strings, <code>s1</code>&nbsp;and <code>s2</code>, write code to check if <code>s2</code> is a rotation of <code>s1</code> (e.g.,&quot;waterbottle&quot; is a rotation of&quot;erbottlewat&quot;).&nbsp;Can you use&nbsp;only one call to the method that&nbsp;checks if one word is a substring of another?</p>
 
@@ -34,9 +44,13 @@
 	<li><code><font face="monospace">0 &lt;= s1.length, s1.length &lt;=&nbsp;</font>100000</code></li>
 </ol>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: String Matching**
+<!-- solution:start -->
+
+### Solution 1: String Matching
 
 First, if the lengths of strings $s1$ and $s2$ are not equal, they are definitely not rotation strings of each other.
 
@@ -59,7 +73,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -67,7 +81,7 @@ class Solution:
         return len(s1) == len(s2) and s2 in s1 * 2
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -77,7 +91,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -88,7 +102,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isFlipedString(s1 string, s2 string) bool {
@@ -96,7 +110,7 @@ func isFlipedString(s1 string, s2 string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function isFlipedString(s1: string, s2: string): boolean {
@@ -104,7 +118,7 @@ function isFlipedString(s1: string, s2: string): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -114,39 +128,18 @@ impl Solution {
 }
 ```
 
-```rust
-impl Solution {
-    pub fn is_fliped_string(s1: String, s2: String) -> bool {
-        if s1 == s2 {
-            return true;
-        }
-        if s1.len() != s2.len() {
-            return false;
-        }
-        let s2: Vec<char> = (s2.clone() + &s2).chars().collect();
-        let n = s1.len();
-        let m = s2.len();
-        for i in 0..m - n {
-            let mut is_pass = true;
-            for (j, c) in s1.chars().enumerate() {
-                if c != s2[i + j] {
-                    is_pass = false;
-                    break;
-                }
-            }
-            if is_pass {
-                return true;
-            }
-        }
-        false
+#### Swift
+
+```swift
+class Solution {
+    func isFlippedString(_ s1: String, _ s2: String) -> Bool {
+        return (s1.isEmpty && s2.isEmpty) || (s1.count == s2.count && (s1 + s1).contains(s2))
     }
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2013.Detect%20Squares/README_EN.md
+rating: 1841
+source: Weekly Contest 259 Q3
+tags:
+    - Design
+    - Array
+    - Hash Table
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [2013. Detect Squares](https://leetcode.com/problems/detect-squares)
 
 [中文文档](/solution/2000-2099/2013.Detect%20Squares/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a stream of points on the X-Y plane. Design an algorithm that:</p>
 
@@ -55,9 +72,13 @@ detectSquares.count([11, 10]); // return 2. You can choose:
 	<li>At most <code>3000</code> calls <strong>in total</strong> will be made to <code>add</code> and <code>count</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Hash Table
 
 We can use a hash table $cnt$ to maintain all the information of the points, where $cnt[x][y]$ represents the count of point $(x, y)$.
 
@@ -69,7 +90,7 @@ In terms of time complexity, the time complexity of calling the $add(x, y)$ meth
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class DetectSquares:
@@ -99,7 +120,7 @@ class DetectSquares:
 # param_2 = obj.count(point)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class DetectSquares {
@@ -143,7 +164,7 @@ class DetectSquares {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class DetectSquares {
@@ -185,7 +206,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type DetectSquares struct {
@@ -226,10 +247,8 @@ func (this *DetectSquares) Count(point []int) (ans int) {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

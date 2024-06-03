@@ -1,16 +1,30 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2901.Longest%20Unequal%20Adjacent%20Groups%20Subsequence%20II/README.md
+rating: 1898
+source: 第 115 场双周赛 Q3
+tags:
+    - 数组
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2901. 最长相邻不相等子序列 II](https://leetcode.cn/problems/longest-unequal-adjacent-groups-subsequence-ii)
 
 [English Version](/solution/2900-2999/2901.Longest%20Unequal%20Adjacent%20Groups%20Subsequence%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数&nbsp;<code>n</code>&nbsp;和一个下标从&nbsp;<strong>0</strong>&nbsp;开始的字符串数组&nbsp;<code>words</code>&nbsp;，和一个下标从&nbsp;<strong>0</strong>&nbsp;开始的数组&nbsp;<code>groups</code>&nbsp;，两个数组长度都是&nbsp;<code>n</code>&nbsp;。</p>
 
 <p>两个长度相等字符串的 <strong>汉明距离</strong>&nbsp;定义为对应位置字符&nbsp;<strong>不同</strong>&nbsp;的数目。</p>
 
-<p>你需要从下标&nbsp;<code>[0, 1, ..., n - 1]</code>&nbsp;中选出一个&nbsp;<strong>最长子序列</strong>&nbsp;，将这个子序列记作长度为 <code>k</code> 的&nbsp;<code>[i<sub>0</sub>, i<sub>1</sub>, ..., i<sub>k - 1</sub>]</code>&nbsp;，它需要满足以下条件：</p>
+<p>你需要从下标&nbsp;<code>[0, 1, ..., n - 1]</code>&nbsp;中选出一个&nbsp;<strong>最长<span data-keyword="subsequence-array">子序列</span></strong>&nbsp;，将这个子序列记作长度为 <code>k</code> 的&nbsp;<code>[i<sub>0</sub>, i<sub>1</sub>, ..., i<sub>k - 1</sub>]</code>&nbsp;，它需要满足以下条件：</p>
 
 <ul>
 	<li><strong>相邻</strong> 下标对应的 <code>groups</code> 值 <strong>不同</strong>。即，对于所有满足&nbsp;<code>0 &lt; j + 1 &lt; k</code>&nbsp;的&nbsp;<code>j</code>&nbsp;都有&nbsp;<code>groups[i<sub>j</sub>] != groups[i<sub>j + 1</sub>]</code>&nbsp;。</li>
@@ -64,11 +78,13 @@
 	<li><code>words[i]</code> 只包含小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i]$ 表示以第 $i$ 个单词结尾的最长相邻不相等子序列的长度，定义 $g[i]$ 表示以第 $i$ 个单词结尾的最长相邻不相等子序列的前驱下标。初始时 $f[i] = 1$, $g[i] = -1$。
 
@@ -80,15 +96,9 @@
 
 时间复杂度 $O(n^2 \times L)$，空间复杂度 $O(n)$。其中 $L$ 表示单词的最大长度。
 
-**优化：空间换时间**
-
-**方法一**中，我们需要枚举所有的 $i$ 和 $j$ 组合, 这一步可以通过维护一个通配符哈希表来优化. 对于每个字符串 $word[i]$, 我们枚举它的每个字符, 将其替换为通配符, 然后将替换后的字符串作为键, 将其下标作为值存入哈希表中. 这样我们可以在 $O(L)$ 时间内找到所有距离 $word[i]$ 汉明距离为 1 的 $word[j]$. 尽管时间复杂度仍然是 $O(n^2 \times L)$, 但平均复杂度会有所降低.
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -118,9 +128,7 @@ class Solution:
         return ans[::-1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -167,55 +175,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public List<String> getWordsInLongestSubsequence(int n, String[] words, int[] groups) {
-        int[] dp = new int[n];
-        int[] next = new int[n];
-        Map<String, List<Integer>> strToIdxMap = new HashMap<>();
-        int maxIdx = n;
-        for (int i = n - 1; i >= 0; i--) {
-            int prevIdx = n;
-            char[] word = words[i].toCharArray();
-            for (int j = 0; j < word.length; j++) {
-                // convert word to pattern with '*'.
-                char temp = word[j];
-                word[j] = '*';
-                String curr = new String(word);
-
-                // search matches and update dp.
-                List<Integer> prevList = strToIdxMap.getOrDefault(curr, List.of());
-                for (int prev : prevList) {
-                    if (groups[prev] == groups[i] || dp[prev] < dp[i]) {
-                        continue;
-                    }
-                    dp[i] = dp[prev] + 1;
-                    prevIdx = prev;
-                }
-
-                // append current pattern to dictionary.
-                strToIdxMap.computeIfAbsent(curr, k -> new ArrayList<>()).add(i);
-
-                // restore pattern to orignal word.
-                word[j] = temp;
-            }
-            if (maxIdx >= n || dp[i] > dp[maxIdx]) {
-                maxIdx = i;
-            }
-            next[i] = prevIdx;
-        }
-        int curr = maxIdx;
-        List<String> ans = new ArrayList<>();
-        while (curr < n) {
-            ans.add(words[curr]);
-            curr = next[curr];
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -258,7 +218,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getWordsInLongestSubsequence(n int, words []string, groups []int) []string {
@@ -308,7 +268,7 @@ func getWordsInLongestSubsequence(n int, words []string, groups []int) []string 
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function getWordsInLongestSubsequence(n: number, words: string[], groups: number[]): string[] {
@@ -349,7 +309,7 @@ function getWordsInLongestSubsequence(n: number, words: string[], groups: number
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -405,10 +365,70 @@ impl Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二：动态规划 + 通配符哈希表
+
+在方法一中，我们需要枚举所有的 $i$ 和 $j$ 组合, 这一步可以通过维护一个通配符哈希表来优化. 对于每个字符串 $word[i]$, 我们枚举它的每个字符, 将其替换为通配符, 然后将替换后的字符串作为键, 将其下标作为值存入哈希表中. 这样我们可以在 $O(L)$ 时间内找到所有距离 $word[i]$ 汉明距离为 1 的 $word[j]$. 尽管时间复杂度仍然是 $O(n^2 \times L)$, 但平均复杂度会有所降低.
+
+<!-- tabs:start -->
+
+#### Java
+
+```java
+class Solution {
+    public List<String> getWordsInLongestSubsequence(int n, String[] words, int[] groups) {
+        int[] dp = new int[n];
+        int[] next = new int[n];
+        Map<String, List<Integer>> strToIdxMap = new HashMap<>();
+        int maxIdx = n;
+        for (int i = n - 1; i >= 0; i--) {
+            int prevIdx = n;
+            char[] word = words[i].toCharArray();
+            for (int j = 0; j < word.length; j++) {
+                // convert word to pattern with '*'.
+                char temp = word[j];
+                word[j] = '*';
+                String curr = new String(word);
+
+                // search matches and update dp.
+                List<Integer> prevList = strToIdxMap.getOrDefault(curr, List.of());
+                for (int prev : prevList) {
+                    if (groups[prev] == groups[i] || dp[prev] < dp[i]) {
+                        continue;
+                    }
+                    dp[i] = dp[prev] + 1;
+                    prevIdx = prev;
+                }
+
+                // append current pattern to dictionary.
+                strToIdxMap.computeIfAbsent(curr, k -> new ArrayList<>()).add(i);
+
+                // restore pattern to orignal word.
+                word[j] = temp;
+            }
+            if (maxIdx >= n || dp[i] > dp[maxIdx]) {
+                maxIdx = i;
+            }
+            next[i] = prevIdx;
+        }
+        int curr = maxIdx;
+        List<String> ans = new ArrayList<>();
+        while (curr < n) {
+            ans.add(words[curr]);
+            curr = next[curr];
+        }
+        return ans;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

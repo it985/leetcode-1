@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1712.Ways%20to%20Split%20Array%20Into%20Three%20Subarrays/README_EN.md
+rating: 2078
+source: Weekly Contest 222 Q3
+tags:
+    - Array
+    - Two Pointers
+    - Binary Search
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [1712. Ways to Split Array Into Three Subarrays](https://leetcode.com/problems/ways-to-split-array-into-three-subarrays)
 
 [中文文档](/solution/1700-1799/1712.Ways%20to%20Split%20Array%20Into%20Three%20Subarrays/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A split of an integer array is <strong>good</strong> if:</p>
 
@@ -47,9 +64,13 @@
 	<li><code>0 &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Prefix Sum + Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Prefix Sum + Binary Search
 
 First, we preprocess the prefix sum array $s$ of the array $nums$, where $s[i]$ represents the sum of the first $i+1$ elements of the array $nums$.
 
@@ -65,7 +86,7 @@ The time complexity is $O(n \times \log n)$, where $n$ is the length of the arra
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -80,7 +101,7 @@ class Solution:
         return ans % mod
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -116,7 +137,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -138,7 +159,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func waysToSplit(nums []int) (ans int) {
@@ -158,7 +179,7 @@ func waysToSplit(nums []int) (ans int) {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -193,10 +214,8 @@ var waysToSplit = function (nums) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

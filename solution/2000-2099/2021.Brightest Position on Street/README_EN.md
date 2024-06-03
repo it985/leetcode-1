@@ -1,8 +1,22 @@
-# [2021. Brightest Position on Street](https://leetcode.com/problems/brightest-position-on-street)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2021.Brightest%20Position%20on%20Street/README_EN.md
+tags:
+    - Array
+    - Ordered Set
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
+# [2021. Brightest Position on Street 🔒](https://leetcode.com/problems/brightest-position-on-street)
 
 [中文文档](/solution/2000-2099/2021.Brightest%20Position%20on%20Street/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A perfectly straight street is represented by a number line. The street has street lamp(s) on it and is represented by a 2D integer array <code>lights</code>. Each <code>lights[i] = [position<sub>i</sub>, range<sub>i</sub>]</code> indicates that there is a street lamp at position <code>position<sub>i</sub></code> that lights up the area from <code>[position<sub>i</sub> - range<sub>i</sub>, position<sub>i</sub> + range<sub>i</sub>]</code> (<strong>inclusive</strong>).</p>
 
@@ -62,9 +76,13 @@ Out of all these positions, -1 is the smallest, so return it.
 	<li><code>0 &lt;= range<sub>i</sub> &lt;= 10<sup>8</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Difference Array + Hash Table + Sorting**
+<!-- solution:start -->
+
+### Solution 1: Difference Array + Hash Table + Sorting
 
 We can consider the range illuminated by each street light as an interval, with the left endpoint $l = position_i - range_i$ and the right endpoint $r = position_i + range_i$. We can use the idea of a difference array. For each interval $[l, r]$, we add $1$ to the value at position $l$ and subtract $1$ from the value at position $r + 1$. We use a hash table to maintain the change value at each position.
 
@@ -76,7 +94,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -95,7 +113,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -120,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -145,7 +163,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func brightestPosition(lights [][]int) (ans int) {
@@ -172,7 +190,7 @@ func brightestPosition(lights [][]int) (ans int) {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -206,10 +224,8 @@ var brightestPosition = function (lights) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

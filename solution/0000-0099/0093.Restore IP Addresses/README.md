@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0093.Restore%20IP%20Addresses/README.md
+tags:
+    - 字符串
+    - 回溯
+---
+
+<!-- problem:start -->
+
 # [93. 复原 IP 地址](https://leetcode.cn/problems/restore-ip-addresses)
 
 [English Version](/solution/0000-0099/0093.Restore%20IP%20Addresses/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><strong>有效 IP 地址</strong> 正好由四个整数（每个整数位于 <code>0</code> 到 <code>255</code> 之间组成，且不能含有前导 <code>0</code>），整数之间用 <code>'.'</code> 分隔。</p>
 
@@ -46,11 +57,13 @@
 	<li><code>s</code> 仅由数字组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们定义一个函数 $dfs(i)$，表示从字符串 $s$ 的第 $i$ 位开始，搜索能够组成的 IP 地址列表。
 
@@ -64,9 +77,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -95,9 +106,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -135,7 +144,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -169,7 +178,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func restoreIpAddresses(s string) (ans []string) {
@@ -200,7 +209,7 @@ func restoreIpAddresses(s string) (ans []string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function restoreIpAddresses(s: string): string[] {
@@ -231,7 +240,7 @@ function restoreIpAddresses(s: string): string[] {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -269,10 +278,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

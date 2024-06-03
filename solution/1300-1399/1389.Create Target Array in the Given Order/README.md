@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1389.Create%20Target%20Array%20in%20the%20Given%20Order/README.md
+rating: 1208
+source: 第 181 场周赛 Q1
+tags:
+    - 数组
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [1389. 按既定顺序创建目标数组](https://leetcode.cn/problems/create-target-array-in-the-given-order)
 
 [English Version](/solution/1300-1399/1389.Create%20Target%20Array%20in%20the%20Given%20Order/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个整数数组 <code>nums</code> 和 <code>index</code>。你需要按照以下规则创建目标数组：</p>
 
@@ -63,11 +76,13 @@ nums       index     target
 	<li><code>0 &lt;= index[i] &lt;= i</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们创建一个列表 $target$，用于存储目标数组。由于题目保证数字插入位置总是存在，因此我们可以直接按照给定的顺序插入到对应的位置。
 
@@ -75,9 +90,7 @@ nums       index     target
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -88,9 +101,7 @@ class Solution:
         return target
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -110,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -125,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func createTargetArray(nums []int, index []int) []int {
@@ -138,7 +149,7 @@ func createTargetArray(nums []int, index []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function createTargetArray(nums: number[], index: number[]): number[] {
@@ -150,10 +161,8 @@ function createTargetArray(nums: number[], index: number[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,25 @@
-# [2870. Minimum Number of Operations to Make Array Empty](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-empty/)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2870.Minimum%20Number%20of%20Operations%20to%20Make%20Array%20Empty/README_EN.md
+rating: 1392
+source: Biweekly Contest 114 Q2
+tags:
+    - Greedy
+    - Array
+    - Hash Table
+    - Counting
+---
+
+<!-- problem:start -->
+
+# [2870. Minimum Number of Operations to Make Array Empty](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-empty)
 
 [中文文档](/solution/2800-2899/2870.Minimum%20Number%20of%20Operations%20to%20Make%20Array%20Empty/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> array <code>nums</code> consisting of positive integers.</p>
 
@@ -45,9 +62,13 @@ It can be shown that we cannot make the array empty in less than 4 operations.
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table + Greedy**
+<!-- solution:start -->
+
+### Solution 1: Hash Table + Greedy
 
 We use a hash table $count$ to count the number of occurrences of each element in the array. Then we traverse the hash table. For each element $x$, if it appears $c$ times, we can perform $\lfloor \frac{c+2}{3} \rfloor$ operations to delete $x$. Finally, we return the sum of the number of operations for all elements.
 
@@ -55,7 +76,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array. The space c
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +90,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -100,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -122,7 +143,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minOperations(nums []int) (ans int) {
@@ -140,7 +161,7 @@ func minOperations(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minOperations(nums: number[]): number {
@@ -159,10 +180,8 @@ function minOperations(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

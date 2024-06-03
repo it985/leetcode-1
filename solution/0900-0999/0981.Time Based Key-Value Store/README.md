@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0981.Time%20Based%20Key-Value%20Store/README.md
+tags:
+    - 设计
+    - 哈希表
+    - 字符串
+    - 二分查找
+---
+
+<!-- problem:start -->
+
 # [981. 基于时间的键值存储](https://leetcode.cn/problems/time-based-key-value-store)
 
 [English Version](/solution/0900-0999/0981.Time%20Based%20Key-Value%20Store/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>设计一个基于时间的键值数据结构，该结构可以在不同时间戳存储对应同一个键的多个值，并针对特定时间戳检索键对应的值。</p>
 
@@ -48,11 +61,13 @@ timeMap.get("foo", 5);         // 返回 "bar2"
 	<li>最多调用&nbsp;<code>set</code> 和 <code>get</code> 操作 <code>2 * 10<sup>5</sup></code> 次</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 有序集合（或二分查找）**
+### 方法一：哈希表 + 有序集合（或二分查找）
 
 我们可以用哈希表 $ktv$ 记录键值对，其中键为字符串 $key$，值为一个列表，列表中的每个元素为一个二元组 $(timestamp, value)$，表示键 $key$ 在时间戳 $timestamp$ 时对应的值为 $value$。
 
@@ -62,9 +77,7 @@ timeMap.get("foo", 5);         // 返回 "bar2"
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class TimeMap:
@@ -88,9 +101,7 @@ class TimeMap:
 # param_2 = obj.get(key,timestamp)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class TimeMap {
@@ -121,7 +132,7 @@ class TimeMap {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class TimeMap {
@@ -152,7 +163,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type TimeMap struct {
@@ -189,10 +200,8 @@ type pair struct {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

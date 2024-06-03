@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1935.Maximum%20Number%20of%20Words%20You%20Can%20Type/README_EN.md
+rating: 1226
+source: Weekly Contest 250 Q1
+tags:
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [1935. Maximum Number of Words You Can Type](https://leetcode.com/problems/maximum-number-of-words-you-can-type)
 
 [中文文档](/solution/1900-1999/1935.Maximum%20Number%20of%20Words%20You%20Can%20Type/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is a malfunctioning keyboard where some letter keys do not work. All other keys on the keyboard work properly.</p>
 
@@ -44,9 +59,13 @@
 	<li><code>brokenLetters</code> consists of <strong>distinct</strong> lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Array or Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Array or Hash Table
 
 We can use a hash table or an array $s$ of length $26$ to record all the broken letter keys.
 
@@ -58,7 +77,7 @@ The time complexity is $O(n)$, and the space complexity is $O(|\Sigma|)$, where 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -67,7 +86,7 @@ class Solution:
         return sum(all(c not in s for c in w) for w in text.split())
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +110,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -131,7 +150,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canBeTypedWords(text string, brokenLetters string) (ans int) {
@@ -152,7 +171,7 @@ func canBeTypedWords(text string, brokenLetters string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canBeTypedWords(text: string, brokenLetters: string): number {
@@ -174,7 +193,7 @@ function canBeTypedWords(text: string, brokenLetters: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -199,10 +218,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

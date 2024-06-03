@@ -1,10 +1,22 @@
-# [1666. 改变二叉树的根节点](https://leetcode.cn/problems/change-the-root-of-a-binary-tree)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1666.Change%20the%20Root%20of%20a%20Binary%20Tree/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 二叉树
+---
+
+<!-- problem:start -->
+
+# [1666. 改变二叉树的根节点 🔒](https://leetcode.cn/problems/change-the-root-of-a-binary-tree)
 
 [English Version](/solution/1600-1699/1666.Change%20the%20Root%20of%20a%20Binary%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一棵二叉树的根节点 <code>root</code> 和一个叶节点 <code>leaf</code> ，更改二叉树，使得 <code>leaf</code> 为新的根节点。</p>
 
@@ -44,11 +56,13 @@
 	<li><code>leaf</code> 存在于树中。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：自底向上模拟**
+### 方法一：自底向上模拟
 
 从叶节点 `leaf` 开始，向上模拟翻转操作。
 
@@ -56,9 +70,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 """
@@ -92,9 +104,7 @@ class Solution:
         return leaf
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /*
@@ -132,7 +142,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /*
@@ -172,45 +182,7 @@ public:
 };
 ```
 
-### **C#**
-
-```cs
-/*
-// Definition for a Node.
-public class Node {
-    public int val;
-    public Node left;
-    public Node right;
-    public Node parent;
-}
-*/
-
-public class Solution {
-    public Node FlipBinaryTree(Node root, Node leaf) {
-        Node cur = leaf;
-        Node p = cur.parent;
-        while (cur != root) {
-            Node gp = p.parent;
-            if (cur.left != null) {
-                cur.right = cur.left;
-            }
-            cur.left = p;
-            p.parent = cur;
-            if (p.left == cur) {
-                p.left = null;
-            } else if (p.right == cur) {
-                p.right = null;
-            }
-            cur = p;
-            p = gp;
-        }
-        leaf.parent = null;
-        return leaf;
-    }
-}
-```
-
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -250,10 +222,46 @@ var flipBinaryTree = function (root, leaf) {
 };
 ```
 
-### **...**
+#### C#
 
-```
+```cs
+/*
+// Definition for a Node.
+public class Node {
+    public int val;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+*/
 
+public class Solution {
+    public Node FlipBinaryTree(Node root, Node leaf) {
+        Node cur = leaf;
+        Node p = cur.parent;
+        while (cur != root) {
+            Node gp = p.parent;
+            if (cur.left != null) {
+                cur.right = cur.left;
+            }
+            cur.left = p;
+            p.parent = cur;
+            if (p.left == cur) {
+                p.left = null;
+            } else if (p.right == cur) {
+                p.right = null;
+            }
+            cur = p;
+            p = gp;
+        }
+        leaf.parent = null;
+        return leaf;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

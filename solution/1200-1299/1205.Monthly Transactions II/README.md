@@ -1,10 +1,20 @@
-# [1205. 每月交易 II](https://leetcode.cn/problems/monthly-transactions-ii)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1205.Monthly%20Transactions%20II/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1205. 每月交易 II 🔒](https://leetcode.cn/problems/monthly-transactions-ii)
 
 [English Version](/solution/1200-1299/1205.Monthly%20Transactions%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><code>Transactions</code> 记录表</p>
 
@@ -78,13 +88,17 @@ Chargebacks 表：
 | 2019-09 | US      | 0              | 0               | 1                | 5000              |
 +---------+---------+----------------+-----------------+------------------+-------------------+</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -110,3 +124,7 @@ HAVING approved_amount OR chargeback_amount;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

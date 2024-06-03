@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0576.Out%20of%20Boundary%20Paths/README.md
+tags:
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [576. 出界的路径数](https://leetcode.cn/problems/out-of-boundary-paths)
 
 [English Version](/solution/0500-0599/0576.Out%20of%20Boundary%20Paths/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个大小为 <code>m x n</code> 的网格和一个球。球的起始坐标为 <code>[startRow, startColumn]</code> 。你可以将球移到在四个方向上相邻的单元格内（可以穿过网格边界到达网格之外）。你 <strong>最多</strong> 可以移动 <code>maxMove</code> 次球。</p>
 
@@ -37,11 +47,13 @@
 	<li><code>0 &lt;= startColumn &lt; n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索**
+### 方法一：记忆化搜索
 
 定义 `dfs(i, j, k)` 表示当前位于坐标 $(i, j)$，且剩余移动次数为 $k$ 时，可以出界的路径数。记忆化搜索即可。
 
@@ -49,9 +61,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -75,9 +85,7 @@ class Solution:
         return dfs(startRow, startColumn, maxMove)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -122,38 +130,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int findPaths(int m, int n, int N, int i, int j) {
-        final int MOD = (int) (1e9 + 7);
-        final int[] dirs = new int[] {-1, 0, 1, 0, -1};
-        int[][] f = new int[m][n];
-        f[i][j] = 1;
-        int res = 0;
-        for (int step = 0; step < N; ++step) {
-            int[][] temp = new int[m][n];
-            for (int x = 0; x < m; ++x) {
-                for (int y = 0; y < n; ++y) {
-                    for (int k = 0; k < 4; ++k) {
-                        int tx = x + dirs[k], ty = y + dirs[k + 1];
-                        if (tx >= 0 && tx < m && ty >= 0 && ty < n) {
-                            temp[tx][ty] += f[x][y];
-                            temp[tx][ty] %= MOD;
-                        } else {
-                            res += f[x][y];
-                            res %= MOD;
-                        }
-                    }
-                }
-            }
-            f = temp;
-        }
-        return res;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -187,7 +164,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findPaths(m int, n int, maxMove int, startRow int, startColumn int) int {
@@ -227,10 +204,51 @@ func findPaths(m int, n int, maxMove int, startRow int, startColumn int) int {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Java
+
+```java
+class Solution {
+    public int findPaths(int m, int n, int N, int i, int j) {
+        final int MOD = (int) (1e9 + 7);
+        final int[] dirs = new int[] {-1, 0, 1, 0, -1};
+        int[][] f = new int[m][n];
+        f[i][j] = 1;
+        int res = 0;
+        for (int step = 0; step < N; ++step) {
+            int[][] temp = new int[m][n];
+            for (int x = 0; x < m; ++x) {
+                for (int y = 0; y < n; ++y) {
+                    for (int k = 0; k < 4; ++k) {
+                        int tx = x + dirs[k], ty = y + dirs[k + 1];
+                        if (tx >= 0 && tx < m && ty >= 0 && ty < n) {
+                            temp[tx][ty] += f[x][y];
+                            temp[tx][ty] %= MOD;
+                        } else {
+                            res += f[x][y];
+                            res %= MOD;
+                        }
+                    }
+                }
+            }
+            f = temp;
+        }
+        return res;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

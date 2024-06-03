@@ -1,14 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0899.Orderly%20Queue/README.md
+tags:
+    - 数学
+    - 字符串
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [899. 有序队列](https://leetcode.cn/problems/orderly-queue)
 
 [English Version](/solution/0800-0899/0899.Orderly%20Queue/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个字符串 <code>s</code> 和一个整数 <code>k</code>&nbsp;。你可以从 <code>s</code> 的前 <code>k</code> 个字母中选择一个，并把它加到字符串的末尾。</p>
 
-<p>返回 <em>在应用上述步骤的任意数量的移动后，字典上最小的字符串&nbsp;</em>。</p>
+<p>返回 <em>在应用上述步骤的任意数量的移动后，字典序最小的字符串&nbsp;</em>。</p>
 
 <p>&nbsp;</p>
 
@@ -41,15 +53,13 @@
 	<li><code>s</code>&nbsp;只由小写字母组成。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**前言**
-
-对于任何字符串，如果可以交换任意相邻字符，则可以对字符串中的字符做类似冒泡排序的操作，最终得到一个升序排列的字符串。
-
-**方法一：分情况判断**
+### 方法一：分情况判断
 
 若 $k = 1$，我们每次只能将字符串首字符移动到字符串末尾，总共有 $|s|$ 种不同的状态，我们返回其中字典序最小的字符串即可。
 
@@ -61,9 +71,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,9 +85,7 @@ class Solution:
         return "".join(sorted(s))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +108,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -122,7 +128,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func orderlyQueue(s string, k int) string {
@@ -142,7 +148,7 @@ func orderlyQueue(s string, k int) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function orderlyQueue(s: string, k: number): string {
@@ -161,10 +167,8 @@ function orderlyQueue(s: string, k: number): string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

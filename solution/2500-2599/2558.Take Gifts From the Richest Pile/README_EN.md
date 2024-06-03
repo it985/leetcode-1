@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2558.Take%20Gifts%20From%20the%20Richest%20Pile/README_EN.md
+rating: 1276
+source: Weekly Contest 331 Q1
+tags:
+    - Array
+    - Simulation
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [2558. Take Gifts From the Richest Pile](https://leetcode.com/problems/take-gifts-from-the-richest-pile)
 
 [中文文档](/solution/2500-2599/2558.Take%20Gifts%20From%20the%20Richest%20Pile/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>gifts</code> denoting the number of gifts in various piles. Every second, you do the following:</p>
 
@@ -49,9 +65,13 @@ So, the total gifts remaining are 4.
 	<li><code>1 &lt;= k &lt;= 10<sup>3</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Priority Queue (Max Heap)**
+<!-- solution:start -->
+
+### Solution 1: Priority Queue (Max Heap)
 
 We can store the array $gifts$ in a max heap, and then loop $k$ times, each time taking out the top element of the heap, taking the square root of it, and putting the result back into the heap.
 
@@ -61,7 +81,7 @@ The time complexity is $O(n + k \times \log n)$, and the space complexity is $O(
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -73,7 +93,7 @@ class Solution:
         return -sum(h)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -111,7 +131,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func pickGifts(gifts []int, k int) (ans int64) {
@@ -134,7 +154,7 @@ func (hp) Pop() (_ any)         { return }
 func (hp) Push(any)             {}
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function pickGifts(gifts: number[], k: number): number {
@@ -153,7 +173,7 @@ function pickGifts(gifts: number[], k: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -177,10 +197,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

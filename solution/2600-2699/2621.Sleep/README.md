@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2621.Sleep/README.md
+---
+
+<!-- problem:start -->
+
 # [2621. 睡眠函数](https://leetcode.cn/problems/sleep)
 
 [English Version](/solution/2600-2699/2621.Sleep/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请你编写一个异步函数，它接收一个正整数参数 <code>millis</code>&nbsp;，并休眠 <code>millis</code> 毫秒。要求此函数可以解析任何值。</p>
 
@@ -39,15 +47,17 @@ sleep(100).then(() =&gt; {
 	<li><code>1 &lt;= millis &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **TypeScript**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### TypeScript
 
 ```ts
 async function sleep(millis: number): Promise<void> {
@@ -60,10 +70,8 @@ async function sleep(millis: number): Promise<void> {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0455.Assign%20Cookies/README_EN.md
+tags:
+    - Greedy
+    - Array
+    - Two Pointers
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [455. Assign Cookies](https://leetcode.com/problems/assign-cookies)
 
 [中文文档](/solution/0400-0499/0455.Assign%20Cookies/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Assume you are an awesome parent and want to give your children some cookies. But, you should give each child at most one cookie.</p>
 
@@ -38,11 +53,17 @@ You need to output 2.
 	<li><code>1 &lt;= g[i], s[j] &lt;= 2<sup>31</sup> - 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,7 +80,7 @@ class Solution:
         return len(g)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -81,7 +102,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -103,7 +124,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findContentChildren(g []int, s []int) int {
@@ -123,7 +144,27 @@ func findContentChildren(g []int, s []int) int {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function findContentChildren(g: number[], s: number[]): number {
+    g.sort((a, b) => a - b);
+    s.sort((a, b) => a - b);
+    const m = g.length;
+    const n = s.length;
+    for (let i = 0, j = 0; i < m; ++i) {
+        while (j < n && s[j] < g[i]) {
+            ++j;
+        }
+        if (j++ >= n) {
+            return i;
+        }
+    }
+    return m;
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -148,30 +189,8 @@ var findContentChildren = function (g, s) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function findContentChildren(g: number[], s: number[]): number {
-    g.sort((a, b) => a - b);
-    s.sort((a, b) => a - b);
-    const m = g.length;
-    const n = s.length;
-    for (let i = 0, j = 0; i < m; ++i) {
-        while (j < n && s[j] < g[i]) {
-            ++j;
-        }
-        if (j++ >= n) {
-            return i;
-        }
-    }
-    return m;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0120.Triangle/README_EN.md
+tags:
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [120. Triangle](https://leetcode.com/problems/triangle)
 
 [中文文档](/solution/0100-0199/0120.Triangle/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a <code>triangle</code> array, return <em>the minimum path sum from top to bottom</em>.</p>
 
@@ -42,9 +55,13 @@ The minimum path sum from top to bottom is 2 + 3 + 5 + 1 = 11 (underlined above)
 <p>&nbsp;</p>
 <strong>Follow up:</strong> Could you&nbsp;do this using only <code>O(n)</code> extra space, where <code>n</code> is the total number of rows in the triangle?
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming
 
 We define $f[i][j]$ as the minimum path sum from the bottom of the triangle to the position $(i, j)$. Here, the position $(i, j)$ refers to the position in the $i$th row and $j$th column of the triangle (both starting from $0$). Then we have the following state transition equation:
 
@@ -62,7 +79,7 @@ Furthermore, we can directly reuse the `triangle` as the `f` array, so there is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,30 +92,7 @@ class Solution:
         return f[0][0]
 ```
 
-```python
-class Solution:
-    def minimumTotal(self, triangle: List[List[int]]) -> int:
-        n = len(triangle)
-        f = [0] * (n + 1)
-        for i in range(n - 1, -1, -1):
-            for j in range(i + 1):
-                f[j] = min(f[j], f[j + 1]) + triangle[i][j]
-        return f[0]
-```
-
-```python
-class Solution:
-    def minimumTotal(self, triangle: List[List[int]]) -> int:
-        n = len(triangle)
-        for i in range(n - 2, -1, -1):
-            for j in range(i + 1):
-                triangle[i][j] = (
-                    min(triangle[i + 1][j], triangle[i + 1][j + 1]) + triangle[i][j]
-                )
-        return triangle[0][0]
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -115,22 +109,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int minimumTotal(List<List<Integer>> triangle) {
-        for (int i = triangle.size() - 2; i >= 0; --i) {
-            for (int j = 0; j <= i; ++j) {
-                int x = triangle.get(i).get(j);
-                int y = Math.min(triangle.get(i + 1).get(j), triangle.get(i + 1).get(j + 1));
-                triangle.get(i).set(j, x + y);
-            }
-        }
-        return triangle.get(0).get(0);
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -149,21 +128,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int minimumTotal(vector<vector<int>>& triangle) {
-        for (int i = triangle.size() - 2; ~i; --i) {
-            for (int j = 0; j <= i; ++j) {
-                triangle[i][j] += min(triangle[i + 1][j], triangle[i + 1][j + 1]);
-            }
-        }
-        return triangle[0][0];
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func minimumTotal(triangle [][]int) int {
@@ -178,18 +143,7 @@ func minimumTotal(triangle [][]int) int {
 }
 ```
 
-```go
-func minimumTotal(triangle [][]int) int {
-	for i := len(triangle) - 2; i >= 0; i-- {
-		for j := 0; j <= i; j++ {
-			triangle[i][j] += min(triangle[i+1][j], triangle[i+1][j+1])
-		}
-	}
-	return triangle[0][0]
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumTotal(triangle: number[][]): number {
@@ -204,18 +158,7 @@ function minimumTotal(triangle: number[][]): number {
 }
 ```
 
-```ts
-function minimumTotal(triangle: number[][]): number {
-    for (let i = triangle.length - 2; ~i; --i) {
-        for (let j = 0; j <= i; ++j) {
-            triangle[i][j] += Math.min(triangle[i + 1][j], triangle[i + 1][j + 1]);
-        }
-    }
-    return triangle[0][0];
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -232,6 +175,90 @@ impl Solution {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        n = len(triangle)
+        f = [0] * (n + 1)
+        for i in range(n - 1, -1, -1):
+            for j in range(i + 1):
+                f[j] = min(f[j], f[j + 1]) + triangle[i][j]
+        return f[0]
+```
+
+#### Java
+
+```java
+class Solution {
+    public int minimumTotal(List<List<Integer>> triangle) {
+        for (int i = triangle.size() - 2; i >= 0; --i) {
+            for (int j = 0; j <= i; ++j) {
+                int x = triangle.get(i).get(j);
+                int y = Math.min(triangle.get(i + 1).get(j), triangle.get(i + 1).get(j + 1));
+                triangle.get(i).set(j, x + y);
+            }
+        }
+        return triangle.get(0).get(0);
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        for (int i = triangle.size() - 2; ~i; --i) {
+            for (int j = 0; j <= i; ++j) {
+                triangle[i][j] += min(triangle[i + 1][j], triangle[i + 1][j + 1]);
+            }
+        }
+        return triangle[0][0];
+    }
+};
+```
+
+#### Go
+
+```go
+func minimumTotal(triangle [][]int) int {
+	for i := len(triangle) - 2; i >= 0; i-- {
+		for j := 0; j <= i; j++ {
+			triangle[i][j] += min(triangle[i+1][j], triangle[i+1][j+1])
+		}
+	}
+	return triangle[0][0]
+}
+```
+
+#### TypeScript
+
+```ts
+function minimumTotal(triangle: number[][]): number {
+    for (let i = triangle.length - 2; ~i; --i) {
+        for (let j = 0; j <= i; ++j) {
+            triangle[i][j] += Math.min(triangle[i + 1][j], triangle[i + 1][j + 1]);
+        }
+    }
+    return triangle[0][0];
+}
+```
+
+#### Rust
+
 ```rust
 impl Solution {
     pub fn minimum_total(triangle: Vec<Vec<i32>>) -> i32 {
@@ -246,10 +273,32 @@ impl Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 3
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        n = len(triangle)
+        for i in range(n - 2, -1, -1):
+            for j in range(i + 1):
+                triangle[i][j] = (
+                    min(triangle[i + 1][j], triangle[i + 1][j + 1]) + triangle[i][j]
+                )
+        return triangle[0][0]
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

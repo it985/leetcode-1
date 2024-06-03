@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2882.Drop%20Duplicate%20Rows/README.md
+---
+
+<!-- problem:start -->
+
 # [2882. 删去重复的行](https://leetcode.cn/problems/drop-duplicate-rows)
 
 [English Version](/solution/2800-2899/2882.Drop%20Duplicate%20Rows/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <pre>
 DataFrame customers
@@ -53,15 +61,17 @@ DataFrame customers
 Alice (customer_id = 4) 和 Finn (customer_id = 5) 都使用 john@example.com，因此只保留该邮箱地址的第一次出现。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Pandas**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 import pandas as pd
@@ -71,10 +81,8 @@ def dropDuplicateEmails(customers: pd.DataFrame) -> pd.DataFrame:
     return customers.drop_duplicates(subset=['email'])
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2746.Decremental%20String%20Concatenation/README.md
+rating: 2126
+source: 第 107 场双周赛 Q3
+tags:
+    - 数组
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2746. 字符串连接删减字母](https://leetcode.cn/problems/decremental-string-concatenation)
 
 [English Version](/solution/2700-2799/2746.Decremental%20String%20Concatenation/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的数组&nbsp;<code>words</code>&nbsp;，它包含 <code>n</code>&nbsp;个字符串。</p>
 
@@ -68,11 +82,13 @@ join(str<sub>0</sub>, "b") = "ab" 或者 join("b", str<sub>0</sub>) = "bab" 。
 	<li><code>words[i]</code>&nbsp;中只包含小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索**
+### 方法一：记忆化搜索
 
 我们注意到，字符串连接时，字符串的第一个字符和最后一个字符会影响到连接后字符串的长度。因此，我们设计一个函数 $dfs(i, a, b)$，表示从第 $i$ 个字符串开始连接，且此前已经连接的字符串的第一个字符为 $a$，最后一个字符为 $b$ 时，连接后字符串的最小长度。
 
@@ -89,9 +105,7 @@ join(str<sub>0</sub>, "b") = "ab" 或者 join("b", str<sub>0</sub>) = "bab" 。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -108,9 +122,7 @@ class Solution:
         return len(words[0]) + dfs(1, words[0][0], words[0][-1])
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -142,7 +154,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -169,7 +181,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimizeConcatenatedLength(words []string) int {
@@ -200,7 +212,7 @@ func minimizeConcatenatedLength(words []string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimizeConcatenatedLength(words: string[]): number {
@@ -234,10 +246,8 @@ function minimizeConcatenatedLength(words: string[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

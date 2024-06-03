@@ -1,10 +1,24 @@
-# [2868. 单词游戏](https://leetcode.cn/problems/the-wording-game)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2868.The%20Wording%20Game/README.md
+tags:
+    - 数组
+    - 数学
+    - 双指针
+    - 字符串
+    - 博弈
+---
+
+<!-- problem:start -->
+
+# [2868. 单词游戏 🔒](https://leetcode.cn/problems/the-wording-game)
 
 [English Version](/solution/2800-2899/2868.The%20Wording%20Game/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>Alice 和 Bob 分别拥有一个&nbsp;<strong>按字典序排序&nbsp;</strong>的字符串数组，分别命名为 <code>a</code>&nbsp;和 <code>b</code>。</p>
 
@@ -82,11 +96,13 @@ Bob 无法出牌，因为他的两个单词的第一个字母都比 Alice 的单
 	<li><code>a</code> 和 <code>b</code> 中所有单词的长度之和不超过 <code>10<sup>6</sup></code>。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们记当前轮到 $Alice$ 的回合为 $k=0$，轮到 $Bob$ 的回合为 $k=1$。我们用 $i$ 记录 $Alice$ 的下标，用 $j$ 记录 $Bob$ 的下标，用 $w$ 记录当前轮到的玩家的单词。初始时 $i=1$, $j=0$, $w=a[0]$。
 
@@ -100,9 +116,7 @@ Bob 无法出牌，因为他的两个单词的第一个字母都比 Alice 的单
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -126,9 +140,7 @@ class Solution:
                 i += 1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -163,7 +175,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -196,7 +208,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canAliceWin(a []string, b []string) bool {
@@ -226,7 +238,7 @@ func canAliceWin(a []string, b []string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canAliceWin(a: string[], b: string[]): boolean {
@@ -256,10 +268,8 @@ function canAliceWin(a: string[], b: string[]): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

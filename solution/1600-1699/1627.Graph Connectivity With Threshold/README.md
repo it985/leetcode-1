@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1627.Graph%20Connectivity%20With%20Threshold/README.md
+rating: 2221
+source: 第 211 场周赛 Q4
+tags:
+    - 并查集
+    - 数组
+    - 数学
+    - 数论
+---
+
+<!-- problem:start -->
+
 # [1627. 带阈值的图连通性](https://leetcode.cn/problems/graph-connectivity-with-threshold)
 
 [English Version](/solution/1600-1699/1627.Graph%20Connectivity%20With%20Threshold/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>有 <code>n</code> 座城市，编号从 <code>1</code> 到 <code>n</code> 。编号为 <code>x</code> 和 <code>y</code> 的两座城市直接连通的前提是： <code>x</code> 和 <code>y</code> 的公因数中，至少有一个 <strong>严格大于</strong> 某个阈值 <code>threshold</code> 。更正式地说，如果存在整数 <code>z</code> ，且满足以下所有条件，则编号 <code>x</code> 和 <code>y</code> 的城市之间有一条道路：</p>
 
@@ -80,11 +95,13 @@
 	<li><code>a<sub>i</sub> != b<sub>i</sub></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：并查集**
+### 方法一：并查集
 
 我们可以枚举 $z$ 以及 $z$ 的倍数，用并查集将它们连通起来。这样，对于每个查询 $[a, b]$，我们只需要判断 $a$ 和 $b$ 是否在同一个连通块中即可。
 
@@ -92,9 +109,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class UnionFind:
@@ -131,9 +146,7 @@ class Solution:
         return [uf.find(a) == uf.find(b) for a, b in queries]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class UnionFind {
@@ -189,7 +202,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class UnionFind {
@@ -244,7 +257,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type unionFind struct {
@@ -298,7 +311,7 @@ func areConnected(n int, threshold int, queries [][]int) []bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class UnionFind {
@@ -345,10 +358,8 @@ function areConnected(n: number, threshold: number, queries: number[][]): boolea
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

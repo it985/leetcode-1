@@ -1,10 +1,20 @@
-# [2159. 分别排序两列](https://leetcode.cn/problems/order-two-columns-independently)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2159.Order%20Two%20Columns%20Independently/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2159. 分别排序两列 🔒](https://leetcode.cn/problems/order-two-columns-independently)
 
 [English Version](/solution/2100-2199/2159.Order%20Two%20Columns%20Independently/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code>Data</code></p>
 
@@ -55,15 +65,17 @@ Data 表：
 +-----------+------------+
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -87,3 +99,7 @@ FROM
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

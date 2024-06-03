@@ -1,8 +1,24 @@
-# [2868. The Wording Game](https://leetcode.com/problems/the-wording-game)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2868.The%20Wording%20Game/README_EN.md
+tags:
+    - Array
+    - Math
+    - Two Pointers
+    - String
+    - Game Theory
+---
+
+<!-- problem:start -->
+
+# [2868. The Wording Game 🔒](https://leetcode.com/problems/the-wording-game)
 
 [中文文档](/solution/2800-2899/2868.The%20Wording%20Game/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Alice and Bob each have a <strong>lexicographically sorted</strong> array of strings named <code>a</code> and <code>b</code> respectively.</p>
 
@@ -67,9 +83,13 @@ So Alice wins, and the game ends.
 	<li>The sum of the lengths of all the words in <code>a</code> and <code>b</code> combined does not exceed <code>10<sup>6</sup></code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 We use $k$ to record whose turn it is, where $k=0$ means it is Alice's turn, and $k=1$ means it is Bob's turn. We use $i$ to record Alice's index, $j$ to record Bob's index, and $w$ to record the current word. Initially, we set $i=1$, $j=0$, and $w=a[0]$.
 
@@ -83,7 +103,7 @@ The time complexity is $O(m+n)$, where $m$ and $n$ are the lengths of arrays $a$
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -107,7 +127,7 @@ class Solution:
                 i += 1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -142,7 +162,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -175,7 +195,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canAliceWin(a []string, b []string) bool {
@@ -205,7 +225,7 @@ func canAliceWin(a []string, b []string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canAliceWin(a: string[], b: string[]): boolean {
@@ -235,10 +255,8 @@ function canAliceWin(a: string[], b: string[]): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

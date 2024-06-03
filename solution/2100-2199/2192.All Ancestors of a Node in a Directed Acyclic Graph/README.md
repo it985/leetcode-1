@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2192.All%20Ancestors%20of%20a%20Node%20in%20a%20Directed%20Acyclic%20Graph/README.md
+rating: 1787
+source: 第 73 场双周赛 Q3
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 图
+    - 拓扑排序
+---
+
+<!-- problem:start -->
+
 # [2192. 有向无环图中一个节点的所有祖先](https://leetcode.cn/problems/all-ancestors-of-a-node-in-a-directed-acyclic-graph)
 
 [English Version](/solution/2100-2199/2192.All%20Ancestors%20of%20a%20Node%20in%20a%20Directed%20Acyclic%20Graph/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个正整数&nbsp;<code>n</code>&nbsp;，它表示一个 <strong>有向无环图</strong>&nbsp;中节点的数目，节点编号为&nbsp;<code>0</code>&nbsp;到&nbsp;<code>n - 1</code>&nbsp;（包括两者）。</p>
 
@@ -61,11 +76,13 @@
 	<li>图是 <strong>有向</strong> 且 <strong>无环</strong> 的。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：BFS**
+### 方法一：BFS
 
 我们先根据二维数组 $edges$ 构建邻接表 $g$，其中 $g[i]$ 表示节点 $i$ 的所有后继节点。
 
@@ -75,9 +92,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -102,9 +117,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -148,7 +161,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -185,7 +198,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getAncestors(n int, edges [][]int) [][]int {
@@ -217,7 +230,7 @@ func getAncestors(n int, edges [][]int) [][]int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function getAncestors(n: number, edges: number[][]): number[][] {
@@ -231,7 +244,7 @@ function getAncestors(n: number, edges: number[][]): number[][] {
         const vis: boolean[] = Array.from({ length: n }, () => false);
         vis[s] = true;
         while (q.length) {
-            const i = q.shift()!;
+            const i = q.pop()!;
             for (const j of g[i]) {
                 if (!vis[j]) {
                     vis[j] = true;
@@ -248,10 +261,54 @@ function getAncestors(n: number, edges: number[][]): number[][] {
 }
 ```
 
-### **...**
+#### C#
 
-```
+```cs
+public class Solution {
+    private int n;
+    private List<int>[] g;
+    private IList<IList<int>> ans;
 
+    public IList<IList<int>> GetAncestors(int n, int[][] edges) {
+        g = new List<int>[n];
+        this.n = n;
+        for (int i = 0; i < n; i++) {
+            g[i] = new List<int>();
+        }
+        foreach (var e in edges) {
+            g[e[0]].Add(e[1]);
+        }
+        ans = new List<IList<int>>();
+        for (int i = 0; i < n; ++i) {
+            ans.Add(new List<int>());
+        }
+        for (int i = 0; i < n; ++i) {
+            BFS(i);
+        }
+        return ans;
+    }
+
+    private void BFS(int s) {
+        Queue<int> q = new Queue<int>();
+        q.Enqueue(s);
+        bool[] vis = new bool[n];
+        vis[s] = true;
+        while (q.Count > 0) {
+            int i = q.Dequeue();
+            foreach (int j in g[i]) {
+                if (!vis[j]) {
+                    vis[j] = true;
+                    q.Enqueue(j);
+                    ans[j].Add(s);
+                }
+            }
+        }
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

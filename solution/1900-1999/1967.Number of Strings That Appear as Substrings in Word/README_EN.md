@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1967.Number%20of%20Strings%20That%20Appear%20as%20Substrings%20in%20Word/README_EN.md
+rating: 1231
+source: Weekly Contest 254 Q1
+tags:
+    - String
+---
+
+<!-- problem:start -->
+
 # [1967. Number of Strings That Appear as Substrings in Word](https://leetcode.com/problems/number-of-strings-that-appear-as-substrings-in-word)
 
 [中文文档](/solution/1900-1999/1967.Number%20of%20Strings%20That%20Appear%20as%20Substrings%20in%20Word/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of strings <code>patterns</code> and a string <code>word</code>, return <em>the <strong>number</strong> of strings in </em><code>patterns</code><em> that exist as a <strong>substring</strong> in </em><code>word</code>.</p>
 
@@ -52,11 +66,17 @@
 	<li><code>patterns[i]</code> and <code>word</code> consist of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -64,7 +84,7 @@ class Solution:
         return sum(p in word for p in patterns)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -80,7 +100,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -95,7 +115,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numOfStrings(patterns []string, word string) (ans int) {
@@ -108,7 +128,7 @@ func numOfStrings(patterns []string, word string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numOfStrings(patterns: string[], word: string): number {
@@ -122,10 +142,8 @@ function numOfStrings(patterns: string[], word: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

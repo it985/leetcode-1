@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2938.Separate%20Black%20and%20White%20Balls/README.md
+rating: 1422
+source: 第 372 场周赛 Q2
+tags:
+    - 贪心
+    - 双指针
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2938. 区分黑球与白球](https://leetcode.cn/problems/separate-black-and-white-balls)
 
 [English Version](/solution/2900-2999/2938.Separate%20Black%20and%20White%20Balls/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>桌子上有 <code>n</code> 个球，每个球的颜色不是黑色，就是白色。</p>
 
@@ -53,11 +67,13 @@
 	<li><code>s[i]</code> 不是 <code>'0'</code>，就是 <code>'1'</code>。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数模拟**
+### 方法一：计数模拟
 
 我们考虑将所有的 $1$ 移到最右边，用一个变量 $cnt$ 记录当前已经移动到最右边的 $1$ 的个数，用一个变量 $ans$ 记录移动的次数。
 
@@ -67,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +97,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -124,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumSteps(s string) (ans int64) {
@@ -140,7 +152,7 @@ func minimumSteps(s string) (ans int64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumSteps(s: string): number {
@@ -156,10 +168,8 @@ function minimumSteps(s: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

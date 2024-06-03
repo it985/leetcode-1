@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1356.Sort%20Integers%20by%20The%20Number%20of%201%20Bits/README.md
+rating: 1257
+source: 第 20 场双周赛 Q1
+tags:
+    - 位运算
+    - 数组
+    - 计数
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1356. 根据数字二进制下 1 的数目排序](https://leetcode.cn/problems/sort-integers-by-the-number-of-1-bits)
 
 [English Version](/solution/1300-1399/1356.Sort%20Integers%20by%20The%20Number%20of%201%20Bits/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组&nbsp;<code>arr</code>&nbsp;。请你将数组中的元素按照其二进制表示中数字 <strong>1</strong> 的数目升序排序。</p>
 
@@ -59,21 +74,21 @@
 	<li><code>0 &lt;= arr[i] &lt;= 10^4</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：自定义排序**
+### 方法一：自定义排序
 
-将数组 `arr` 按照题目要求排序，即按照二进制表示中数字 $1$ 的数目升序排序，如果存在多个数字二进制中 $1$ 的数目相同，则必须将它们按照数值大小升序排列。
+我们将数组 $arr$ 按照题目要求排序，即按照二进制表示中数字 $1$ 的数目升序排序，如果存在多个数字二进制中 $1$ 的数目相同，则必须将它们按照数值大小升序排列。
 
-时间复杂度 $O(n \times \log n)$，其中 $n$ 是数组 `arr` 的长度。
+时间复杂度 $O(n \times \log n)$，空间复杂度 $O(n)$。其中 $n$ 为数组 $arr$ 的长度。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -81,9 +96,7 @@ class Solution:
         return sorted(arr, key=lambda x: (x.bit_count(), x))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -101,27 +114,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int[] sortByBits(int[] arr) {
-        int n = arr.length;
-        Integer[] t = new Integer[n];
-        for (int i = 0; i < n; ++i) {
-            t[i] = arr[i];
-        }
-        Arrays.sort(t, (a, b) -> {
-            int x = Integer.bitCount(a), y = Integer.bitCount(b);
-            return x == y ? a - b : x - y;
-        });
-        for (int i = 0; i < n; ++i) {
-            arr[i] = t[i];
-        }
-        return arr;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,20 +132,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    vector<int> sortByBits(vector<int>& arr) {
-        sort(arr.begin(), arr.end(), [&](auto& a, auto& b) -> bool {
-            int x = __builtin_popcount(a), y = __builtin_popcount(b);
-            return x < y || (x == y && a < b);
-        });
-        return arr;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func sortByBits(arr []int) []int {
@@ -167,17 +147,7 @@ func sortByBits(arr []int) []int {
 }
 ```
 
-```go
-func sortByBits(arr []int) []int {
-	sort.Slice(arr, func(i, j int) bool {
-		a, b := bits.OnesCount(uint(arr[i])), bits.OnesCount(uint(arr[j]))
-		return a < b || (a == b && arr[i] < arr[j])
-	})
-	return arr
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sortByBits(arr: number[]): number[] {
@@ -193,7 +163,7 @@ function sortByBits(arr: number[]): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -210,7 +180,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 /**
@@ -242,10 +212,67 @@ int* sortByBits(int* arr, int arrSize, int* returnSize) {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Java
+
+```java
+class Solution {
+    public int[] sortByBits(int[] arr) {
+        int n = arr.length;
+        Integer[] t = new Integer[n];
+        for (int i = 0; i < n; ++i) {
+            t[i] = arr[i];
+        }
+        Arrays.sort(t, (a, b) -> {
+            int x = Integer.bitCount(a), y = Integer.bitCount(b);
+            return x == y ? a - b : x - y;
+        });
+        for (int i = 0; i < n; ++i) {
+            arr[i] = t[i];
+        }
+        return arr;
+    }
+}
 ```
 
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> sortByBits(vector<int>& arr) {
+        sort(arr.begin(), arr.end(), [&](auto& a, auto& b) -> bool {
+            int x = __builtin_popcount(a), y = __builtin_popcount(b);
+            return x < y || (x == y && a < b);
+        });
+        return arr;
+    }
+};
+```
+
+#### Go
+
+```go
+func sortByBits(arr []int) []int {
+	sort.Slice(arr, func(i, j int) bool {
+		a, b := bits.OnesCount(uint(arr[i])), bits.OnesCount(uint(arr[j]))
+		return a < b || (a == b && arr[i] < arr[j])
+	})
+	return arr
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

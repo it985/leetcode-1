@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1550.Three%20Consecutive%20Odds/README.md
+rating: 1221
+source: 第 202 场周赛 Q1
+tags:
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [1550. 存在连续三个奇数的数组](https://leetcode.cn/problems/three-consecutive-odds)
 
 [English Version](/solution/1500-1599/1550.Three%20Consecutive%20Odds/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>arr</code>，请你判断数组中是否存在连续三个元素都是奇数的情况：如果存在，请返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
 
@@ -33,11 +45,13 @@
 	<li><code>1 &lt;= arr[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：遍历数组**
+### 方法一：遍历数组
 
 直接遍历数组，统计连续奇数的个数，如果个数达到 3，则返回 `true`，否则遍历结束，返回 `false`。
 
@@ -45,9 +59,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -63,18 +75,7 @@ class Solution:
         return False
 ```
 
-```python
-class Solution:
-    def threeConsecutiveOdds(self, arr: List[int]) -> bool:
-        for i in range(len(arr) - 2):
-            if arr[i] % 2 + arr[i + 1] % 2 + arr[i + 2] % 2 == 3:
-                return True
-        return False
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -95,7 +96,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -114,7 +115,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func threeConsecutiveOdds(arr []int) bool {
@@ -133,7 +134,7 @@ func threeConsecutiveOdds(arr []int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function threeConsecutiveOdds(arr: number[]): boolean {
@@ -152,10 +153,29 @@ function threeConsecutiveOdds(arr: number[]): boolean {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def threeConsecutiveOdds(self, arr: List[int]) -> bool:
+        for i in range(len(arr) - 2):
+            if arr[i] % 2 + arr[i + 1] % 2 + arr[i + 2] % 2 == 3:
+                return True
+        return False
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

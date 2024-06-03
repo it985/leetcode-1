@@ -1,10 +1,21 @@
-# [489. 扫地机器人](https://leetcode.cn/problems/robot-room-cleaner)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0489.Robot%20Room%20Cleaner/README.md
+tags:
+    - 回溯
+    - 交互
+---
+
+<!-- problem:start -->
+
+# [489. 扫地机器人 🔒](https://leetcode.cn/problems/robot-room-cleaner)
 
 [English Version](/solution/0400-0499/0489.Robot%20Room%20Cleaner/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>房间中的某个位置上有一个机器人，你需要控制它清扫房间。房间被建模为一个 <code>m x n</code> 的二进制网格，其中 <code>0</code> 表示单元格中有障碍物，<code>1</code> 表示空单元格。</p>
 
@@ -80,11 +91,13 @@ interface Robot {
 <ol>
 </ol>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们不妨假设机器人的初始位置为 $(0, 0)$，方向为 $d=0$。我们将初始位置进行打扫，并标记为已访问。然后，我们依次选择上、右、下、左四个方向进行探索，每次探索前都先判断是否已经访问过，如果没有访问过，我们就朝着该方向前进一步，然后递归探索。如果已经访问过，我们就顺时针旋转 $90^\circ$，然后继续探索下一个方向。当我们探索完所有的方向后，我们需要回到上一个位置，这时我们只需要顺时针旋转 $180^\circ$，然后前进一步，再顺时针旋转 $180^\circ$ 即可。
 
@@ -92,9 +105,7 @@ interface Robot {
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # """
@@ -157,9 +168,7 @@ class Solution:
         dfs(0, 0, 0)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -210,7 +219,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -259,7 +268,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -306,7 +315,7 @@ func cleanRoom(robot *Robot) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -352,10 +361,8 @@ function cleanRoom(robot: Robot) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

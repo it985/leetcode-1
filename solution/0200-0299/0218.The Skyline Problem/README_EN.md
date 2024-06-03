@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0218.The%20Skyline%20Problem/README_EN.md
+tags:
+    - Binary Indexed Tree
+    - Segment Tree
+    - Array
+    - Divide and Conquer
+    - Ordered Set
+    - Line Sweep
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [218. The Skyline Problem](https://leetcode.com/problems/the-skyline-problem)
 
 [中文文档](/solution/0200-0299/0218.The%20Skyline%20Problem/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A city&#39;s <strong>skyline</strong> is the outer contour of the silhouette formed by all the buildings in that city when viewed from a distance. Given the locations and heights of all the buildings, return <em>the <strong>skyline</strong> formed by these buildings collectively</em>.</p>
 
@@ -48,11 +66,17 @@ Figure B shows the skyline formed by those buildings. The red points in figure B
 	<li><code>buildings</code> is sorted by <code>left<sub>i</sub></code> in&nbsp;non-decreasing order.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 from queue import PriorityQueue
@@ -80,7 +104,48 @@ class Solution:
         return skys
 ```
 
-### **Go**
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<pair<int, int>> getSkyline(vector<vector<int>>& buildings) {
+        set<int> poss;
+        map<int, int> m;
+        for (auto v : buildings) {
+            poss.insert(v[0]);
+            poss.insert(v[1]);
+        }
+
+        int i = 0;
+        for (int pos : poss)
+            m.insert(pair<int, int>(pos, i++));
+
+        vector<int> highs(m.size(), 0);
+        for (auto v : buildings) {
+            const int b = m[v[0]], e = m[v[1]];
+            for (int i = b; i < e; ++i)
+                highs[i] = max(highs[i], v[2]);
+        }
+
+        vector<pair<int, int>> res;
+        vector<int> mm(poss.begin(), poss.end());
+        for (int i = 0; i < highs.size(); ++i) {
+            if (highs[i] != highs[i + 1])
+                res.push_back(pair<int, int>(mm[i], highs[i]));
+            else {
+                const int start = i;
+                res.push_back(pair<int, int>(mm[start], highs[i]));
+                while (highs[i] == highs[i + 1])
+                    ++i;
+            }
+        }
+        return res;
+    }
+};
+```
+
+#### Go
 
 ```go
 type Matrix struct{ left, right, height int }
@@ -130,48 +195,7 @@ func getSkyline(buildings [][]int) [][]int {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    vector<pair<int, int>> getSkyline(vector<vector<int>>& buildings) {
-        set<int> poss;
-        map<int, int> m;
-        for (auto v : buildings) {
-            poss.insert(v[0]);
-            poss.insert(v[1]);
-        }
-
-        int i = 0;
-        for (int pos : poss)
-            m.insert(pair<int, int>(pos, i++));
-
-        vector<int> highs(m.size(), 0);
-        for (auto v : buildings) {
-            const int b = m[v[0]], e = m[v[1]];
-            for (int i = b; i < e; ++i)
-                highs[i] = max(highs[i], v[2]);
-        }
-
-        vector<pair<int, int>> res;
-        vector<int> mm(poss.begin(), poss.end());
-        for (int i = 0; i < highs.size(); ++i) {
-            if (highs[i] != highs[i + 1])
-                res.push_back(pair<int, int>(mm[i], highs[i]));
-            else {
-                const int start = i;
-                res.push_back(pair<int, int>(mm[start], highs[i]));
-                while (highs[i] == highs[i + 1])
-                    ++i;
-            }
-        }
-        return res;
-    }
-};
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -208,10 +232,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,20 @@
-# [2113. 查询删除和添加元素后的数组](https://leetcode.cn/problems/elements-in-array-after-removing-and-replacing-elements)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2113.Elements%20in%20Array%20After%20Removing%20and%20Replacing%20Elements/README.md
+tags:
+    - 数组
+---
+
+<!-- problem:start -->
+
+# [2113. 查询删除和添加元素后的数组 🔒](https://leetcode.cn/problems/elements-in-array-after-removing-and-replacing-elements)
 
 [English Version](/solution/2100-2199/2113.Elements%20in%20Array%20After%20Removing%20and%20Replacing%20Elements/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个&nbsp;<strong>下标从 0 开始</strong>&nbsp;的数组&nbsp;<code>nums</code>。一开始，在第 <code>0</code> 分钟，数组没有变化。此后每过一分钟，数组的 <strong>最左边</strong> 的元素将被移除，直到数组为空。然后，每过一分钟，数组的 <strong>尾部</strong> 将添加一个元素，添加的顺序和删除的顺序相同，直到数组被复原。此后上述操作无限循环进行。</p>
 
@@ -70,11 +80,13 @@
 	<li><code>0 &lt;= index<sub>j</sub> &lt; nums.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：直接计算**
+### 方法一：直接计算
 
 我们先初始化一个数组 $ans$，长度为 $m$，用于存储答案，初始化所有元素为 $-1$。
 
@@ -89,9 +101,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -107,9 +117,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -131,7 +139,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -153,7 +161,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func elementInNums(nums []int, queries [][]int) []int {
@@ -173,16 +181,8 @@ func elementInNums(nums []int, queries [][]int) []int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

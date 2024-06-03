@@ -1,8 +1,20 @@
-# [512. Game Play Analysis II](https://leetcode.com/problems/game-play-analysis-ii)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0512.Game%20Play%20Analysis%20II/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [512. Game Play Analysis II 🔒](https://leetcode.com/problems/game-play-analysis-ii)
 
 [中文文档](/solution/0500-0599/0512.Game%20Play%20Analysis%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Activity</code></p>
 
@@ -53,19 +65,19 @@ Activity table:
 +-----------+-----------+
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Subquery**
+<!-- solution:start -->
+
+### Solution 1: Subquery
 
 We can use `GROUP BY` and `MIN` functions to find the first login date for each player, and then use a subquery with a composite key to find the first login device for each player.
 
-**Solution 2: Window Function**
-
-We can use the window function `rank()`, which assigns a rank to each login date for each player, and then select the rows with a rank of $1$.
-
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -82,6 +94,20 @@ WHERE
         GROUP BY 1
     );
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Window Function
+
+We can use the window function `rank()`, which assigns a rank to each login date for each player, and then select the rows with a rank of $1$.
+
+<!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -101,3 +127,7 @@ WHERE rk = 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

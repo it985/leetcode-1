@@ -1,8 +1,24 @@
-# [1229. Meeting Scheduler](https://leetcode.com/problems/meeting-scheduler)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1229.Meeting%20Scheduler/README_EN.md
+rating: 1541
+source: Biweekly Contest 11 Q2
+tags:
+    - Array
+    - Two Pointers
+    - Sorting
+---
+
+<!-- problem:start -->
+
+# [1229. Meeting Scheduler 🔒](https://leetcode.com/problems/meeting-scheduler)
 
 [中文文档](/solution/1200-1299/1229.Meeting%20Scheduler/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the availability time slots arrays <code>slots1</code> and <code>slots2</code> of two people and a meeting duration <code>duration</code>, return the <strong>earliest time slot</strong> that works for both of them and is of duration <code>duration</code>.</p>
 
@@ -39,11 +55,21 @@
 	<li><code>1 &lt;= duration &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Sorting + Two Pointers
+
+We can sort the free time of the two people separately, then use two pointers to traverse the two arrays, find the intersection of the free time periods of the two people, and if the length of the intersection is greater than or equal to `duration`, then return the start time of the intersection and the start time plus `duration`.
+
+The time complexity is $O(m \times \log m + n \times \log n)$, and the space complexity is $O(\log m + \log n)$. Where $m$ and $n$ are the lengths of the two arrays respectively.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,7 +92,7 @@ class Solution:
         return []
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -92,7 +118,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +145,30 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func minAvailableDuration(slots1 [][]int, slots2 [][]int, duration int) []int {
+	sort.Slice(slots1, func(i, j int) bool { return slots1[i][0] < slots1[j][0] })
+	sort.Slice(slots2, func(i, j int) bool { return slots2[i][0] < slots2[j][0] })
+	i, j, m, n := 0, 0, len(slots1), len(slots2)
+	for i < m && j < n {
+		start := max(slots1[i][0], slots2[j][0])
+		end := min(slots1[i][1], slots2[j][1])
+		if end-start >= duration {
+			return []int{start, start + duration}
+		}
+		if slots1[i][1] < slots2[j][1] {
+			i++
+		} else {
+			j++
+		}
+	}
+	return []int{}
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -169,33 +218,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func minAvailableDuration(slots1 [][]int, slots2 [][]int, duration int) []int {
-	sort.Slice(slots1, func(i, j int) bool { return slots1[i][0] < slots1[j][0] })
-	sort.Slice(slots2, func(i, j int) bool { return slots2[i][0] < slots2[j][0] })
-	i, j, m, n := 0, 0, len(slots1), len(slots2)
-	for i < m && j < n {
-		start := max(slots1[i][0], slots2[j][0])
-		end := min(slots1[i][1], slots2[j][1])
-		if end-start >= duration {
-			return []int{start, start + duration}
-		}
-		if slots1[i][1] < slots2[j][1] {
-			i++
-		} else {
-			j++
-		}
-	}
-	return []int{}
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

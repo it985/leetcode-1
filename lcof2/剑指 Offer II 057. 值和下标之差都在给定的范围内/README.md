@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof2/%E5%89%91%E6%8C%87%20Offer%20II%20057.%20%E5%80%BC%E5%92%8C%E4%B8%8B%E6%A0%87%E4%B9%8B%E5%B7%AE%E9%83%BD%E5%9C%A8%E7%BB%99%E5%AE%9A%E7%9A%84%E8%8C%83%E5%9B%B4%E5%86%85/README.md
+---
+
+<!-- problem:start -->
+
 # [剑指 Offer II 057. 值和下标之差都在给定的范围内](https://leetcode.cn/problems/7WqeDu)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code> 和两个整数&nbsp;<code>k</code> 和 <code>t</code> 。请你判断是否存在 <b>两个不同下标</b> <code>i</code> 和 <code>j</code>，使得&nbsp;<code>abs(nums[i] - nums[j]) &lt;= t</code> ，同时又满足 <code>abs(i - j) &lt;= k</code><em> </em>。</p>
 
@@ -43,11 +50,13 @@
 
 <p><meta charset="UTF-8" />注意：本题与主站 220&nbsp;题相同：&nbsp;<a href="https://leetcode.cn/problems/contains-duplicate-iii/">https://leetcode.cn/problems/contains-duplicate-iii/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：滑动窗口 + 有序集合**
+### 方法一：滑动窗口 + 有序集合
 
 维护一个大小为 $k$ 的滑动窗口，窗口中的元素保持有序。
 
@@ -57,9 +66,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 from sortedcontainers import SortedSet
@@ -78,9 +85,7 @@ class Solution:
         return False
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +106,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +124,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func containsNearbyAlmostDuplicate(nums []int, k int, t int) bool {
@@ -145,7 +150,7 @@ func containsNearbyAlmostDuplicate(nums []int, k int, t int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function containsNearbyAlmostDuplicate(nums: number[], k: number, t: number): boolean {
@@ -804,10 +809,8 @@ class TreeMultiSet<T = number> {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

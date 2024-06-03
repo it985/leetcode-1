@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0966.Vowel%20Spellchecker/README.md
+tags:
+    - 数组
+    - 哈希表
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [966. 元音拼写检查器](https://leetcode.cn/problems/vowel-spellchecker)
 
 [English Version](/solution/0900-0999/0966.Vowel%20Spellchecker/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在给定单词列表&nbsp;<code>wordlist</code>&nbsp;的情况下，我们希望实现一个拼写检查器，将查询单词转换为正确的单词。</p>
 
@@ -65,11 +77,13 @@
 	<li><code>wordlist[i]</code>&nbsp;和&nbsp;<code>queries[i]</code>&nbsp;只包含英文字母</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 遍历 `wordlist`，将单词按照大小写不敏感、元音不敏感的规则分别存入哈希表 `low` 和 `pat` 中，其中 `low` 的键为单词的小写形式，`pat` 的键为将单词的元音字母替换为 `*` 后的字符串，值为单词本身。用哈希表 `s` 存储 `wordlist` 中的单词。
 
@@ -81,9 +95,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -118,9 +130,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -170,7 +180,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -224,7 +234,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func spellchecker(wordlist []string, queries []string) (ans []string) {
@@ -271,10 +281,8 @@ func spellchecker(wordlist []string, queries []string) (ans []string) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

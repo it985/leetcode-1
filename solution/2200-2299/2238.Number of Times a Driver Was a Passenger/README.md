@@ -1,10 +1,20 @@
-# [2238. 司机成为乘客的次数](https://leetcode.cn/problems/number-of-times-a-driver-was-a-passenger)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2238.Number%20of%20Times%20a%20Driver%20Was%20a%20Passenger/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2238. 司机成为乘客的次数 🔒](https://leetcode.cn/problems/number-of-times-a-driver-was-a-passenger)
 
 [English Version](/solution/2200-2299/2238.Number%20of%20Times%20a%20Driver%20Was%20a%20Passenger/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Rides</code></p>
 
@@ -57,15 +67,17 @@ Rides 表:
 ID = 7 的司机曾两次成为乘客。
 ID = 11 的司机从来不是乘客。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -78,3 +90,7 @@ GROUP BY 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1846.Maximum%20Element%20After%20Decreasing%20and%20Rearranging/README_EN.md
+rating: 1454
+source: Biweekly Contest 51 Q3
+tags:
+    - Greedy
+    - Array
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1846. Maximum Element After Decreasing and Rearranging](https://leetcode.com/problems/maximum-element-after-decreasing-and-rearranging)
 
 [中文文档](/solution/1800-1899/1846.Maximum%20Element%20After%20Decreasing%20and%20Rearranging/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an array of positive integers <code>arr</code>. Perform some operations (possibly none) on <code>arr</code> so that it satisfies these conditions:</p>
 
@@ -61,9 +77,13 @@ The largest element in <code>arr is 3.</code>
 	<li><code>1 &lt;= arr[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sorting + Greedy Algorithm**
+<!-- solution:start -->
+
+### Solution 1: Sorting + Greedy Algorithm
 
 First, we sort the array and then set the first element of the array to $1$.
 
@@ -75,7 +95,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(\log
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -88,7 +108,7 @@ class Solution:
         return max(arr)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -106,7 +126,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -125,7 +145,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumElementAfterDecrementingAndRearranging(arr []int) int {
@@ -141,7 +161,7 @@ func maximumElementAfterDecrementingAndRearranging(arr []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumElementAfterDecrementingAndRearranging(arr: number[]): number {
@@ -157,7 +177,7 @@ function maximumElementAfterDecrementingAndRearranging(arr: number[]): number {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -173,10 +193,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

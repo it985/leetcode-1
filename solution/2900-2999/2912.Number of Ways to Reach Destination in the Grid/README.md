@@ -1,10 +1,22 @@
-# [2912. 在网格上移动到目的地的方法数](https://leetcode.cn/problems/number-of-ways-to-reach-destination-in-the-grid)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2912.Number%20of%20Ways%20to%20Reach%20Destination%20in%20the%20Grid/README.md
+tags:
+    - 数学
+    - 动态规划
+    - 组合数学
+---
+
+<!-- problem:start -->
+
+# [2912. 在网格上移动到目的地的方法数 🔒](https://leetcode.cn/problems/number-of-ways-to-reach-destination-in-the-grid)
 
 [English Version](/solution/2900-2999/2912.Number%20of%20Ways%20to%20Reach%20Destination%20in%20the%20Grid/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个整数 <code>n</code> 和 <code>m</code>，它们表示一个 <strong>下标从 1 开始&nbsp;</strong>的网格的大小。还给定一个整数 <code>k</code>，以及两个 <b>下标从 1 开始</b>&nbsp;的整数数组 <code>source</code> 和 <code>dest</code>。这两个数组 <code>source</code> 和 <code>dest</code> 形如 <code>[x, y]</code>，表示网格上的一个单元格。</p>
 
@@ -60,11 +72,13 @@
 	<li><code>1 &lt;= source[2], dest[2] &lt;= m</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义以下几个状态，其中：
 
@@ -92,13 +106,13 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
-    def numberOfWays(self, n: int, m: int, k: int, source: List[int], dest: List[int]) -> int:
+    def numberOfWays(
+        self, n: int, m: int, k: int, source: List[int], dest: List[int]
+    ) -> int:
         mod = 10**9 + 7
         a, b, c, d = 1, 0, 0, 0
         for _ in range(k):
@@ -112,9 +126,13 @@ class Solution:
         return b if source[1] == dest[1] else d
 ```
 
+#### Python3
+
 ```python
 class Solution:
-    def numberOfWays(self, n: int, m: int, k: int, source: List[int], dest: List[int]) -> int:
+    def numberOfWays(
+        self, n: int, m: int, k: int, source: List[int], dest: List[int]
+    ) -> int:
         mod = 10**9 + 7
         f = [1, 0, 0, 0]
         for _ in range(k):
@@ -129,9 +147,7 @@ class Solution:
         return f[1] if source[1] == dest[1] else f[3]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -155,7 +171,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -180,7 +196,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfWays(n int, m int, k int, source []int, dest []int) int {
@@ -209,10 +225,8 @@ func numberOfWays(n int, m int, k int, source []int, dest []int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

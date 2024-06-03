@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0119.Pascal%27s%20Triangle%20II/README.md
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [119. 杨辉三角 II](https://leetcode.cn/problems/pascals-triangle-ii)
 
 [English Version](/solution/0100-0199/0119.Pascal%27s%20Triangle%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个非负索引 <code>rowIndex</code>，返回「杨辉三角」的第 <code>rowIndex</code><em> </em>行。</p>
 
@@ -49,11 +60,13 @@
 
 <p>你可以优化你的算法到 <code><em>O</em>(<i>rowIndex</i>)</code> 空间复杂度吗？</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：递推**
+### 方法一：递推
 
 我们创建一个长度为 $rowIndex + 1$ 的数组 $f$，初始时所有元素均为 $1$。
 
@@ -65,9 +78,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -79,9 +90,7 @@ class Solution:
         return f
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -100,7 +109,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -117,7 +126,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getRow(rowIndex int) []int {
@@ -134,7 +143,7 @@ func getRow(rowIndex int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function getRow(rowIndex: number): number[] {
@@ -148,7 +157,7 @@ function getRow(rowIndex: number): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -165,10 +174,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

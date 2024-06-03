@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1879.Minimum%20XOR%20Sum%20of%20Two%20Arrays/README_EN.md
+rating: 2145
+source: Biweekly Contest 53 Q4
+tags:
+    - Bit Manipulation
+    - Array
+    - Dynamic Programming
+    - Bitmask
+---
+
+<!-- problem:start -->
+
 # [1879. Minimum XOR Sum of Two Arrays](https://leetcode.com/problems/minimum-xor-sum-of-two-arrays)
 
 [中文文档](/solution/1800-1899/1879.Minimum%20XOR%20Sum%20of%20Two%20Arrays/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two integer arrays <code>nums1</code> and <code>nums2</code> of length <code>n</code>.</p>
 
@@ -44,11 +61,17 @@ The XOR sum is (1 XOR 5) + (0 XOR 4) + (3 XOR 3) = 4 + 4 + 0 = 8.
 	<li><code>0 &lt;= nums1[i], nums2[i] &lt;= 10<sup>7</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -64,35 +87,7 @@ class Solution:
         return f[-1][-1]
 ```
 
-```python
-class Solution:
-    def minimumXORSum(self, nums1: List[int], nums2: List[int]) -> int:
-        n = len(nums2)
-        f = [inf] * (1 << n)
-        f[0] = 0
-        for x in nums1:
-            for j in range((1 << n) - 1, -1, -1):
-                for k in range(n):
-                    if j >> k & 1:
-                        f[j] = min(f[j], f[j ^ (1 << k)] + (x ^ nums2[k]))
-        return f[-1]
-```
-
-```python
-class Solution:
-    def minimumXORSum(self, nums1: List[int], nums2: List[int]) -> int:
-        n = len(nums2)
-        f = [inf] * (1 << n)
-        f[0] = 0
-        for i in range(1, 1 << n):
-            k = i.bit_count() - 1
-            for j in range(n):
-                if i >> j & 1:
-                    f[i] = min(f[i], f[i ^ (1 << j)] + (nums1[k] ^ nums2[j]))
-        return f[-1]
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +102,8 @@ class Solution {
             for (int j = 0; j < 1 << n; ++j) {
                 for (int k = 0; k < n; ++k) {
                     if ((j >> k & 1) == 1) {
-                        f[i][j] = Math.min(f[i][j], f[i - 1][j ^ (1 << k)] + (nums1[i - 1] ^ nums2[k]));
+                        f[i][j]
+                            = Math.min(f[i][j], f[i - 1][j ^ (1 << k)] + (nums1[i - 1] ^ nums2[k]));
                     }
                 }
             }
@@ -117,48 +113,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int minimumXORSum(int[] nums1, int[] nums2) {
-        int n = nums1.length;
-        int[] f = new int[1 << n];
-        Arrays.fill(f, 1 << 30);
-        f[0] = 0;
-        for (int x : nums1) {
-            for (int j = (1 << n) - 1; j >= 0; --j) {
-                for (int k = 0; k < n; ++k) {
-                    if ((j >> k & 1) == 1) {
-                        f[j] = Math.min(f[j], f[j ^ (1 << k)] + (x ^ nums2[k]));
-                    }
-                }
-            }
-        }
-        return f[(1 << n) - 1];
-    }
-}
-```
-
-```java
-class Solution {
-    public int minimumXORSum(int[] nums1, int[] nums2) {
-        int n = nums1.length;
-        int[] f = new int[1 << n];
-        Arrays.fill(f, 1 << 30);
-        f[0] = 0;
-        for (int i = 0; i < 1 << n; ++i) {
-            int k = Integer.bitCount(i) - 1;
-            for (int j = 0; j < n; ++j) {
-                if ((i >> j & 1) == 1) {
-                    f[i] = Math.min(f[i], f[i ^ (1 << j)] + (nums1[k] ^ nums2[j]));
-                }
-            }
-        }
-        return f[(1 << n) - 1];
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -182,50 +137,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int minimumXORSum(vector<int>& nums1, vector<int>& nums2) {
-        int n = nums1.size();
-        int f[1 << n];
-        memset(f, 0x3f, sizeof(f));
-        f[0] = 0;
-        for (int x : nums1) {
-            for (int j = (1 << n) - 1; ~j; --j) {
-                for (int k = 0; k < n; ++k) {
-                    if (j >> k & 1) {
-                        f[j] = min(f[j], f[j ^ (1 << k)] + (x ^ nums2[k]));
-                    }
-                }
-            }
-        }
-        return f[(1 << n) - 1];
-    }
-};
-```
-
-```cpp
-class Solution {
-public:
-    int minimumXORSum(vector<int>& nums1, vector<int>& nums2) {
-        int n = nums1.size();
-        int f[1 << n];
-        memset(f, 0x3f, sizeof(f));
-        f[0] = 0;
-        for (int i = 0; i < 1 << n; ++i) {
-            int k = __builtin_popcount(i) - 1;
-            for (int j = 0; j < n; ++j) {
-                if (i >> j & 1) {
-                    f[i] = min(f[i], f[i ^ (1 << j)] + (nums1[k] ^ nums2[j]));
-                }
-            }
-        }
-        return f[(1 << n) - 1];
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func minimumXORSum(nums1 []int, nums2 []int) int {
@@ -251,48 +163,7 @@ func minimumXORSum(nums1 []int, nums2 []int) int {
 }
 ```
 
-```go
-func minimumXORSum(nums1 []int, nums2 []int) int {
-	n := len(nums1)
-	f := make([]int, 1<<n)
-	for i := range f {
-		f[i] = 1 << 30
-	}
-	f[0] = 0
-	for _, x := range nums1 {
-		for j := (1 << n) - 1; j >= 0; j-- {
-			for k := 0; k < n; k++ {
-				if j>>k&1 == 1 {
-					f[j] = min(f[j], f[j^(1<<k)]+(x^nums2[k]))
-				}
-			}
-		}
-	}
-	return f[(1<<n)-1]
-}
-```
-
-```go
-func minimumXORSum(nums1 []int, nums2 []int) int {
-	n := len(nums1)
-	f := make([]int, 1<<n)
-	for i := range f {
-		f[i] = 1 << 30
-	}
-	f[0] = 0
-	for i := 0; i < 1<<n; i++ {
-		k := bits.OnesCount(uint(i)) - 1
-		for j := 0; j < n; j++ {
-			if i>>j&1 == 1 {
-				f[i] = min(f[i], f[i^1<<j]+(nums1[k]^nums2[j]))
-			}
-		}
-	}
-	return f[(1<<n)-1]
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumXORSum(nums1: number[], nums2: number[]): number {
@@ -314,6 +185,104 @@ function minimumXORSum(nums1: number[], nums2: number[]): number {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minimumXORSum(self, nums1: List[int], nums2: List[int]) -> int:
+        n = len(nums2)
+        f = [inf] * (1 << n)
+        f[0] = 0
+        for x in nums1:
+            for j in range((1 << n) - 1, -1, -1):
+                for k in range(n):
+                    if j >> k & 1:
+                        f[j] = min(f[j], f[j ^ (1 << k)] + (x ^ nums2[k]))
+        return f[-1]
+```
+
+#### Java
+
+```java
+class Solution {
+    public int minimumXORSum(int[] nums1, int[] nums2) {
+        int n = nums1.length;
+        int[] f = new int[1 << n];
+        Arrays.fill(f, 1 << 30);
+        f[0] = 0;
+        for (int x : nums1) {
+            for (int j = (1 << n) - 1; j >= 0; --j) {
+                for (int k = 0; k < n; ++k) {
+                    if ((j >> k & 1) == 1) {
+                        f[j] = Math.min(f[j], f[j ^ (1 << k)] + (x ^ nums2[k]));
+                    }
+                }
+            }
+        }
+        return f[(1 << n) - 1];
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int minimumXORSum(vector<int>& nums1, vector<int>& nums2) {
+        int n = nums1.size();
+        int f[1 << n];
+        memset(f, 0x3f, sizeof(f));
+        f[0] = 0;
+        for (int x : nums1) {
+            for (int j = (1 << n) - 1; ~j; --j) {
+                for (int k = 0; k < n; ++k) {
+                    if (j >> k & 1) {
+                        f[j] = min(f[j], f[j ^ (1 << k)] + (x ^ nums2[k]));
+                    }
+                }
+            }
+        }
+        return f[(1 << n) - 1];
+    }
+};
+```
+
+#### Go
+
+```go
+func minimumXORSum(nums1 []int, nums2 []int) int {
+	n := len(nums1)
+	f := make([]int, 1<<n)
+	for i := range f {
+		f[i] = 1 << 30
+	}
+	f[0] = 0
+	for _, x := range nums1 {
+		for j := (1 << n) - 1; j >= 0; j-- {
+			for k := 0; k < n; k++ {
+				if j>>k&1 == 1 {
+					f[j] = min(f[j], f[j^(1<<k)]+(x^nums2[k]))
+				}
+			}
+		}
+	}
+	return f[(1<<n)-1]
+}
+```
+
+#### TypeScript
+
 ```ts
 function minimumXORSum(nums1: number[], nums2: number[]): number {
     const n = nums1.length;
@@ -331,6 +300,101 @@ function minimumXORSum(nums1: number[], nums2: number[]): number {
     return f[(1 << n) - 1];
 }
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 3
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minimumXORSum(self, nums1: List[int], nums2: List[int]) -> int:
+        n = len(nums2)
+        f = [inf] * (1 << n)
+        f[0] = 0
+        for i in range(1, 1 << n):
+            k = i.bit_count() - 1
+            for j in range(n):
+                if i >> j & 1:
+                    f[i] = min(f[i], f[i ^ (1 << j)] + (nums1[k] ^ nums2[j]))
+        return f[-1]
+```
+
+#### Java
+
+```java
+class Solution {
+    public int minimumXORSum(int[] nums1, int[] nums2) {
+        int n = nums1.length;
+        int[] f = new int[1 << n];
+        Arrays.fill(f, 1 << 30);
+        f[0] = 0;
+        for (int i = 0; i < 1 << n; ++i) {
+            int k = Integer.bitCount(i) - 1;
+            for (int j = 0; j < n; ++j) {
+                if ((i >> j & 1) == 1) {
+                    f[i] = Math.min(f[i], f[i ^ (1 << j)] + (nums1[k] ^ nums2[j]));
+                }
+            }
+        }
+        return f[(1 << n) - 1];
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int minimumXORSum(vector<int>& nums1, vector<int>& nums2) {
+        int n = nums1.size();
+        int f[1 << n];
+        memset(f, 0x3f, sizeof(f));
+        f[0] = 0;
+        for (int i = 0; i < 1 << n; ++i) {
+            int k = __builtin_popcount(i) - 1;
+            for (int j = 0; j < n; ++j) {
+                if (i >> j & 1) {
+                    f[i] = min(f[i], f[i ^ (1 << j)] + (nums1[k] ^ nums2[j]));
+                }
+            }
+        }
+        return f[(1 << n) - 1];
+    }
+};
+```
+
+#### Go
+
+```go
+func minimumXORSum(nums1 []int, nums2 []int) int {
+	n := len(nums1)
+	f := make([]int, 1<<n)
+	for i := range f {
+		f[i] = 1 << 30
+	}
+	f[0] = 0
+	for i := 0; i < 1<<n; i++ {
+		k := bits.OnesCount(uint(i)) - 1
+		for j := 0; j < n; j++ {
+			if i>>j&1 == 1 {
+				f[i] = min(f[i], f[i^1<<j]+(nums1[k]^nums2[j]))
+			}
+		}
+	}
+	return f[(1<<n)-1]
+}
+```
+
+#### TypeScript
 
 ```ts
 function minimumXORSum(nums1: number[], nums2: number[]): number {
@@ -358,10 +422,8 @@ function bitCount(i: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

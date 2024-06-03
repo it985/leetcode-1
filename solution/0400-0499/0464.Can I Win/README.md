@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0464.Can%20I%20Win/README.md
+tags:
+    - 位运算
+    - 记忆化搜索
+    - 数学
+    - 动态规划
+    - 状态压缩
+    - 博弈
+---
+
+<!-- problem:start -->
+
 # [464. 我能赢吗](https://leetcode.cn/problems/can-i-win)
 
 [English Version](/solution/0400-0499/0464.Can%20I%20Win/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在 "100 game" 这个游戏中，两名玩家轮流选择从 <code>1</code> 到 <code>10</code> 的任意整数，累计整数和，先使得累计整数和 <strong>达到或超过</strong>&nbsp; 100 的玩家，即为胜者。</p>
 
@@ -52,17 +67,17 @@
 	<li><code>0 &lt;= desiredTotal &lt;= 300</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：状态压缩 + 记忆化搜索**
+### 方法一：状态压缩 + 记忆化搜索
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -82,9 +97,7 @@ class Solution:
         return dfs(0, 0)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -118,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -146,7 +159,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canIWin(maxChoosableInteger int, desiredTotal int) bool {
@@ -177,10 +190,8 @@ func canIWin(maxChoosableInteger int, desiredTotal int) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

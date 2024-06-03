@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2256.Minimum%20Average%20Difference/README_EN.md
+rating: 1394
+source: Biweekly Contest 77 Q2
+tags:
+    - Array
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [2256. Minimum Average Difference](https://leetcode.com/problems/minimum-average-difference)
 
 [中文文档](/solution/2200-2299/2256.Minimum%20Average%20Difference/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> of length <code>n</code>.</p>
 
@@ -52,9 +67,13 @@ The average difference of index 0 is: |0 / 1 - 0| = |0 - 0| = 0.
 	<li><code>0 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Traverse**
+<!-- solution:start -->
+
+### Solution 1: Traverse
 
 We directly traverse the array $nums$. For each index $i$, we maintain the sum of the first $i+1$ elements $pre$ and the sum of the last $n-i-1$ elements $suf$. We calculate the absolute difference of the average of the first $i+1$ elements and the average of the last $n-i-1$ elements, denoted as $t$. If $t$ is less than the current minimum value $mi$, we update the answer $ans=i$ and the minimum value $mi=t$.
 
@@ -64,7 +83,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array $nums$. The 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -83,7 +102,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -111,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,7 +158,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumAverageDifference(nums []int) (ans int) {
@@ -173,7 +192,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumAverageDifference(nums: number[]): number {
@@ -197,10 +216,8 @@ function minimumAverageDifference(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

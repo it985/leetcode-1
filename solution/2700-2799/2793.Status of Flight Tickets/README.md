@@ -1,10 +1,18 @@
-# [2793. 航班机票状态](https://leetcode.cn/problems/status-of-flight-tickets)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2793.Status%20of%20Flight%20Tickets/README.md
+---
+
+<!-- problem:start -->
+
+# [2793. 航班机票状态 🔒](https://leetcode.cn/problems/status-of-flight-tickets)
 
 [English Version](/solution/2700-2799/2793.Status%20of%20Flight%20Tickets/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：&nbsp;<code><font face="monospace">Flights</font></code></p>
 
@@ -85,19 +93,19 @@ Passengers 表:
 - 航班 2 的容量为 2 位乘客，已经有两位乘客预订了机票，乘客 104 和乘客 105。由于预订机票的乘客数与可用座位数相符，这两个预订都得到了确认。
 - 航班 3 的容量为 1 位乘客，乘客 107 先预订并获得了唯一的可用座位，确认了他们的预订。预订时间在乘客 107 之后的乘客 106 被列入等候名单。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：Rank() 窗口函数**
+### 方法一：Rank() 窗口函数
 
 注意，如果多个人在同一时间预定了同一个航班，只要有空位，就都可以确认预定。
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -120,3 +128,7 @@ ORDER BY passenger_id;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

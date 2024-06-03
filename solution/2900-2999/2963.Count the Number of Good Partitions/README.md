@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2963.Count%20the%20Number%20of%20Good%20Partitions/README.md
+rating: 1984
+source: 第 375 场周赛 Q4
+tags:
+    - 数组
+    - 哈希表
+    - 数学
+    - 组合数学
+---
+
+<!-- problem:start -->
+
 # [2963. 统计好分割方案的数目](https://leetcode.cn/problems/count-the-number-of-good-partitions)
 
 [English Version](/solution/2900-2999/2963.Count%20the%20Number%20of%20Good%20Partitions/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始、由 <strong>正整数</strong> 组成的数组 <code>nums</code>。</p>
 
@@ -49,11 +64,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 分组 + 快速幂**
+### 方法一：哈希表 + 分组 + 快速幂
 
 根据题目描述，我们可以知道，相同的数字必须在同一个子数组中。因此，我们用一个哈希表 $last$ 记录每个数字最后一次出现的下标。
 
@@ -67,9 +84,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +98,7 @@ class Solution:
         return pow(2, k - 1, mod)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -118,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -150,7 +163,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfGoodPartitions(nums []int) int {
@@ -180,7 +193,7 @@ func numberOfGoodPartitions(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfGoodPartitions(nums: number[]): number {
@@ -211,10 +224,8 @@ function numberOfGoodPartitions(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

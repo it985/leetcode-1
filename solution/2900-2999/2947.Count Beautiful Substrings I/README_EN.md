@@ -1,8 +1,27 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2947.Count%20Beautiful%20Substrings%20I/README_EN.md
+rating: 1450
+source: Weekly Contest 373 Q2
+tags:
+    - Hash Table
+    - Math
+    - String
+    - Enumeration
+    - Number Theory
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [2947. Count Beautiful Substrings I](https://leetcode.com/problems/count-beautiful-substrings-i)
 
 [中文文档](/solution/2900-2999/2947.Count%20Beautiful%20Substrings%20I/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>s</code> and a positive integer <code>k</code>.</p>
 
@@ -66,11 +85,17 @@ It can be shown that there are only 3 beautiful substrings in the given string.
 	<li><code>s</code> consists of only English lowercase letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -88,7 +113,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -114,7 +139,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -142,7 +167,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func beautifulSubstrings(s string, k int) (ans int) {
@@ -165,7 +190,7 @@ func beautifulSubstrings(s string, k int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function beautifulSubstrings(s: string, k: number): number {
@@ -189,10 +214,8 @@ function beautifulSubstrings(s: string, k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

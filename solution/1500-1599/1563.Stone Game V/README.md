@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1563.Stone%20Game%20V/README.md
+rating: 2087
+source: 第 203 场周赛 Q4
+tags:
+    - 数组
+    - 数学
+    - 动态规划
+    - 博弈
+---
+
+<!-- problem:start -->
+
 # [1563. 石子游戏 V](https://leetcode.cn/problems/stone-game-v)
 
 [English Version](/solution/1500-1599/1563.Stone%20Game%20V/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>几块石子 <strong>排成一行</strong> ，每块石子都有一个关联值，关联值为整数，由数组 <code>stoneValue</code> 给出。</p>
 
@@ -46,11 +61,13 @@
 	<li><code>1 &lt;=&nbsp;stoneValue[i] &lt;= 10^6</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索 + 剪枝**
+### 方法一：记忆化搜索 + 剪枝
 
 我们先预处理出前缀和数组 $s$，其中 $s[i]$ 表示数组 $stoneValue$ 前 $i$ 个元素的和。
 
@@ -71,9 +88,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -102,9 +117,7 @@ class Solution:
         return dfs(0, len(stoneValue) - 1)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -155,7 +168,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -202,7 +215,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func stoneGameV(stoneValue []int) int {
@@ -248,10 +261,8 @@ func stoneGameV(stoneValue []int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

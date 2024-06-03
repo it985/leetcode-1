@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2634.Filter%20Elements%20from%20Array/README.md
+---
+
+<!-- problem:start -->
+
 # [2634. 过滤数组中的元素](https://leetcode.cn/problems/filter-elements-from-array)
 
 [English Version](/solution/2600-2699/2634.Filter%20Elements%20from%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个整数数组&nbsp;<code>arr</code> 和一个过滤函数 <code>fn</code>，并返回一个过滤后的数组 <code>filteredArr</code> 。</p>
 
@@ -58,11 +66,13 @@ const newArray = filter(arr, fn); // [20, 30]
 	<li><code><font face="monospace">-10<sup>9</sup>&nbsp;&lt;= arr[i] &lt;= 10<sup>9</sup></font></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：遍历**
+### 方法一：遍历
 
 我们遍历数组 $arr$，对于每个元素 $arr[i]$，如果 $fn(arr[i], i)$ 为真，则将其加入答案数组中。最后返回答案数组即可。
 
@@ -70,9 +80,7 @@ const newArray = filter(arr, fn); // [20, 30]
 
 <!-- tabs:start -->
 
-### **TypeScript**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### TypeScript
 
 ```ts
 function filter(arr: number[], fn: (n: number, i: number) => any): number[] {
@@ -86,10 +94,8 @@ function filter(arr: number[], fn: (n: number, i: number) => any): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

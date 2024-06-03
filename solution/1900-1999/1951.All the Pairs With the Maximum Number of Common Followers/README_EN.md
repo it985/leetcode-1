@@ -1,8 +1,20 @@
-# [1951. All the Pairs With the Maximum Number of Common Followers](https://leetcode.com/problems/all-the-pairs-with-the-maximum-number-of-common-followers)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1951.All%20the%20Pairs%20With%20the%20Maximum%20Number%20of%20Common%20Followers/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [1951. All the Pairs With the Maximum Number of Common Followers 🔒](https://leetcode.com/problems/all-the-pairs-with-the-maximum-number-of-common-followers)
 
 [中文文档](/solution/1900-1999/1951.All%20the%20Pairs%20With%20the%20Maximum%20Number%20of%20Common%20Followers/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Relations</code></p>
 
@@ -60,11 +72,17 @@ Since the maximum number of common followers between any two users is 3, we retu
 Note that we do not have any information about the users that follow users 3, 4, and 5, so we consider them to have 0 followers.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -87,3 +105,7 @@ WHERE rk = 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

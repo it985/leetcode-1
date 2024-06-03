@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2933.High-Access%20Employees/README.md
+rating: 1536
+source: 第 371 场周赛 Q2
+tags:
+    - 数组
+    - 哈希表
+    - 字符串
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2933. 高访问员工](https://leetcode.cn/problems/high-access-employees)
 
 [English Version](/solution/2900-2999/2933.High-Access%20Employees/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个长度为 <code>n</code> 、下标从 <strong>0</strong> 开始的二维字符串数组 <code>access_times</code> 。对于每个 <code>i</code>（<code>0 &lt;= i &lt;= n - 1</code> ），<code>access_times[i][0]</code> 表示某位员工的姓名，<code>access_times[i][1]</code> 表示该员工的访问时间。<code>access_times</code> 中的所有条目都发生在同一天内。</p>
 
@@ -61,11 +76,13 @@
 	<li><code>access_times[i][1]</code> 仅由数字 <code>'0'</code> 到 <code>'9'</code> 组成。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 排序**
+### 方法一：哈希表 + 排序
 
 我们用一个哈希表 $d$ 来存储每个员工的所有访问时间，其中键为员工的姓名，值为一个整数数组，表示该员工的所有访问时间，该时间为从当天 00:00 开始的分钟数。
 
@@ -77,9 +94,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -95,9 +110,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -125,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -153,7 +166,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findHighAccessEmployees(access_times [][]string) (ans []string) {
@@ -178,7 +191,7 @@ func findHighAccessEmployees(access_times [][]string) (ans []string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findHighAccessEmployees(access_times: string[][]): string[] {
@@ -206,10 +219,8 @@ function findHighAccessEmployees(access_times: string[][]): string[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

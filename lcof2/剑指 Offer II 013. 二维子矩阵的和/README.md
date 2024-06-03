@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof2/%E5%89%91%E6%8C%87%20Offer%20II%20013.%20%E4%BA%8C%E7%BB%B4%E5%AD%90%E7%9F%A9%E9%98%B5%E7%9A%84%E5%92%8C/README.md
+---
+
+<!-- problem:start -->
+
 # [剑指 Offer II 013. 二维子矩阵的和](https://leetcode.cn/problems/O4NDxx)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><big><small>给定一个二维矩阵 <code>matrix</code>，</small></big>以下类型的多个请求：</p>
 
@@ -55,11 +62,13 @@ numMatrix.sumRegion(1, 2, 2, 4); // return 12 (蓝色矩形框的元素总和)
 
 <p><meta charset="UTF-8" />注意：本题与主站 304&nbsp;题相同：&nbsp;<a href="https://leetcode.cn/problems/range-sum-query-2d-immutable/">https://leetcode.cn/problems/range-sum-query-2d-immutable/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二维前缀和**
+### 方法一：二维前缀和
 
 我们可以用一个二维数组 $s$ 来保存矩阵 $matrix$ 的前缀和，其中 $s[i+1][j+1]$ 表示矩阵 $matrix$ 中以 $(0,0)$ 为左上角，$(i,j)$ 为右下角的子矩阵中所有元素的和。
 
@@ -89,9 +98,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class NumMatrix:
@@ -117,9 +124,7 @@ class NumMatrix:
 # param_1 = obj.sumRegion(row1,col1,row2,col2)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class NumMatrix {
@@ -148,7 +153,7 @@ class NumMatrix {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class NumMatrix {
@@ -179,7 +184,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type NumMatrix struct {
@@ -211,7 +216,7 @@ func (this *NumMatrix) SumRegion(row1 int, col1 int, row2 int, col2 int) int {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class NumMatrix {
@@ -249,10 +254,38 @@ class NumMatrix {
  */
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class NumMatrix {
+    private var prefixSum: [[Int]]
 
+    init(_ matrix: [[Int]]) {
+        let m = matrix.count
+        let n = matrix[0].count
+        prefixSum = Array(repeating: Array(repeating: 0, count: n + 1), count: m + 1)
+
+        for i in 1...m {
+            for j in 1...n {
+                prefixSum[i][j] = prefixSum[i - 1][j] + prefixSum[i][j - 1] - prefixSum[i - 1][j - 1] + matrix[i - 1][j - 1]
+            }
+        }
+    }
+
+    func sumRegion(_ row1: Int, _ col1: Int, _ row2: Int, _ col2: Int) -> Int {
+        return prefixSum[row2 + 1][col2 + 1] - prefixSum[row2 + 1][col1] - prefixSum[row1][col2 + 1] + prefixSum[row1][col1]
+    }
+}
+
+/**
+ * Your NumMatrix object will be instantiated and called as such:
+ * let obj = NumMatrix(matrix);
+ * let param_1 = obj.sumRegion(row1,col1,row2,col2);
+ */
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

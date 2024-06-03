@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0905.Sort%20Array%20By%20Parity/README_EN.md
+tags:
+    - Array
+    - Two Pointers
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [905. Sort Array By Parity](https://leetcode.com/problems/sort-array-by-parity)
 
 [中文文档](/solution/0900-0999/0905.Sort%20Array%20By%20Parity/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code>, move all the even integers at the beginning of the array followed by all the odd integers.</p>
 
@@ -32,9 +46,13 @@
 	<li><code>0 &lt;= nums[i] &lt;= 5000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Two Pointers
 
 We use two pointers $i$ and $j$ to point to the beginning and end of the array respectively. When $i < j$, we perform the following operations.
 
@@ -48,7 +66,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array $nums$. The 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,7 +83,7 @@ class Solution:
         return nums
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -89,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -110,7 +128,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sortArrayByParity(nums []int) []int {
@@ -127,7 +145,26 @@ func sortArrayByParity(nums []int) []int {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function sortArrayByParity(nums: number[]): number[] {
+    for (let i = 0, j = nums.length - 1; i < j; ) {
+        if (nums[i] % 2 === 0) {
+            ++i;
+        } else if (nums[j] % 2 === 1) {
+            --j;
+        } else {
+            [nums[i], nums[j]] = [nums[j], nums[i]];
+            ++i;
+            --j;
+        }
+    }
+    return nums;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -149,26 +186,7 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function sortArrayByParity(nums: number[]): number[] {
-    for (let i = 0, j = nums.length - 1; i < j; ) {
-        if (nums[i] % 2 === 0) {
-            ++i;
-        } else if (nums[j] % 2 === 1) {
-            --j;
-        } else {
-            [nums[i], nums[j]] = [nums[j], nums[i]];
-            ++i;
-            --j;
-        }
-    }
-    return nums;
-}
-```
-
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -191,10 +209,8 @@ var sortArrayByParity = function (nums) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

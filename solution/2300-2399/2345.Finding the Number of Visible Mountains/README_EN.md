@@ -1,8 +1,23 @@
-# [2345. Finding the Number of Visible Mountains](https://leetcode.com/problems/finding-the-number-of-visible-mountains)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2345.Finding%20the%20Number%20of%20Visible%20Mountains/README_EN.md
+tags:
+    - Stack
+    - Array
+    - Sorting
+    - Monotonic Stack
+---
+
+<!-- problem:start -->
+
+# [2345. Finding the Number of Visible Mountains 🔒](https://leetcode.com/problems/finding-the-number-of-visible-mountains)
 
 [中文文档](/solution/2300-2399/2345.Finding%20the%20Number%20of%20Visible%20Mountains/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> 2D integer array <code>peaks</code> where <code>peaks[i] = [x<sub>i</sub>, y<sub>i</sub>]</code> states that mountain <code>i</code> has a peak at coordinates <code>(x<sub>i</sub>, y<sub>i</sub>)</code>. A mountain can be described as a right-angled isosceles triangle, with its base along the <code>x</code>-axis and a right angle at its peak. More formally, the <strong>gradients</strong> of ascending and descending the mountain are <code>1</code> and <code>-1</code> respectively.</p>
 
@@ -40,11 +55,17 @@ Both mountains are not visible since their peaks lie within each other.
 	<li><code>1 &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -62,7 +83,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -93,6 +114,72 @@ class Solution {
 }
 ```
 
+#### C++
+
+```cpp
+class Solution {
+public:
+    int visibleMountains(vector<vector<int>>& peaks) {
+        vector<pair<int, int>> arr;
+        for (auto& e : peaks) {
+            int x = e[0], y = e[1];
+            arr.emplace_back(x - y, -(x + y));
+        }
+        sort(arr.begin(), arr.end());
+        int n = arr.size();
+        int ans = 0, cur = INT_MIN;
+        for (int i = 0; i < n; ++i) {
+            int l = arr[i].first, r = -arr[i].second;
+            if (r <= cur) {
+                continue;
+            }
+            cur = r;
+            ans += i == n - 1 || (i < n - 1 && arr[i] != arr[i + 1]);
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func visibleMountains(peaks [][]int) (ans int) {
+	n := len(peaks)
+	type pair struct{ l, r int }
+	arr := make([]pair, n)
+	for _, p := range peaks {
+		x, y := p[0], p[1]
+		arr = append(arr, pair{x - y, x + y})
+	}
+	sort.Slice(arr, func(i, j int) bool { return arr[i].l < arr[j].l || (arr[i].l == arr[j].l && arr[i].r > arr[j].r) })
+	cur := math.MinInt32
+	for i, e := range arr {
+		l, r := e.l, e.r
+		if r <= cur {
+			continue
+		}
+		cur = r
+		if !(i < n-1 && l == arr[i+1].l && r == arr[i+1].r) {
+			ans++
+		}
+	}
+	return
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Java
+
 ```java
 class Solution {
     public int visibleMountains(int[][] peaks) {
@@ -120,70 +207,8 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int visibleMountains(vector<vector<int>>& peaks) {
-        vector<pair<int, int>> arr;
-        for (auto& e : peaks) {
-            int x = e[0], y = e[1];
-            arr.emplace_back(x - y, -(x + y));
-        }
-        sort(arr.begin(), arr.end());
-        int n = arr.size();
-        int ans = 0, cur = INT_MIN;
-        for (int i = 0; i < n; ++i) {
-            int l = arr[i].first, r = -arr[i].second;
-            if (r <= cur) {
-                continue;
-            }
-            cur = r;
-            ans += i == n - 1 || (i < n - 1 && arr[i] != arr[i + 1]);
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
-
-```go
-func visibleMountains(peaks [][]int) (ans int) {
-	n := len(peaks)
-	type pair struct{ l, r int }
-	arr := make([]pair, n)
-	for _, p := range peaks {
-		x, y := p[0], p[1]
-		arr = append(arr, pair{x - y, x + y})
-	}
-	sort.Slice(arr, func(i, j int) bool { return arr[i].l < arr[j].l || (arr[i].l == arr[j].l && arr[i].r > arr[j].r) })
-	cur := math.MinInt32
-	for i, e := range arr {
-		l, r := e.l, e.r
-		if r <= cur {
-			continue
-		}
-		cur = r
-		if !(i < n-1 && l == arr[i+1].l && r == arr[i+1].r) {
-			ans++
-		}
-	}
-	return
-}
-```
-
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

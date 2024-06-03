@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1670.Design%20Front%20Middle%20Back%20Queue/README_EN.md
+rating: 1610
+source: Biweekly Contest 40 Q3
+tags:
+    - Design
+    - Queue
+    - Array
+    - Linked List
+    - Data Stream
+---
+
+<!-- problem:start -->
+
 # [1670. Design Front Middle Back Queue](https://leetcode.com/problems/design-front-middle-back-queue)
 
 [中文文档](/solution/1600-1699/1670.Design%20Front%20Middle%20Back%20Queue/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Design a queue that supports <code>push</code> and <code>pop</code> operations in the front, middle, and back.</p>
 
@@ -56,9 +74,13 @@ q.popFront();     // return -1 -&gt; [] (The queue is empty)
 	<li>At most&nbsp;<code>1000</code>&nbsp;calls will be made to&nbsp;<code>pushFront</code>,&nbsp;<code>pushMiddle</code>,&nbsp;<code>pushBack</code>, <code>popFront</code>, <code>popMiddle</code>, and <code>popBack</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Deques**
+<!-- solution:start -->
+
+### Solution 1: Two Deques
 
 We use two deques, where $q_1$ stores the first half, and $q_2$ stores the second half. The `rebalance` function is used to maintain the balance between the two queues, i.e., keeping the length of $q_2$ greater than or equal to the length of $q_1$, and the difference in length does not exceed $1$.
 
@@ -74,7 +96,7 @@ The time complexity of the above operations is $O(1)$, and the space complexity 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class FrontMiddleBackQueue:
@@ -138,7 +160,7 @@ class FrontMiddleBackQueue:
 # param_6 = obj.popBack()
 ```
 
-### **Java**
+#### Java
 
 ```java
 class FrontMiddleBackQueue {
@@ -212,7 +234,7 @@ class FrontMiddleBackQueue {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class FrontMiddleBackQueue {
@@ -299,7 +321,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type FrontMiddleBackQueue struct {
@@ -441,7 +463,7 @@ func (q Deque) Get(i int) int {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class FrontMiddleBackQueue {
@@ -614,7 +636,7 @@ class Deque<T> {
  */
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 class FrontMiddleBackQueue {
@@ -776,10 +798,8 @@ class Deque {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

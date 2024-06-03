@@ -1,10 +1,19 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.19.Pond%20Sizes/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 16.19. 水域大小](https://leetcode.cn/problems/pond-sizes-lcci)
 
 [English Version](/lcci/16.19.Pond%20Sizes/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
+
 <p>你有一个用于表示一片土地的整数矩阵<code>land</code>，该矩阵中每个点的值代表对应地点的海拔高度。若值为0则表示水域。由垂直、水平或对角连接的水域为池塘。池塘的大小是指相连接的水域的个数。编写一个方法来计算矩阵中所有池塘的大小，返回值需要从小到大排序。</p>
 <p><strong>示例：</strong></p>
 <pre><strong>输入：</strong>
@@ -22,11 +31,13 @@
 <li><code>0 < len(land[i]) <= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们可以遍历整数矩阵 $land$ 中的每个点 $(i, j)$，如果该点的值为 $0$，则从该点开始进行深度优先搜索，直到搜索到的点的值不为 $0$，则停止搜索，此时搜索到的点的个数即为池塘的大小，将其加入答案数组中。
 
@@ -38,9 +49,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -58,9 +67,7 @@ class Solution:
         return sorted(dfs(i, j) for i in range(m) for j in range(n) if land[i][j] == 0)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +105,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -131,7 +138,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func pondSizes(land [][]int) (ans []int) {
@@ -161,7 +168,7 @@ func pondSizes(land [][]int) (ans []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function pondSizes(land: number[][]): number[] {
@@ -192,10 +199,47 @@ function pondSizes(land: number[][]): number[] {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    private var m: Int = 0
+    private var n: Int = 0
+    private var land: [[Int]] = []
 
+    func pondSizes(_ land: [[Int]]) -> [Int] {
+        self.land = land
+        m = land.count
+        n = land[0].count
+        var ans: [Int] = []
+
+        for i in 0..<m {
+            for j in 0..<n {
+                if self.land[i][j] == 0 {
+                    ans.append(dfs(i, j))
+                }
+            }
+        }
+        return ans.sorted()
+    }
+
+    private func dfs(_ i: Int, _ j: Int) -> Int {
+        var res = 1
+        self.land[i][j] = 1
+        for x in max(i - 1, 0)...min(i + 1, m - 1) {
+            for y in max(j - 1, 0)...min(j + 1, n - 1) {
+                if self.land[x][y] == 0 {
+                    res += dfs(x, y)
+                }
+            }
+        }
+        return res
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

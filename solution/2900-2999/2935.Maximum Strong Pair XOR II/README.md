@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2935.Maximum%20Strong%20Pair%20XOR%20II/README.md
+rating: 2348
+source: 第 371 场周赛 Q4
+tags:
+    - 位运算
+    - 字典树
+    - 数组
+    - 哈希表
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [2935. 找出强数对的最大异或值 II](https://leetcode.cn/problems/maximum-strong-pair-xor-ii)
 
 [English Version](/solution/2900-2999/2935.Maximum%20Strong%20Pair%20XOR%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 。如果一对整数 <code>x</code> 和 <code>y</code> 满足以下条件，则称其为 <strong>强数对</strong> ：</p>
 
@@ -56,11 +72,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 2<sup>20</sup> - 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 0-1 字典树**
+### 方法一：排序 + 0-1 字典树
 
 观察不等式 $|x - y| \leq \min(x, y)$，其中涉及到绝对值以及最小值，我们不妨假设 $x \leq y$，则有 $y - x \leq x$，即 $y \leq 2x$。我们可以从小到大枚举 $y$，那么 $x$ 必须满足不等式 $y \leq 2x$。
 
@@ -70,9 +88,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Trie:
@@ -125,9 +141,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Trie {
@@ -135,7 +149,6 @@ class Trie {
     private int cnt = 0;
 
     public Trie() {
-
     }
 
     public void insert(int x) {
@@ -192,7 +205,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Trie {
@@ -261,7 +274,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Trie struct {
@@ -324,7 +337,7 @@ func maximumStrongPairXor(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class Trie {
@@ -393,10 +406,8 @@ function maximumStrongPairXor(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

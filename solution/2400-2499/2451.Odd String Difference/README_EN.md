@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2451.Odd%20String%20Difference/README_EN.md
+rating: 1406
+source: Biweekly Contest 90 Q1
+tags:
+    - Array
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [2451. Odd String Difference](https://leetcode.com/problems/odd-string-difference)
 
 [中文文档](/solution/2400-2499/2451.Odd%20String%20Difference/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an array of equal-length strings <code>words</code>. Assume that the length of each string is <code>n</code>.</p>
 
@@ -47,9 +63,13 @@ The odd array out is [1, 1], so we return the corresponding string, &quot;abc&qu
 	<li><code>words[i]</code> consists of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table Simulation**
+<!-- solution:start -->
+
+### Solution 1: Hash Table Simulation
 
 We use a hash table $d$ to maintain the mapping relationship between the difference array of the string and the string itself, where the difference array is an array composed of the differences of adjacent characters in the string. Since the problem guarantees that except for one string, the difference arrays of other strings are the same, we only need to find the string with a different difference array.
 
@@ -57,7 +77,7 @@ The time complexity is $O(m \times n)$, and the space complexity is $O(m + n)$. 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +89,7 @@ class Solution:
         return next(ss[0] for ss in d.values() if len(ss) == 1)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -95,24 +115,24 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
 public:
     string oddString(vector<string>& words) {
-        unordered_map<string, vector<string>> d;
-        for (auto& s : words) {
-            int m = s.size();
-            string t(m - 1, 0);
-            for (int i = 0; i < m - 1; ++i) {
-                t[i] = s[i + 1] - s[i];
+        unordered_map<string, vector<string>> cnt;
+        for (auto& w : words) {
+            string d;
+            for (int i = 0; i < w.size() - 1; ++i) {
+                d += (char) (w[i + 1] - w[i]);
+                d += ',';
             }
-            d[t].push_back(s);
+            cnt[d].emplace_back(w);
         }
-        for (auto& [_, ss] : d) {
-            if (ss.size() == 1) {
-                return ss[0];
+        for (auto& [_, v] : cnt) {
+            if (v.size() == 1) {
+                return v[0];
             }
         }
         return "";
@@ -120,7 +140,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func oddString(words []string) string {
@@ -143,7 +163,7 @@ func oddString(words []string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function oddString(words: string[]): string {
@@ -168,7 +188,7 @@ function oddString(words: string[]): string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -194,6 +214,18 @@ impl Solution {
     }
 }
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -230,10 +262,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

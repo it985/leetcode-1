@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0467.Unique%20Substrings%20in%20Wraparound%20String/README.md
+tags:
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [467. 环绕字符串中唯一的子字符串](https://leetcode.cn/problems/unique-substrings-in-wraparound-string)
 
 [English Version](/solution/0400-0499/0467.Unique%20Substrings%20in%20Wraparound%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>定义字符串&nbsp;<code>base</code>&nbsp;为一个&nbsp;<code>"abcdefghijklmnopqrstuvwxyz"</code>&nbsp;无限环绕的字符串，所以&nbsp;<code>base</code>&nbsp;看起来是这样的：</p>
 
@@ -49,11 +60,13 @@
 	<li><font color="#c7254e" face="Menlo, Monaco, Consolas, Courier New, monospace"><span style="font-size: 12.6px; background-color: rgb(249, 242, 244);">s</span></font> 由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 不妨设 `dp[α]` 表示 p 中以字符 α 结尾且在 s 中的子串的最大长度，将 dp 求和可以得到最终结果。
 
@@ -63,9 +76,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -82,9 +93,7 @@ class Solution:
         return sum(dp)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -109,7 +118,53 @@ class Solution {
 }
 ```
 
-### **TypeScript**
+#### C++
+
+```cpp
+class Solution {
+public:
+    int findSubstringInWraproundString(string p) {
+        vector<int> dp(26);
+        int k = 0;
+        for (int i = 0; i < p.size(); ++i) {
+            char c = p[i];
+            if (i && (c - p[i - 1] + 26) % 26 == 1)
+                ++k;
+            else
+                k = 1;
+            dp[c - 'a'] = max(dp[c - 'a'], k);
+        }
+        int ans = 0;
+        for (int& v : dp) ans += v;
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func findSubstringInWraproundString(p string) int {
+	dp := make([]int, 26)
+	k := 0
+	for i := range p {
+		c := p[i]
+		if i > 0 && (c-p[i-1]+26)%26 == 1 {
+			k++
+		} else {
+			k = 1
+		}
+		dp[c-'a'] = max(dp[c-'a'], k)
+	}
+	ans := 0
+	for _, v := range dp {
+		ans += v
+	}
+	return ans
+}
+```
+
+#### TypeScript
 
 ```ts
 function findSubstringInWraproundString(p: string): number {
@@ -130,7 +185,7 @@ function findSubstringInWraproundString(p: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -154,56 +209,8 @@ impl Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int findSubstringInWraproundString(string p) {
-        vector<int> dp(26);
-        int k = 0;
-        for (int i = 0; i < p.size(); ++i) {
-            char c = p[i];
-            if (i && (c - p[i - 1] + 26) % 26 == 1)
-                ++k;
-            else
-                k = 1;
-            dp[c - 'a'] = max(dp[c - 'a'], k);
-        }
-        int ans = 0;
-        for (int& v : dp) ans += v;
-        return ans;
-    }
-};
-```
-
-### **Go**
-
-```go
-func findSubstringInWraproundString(p string) int {
-	dp := make([]int, 26)
-	k := 0
-	for i := range p {
-		c := p[i]
-		if i > 0 && (c-p[i-1]+26)%26 == 1 {
-			k++
-		} else {
-			k = 1
-		}
-		dp[c-'a'] = max(dp[c-'a'], k)
-	}
-	ans := 0
-	for _, v := range dp {
-		ans += v
-	}
-	return ans
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

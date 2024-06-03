@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2729.Check%20if%20The%20Number%20is%20Fascinating/README.md
+rating: 1227
+source: 第 106 场双周赛 Q1
+tags:
+    - 哈希表
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [2729. 判断一个数是否迷人](https://leetcode.cn/problems/check-if-the-number-is-fascinating)
 
 [English Version](/solution/2700-2799/2729.Check%20if%20The%20Number%20is%20Fascinating/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个三位数整数 <code>n</code>&nbsp;。</p>
 
@@ -42,11 +55,13 @@
 	<li><code>100 &lt;= n &lt;= 999</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们根据题目描述，将数字 $n$ 与 $2 \times n$ 和 $3 \times n$ 连接，得到字符串 $s$，然后判断 $s$ 是否包含数字 $1$ 到 $9$ 各一次且不包含任何 $0$ 即可。
 
@@ -54,9 +69,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -65,9 +78,7 @@ class Solution:
         return "".join(sorted(s)) == "123456789"
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -84,7 +95,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -97,7 +108,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isFascinating(n int) bool {
@@ -113,7 +124,7 @@ func isFascinating(n int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function isFascinating(n: number): boolean {
@@ -122,7 +133,7 @@ function isFascinating(n: number): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -142,6 +153,18 @@ impl Solution {
     }
 }
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -182,10 +205,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof2/%E5%89%91%E6%8C%87%20Offer%20II%20038.%20%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/README.md
+---
+
+<!-- problem:start -->
+
 # [剑指 Offer II 038. 每日温度](https://leetcode.cn/problems/iIQa4I)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请根据每日 <code>气温</code> 列表 <code>temperatures</code>&nbsp;，重新生成一个列表，要求其对应位置的输出为：要想观测到更高的气温，至少需要等待的天数。如果气温在这之后都不会升高，请在该位置用&nbsp;<code>0</code> 来代替。</p>
 
@@ -41,11 +48,13 @@
 
 <p><meta charset="UTF-8" />注意：本题与主站 739&nbsp;题相同：&nbsp;<a href="https://leetcode.cn/problems/daily-temperatures/">https://leetcode.cn/problems/daily-temperatures/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：单调栈**
+### 方法一：单调栈
 
 单调栈常见模型：找出每个数左/右边**离它最近的**且**比它大/小的数**。模板：
 
@@ -59,9 +68,7 @@ for i in range(n):
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -76,24 +83,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        n = len(temperatures)
-        stk = []
-        ans = [0] * n
-        for i in range(n - 1, -1, -1):
-            while stk and temperatures[stk[-1]] <= temperatures[i]:
-                stk.pop()
-            if stk:
-                ans[i] = stk[-1] - i
-            stk.append(i)
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -112,6 +102,112 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> dailyTemperatures(vector<int>& temperatures) {
+        int n = temperatures.size();
+        vector<int> ans(n);
+        stack<int> stk;
+        for (int i = 0; i < n; ++i) {
+            while (!stk.empty() && temperatures[stk.top()] < temperatures[i]) {
+                ans[stk.top()] = i - stk.top();
+                stk.pop();
+            }
+            stk.push(i);
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func dailyTemperatures(temperatures []int) []int {
+	ans := make([]int, len(temperatures))
+	var stk []int
+	for i, t := range temperatures {
+		for len(stk) > 0 && temperatures[stk[len(stk)-1]] < t {
+			j := stk[len(stk)-1]
+			ans[j] = i - j
+			stk = stk[:len(stk)-1]
+		}
+		stk = append(stk, i)
+	}
+	return ans
+}
+```
+
+#### TypeScript
+
+```ts
+function dailyTemperatures(temperatures: number[]): number[] {
+    const n = temperatures.length;
+    const res = new Array(n);
+    const stack = [];
+    for (let i = n - 1; i >= 0; i--) {
+        while (stack.length !== 0 && temperatures[stack[stack.length - 1]] <= temperatures[i]) {
+            stack.pop();
+        }
+        res[i] = stack.length === 0 ? 0 : stack[stack.length - 1] - i;
+        stack.push(i);
+    }
+    return res;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn daily_temperatures(temperatures: Vec<i32>) -> Vec<i32> {
+        let n = temperatures.len();
+        let mut res = vec![0; n];
+        let mut stack = Vec::new();
+        for i in (0..n).rev() {
+            while !stack.is_empty() && temperatures[*stack.last().unwrap()] <= temperatures[i] {
+                stack.pop();
+            }
+            res[i] = if stack.is_empty() { 0 } else { (stack.last().unwrap() - i) as i32 };
+            stack.push(i);
+        }
+        res
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start-->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        n = len(temperatures)
+        stk = []
+        ans = [0] * n
+        for i in range(n - 1, -1, -1):
+            while stk and temperatures[stk[-1]] <= temperatures[i]:
+                stk.pop()
+            if stk:
+                ans[i] = stk[-1] - i
+            stk.append(i)
+        return ans
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -133,28 +229,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```cpp
-class Solution {
-public:
-    vector<int> dailyTemperatures(vector<int>& temperatures) {
-        int n = temperatures.size();
-        vector<int> ans(n);
-        stack<int> stk;
-        for (int i = 0; i < n; ++i) {
-            while (!stk.empty() && temperatures[stk.top()] < temperatures[i]) {
-                ans[stk.top()] = i - stk.top();
-                stk.pop();
-            }
-            stk.push(i);
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -173,23 +248,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func dailyTemperatures(temperatures []int) []int {
-	ans := make([]int, len(temperatures))
-	var stk []int
-	for i, t := range temperatures {
-		for len(stk) > 0 && temperatures[stk[len(stk)-1]] < t {
-			j := stk[len(stk)-1]
-			ans[j] = i - j
-			stk = stk[:len(stk)-1]
-		}
-		stk = append(stk, i)
-	}
-	return ans
-}
-```
+#### Go
 
 ```go
 func dailyTemperatures(temperatures []int) []int {
@@ -209,27 +268,7 @@ func dailyTemperatures(temperatures []int) []int {
 }
 ```
 
-### **TypeScript**
-
-倒序：
-
-```ts
-function dailyTemperatures(temperatures: number[]): number[] {
-    const n = temperatures.length;
-    const res = new Array(n);
-    const stack = [];
-    for (let i = n - 1; i >= 0; i--) {
-        while (stack.length !== 0 && temperatures[stack[stack.length - 1]] <= temperatures[i]) {
-            stack.pop();
-        }
-        res[i] = stack.length === 0 ? 0 : stack[stack.length - 1] - i;
-        stack.push(i);
-    }
-    return res;
-}
-```
-
-正序：
+#### TypeScript
 
 ```ts
 function dailyTemperatures(temperatures: number[]): number[] {
@@ -248,29 +287,7 @@ function dailyTemperatures(temperatures: number[]): number[] {
 }
 ```
 
-### **Rust**
-
-倒序：
-
-```rust
-impl Solution {
-    pub fn daily_temperatures(temperatures: Vec<i32>) -> Vec<i32> {
-        let n = temperatures.len();
-        let mut res = vec![0; n];
-        let mut stack = Vec::new();
-        for i in (0..n).rev() {
-            while !stack.is_empty() && temperatures[*stack.last().unwrap()] <= temperatures[i] {
-                stack.pop();
-            }
-            res[i] = if stack.is_empty() { 0 } else { (stack.last().unwrap() - i) as i32 };
-            stack.push(i);
-        }
-        res
-    }
-}
-```
-
-正序：
+#### Rust
 
 ```rust
 impl Solution {
@@ -290,10 +307,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

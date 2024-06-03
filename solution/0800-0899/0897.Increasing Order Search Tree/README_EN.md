@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0897.Increasing%20Order%20Search%20Tree/README_EN.md
+tags:
+    - Stack
+    - Tree
+    - Depth-First Search
+    - Binary Search Tree
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [897. Increasing Order Search Tree](https://leetcode.com/problems/increasing-order-search-tree)
 
 [中文文档](/solution/0800-0899/0897.Increasing%20Order%20Search%20Tree/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>root</code> of a binary search tree, rearrange the tree in <strong>in-order</strong> so that the leftmost node in the tree is now the root of the tree, and every node has no left child and only one right child.</p>
 
@@ -29,9 +45,13 @@
 	<li><code>0 &lt;= Node.val &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: DFS In-order Traversal**
+<!-- solution:start -->
+
+### Solution 1: DFS In-order Traversal
 
 We define a virtual node $dummy$, initially the right child of $dummy$ points to the root node $root$, and a pointer $prev$ points to $dummy$.
 
@@ -43,7 +63,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -69,7 +89,7 @@ class Solution:
         return dummy.right
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -109,7 +129,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -144,7 +164,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -174,7 +194,7 @@ func increasingBST(root *TreeNode) *TreeNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -209,10 +229,8 @@ function increasingBST(root: TreeNode | null): TreeNode | null {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

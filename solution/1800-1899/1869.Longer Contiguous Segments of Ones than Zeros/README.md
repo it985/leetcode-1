@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1869.Longer%20Contiguous%20Segments%20of%20Ones%20than%20Zeros/README.md
+rating: 1204
+source: 第 242 场周赛 Q1
+tags:
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [1869. 哪种连续子字符串更长](https://leetcode.cn/problems/longer-contiguous-segments-of-ones-than-zeros)
 
 [English Version](/solution/1800-1899/1869.Longer%20Contiguous%20Segments%20of%20Ones%20than%20Zeros/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个二进制字符串 <code>s</code> 。如果字符串中由 <code>1</code> 组成的 <strong>最长</strong> 连续子字符串 <strong>严格长于</strong> 由 <code>0</code> 组成的 <strong>最长</strong> 连续子字符串，返回 <code>true</code> ；否则，返回 <code>false</code><em> </em>。</p>
 
@@ -58,11 +70,13 @@
 	<li><code>s[i]</code> 不是 <code>'0'</code> 就是 <code>'1'</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：两次遍历**
+### 方法一：两次遍历
 
 我们设计一个函数 $f(x)$，表示字符串 $s$ 中由 $x$ 组成的最长连续子字符串的长度。如果 $f(1) \gt f(0)$，那么返回 `true`，否则返回 `false`。
 
@@ -70,9 +84,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -90,9 +102,7 @@ class Solution:
         return f("1") > f("0")
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -114,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -136,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func checkZeroOnes(s string) bool {
@@ -156,7 +166,7 @@ func checkZeroOnes(s string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function checkZeroOnes(s: string): boolean {
@@ -175,7 +185,7 @@ function checkZeroOnes(s: string): boolean {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -198,10 +208,8 @@ var checkZeroOnes = function (s) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

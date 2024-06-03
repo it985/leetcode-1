@@ -1,10 +1,21 @@
-# [625. 最小因式分解](https://leetcode.cn/problems/minimum-factorization)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0625.Minimum%20Factorization/README.md
+tags:
+    - 贪心
+    - 数学
+---
+
+<!-- problem:start -->
+
+# [625. 最小因式分解 🔒](https://leetcode.cn/problems/minimum-factorization)
 
 [English Version](/solution/0600-0699/0625.Minimum%20Factorization/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个正整数 <code>a</code>，找出最小的正整数 <code>b</code> 使得 <code>b</code> 的所有数位相乘恰好等于 <code>a</code>。</p>
 
@@ -38,11 +49,13 @@
 
 <p>&nbsp;</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 因式分解**
+### 方法一：贪心 + 因式分解
 
 我们先判断 $num$ 是否小于 $2$，如果是，直接返回 $num$。然后从 $9$ 开始，尽可能多地将数字分解为 $9$，然后分解为 $8$，以此类推，直到分解为 $2$。如果最后剩下的数字不是 $1$，或者结果超过了 $2^{31} - 1$，则返回 $0$。否则，我们返回结果。
 
@@ -52,9 +65,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -70,9 +81,7 @@ class Solution:
         return ans if num < 2 and ans <= 2**31 - 1 else 0
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -95,7 +104,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +128,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func smallestFactorization(num int) int {
@@ -143,10 +152,8 @@ func smallestFactorization(num int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2537.Count%20the%20Number%20of%20Good%20Subarrays/README.md
+rating: 1891
+source: 第 328 场周赛 Q3
+tags:
+    - 数组
+    - 哈希表
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [2537. 统计好子数组的数目](https://leetcode.cn/problems/count-the-number-of-good-subarrays)
 
 [English Version](/solution/2500-2599/2537.Count%20the%20Number%20of%20Good%20Subarrays/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code>&nbsp;和一个整数 <code>k</code>&nbsp;，请你返回 <code>nums</code>&nbsp;中 <strong>好</strong>&nbsp;子数组的数目。</p>
 
@@ -41,11 +55,13 @@
 	<li><code>1 &lt;= nums[i], k &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 双指针**
+### 方法一：哈希表 + 双指针
 
 如果一个子数组中包含 $k$ 对相同的元素，那么包含这个子数组的数组一定至少包含 $k$ 对相同的元素。
 
@@ -59,9 +75,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -81,9 +95,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -106,7 +118,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -130,7 +142,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countGood(nums []int, k int) int64 {
@@ -153,10 +165,8 @@ func countGood(nums []int, k int) int64 {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

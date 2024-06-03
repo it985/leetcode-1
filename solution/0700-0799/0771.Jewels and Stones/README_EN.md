@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0771.Jewels%20and%20Stones/README_EN.md
+tags:
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [771. Jewels and Stones](https://leetcode.com/problems/jewels-and-stones)
 
 [中文文档](/solution/0700-0799/0771.Jewels%20and%20Stones/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You&#39;re given strings <code>jewels</code> representing the types of stones that are jewels, and <code>stones</code> representing the stones you have. Each character in <code>stones</code> is a type of stone you have. You want to know how many of the stones you have are also jewels.</p>
 
@@ -25,11 +38,17 @@
 	<li>All the characters of&nbsp;<code>jewels</code> are <strong>unique</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -38,7 +57,7 @@ class Solution:
         return sum(c in s for c in stones)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -56,7 +75,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -71,7 +90,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numJewelsInStones(jewels string, stones string) (ans int) {
@@ -86,21 +105,7 @@ func numJewelsInStones(jewels string, stones string) (ans int) {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {string} jewels
- * @param {string} stones
- * @return {number}
- */
-var numJewelsInStones = function (jewels, stones) {
-    const s = new Set(jewels.split(''));
-    return stones.split('').reduce((prev, val) => prev + s.has(val), 0);
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numJewelsInStones(jewels: string, stones: string): number {
@@ -113,7 +118,7 @@ function numJewelsInStones(jewels: string, stones: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashSet;
@@ -131,7 +136,21 @@ impl Solution {
 }
 ```
 
-### **C**
+#### JavaScript
+
+```js
+/**
+ * @param {string} jewels
+ * @param {string} stones
+ * @return {number}
+ */
+var numJewelsInStones = function (jewels, stones) {
+    const s = new Set(jewels.split(''));
+    return stones.split('').reduce((prev, val) => prev + s.has(val), 0);
+};
+```
+
+#### C
 
 ```c
 int numJewelsInStones(char* jewels, char* stones) {
@@ -147,10 +166,8 @@ int numJewelsInStones(char* jewels, char* stones) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/08.08.Permutation%20II/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 08.08. 有重复字符串的排列组合](https://leetcode.cn/problems/permutation-ii-lcci)
 
 [English Version](/lcci/08.08.Permutation%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>有重复字符串的排列组合。编写一种方法，计算某字符串的所有排列组合。</p>
 <p><strong>示例1:</strong></p>
@@ -21,11 +29,13 @@
 	<li>字符串长度在[1, 9]之间。</li>
 </ol>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 回溯**
+### 方法一：排序 + 回溯
 
 我们可以先对字符串按照字符进行排序，这样就可以将重复的字符放在一起，方便我们进行去重。
 
@@ -40,9 +50,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -68,9 +76,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -142,7 +148,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func permutation(S string) (ans []string) {
@@ -173,7 +179,7 @@ func permutation(S string) (ans []string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function permutation(S: string): string[] {
@@ -203,7 +209,7 @@ function permutation(S: string): string[] {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -237,10 +243,46 @@ var permutation = function (S) {
 };
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    private var n: Int = 0
+    private var cs: [Character] = []
+    private var ans: [String] = []
+    private var vis: [Bool] = []
+    private var t: String = ""
 
+    func permutation(_ S: String) -> [String] {
+        cs = Array(S)
+        n = cs.count
+        cs.sort()
+        vis = Array(repeating: false, count: n)
+        dfs(0)
+        return ans
+    }
+
+    private func dfs(_ i: Int) {
+        if i == n {
+            ans.append(t)
+            return
+        }
+        for j in 0..<n {
+            if vis[j] || (j > 0 && !vis[j - 1] && cs[j] == cs[j - 1]) {
+                continue
+            }
+            vis[j] = true
+            t.append(cs[j])
+            dfs(i + 1)
+            t.removeLast()
+            vis[j] = false
+        }
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

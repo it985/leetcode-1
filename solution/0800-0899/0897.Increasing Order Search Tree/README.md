@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0897.Increasing%20Order%20Search%20Tree/README.md
+tags:
+    - 栈
+    - 树
+    - 深度优先搜索
+    - 二叉搜索树
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [897. 递增顺序搜索树](https://leetcode.cn/problems/increasing-order-search-tree)
 
 [English Version](/solution/0800-0899/0897.Increasing%20Order%20Search%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一棵二叉搜索树的<meta charset="UTF-8" />&nbsp;<code>root</code>&nbsp;，请你 <strong>按中序遍历</strong> 将其重新排列为一棵递增顺序搜索树，使树中最左边的节点成为树的根节点，并且每个节点没有左子节点，只有一个右子节点。</p>
 
@@ -33,11 +47,13 @@
 	<li><code>0 &lt;= Node.val &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS 中序遍历**
+### 方法一：DFS 中序遍历
 
 我们定义一个虚拟节点 $dummy$，初始时 $dummy$ 的右子节点指向根节点 $root$，定义一个指针 $prev$ 指向 $dummy$。
 
@@ -49,9 +65,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -77,9 +91,7 @@ class Solution:
         return dummy.right
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -119,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -154,7 +166,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -184,7 +196,7 @@ func increasingBST(root *TreeNode) *TreeNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -219,10 +231,8 @@ function increasingBST(root: TreeNode | null): TreeNode | null {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

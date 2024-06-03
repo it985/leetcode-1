@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0537.Complex%20Number%20Multiplication/README.md
+tags:
+    - 数学
+    - 字符串
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [537. 复数乘法](https://leetcode.cn/problems/complex-number-multiplication)
 
 [English Version](/solution/0500-0599/0537.Complex%20Number%20Multiplication/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><a href="https://baike.baidu.com/item/%E5%A4%8D%E6%95%B0/254365?fr=aladdin" target="_blank">复数</a> 可以用字符串表示，遵循 <code>"<strong>实部</strong>+<strong>虚部</strong>i"</code> 的形式，并满足下述条件：</p>
 
@@ -42,17 +54,17 @@
 	<li><code>num1</code> 和 <code>num2</code> 都是有效的复数表示。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-`(a+bi)(c+di) = ac-bd+(ad+cb)i`。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -62,9 +74,7 @@ class Solution:
         return f'{a * c - b * d}+{a * d + c * b}i'
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -80,23 +90,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function complexNumberMultiply(num1: string, num2: string): string {
-    let arr1 = num1.split('+'),
-        arr2 = num2.split('+');
-    let r1 = Number(arr1[0]),
-        r2 = Number(arr2[0]);
-    let v1 = Number(arr1[1].substring(0, arr1[1].length - 1)),
-        v2 = Number(arr2[1].substring(0, arr2[1].length - 1));
-    let ansR = r1 * r2 - v1 * v2;
-    let ansV = r1 * v2 + r2 * v1;
-    return `${ansR}+${ansV}i`;
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -110,7 +104,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func complexNumberMultiply(num1, num2 string) string {
@@ -126,10 +120,24 @@ func complexNumberMultiply(num1, num2 string) string {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
-
+```ts
+function complexNumberMultiply(num1: string, num2: string): string {
+    let arr1 = num1.split('+'),
+        arr2 = num2.split('+');
+    let r1 = Number(arr1[0]),
+        r2 = Number(arr2[0]);
+    let v1 = Number(arr1[1].substring(0, arr1[1].length - 1)),
+        v2 = Number(arr2[1].substring(0, arr2[1].length - 1));
+    let ansR = r1 * r2 - v1 * v2;
+    let ansV = r1 * v2 + r2 * v1;
+    return `${ansR}+${ansV}i`;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

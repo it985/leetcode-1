@@ -1,10 +1,20 @@
-# [1112. 每位学生的最高成绩](https://leetcode.cn/problems/highest-grade-for-each-student)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1112.Highest%20Grade%20For%20Each%20Student/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1112. 每位学生的最高成绩 🔒](https://leetcode.cn/problems/highest-grade-for-each-student)
 
 [English Version](/solution/1100-1199/1112.Highest%20Grade%20For%20Each%20Student/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code>Enrollments</code></p>
 
@@ -22,8 +32,6 @@ grade 不会为 NULL。</pre>
 <p>&nbsp;</p>
 
 <p>编写解决方案，找出每位学生获得的最高成绩和它所对应的科目，若科目成绩并列，取&nbsp;<code>course_id</code>&nbsp;最小的一门。查询结果需按&nbsp;<code>student_id</code>&nbsp;增序进行排序。</p>
-
-<p>以 <strong>任意顺序</strong> 返回结果表。</p>
 
 <p>查询结果格式如下所示。</p>
 
@@ -54,21 +62,19 @@ Enrollments 表：
 | 3          | 3         | 82    |
 +------------+-----------+-------+</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：RANK() OVER() 窗口函数**
+### 方法一：RANK() OVER() 窗口函数
 
 我们可以使用 `RANK() OVER()` 窗口函数，按照每个学生的成绩降序排列，如果成绩相同，按照课程号升序排列，然后取每个学生排名为 $1$ 的记录。
 
-**方法二：子查询**
-
-我们可以先查询每个学生的最高成绩，然后再查询每个学生的最高成绩对应的最小课程号。
-
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -88,6 +94,20 @@ WHERE rk = 1
 ORDER BY student_id;
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：子查询
+
+我们可以先查询每个学生的最高成绩，然后再查询每个学生的最高成绩对应的最小课程号。
+
+<!-- tabs:start -->
+
+#### MySQL
+
 ```sql
 # Write your MySQL query statement below
 SELECT student_id, MIN(course_id) AS course_id, grade
@@ -103,3 +123,7 @@ ORDER BY 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,20 @@
-# [2668. 查询员工当前薪水](https://leetcode.cn/problems/find-latest-salaries)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2668.Find%20Latest%20Salaries/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2668. 查询员工当前薪水 🔒](https://leetcode.cn/problems/find-latest-salaries)
 
 [English Version](/solution/2600-2699/2668.Find%20Latest%20Salaries/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code><font face="monospace">Salary</font></code></p>
 
@@ -69,15 +79,17 @@
 - emp_id 5 只有一条工资记录，因此这已经是更新后的工资。
 - emp_id 6 有两条记录，工资分别为 79632 和 90000，其中 90000 是更新后的工资。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -93,3 +105,7 @@ ORDER BY emp_id;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

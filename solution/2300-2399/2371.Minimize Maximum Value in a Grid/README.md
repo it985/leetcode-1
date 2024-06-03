@@ -1,10 +1,25 @@
-# [2371. 最小化网格中的最大值](https://leetcode.cn/problems/minimize-maximum-value-in-a-grid)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2371.Minimize%20Maximum%20Value%20in%20a%20Grid/README.md
+tags:
+    - 并查集
+    - 图
+    - 拓扑排序
+    - 数组
+    - 矩阵
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [2371. 最小化网格中的最大值 🔒](https://leetcode.cn/problems/minimize-maximum-value-in-a-grid)
 
 [English Version](/solution/2300-2399/2371.Minimize%20Maximum%20Value%20in%20a%20Grid/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个包含&nbsp;<strong>不同&nbsp;</strong>正整数的 <code>m × n</code> 整数矩阵 <code>grid</code>。</p>
 
@@ -53,11 +68,13 @@
 	<li><code>grid</code> 由不同的整数组成。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 贪心**
+### 方法一：排序 + 贪心
 
 由于可以将每一个数字重新填入并且使最终矩阵的最大值最小化，可考虑贪心。
 
@@ -69,9 +86,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -88,9 +103,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -117,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -143,7 +156,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minScore(grid [][]int) [][]int {
@@ -171,7 +184,7 @@ func minScore(grid [][]int) [][]int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minScore(grid: number[][]): number[][] {
@@ -195,10 +208,8 @@ function minScore(grid: number[][]): number[][] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

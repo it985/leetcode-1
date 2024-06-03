@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2463.Minimum%20Total%20Distance%20Traveled/README_EN.md
+rating: 2453
+source: Weekly Contest 318 Q4
+tags:
+    - Array
+    - Dynamic Programming
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2463. Minimum Total Distance Traveled](https://leetcode.com/problems/minimum-total-distance-traveled)
 
 [中文文档](/solution/2400-2499/2463.Minimum%20Total%20Distance%20Traveled/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are some robots and factories on the X-axis. You are given an integer array <code>robot</code> where <code>robot[i]</code> is the position of the <code>i<sup>th</sup></code> robot. You are also given a 2D integer array <code>factory</code> where <code>factory[j] = [position<sub>j</sub>, limit<sub>j</sub>]</code> indicates that <code>position<sub>j</sub></code> is the position of the <code>j<sup>th</sup></code> factory and that the <code>j<sup>th</sup></code> factory can repair at most <code>limit<sub>j</sub></code> robots.</p>
 
@@ -63,9 +79,13 @@ The total distance is |2 - 1| + |(-2) - (-1)| = 2. It can be shown that we canno
 	<li>The input will be generated such that it is always possible to repair every robot.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Memoization Search**
+<!-- solution:start -->
+
+### Solution 1: Memoization Search
 
 First, we sort the robots and factories in ascending order. Then we define a function $dfs(i, j)$ to represent the minimum total moving distance starting from the $i$-th robot and the $j$-th factory.
 
@@ -75,7 +95,7 @@ The time complexity is $O(m^2 \times n)$, and the space complexity is $O(m \time
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -102,7 +122,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -144,7 +164,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 using ll = long long;
@@ -174,7 +194,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumTotalDistance(robot []int, factory [][]int) int64 {
@@ -218,16 +238,8 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,20 @@
-# [2159. Order Two Columns Independently](https://leetcode.com/problems/order-two-columns-independently)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2159.Order%20Two%20Columns%20Independently/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [2159. Order Two Columns Independently 🔒](https://leetcode.com/problems/order-two-columns-independently)
 
 [中文文档](/solution/2100-2199/2159.Order%20Two%20Columns%20Independently/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Data</code></p>
 
@@ -52,11 +64,17 @@ Data table:
 +-----------+------------+
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -80,3 +98,7 @@ FROM
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

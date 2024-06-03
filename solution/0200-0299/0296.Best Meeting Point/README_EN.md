@@ -1,8 +1,23 @@
-# [296. Best Meeting Point](https://leetcode.com/problems/best-meeting-point)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0296.Best%20Meeting%20Point/README_EN.md
+tags:
+    - Array
+    - Math
+    - Matrix
+    - Sorting
+---
+
+<!-- problem:start -->
+
+# [296. Best Meeting Point 🔒](https://leetcode.com/problems/best-meeting-point)
 
 [中文文档](/solution/0200-0299/0296.Best%20Meeting%20Point/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an <code>m x n</code> binary grid <code>grid</code> where each <code>1</code> marks the home of one friend, return <em>the minimal <strong>total travel distance</strong></em>.</p>
 
@@ -39,11 +54,17 @@ So return 6.
 	<li>There will be <strong>at least two</strong> friends in the <code>grid</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -63,7 +84,7 @@ class Solution:
         return f(rows, i) + f(cols, j)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -95,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -127,7 +148,41 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func minTotalDistance(grid [][]int) int {
+	rows, cols := []int{}, []int{}
+	for i, row := range grid {
+		for j, v := range row {
+			if v == 1 {
+				rows = append(rows, i)
+				cols = append(cols, j)
+			}
+		}
+	}
+	sort.Ints(cols)
+	i := rows[len(rows)>>1]
+	j := cols[len(cols)>>1]
+	f := func(arr []int, x int) int {
+		s := 0
+		for _, v := range arr {
+			s += abs(v - x)
+		}
+		return s
+	}
+	return f(rows, i) + f(cols, j)
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -169,44 +224,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func minTotalDistance(grid [][]int) int {
-	rows, cols := []int{}, []int{}
-	for i, row := range grid {
-		for j, v := range row {
-			if v == 1 {
-				rows = append(rows, i)
-				cols = append(cols, j)
-			}
-		}
-	}
-	sort.Ints(cols)
-	i := rows[len(rows)>>1]
-	j := cols[len(cols)>>1]
-	f := func(arr []int, x int) int {
-		s := 0
-		for _, v := range arr {
-			s += abs(v - x)
-		}
-		return s
-	}
-	return f(rows, i) + f(cols, j)
-}
-
-func abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

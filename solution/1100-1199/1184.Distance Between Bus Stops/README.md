@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1184.Distance%20Between%20Bus%20Stops/README.md
+rating: 1234
+source: 第 153 场周赛 Q1
+tags:
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [1184. 公交站间的距离](https://leetcode.cn/problems/distance-between-bus-stops)
 
 [English Version](/solution/1100-1199/1184.Distance%20Between%20Bus%20Stops/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>环形公交路线上有&nbsp;<code>n</code>&nbsp;个站，按次序从&nbsp;<code>0</code>&nbsp;到&nbsp;<code>n - 1</code>&nbsp;进行编号。我们已知每一对相邻公交站之间的距离，<code>distance[i]</code>&nbsp;表示编号为&nbsp;<code>i</code>&nbsp;的车站和编号为&nbsp;<code>(i + 1) % n</code>&nbsp;的车站之间的距离。</p>
 
@@ -55,11 +67,13 @@
 	<li><code>0 &lt;= distance[i] &lt;= 10^4</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们可以先统计出公交车的总行驶距离 $s$，然后模拟公交车的行驶过程，从出发点开始，每次向右移动一站，直到到达目的地为止。在模拟的过程中，我们可以记录从出发点到目的地的距离 $a$，那么从目的地到出发点的最短距离就是 $\min(a, s - a)$。
 
@@ -67,9 +81,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +95,7 @@ class Solution:
         return min(a, sum(distance) - a)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +129,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func distanceBetweenBusStops(distance []int, start int, destination int) int {
@@ -136,7 +146,22 @@ func distanceBetweenBusStops(distance []int, start int, destination int) int {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function distanceBetweenBusStops(distance: number[], start: number, destination: number): number {
+    const s = distance.reduce((a, b) => a + b, 0);
+    let a = 0;
+    const n = distance.length;
+    while (start != destination) {
+        a += distance[start];
+        start = (start + 1) % n;
+    }
+    return Math.min(a, s - a);
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -157,25 +182,8 @@ var distanceBetweenBusStops = function (distance, start, destination) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function distanceBetweenBusStops(distance: number[], start: number, destination: number): number {
-    const s = distance.reduce((a, b) => a + b, 0);
-    let a = 0;
-    const n = distance.length;
-    while (start != destination) {
-        a += distance[start];
-        start = (start + 1) % n;
-    }
-    return Math.min(a, s - a);
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

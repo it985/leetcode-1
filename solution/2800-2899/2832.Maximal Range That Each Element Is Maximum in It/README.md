@@ -1,10 +1,22 @@
-# [2832. 每个元素为最大值的最大范围](https://leetcode.cn/problems/maximal-range-that-each-element-is-maximum-in-it)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2832.Maximal%20Range%20That%20Each%20Element%20Is%20Maximum%20in%20It/README.md
+tags:
+    - 栈
+    - 数组
+    - 单调栈
+---
+
+<!-- problem:start -->
+
+# [2832. 每个元素为最大值的最大范围 🔒](https://leetcode.cn/problems/maximal-range-that-each-element-is-maximum-in-it)
 
 [English Version](/solution/2800-2899/2832.Maximal%20Range%20That%20Each%20Element%20Is%20Maximum%20in%20It/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>现给定一个由 <strong>不同</strong> 整数构成的 <strong>0</strong> 索引数组 <code>nums</code> 。</p>
 
@@ -50,11 +62,13 @@
 	<li>所有&nbsp;<code>nums</code> 中的元素都是不重复的。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：单调栈**
+### 方法一：单调栈
 
 本题属于单调栈的模板题，我们只需要利用单调栈，求出每个元素 $nums[i]$ 左边和右边第一个比它大的元素的位置，分别记为 $left[i]$ 和 $right[i]$，那么 $nums[i]$ 作为最大值的区间长度就是 $right[i] - left[i] - 1$。
 
@@ -62,9 +76,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -89,9 +101,7 @@ class Solution:
         return [r - l - 1 for l, r in zip(left, right)]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -130,7 +140,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -168,7 +178,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumLengthOfRanges(nums []int) []int {
@@ -208,7 +218,7 @@ func maximumLengthOfRanges(nums []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumLengthOfRanges(nums: number[]): number[] {
@@ -239,10 +249,8 @@ function maximumLengthOfRanges(nums: number[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

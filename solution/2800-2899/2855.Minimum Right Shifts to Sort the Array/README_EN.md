@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2855.Minimum%20Right%20Shifts%20to%20Sort%20the%20Array/README_EN.md
+rating: 1379
+source: Biweekly Contest 113 Q1
+tags:
+    - Array
+---
+
+<!-- problem:start -->
+
 # [2855. Minimum Right Shifts to Sort the Array](https://leetcode.com/problems/minimum-right-shifts-to-sort-the-array)
 
 [中文文档](/solution/2800-2899/2855.Minimum%20Right%20Shifts%20to%20Sort%20the%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> array <code>nums</code> of length <code>n</code> containing <strong>distinct</strong> positive integers. Return <em>the <strong>minimum</strong> number of <strong>right shifts</strong> required to sort </em><code>nums</code><em> and </em><code>-1</code><em> if this is not possible.</em></p>
 
@@ -44,9 +58,13 @@ Now nums is sorted; therefore the answer is 2.
 	<li><code>nums</code> contains distinct integers.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Direct Traversal**
+<!-- solution:start -->
+
+### Solution 1: Direct Traversal
 
 First, we use a pointer $i$ to traverse the array $nums$ from left to right, finding a continuous increasing sequence until $i$ reaches the end of the array or $nums[i - 1] > nums[i]$. Next, we use another pointer $k$ to traverse the array $nums$ from $i + 1$, finding a continuous increasing sequence until $k$ reaches the end of the array or $nums[k - 1] > nums[k]$ and $nums[k] > nums[0]$. If $k$ reaches the end of the array, it means the array is already increasing, so we return $n - i$; otherwise, we return $-1$.
 
@@ -54,7 +72,7 @@ The time complexity is $O(n)$, and the space complexity is $O(1)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +87,7 @@ class Solution:
         return -1 if k < n else n - i
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -88,7 +106,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -108,7 +126,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumRightShifts(nums []int) int {
@@ -128,7 +146,7 @@ func minimumRightShifts(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumRightShifts(nums: number[]): number {
@@ -145,10 +163,8 @@ function minimumRightShifts(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

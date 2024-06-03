@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0834.Sum%20of%20Distances%20in%20Tree/README_EN.md
+tags:
+    - Tree
+    - Depth-First Search
+    - Graph
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [834. Sum of Distances in Tree](https://leetcode.com/problems/sum-of-distances-in-tree)
 
 [中文文档](/solution/0800-0899/0834.Sum%20of%20Distances%20in%20Tree/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is an undirected connected tree with <code>n</code> nodes labeled from <code>0</code> to <code>n - 1</code> and <code>n - 1</code> edges.</p>
 
@@ -48,11 +63,17 @@ Hence, answer[0] = 8, and so on.
 	<li>The given input represents a valid tree.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -83,7 +104,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -130,7 +151,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -172,7 +193,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sumOfDistancesInTree(n int, edges [][]int) []int {
@@ -210,7 +231,7 @@ func sumOfDistancesInTree(n int, edges [][]int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumOfDistancesInTree(n: number, edges: number[][]): number[] {
@@ -245,10 +266,8 @@ function sumOfDistancesInTree(n: number, edges: number[][]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

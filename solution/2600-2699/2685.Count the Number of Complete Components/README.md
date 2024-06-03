@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2685.Count%20the%20Number%20of%20Complete%20Components/README.md
+rating: 1769
+source: 第 345 场周赛 Q4
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 图
+---
+
+<!-- problem:start -->
+
 # [2685. 统计完全连通分量的数量](https://leetcode.cn/problems/count-the-number-of-complete-components)
 
 [English Version](/solution/2600-2699/2685.Count%20the%20Number%20of%20Complete%20Components/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数 <code>n</code> 。现有一个包含 <code>n</code> 个顶点的 <strong>无向</strong> 图，顶点按从 <code>0</code> 到 <code>n - 1</code> 编号。给你一个二维整数数组 <code>edges</code> 其中 <code>edges[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> 表示顶点 <code>a<sub>i</sub></code> 和 <code>b<sub>i</sub></code> 之间存在一条 <strong>无向</strong> 边。</p>
 
@@ -51,11 +65,13 @@
 	<li>不存在重复的边</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们先根据题目给定的边建立一个邻接表 $g$，其中 $g[i]$ 表示顶点 $i$ 的邻接点集合。
 
@@ -67,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -97,9 +111,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -142,7 +154,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -182,7 +194,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countCompleteComponents(n int, edges [][]int) (ans int) {
@@ -218,10 +230,8 @@ func countCompleteComponents(n int, edges [][]int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,20 @@
-# [574. 当选者](https://leetcode.cn/problems/winning-candidate)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0574.Winning%20Candidate/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [574. 当选者 🔒](https://leetcode.cn/problems/winning-candidate)
 
 [English Version](/solution/0500-0599/0574.Winning%20Candidate/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Candidate</code></p>
 
@@ -77,13 +87,17 @@ Vote table:
 候选人B有2票。候选人C、D、E各有1票。
 获胜者是候选人B。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -101,6 +115,18 @@ FROM
     INNER JOIN Candidate AS c ON t.id = c.id;
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### MySQL
+
 ```sql
 # Write your MySQL query statement below
 SELECT name
@@ -113,3 +139,7 @@ LIMIT 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

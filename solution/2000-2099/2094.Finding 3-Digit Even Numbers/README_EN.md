@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2094.Finding%203-Digit%20Even%20Numbers/README_EN.md
+rating: 1454
+source: Weekly Contest 270 Q1
+tags:
+    - Array
+    - Hash Table
+    - Enumeration
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2094. Finding 3-Digit Even Numbers](https://leetcode.com/problems/finding-3-digit-even-numbers)
 
 [中文文档](/solution/2000-2099/2094.Finding%203-Digit%20Even%20Numbers/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>digits</code>, where each element is a digit. The array may contain duplicates.</p>
 
@@ -53,11 +70,17 @@ In this example, the digit 8 is used twice each time in 288, 828, and 882.
 	<li><code>0 &lt;= digits[i] &lt;= 9</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -76,7 +99,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -116,37 +139,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function findEvenNumbers(digits: number[]): number[] {
-    let record = new Array(10).fill(0);
-    for (let digit of digits) {
-        record[digit]++;
-    }
-    let ans = [];
-    for (let i = 100; i < 1000; i += 2) {
-        if (check(record, String(i))) {
-            ans.push(i);
-        }
-    }
-    return ans;
-}
-
-function check(target: Array<number>, digits: string): boolean {
-    let record = new Array(10).fill(0);
-    for (let digit of digits) {
-        record[digit]++;
-    }
-
-    for (let i = 0; i < 10; i++) {
-        if (record[i] > target[i]) return false;
-    }
-    return true;
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -181,7 +174,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findEvenNumbers(digits []int) []int {
@@ -220,10 +213,38 @@ func check(cnt1, cnt2 []int) bool {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
+```ts
+function findEvenNumbers(digits: number[]): number[] {
+    let record = new Array(10).fill(0);
+    for (let digit of digits) {
+        record[digit]++;
+    }
+    let ans = [];
+    for (let i = 100; i < 1000; i += 2) {
+        if (check(record, String(i))) {
+            ans.push(i);
+        }
+    }
+    return ans;
+}
 
+function check(target: Array<number>, digits: string): boolean {
+    let record = new Array(10).fill(0);
+    for (let digit of digits) {
+        record[digit]++;
+    }
+
+    for (let i = 0; i < 10; i++) {
+        if (record[i] > target[i]) return false;
+    }
+    return true;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

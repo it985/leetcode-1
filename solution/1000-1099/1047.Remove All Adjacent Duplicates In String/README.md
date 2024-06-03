@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1047.Remove%20All%20Adjacent%20Duplicates%20In%20String/README.md
+rating: 1286
+source: 第 137 场周赛 Q2
+tags:
+    - 栈
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [1047. 删除字符串中的所有相邻重复项](https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string)
 
 [English Version](/solution/1000-1099/1047.Remove%20All%20Adjacent%20Duplicates%20In%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给出由小写字母组成的字符串&nbsp;<code>S</code>，<strong>重复项删除操作</strong>会选择两个相邻且相同的字母，并删除它们。</p>
 
@@ -31,11 +44,13 @@
 	<li><code>S</code> 仅由小写英文字母组成。</li>
 </ol>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：栈**
+### 方法一：栈
 
 遍历字符串 `s` 中的每个字符 `c`，若栈为空或者栈顶值不等于字符 `c`，将 `c` 入栈，否则栈顶元素出栈。
 
@@ -45,9 +60,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -61,9 +74,7 @@ class Solution:
         return ''.join(stk)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -81,7 +92,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -100,7 +111,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func removeDuplicates(s string) string {
@@ -116,7 +127,25 @@ func removeDuplicates(s string) string {
 }
 ```
 
-### **JavaScript**
+#### Rust
+
+```rust
+impl Solution {
+    pub fn remove_duplicates(s: String) -> String {
+        let mut stack = Vec::new();
+        for c in s.chars() {
+            if !stack.is_empty() && *stack.last().unwrap() == c {
+                stack.pop();
+            } else {
+                stack.push(c);
+            }
+        }
+        stack.into_iter().collect()
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -136,25 +165,7 @@ var removeDuplicates = function (s) {
 };
 ```
 
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn remove_duplicates(s: String) -> String {
-        let mut stack = Vec::new();
-        for c in s.chars() {
-            if !stack.is_empty() && *stack.last().unwrap() == c {
-                stack.pop();
-            } else {
-                stack.push(c);
-            }
-        }
-        stack.into_iter().collect()
-    }
-}
-```
-
-### **C**
+#### C
 
 ```c
 char* removeDuplicates(char* s) {
@@ -174,10 +185,8 @@ char* removeDuplicates(char* s) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2739.Total%20Distance%20Traveled/README.md
+rating: 1262
+source: 第 350 场周赛 Q1
+tags:
+    - 数学
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [2739. 总行驶距离](https://leetcode.cn/problems/total-distance-traveled)
 
 [English Version](/solution/2700-2799/2739.Total%20Distance%20Traveled/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>卡车有两个油箱。给你两个整数，<code>mainTank</code> 表示主油箱中的燃料（以升为单位），<code>additionalTank</code> 表示副油箱中的燃料（以升为单位）。</p>
 
@@ -43,11 +56,13 @@
 	<li><code>1 &lt;= mainTank, additionalTank &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们可以模拟卡车的行驶过程，每次消耗 $1$ 升主油箱中的燃料，行驶 $10$ 公里。每当主油箱中的燃料消耗 $5$ 升时，如果副油箱中有燃料，则将副油箱中的 $1$ 升燃料转移到主油箱中。一直模拟到主油箱中的燃料消耗完为止。
 
@@ -55,9 +70,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -73,9 +86,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -95,7 +106,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -116,7 +127,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func distanceTraveled(mainTank int, additionalTank int) (ans int) {
@@ -134,7 +145,7 @@ func distanceTraveled(mainTank int, additionalTank int) (ans int) {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -158,10 +169,27 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+var distanceTraveled = function (mainTank, additionalTank) {
+    let ans = 0,
+        cur = 0;
+    while (mainTank) {
+        cur++;
+        ans += 10;
+        mainTank--;
+        if (cur % 5 === 0 && additionalTank) {
+            additionalTank--;
+            mainTank++;
+        }
+    }
+    return ans;
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

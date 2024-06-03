@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2963.Count%20the%20Number%20of%20Good%20Partitions/README_EN.md
+rating: 1984
+source: Weekly Contest 375 Q4
+tags:
+    - Array
+    - Hash Table
+    - Math
+    - Combinatorics
+---
+
+<!-- problem:start -->
+
 # [2963. Count the Number of Good Partitions](https://leetcode.com/problems/count-the-number-of-good-partitions)
 
 [中文文档](/solution/2900-2999/2963.Count%20the%20Number%20of%20Good%20Partitions/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> array <code>nums</code> consisting of <strong>positive</strong> integers.</p>
 
@@ -45,9 +62,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table + Grouping + Fast Power**
+<!-- solution:start -->
+
+### Solution 1: Hash Table + Grouping + Fast Power
 
 According to the problem description, we know that the same number must be in the same subarray. Therefore, we use a hash table $last$ to record the index of the last occurrence of each number.
 
@@ -61,7 +82,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +96,7 @@ class Solution:
         return pow(2, k - 1, mod)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +129,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -140,7 +161,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfGoodPartitions(nums []int) int {
@@ -170,7 +191,7 @@ func numberOfGoodPartitions(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfGoodPartitions(nums: number[]): number {
@@ -201,10 +222,8 @@ function numberOfGoodPartitions(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

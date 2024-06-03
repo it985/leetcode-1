@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2884.Modify%20Columns/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [2884. Modify Columns](https://leetcode.com/problems/modify-columns)
 
 [中文文档](/solution/2800-2899/2884.Modify%20Columns/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <pre>
 DataFrame <code>employees</code>
@@ -46,11 +56,17 @@ DataFrame <code>employees</code>
 <strong>Explanation:
 </strong>Every salary has been doubled.</pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Pandas**
+#### Python3
 
 ```python
 import pandas as pd
@@ -61,10 +77,8 @@ def modifySalaryColumn(employees: pd.DataFrame) -> pd.DataFrame:
     return employees
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

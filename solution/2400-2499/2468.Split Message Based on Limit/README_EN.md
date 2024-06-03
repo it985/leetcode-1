@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2468.Split%20Message%20Based%20on%20Limit/README_EN.md
+rating: 2381
+source: Biweekly Contest 91 Q4
+tags:
+    - String
+    - Binary Search
+---
+
+<!-- problem:start -->
+
 # [2468. Split Message Based on Limit](https://leetcode.com/problems/split-message-based-on-limit)
 
 [中文文档](/solution/2400-2499/2468.Split%20Message%20Based%20on%20Limit/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string, <code>message</code>, and a positive integer, <code>limit</code>.</p>
 
@@ -45,9 +60,13 @@ Under the given constraints, the string can be split into two parts:
 	<li><code>1 &lt;= limit &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumerate the Number of Segments + Simulation**
+<!-- solution:start -->
+
+### Solution 1: Enumerate the Number of Segments + Simulation
 
 We denote the length of the string `message` as $n$, and the number of segments as $k$.
 
@@ -63,7 +82,7 @@ The time complexity is $O(n\times \log n)$, where $n$ is the length of the strin
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -86,7 +105,7 @@ class Solution:
         return []
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -116,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -146,7 +165,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func splitMessage(message string, limit int) (ans []string) {
@@ -172,16 +191,8 @@ func splitMessage(message string, limit int) (ans []string) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

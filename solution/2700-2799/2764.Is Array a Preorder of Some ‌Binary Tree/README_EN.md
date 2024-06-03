@@ -1,8 +1,23 @@
-# [2764. Is Array a Preorder of Some ‌Binary Tree](https://leetcode.com/problems/is-array-a-preorder-of-some-binary-tree)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2764.Is%20Array%20a%20Preorder%20of%20Some%20%E2%80%8CBinary%20Tree/README_EN.md
+tags:
+    - Stack
+    - Tree
+    - Depth-First Search
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
+# [2764. Is Array a Preorder of Some ‌Binary Tree 🔒](https://leetcode.com/problems/is-array-a-preorder-of-some-binary-tree)
 
 [中文文档](/solution/2700-2799/2764.Is%20Array%20a%20Preorder%20of%20Some%20%E2%80%8CBinary%20Tree/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a <strong>0-indexed</strong> integer <strong>2D array</strong> <code>nodes</code>, your task is to determine if the given array represents the <strong>preorder</strong> traversal of some <strong>binary</strong> tree.</p>
 
@@ -46,25 +61,17 @@ For the preorder traversal, first we visit node 0, then we do the preorder trave
 	<li>The input is generated such that <code>nodes</code> make a binary tree.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1：Depth-First Search**
+<!-- solution:start -->
 
-First, we construct a graph $g$ based on the $nodes$ data, where $g[i]$ represents all the child nodes of node $i$.
-
-Next, we design a function $dfs(i)$, which represents a pre-order traversal starting from node $i$. We use a variable $k$ to represent the $k$-th node in the $nodes$ list that we have currently traversed, with an initial value of $k = 0$.
-
-The execution logic of the function $dfs(i)$ is as follows:
-
-If $i \neq nodes[k][0]$, it indicates that the current sequence is not a pre-order traversal sequence of a binary tree, and returns false.
-Otherwise, we increment $k$ by $1$, and then recursively search all child nodes of $i$. If a false is found during the search, we return false immediately. Otherwise, when the search is finished, we return true.
-In the main function, we call $dfs(nodes[0][0])$. If the return value is true and $k = |nodes|$, then the $nodes$ sequence is a pre-order traversal sequence of a binary tree, and we return true; otherwise, we return false.
-
-The time complexity is $O(n)$ and the space complexity is $O(n)$, where $n$ is the number of nodes in $nodes$.
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -83,7 +90,7 @@ class Solution:
         return dfs(nodes[0][0]) and k == len(nodes)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -114,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -142,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isPreorder(nodes [][]int) bool {
@@ -168,7 +175,7 @@ func isPreorder(nodes [][]int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function isPreorder(nodes: number[][]): boolean {
@@ -196,10 +203,8 @@ function isPreorder(nodes: number[][]): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

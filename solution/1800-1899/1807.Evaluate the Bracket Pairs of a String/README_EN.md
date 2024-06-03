@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1807.Evaluate%20the%20Bracket%20Pairs%20of%20a%20String/README_EN.md
+rating: 1481
+source: Weekly Contest 234 Q3
+tags:
+    - Array
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [1807. Evaluate the Bracket Pairs of a String](https://leetcode.com/problems/evaluate-the-bracket-pairs-of-a-string)
 
 [中文文档](/solution/1800-1899/1807.Evaluate%20the%20Bracket%20Pairs%20of%20a%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>s</code> that contains some bracket pairs, with each pair containing a <strong>non-empty</strong> key.</p>
 
@@ -68,9 +84,13 @@ Notice that the &quot;a&quot;s not in a bracket pair are not evaluated.
 	<li>Each <code>key<sub>i</sub></code> in <code>knowledge</code> is unique.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table + Simulation**
+<!-- solution:start -->
+
+### Solution 1: Hash Table + Simulation
 
 First, we use a hash table $d$ to record the key-value pairs in `knowledge`.
 
@@ -80,7 +100,7 @@ The time complexity is $O(n + m)$, and the space complexity is $O(L)$. Here, $n$
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -99,7 +119,7 @@ class Solution:
         return ''.join(ans)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -123,7 +143,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -149,7 +169,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func evaluate(s string, knowledge [][]string) string {
@@ -178,7 +198,7 @@ func evaluate(s string, knowledge [][]string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function evaluate(s: string, knowledge: string[][]): string {
@@ -203,7 +223,7 @@ function evaluate(s: string, knowledge: string[][]): string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -238,10 +258,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

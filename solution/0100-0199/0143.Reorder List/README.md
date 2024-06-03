@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0143.Reorder%20List/README.md
+tags:
+    - 栈
+    - 递归
+    - 链表
+    - 双指针
+---
+
+<!-- problem:start -->
+
 # [143. 重排链表](https://leetcode.cn/problems/reorder-list)
 
 [English Version](/solution/0100-0199/0143.Reorder%20List/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个单链表 <code>L</code><em> </em>的头节点 <code>head</code> ，单链表 <code>L</code> 表示为：</p>
 
@@ -46,11 +59,13 @@ L<sub>0</sub> → L<sub>n</sub> → L<sub>1</sub> → L<sub>n - 1</sub> → L<su
 	<li><code>1 &lt;= node.val &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：快慢指针 + 反转链表 + 合并链表**
+### 方法一：快慢指针 + 反转链表 + 合并链表
 
 我们先用快慢指针找到链表的中点，然后将链表的后半部分反转，最后将左右两个链表合并。
 
@@ -58,9 +73,7 @@ L<sub>0</sub> → L<sub>n</sub> → L<sub>1</sub> → L<sub>n - 1</sub> → L<su
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -97,9 +110,7 @@ class Solution:
             cur, pre = pre.next, t
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -148,7 +159,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -199,7 +210,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -240,7 +251,92 @@ func reorderList(head *ListNode) {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     val: number
+ *     next: ListNode | null
+ *     constructor(val?: number, next?: ListNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.next = (next===undefined ? null : next)
+ *     }
+ * }
+ */
+
+/**
+ Do not return anything, modify head in-place instead.
+ */
+function reorderList(head: ListNode | null): void {
+    let slow = head;
+    let fast = head;
+    // 找到中心节点
+    while (fast && fast.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    // 反转节点
+    let next = slow.next;
+    slow.next = null;
+    while (next) {
+        [next.next, slow, next] = [slow, next, next.next];
+    }
+    // 合并
+    let left = head;
+    let right = slow;
+    while (right.next) {
+        const next = left.next;
+        left.next = right;
+        right = right.next;
+        left.next.next = next;
+        left = left.next.next;
+    }
+}
+```
+
+#### Rust
+
+```rust
+// Definition for singly-linked list.
+// #[derive(PartialEq, Eq, Clone, Debug)]
+// pub struct ListNode {
+//   pub val: i32,
+//   pub next: Option<Box<ListNode>>
+// }
+//
+// impl ListNode {
+//   #[inline]
+//   fn new(val: i32) -> Self {
+//     ListNode {
+//       next: None,
+//       val
+//     }
+//   }
+// }
+use std::collections::VecDeque;
+impl Solution {
+    pub fn reorder_list(head: &mut Option<Box<ListNode>>) {
+        let mut tail = &mut head.as_mut().unwrap().next;
+        let mut head = tail.take();
+        let mut deque = VecDeque::new();
+        while head.is_some() {
+            let next = head.as_mut().unwrap().next.take();
+            deque.push_back(head);
+            head = next;
+        }
+        let mut flag = false;
+        while !deque.is_empty() {
+            *tail = if flag { deque.pop_front().unwrap() } else { deque.pop_back().unwrap() };
+            tail = &mut tail.as_mut().unwrap().next;
+            flag = !flag;
+        }
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -289,7 +385,7 @@ var reorderList = function (head) {
 };
 ```
 
-### **C#**
+#### C#
 
 ```cs
 /**
@@ -340,130 +436,8 @@ public class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *     val: number
- *     next: ListNode | null
- *     constructor(val?: number, next?: ListNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.next = (next===undefined ? null : next)
- *     }
- * }
- */
-
-/**
- Do not return anything, modify head in-place instead.
- */
-function reorderList(head: ListNode | null): void {
-    const arr = [];
-    let node = head;
-    while (node.next != null) {
-        arr.push(node);
-        node = node.next;
-    }
-    let l = 0;
-    let r = arr.length - 1;
-    while (l < r) {
-        const start = arr[l];
-        const end = arr[r];
-        [end.next.next, start.next, end.next] = [start.next, end.next, null];
-        l++;
-        r--;
-    }
-}
-```
-
-```ts
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *     val: number
- *     next: ListNode | null
- *     constructor(val?: number, next?: ListNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.next = (next===undefined ? null : next)
- *     }
- * }
- */
-
-/**
- Do not return anything, modify head in-place instead.
- */
-function reorderList(head: ListNode | null): void {
-    let slow = head;
-    let fast = head;
-    // 找到中心节点
-    while (fast != null && fast.next != null) {
-        slow = slow.next;
-        fast = fast.next.next;
-    }
-    // 反转节点
-    let next = slow.next;
-    slow.next = null;
-    while (next != null) {
-        [next.next, slow, next] = [slow, next, next.next];
-    }
-    // 合并
-    let left = head;
-    let right = slow;
-    while (right.next != null) {
-        const next = left.next;
-        left.next = right;
-        right = right.next;
-        left.next.next = next;
-        left = left.next.next;
-    }
-}
-```
-
-### **Rust**
-
-```rust
-// Definition for singly-linked list.
-// #[derive(PartialEq, Eq, Clone, Debug)]
-// pub struct ListNode {
-//   pub val: i32,
-//   pub next: Option<Box<ListNode>>
-// }
-//
-// impl ListNode {
-//   #[inline]
-//   fn new(val: i32) -> Self {
-//     ListNode {
-//       next: None,
-//       val
-//     }
-//   }
-// }
-use std::collections::VecDeque;
-impl Solution {
-    pub fn reorder_list(head: &mut Option<Box<ListNode>>) {
-        let mut tail = &mut head.as_mut().unwrap().next;
-        let mut head = tail.take();
-        let mut deque = VecDeque::new();
-        while head.is_some() {
-            let next = head.as_mut().unwrap().next.take();
-            deque.push_back(head);
-            head = next;
-        }
-        let mut flag = false;
-        while !deque.is_empty() {
-            *tail = if flag { deque.pop_front().unwrap() } else { deque.pop_back().unwrap() };
-            tail = &mut tail.as_mut().unwrap().next;
-            flag = !flag;
-        }
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

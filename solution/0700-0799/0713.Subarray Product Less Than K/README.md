@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0713.Subarray%20Product%20Less%20Than%20K/README.md
+tags:
+    - 数组
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [713. 乘积小于 K 的子数组](https://leetcode.cn/problems/subarray-product-less-than-k)
 
 [English Version](/solution/0700-0799/0713.Subarray%20Product%20Less%20Than%20K/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code> ，请你返回子数组内所有元素的乘积严格小于<em> </em><code>k</code> 的连续子数组的数目。
 
@@ -35,11 +46,13 @@
 	<li><code>0 &lt;= k &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双指针**
+### 方法一：双指针
 
 我们可以用双指针维护一个滑动窗口，窗口内所有元素的乘积小于 $k$。
 
@@ -62,9 +75,7 @@ for (int i = 0, j = 0; i < n; ++i) {
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -79,9 +90,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +108,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -116,7 +125,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numSubarrayProductLessThanK(nums []int, k int) int {
@@ -132,7 +141,7 @@ func numSubarrayProductLessThanK(nums []int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numSubarrayProductLessThanK(nums: number[], k: number): number {
@@ -148,7 +157,7 @@ function numSubarrayProductLessThanK(nums: number[], k: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -175,7 +184,7 @@ impl Solution {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -198,10 +207,8 @@ var numSubarrayProductLessThanK = function (nums, k) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,21 @@
-# [651. 4 键键盘](https://leetcode.cn/problems/4-keys-keyboard)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0651.4%20Keys%20Keyboard/README.md
+tags:
+    - 数学
+    - 动态规划
+---
+
+<!-- problem:start -->
+
+# [651. 四个键的键盘 🔒](https://leetcode.cn/problems/4-keys-keyboard)
 
 [English Version](/solution/0600-0699/0651.4%20Keys%20Keyboard/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>假设你有一个特殊的键盘包含下面的按键：</p>
 
@@ -47,11 +58,13 @@ A, A, A, Ctrl A, Ctrl C, Ctrl V, Ctrl V
 	<li><code>1 &lt;= n &lt;= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 定义 $dp[i]$ 表示前 $i$ 个按键可以显示的最大个数。
 
@@ -64,9 +77,7 @@ A, A, A, Ctrl A, Ctrl C, Ctrl V, Ctrl V
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -78,9 +89,7 @@ class Solution:
         return dp[-1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +108,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -117,7 +126,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxA(n int) int {
@@ -134,10 +143,8 @@ func maxA(n int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2588.Count%20the%20Number%20of%20Beautiful%20Subarrays/README_EN.md
+rating: 1696
+source: Weekly Contest 336 Q3
+tags:
+    - Bit Manipulation
+    - Array
+    - Hash Table
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [2588. Count the Number of Beautiful Subarrays](https://leetcode.com/problems/count-the-number-of-beautiful-subarrays)
 
 [中文文档](/solution/2500-2599/2588.Count%20the%20Number%20of%20Beautiful%20Subarrays/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code>. In one operation, you can:</p>
 
@@ -50,9 +67,13 @@
 	<li><code>0 &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Prefix XOR + Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Prefix XOR + Hash Table
 
 We observe that a subarray can become an array of all $0$s if and only if the number of $1$s on each binary bit of all elements in the subarray is even.
 
@@ -66,7 +87,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -80,7 +101,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +120,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -118,7 +139,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func beautifulSubarrays(nums []int) (ans int64) {
@@ -133,7 +154,7 @@ func beautifulSubarrays(nums []int) (ans int64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function beautifulSubarrays(nums: number[]): number {
@@ -150,10 +171,8 @@ function beautifulSubarrays(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

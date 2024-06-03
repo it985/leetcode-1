@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2032.Two%20Out%20of%20Three/README_EN.md
+rating: 1269
+source: Weekly Contest 262 Q1
+tags:
+    - Bit Manipulation
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [2032. Two Out of Three](https://leetcode.com/problems/two-out-of-three)
 
 [中文文档](/solution/2000-2099/2032.Two%20Out%20of%20Three/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 Given three integer arrays <code>nums1</code>, <code>nums2</code>, and <code>nums3</code>, return <em>a <strong>distinct</strong> array containing all the values that are present in <strong>at least two</strong> out of the three arrays. You may return the values in <strong>any</strong> order</em>.
 
@@ -44,9 +60,13 @@ Given three integer arrays <code>nums1</code>, <code>nums2</code>, and <code>num
 	<li><code>1 &lt;= nums1[i], nums2[j], nums3[k] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Array + Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Array + Enumeration
 
 We can first put each element of the arrays into an array, then enumerate each number $i$ from $1$ to $100$, and check whether $i$ appears in at least two arrays. If so, add $i$ to the answer array.
 
@@ -54,7 +74,7 @@ The time complexity is $O(n_1 + n_2 + n_3)$, and the space complexity is $O(n_1 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,7 +85,7 @@ class Solution:
         return [i for i in range(1, 101) if (i in s1) + (i in s2) + (i in s3) > 1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -90,7 +110,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -113,7 +133,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func twoOutOfThree(nums1 []int, nums2 []int, nums3 []int) (ans []int) {
@@ -133,7 +153,7 @@ func twoOutOfThree(nums1 []int, nums2 []int, nums3 []int) (ans []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function twoOutOfThree(nums1: number[], nums2: number[], nums3: number[]): number[] {
@@ -151,7 +171,7 @@ function twoOutOfThree(nums1: number[], nums2: number[], nums3: number[]): numbe
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashSet;
@@ -193,10 +213,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

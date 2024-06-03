@@ -1,10 +1,22 @@
-# [555. 分割连接字符串](https://leetcode.cn/problems/split-concatenated-strings)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0555.Split%20Concatenated%20Strings/README.md
+tags:
+    - 贪心
+    - 数组
+    - 字符串
+---
+
+<!-- problem:start -->
+
+# [555. 分割连接字符串 🔒](https://leetcode.cn/problems/split-concatenated-strings)
 
 [English Version](/solution/0500-0599/0555.Split%20Concatenated%20Strings/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个字符串列表&nbsp;<code>strs</code>，你可以将这些字符串连接成一个循环字符串，对于每个字符串，你可以选择是否翻转它。在所有可能的循环字符串中，你需要分割循环字符串（这将使循环字符串变成一个常规的字符串），然后找到字典序最大的字符串。</p>
 
@@ -46,11 +58,13 @@
 	<li><code>strs[i]</code>&nbsp;只包含小写英文字母</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 我们先遍历字符串数组 `strs`，对于每个字符串 $s$，如果 $s$ 的反转字符串 $t$ 比 $s$ 大，那么我们就将 $s$ 替换为 $t$。
 
@@ -62,9 +76,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -81,9 +93,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -129,7 +139,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -170,7 +180,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func splitLoopedString(strs []string) (ans string) {
@@ -213,10 +223,8 @@ func reverse(s string) string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

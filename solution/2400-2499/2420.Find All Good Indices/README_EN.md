@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2420.Find%20All%20Good%20Indices/README_EN.md
+rating: 1695
+source: Weekly Contest 312 Q3
+tags:
+    - Array
+    - Dynamic Programming
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [2420. Find All Good Indices](https://leetcode.com/problems/find-all-good-indices)
 
 [中文文档](/solution/2400-2499/2420.Find%20All%20Good%20Indices/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> of size <code>n</code> and a positive integer <code>k</code>.</p>
 
@@ -44,9 +60,13 @@ Note that the index 4 is not good because [4,1] is not non-decreasing.</pre>
 	<li><code>1 &lt;= k &lt;= n / 2</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Recursion**
+<!-- solution:start -->
+
+### Solution 1: Recursion
 
 We define two arrays `decr` and `incr`, which represent the longest non-increasing and non-decreasing subarray lengths from left to right and from right to left, respectively.
 
@@ -58,7 +78,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +95,7 @@ class Solution:
         return [i for i in range(k, n - k) if decr[i] >= k and incr[i] >= k]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -106,7 +126,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -136,7 +156,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func goodIndices(nums []int, k int) []int {
@@ -167,16 +187,8 @@ func goodIndices(nums []int, k int) []int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

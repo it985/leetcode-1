@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2747.Count%20Zero%20Request%20Servers/README.md
+rating: 2405
+source: 第 107 场双周赛 Q4
+tags:
+    - 数组
+    - 哈希表
+    - 排序
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [2747. 统计没有收到请求的服务器数目](https://leetcode.cn/problems/count-zero-request-servers)
 
 [English Version](/solution/2700-2799/2747.Count%20Zero%20Request%20Servers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数&nbsp;<code>n</code>&nbsp;，表示服务器的总数目，再给你一个下标从 <strong>0</strong>&nbsp;开始的 <strong>二维</strong>&nbsp;整数数组&nbsp;<code>logs</code>&nbsp;，其中&nbsp;<code>logs[i] = [server_id, time]</code>&nbsp;表示 id 为&nbsp;<code>server_id</code>&nbsp;的服务器在&nbsp;<code>time</code>&nbsp;时收到了一个请求。</p>
 
@@ -51,11 +66,13 @@
 	<li><code>x &lt;&nbsp;queries[i]&nbsp;&lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：离线查询 + 排序 + 双指针**
+### 方法一：离线查询 + 排序 + 双指针
 
 我们可以将所有的查询按照时间从小到大排序，然后按照时间顺序依次处理每个查询。
 
@@ -65,9 +82,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -92,9 +107,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -128,7 +141,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -164,7 +177,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countServers(n int, logs [][]int, x int, queries []int) []int {
@@ -198,7 +211,7 @@ func countServers(n int, logs [][]int, x int, queries []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countServers(n: number, logs: number[][], x: number, queries: number[]): number[] {
@@ -232,10 +245,8 @@ function countServers(n: number, logs: number[][], x: number, queries: number[])
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,21 @@
-# [2189. 建造纸牌屋的方法数](https://leetcode.cn/problems/number-of-ways-to-build-house-of-cards)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2189.Number%20of%20Ways%20to%20Build%20House%20of%20Cards/README.md
+tags:
+    - 数学
+    - 动态规划
+---
+
+<!-- problem:start -->
+
+# [2189. 建造纸牌屋的方法数 🔒](https://leetcode.cn/problems/number-of-ways-to-build-house-of-cards)
 
 [English Version](/solution/2100-2199/2189.Number%20of%20Ways%20to%20Build%20House%20of%20Cards/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数 <code>n</code>，代表你拥有牌的数量。一个&nbsp;<strong>纸牌屋&nbsp;</strong>满足以下条件:</p>
 
@@ -54,11 +65,13 @@
 	<li><code>1 &lt;= n &lt;= 500</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索**
+### 方法一：记忆化搜索
 
 我们注意到，每一层的卡片数量为 $3 \times k + 2$，并且每一层的卡片数量都不相同。因此，问题可以转化为：整数 $n$ 可以由多少种 $3 \times k + 2$ 的数相加得到。这是一个经典的背包问题，可以使用记忆化搜索解决。
 
@@ -76,9 +89,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -95,9 +106,7 @@ class Solution:
         return dfs(n, 0)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -124,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -150,7 +159,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func houseOfCards(n int) int {
@@ -179,7 +188,7 @@ func houseOfCards(n int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function houseOfCards(n: number): number {
@@ -203,10 +212,8 @@ function houseOfCards(n: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

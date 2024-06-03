@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2170.Minimum%20Operations%20to%20Make%20the%20Array%20Alternating/README_EN.md
+rating: 1662
+source: Weekly Contest 280 Q2
+tags:
+    - Greedy
+    - Array
+    - Hash Table
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [2170. Minimum Operations to Make the Array Alternating](https://leetcode.com/problems/minimum-operations-to-make-the-array-alternating)
 
 [中文文档](/solution/2100-2199/2170.Minimum%20Operations%20to%20Make%20the%20Array%20Alternating/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> array <code>nums</code> consisting of <code>n</code> positive integers.</p>
 
@@ -48,11 +65,17 @@ Note that the array cannot be converted to [<u><strong>2</strong></u>,2,2,2,2] b
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +92,7 @@ class Solution:
         return min(n - (n1 + n2) for a, n1 in get(0) for b, n2 in get(1) if a != b)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -117,38 +140,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function minimumOperations(nums: number[]): number {
-    const n = nums.length,
-        m = 10 ** 5;
-    let odd = new Array(m).fill(0);
-    let even = new Array(m).fill(0);
-    for (let i = 0; i < n; i++) {
-        let cur = nums[i];
-        if (i & 1) {
-            odd[cur] = (odd[cur] || 0) + 1;
-        } else {
-            even[cur] = (even[cur] || 0) + 1;
-        }
-    }
-    let i1 = odd.indexOf(Math.max(...odd));
-    let i2 = even.indexOf(Math.max(...even));
-    if (i1 != i2) {
-        return n - odd[i1] - even[i2];
-    } else {
-        let l1 = odd[i1],
-            l2 = even[i2];
-        (odd[i1] = 0), (even[i2] = 0);
-        let j1 = odd.indexOf(Math.max(...odd));
-        let j2 = even.indexOf(Math.max(...even));
-        return n - Math.max(l1 + even[j2], l2 + odd[j1]);
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 typedef pair<int, int> PII;
@@ -185,7 +177,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumOperations(nums []int) int {
@@ -217,10 +209,39 @@ func minimumOperations(nums []int) int {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
-
+```ts
+function minimumOperations(nums: number[]): number {
+    const n = nums.length,
+        m = 10 ** 5;
+    let odd = new Array(m).fill(0);
+    let even = new Array(m).fill(0);
+    for (let i = 0; i < n; i++) {
+        let cur = nums[i];
+        if (i & 1) {
+            odd[cur] = (odd[cur] || 0) + 1;
+        } else {
+            even[cur] = (even[cur] || 0) + 1;
+        }
+    }
+    let i1 = odd.indexOf(Math.max(...odd));
+    let i2 = even.indexOf(Math.max(...even));
+    if (i1 != i2) {
+        return n - odd[i1] - even[i2];
+    } else {
+        let l1 = odd[i1],
+            l2 = even[i2];
+        (odd[i1] = 0), (even[i2] = 0);
+        let j1 = odd.indexOf(Math.max(...odd));
+        let j2 = even.indexOf(Math.max(...even));
+        return n - Math.max(l1 + even[j2], l2 + odd[j1]);
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

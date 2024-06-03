@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0682.Baseball%20Game/README.md
+tags:
+    - 栈
+    - 数组
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [682. 棒球比赛](https://leetcode.cn/problems/baseball-game)
 
 [English Version](/solution/0600-0699/0682.Baseball%20Game/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你现在是一场采用特殊赛制棒球比赛的记录员。这场比赛由若干回合组成，过去几回合的得分可能会影响以后几回合的得分。</p>
 
@@ -70,17 +82,17 @@
 	<li>对于 <code>"C"</code> 和 <code>"D"</code> 操作，题目数据保证记录此操作时前面总是存在一个有效的分数</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-利用栈简单模拟即可。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -98,9 +110,7 @@ class Solution:
         return sum(stk)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -125,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -150,7 +160,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func calPoints(ops []string) int {
@@ -177,7 +187,7 @@ func calPoints(ops []string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function calPoints(ops: string[]): number {
@@ -198,7 +208,7 @@ function calPoints(ops: string[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -226,10 +236,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2744.Find%20Maximum%20Number%20of%20String%20Pairs/README_EN.md
+rating: 1405
+source: Biweekly Contest 107 Q1
+tags:
+    - Array
+    - Hash Table
+    - String
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [2744. Find Maximum Number of String Pairs](https://leetcode.com/problems/find-maximum-number-of-string-pairs)
 
 [中文文档](/solution/2700-2799/2744.Find%20Maximum%20Number%20of%20String%20Pairs/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> array <code>words</code> consisting of <strong>distinct</strong> strings.</p>
 
@@ -56,11 +73,25 @@ It can be proven that 1 is the maximum number of pairs that can be formed.
 	<li><code>words[i]</code>&nbsp;contains only lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Hash Table
+
+We can use a hash table $cnt$ to store the number of occurrences of each reversed string in the array $words$.
+
+We iterate through the array $words$. For each string $w$, we add the number of occurrences of its reversed string to the answer, then increment the count of $w$ by $1$.
+
+Finally, we return the answer.
+
+The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is the length of the array $words$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -68,81 +99,77 @@ class Solution:
         cnt = Counter()
         ans = 0
         for w in words:
-            ans += cnt[w]
-            cnt[w[::-1]] += 1
+            ans += cnt[w[::-1]]
+            cnt[w] += 1
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
     public int maximumNumberOfStringPairs(String[] words) {
-        Map<String, Integer> cnt = new HashMap<>(words.length);
+        Map<Integer, Integer> cnt = new HashMap<>();
         int ans = 0;
-        for (String w : words) {
-            ans += cnt.getOrDefault(w, 0);
-            cnt.merge(new StringBuilder(w).reverse().toString(), 1, Integer::sum);
+        for (var w : words) {
+            int a = w.charAt(0) - 'a', b = w.charAt(1) - 'a';
+            ans += cnt.getOrDefault(b << 5 | a, 0);
+            cnt.merge(a << 5 | b, 1, Integer::sum);
         }
         return ans;
     }
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
 public:
     int maximumNumberOfStringPairs(vector<string>& words) {
-        unordered_map<string, int> cnt;
+        unordered_map<int, int> cnt;
         int ans = 0;
         for (auto& w : words) {
-            ans += cnt[w];
-            reverse(w.begin(), w.end());
-            cnt[w]++;
+            int a = w[0] - 'a', b = w[1] - 'a';
+            ans += cnt[b << 5 | a];
+            cnt[a << 5 | b]++;
         }
         return ans;
     }
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumNumberOfStringPairs(words []string) (ans int) {
-	cnt := map[string]int{}
+	cnt := map[int]int{}
 	for _, w := range words {
-		ans += cnt[w]
-		s := []byte(w)
-		for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
-			s[i], s[j] = s[j], s[i]
-		}
-		cnt[string(s)]++
+		a, b := int(w[0]-'a'), int(w[1]-'a')
+		ans += cnt[b<<5|a]
+		cnt[a<<5|b]++
 	}
 	return
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumNumberOfStringPairs(words: string[]): number {
-    const cnt: Map<string, number> = new Map();
+    const cnt: { [key: number]: number } = {};
     let ans = 0;
     for (const w of words) {
-        ans += cnt.get(w) || 0;
-        const s = w.split('').reverse().join('');
-        cnt.set(s, (cnt.get(s) || 0) + 1);
+        const [a, b] = [w.charCodeAt(0) - 97, w.charCodeAt(w.length - 1) - 97];
+        ans += cnt[(b << 5) | a] || 0;
+        cnt[(a << 5) | b] = (cnt[(a << 5) | b] || 0) + 1;
     }
     return ans;
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

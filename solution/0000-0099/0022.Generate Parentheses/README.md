@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0022.Generate%20Parentheses/README.md
+tags:
+    - 字符串
+    - 动态规划
+    - 回溯
+---
+
+<!-- problem:start -->
+
 # [22. 括号生成](https://leetcode.cn/problems/generate-parentheses)
 
 [English Version](/solution/0000-0099/0022.Generate%20Parentheses/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>数字 <code>n</code>&nbsp;代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 <strong>有效的 </strong>括号组合。</p>
 
@@ -32,11 +44,13 @@
 	<li><code>1 &lt;= n &lt;= 8</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS + 剪枝**
+### 方法一：DFS + 剪枝
 
 题目中 $n$ 的范围为 $[1, 8]$，因此我们直接通过“暴力搜索 + 剪枝”的方式通过本题。
 
@@ -51,9 +65,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -72,9 +84,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +111,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -123,7 +133,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func generateParenthesis(n int) (ans []string) {
@@ -144,32 +154,7 @@ func generateParenthesis(n int) (ans []string) {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number} n
- * @return {string[]}
- */
-var generateParenthesis = function (n) {
-    function dfs(l, r, t) {
-        if (l > n || r > n || l < r) {
-            return;
-        }
-        if (l == n && r == n) {
-            ans.push(t);
-            return;
-        }
-        dfs(l + 1, r, t + '(');
-        dfs(l, r + 1, t + ')');
-    }
-    let ans = [];
-    dfs(0, 0, '');
-    return ans;
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function generateParenthesis(n: number): string[] {
@@ -190,7 +175,7 @@ function generateParenthesis(n: number): string[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -218,6 +203,43 @@ impl Solution {
     }
 }
 ```
+
+#### JavaScript
+
+```js
+/**
+ * @param {number} n
+ * @return {string[]}
+ */
+var generateParenthesis = function (n) {
+    function dfs(l, r, t) {
+        if (l > n || r > n || l < r) {
+            return;
+        }
+        if (l == n && r == n) {
+            ans.push(t);
+            return;
+        }
+        dfs(l + 1, r, t + '(');
+        dfs(l, r + 1, t + ')');
+    }
+    let ans = [];
+    dfs(0, 0, '');
+    return ans;
+};
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -250,10 +272,38 @@ impl Solution {
 }
 ```
 
-### **...**
+#### PHP
 
-```
+```php
+class Solution {
+    /**
+     * @param int $n
+     * @return string[]
+     */
 
+    function generateParenthesis($n) {
+        $result = [];
+        $this->backtrack($result, '', 0, 0, $n);
+        return $result;
+    }
+
+    function backtrack(&$result, $current, $open, $close, $max) {
+        if (strlen($current) === $max * 2) {
+            $result[] = $current;
+            return;
+        }
+        if ($open < $max) {
+            $this->backtrack($result, $current . '(', $open + 1, $close, $max);
+        }
+        if ($close < $open) {
+            $this->backtrack($result, $current . ')', $open, $close + 1, $max);
+        }
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

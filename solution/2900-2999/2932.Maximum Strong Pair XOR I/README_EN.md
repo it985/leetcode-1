@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2932.Maximum%20Strong%20Pair%20XOR%20I/README_EN.md
+rating: 1246
+source: Weekly Contest 371 Q1
+tags:
+    - Bit Manipulation
+    - Trie
+    - Array
+    - Hash Table
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [2932. Maximum Strong Pair XOR I](https://leetcode.com/problems/maximum-strong-pair-xor-i)
 
 [中文文档](/solution/2900-2999/2932.Maximum%20Strong%20Pair%20XOR%20I/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code>. A pair of integers <code>x</code> and <code>y</code> is called a <strong>strong</strong> pair if it satisfies the condition:</p>
 
@@ -52,15 +70,110 @@ The maximum XOR possible from these pairs is 25 XOR 30 = 7 since the only other 
 	<li><code>1 &lt;= nums[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Enumeration
 
 We can enumerate each pair of numbers $(x, y)$ in the array. If $|x - y| \leq \min(x, y)$, then this pair is a strong pair. We can calculate the XOR value of this pair and update the answer.
 
 The time complexity is $O(n^2)$, where $n$ is the length of the array $nums$. The space complexity is $O(1)$.
 
-**Solution 2: Sorting + Binary Trie**
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def maximumStrongPairXor(self, nums: List[int]) -> int:
+        return max(x ^ y for x in nums for y in nums if abs(x - y) <= min(x, y))
+```
+
+#### Java
+
+```java
+class Solution {
+    public int maximumStrongPairXor(int[] nums) {
+        int ans = 0;
+        for (int x : nums) {
+            for (int y : nums) {
+                if (Math.abs(x - y) <= Math.min(x, y)) {
+                    ans = Math.max(ans, x ^ y);
+                }
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int maximumStrongPairXor(vector<int>& nums) {
+        int ans = 0;
+        for (int x : nums) {
+            for (int y : nums) {
+                if (abs(x - y) <= min(x, y)) {
+                    ans = max(ans, x ^ y);
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func maximumStrongPairXor(nums []int) (ans int) {
+	for _, x := range nums {
+		for _, y := range nums {
+			if abs(x-y) <= min(x, y) {
+				ans = max(ans, x^y)
+			}
+		}
+	}
+	return
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+```
+
+#### TypeScript
+
+```ts
+function maximumStrongPairXor(nums: number[]): number {
+    let ans = 0;
+    for (const x of nums) {
+        for (const y of nums) {
+            if (Math.abs(x - y) <= Math.min(x, y)) {
+                ans = Math.max(ans, x ^ y);
+            }
+        }
+    }
+    return ans;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Sorting + Binary Trie
 
 Observing the inequality $|x - y| \leq \min(x, y)$, which involves absolute value and minimum value, we can assume $x \leq y$, then we have $y - x \leq x$, that is, $y \leq 2x$. We can enumerate $y$ from small to large, then $x$ must satisfy the inequality $y \leq 2x$.
 
@@ -70,13 +183,7 @@ The time complexity is $O(n \times \log M)$, and the space complexity is $O(n \t
 
 <!-- tabs:start -->
 
-### **Python3**
-
-```python
-class Solution:
-    def maximumStrongPairXor(self, nums: List[int]) -> int:
-        return max(x ^ y for x in nums for y in nums if abs(x - y) <= min(x, y))
-```
+#### Python3
 
 ```python
 class Trie:
@@ -129,23 +236,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-```java
-class Solution {
-    public int maximumStrongPairXor(int[] nums) {
-        int ans = 0;
-        for (int x : nums) {
-            for (int y : nums) {
-                if (Math.abs(x - y) <= Math.min(x, y)) {
-                    ans = Math.max(ans, x ^ y);
-                }
-            }
-        }
-        return ans;
-    }
-}
-```
+#### Java
 
 ```java
 class Trie {
@@ -153,7 +244,6 @@ class Trie {
     private int cnt = 0;
 
     public Trie() {
-
     }
 
     public void insert(int x) {
@@ -210,24 +300,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int maximumStrongPairXor(vector<int>& nums) {
-        int ans = 0;
-        for (int x : nums) {
-            for (int y : nums) {
-                if (abs(x - y) <= min(x, y)) {
-                    ans = max(ans, x ^ y);
-                }
-            }
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Trie {
@@ -296,27 +369,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func maximumStrongPairXor(nums []int) (ans int) {
-	for _, x := range nums {
-		for _, y := range nums {
-			if abs(x-y) <= min(x, y) {
-				ans = max(ans, x^y)
-			}
-		}
-	}
-	return
-}
-
-func abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
-}
-```
+#### Go
 
 ```go
 type Trie struct {
@@ -379,21 +432,7 @@ func maximumStrongPairXor(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function maximumStrongPairXor(nums: number[]): number {
-    let ans = 0;
-    for (const x of nums) {
-        for (const y of nums) {
-            if (Math.abs(x - y) <= Math.min(x, y)) {
-                ans = Math.max(ans, x ^ y);
-            }
-        }
-    }
-    return ans;
-}
-```
+#### TypeScript
 
 ```ts
 class Trie {
@@ -462,10 +501,8 @@ function maximumStrongPairXor(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

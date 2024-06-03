@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1292.Maximum%20Side%20Length%20of%20a%20Square%20with%20Sum%20Less%20than%20or%20Equal%20to%20Threshold/README.md
+rating: 1734
+source: 第 167 场周赛 Q3
+tags:
+    - 数组
+    - 二分查找
+    - 矩阵
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [1292. 元素和小于等于阈值的正方形的最大边长](https://leetcode.cn/problems/maximum-side-length-of-a-square-with-sum-less-than-or-equal-to-threshold)
 
 [English Version](/solution/1200-1299/1292.Maximum%20Side%20Length%20of%20a%20Square%20with%20Sum%20Less%20than%20or%20Equal%20to%20Threshold/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个大小为&nbsp;<code>m x n</code>&nbsp;的矩阵&nbsp;<code>mat</code>&nbsp;和一个整数阈值&nbsp;<code>threshold</code>。</p>
 
@@ -40,11 +55,13 @@
 	<li><code>0 &lt;= threshold &lt;= 10<sup>5</sup></code><sup>&nbsp;</sup></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二维前缀和 + 二分查找**
+### 方法一：二维前缀和 + 二分查找
 
 我们可以先预处理得到二维前缀和数组 $s$，其中 $s[i + 1][j + 1]$ 表示矩阵 $mat$ 中从 $(0, 0)$ 到 $(i, j)$ 的元素和，那么对于任意的正方形区域，我们都可以在 $O(1)$ 的时间内得到其元素和。
 
@@ -54,9 +71,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -84,9 +99,7 @@ class Solution:
         return l
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -130,7 +143,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -168,7 +181,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxSideLength(mat [][]int, threshold int) int {
@@ -205,7 +218,7 @@ func maxSideLength(mat [][]int, threshold int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxSideLength(mat: number[][], threshold: number): number {
@@ -244,10 +257,8 @@ function maxSideLength(mat: number[][], threshold: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

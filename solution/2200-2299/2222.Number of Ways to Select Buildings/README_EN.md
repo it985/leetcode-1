@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2222.Number%20of%20Ways%20to%20Select%20Buildings/README_EN.md
+rating: 1656
+source: Biweekly Contest 75 Q3
+tags:
+    - String
+    - Dynamic Programming
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [2222. Number of Ways to Select Buildings](https://leetcode.com/problems/number-of-ways-to-select-buildings)
 
 [中文文档](/solution/2200-2299/2222.Number%20of%20Ways%20to%20Select%20Buildings/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> binary string <code>s</code> which represents the types of buildings along a street where:</p>
 
@@ -52,11 +68,17 @@ No other selection is valid. Thus, there are 6 total ways.
 	<li><code>s[i]</code> is either <code>&#39;0&#39;</code> or <code>&#39;1&#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -76,7 +98,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -105,7 +127,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -131,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfWays(s string) int64 {
@@ -153,16 +175,8 @@ func numberOfWays(s string) int64 {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

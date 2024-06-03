@@ -1,10 +1,22 @@
-# [1950. 所有子数组最小值中的最大值](https://leetcode.cn/problems/maximum-of-minimum-values-in-all-subarrays)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1950.Maximum%20of%20Minimum%20Values%20in%20All%20Subarrays/README.md
+tags:
+    - 栈
+    - 数组
+    - 单调栈
+---
+
+<!-- problem:start -->
+
+# [1950. 所有子数组最小值中的最大值 🔒](https://leetcode.cn/problems/maximum-of-minimum-values-in-all-subarrays)
 
 [English Version](/solution/1900-1999/1950.Maximum%20of%20Minimum%20Values%20in%20All%20Subarrays/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个长度为 <code>n</code> 的整数数组 <code>nums</code> ，你需要处理 <code>n</code> 个查询。</p>
 
@@ -67,11 +79,13 @@ i = 3:
 	<li><code>0 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：单调栈**
+### 方法一：单调栈
 
 我们可以先利用单调栈，求出每个位置的左边第一个比它小的位置 $left[i]$ 和右边第一个比它小的位置 $right[i]$，那么以 $nums[i]$ 为最小值的子数组的长度为 $m = right[i] - left[i] - 1$。
 
@@ -85,9 +99,7 @@ i = 3:
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -118,9 +130,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -163,7 +173,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -205,7 +215,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findMaximums(nums []int) []int {
@@ -248,10 +258,8 @@ func findMaximums(nums []int) []int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

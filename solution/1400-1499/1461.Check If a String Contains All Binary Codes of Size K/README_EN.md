@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1461.Check%20If%20a%20String%20Contains%20All%20Binary%20Codes%20of%20Size%20K/README_EN.md
+rating: 1504
+source: Biweekly Contest 27 Q2
+tags:
+    - Bit Manipulation
+    - Hash Table
+    - String
+    - Hash Function
+    - Rolling Hash
+---
+
+<!-- problem:start -->
+
 # [1461. Check If a String Contains All Binary Codes of Size K](https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k)
 
 [中文文档](/solution/1400-1499/1461.Check%20If%20a%20String%20Contains%20All%20Binary%20Codes%20of%20Size%20K/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a binary string <code>s</code> and an integer <code>k</code>, return <code>true</code> <em>if every binary code of length</em> <code>k</code> <em>is a substring of</em> <code>s</code>. Otherwise, return <code>false</code>.</p>
 
@@ -40,11 +58,17 @@
 	<li><code>1 &lt;= k &lt;= 20</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -52,6 +76,59 @@ class Solution:
         ss = {s[i : i + k] for i in range(len(s) - k + 1)}
         return len(ss) == 1 << k
 ```
+
+#### Java
+
+```java
+class Solution {
+    public boolean hasAllCodes(String s, int k) {
+        Set<String> ss = new HashSet<>();
+        for (int i = 0; i < s.length() - k + 1; ++i) {
+            ss.add(s.substring(i, i + k));
+        }
+        return ss.size() == 1 << k;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    bool hasAllCodes(string s, int k) {
+        unordered_set<string> ss;
+        for (int i = 0; i + k <= s.size(); ++i) {
+            ss.insert(move(s.substr(i, k)));
+        }
+        return ss.size() == 1 << k;
+    }
+};
+```
+
+#### Go
+
+```go
+func hasAllCodes(s string, k int) bool {
+	ss := map[string]bool{}
+	for i := 0; i+k <= len(s); i++ {
+		ss[s[i:i+k]] = true
+	}
+	return len(ss) == 1<<k
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -69,19 +146,7 @@ class Solution:
         return all(v for v in vis)
 ```
 
-### **Java**
-
-```java
-class Solution {
-    public boolean hasAllCodes(String s, int k) {
-        Set<String> ss = new HashSet<>();
-        for (int i = 0; i < s.length() - k + 1; ++i) {
-            ss.add(s.substring(i, i + k));
-        }
-        return ss.size() == 1 << k;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -109,20 +174,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    bool hasAllCodes(string s, int k) {
-        unordered_set<string> ss;
-        for (int i = 0; i + k <= s.size(); ++i) {
-            ss.insert(move(s.substr(i, k)));
-        }
-        return ss.size() == 1 << k;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -146,17 +198,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func hasAllCodes(s string, k int) bool {
-	ss := map[string]bool{}
-	for i := 0; i+k <= len(s); i++ {
-		ss[s[i:i+k]] = true
-	}
-	return len(ss) == 1<<k
-}
-```
+#### Go
 
 ```go
 func hasAllCodes(s string, k int) bool {
@@ -184,10 +226,8 @@ func hasAllCodes(s string, k int) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

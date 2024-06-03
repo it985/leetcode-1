@@ -1,10 +1,20 @@
-# [2082. 富有客户的数量](https://leetcode.cn/problems/the-number-of-rich-customers)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2082.The%20Number%20of%20Rich%20Customers/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2082. 富有客户的数量 🔒](https://leetcode.cn/problems/the-number-of-rich-customers)
 
 [English Version](/solution/2000-2099/2082.The%20Number%20of%20Rich%20Customers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表： <code>Store</code></p>
 
@@ -54,15 +64,17 @@ Store 表:
 客户 3 有 1 个订单金额严格大于 500。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -73,3 +85,7 @@ WHERE amount > 500;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0809.Expressive%20Words/README_EN.md
+tags:
+    - Array
+    - Two Pointers
+    - String
+---
+
+<!-- problem:start -->
+
 # [809. Expressive Words](https://leetcode.com/problems/expressive-words)
 
 [中文文档](/solution/0800-0899/0809.Expressive%20Words/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Sometimes people repeat letters to represent extra feeling. For example:</p>
 
@@ -48,11 +62,17 @@ We can&#39;t extend &quot;helo&quot; to get &quot;heeellooo&quot; because the gr
 	<li><code>s</code> and <code>words[i]</code> consist of lowercase letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -81,7 +101,7 @@ class Solution:
         return sum(check(s, t) for t in words)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -126,7 +146,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -157,7 +177,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func expressiveWords(s string, words []string) (ans int) {
@@ -197,10 +217,8 @@ func expressiveWords(s string, words []string) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0725.Split%20Linked%20List%20in%20Parts/README.md
+tags:
+    - 链表
+---
+
+<!-- problem:start -->
+
 # [725. 分隔链表](https://leetcode.cn/problems/split-linked-list-in-parts)
 
 [English Version](/solution/0700-0799/0725.Split%20Linked%20List%20in%20Parts/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个头结点为 <code>head</code> 的单链表和一个整数 <code>k</code> ，请你设计一个算法将链表分隔为 <code>k</code> 个连续的部分。</p>
 
@@ -44,21 +54,17 @@
 	<li><code>1 &lt;= k &lt;= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-先遍历链表，统计结点总个数。
-
-接着将链表拆分，`width` 表示每一部分至少含有的结点个数，而 `remainder` 表示前 `remainder` 部分，每一部分多出一个数。
-
-然后遍历链表，依次拆出每一部分，添加到结果数组 `res` 即可。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -88,9 +94,7 @@ class Solution:
         return res
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -133,10 +137,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

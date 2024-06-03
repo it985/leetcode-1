@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0658.Find%20K%20Closest%20Elements/README_EN.md
+tags:
+    - Array
+    - Two Pointers
+    - Binary Search
+    - Sorting
+    - Sliding Window
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements)
 
 [中文文档](/solution/0600-0699/0658.Find%20K%20Closest%20Elements/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a <strong>sorted</strong> integer array <code>arr</code>, two integers <code>k</code> and <code>x</code>, return the <code>k</code> closest integers to <code>x</code> in the array. The result should also be sorted in ascending order.</p>
 
@@ -31,15 +48,17 @@
 	<li><code>-10<sup>4</sup> &lt;= arr[i], x &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sort**
+<!-- solution:start -->
 
-**Solution 2: Binary search**
+### Solution 1: Sort
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -48,32 +67,7 @@ class Solution:
         return sorted(arr[:k])
 ```
 
-```python
-class Solution:
-    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
-        l, r = 0, len(arr)
-        while r - l > k:
-            if x - arr[l] <= arr[r - 1] - x:
-                r -= 1
-            else:
-                l += 1
-        return arr[l:r]
-```
-
-```python
-class Solution:
-    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
-        left, right = 0, len(arr) - k
-        while left < right:
-            mid = (left + right) >> 1
-            if x - arr[mid] <= arr[mid + k] - x:
-                right = mid
-            else:
-                left = mid + 1
-        return arr[left : left + k]
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -92,49 +86,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        int l = 0, r = arr.length;
-        while (r - l > k) {
-            if (x - arr[l] <= arr[r - 1] - x) {
-                --r;
-            } else {
-                ++l;
-            }
-        }
-        List<Integer> ans = new ArrayList<>();
-        for (int i = l; i < r; ++i) {
-            ans.add(arr[i]);
-        }
-        return ans;
-    }
-}
-```
-
-```java
-class Solution {
-    public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        int left = 0;
-        int right = arr.length - k;
-        while (left < right) {
-            int mid = (left + right) >> 1;
-            if (x - arr[mid] <= arr[mid + k] - x) {
-                right = mid;
-            } else {
-                left = mid + 1;
-            }
-        }
-        List<Integer> ans = new ArrayList<>();
-        for (int i = left; i < left + k; ++i) {
-            ans.add(arr[i]);
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 int target;
@@ -156,41 +108,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    vector<int> findClosestElements(vector<int>& arr, int k, int x) {
-        int l = 0, r = arr.size();
-        while (r - l > k) {
-            if (x - arr[l] <= arr[r - 1] - x) {
-                --r;
-            } else {
-                ++l;
-            }
-        }
-        return vector<int>(arr.begin() + l, arr.begin() + r);
-    }
-};
-```
-
-```cpp
-class Solution {
-public:
-    vector<int> findClosestElements(vector<int>& arr, int k, int x) {
-        int left = 0, right = arr.size() - k;
-        while (left < right) {
-            int mid = (left + right) >> 1;
-            if (x - arr[mid] <= arr[mid + k] - x)
-                right = mid;
-            else
-                left = mid + 1;
-        }
-        return vector<int>(arr.begin() + left, arr.begin() + left + k);
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func findClosestElements(arr []int, k int, x int) []int {
@@ -214,36 +132,24 @@ func abs(x int) int {
 }
 ```
 
-```go
-func findClosestElements(arr []int, k int, x int) []int {
-	l, r := 0, len(arr)
-	for r-l > k {
-		if x-arr[l] <= arr[r-1]-x {
-			r--
-		} else {
-			l++
-		}
-	}
-	return arr[l:r]
+#### TypeScript
+
+```ts
+function findClosestElements(arr: number[], k: number, x: number): number[] {
+    let l = 0;
+    let r = arr.length;
+    while (r - l > k) {
+        if (x - arr[l] <= arr[r - 1] - x) {
+            --r;
+        } else {
+            ++l;
+        }
+    }
+    return arr.slice(l, r);
 }
 ```
 
-```go
-func findClosestElements(arr []int, k int, x int) []int {
-	left, right := 0, len(arr)-k
-	for left < right {
-		mid := (left + right) >> 1
-		if x-arr[mid] <= arr[mid+k]-x {
-			right = mid
-		} else {
-			left = mid + 1
-		}
-	}
-	return arr[left : left+k]
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -262,6 +168,107 @@ impl Solution {
     }
 }
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Binary search
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        l, r = 0, len(arr)
+        while r - l > k:
+            if x - arr[l] <= arr[r - 1] - x:
+                r -= 1
+            else:
+                l += 1
+        return arr[l:r]
+```
+
+#### Java
+
+```java
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int l = 0, r = arr.length;
+        while (r - l > k) {
+            if (x - arr[l] <= arr[r - 1] - x) {
+                --r;
+            } else {
+                ++l;
+            }
+        }
+        List<Integer> ans = new ArrayList<>();
+        for (int i = l; i < r; ++i) {
+            ans.add(arr[i]);
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> findClosestElements(vector<int>& arr, int k, int x) {
+        int l = 0, r = arr.size();
+        while (r - l > k) {
+            if (x - arr[l] <= arr[r - 1] - x) {
+                --r;
+            } else {
+                ++l;
+            }
+        }
+        return vector<int>(arr.begin() + l, arr.begin() + r);
+    }
+};
+```
+
+#### Go
+
+```go
+func findClosestElements(arr []int, k int, x int) []int {
+	l, r := 0, len(arr)
+	for r-l > k {
+		if x-arr[l] <= arr[r-1]-x {
+			r--
+		} else {
+			l++
+		}
+	}
+	return arr[l:r]
+}
+```
+
+#### TypeScript
+
+```ts
+function findClosestElements(arr: number[], k: number, x: number): number[] {
+    let left = 0;
+    let right = arr.length - k;
+    while (left < right) {
+        const mid = (left + right) >> 1;
+        if (x - arr[mid] <= arr[mid + k] - x) {
+            right = mid;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return arr.slice(left, left + k);
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -283,43 +290,93 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
+<!-- tabs:end -->
 
-```ts
-function findClosestElements(arr: number[], k: number, x: number): number[] {
-    let l = 0;
-    let r = arr.length;
-    while (r - l > k) {
-        if (x - arr[l] <= arr[r - 1] - x) {
-            --r;
-        } else {
-            ++l;
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 3
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        left, right = 0, len(arr) - k
+        while left < right:
+            mid = (left + right) >> 1
+            if x - arr[mid] <= arr[mid + k] - x:
+                right = mid
+            else:
+                left = mid + 1
+        return arr[left : left + k]
+```
+
+#### Java
+
+```java
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int left = 0;
+        int right = arr.length - k;
+        while (left < right) {
+            int mid = (left + right) >> 1;
+            if (x - arr[mid] <= arr[mid + k] - x) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
         }
+        List<Integer> ans = new ArrayList<>();
+        for (int i = left; i < left + k; ++i) {
+            ans.add(arr[i]);
+        }
+        return ans;
     }
-    return arr.slice(l, r);
 }
 ```
 
-```ts
-function findClosestElements(arr: number[], k: number, x: number): number[] {
-    let left = 0;
-    let right = arr.length - k;
-    while (left < right) {
-        const mid = (left + right) >> 1;
-        if (x - arr[mid] <= arr[mid + k] - x) {
-            right = mid;
-        } else {
-            left = mid + 1;
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> findClosestElements(vector<int>& arr, int k, int x) {
+        int left = 0, right = arr.size() - k;
+        while (left < right) {
+            int mid = (left + right) >> 1;
+            if (x - arr[mid] <= arr[mid + k] - x)
+                right = mid;
+            else
+                left = mid + 1;
         }
+        return vector<int>(arr.begin() + left, arr.begin() + left + k);
     }
-    return arr.slice(left, left + k);
+};
+```
+
+#### Go
+
+```go
+func findClosestElements(arr []int, k int, x int) []int {
+	left, right := 0, len(arr)-k
+	for left < right {
+		mid := (left + right) >> 1
+		if x-arr[mid] <= arr[mid+k]-x {
+			right = mid
+		} else {
+			left = mid + 1
+		}
+	}
+	return arr[left : left+k]
 }
-```
-
-### **...**
-
-```
-
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

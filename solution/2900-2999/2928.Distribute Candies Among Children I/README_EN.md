@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2928.Distribute%20Candies%20Among%20Children%20I/README_EN.md
+rating: 1393
+source: Biweekly Contest 117 Q1
+tags:
+    - Math
+    - Combinatorics
+    - Enumeration
+---
+
+<!-- problem:start -->
+
 # [2928. Distribute Candies Among Children I](https://leetcode.com/problems/distribute-candies-among-children-i)
 
 [中文文档](/solution/2900-2999/2928.Distribute%20Candies%20Among%20Children%20I/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two positive integers <code>n</code> and <code>limit</code>.</p>
 
@@ -33,9 +49,13 @@
 	<li><code>1 &lt;= limit &lt;= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Combinatorial Mathematics + Principle of Inclusion-Exclusion**
+<!-- solution:start -->
+
+### Solution 1: Combinatorial Mathematics + Principle of Inclusion-Exclusion
 
 According to the problem description, we need to distribute $n$ candies to $3$ children, with each child receiving between $[0, limit]$ candies.
 
@@ -47,7 +67,7 @@ The time complexity is $O(1)$, and the space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -62,7 +82,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -86,7 +106,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -110,7 +130,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func distributeCandies(n int, limit int) int {
@@ -131,7 +151,7 @@ func distributeCandies(n int, limit int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function distributeCandies(n: number, limit: number): number {
@@ -150,10 +170,8 @@ function distributeCandies(n: number, limit: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

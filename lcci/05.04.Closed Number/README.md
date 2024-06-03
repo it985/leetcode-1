@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/05.04.Closed%20Number/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 05.04. 下一个数](https://leetcode.cn/problems/closed-number-lcci)
 
 [English Version](/lcci/05.04.Closed%20Number/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>下一个数。给定一个正整数，找出与其二进制表达式中1的个数相同且大小最接近的那两个数（一个略大，一个略小）。</p>
 <p> <strong>示例1:</strong></p>
@@ -23,11 +31,13 @@
 <li>如果找不到前一个或者后一个满足条件的正数，那么输出 -1。</li>
 </ol>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：位运算**
+### 方法一：位运算
 
 我们先考虑如何找出第一个比 $num$ 大且二进制表示中 $1$ 的个数相同的数。
 
@@ -43,9 +53,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -73,9 +81,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -112,7 +118,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -150,7 +156,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findClosedNumbers(num int) []int {
@@ -185,7 +191,7 @@ func findClosedNumbers(num int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findClosedNumbers(num: number): number[] {
@@ -220,10 +226,54 @@ function findClosedNumbers(num: number): number[] {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    func findClosedNumbers(_ num: Int) -> [Int] {
+        var ans = [-1, -1]
+        let dirs = [0, 1, 0]
 
+        for p in 0..<2 {
+            let a = dirs[p], b = dirs[p + 1]
+            var x = num
+            var found = false
+
+            for i in 1..<31 {
+                if ((x >> i) & 1) == a && ((x >> (i - 1)) & 1) == b {
+                    x ^= (1 << i)
+                    x ^= (1 << (i - 1))
+
+                    var j = 0, k = i - 2
+                    while j < k {
+                        while j < k && ((x >> j) & 1) == b {
+                            j += 1
+                        }
+                        while j < k && ((x >> k) & 1) == a {
+                            k -= 1
+                        }
+                        if j < k {
+                            x ^= (1 << j)
+                            x ^= (1 << k)
+                        }
+                    }
+                    ans[p] = x
+                    found = true
+                    break
+                }
+            }
+            if !found {
+                ans[p] = -1
+            }
+        }
+
+        return ans
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

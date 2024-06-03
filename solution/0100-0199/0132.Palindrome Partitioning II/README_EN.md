@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0132.Palindrome%20Partitioning%20II/README_EN.md
+tags:
+    - String
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [132. Palindrome Partitioning II](https://leetcode.com/problems/palindrome-partitioning-ii)
 
 [中文文档](/solution/0100-0199/0132.Palindrome%20Partitioning%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a string <code>s</code>, partition <code>s</code> such that every <span data-keyword="substring-nonempty">substring</span> of the partition is a <span data-keyword="palindrome-string">palindrome</span>.</p>
 
@@ -39,11 +52,17 @@
 	<li><code>s</code> consists of lowercase English letters only.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -61,7 +80,7 @@ class Solution:
         return f[-1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -92,7 +111,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -120,7 +139,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minCut(s string) int {
@@ -154,7 +173,7 @@ func minCut(s string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minCut(s: string): number {
@@ -181,7 +200,7 @@ function minCut(s: string): number {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -212,10 +231,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

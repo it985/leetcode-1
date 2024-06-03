@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0540.Single%20Element%20in%20a%20Sorted%20Array/README.md
+tags:
+    - 数组
+    - 二分查找
+---
+
+<!-- problem:start -->
+
 # [540. 有序数组中的单一元素](https://leetcode.cn/problems/single-element-in-a-sorted-array)
 
 [English Version](/solution/0500-0599/0540.Single%20Element%20in%20a%20Sorted%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个仅由整数组成的有序数组，其中每个元素都会出现两次，唯有一个数只会出现一次。</p>
 
@@ -39,11 +50,13 @@
 	<li><code>0 &lt;= nums[i]&nbsp;&lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找**
+### 方法一：二分查找
 
 给与的数组是有序的，由此可以使用二分查找，那条件该如何判断呢。
 
@@ -83,9 +96,7 @@ return nums[l]
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -101,9 +112,7 @@ class Solution:
         return nums[left]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -124,43 +133,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function singleNonDuplicate(nums: number[]): number {
-    let left = 0,
-        right = nums.length - 1;
-    while (left < right) {
-        const mid = (left + right) >> 1;
-        if (nums[mid] != nums[mid ^ 1]) {
-            right = mid;
-        } else {
-            left = mid + 1;
-        }
-    }
-    return nums[left];
-}
-```
-
-### **C**
-
-```c
-int singleNonDuplicate(int* nums, int numsSize) {
-    int left = 0;
-    int right = numsSize - 1;
-    while (left < right) {
-        int mid = left + (right - left) / 2;
-        if (nums[mid] == nums[mid ^ 1]) {
-            left = mid + 1;
-        } else {
-            right = mid;
-        }
-    }
-    return nums[left];
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -179,7 +152,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func singleNonDuplicate(nums []int) int {
@@ -196,7 +169,25 @@ func singleNonDuplicate(nums []int) int {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function singleNonDuplicate(nums: number[]): number {
+    let left = 0,
+        right = nums.length - 1;
+    while (left < right) {
+        const mid = (left + right) >> 1;
+        if (nums[mid] != nums[mid ^ 1]) {
+            right = mid;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return nums[left];
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -216,10 +207,26 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C
 
-```
-
+```c
+int singleNonDuplicate(int* nums, int numsSize) {
+    int left = 0;
+    int right = numsSize - 1;
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] == nums[mid ^ 1]) {
+            left = mid + 1;
+        } else {
+            right = mid;
+        }
+    }
+    return nums[left];
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

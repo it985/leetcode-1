@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0944.Delete%20Columns%20to%20Make%20Sorted/README.md
+tags:
+    - 数组
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [944. 删列造序](https://leetcode.cn/problems/delete-columns-to-make-sorted)
 
 [English Version](/solution/0900-0999/0944.Delete%20Columns%20to%20Make%20Sorted/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你由 <code>n</code> 个小写字母字符串组成的数组 <code>strs</code>，其中每个字符串长度相等。</p>
 
@@ -67,15 +78,17 @@ cae</pre>
 	<li><code>strs[i]</code> 由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -90,9 +103,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -112,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -134,7 +145,25 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func minDeletionSize(strs []string) int {
+	m, n := len(strs[0]), len(strs)
+	ans := 0
+	for j := 0; j < m; j++ {
+		for i := 1; i < n; i++ {
+			if strs[i][j] < strs[i-1][j] {
+				ans++
+				break
+			}
+		}
+	}
+	return ans
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -155,28 +184,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func minDeletionSize(strs []string) int {
-	m, n := len(strs[0]), len(strs)
-	ans := 0
-	for j := 0; j < m; j++ {
-		for i := 1; i < n; i++ {
-			if strs[i][j] < strs[i-1][j] {
-				ans++
-				break
-			}
-		}
-	}
-	return ans
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

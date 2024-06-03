@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0424.Longest%20Repeating%20Character%20Replacement/README.md
+tags:
+    - 哈希表
+    - 字符串
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [424. 替换后的最长重复字符](https://leetcode.cn/problems/longest-repeating-character-replacement)
 
 [English Version](/solution/0400-0499/0424.Longest%20Repeating%20Character%20Replacement/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串 <code>s</code> 和一个整数 <code>k</code> 。你可以选择字符串中的任一字符，并将其更改为任何其他大写英文字符。该操作最多可执行 <code>k</code> 次。</p>
 
@@ -41,22 +53,17 @@
 	<li><code>0 &lt;= k &lt;= s.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-我们维护一个数组 `int[26]` 来存储当前窗口中各个字母的出现次数，j 表示窗口的左边界，i 表示窗口右边界。
-
--   窗口扩张：j 不变，i++
--   窗口滑动：j++，i++
-
-`maxCnt` 保存滑动窗口内相同字母出现次数的**历史最大值**，通过判断窗口宽度 `i - j + 1` 是否大于 `maxCnt + k` 来决定窗口是否做滑动，否则窗口就扩张。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -73,9 +80,7 @@ class Solution:
         return i - j
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -97,7 +102,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +124,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func characterReplacement(s string, k int) int {
@@ -140,10 +145,8 @@ func characterReplacement(s string, k int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

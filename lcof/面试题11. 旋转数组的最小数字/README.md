@@ -1,6 +1,16 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof/%E9%9D%A2%E8%AF%95%E9%A2%9811.%20%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 11. 旋转数组的最小数字](https://leetcode.cn/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/)
 
 ## 题目描述
+
+<!-- description:start -->
 
 <p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。</p>
 
@@ -22,9 +32,13 @@
 
 <p>注意：本题与主站 154 题相同：<a href="https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array-ii/">https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array-ii/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-**方法一：二分查找**
+<!-- solution:start -->
+
+### 方法一：二分查找
 
 二分查找的变种，需要考虑重复元素的情况。
 
@@ -38,11 +52,9 @@
 
 时间复杂度 $(\log n)$，空间复杂度 $O(1)$。其中 $n$ 为数组长度。
 
-注意，我们也可以每次取中间元素 `numbers[mid]` 与左端元素 `numbers[l]` 比较，但需要考虑当前 $[l,..r]$ 区间内的元素是否已经有序，即是否满足 `numbers[l] < numbers[r]`，如果满足，直接返回 `numbers[l]` 即可。其它情况与上述方法类似。
-
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,24 +71,7 @@ class Solution:
         return numbers[l]
 ```
 
-```python
-class Solution:
-    def minArray(self, numbers: List[int]) -> int:
-        l, r = 0, len(numbers) - 1
-        while l < r:
-            if numbers[l] < numbers[r]:
-                return numbers[l]
-            mid = (l + r) >> 1
-            if numbers[mid] > numbers[l]:
-                l = mid + 1
-            elif numbers[mid] < numbers[l]:
-                r = mid
-            else:
-                l += 1
-        return numbers[l]
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -97,29 +92,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int minArray(int[] numbers) {
-        int l = 0, r = numbers.length - 1;
-        while (l < r) {
-            if (numbers[l] < numbers[r]) {
-                break;
-            }
-            int m = (l + r) >>> 1;
-            if (numbers[m] > numbers[l]) {
-                l = m + 1;
-            } else if (numbers[m] < numbers[l]) {
-                r = m;
-            } else {
-                ++l;
-            }
-        }
-        return numbers[l];
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -141,30 +114,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int minArray(vector<int>& numbers) {
-        int l = 0, r = numbers.size() - 1;
-        while (l < r) {
-            if (numbers[l] < numbers[r]) {
-                break;
-            }
-            int mid = (l + r) >> 1;
-            if (numbers[mid] > numbers[l]) {
-                l = mid + 1;
-            } else if (numbers[mid] < numbers[l]) {
-                r = mid;
-            } else {
-                ++l;
-            }
-        }
-        return numbers[l];
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func minArray(numbers []int) int {
@@ -183,76 +133,7 @@ func minArray(numbers []int) int {
 }
 ```
 
-```go
-func minArray(numbers []int) int {
-	l, r := 0, len(numbers)-1
-	for l < r {
-		if numbers[l] < numbers[r] {
-			break
-		}
-		mid := (l + r) >> 1
-		if numbers[mid] > numbers[l] {
-			l = mid + 1
-		} else if numbers[mid] < numbers[l] {
-			r = mid
-		} else {
-			l++
-		}
-	}
-	return numbers[l]
-}
-```
-
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} numbers
- * @return {number}
- */
-var minArray = function (numbers) {
-    let l = 0,
-        r = numbers.length - 1;
-    while (l < r) {
-        let m = (l + r) >>> 1;
-        if (numbers[m] > numbers[r]) {
-            l = m + 1;
-        } else if (numbers[m] < numbers[r]) {
-            r = m;
-        } else {
-            --r;
-        }
-    }
-    return numbers[l];
-};
-```
-
-```js
-/**
- * @param {number[]} numbers
- * @return {number}
- */
-var minArray = function (numbers) {
-    let l = 0,
-        r = numbers.length - 1;
-    while (l < r) {
-        if (numbers[l] < numbers[r]) {
-            break;
-        }
-        let m = (l + r) >>> 1;
-        if (numbers[m] > numbers[l]) {
-            l = m + 1;
-        } else if (numbers[m] < numbers[l]) {
-            r = m;
-        } else {
-            ++l;
-        }
-    }
-    return numbers[l];
-};
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -277,6 +158,177 @@ impl Solution {
     }
 }
 ```
+
+#### JavaScript
+
+```js
+/**
+ * @param {number[]} numbers
+ * @return {number}
+ */
+var minArray = function (numbers) {
+    let l = 0,
+        r = numbers.length - 1;
+    while (l < r) {
+        let m = (l + r) >>> 1;
+        if (numbers[m] > numbers[r]) {
+            l = m + 1;
+        } else if (numbers[m] < numbers[r]) {
+            r = m;
+        } else {
+            --r;
+        }
+    }
+    return numbers[l];
+};
+```
+
+#### C#
+
+```cs
+public class Solution {
+    public int MinArray(int[] numbers) {
+        int l = 0, r = numbers.Length - 1;
+        while (l < r) {
+            int m = (l + r) >> 1;
+            if (numbers[m] > numbers[r]) {
+                l = m + 1;
+            } else if (numbers[m] < numbers[r]) {
+                r = m;
+            } else {
+                --r;
+            }
+        }
+        return numbers[l];
+    }
+}
+```
+
+#### Swift
+
+```swift
+class Solution {
+    func minArray(_ numbers: [Int]) -> Int {
+        var l = 0
+        var r = numbers.count - 1
+        while l < r {
+            let m = (l + r) / 2
+            if numbers[m] > numbers[r] {
+                l = m + 1
+            } else if numbers[m] < numbers[r] {
+                r = m
+            } else {
+                r -= 1
+            }
+        }
+        return numbers[l]
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start-->
+
+### 方法二：二分查找（写法二）
+
+注意，我们也可以每次取中间元素 `numbers[mid]` 与左端元素 `numbers[l]` 比较，但需要考虑当前 $[l,..r]$ 区间内的元素是否已经有序，即是否满足 `numbers[l] < numbers[r]`，如果满足，直接返回 `numbers[l]` 即可。其它情况与方法一类似。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minArray(self, numbers: List[int]) -> int:
+        l, r = 0, len(numbers) - 1
+        while l < r:
+            if numbers[l] < numbers[r]:
+                return numbers[l]
+            mid = (l + r) >> 1
+            if numbers[mid] > numbers[l]:
+                l = mid + 1
+            elif numbers[mid] < numbers[l]:
+                r = mid
+            else:
+                l += 1
+        return numbers[l]
+```
+
+#### Java
+
+```java
+class Solution {
+    public int minArray(int[] numbers) {
+        int l = 0, r = numbers.length - 1;
+        while (l < r) {
+            if (numbers[l] < numbers[r]) {
+                break;
+            }
+            int m = (l + r) >>> 1;
+            if (numbers[m] > numbers[l]) {
+                l = m + 1;
+            } else if (numbers[m] < numbers[l]) {
+                r = m;
+            } else {
+                ++l;
+            }
+        }
+        return numbers[l];
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int minArray(vector<int>& numbers) {
+        int l = 0, r = numbers.size() - 1;
+        while (l < r) {
+            if (numbers[l] < numbers[r]) {
+                break;
+            }
+            int mid = (l + r) >> 1;
+            if (numbers[mid] > numbers[l]) {
+                l = mid + 1;
+            } else if (numbers[mid] < numbers[l]) {
+                r = mid;
+            } else {
+                ++l;
+            }
+        }
+        return numbers[l];
+    }
+};
+```
+
+#### Go
+
+```go
+func minArray(numbers []int) int {
+	l, r := 0, len(numbers)-1
+	for l < r {
+		if numbers[l] < numbers[r] {
+			break
+		}
+		mid := (l + r) >> 1
+		if numbers[mid] > numbers[l] {
+			l = mid + 1
+		} else if numbers[mid] < numbers[l] {
+			r = mid
+		} else {
+			l++
+		}
+	}
+	return numbers[l]
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -305,26 +357,34 @@ impl Solution {
 }
 ```
 
-### **C#**
+#### JavaScript
 
-```cs
-public class Solution {
-    public int MinArray(int[] numbers) {
-        int l = 0, r = numbers.Length - 1;
-        while (l < r) {
-            int m = (l + r) >> 1;
-            if (numbers[m] > numbers[r]) {
-                l = m + 1;
-            } else if (numbers[m] < numbers[r]) {
-                r = m;
-            } else {
-                --r;
-            }
+```js
+/**
+ * @param {number[]} numbers
+ * @return {number}
+ */
+var minArray = function (numbers) {
+    let l = 0,
+        r = numbers.length - 1;
+    while (l < r) {
+        if (numbers[l] < numbers[r]) {
+            break;
         }
-        return numbers[l];
+        let m = (l + r) >>> 1;
+        if (numbers[m] > numbers[l]) {
+            l = m + 1;
+        } else if (numbers[m] < numbers[l]) {
+            r = m;
+        } else {
+            ++l;
+        }
     }
-}
+    return numbers[l];
+};
 ```
+
+#### C#
 
 ```cs
 public class Solution {
@@ -348,10 +408,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

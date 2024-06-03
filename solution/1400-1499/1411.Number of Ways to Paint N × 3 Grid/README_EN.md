@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1411.Number%20of%20Ways%20to%20Paint%20N%20%C3%97%203%20Grid/README_EN.md
+rating: 1844
+source: Weekly Contest 184 Q4
+tags:
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [1411. Number of Ways to Paint N × 3 Grid](https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid)
 
 [中文文档](/solution/1400-1499/1411.Number%20of%20Ways%20to%20Paint%20N%20%C3%97%203%20Grid/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You have a <code>grid</code> of size <code>n x 3</code> and you want to paint each cell of the grid with exactly one of the three colors: <strong>Red</strong>, <strong>Yellow,</strong> or <strong>Green</strong> while making sure that no two adjacent cells have the same color (i.e., no two cells that share vertical or horizontal sides have the same color).</p>
 
@@ -32,9 +46,13 @@
 	<li><code>1 &lt;= n &lt;= 5000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Recursion**
+<!-- solution:start -->
+
+### Solution 1: Recursion
 
 We classify all possible states for each row. According to the principle of symmetry, when a row only has $3$ elements, all legal states are classified as: $010$ type, $012$ type.
 
@@ -45,7 +63,103 @@ In summary, we can get: $newf0 = 3 \times f0 + 2 \times f1$, $newf1 = 2 \times f
 
 The time complexity is $O(n)$, where $n$ is the number of rows in the grid. The space complexity is $O(1)$.
 
-**Solution 2: State Compression + Dynamic Programming**
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def numOfWays(self, n: int) -> int:
+        mod = 10**9 + 7
+        f0 = f1 = 6
+        for _ in range(n - 1):
+            g0 = (3 * f0 + 2 * f1) % mod
+            g1 = (2 * f0 + 2 * f1) % mod
+            f0, f1 = g0, g1
+        return (f0 + f1) % mod
+```
+
+#### Java
+
+```java
+class Solution {
+    public int numOfWays(int n) {
+        int mod = (int) 1e9 + 7;
+        long f0 = 6, f1 = 6;
+        for (int i = 0; i < n - 1; ++i) {
+            long g0 = (3 * f0 + 2 * f1) % mod;
+            long g1 = (2 * f0 + 2 * f1) % mod;
+            f0 = g0;
+            f1 = g1;
+        }
+        return (int) (f0 + f1) % mod;
+    }
+}
+```
+
+#### C++
+
+```cpp
+using ll = long long;
+
+class Solution {
+public:
+    int numOfWays(int n) {
+        int mod = 1e9 + 7;
+        ll f0 = 6, f1 = 6;
+        while (--n) {
+            ll g0 = (f0 * 3 + f1 * 2) % mod;
+            ll g1 = (f0 * 2 + f1 * 2) % mod;
+            f0 = g0;
+            f1 = g1;
+        }
+        return (int) (f0 + f1) % mod;
+    }
+};
+```
+
+#### Go
+
+```go
+func numOfWays(n int) int {
+	mod := int(1e9) + 7
+	f0, f1 := 6, 6
+	for n > 1 {
+		n--
+		g0 := (f0*3 + f1*2) % mod
+		g1 := (f0*2 + f1*2) % mod
+		f0, f1 = g0, g1
+	}
+	return (f0 + f1) % mod
+}
+```
+
+#### TypeScript
+
+```ts
+function numOfWays(n: number): number {
+    const mod: number = 10 ** 9 + 7;
+    let f0: number = 6;
+    let f1: number = 6;
+
+    for (let i = 1; i < n; i++) {
+        const g0: number = (3 * f0 + 2 * f1) % mod;
+        const g1: number = (2 * f0 + 2 * f1) % mod;
+        f0 = g0;
+        f1 = g1;
+    }
+
+    return (f0 + f1) % mod;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: State Compression + Dynamic Programming
 
 We notice that the grid only has $3$ columns, so there are at most $3^3=27$ different coloring schemes in a row.
 
@@ -65,19 +179,7 @@ The time complexity is $O((m + n) \times 3^{2m})$, and the space complexity is $
 
 <!-- tabs:start -->
 
-### **Python3**
-
-```python
-class Solution:
-    def numOfWays(self, n: int) -> int:
-        mod = 10**9 + 7
-        f0 = f1 = 6
-        for _ in range(n - 1):
-            g0 = (3 * f0 + 2 * f1) % mod
-            g1 = (2 * f0 + 2 * f1) % mod
-            f0, f1 = g0, g1
-        return (f0 + f1) % mod
-```
+#### Python3
 
 ```python
 class Solution:
@@ -117,23 +219,7 @@ class Solution:
         return sum(f) % mod
 ```
 
-### **Java**
-
-```java
-class Solution {
-    public int numOfWays(int n) {
-        int mod = (int) 1e9 + 7;
-        long f0 = 6, f1 = 6;
-        for (int i = 0; i < n - 1; ++i) {
-            long g0 = (3 * f0 + 2 * f1) % mod;
-            long g1 = (2 * f0 + 2 * f1) % mod;
-            f0 = g0;
-            f1 = g1;
-        }
-        return (int) (f0 + f1) % mod;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -197,26 +283,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-using ll = long long;
-
-class Solution {
-public:
-    int numOfWays(int n) {
-        int mod = 1e9 + 7;
-        ll f0 = 6, f1 = 6;
-        while (--n) {
-            ll g0 = (f0 * 3 + f1 * 2) % mod;
-            ll g1 = (f0 * 2 + f1 * 2) % mod;
-            f0 = g0;
-            f1 = g1;
-        }
-        return (int) (f0 + f1) % mod;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -281,21 +348,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func numOfWays(n int) int {
-	mod := int(1e9) + 7
-	f0, f1 := 6, 6
-	for n > 1 {
-		n--
-		g0 := (f0*3 + f1*2) % mod
-		g1 := (f0*2 + f1*2) % mod
-		f0, f1 = g0, g1
-	}
-	return (f0 + f1) % mod
-}
-```
+#### Go
 
 ```go
 func numOfWays(n int) (ans int) {
@@ -354,24 +407,7 @@ func numOfWays(n int) (ans int) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function numOfWays(n: number): number {
-    const mod: number = 10 ** 9 + 7;
-    let f0: number = 6;
-    let f1: number = 6;
-
-    for (let i = 1; i < n; i++) {
-        const g0: number = (3 * f0 + 2 * f1) % mod;
-        const g1: number = (2 * f0 + 2 * f1) % mod;
-        f0 = g0;
-        f1 = g1;
-    }
-
-    return (f0 + f1) % mod;
-}
-```
+#### TypeScript
 
 ```ts
 function numOfWays(n: number): number {
@@ -431,10 +467,8 @@ function numOfWays(n: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

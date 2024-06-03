@@ -1,13 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.20.T9/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 16.20. T9 键盘](https://leetcode.cn/problems/t9-lcci)
 
 [English Version](/lcci/16.20.T9/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在老式手机上，用户通过数字键盘输入，手机将提供与这些数字相匹配的单词列表。每个数字映射到0至4个字母。给定一个数字序列，实现一个算法来返回匹配单词的列表。你会得到一张含有有效单词的列表。映射如下图所示：</p>
-![](./images/17_telephone_keypad.png)
+![](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcci/16.20.T9/images/17_telephone_keypad.png)
 <p><strong>示例 1:</strong></p>
 <pre><strong>输入:</strong> num = &quot;8733&quot;, words = [&quot;tree&quot;, &quot;used&quot;]
 <strong>输出:</strong> [&quot;tree&quot;, &quot;used&quot;]
@@ -23,11 +31,13 @@
 	<li><code>num</code>中不会出现 0, 1 这两个数字</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：逆向思维**
+### 方法一：逆向思维
 
 我们考虑一种正向的解法，遍历字符串 $num$ 中的每个数字，将其映射到对应的字母，然后将所有的字母组合起来，得到所有可能的单词，再与给定的单词列表进行比较，若单词在列表中，则将其加入答案。这种解法的时间复杂度为 $O(4^n)$，其中 $n$ 为字符串 $num$ 的长度，显然会超时。
 
@@ -37,9 +47,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -51,6 +59,8 @@ class Solution:
         return [w for w in words if check(w)]
 ```
 
+#### Python3
+
 ```python
 class Solution:
     def getValidT9Words(self, num: str, words: List[str]) -> List[str]:
@@ -58,9 +68,7 @@ class Solution:
         return [w for w in words if w.translate(trans) == num]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -89,7 +97,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -118,7 +126,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getValidT9Words(num string, words []string) (ans []string) {
@@ -143,7 +151,7 @@ func getValidT9Words(num string, words []string) (ans []string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function getValidT9Words(num: string, words: string[]): string[] {
@@ -170,10 +178,38 @@ function getValidT9Words(num: string, words: string[]): string[] {
 }
 ```
 
-### **...**
+#### Swift
 
-```
-
+```swift
+class Solution {
+    func getValidT9Words(_ num: String, _ words: [String]) -> [String] {
+        let s = "22233344455566677778889999"
+        var d = Array(repeating: 0, count: 26)
+        for i in 0..<26 {
+            d[i] = Int(s[s.index(s.startIndex, offsetBy: i)].asciiValue! - Character("0").asciiValue!)
+        }
+        var ans: [String] = []
+        let n = num.count
+        for w in words {
+            var ok = true
+            for i in 0..<n {
+                let numChar = Int(num[num.index(num.startIndex, offsetBy: i)].asciiValue! - Character("0").asciiValue!)
+                if d[Int(w[w.index(w.startIndex, offsetBy: i)].asciiValue! - Character("a").asciiValue!)] != numChar {
+                    ok = false
+                    break
+                }
+            }
+            if ok {
+                ans.append(w)
+            }
+        }
+        return ans
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

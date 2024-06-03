@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0113.Path%20Sum%20II/README_EN.md
+tags:
+    - Tree
+    - Depth-First Search
+    - Backtracking
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [113. Path Sum II](https://leetcode.com/problems/path-sum-ii)
 
 [中文文档](/solution/0100-0199/0113.Path%20Sum%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>root</code> of a binary tree and an integer <code>targetSum</code>, return <em>all <strong>root-to-leaf</strong> paths where the sum of the node values in the path equals </em><code>targetSum</code><em>. Each path should be returned as a list of the node <strong>values</strong>, not node references</em>.</p>
 
@@ -42,9 +57,13 @@
 	<li><code>-1000 &lt;= targetSum &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: DFS**
+<!-- solution:start -->
+
+### Solution 1: DFS
 
 We start from the root node, recursively traverse all paths from the root node to the leaf nodes, and record the path sum. When we traverse to a leaf node, if the current path sum equals `targetSum`, then we add this path to the answer.
 
@@ -52,7 +71,7 @@ The time complexity is $O(n^2)$, where $n$ is the number of nodes in the binary 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -80,7 +99,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -123,7 +142,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -157,7 +176,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -189,7 +208,7 @@ func pathSum(root *TreeNode, targetSum int) (ans [][]int) {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -248,7 +267,7 @@ impl Solution {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -281,10 +300,8 @@ var pathSum = function (root, targetSum) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

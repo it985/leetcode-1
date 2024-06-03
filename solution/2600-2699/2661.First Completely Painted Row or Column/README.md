@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2661.First%20Completely%20Painted%20Row%20or%20Column/README.md
+rating: 1502
+source: 第 343 场周赛 Q2
+tags:
+    - 数组
+    - 哈希表
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [2661. 找出叠涂元素](https://leetcode.cn/problems/first-completely-painted-row-or-column)
 
 [English Version](/solution/2600-2699/2661.First%20Completely%20Painted%20Row%20or%20Column/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>arr</code> 和一个 <code>m x n</code> 的整数 <strong>矩阵</strong> <code>mat</code> 。<code>arr</code> 和 <code>mat</code> 都包含范围 <code>[1，m * n]</code> 内的 <strong>所有</strong> 整数。</p>
 
@@ -45,11 +59,13 @@
 	<li><code>mat</code> 中的所有整数 <strong>互不相同</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 数组计数**
+### 方法一：哈希表 + 数组计数
 
 我们用一个哈希表 $idx$ 记录每个元素在矩阵 $mat$ 中的位置，即 $idx[mat[i][j]] = (i, j)$，定义两个数组 $row$ 和 $col$ 分别记录每行和每列已经涂色的元素个数。
 
@@ -59,9 +75,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -81,9 +95,7 @@ class Solution:
                 return k
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -110,7 +122,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -136,7 +148,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func firstCompleteIndex(arr []int, mat [][]int) int {
@@ -161,7 +173,7 @@ func firstCompleteIndex(arr []int, mat [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function firstCompleteIndex(arr: number[], mat: number[][]): number {
@@ -186,7 +198,7 @@ function firstCompleteIndex(arr: number[], mat: number[][]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -220,10 +232,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

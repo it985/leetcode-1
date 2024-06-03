@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1721.Swapping%20Nodes%20in%20a%20Linked%20List/README_EN.md
+rating: 1386
+source: Weekly Contest 223 Q2
+tags:
+    - Linked List
+    - Two Pointers
+---
+
+<!-- problem:start -->
+
 # [1721. Swapping Nodes in a Linked List](https://leetcode.com/problems/swapping-nodes-in-a-linked-list)
 
 [中文文档](/solution/1700-1799/1721.Swapping%20Nodes%20in%20a%20Linked%20List/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given the <code>head</code> of a linked list, and an integer <code>k</code>.</p>
 
@@ -32,9 +47,13 @@
 	<li><code>0 &lt;= Node.val &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Two Pointers
 
 We can first use a fast pointer `fast` to find the $k$th node of the linked list, and use a pointer `p` to point to it. Then, we use a slow pointer `slow` to start from the head node of the linked list, and move both pointers forward at the same time. When the fast pointer reaches the last node of the linked list, the slow pointer `slow` points to the $k$th node from the end of the linked list, and we use a pointer `q` to point to it. At this point, we only need to swap the values of `p` and `q`.
 
@@ -42,7 +61,7 @@ The time complexity is $O(n)$, where $n$ is the length of the linked list. The s
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -63,7 +82,7 @@ class Solution:
         return head
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -97,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -130,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -156,7 +175,7 @@ func swapNodes(head *ListNode, k int) *ListNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -187,7 +206,7 @@ function swapNodes(head: ListNode | null, k: number): ListNode | null {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 /**
@@ -222,10 +241,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

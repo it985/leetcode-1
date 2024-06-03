@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2951.Find%20the%20Peaks/README.md
+rating: 1189
+source: 第 374 场周赛 Q1
+tags:
+    - 数组
+    - 枚举
+---
+
+<!-- problem:start -->
+
 # [2951. 找出峰值](https://leetcode.cn/problems/find-the-peaks)
 
 [English Version](/solution/2900-2999/2951.Find%20the%20Peaks/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的数组 <code>mountain</code> 。你的任务是找出数组&nbsp;<code>mountain</code> 中的所有 <strong>峰值</strong>。</p>
 
@@ -49,11 +62,13 @@ mountain[2] 也不可能是峰值，因为它不严格大于 mountain[3] 和 mou
 	<li><code>1 &lt;= mountain[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：直接遍历**
+### 方法一：直接遍历
 
 我们直接遍历下标 $i \in [1, n-2]$，对于每个下标 $i$，如果满足 $mountain[i-1] < mountain[i]$ 并且 $mountain[i + 1] < mountain[i]$，那么 $mountain[i]$ 就是一个峰值，我们将下标 $i$ 加入答案数组中。
 
@@ -63,9 +78,7 @@ mountain[2] 也不可能是峰值，因为它不严格大于 mountain[3] 和 mou
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,9 +90,7 @@ class Solution:
         ]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -95,7 +106,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -112,7 +123,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findPeaks(mountain []int) (ans []int) {
@@ -125,7 +136,7 @@ func findPeaks(mountain []int) (ans []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findPeaks(mountain: number[]): number[] {
@@ -139,10 +150,8 @@ function findPeaks(mountain: number[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

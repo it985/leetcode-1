@@ -1,8 +1,20 @@
-# [2041. Accepted Candidates From the Interviews](https://leetcode.com/problems/accepted-candidates-from-the-interviews)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2041.Accepted%20Candidates%20From%20the%20Interviews/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [2041. Accepted Candidates From the Interviews 🔒](https://leetcode.com/problems/accepted-candidates-from-the-interviews)
 
 [中文文档](/solution/2000-2099/2041.Accepted%20Candidates%20From%20the%20Interviews/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Candidates</code></p>
 
@@ -87,11 +99,17 @@ Rounds table:
 - Candidate 8: The total score is 6, and they have zero years of experience. We do not include them in the result table because of their years of experience and the score.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -105,3 +123,7 @@ HAVING SUM(score) > 15;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

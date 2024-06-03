@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1979.Find%20Greatest%20Common%20Divisor%20of%20Array/README.md
+rating: 1184
+source: 第 255 场周赛 Q1
+tags:
+    - 数组
+    - 数学
+    - 数论
+---
+
+<!-- problem:start -->
+
 # [1979. 找出数组的最大公约数](https://leetcode.cn/problems/find-greatest-common-divisor-of-array)
 
 [English Version](/solution/1900-1999/1979.Find%20Greatest%20Common%20Divisor%20of%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code> ，返回数组中最大数和最小数的 <strong>最大公约数</strong> 。</p>
 
@@ -51,11 +65,13 @@ nums 中最大的数是 3
 	<li><code>1 &lt;= nums[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 根据题意模拟即可，即先找出数组 `nums` 中的最大值和最小值，然后求最大值和最小值的最大公约数。
 
@@ -63,9 +79,7 @@ nums 中最大的数是 3
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -73,9 +87,7 @@ class Solution:
         return gcd(max(nums), min(nums))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +106,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -107,7 +119,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findGCD(nums []int) int {
@@ -123,7 +135,7 @@ func gcd(a, b int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findGCD(nums: number[]): number {
@@ -144,10 +156,8 @@ function gcd(a: number, b: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

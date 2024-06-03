@@ -1,8 +1,27 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2246.Longest%20Path%20With%20Different%20Adjacent%20Characters/README_EN.md
+rating: 2126
+source: Weekly Contest 289 Q4
+tags:
+    - Tree
+    - Depth-First Search
+    - Graph
+    - Topological Sort
+    - Array
+    - String
+---
+
+<!-- problem:start -->
+
 # [2246. Longest Path With Different Adjacent Characters](https://leetcode.com/problems/longest-path-with-different-adjacent-characters)
 
 [中文文档](/solution/2200-2299/2246.Longest%20Path%20With%20Different%20Adjacent%20Characters/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>tree</strong> (i.e. a connected, undirected graph that has no cycles) <strong>rooted</strong> at node <code>0</code> consisting of <code>n</code> nodes numbered from <code>0</code> to <code>n - 1</code>. The tree is represented by a <strong>0-indexed</strong> array <code>parent</code> of size <code>n</code>, where <code>parent[i]</code> is the parent of node <code>i</code>. Since node <code>0</code> is the root, <code>parent[0] == -1</code>.</p>
 
@@ -40,11 +59,25 @@ It can be proven that there is no longer path that satisfies the conditions.
 	<li><code>s</code> consists of only lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Tree-shaped DP
+
+First, we construct an adjacency list $g$ based on the array $parent$, where $g[i]$ represents all child nodes of node $i$.
+
+Then we start DFS from the root node. For each node $i$, we traverse each child node $j$ in $g[i]$. If $s[i] \neq s[j]$, then we can start from node $i$, pass through node $j$, and reach a leaf node. The length of this path is $x = 1 + \text{dfs}(j)$. We use $mx$ to record the longest path length starting from node $i$. At the same time, we update the answer $ans = \max(ans, mx + x)$ during the traversal process.
+
+Finally, we return $ans + 1$.
+
+The time complexity is $O(n)$, and the space complexity is $O(n)$, where $n$ is the number of nodes.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -67,7 +100,7 @@ class Solution:
         return ans + 1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +134,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -130,7 +163,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func longestPath(parent []int, s string) int {
@@ -157,10 +190,9 @@ func longestPath(parent []int, s string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
-function longestPath(parent: number[], s: string): number {
 function longestPath(parent: number[], s: string): number {
     const n = parent.length;
     const g: number[][] = Array.from({ length: n }, () => []);
@@ -184,10 +216,8 @@ function longestPath(parent: number[], s: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

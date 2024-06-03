@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1385.Find%20the%20Distance%20Value%20Between%20Two%20Arrays/README.md
+rating: 1234
+source: 第 22 场双周赛 Q1
+tags:
+    - 数组
+    - 双指针
+    - 二分查找
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1385. 两个数组间的距离值](https://leetcode.cn/problems/find-the-distance-value-between-two-arrays)
 
 [English Version](/solution/1300-1399/1385.Find%20the%20Distance%20Value%20Between%20Two%20Arrays/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个整数数组&nbsp;<code>arr1</code>&nbsp;，&nbsp;<code>arr2</code>&nbsp;和一个整数&nbsp;<code>d</code>&nbsp;，请你返回两个数组之间的&nbsp;<strong>距离值</strong>&nbsp;。</p>
 
@@ -62,11 +77,13 @@
 	<li><code>0 &lt;= d &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 二分查找**
+### 方法一：排序 + 二分查找
 
 我们可以先对数组 $arr2$ 排序，然后对于数组 $arr1$ 中的每个元素 $a$，使用二分查找，找到数组 $arr2$ 中第一个大于等于 $a-d$ 的元素，如果元素存在，且小于等于 $a+d$，则说明不符合距离要求，否则说明符合距离要求。我们将符合距离要求的元素个数累加，即为答案。
 
@@ -74,9 +91,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -89,9 +104,7 @@ class Solution:
         return sum(check(a) for a in arr1)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -121,7 +134,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -141,7 +154,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findTheDistanceValue(arr1 []int, arr2 []int, d int) (ans int) {
@@ -156,7 +169,7 @@ func findTheDistanceValue(arr1 []int, arr2 []int, d int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findTheDistanceValue(arr1: number[], arr2: number[], d: number): number {
@@ -184,7 +197,7 @@ function findTheDistanceValue(arr1: number[], arr2: number[], d: number): number
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -216,10 +229,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

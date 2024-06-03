@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2481.Minimum%20Cuts%20to%20Divide%20a%20Circle/README.md
+rating: 1246
+source: 第 92 场双周赛 Q1
+tags:
+    - 几何
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [2481. 分割圆的最少切割次数](https://leetcode.cn/problems/minimum-cuts-to-divide-a-circle)
 
 [English Version](/solution/2400-2499/2481.Minimum%20Cuts%20to%20Divide%20a%20Circle/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>圆内一个 <strong>有效切割</strong>&nbsp;，符合以下二者之一：</p>
 
@@ -53,11 +66,13 @@
 	<li><code>1 &lt;= n &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：分类讨论**
+### 方法一：分类讨论
 
 -   当 $n=1$ 时，不需要切割，即切割次数为 $0$；
 -   当 $n$ 为奇数时，不存在共线的情况，最少需要 $n$ 次切割；
@@ -76,9 +91,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -86,9 +99,7 @@ class Solution:
         return n if (n > 1 and n & 1) else n >> 1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +109,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -109,7 +120,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfCuts(n int) int {
@@ -120,7 +131,7 @@ func numberOfCuts(n int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfCuts(n: number): number {
@@ -128,17 +139,7 @@ function numberOfCuts(n: number): number {
 }
 ```
 
-### **C#**
-
-```cs
-public class Solution {
-    public int NumberOfCuts(int n) {
-        return n > 1 && n % 2 == 1 ? n : n >> 1;
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -151,10 +152,18 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C#
 
-```
-
+```cs
+public class Solution {
+    public int NumberOfCuts(int n) {
+        return n > 1 && n % 2 == 1 ? n : n >> 1;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

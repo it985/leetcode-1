@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1488.Avoid%20Flood%20in%20The%20City/README.md
+rating: 1973
+source: 第 194 场周赛 Q3
+tags:
+    - 贪心
+    - 数组
+    - 哈希表
+    - 二分查找
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [1488. 避免洪水泛滥](https://leetcode.cn/problems/avoid-flood-in-the-city)
 
 [English Version](/solution/1400-1499/1488.Avoid%20Flood%20in%20The%20City/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你的国家有无数个湖泊，所有湖泊一开始都是空的。当第 <code>n</code>&nbsp;个湖泊下雨前是空的，那么它就会装满水。如果第 <code>n</code>&nbsp;个湖泊下雨前是 <strong>满的&nbsp;</strong>，这个湖泊会发生 <strong>洪水</strong> 。你的目标是避免任意一个湖泊发生洪水。</p>
 
@@ -73,11 +89,13 @@
 	<li><code>0 &lt;= rains[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 二分查找**
+### 方法一：贪心 + 二分查找
 
 我们将所有晴天都存入 $sunny$ 数组或者有序集合中，使用哈希表 $rainy$ 记录每个湖泊最近一次下雨的日期。初始化答案数组 $ans$ 每个元素为 $-1$。
 
@@ -89,9 +107,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 from sortedcontainers import SortedList
@@ -118,9 +134,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -152,7 +166,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -184,7 +198,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func avoidFlood(rains []int) []int {
@@ -215,7 +229,7 @@ func avoidFlood(rains []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function avoidFlood(rains: number[]): number[] {
@@ -734,10 +748,8 @@ class TreeSet<T = number> {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

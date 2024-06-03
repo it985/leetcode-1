@@ -1,22 +1,37 @@
-# [2015. 每段建筑物的平均高度](https://leetcode.cn/problems/average-height-of-buildings-in-each-segment)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2015.Average%20Height%20of%20Buildings%20in%20Each%20Segment/README.md
+tags:
+    - 贪心
+    - 数组
+    - 排序
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
+# [2015. 每段建筑物的平均高度 🔒](https://leetcode.cn/problems/average-height-of-buildings-in-each-segment)
 
 [English Version](/solution/2000-2099/2015.Average%20Height%20of%20Buildings%20in%20Each%20Segment/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>一条完全笔直的街道由一条数字线表示。街道上有建筑物，由二维整数阵列&nbsp;<code>buildings</code> 表示，其中 <code>buildings[i] = [start<sub>i</sub>, end<sub>i</sub>, height<sub>i</sub>]</code>。这意味着在 <strong>半封闭的位置</strong><code>[starti，endi]</code> 有一座高度为&nbsp;<code>height<sub>i</sub></code>&nbsp;的建筑。<br />
+<p>一条完全笔直的街道由一条数字线表示。街道上有建筑物，由二维整数阵列&nbsp;<code>buildings</code> 表示，其中 <code>buildings[i] = [start<sub>i</sub>, end<sub>i</sub>, height<sub>i</sub>]</code>。这意味着在 <strong>半封闭的位置</strong><code>[starti，endi)</code>&nbsp;有一座高度为&nbsp;<code>height<sub>i</sub></code>&nbsp;的建筑。<br />
 你想用 <strong>最少</strong> 数量的非重叠 <strong>部分</strong> 来 <strong>描述</strong> 街道上建筑物的高度。街道可以用2D整数数组&nbsp;<code>street</code>&nbsp;来表示，其中&nbsp;<code>street[j] = [left<sub>j</sub>, right<sub>j</sub>, average<sub>j</sub>]</code>&nbsp;描述了道路的 <strong>半封闭区域</strong>&nbsp;<code>[left<sub>j</sub>, right<sub>j</sub>)</code>&nbsp;，该段中建筑物的 <strong>平均</strong> 高度为&nbsp;<code>average<sub>j</sub></code> 。</p>
 
 <ul>
 	<li>例如，如果&nbsp;<code>buildings = [[1,5,2],[3,10,4]]</code>&nbsp;，&nbsp;<code>street = [[1,3,2],[3,5,3],[5,10,4]]</code>&nbsp;可以表示街道，因为：
+
     <ul>
     	<li>从 1 到 3 ，只有第一栋建筑的平均高度为 <code>2 / 1 = 2</code> 。</li>
     	<li>从 3 到 5 ，第一和第二栋建筑的平均高度均为&nbsp;<code>（2+4） / 2 = 3 </code>。</li>
     	<li>从 5 到 10 ，只有第二栋建筑的平均高度为 <code>4 / 1 = 4</code> 。</li>
     </ul>
     </li>
+
 </ul>
 
 <p>给定&nbsp;<code>buildings</code> ，返回如上所述的二维整数矩阵<em>&nbsp;</em><code>street</code><em>&nbsp;</em>（ <strong>不包括</strong> 街道上没有建筑物的任何区域）。您可以按 <strong>任何顺序</strong> 返回数组。<br />
@@ -73,11 +88,13 @@
 	<li><code>1 &lt;= height<sub>i</sub> &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：差分有序哈希表**
+### 方法一：差分有序哈希表
 
 我们利用差分思想，使用有序哈希表 `height` 记录每个位置的高度变化，`cnt` 记录建筑物的数量变化。对有序哈希表求前缀和，即可得到每个位置的高度和建筑物数量。
 
@@ -87,9 +104,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -116,9 +131,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -157,7 +170,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -189,7 +202,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func averageHeightOfBuildings(buildings [][]int) [][]int {
@@ -226,10 +239,8 @@ func averageHeightOfBuildings(buildings [][]int) [][]int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0509.Fibonacci%20Number/README_EN.md
+tags:
+    - Recursion
+    - Memoization
+    - Math
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [509. Fibonacci Number](https://leetcode.com/problems/fibonacci-number)
 
 [中文文档](/solution/0500-0599/0509.Fibonacci%20Number/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>The <b>Fibonacci numbers</b>, commonly denoted <code>F(n)</code> form a sequence, called the <b>Fibonacci sequence</b>, such that each number is the sum of the two preceding ones, starting from <code>0</code> and <code>1</code>. That is,</p>
 
@@ -45,11 +60,17 @@ F(n) = F(n - 1) + F(n - 2), for n &gt; 1.
 	<li><code>0 &lt;= n &lt;= 30</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -60,7 +81,7 @@ class Solution:
         return a
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -76,7 +97,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -93,7 +114,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func fib(n int) int {
@@ -105,7 +126,37 @@ func fib(n int) int {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function fib(n: number): number {
+    let a = 0;
+    let b = 1;
+    for (let i = 0; i < n; i++) {
+        [a, b] = [b, a + b];
+    }
+    return a;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn fib(n: i32) -> i32 {
+        let mut a = 0;
+        let mut b = 1;
+        for _ in 0..n {
+            let t = b;
+            b = a + b;
+            a = t;
+        }
+        a
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -124,57 +175,7 @@ var fib = function (n) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function fib(n: number): number {
-    let a = 0;
-    let b = 1;
-    for (let i = 0; i < n; i++) {
-        [a, b] = [b, a + b];
-    }
-    return a;
-}
-```
-
-```ts
-function fib(n: number): number {
-    if (n < 2) {
-        return n;
-    }
-    return fib(n - 1) + fib(n - 2);
-}
-```
-
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn fib(n: i32) -> i32 {
-        let mut a = 0;
-        let mut b = 1;
-        for _ in 0..n {
-            let t = b;
-            b = a + b;
-            a = t;
-        }
-        a
-    }
-}
-```
-
-```rust
-impl Solution {
-    pub fn fib(n: i32) -> i32 {
-        if n < 2 {
-            return n;
-        }
-        Self::fib(n - 1) + Self::fib(n - 2)
-    }
-}
-```
-
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -195,10 +196,42 @@ class Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### TypeScript
+
+```ts
+function fib(n: number): number {
+    if (n < 2) {
+        return n;
+    }
+    return fib(n - 1) + fib(n - 2);
+}
 ```
 
+#### Rust
+
+```rust
+impl Solution {
+    pub fn fib(n: i32) -> i32 {
+        if n < 2 {
+            return n;
+        }
+        Self::fib(n - 1) + Self::fib(n - 2)
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

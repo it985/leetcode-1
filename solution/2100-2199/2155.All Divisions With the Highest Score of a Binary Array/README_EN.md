@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2155.All%20Divisions%20With%20the%20Highest%20Score%20of%20a%20Binary%20Array/README_EN.md
+rating: 1390
+source: Weekly Contest 278 Q2
+tags:
+    - Array
+---
+
+<!-- problem:start -->
+
 # [2155. All Divisions With the Highest Score of a Binary Array](https://leetcode.com/problems/all-divisions-with-the-highest-score-of-a-binary-array)
 
 [中文文档](/solution/2100-2199/2155.All%20Divisions%20With%20the%20Highest%20Score%20of%20a%20Binary%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> binary array <code>nums</code> of length <code>n</code>. <code>nums</code> can be divided at index <code>i</code> (where <code>0 &lt;= i &lt;= n)</code> into two arrays (possibly empty) <code>nums<sub>left</sub></code> and <code>nums<sub>right</sub></code>:</p>
 
@@ -65,11 +79,17 @@ Only index 0 has the highest possible division score 2.
 	<li><code>nums[i]</code> is either <code>0</code> or <code>1</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -91,7 +111,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -129,35 +149,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function maxScoreIndices(nums: number[]): number[] {
-    const n = nums.length;
-    const total = nums.reduce((a, c) => a + c, 0);
-    let left = 0,
-        right = total;
-    let record: Array<number> = [total];
-    for (const num of nums) {
-        if (num == 0) {
-            left++;
-        } else {
-            right--;
-        }
-        record.push(left + right);
-    }
-    const max = Math.max(...record);
-    let ans: Array<number> = [];
-    for (let i = 0; i <= n; i++) {
-        if (record[i] == max) {
-            ans.push(i);
-        }
-    }
-    return ans;
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -186,7 +178,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxScoreIndices(nums []int) []int {
@@ -214,10 +206,36 @@ func maxScoreIndices(nums []int) []int {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
-
+```ts
+function maxScoreIndices(nums: number[]): number[] {
+    const n = nums.length;
+    const total = nums.reduce((a, c) => a + c, 0);
+    let left = 0,
+        right = total;
+    let record: Array<number> = [total];
+    for (const num of nums) {
+        if (num == 0) {
+            left++;
+        } else {
+            right--;
+        }
+        record.push(left + right);
+    }
+    const max = Math.max(...record);
+    let ans: Array<number> = [];
+    for (let i = 0; i <= n; i++) {
+        if (record[i] == max) {
+            ans.push(i);
+        }
+    }
+    return ans;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0517.Super%20Washing%20Machines/README.md
+tags:
+    - 贪心
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [517. 超级洗衣机](https://leetcode.cn/problems/super-washing-machines)
 
 [English Version](/solution/0500-0599/0517.Super%20Washing%20Machines/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>假设有 <code>n</code><strong>&nbsp;</strong>台超级洗衣机放在同一排上。开始的时候，每台洗衣机内可能有一定量的衣服，也可能是空的。</p>
 
@@ -54,11 +65,13 @@
 	<li><code>0 &lt;= machines[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 如果洗衣机内的衣服总数不能被洗衣机的数量整除，那么不可能使得每台洗衣机内的衣服数量相等，直接返回 $-1$。
 
@@ -79,9 +92,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -98,9 +109,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -126,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -150,7 +159,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findMinMoves(machines []int) (ans int) {
@@ -180,7 +189,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findMinMoves(machines: number[]): number {
@@ -201,10 +210,8 @@ function findMinMoves(machines: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

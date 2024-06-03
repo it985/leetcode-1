@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1872.Stone%20Game%20VIII/README.md
+rating: 2439
+source: 第 242 场周赛 Q4
+tags:
+    - 数组
+    - 数学
+    - 动态规划
+    - 博弈
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [1872. 石子游戏 VIII](https://leetcode.cn/problems/stone-game-viii)
 
 [English Version](/solution/1800-1899/1872.Stone%20Game%20VIII/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>Alice 和 Bob 玩一个游戏，两人轮流操作， <strong>Alice 先手</strong> 。</p>
 
@@ -62,11 +78,13 @@
 	<li><code>-10<sup>4</sup> &lt;= stones[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：前缀和 + 记忆化搜索**
+### 方法一：前缀和 + 记忆化搜索
 
 根据题目描述，每次取走最左边的 $x$ 个石子，把它们的和加到自己的分数中，然后把一个价值为这个和的石子放在最左边，相当于把这 $x$ 个石子合并成了一个价值为这个和的石子，前缀和不变。
 
@@ -85,35 +103,9 @@
 
 时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 为数组 $stones$ 的长度。
 
-**方法二：前缀和 + 动态规划**
-
-我们也可以使用动态规划的方法来解决这个问题。
-
-与方法一类似，我们先用一个长度为 $n$ 的前缀和数组 $s$ 来表示数组 $stones$ 的前缀和，其中 $s[i]$ 表示 $stones[0..i]$ 的元素和。
-
-我们定义 $f[i]$ 表示当前从 $stones[i:]$ 中取石子，返回当前玩家能得到的最大分数差。
-
-若玩家选择取走 $stones[:i]$ 的石子，那么获得的分数为 $s[i]$，此时另一个玩家会在 $stones[i+1:]$ 中取石子，那么另一个玩家能得到的最大分数差为 $f[i+1]$，因此当前玩家能得到的最大分数差为 $s[i] - f[i+1]$。
-
-若玩家选择从 $stones[i+1:]$ 中取石子，那么获得的最大分数差为 $f[i+1]$。
-
-因此我们可以得到状态转移方程：
-
-$$
-f[i] = \max\{s[i] - f[i+1], f[i+1]\}
-$$
-
-最终，我们可以得到 Alice 和 Bob 的分数之差为 $f[1]$，即 $Alice$ 必须从 $stones[1:]$ 中取石子开始游戏。
-
-我们注意到 $f[i]$ 只与 $f[i+1]$ 有关，因此我们只需要使用一个变量 $f$ 来表示 $f[i]$ 即可。
-
-时间复杂度 $O(n)$，其中 $n$ 为数组 $stones$ 的长度。空间复杂度 $O(1)$。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -128,19 +120,7 @@ class Solution:
         return dfs(1)
 ```
 
-```python
-class Solution:
-    def stoneGameVIII(self, stones: List[int]) -> int:
-        s = list(accumulate(stones))
-        f = s[-1]
-        for i in range(len(s) - 2, 0, -1):
-            f = max(f, s[i] - f)
-        return f
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -170,23 +150,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int stoneGameVIII(int[] stones) {
-        int n = stones.length;
-        for (int i = 1; i < n; ++i) {
-            stones[i] += stones[i - 1];
-        }
-        int f = stones[n - 1];
-        for (int i = n - 2; i > 0; --i) {
-            f = Math.max(f, stones[i] - f);
-        }
-        return f;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -212,24 +176,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int stoneGameVIII(vector<int>& stones) {
-        int n = stones.size();
-        for (int i = 1; i < n; ++i) {
-            stones[i] += stones[i - 1];
-        }
-        int f = stones.back();
-        for (int i = n - 2; i; --i) {
-            f = max(f, stones[i] - f);
-        }
-        return f;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func stoneGameVIII(stones []int) int {
@@ -255,7 +202,7 @@ func stoneGameVIII(stones []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function stoneGameVIII(stones: number[]): number {
@@ -277,6 +224,89 @@ function stoneGameVIII(stones: number[]): number {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：前缀和 + 动态规划
+
+我们也可以使用动态规划的方法来解决这个问题。
+
+与方法一类似，我们先用一个长度为 $n$ 的前缀和数组 $s$ 来表示数组 $stones$ 的前缀和，其中 $s[i]$ 表示 $stones[0..i]$ 的元素和。
+
+我们定义 $f[i]$ 表示当前从 $stones[i:]$ 中取石子，返回当前玩家能得到的最大分数差。
+
+若玩家选择取走 $stones[:i]$ 的石子，那么获得的分数为 $s[i]$，此时另一个玩家会在 $stones[i+1:]$ 中取石子，那么另一个玩家能得到的最大分数差为 $f[i+1]$，因此当前玩家能得到的最大分数差为 $s[i] - f[i+1]$。
+
+若玩家选择从 $stones[i+1:]$ 中取石子，那么获得的最大分数差为 $f[i+1]$。
+
+因此我们可以得到状态转移方程：
+
+$$
+f[i] = \max\{s[i] - f[i+1], f[i+1]\}
+$$
+
+最终，我们可以得到 Alice 和 Bob 的分数之差为 $f[1]$，即 $Alice$ 必须从 $stones[1:]$ 中取石子开始游戏。
+
+我们注意到 $f[i]$ 只与 $f[i+1]$ 有关，因此我们只需要使用一个变量 $f$ 来表示 $f[i]$ 即可。
+
+时间复杂度 $O(n)$，其中 $n$ 为数组 $stones$ 的长度。空间复杂度 $O(1)$。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def stoneGameVIII(self, stones: List[int]) -> int:
+        s = list(accumulate(stones))
+        f = s[-1]
+        for i in range(len(s) - 2, 0, -1):
+            f = max(f, s[i] - f)
+        return f
+```
+
+#### Java
+
+```java
+class Solution {
+    public int stoneGameVIII(int[] stones) {
+        int n = stones.length;
+        for (int i = 1; i < n; ++i) {
+            stones[i] += stones[i - 1];
+        }
+        int f = stones[n - 1];
+        for (int i = n - 2; i > 0; --i) {
+            f = Math.max(f, stones[i] - f);
+        }
+        return f;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int stoneGameVIII(vector<int>& stones) {
+        int n = stones.size();
+        for (int i = 1; i < n; ++i) {
+            stones[i] += stones[i - 1];
+        }
+        int f = stones.back();
+        for (int i = n - 2; i; --i) {
+            f = max(f, stones[i] - f);
+        }
+        return f;
+    }
+};
+```
+
+#### TypeScript
+
 ```ts
 function stoneGameVIII(stones: number[]): number {
     const n = stones.length;
@@ -291,10 +321,8 @@ function stoneGameVIII(stones: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

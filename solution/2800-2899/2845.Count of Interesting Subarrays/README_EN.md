@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2845.Count%20of%20Interesting%20Subarrays/README_EN.md
+rating: 2073
+source: Weekly Contest 361 Q3
+tags:
+    - Array
+    - Hash Table
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [2845. Count of Interesting Subarrays](https://leetcode.com/problems/count-of-interesting-subarrays)
 
 [中文文档](/solution/2800-2899/2845.Count%20of%20Interesting%20Subarrays/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code>, an integer <code>modulo</code>, and an integer <code>k</code>.</p>
 
@@ -60,9 +76,13 @@ It can be shown that there are no other interesting subarrays. So, the answer is
 	<li><code>0 &lt;= k &lt; modulo</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table + Prefix Sum**
+<!-- solution:start -->
+
+### Solution 1: Hash Table + Prefix Sum
 
 The problem requires the number of indices $i$ in an interval that satisfy $nums[i] \bmod modulo = k$. We can transform the array $nums$ into a $0-1$ array $arr$, where $arr[i] = 1$ indicates $nums[i] \bmod modulo = k$, otherwise $arr[i] = 0$.
 
@@ -78,7 +98,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -94,7 +114,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -118,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -143,7 +163,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countInterestingSubarrays(nums []int, modulo int, k int) (ans int64) {
@@ -165,7 +185,7 @@ func countInterestingSubarrays(nums []int, modulo int, k int) (ans int64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countInterestingSubarrays(nums: number[], modulo: number, k: number): number {
@@ -186,10 +206,8 @@ function countInterestingSubarrays(nums: number[], modulo: number, k: number): n
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

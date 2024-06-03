@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2746.Decremental%20String%20Concatenation/README_EN.md
+rating: 2126
+source: Biweekly Contest 107 Q3
+tags:
+    - Array
+    - String
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [2746. Decremental String Concatenation](https://leetcode.com/problems/decremental-string-concatenation)
 
 [中文文档](/solution/2700-2799/2746.Decremental%20String%20Concatenation/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> array <code>words</code> containing <code>n</code> strings.</p>
 
@@ -66,11 +82,30 @@ It can be shown that the minimum possible length of str<sub>2</sub> is 6.
 	<li>Each character in <code>words[i]</code> is an English lowercase letter</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Memoization Search
+
+We notice that when concatenating strings, the first and last characters of the string will affect the length of the concatenated string. Therefore, we design a function $dfs(i, a, b)$, which represents the minimum length of the concatenated string starting from the $i$-th string, and the first character of the previously concatenated string is $a$, and the last character is $b$.
+
+The execution process of the function $dfs(i, a, b)$ is as follows:
+
+-   If $i = n$, it means that all strings have been concatenated, return $0$;
+-   Otherwise, we consider concatenating the $i$-th string to the end or the beginning of the already concatenated string, and get the lengths $x$ and $y$ of the concatenated string, then $dfs(i, a, b) = \min(x, y) + |words[i]|$.
+
+To avoid repeated calculations, we use the method of memoization search. Specifically, we use a three-dimensional array $f$ to store all the return values of $dfs(i, a, b)$. When we need to calculate $dfs(i, a, b)$, if $f[i][a][b]$ has been calculated, we directly return $f[i][a][b]$; otherwise, we calculate the value of $dfs(i, a, b)$ according to the above recurrence relation, and store it in $f[i][a][b]$.
+
+In the main function, we directly return $|words[0]| + dfs(1, words[0][0], words[0][|words[0]| - 1])$.
+
+The time complexity is $O(n \times C^2)$, and the space complexity is $O(n \times C^2)$. Where $C$ represents the maximum length of the string.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -87,7 +122,7 @@ class Solution:
         return len(words[0]) + dfs(1, words[0][0], words[0][-1])
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -119,7 +154,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -146,7 +181,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimizeConcatenatedLength(words []string) int {
@@ -177,7 +212,7 @@ func minimizeConcatenatedLength(words []string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimizeConcatenatedLength(words: string[]): number {
@@ -211,10 +246,8 @@ function minimizeConcatenatedLength(words: string[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

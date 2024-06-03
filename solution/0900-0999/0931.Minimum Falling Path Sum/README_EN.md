@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0931.Minimum%20Falling%20Path%20Sum/README_EN.md
+tags:
+    - Array
+    - Dynamic Programming
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [931. Minimum Falling Path Sum](https://leetcode.com/problems/minimum-falling-path-sum)
 
 [中文文档](/solution/0900-0999/0931.Minimum%20Falling%20Path%20Sum/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an <code>n x n</code> array of integers <code>matrix</code>, return <em>the <strong>minimum sum</strong> of any <strong>falling path</strong> through</em> <code>matrix</code>.</p>
 
@@ -34,13 +48,17 @@
 	<li><code>-100 &lt;= matrix[i][j] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-Dynamic programming.
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -56,7 +74,7 @@ class Solution:
         return min(f)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -86,7 +104,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -112,7 +130,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minFallingPathSum(matrix [][]int) int {
@@ -136,7 +154,7 @@ func minFallingPathSum(matrix [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minFallingPathSum(matrix: number[][]): number {
@@ -159,10 +177,8 @@ function minFallingPathSum(matrix: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

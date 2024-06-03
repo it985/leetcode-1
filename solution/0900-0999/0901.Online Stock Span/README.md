@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0901.Online%20Stock%20Span/README.md
+tags:
+    - 栈
+    - 设计
+    - 数据流
+    - 单调栈
+---
+
+<!-- problem:start -->
+
 # [901. 股票价格跨度](https://leetcode.cn/problems/online-stock-span)
 
 [English Version](/solution/0900-0999/0901.Online%20Stock%20Span/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>设计一个算法收集某些股票的每日报价，并返回该股票当日价格的 <strong>跨度</strong> 。</p>
 
@@ -54,11 +67,13 @@ stockSpanner.next(85);  // 返回 6
 	<li>最多调用 <code>next</code> 方法 <code>10<sup>4</sup></code> 次</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：单调栈**
+### 方法一：单调栈
 
 根据题目描述，我们可以知道，对于当日价格 $price$，从这个价格开始往前找，找到第一个比这个价格大的价格，这两个价格的下标差 $cnt$ 就是当日价格的跨度。
 
@@ -74,9 +89,7 @@ stockSpanner.next(85);  // 返回 6
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class StockSpanner:
@@ -96,9 +109,7 @@ class StockSpanner:
 # param_1 = obj.next(price)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class StockSpanner {
@@ -124,7 +135,7 @@ class StockSpanner {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class StockSpanner {
@@ -153,7 +164,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type StockSpanner struct {
@@ -183,7 +194,7 @@ type pair struct{ price, cnt int }
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class StockSpanner {
@@ -210,7 +221,7 @@ class StockSpanner {
  */
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::VecDeque;
@@ -244,10 +255,8 @@ impl StockSpanner {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

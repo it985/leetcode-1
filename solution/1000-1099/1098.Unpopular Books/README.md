@@ -1,10 +1,20 @@
-# [1098. 小众书籍](https://leetcode.cn/problems/unpopular-books)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1098.Unpopular%20Books/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1098. 小众书籍 🔒](https://leetcode.cn/problems/unpopular-books)
 
 [English Version](/solution/1000-1099/1098.Unpopular%20Books/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>书籍表&nbsp;<code>Books</code>：</p>
 
@@ -80,13 +90,17 @@ Orders 表：
 +-----------+--------------------+
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -100,3 +114,7 @@ HAVING SUM(IF(dispatch_date >= '2018-06-23', quantity, 0)) < 10;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

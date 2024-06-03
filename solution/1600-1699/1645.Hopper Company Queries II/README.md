@@ -1,10 +1,20 @@
-# [1645. Hopper 公司查询 II](https://leetcode.cn/problems/hopper-company-queries-ii)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1645.Hopper%20Company%20Queries%20II/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1645. Hopper 公司查询 II 🔒](https://leetcode.cn/problems/hopper-company-queries-ii)
 
 [English Version](/solution/1600-1699/1645.Hopper%20Company%20Queries%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Drivers</code></p>
 
@@ -153,11 +163,13 @@ ride_id 是该表具有唯一值的列。
 截至 12 月底 --&gt; 6 个活跃的驾驶员 (10, 8, 5, 7, 4, 1)，1 个被接受的行程 (4)。百分比是 (1 / 6) * 100 = 16.67%。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：递归 + 左连接 + 分组**
+### 方法一：递归 + 左连接 + 分组
 
 我们可以使用递归的方法生成 $1 \sim 12$ 月的数据，记录在 `Month` 表中。
 
@@ -169,9 +181,7 @@ ride_id 是该表具有唯一值的列。
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -214,3 +224,7 @@ GROUP BY 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

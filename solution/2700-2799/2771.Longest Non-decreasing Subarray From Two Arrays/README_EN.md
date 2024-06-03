@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2771.Longest%20Non-decreasing%20Subarray%20From%20Two%20Arrays/README_EN.md
+rating: 1791
+source: Weekly Contest 353 Q3
+tags:
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [2771. Longest Non-decreasing Subarray From Two Arrays](https://leetcode.com/problems/longest-non-decreasing-subarray-from-two-arrays)
 
 [中文文档](/solution/2700-2799/2771.Longest%20Non-decreasing%20Subarray%20From%20Two%20Arrays/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two <strong>0-indexed</strong> integer arrays <code>nums1</code> and <code>nums2</code> of length <code>n</code>.</p>
 
@@ -53,30 +68,34 @@ The entire array forms a non-decreasing subarray of length 2, making it the maxi
 	<li><code>1 &lt;= nums1[i], nums2[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1：Dynamic Programming**
+<!-- solution:start -->
 
-We define two variables $f$ and $g$, which represent the longest non-decreasing subarray length at the current position, where $f$ represents the longest non-decreasing subarray length ending in the $nums1$ element, and $g$ represents the longest non-decreasing subarray length ending in the $nums2$ element. At the beginning, $f = g = 1$, and the initial answer $ans = 1$.
+### Solution 1: Dynamic Programming
 
-Next, we traverse the array elements in the range of $i \in [1, n)$, for each $i$, we define two variables $ff$ and $gg$, which represent the longest non-decreasing subarray length ending in the $nums1[i]$ and $nums2[i]$ element, respectively, and initialize $ff = gg = 1$.
+We define two variables $f$ and $g$, which represent the length of the longest non-decreasing subarray at the current position. Here, $f$ represents the length of the longest non-decreasing subarray ending with an element from $nums1$, and $g$ represents the length of the longest non-decreasing subarray ending with an element from $nums2$. Initially, $f = g = 1$, and the initial answer $ans = 1$.
 
-We can calculate the value of $ff$ and $gg$ from the values of $f$ and $g$:
+Next, we iterate over the array elements in the range $i \in [1, n)$, and for each $i$, we define two variables $ff$ and $gg$, which represent the length of the longest non-decreasing subarray ending with $nums1[i]$ and $nums2[i]$ respectively. When initialized, $ff = gg = 1$.
 
--   If $nums1[i] \ge nums1[i - 1]$, then $ff = max(ff, f + 1)$;
--   If $nums1[i] \ge nums2[i - 1]$, then $ff = max(ff, g + 1)$;
--   If $nums2[i] \ge nums1[i - 1]$, then $gg = max(gg, f + 1)$;
--   If $nums2[i] \ge nums2[i - 1]$, then $gg = max(gg, g + 1)$.
+We can calculate the values of $ff$ and $gg$ based on the values of $f$ and $g$:
 
-Then, we update $f = ff$ and $g = gg$, and update $ans$ to $max(ans, f, g)$.
+-   If $nums1[i] \ge nums1[i - 1]$, then $ff = \max(ff, f + 1)$;
+-   If $nums1[i] \ge nums2[i - 1]$, then $ff = \max(ff, g + 1)$;
+-   If $nums2[i] \ge nums1[i - 1]$, then $gg = \max(gg, f + 1)$;
+-   If $nums2[i] \ge nums2[i - 1]$, then $gg = \max(gg, g + 1)$.
 
-After the traversal is over, we return $ans$.
+Then, we update $f = ff$ and $g = gg$, and update $ans$ to $\max(ans, f, g)$.
+
+After the iteration ends, we return $ans$.
 
 The time complexity is $O(n)$, where $n$ is the length of the array. The space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -99,7 +118,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -130,7 +149,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -162,7 +181,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxNonDecreasingLength(nums1 []int, nums2 []int) int {
@@ -189,7 +208,7 @@ func maxNonDecreasingLength(nums1 []int, nums2 []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxNonDecreasingLength(nums1: number[], nums2: number[]): number {
@@ -217,10 +236,8 @@ function maxNonDecreasingLength(nums1: number[], nums2: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

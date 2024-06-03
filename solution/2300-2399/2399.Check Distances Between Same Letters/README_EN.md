@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2399.Check%20Distances%20Between%20Same%20Letters/README_EN.md
+rating: 1243
+source: Weekly Contest 309 Q1
+tags:
+    - Array
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [2399. Check Distances Between Same Letters](https://leetcode.com/problems/check-distances-between-same-letters)
 
 [中文文档](/solution/2300-2399/2399.Check%20Distances%20Between%20Same%20Letters/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> string <code>s</code> consisting of only lowercase English letters, where each letter in <code>s</code> appears <strong>exactly</strong> <strong>twice</strong>. You are also given a <strong>0-indexed</strong> integer array <code>distance</code> of length <code>26</code>.</p>
 
@@ -47,11 +63,17 @@ Because distance[0] = 1, s is not a well-spaced string.
 	<li><code>0 &lt;= distance[i] &lt;= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -64,7 +86,7 @@ class Solution:
         return True
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -82,7 +104,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -101,7 +123,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func checkDistances(s string, distance []int) bool {
@@ -117,24 +139,7 @@ func checkDistances(s string, distance []int) bool {
 }
 ```
 
-### **C**
-
-```c
-bool checkDistances(char* s, int* distance, int distanceSize) {
-    int n = strlen(s);
-    int d[26] = {0};
-    for (int i = 0; i < n; i++) {
-        int j = s[i] - 'a';
-        if (d[j] > 0 && i - d[j] != distance[j]) {
-            return false;
-        }
-        d[j] = i + 1;
-    }
-    return true;
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function checkDistances(s: string, distance: number[]): boolean {
@@ -151,7 +156,7 @@ function checkDistances(s: string, distance: number[]): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -172,11 +177,25 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C
 
-```
-
-
+```c
+bool checkDistances(char* s, int* distance, int distanceSize) {
+    int n = strlen(s);
+    int d[26] = {0};
+    for (int i = 0; i < n; i++) {
+        int j = s[i] - 'a';
+        if (d[j] > 0 && i - d[j] != distance[j]) {
+            return false;
+        }
+        d[j] = i + 1;
+    }
+    return true;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

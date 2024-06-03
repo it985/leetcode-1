@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2866.Beautiful%20Towers%20II/README_EN.md
+rating: 2071
+source: Weekly Contest 364 Q3
+tags:
+    - Stack
+    - Array
+    - Monotonic Stack
+---
+
+<!-- problem:start -->
+
 # [2866. Beautiful Towers II](https://leetcode.com/problems/beautiful-towers-ii)
 
 [中文文档](/solution/2800-2899/2866.Beautiful%20Towers%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> array <code>maxHeights</code> of <code>n</code> integers.</p>
 
@@ -65,9 +81,13 @@ It can be shown that there exists no other beautiful configuration with a sum of
 	<li><code>1 &lt;= maxHeights[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Dynamic Programming + Monotonic Stack**
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming + Monotonic Stack
 
 We define $f[i]$ to represent the height sum of the beautiful tower scheme with the last tower as the tallest tower among the first $i+1$ towers. We can get the following state transition equation:
 
@@ -87,7 +107,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -127,7 +147,7 @@ class Solution:
         return max(a + b - c for a, b, c in zip(f, g, maxHeights))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -188,7 +208,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -247,7 +267,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumSumOfHeights(maxHeights []int) (ans int64) {
@@ -311,7 +331,7 @@ func maximumSumOfHeights(maxHeights []int) (ans int64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumSumOfHeights(maxHeights: number[]): number {
@@ -368,10 +388,8 @@ function maximumSumOfHeights(maxHeights: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1577.Number%20of%20Ways%20Where%20Square%20of%20Number%20Is%20Equal%20to%20Product%20of%20Two%20Numbers/README.md
+rating: 1593
+source: 第 205 场周赛 Q2
+tags:
+    - 数组
+    - 哈希表
+    - 数学
+    - 双指针
+---
+
+<!-- problem:start -->
+
 # [1577. 数的平方等于两数乘积的方法数](https://leetcode.cn/problems/number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers)
 
 [English Version](/solution/1500-1599/1577.Number%20of%20Ways%20Where%20Square%20of%20Number%20Is%20Equal%20to%20Product%20of%20Two%20Numbers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个整数数组 <code>nums1</code> 和 <code>nums2</code> ，请你返回根据以下规则形成的三元组的数目（类型 1 和类型 2 ）：</p>
 
@@ -55,11 +70,13 @@
 	<li><code>1 &lt;= nums1[i], nums2[i] &lt;= 10^5</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们用哈希表 `cnt1` 统计 `nums1` 中每个数出现的次数，用哈希表 `cnt2` 统计 `nums2` 中每个数出现的次数。
 
@@ -74,9 +91,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -101,9 +116,7 @@ class Solution:
         return ans >> 1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -144,7 +157,7 @@ class Solution {
 }
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numTriplets(nums1 []int, nums2 []int) (ans int) {
@@ -181,10 +194,8 @@ func numTriplets(nums1 []int, nums2 []int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

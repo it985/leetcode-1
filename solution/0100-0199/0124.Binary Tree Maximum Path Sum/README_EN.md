@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0124.Binary%20Tree%20Maximum%20Path%20Sum/README_EN.md
+tags:
+    - Tree
+    - Depth-First Search
+    - Dynamic Programming
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [124. Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum)
 
 [中文文档](/solution/0100-0199/0124.Binary%20Tree%20Maximum%20Path%20Sum/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A <strong>path</strong> in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence <strong>at most once</strong>. Note that the path does not need to pass through the root.</p>
 
@@ -35,9 +50,13 @@
 	<li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Recursion**
+<!-- solution:start -->
+
+### Solution 1: Recursion
 
 When thinking about the classic routine of recursion problems in binary trees, we consider:
 
@@ -61,7 +80,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -86,7 +105,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -124,7 +143,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -157,7 +176,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -185,7 +204,7 @@ func maxPathSum(root *TreeNode) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -218,74 +237,7 @@ function maxPathSum(root: TreeNode | null): number {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
-/**
- * @param {TreeNode} root
- * @return {number}
- */
-var maxPathSum = function (root) {
-    let ans = -1001;
-    const dfs = root => {
-        if (!root) {
-            return 0;
-        }
-        const left = Math.max(0, dfs(root.left));
-        const right = Math.max(0, dfs(root.right));
-        ans = Math.max(ans, left + right + root.val);
-        return Math.max(left, right) + root.val;
-    };
-    dfs(root);
-    return ans;
-};
-```
-
-### **C#**
-
-```cs
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     public int val;
- *     public TreeNode left;
- *     public TreeNode right;
- *     public TreeNode(int val=0, TreeNode left=null, TreeNode right=null) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-public class Solution {
-    private int ans = -1001;
-
-    public int MaxPathSum(TreeNode root) {
-        dfs(root);
-        return ans;
-    }
-
-    private int dfs(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        int left = Math.Max(0, dfs(root.left));
-        int right = Math.Max(0, dfs(root.right));
-        ans = Math.Max(ans, left + right + root.val);
-        return root.val + Math.Max(left, right);
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -328,10 +280,75 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var maxPathSum = function (root) {
+    let ans = -1001;
+    const dfs = root => {
+        if (!root) {
+            return 0;
+        }
+        const left = Math.max(0, dfs(root.left));
+        const right = Math.max(0, dfs(root.right));
+        ans = Math.max(ans, left + right + root.val);
+        return Math.max(left, right) + root.val;
+    };
+    dfs(root);
+    return ans;
+};
 ```
 
+#### C#
+
+```cs
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     public int val;
+ *     public TreeNode left;
+ *     public TreeNode right;
+ *     public TreeNode(int val=0, TreeNode left=null, TreeNode right=null) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+public class Solution {
+    private int ans = -1001;
+
+    public int MaxPathSum(TreeNode root) {
+        dfs(root);
+        return ans;
+    }
+
+    private int dfs(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int left = Math.Max(0, dfs(root.left));
+        int right = Math.Max(0, dfs(root.right));
+        ans = Math.Max(ans, left + right + root.val);
+        return root.val + Math.Max(left, right);
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

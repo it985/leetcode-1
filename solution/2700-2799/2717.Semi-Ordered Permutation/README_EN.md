@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2717.Semi-Ordered%20Permutation/README_EN.md
+rating: 1295
+source: Weekly Contest 348 Q2
+tags:
+    - Array
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [2717. Semi-Ordered Permutation](https://leetcode.com/problems/semi-ordered-permutation)
 
 [中文文档](/solution/2700-2799/2717.Semi-Ordered%20Permutation/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> permutation of <code>n</code> integers <code>nums</code>.</p>
 
@@ -57,11 +72,23 @@ It can be proved that there is no sequence of less than three operations that ma
 	<li><code>nums is a permutation.</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Find the Positions of 1 and n
+
+We can first find the indices $i$ and $j$ of $1$ and $n$, respectively. Then, based on the relative positions of $i$ and $j$, we can determine the number of swaps required.
+
+If $i < j$, the number of swaps required is $i + n - j - 1$. If $i > j$, the number of swaps required is $i + n - j - 2$.
+
+The time complexity is $O(n)$, where $n$ is the length of the array. The space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -73,7 +100,7 @@ class Solution:
         return i + n - j - k
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -109,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func semiOrderedPermutation(nums []int) int {
@@ -131,7 +158,7 @@ func semiOrderedPermutation(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function semiOrderedPermutation(nums: number[]): number {
@@ -143,7 +170,7 @@ function semiOrderedPermutation(nums: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -170,6 +197,18 @@ impl Solution {
     }
 }
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -198,10 +237,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

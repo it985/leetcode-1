@@ -1,10 +1,23 @@
-# [2307. 检查方程中的矛盾之处](https://leetcode.cn/problems/check-for-contradictions-in-equations)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2307.Check%20for%20Contradictions%20in%20Equations/README.md
+tags:
+    - 深度优先搜索
+    - 并查集
+    - 图
+    - 数组
+---
+
+<!-- problem:start -->
+
+# [2307. 检查方程中的矛盾之处 🔒](https://leetcode.cn/problems/check-for-contradictions-in-equations)
 
 [English Version](/solution/2300-2399/2307.Check%20for%20Contradictions%20in%20Equations/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个由字符串二维数组&nbsp;<code>equations</code> 和实数数组&nbsp;&nbsp;<code>values</code>&nbsp;，其中 <code>equations[i] = [A<sub>i</sub>, B<sub>i</sub>]</code>，<code>values[i]</code> 表示 <code>A<sub>i</sub> / B<sub>i</sub> = values[i]</code>.。</p>
 
@@ -55,11 +68,13 @@ a = 3, b = 1 和 c = 2.
 	<li><code>values[i]</code> 小数点后最多 2 位。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：带权并查集**
+### 方法一：带权并查集
 
 我们先将字符串转换成从 $0$ 开始的整数，然后遍历所有的等式，将等式中的两个字符串映射成对应的整数 $a$ 和 $b$，如果这两个整数不在同一个集合中，就将它们合并到同一个集合中，并且记录下两个整数的权值，即 $a$ 与 $b$ 的比值。如果这两个整数在同一个集合中，就判断它们的权值是否满足等式，如果不满足就返回 `true`。
 
@@ -67,13 +82,11 @@ a = 3, b = 1 和 c = 2.
 
 相似题目：
 
--   [399. 除法求值](/solution/0300-0399/0399.Evaluate%20Division/README.md)
+-   [399. 除法求值](https://github.com/doocs/leetcode/blob/main/solution/0300-0399/0399.Evaluate%20Division/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -108,9 +121,7 @@ class Solution:
         return False
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -159,7 +170,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -201,7 +212,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func checkContradictions(equations [][]string, values []float64) bool {
@@ -253,7 +264,7 @@ func checkContradictions(equations [][]string, values []float64) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function checkContradictions(equations: string[][], values: number[]): boolean {
@@ -301,10 +312,8 @@ function checkContradictions(equations: string[][], values: number[]): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

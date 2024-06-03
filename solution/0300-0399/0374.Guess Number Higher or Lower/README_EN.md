@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0374.Guess%20Number%20Higher%20or%20Lower/README_EN.md
+tags:
+    - Binary Search
+    - Interactive
+---
+
+<!-- problem:start -->
+
 # [374. Guess Number Higher or Lower](https://leetcode.com/problems/guess-number-higher-or-lower)
 
 [中文文档](/solution/0300-0399/0374.Guess%20Number%20Higher%20or%20Lower/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>We are playing the Guess Game. The game is as follows:</p>
 
@@ -50,30 +63,21 @@
 	<li><code>1 &lt;= pick &lt;= n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Binary Search
+
+We perform a binary search in the interval $[1,..n]$, and find the first number that satisfies `guess(x) <= 0`, which is the answer.
+
+The time complexity is $O(\log n)$, where $n$ is the upper limit given in the problem. The space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
-
-```python
-# The guess API is already defined for you.
-# @param num, your guess
-# @return -1 if my number is lower, 1 if my number is higher, otherwise return 0
-# def guess(num: int) -> int:
-
-
-class Solution:
-    def guessNumber(self, n: int) -> int:
-        left, right = 1, n
-        while left < right:
-            mid = (left + right) >> 1
-            if guess(mid) <= 0:
-                right = mid
-            else:
-                left = mid + 1
-        return left
-```
+#### Python3
 
 ```python
 # The guess API is already defined for you.
@@ -89,7 +93,7 @@ class Solution:
         return bisect.bisect(range(1, n + 1), 0, key=lambda x: -guess(x))
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -117,7 +121,7 @@ public class Solution extends GuessGame {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -146,31 +150,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-/**
- * Forward declaration of guess API.
- * @param  num   your guess
- * @return 	     -1 if num is lower than the guess number
- *			      1 if num is higher than the guess number
- *               otherwise return 0
- * func guess(num int) int;
- */
-
-func guessNumber(n int) int {
-	left, right := 1, n
-	for left < right {
-		mid := (left + right) >> 1
-		if guess(mid) <= 0 {
-			right = mid
-		} else {
-			left = mid + 1
-		}
-	}
-	return left
-}
-```
+#### Go
 
 ```go
 /**
@@ -190,35 +170,7 @@ func guessNumber(n int) int {
 }
 ```
 
-### **C#**
-
-```cs
-/**
- * Forward declaration of guess API.
- * @param  num   your guess
- * @return 	     -1 if num is higher than the picked number
- *			      1 if num is lower than the picked number
- *               otherwise return 0
- * int guess(int num);
- */
-
-public class Solution : GuessGame {
-    public int GuessNumber(int n) {
-        int left = 1, right = n;
-        while (left < right) {
-            int mid = left + ((right - left) >> 1);
-            if (guess(mid) <= 0) {
-                right = mid;
-            } else {
-                left = mid + 1;
-            }
-        }
-        return left;
-    }
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -245,7 +197,7 @@ function guessNumber(n: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 /**
@@ -279,10 +231,36 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C#
 
-```
+```cs
+/**
+ * Forward declaration of guess API.
+ * @param  num   your guess
+ * @return 	     -1 if num is higher than the picked number
+ *			      1 if num is lower than the picked number
+ *               otherwise return 0
+ * int guess(int num);
+ */
 
+public class Solution : GuessGame {
+    public int GuessNumber(int n) {
+        int left = 1, right = n;
+        while (left < right) {
+            int mid = left + ((right - left) >> 1);
+            if (guess(mid) <= 0) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

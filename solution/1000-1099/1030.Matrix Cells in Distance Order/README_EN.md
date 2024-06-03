@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1030.Matrix%20Cells%20in%20Distance%20Order/README_EN.md
+rating: 1585
+source: Weekly Contest 133 Q2
+tags:
+    - Geometry
+    - Array
+    - Math
+    - Matrix
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1030. Matrix Cells in Distance Order](https://leetcode.com/problems/matrix-cells-in-distance-order)
 
 [中文文档](/solution/1000-1099/1030.Matrix%20Cells%20in%20Distance%20Order/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given four integers <code>row</code>, <code>cols</code>, <code>rCenter</code>, and <code>cCenter</code>. There is a <code>rows x cols</code> matrix and you are on the cell with the coordinates <code>(rCenter, cCenter)</code>.</p>
 
@@ -46,11 +64,17 @@ There are other answers that would also be accepted as correct, such as [[1,2],[
 	<li><code>0 &lt;= cCenter &lt; cols</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -73,7 +97,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 import java.util.Deque;
@@ -105,7 +129,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -138,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func allCellsDistOrder(rows int, cols int, rCenter int, cCenter int) (ans [][]int) {
@@ -167,10 +191,8 @@ func allCellsDistOrder(rows int, cols int, rCenter int, cCenter int) (ans [][]in
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

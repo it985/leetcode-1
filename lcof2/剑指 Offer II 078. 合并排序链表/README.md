@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof2/%E5%89%91%E6%8C%87%20Offer%20II%20078.%20%E5%90%88%E5%B9%B6%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8/README.md
+---
+
+<!-- problem:start -->
+
 # [剑指 Offer II 078. 合并排序链表](https://leetcode.cn/problems/vvXgSW)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个链表数组，每个链表都已经按升序排列。</p>
 
@@ -56,17 +63,17 @@
 
 <p><meta charset="UTF-8" />注意：本题与主站 23&nbsp;题相同：&nbsp;<a href="https://leetcode.cn/problems/merge-k-sorted-lists/">https://leetcode.cn/problems/merge-k-sorted-lists/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-合并前后两个链表，结果放在后一个链表位置上，依次循环下去。最后返回链表数组的最后一个元素。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -98,9 +105,7 @@ class Solution:
         return dummy.next
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -144,7 +149,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -186,7 +191,7 @@ private:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -229,7 +234,7 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -272,48 +277,7 @@ function mergeTwoLists(l1, l2) {
 }
 ```
 
-### **Ruby**
-
-```rb
-# Definition for singly-linked list.
-# class ListNode
-#     attr_accessor :val, :next
-#     def initialize(val = 0, _next = nil)
-#         @val = val
-#         @next = _next
-#     end
-# end
-# @param {ListNode[]} lists
-# @return {ListNode}
-def merge_k_lists(lists)
-    n = lists.length
-    i = 1
-    while i < n
-        lists[i] = merge_two_lists(lists[i - 1], lists[i])
-        i += 1
-    end
-    lists[n - 1]
-end
-
-def merge_two_lists(l1, l2)
-  dummy = ListNode.new()
-  cur = dummy
-  while l1 && l2
-      if l1.val <= l2.val
-          cur.next = l1
-          l1 = l1.next
-      else
-          cur.next = l2
-          l2 = l2.next
-      end
-      cur = cur.next
-  end
-  cur.next = l1 || l2
-  dummy.next
-end
-```
-
-### **C#**
+#### C#
 
 ```cs
 /**
@@ -358,10 +322,49 @@ public class Solution {
 }
 ```
 
-### **...**
+#### Ruby
 
-```
+```rb
+# Definition for singly-linked list.
+# class ListNode
+#     attr_accessor :val, :next
+#     def initialize(val = 0, _next = nil)
+#         @val = val
+#         @next = _next
+#     end
+# end
+# @param {ListNode[]} lists
+# @return {ListNode}
+def merge_k_lists(lists)
+    n = lists.length
+    i = 1
+    while i < n
+        lists[i] = merge_two_lists(lists[i - 1], lists[i])
+        i += 1
+    end
+    lists[n - 1]
+end
 
+def merge_two_lists(l1, l2)
+  dummy = ListNode.new()
+  cur = dummy
+  while l1 && l2
+      if l1.val <= l2.val
+          cur.next = l1
+          l1 = l1.next
+      else
+          cur.next = l2
+          l2 = l2.next
+      end
+      cur = cur.next
+  end
+  cur.next = l1 || l2
+  dummy.next
+end
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

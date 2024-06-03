@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0936.Stamping%20The%20Sequence/README.md
+tags:
+    - 栈
+    - 贪心
+    - 队列
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [936. 戳印序列](https://leetcode.cn/problems/stamping-the-sequence)
 
 [English Version](/solution/0900-0999/0936.Stamping%20The%20Sequence/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你想要用<strong>小写字母</strong>组成一个目标字符串&nbsp;<code>target</code>。&nbsp;</p>
 
@@ -44,11 +57,13 @@
 	<li><code>stamp</code> 和&nbsp;<code>target</code>&nbsp;只包含小写字母。</li>
 </ol>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：逆向思维 + 拓扑排序**
+### 方法一：逆向思维 + 拓扑排序
 
 如果我们正向地对序列进行操作，那么处理起来会比较麻烦，因为后续的操作会把前面的操作覆盖掉。我们不妨考虑逆向地对序列进行操作，即从目标字符串 $target$ 开始，考虑将 $target$ 变成 $?????$ 的过程。
 
@@ -72,9 +87,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -106,9 +119,7 @@ class Solution:
         return ans[::-1] if all(vis) else []
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -157,7 +168,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -206,7 +217,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func movesToStamp(stamp string, target string) (ans []int) {
@@ -258,7 +269,7 @@ func movesToStamp(stamp string, target string) (ans []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function movesToStamp(stamp: string, target: string): number[] {
@@ -303,7 +314,7 @@ function movesToStamp(stamp: string, target: string): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::VecDeque;
@@ -365,10 +376,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

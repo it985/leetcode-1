@@ -1,10 +1,20 @@
-# [1468. 计算税后工资](https://leetcode.cn/problems/calculate-salaries)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1468.Calculate%20Salaries/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1468. 计算税后工资 🔒](https://leetcode.cn/problems/calculate-salaries)
 
 [English Version](/solution/1400-1499/1468.Calculate%20Salaries/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><code>Salaries</code> 表：</p>
 
@@ -80,13 +90,17 @@ Salaries 表：
 薪资扣除税后的金额计算公式为：薪资 - (税率百分比 / 100) * 薪资
 例如，Morninngcat（员工号 3，薪资为 7777）扣除税后的薪资为：7777 - 7777 * (24 / 100) = 7777 - 1866.48 = 5910.52，四舍五入为 5911。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -113,3 +127,7 @@ FROM
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

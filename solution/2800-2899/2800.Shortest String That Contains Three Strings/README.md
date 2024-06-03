@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2800.Shortest%20String%20That%20Contains%20Three%20Strings/README.md
+rating: 1855
+source: 第 356 场周赛 Q3
+tags:
+    - 贪心
+    - 字符串
+    - 枚举
+---
+
+<!-- problem:start -->
+
 # [2800. 包含三个字符串的最短字符串](https://leetcode.cn/problems/shortest-string-that-contains-three-strings)
 
 [English Version](/solution/2800-2899/2800.Shortest%20String%20That%20Contains%20Three%20Strings/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 给你三个字符串&nbsp;<code>a</code>&nbsp;，<code>b</code>&nbsp;和&nbsp;<code>c</code>&nbsp;， 你的任务是找到长度&nbsp;<strong>最短</strong>&nbsp;的字符串，且这三个字符串都是它的 <strong>子字符串</strong>&nbsp;。
 
@@ -43,11 +57,13 @@
 	<li><code>a</code>&nbsp;，<code>b</code>&nbsp;，<code>c</code>&nbsp;只包含小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举**
+### 方法一：枚举
 
 我们枚举三个字符串的所有排列，然后对于每个排列，对三个字符串进行合并，找到最短的且字典序最小的字符串。
 
@@ -55,9 +71,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -81,9 +95,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -120,7 +132,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -157,7 +169,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumString(a string, b string, c string) string {
@@ -189,7 +201,7 @@ func minimumString(a string, b string, c string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumString(a: string, b: string, c: string): string {
@@ -229,7 +241,7 @@ function minimumString(a: string, b: string, c: string): string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -272,10 +284,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

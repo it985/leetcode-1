@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1846.Maximum%20Element%20After%20Decreasing%20and%20Rearranging/README.md
+rating: 1454
+source: 第 51 场双周赛 Q3
+tags:
+    - 贪心
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1846. 减小和重新排列数组后的最大元素](https://leetcode.cn/problems/maximum-element-after-decreasing-and-rearranging)
 
 [English Version](/solution/1800-1899/1846.Maximum%20Element%20After%20Decreasing%20and%20Rearranging/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个正整数数组 <code>arr</code> 。请你对 <code>arr</code> 执行一些操作（也可以不进行任何操作），使得数组满足以下条件：</p>
 
@@ -65,11 +79,13 @@ arr 中最大元素为 3 。
 	<li><code>1 <= arr[i] <= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 贪心**
+### 方法一：排序 + 贪心
 
 我们先对数组进行排序，然后将数组的第一个元素设置为 $1$。
 
@@ -81,9 +97,7 @@ arr 中最大元素为 3 。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -96,9 +110,7 @@ class Solution:
         return max(arr)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -116,7 +128,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -135,7 +147,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumElementAfterDecrementingAndRearranging(arr []int) int {
@@ -151,7 +163,7 @@ func maximumElementAfterDecrementingAndRearranging(arr []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumElementAfterDecrementingAndRearranging(arr: number[]): number {
@@ -167,7 +179,7 @@ function maximumElementAfterDecrementingAndRearranging(arr: number[]): number {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -183,10 +195,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,23 @@
-# [2737. 找到最近的标记节点](https://leetcode.cn/problems/find-the-closest-marked-node)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2737.Find%20the%20Closest%20Marked%20Node/README.md
+tags:
+    - 图
+    - 数组
+    - 最短路
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
+# [2737. 找到最近的标记节点 🔒](https://leetcode.cn/problems/find-the-closest-marked-node)
 
 [English Version](/solution/2700-2799/2737.Find%20the%20Closest%20Marked%20Node/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个正整数 <code>n</code> ，表示一个 <strong>索引从 0 开始的有向加权</strong> 图的节点数量，以及一个 <strong>索引从 0 开始的二维数组</strong> <code>edges</code> ，其中 <code>edges[i] = [u<sub>i</sub>, v<sub>i</sub>, w<sub>i</sub>]</code> 表示从节点 <code>u<sub>i</sub></code> 到节点 <code>v<sub>i</sub></code> 的一条权重为 <code>w<sub>i</sub></code> 的边。</p>
 
@@ -66,11 +79,13 @@
 	<li>图的生成不会出现 <strong>自环</strong> 。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：Dijkstra 算法**
+### 方法一：Dijkstra 算法
 
 我们先根据题目中提供的边的信息，建立一个邻接矩阵 $g$，其中 $g[i][j]$ 表示节点 $i$ 到节点 $j$ 的距离，如果不存在这样的边，则 $g[i][j]$ 为正无穷。
 
@@ -82,9 +97,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -109,9 +122,7 @@ class Solution:
         return -1 if ans >= inf else ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -150,7 +161,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -186,7 +197,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumDistance(n int, edges [][]int, s int, marked []int) int {
@@ -229,7 +240,7 @@ func minimumDistance(n int, edges [][]int, s int, marked []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumDistance(n: number, edges: number[][], s: number, marked: number[]): number {
@@ -263,10 +274,8 @@ function minimumDistance(n: number, edges: number[][], s: number, marked: number
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

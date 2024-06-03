@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2903.Find%20Indices%20With%20Index%20and%20Value%20Difference%20I/README_EN.md
+rating: 1157
+source: Weekly Contest 367 Q1
+tags:
+    - Array
+    - Two Pointers
+---
+
+<!-- problem:start -->
+
 # [2903. Find Indices With Index and Value Difference I](https://leetcode.com/problems/find-indices-with-index-and-value-difference-i)
 
 [中文文档](/solution/2900-2999/2903.Find%20Indices%20With%20Index%20and%20Value%20Difference%20I/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> having length <code>n</code>, an integer <code>indexDifference</code>, and an integer <code>valueDifference</code>.</p>
 
@@ -58,9 +73,13 @@ Hence, [-1,-1] is returned.</pre>
 	<li><code>0 &lt;= valueDifference &lt;= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Pointers + Maintaining Maximum and Minimum Values**
+<!-- solution:start -->
+
+### Solution 1: Two Pointers + Maintaining Maximum and Minimum Values
 
 We use two pointers $i$ and $j$ to maintain a sliding window with a gap of $indexDifference$, where $j$ and $i$ point to the left and right boundaries of the window, respectively. Initially, $i$ points to $indexDifference$, and $j` points to $0$.
 
@@ -74,7 +93,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array. The space c
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -95,7 +114,7 @@ class Solution:
         return [-1, -1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -122,7 +141,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -149,7 +168,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findIndices(nums []int, indexDifference int, valueDifference int) []int {
@@ -173,7 +192,7 @@ func findIndices(nums []int, indexDifference int, valueDifference int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findIndices(nums: number[], indexDifference: number, valueDifference: number): number[] {
@@ -197,7 +216,7 @@ function findIndices(nums: number[], indexDifference: number, valueDifference: n
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -231,10 +250,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

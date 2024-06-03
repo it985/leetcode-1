@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0214.Shortest%20Palindrome/README_EN.md
+tags:
+    - String
+    - String Matching
+    - Hash Function
+    - Rolling Hash
+---
+
+<!-- problem:start -->
+
 # [214. Shortest Palindrome](https://leetcode.com/problems/shortest-palindrome)
 
 [中文文档](/solution/0200-0299/0214.Shortest%20Palindrome/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>s</code>. You can convert <code>s</code> to a <span data-keyword="palindrome-string">palindrome</span> by adding characters in front of it.</p>
 
@@ -24,11 +39,17 @@
 	<li><code>s</code> consists of lowercase English letters only.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -48,7 +69,7 @@ class Solution:
         return s if idx == n else s[idx:][::-1] + s
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -76,7 +97,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 typedef unsigned long long ull;
@@ -104,7 +125,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func shortestPalindrome(s string) string {
@@ -132,7 +153,7 @@ func shortestPalindrome(s string) string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -158,10 +179,52 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C#
 
-```
+```cs
+﻿// https://leetcode.com/problems/shortest-palindrome/
 
+using System.Text;
+
+public partial class Solution
+{
+    public string ShortestPalindrome(string s)
+    {
+        for (var i = s.Length - 1; i >= 0; --i)
+        {
+            var k = i;
+            var j = 0;
+            while (j < k)
+            {
+                if (s[j] == s[k])
+                {
+                    ++j;
+                    --k;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            if (j >= k)
+            {
+                var sb = new StringBuilder(s.Length * 2 - i - 1);
+                for (var l = s.Length - 1; l >= i + 1; --l)
+                {
+                    sb.Append(s[l]);
+                }
+                sb.Append(s);
+                return sb.ToString();
+            }
+        }
+
+        return string.Empty;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

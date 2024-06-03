@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1090.Largest%20Values%20From%20Labels/README_EN.md
+rating: 1501
+source: Weekly Contest 141 Q2
+tags:
+    - Greedy
+    - Array
+    - Hash Table
+    - Counting
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1090. Largest Values From Labels](https://leetcode.com/problems/largest-values-from-labels)
 
 [中文文档](/solution/1000-1099/1090.Largest%20Values%20From%20Labels/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is a set of <code>n</code> items. You are given two integer arrays <code>values</code> and <code>labels</code> where the value and the label of the <code>i<sup>th</sup></code> element are <code>values[i]</code> and <code>labels[i]</code> respectively. You are also given two integers <code>numWanted</code> and <code>useLimit</code>.</p>
 
@@ -52,11 +70,17 @@
 	<li><code>1 &lt;= numWanted, useLimit &lt;= n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +99,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +125,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -128,7 +152,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func largestValsFromLabels(values []int, labels []int, numWanted int, useLimit int) (ans int) {
@@ -151,7 +175,7 @@ func largestValsFromLabels(values []int, labels []int, numWanted int, useLimit i
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function largestValsFromLabels(
@@ -180,10 +204,8 @@ function largestValsFromLabels(
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

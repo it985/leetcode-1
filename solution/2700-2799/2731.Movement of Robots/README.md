@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2731.Movement%20of%20Robots/README.md
+rating: 1922
+source: 第 106 场双周赛 Q3
+tags:
+    - 脑筋急转弯
+    - 数组
+    - 前缀和
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2731. 移动机器人](https://leetcode.cn/problems/movement-of-robots)
 
 [English Version](/solution/2700-2799/2731.Movement%20of%20Robots/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>有一些机器人分布在一条无限长的数轴上，他们初始坐标用一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums</code>&nbsp;表示。当你给机器人下达命令时，它们以每秒钟一单位的速度开始移动。</p>
 
@@ -18,9 +33,10 @@
 
 <ul>
 	<li>对于坐标在&nbsp;<code>i</code> 和&nbsp;<code>j</code>&nbsp;的两个机器人，<code>(i,j)</code>&nbsp;和&nbsp;<code>(j,i)</code>&nbsp;视为相同的坐标对。也就是说，机器人视为无差别的。</li>
-	<li>当机器人相撞时，它们 <strong>立即改变</strong>&nbsp;它们的前进时间，这个过程不消耗任何时间。</li>
+	<li>当机器人相撞时，它们 <strong>立即改变</strong>&nbsp;它们的前进方向，这个过程不消耗任何时间。</li>
 	<li>
 	<p>当两个机器人在同一时刻占据相同的位置时，就会相撞。</p>
+
     <ul>
     	<li>
     	<p>例如，如果一个机器人位于位置 0 并往右移动，另一个机器人位于位置 2 并往左移动，下一秒，它们都将占据位置 1，并改变方向。再下一秒钟后，第一个机器人位于位置 0 并往左移动，而另一个机器人位于位置 2 并往右移动。</p>
@@ -30,6 +46,7 @@
     	</li>
     </ul>
     </li>
+
 </ul>
 
 <p>&nbsp;</p>
@@ -73,11 +90,13 @@
 	<li><code>nums[i]</code>&nbsp;互不相同。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：脑筋急转弯 + 排序**
+### 方法一：脑筋急转弯 + 排序
 
 两个机器人相撞后，它们会立即改变方向，实际上相当于两个机器人继续往原来的方向移动。因此，我们遍历数组 $nums$，按照字符串 $s$ 的指令，将每个机器人的位置加上或减去 $d$，然后对数组 $nums$ 进行排序。
 
@@ -87,9 +106,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -105,9 +122,7 @@ class Solution:
         return ans % mod
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -129,7 +144,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -153,7 +168,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sumDistance(nums []int, s string, d int) (ans int) {
@@ -175,7 +190,7 @@ func sumDistance(nums []int, s string, d int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumDistance(nums: number[], s: string, d: number): number {
@@ -195,10 +210,8 @@ function sumDistance(nums: number[], s: string, d: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

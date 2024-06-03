@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2039.The%20Time%20When%20the%20Network%20Becomes%20Idle/README_EN.md
+rating: 1865
+source: Biweekly Contest 63 Q3
+tags:
+    - Breadth-First Search
+    - Graph
+    - Array
+---
+
+<!-- problem:start -->
+
 # [2039. The Time When the Network Becomes Idle](https://leetcode.com/problems/the-time-when-the-network-becomes-idle)
 
 [中文文档](/solution/2000-2099/2039.The%20Time%20When%20the%20Network%20Becomes%20Idle/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is a network of <code>n</code> servers, labeled from <code>0</code> to <code>n - 1</code>. You are given a 2D integer array <code>edges</code>, where <code>edges[i] = [u<sub>i</sub>, v<sub>i</sub>]</code> indicates there is a message channel between servers <code>u<sub>i</sub></code> and <code>v<sub>i</sub></code>, and they can pass <strong>any</strong> number of messages to <strong>each other</strong> directly in <strong>one</strong> second. You are also given a <strong>0-indexed</strong> integer array <code>patience</code> of length <code>n</code>.</p>
 
@@ -79,9 +95,13 @@ From the beginning of the second 3, the network becomes idle.
 	<li>Each server can directly or indirectly reach another server.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: BFS**
+<!-- solution:start -->
+
+### Solution 1: BFS
 
 First, we construct an undirected graph $g$ based on the 2D array $edges$, where $g[u]$ represents all neighboring nodes of node $u$.
 
@@ -91,7 +111,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -116,7 +136,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -153,7 +173,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -191,7 +211,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func networkBecomesIdle(edges [][]int, patience []int) (ans int) {
@@ -223,7 +243,7 @@ func networkBecomesIdle(edges [][]int, patience []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function networkBecomesIdle(edges: number[][], patience: number[]): number {
@@ -255,10 +275,8 @@ function networkBecomesIdle(edges: number[][], patience: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2741.Special%20Permutations/README.md
+rating: 2020
+source: 第 350 场周赛 Q3
+tags:
+    - 位运算
+    - 数组
+    - 状态压缩
+---
+
+<!-- problem:start -->
+
 # [2741. 特别的排列](https://leetcode.cn/problems/special-permutations)
 
 [English Version](/solution/2700-2799/2741.Special%20Permutations/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums</code>&nbsp;，它包含 <code>n</code>&nbsp;个 <strong>互不相同</strong>&nbsp;的正整数。如果&nbsp;<code>nums</code>&nbsp;的一个排列满足以下条件，我们称它是一个特别的排列：</p>
 
@@ -39,11 +53,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：状态压缩动态规划**
+### 方法一：状态压缩动态规划
 
 我们注意到题目中数组的长度最大不超过 $14$，因此，我们可以用一个整数来表示当前的状态，其中第 $i$ 位为 $1$ 表示数组中的第 $i$ 个数已经被选取，为 $0$ 表示数组中的第 $i$ 个数还未被选取。
 
@@ -65,9 +81,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -89,9 +103,7 @@ class Solution:
         return sum(f[-1]) % mod
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -125,7 +137,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -161,7 +173,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func specialPerm(nums []int) (ans int) {
@@ -195,10 +207,8 @@ func specialPerm(nums []int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

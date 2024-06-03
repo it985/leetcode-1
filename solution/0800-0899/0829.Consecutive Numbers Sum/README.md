@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0829.Consecutive%20Numbers%20Sum/README.md
+tags:
+    - 数学
+    - 枚举
+---
+
+<!-- problem:start -->
+
 # [829. 连续整数求和](https://leetcode.cn/problems/consecutive-numbers-sum)
 
 [English Version](/solution/0800-0899/0829.Consecutive%20Numbers%20Sum/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个正整数 <code>n</code>，返回 <em>连续正整数满足所有数字之和为 <code>n</code>&nbsp;的组数</em> 。&nbsp;</p>
 
@@ -39,11 +50,13 @@
 	<li><code>1 &lt;= n &lt;= 10<sup>9</sup></code>​​​​​​​</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：数学推导**
+### 方法一：数学推导
 
 连续正整数构成一个等差数列($d=1$)。我们假设等差数列的第一项为 $a$，项数为 $k$，则 $n=(a+a+k-1)*k/2$，即 $n*2=(a*2+k-1)*k$ ①。
 
@@ -57,9 +70,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -73,9 +84,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -93,7 +102,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -111,7 +120,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func consecutiveNumbersSum(n int) int {
@@ -126,10 +135,8 @@ func consecutiveNumbersSum(n int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

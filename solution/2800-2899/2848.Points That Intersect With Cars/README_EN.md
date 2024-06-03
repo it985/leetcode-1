@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2848.Points%20That%20Intersect%20With%20Cars/README_EN.md
+rating: 1229
+source: Weekly Contest 362 Q1
+tags:
+    - Array
+    - Hash Table
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [2848. Points That Intersect With Cars](https://leetcode.com/problems/points-that-intersect-with-cars)
 
 [中文文档](/solution/2800-2899/2848.Points%20That%20Intersect%20With%20Cars/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> 2D integer array <code>nums</code> representing the coordinates of the cars parking on a number line. For any index <code>i</code>, <code>nums[i] = [start<sub>i</sub>, end<sub>i</sub>]</code> where <code>start<sub>i</sub></code> is the starting point of the <code>i<sup>th</sup></code> car and <code>end<sub>i</sub></code> is the ending point of the <code>i<sup>th</sup></code> car.</p>
 
@@ -34,9 +50,13 @@
 	<li><code><font face="monospace">1 &lt;= start<sub>i</sub>&nbsp;&lt;= end<sub>i</sub>&nbsp;&lt;= 100</font></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Difference Array**
+<!-- solution:start -->
+
+### Solution 1: Difference Array
 
 We create a difference array $d$ of length $110$, then traverse the given array. For each interval $[a, b]$, we increase $d[a]$ by $1$ and decrease $d[b + 1]$ by $1$. Finally, we traverse the difference array $d$, calculate the prefix sum $s$ at each position. If $s > 0$, it means that the position is covered, and we increase the answer by $1$.
 
@@ -44,7 +64,7 @@ The time complexity is $O(n)$, and the space complexity is $O(M)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -56,7 +76,7 @@ class Solution:
         return sum(s > 0 for s in accumulate(d))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -78,7 +98,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -99,7 +119,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfPoints(nums [][]int) (ans int) {
@@ -119,7 +139,7 @@ func numberOfPoints(nums [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfPoints(nums: number[][]): number {
@@ -140,10 +160,8 @@ function numberOfPoints(nums: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

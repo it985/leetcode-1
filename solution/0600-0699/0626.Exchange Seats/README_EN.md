@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0626.Exchange%20Seats/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
 # [626. Exchange Seats](https://leetcode.com/problems/exchange-seats)
 
 [中文文档](/solution/0600-0699/0626.Exchange%20Seats/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Seat</code></p>
 
@@ -55,11 +67,17 @@ Seat table:
 Note that if the number of students is odd, there is no need to change the last one&#39;s seat.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -69,6 +87,18 @@ FROM
     LEFT JOIN Seat AS s2 ON (s1.id + 1) ^ 1 - 1 = s2.id
 ORDER BY 1;
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -86,6 +116,18 @@ FROM Seat
 ORDER BY 1;
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 3
+
+<!-- tabs:start -->
+
+#### MySQL
+
 ```sql
 # Write your MySQL query statement below
 SELECT
@@ -93,6 +135,18 @@ SELECT
     student
 FROM Seat;
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 4
+
+<!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -108,3 +162,7 @@ ORDER BY 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

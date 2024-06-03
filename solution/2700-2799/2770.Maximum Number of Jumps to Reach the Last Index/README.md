@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2770.Maximum%20Number%20of%20Jumps%20to%20Reach%20the%20Last%20Index/README.md
+rating: 1533
+source: 第 353 场周赛 Q2
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2770. 达到末尾下标所需的最大跳跃次数](https://leetcode.cn/problems/maximum-number-of-jumps-to-reach-the-last-index)
 
 [English Version](/solution/2700-2799/2770.Maximum%20Number%20of%20Jumps%20to%20Reach%20the%20Last%20Index/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始、由 <code>n</code> 个整数组成的数组 <code>nums</code> 和一个整数 <code>target</code> 。</p>
 
@@ -60,11 +73,13 @@
 	<li><code>0 &lt;= target &lt;= 2 * 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索**
+### 方法一：记忆化搜索
 
 对于每个位置 $i$，我们考虑向后搜索能跳到的位置 $j$，如果满足 $|nums[i] - nums[j]| \leq target$，那么我们就可以从 $i$ 跳到 $j$，并且从 $j$ 开始继续向后搜索。
 
@@ -81,9 +96,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -103,9 +116,7 @@ class Solution:
         return -1 if ans < 0 else ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -141,7 +152,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -171,7 +182,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumJumps(nums []int, target int) int {
@@ -211,7 +222,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumJumps(nums: number[], target: number): number {
@@ -237,10 +248,8 @@ function maximumJumps(nums: number[], target: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

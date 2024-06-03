@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2181.Merge%20Nodes%20in%20Between%20Zeros/README.md
+rating: 1333
+source: 第 281 场周赛 Q2
+tags:
+    - 链表
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [2181. 合并零之间的节点](https://leetcode.cn/problems/merge-nodes-in-between-zeros)
 
 [English Version](/solution/2100-2199/2181.Merge%20Nodes%20in%20Between%20Zeros/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个链表的头节点 <code>head</code> ，该链表包含由 <code>0</code> 分隔开的一连串整数。链表的 <strong>开端</strong> 和 <strong>末尾</strong> 的节点都满足 <code>Node.val == 0</code> 。</p>
 
@@ -50,15 +63,17 @@
 	<li>链表的 <strong>开端</strong> 和 <strong>末尾</strong> 节点都满足 <code>Node.val == 0</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -82,9 +97,7 @@ class Solution:
         return dummy.next
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -116,7 +129,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -149,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -176,7 +189,7 @@ func mergeNodes(head *ListNode) *ListNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -208,7 +221,7 @@ function mergeNodes(head: ListNode | null): ListNode | null {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for singly-linked list.
@@ -246,7 +259,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 /**
@@ -276,10 +289,8 @@ struct ListNode* mergeNodes(struct ListNode* head) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

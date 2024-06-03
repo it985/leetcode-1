@@ -1,10 +1,24 @@
-# [2869. 收集元素的最少操作次数](https://leetcode.cn/problems/minimum-operations-to-collect-elements/)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2869.Minimum%20Operations%20to%20Collect%20Elements/README.md
+rating: 1272
+source: 第 114 场双周赛 Q1
+tags:
+    - 位运算
+    - 数组
+    - 哈希表
+---
+
+<!-- problem:start -->
+
+# [2869. 收集元素的最少操作次数](https://leetcode.cn/problems/minimum-operations-to-collect-elements)
 
 [English Version](/solution/2800-2899/2869.Minimum%20Operations%20to%20Collect%20Elements/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个正整数数组&nbsp;<code>nums</code>&nbsp;和一个整数&nbsp;<code>k</code>&nbsp;。</p>
 
@@ -49,11 +63,13 @@
 	<li>输入保证你可以收集到元素&nbsp;<code>1, 2, ..., k</code> 。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：逆序遍历**
+### 方法一：逆序遍历
 
 我们可以逆序遍历数组，每次遍历到的元素如果小于等于 $k$，且没有被添加过，就将其添加到集合中，直到集合中包含了元素 $1$ 到 $k$ 为止。
 
@@ -61,9 +77,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,9 +94,7 @@ class Solution:
                 return n - i
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -126,7 +138,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minOperations(nums []int, k int) int {
@@ -146,7 +158,7 @@ func minOperations(nums []int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minOperations(nums: number[], k: number): number {
@@ -166,10 +178,8 @@ function minOperations(nums: number[], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

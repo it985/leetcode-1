@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2555.Maximize%20Win%20From%20Two%20Segments/README_EN.md
+rating: 2080
+source: Biweekly Contest 97 Q3
+tags:
+    - Array
+    - Binary Search
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [2555. Maximize Win From Two Segments](https://leetcode.com/problems/maximize-win-from-two-segments)
 
 [中文文档](/solution/2500-2599/2555.Maximize%20Win%20From%20Two%20Segments/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are some prizes on the <strong>X-axis</strong>. You are given an integer array <code>prizePositions</code> that is <strong>sorted in non-decreasing order</strong>, where <code>prizePositions[i]</code> is the position of the <code>i<sup>th</sup></code> prize. There could be different prizes at the same position on the line. You are also given an integer <code>k</code>.</p>
 
@@ -50,11 +66,25 @@
 .spoilerbutton[value="Hide Message"] + .spoiler {padding:5px;}
 </style>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming + Binary Search
+
+We define $f[i]$ as the maximum number of prizes that can be obtained by selecting a segment of length $k$ from the first $i$ prizes. Initially, $f[0] = 0$. We define the answer variable as $ans = 0$.
+
+Next, we enumerate the position $x$ of each prize, and use binary search to find the leftmost prize index $j$ such that $prizePositions[j] \geq x - k$. At this point, we update the answer $ans = \max(ans, f[j] + i - j)$, and update $f[i] = \max(f[i - 1], i - j)$.
+
+Finally, we return $ans$.
+
+The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$. Where $n$ is the number of prizes.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +99,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -121,7 +151,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximizeWin(prizePositions []int, k int) (ans int) {
@@ -136,7 +166,7 @@ func maximizeWin(prizePositions []int, k int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximizeWin(prizePositions: number[], k: number): number {
@@ -166,10 +196,8 @@ function maximizeWin(prizePositions: number[], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

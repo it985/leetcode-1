@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0101.Symmetric%20Tree/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 广度优先搜索
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [101. 对称二叉树](https://leetcode.cn/problems/symmetric-tree)
 
 [English Version](/solution/0100-0199/0101.Symmetric%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个二叉树的根节点 <code>root</code> ， 检查它是否轴对称。</p>
 
@@ -37,11 +50,13 @@
 
 <p><strong>进阶：</strong>你可以运用递归和迭代两种方法解决这个问题吗？</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：递归**
+### 方法一：递归
 
 我们设计一个函数 $dfs(root1, root2)$，用于判断两个二叉树是否对称。答案即为 $dfs(root, root)$。
 
@@ -55,9 +70,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -78,9 +91,7 @@ class Solution:
         return dfs(root, root)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -115,7 +126,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -142,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -168,7 +179,7 @@ func isSymmetric(root *TreeNode) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -200,7 +211,7 @@ function isSymmetric(root: TreeNode | null): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -244,6 +255,43 @@ impl Solution {
     }
 }
 ```
+
+#### JavaScript
+
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isSymmetric = function (root) {
+    function dfs(root1, root2) {
+        if (!root1 && !root2) return true;
+        if (!root1 || !root2 || root1.val != root2.val) return false;
+        return dfs(root1.left, root2.right) && dfs(root1.right, root2.left);
+    }
+    return dfs(root, root);
+};
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -295,14 +343,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
-```
+<!-- problem:end -->

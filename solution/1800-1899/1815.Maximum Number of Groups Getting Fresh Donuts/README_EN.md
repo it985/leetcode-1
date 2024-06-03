@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1815.Maximum%20Number%20of%20Groups%20Getting%20Fresh%20Donuts/README_EN.md
+rating: 2559
+source: Biweekly Contest 49 Q4
+tags:
+    - Bit Manipulation
+    - Memoization
+    - Array
+    - Dynamic Programming
+    - Bitmask
+---
+
+<!-- problem:start -->
+
 # [1815. Maximum Number of Groups Getting Fresh Donuts](https://leetcode.com/problems/maximum-number-of-groups-getting-fresh-donuts)
 
 [中文文档](/solution/1800-1899/1815.Maximum%20Number%20of%20Groups%20Getting%20Fresh%20Donuts/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is a donuts shop that bakes donuts in batches of <code>batchSize</code>. They have a rule where they must serve <strong>all</strong> of the donuts of a batch before serving any donuts of the next batch. You are given an integer <code>batchSize</code> and an integer array <code>groups</code>, where <code>groups[i]</code> denotes that there is a group of <code>groups[i]</code> customers that will visit the shop. Each customer will get exactly one donut.</p>
 
@@ -35,9 +53,13 @@
 	<li><code>1 &lt;= groups[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy + State Compression + Memorized Search**
+<!-- solution:start -->
+
+### Solution 1: Greedy + State Compression + Memorized Search
 
 The problem actually asks us to find an arrangement order that maximizes the number of groups whose prefix sum (referring to "number of people" here) modulo $batchSize$ equals $0$. Therefore, we can divide all customers into two categories:
 
@@ -56,7 +78,7 @@ The time complexity does not exceed $O(10^7)$, and the space complexity does not
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -81,28 +103,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def maxHappyGroups(self, batchSize: int, groups: List[int]) -> int:
-        @cache
-        def dfs(state, x):
-            if state == mask:
-                return 0
-            vis = [False] * batchSize
-            res = 0
-            for i, v in enumerate(g):
-                if state >> i & 1 == 0 and not vis[v]:
-                    vis[v] = True
-                    y = (x + v) % batchSize
-                    res = max(res, dfs(state | 1 << i, y))
-            return res + (x == 0)
-
-        g = [v % batchSize for v in groups if v % batchSize]
-        mask = (1 << len(g)) - 1
-        return len(groups) - len(g) + dfs(0, 0)
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -142,7 +143,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -179,7 +180,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxHappyGroups(batchSize int, groups []int) (ans int) {
@@ -217,10 +218,41 @@ func maxHappyGroups(batchSize int, groups []int) (ans int) {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def maxHappyGroups(self, batchSize: int, groups: List[int]) -> int:
+        @cache
+        def dfs(state, x):
+            if state == mask:
+                return 0
+            vis = [False] * batchSize
+            res = 0
+            for i, v in enumerate(g):
+                if state >> i & 1 == 0 and not vis[v]:
+                    vis[v] = True
+                    y = (x + v) % batchSize
+                    res = max(res, dfs(state | 1 << i, y))
+            return res + (x == 0)
+
+        g = [v % batchSize for v in groups if v % batchSize]
+        mask = (1 << len(g)) - 1
+        return len(groups) - len(g) + dfs(0, 0)
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

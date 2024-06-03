@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1441.Build%20an%20Array%20With%20Stack%20Operations/README_EN.md
+rating: 1180
+source: Weekly Contest 188 Q1
+tags:
+    - Stack
+    - Array
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [1441. Build an Array With Stack Operations](https://leetcode.com/problems/build-an-array-with-stack-operations)
 
 [中文文档](/solution/1400-1499/1441.Build%20an%20Array%20With%20Stack%20Operations/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>target</code> and an integer <code>n</code>.</p>
 
@@ -71,11 +87,17 @@ The answers that read integer 3 from the stream are not accepted.
 	<li><code>target</code> is strictly increasing.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -90,7 +112,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -109,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -129,7 +151,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func buildArray(target []int, n int) []string {
@@ -145,7 +167,44 @@ func buildArray(target []int, n int) []string {
 }
 ```
 
-### **C**
+#### TypeScript
+
+```ts
+function buildArray(target: number[], n: number): string[] {
+    const res = [];
+    let cur = 0;
+    for (const num of target) {
+        while (++cur < num) {
+            res.push('Push', 'Pop');
+        }
+        res.push('Push');
+    }
+    return res;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn build_array(target: Vec<i32>, n: i32) -> Vec<String> {
+        let mut res = Vec::new();
+        let mut cur = 1;
+        for &num in target.iter() {
+            while cur < num {
+                res.push("Push");
+                res.push("Pop");
+                cur += 1;
+            }
+            res.push("Push");
+            cur += 1;
+        }
+        res.into_iter().map(String::from).collect()
+    }
+}
+```
+
+#### C
 
 ```c
 /**
@@ -170,47 +229,8 @@ char** buildArray(int* target, int targetSize, int n, int* returnSize) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function buildArray(target: number[], n: number): string[] {
-    const res = [];
-    let cur = 0;
-    for (const num of target) {
-        while (++cur < num) {
-            res.push('Push', 'Pop');
-        }
-        res.push('Push');
-    }
-    return res;
-}
-```
-
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn build_array(target: Vec<i32>, n: i32) -> Vec<String> {
-        let mut res = Vec::new();
-        let mut cur = 1;
-        for &num in target.iter() {
-            while cur < num {
-                res.push("Push");
-                res.push("Pop");
-                cur += 1;
-            }
-            res.push("Push");
-            cur += 1;
-        }
-        res.into_iter().map(String::from).collect()
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

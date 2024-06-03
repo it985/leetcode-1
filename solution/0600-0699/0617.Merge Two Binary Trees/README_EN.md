@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0617.Merge%20Two%20Binary%20Trees/README_EN.md
+tags:
+    - Tree
+    - Depth-First Search
+    - Breadth-First Search
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [617. Merge Two Binary Trees](https://leetcode.com/problems/merge-two-binary-trees)
 
 [中文文档](/solution/0600-0699/0617.Merge%20Two%20Binary%20Trees/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two binary trees <code>root1</code> and <code>root2</code>.</p>
 
@@ -35,11 +50,17 @@
 	<li><code>-10<sup>4</sup> &lt;= Node.val &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -62,7 +83,7 @@ class Solution:
         return node
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -96,7 +117,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -123,7 +144,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -148,7 +169,7 @@ func mergeTrees(root1 *TreeNode, root2 *TreeNode) *TreeNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -175,7 +196,7 @@ function mergeTrees(root1: TreeNode | null, root2: TreeNode | null): TreeNode | 
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -222,7 +243,7 @@ impl Solution {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -252,10 +273,8 @@ var mergeTrees = function (root1, root2) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

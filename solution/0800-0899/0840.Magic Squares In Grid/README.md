@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0840.Magic%20Squares%20In%20Grid/README.md
+tags:
+    - 数组
+    - 哈希表
+    - 数学
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [840. 矩阵中的幻方](https://leetcode.cn/problems/magic-squares-in-grid)
 
 [English Version](/solution/0800-0899/0840.Magic%20Squares%20In%20Grid/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><code>3 x 3</code> 的幻方是一个填充有&nbsp;<strong>从 <code>1</code> 到 <code>9</code>&nbsp;</strong> 的不同数字的 <code>3 x 3</code> 矩阵，其中每行，每列以及两条对角线上的各数之和都相等。</p>
 
@@ -45,11 +58,13 @@
 	<li><code>0 &lt;= grid[i][j] &lt;= 15</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举**
+### 方法一：枚举
 
 我们直接枚举每个 $3 \times 3$ 子矩阵的左上角坐标 $(i, j)$，然后判断该子矩阵是否满足“幻方矩阵”，若是，答案加一。枚举结束后，返回答案即可。
 
@@ -57,9 +72,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -93,9 +106,7 @@ class Solution:
         return sum(check(i, j) for i in range(m) for j in range(n))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -153,7 +164,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -206,7 +217,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numMagicSquaresInside(grid [][]int) (ans int) {
@@ -255,7 +266,7 @@ func numMagicSquaresInside(grid [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numMagicSquaresInside(grid: number[][]): number {
@@ -305,10 +316,8 @@ function numMagicSquaresInside(grid: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

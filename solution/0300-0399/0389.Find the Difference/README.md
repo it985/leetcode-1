@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0389.Find%20the%20Difference/README.md
+tags:
+    - 位运算
+    - 哈希表
+    - 字符串
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [389. 找不同](https://leetcode.cn/problems/find-the-difference)
 
 [English Version](/solution/0300-0399/0389.Find%20the%20Difference/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个字符串 <code>s</code> 和 <code>t</code>&nbsp;，它们只包含小写字母。</p>
 
@@ -39,27 +52,21 @@
 	<li><code>s</code> 和 <code>t</code> 只包含小写字母</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数**
+### 方法一：计数
 
 我们可以用一个哈希表或数组 $cnt$ 统计字符串 $s$ 中每个字符出现的次数，再遍历字符串 $t$，对于每个字符，我们在 $cnt$ 中减去一次出现的次数，如果对应次数为负数，则说明该字符在 $t$ 中出现的次数大于在 $s$ 中出现的次数，因此该字符为被添加的字符。
 
 时间复杂度 $O(n)$，空间复杂度 $O(|\Sigma|)$，其中 $n$ 为字符串的长度，而 $\Sigma$ 表示字符集，这里字符集为所有小写字母，所以 $|\Sigma|=26$。
 
-**方法二：求和**
-
-我们可以将字符串 $t$ 中每个字符的 ASCII 码的值求和，再减去字符串 $s$ 中每个字符的 ASCII 码的值求和，最后的结果即为被添加的字符的 ASCII 码对应的值。
-
-时间复杂度 $O(n)$，其中 $n$ 为字符串的长度，空间复杂度 $O(1)$。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -71,17 +78,7 @@ class Solution:
                 return c
 ```
 
-```python
-class Solution:
-    def findTheDifference(self, s: str, t: str) -> str:
-        a = sum(ord(c) for c in s)
-        b = sum(ord(c) for c in t)
-        return chr(b - a)
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -99,22 +96,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public char findTheDifference(String s, String t) {
-        int ss = 0;
-        for (int i = 0; i < t.length(); ++i) {
-            ss += t.charAt(i);
-        }
-        for (int i = 0; i < s.length(); ++i) {
-            ss -= s.charAt(i);
-        }
-        return (char) ss;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -134,23 +116,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    char findTheDifference(string s, string t) {
-        int a = 0, b = 0;
-        for (char& c : s) {
-            a += c;
-        }
-        for (char& c : t) {
-            b += c;
-        }
-        return b - a;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func findTheDifference(s, t string) byte {
@@ -168,20 +134,7 @@ func findTheDifference(s, t string) byte {
 }
 ```
 
-```go
-func findTheDifference(s string, t string) byte {
-	ss := 0
-	for _, c := range s {
-		ss -= int(c)
-	}
-	for _, c := range t {
-		ss += int(c)
-	}
-	return byte(ss)
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findTheDifference(s: string, t: string): string {
@@ -200,16 +153,7 @@ function findTheDifference(s: string, t: string): string {
 }
 ```
 
-```ts
-function findTheDifference(s: string, t: string): string {
-    return String.fromCharCode(
-        [...t].reduce((r, v) => r + v.charCodeAt(0), 0) -
-            [...s].reduce((r, v) => r + v.charCodeAt(0), 0),
-    );
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -236,22 +180,7 @@ impl Solution {
 }
 ```
 
-```rust
-impl Solution {
-    pub fn find_the_difference(s: String, t: String) -> char {
-        let mut ans = 0;
-        for c in s.as_bytes() {
-            ans ^= c;
-        }
-        for c in t.as_bytes() {
-            ans ^= c;
-        }
-        char::from(ans)
-    }
-}
-```
-
-### **C**
+#### C
 
 ```c
 char findTheDifference(char* s, char* t) {
@@ -270,6 +199,110 @@ char findTheDifference(char* s, char* t) {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：求和
+
+我们可以将字符串 $t$ 中每个字符的 ASCII 码的值求和，再减去字符串 $s$ 中每个字符的 ASCII 码的值求和，最后的结果即为被添加的字符的 ASCII 码对应的值。
+
+时间复杂度 $O(n)$，其中 $n$ 为字符串的长度，空间复杂度 $O(1)$。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        a = sum(ord(c) for c in s)
+        b = sum(ord(c) for c in t)
+        return chr(b - a)
+```
+
+#### Java
+
+```java
+class Solution {
+    public char findTheDifference(String s, String t) {
+        int ss = 0;
+        for (int i = 0; i < t.length(); ++i) {
+            ss += t.charAt(i);
+        }
+        for (int i = 0; i < s.length(); ++i) {
+            ss -= s.charAt(i);
+        }
+        return (char) ss;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        int a = 0, b = 0;
+        for (char& c : s) {
+            a += c;
+        }
+        for (char& c : t) {
+            b += c;
+        }
+        return b - a;
+    }
+};
+```
+
+#### Go
+
+```go
+func findTheDifference(s string, t string) byte {
+	ss := 0
+	for _, c := range s {
+		ss -= int(c)
+	}
+	for _, c := range t {
+		ss += int(c)
+	}
+	return byte(ss)
+}
+```
+
+#### TypeScript
+
+```ts
+function findTheDifference(s: string, t: string): string {
+    return String.fromCharCode(
+        [...t].reduce((r, v) => r + v.charCodeAt(0), 0) -
+            [...s].reduce((r, v) => r + v.charCodeAt(0), 0),
+    );
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn find_the_difference(s: String, t: String) -> char {
+        let mut ans = 0;
+        for c in s.as_bytes() {
+            ans ^= c;
+        }
+        for c in t.as_bytes() {
+            ans ^= c;
+        }
+        char::from(ans)
+    }
+}
+```
+
+#### C
+
 ```c
 char findTheDifference(char* s, char* t) {
     int n = strlen(s);
@@ -283,10 +316,8 @@ char findTheDifference(char* s, char* t) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

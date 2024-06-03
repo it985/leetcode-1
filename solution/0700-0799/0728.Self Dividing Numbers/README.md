@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0728.Self%20Dividing%20Numbers/README.md
+tags:
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [728. 自除数](https://leetcode.cn/problems/self-dividing-numbers)
 
 [English Version](/solution/0700-0799/0728.Self%20Dividing%20Numbers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><strong>自除数</strong><em>&nbsp;</em>是指可以被它包含的每一位数整除的数。</p>
 
@@ -40,15 +50,17 @@
 	<li><code>1 &lt;= left &lt;= right &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -60,9 +72,7 @@ class Solution:
         ]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -88,7 +98,54 @@ class Solution {
 }
 ```
 
-### **Rust**
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> selfDividingNumbers(int left, int right) {
+        vector<int> ans;
+        for (int i = left; i <= right; ++i)
+            if (check(i))
+                ans.push_back(i);
+        return ans;
+    }
+
+    bool check(int num) {
+        for (int t = num; t; t /= 10) {
+            int x = t % 10;
+            if (x == 0 || num % x) return false;
+        }
+        return true;
+    }
+};
+```
+
+#### Go
+
+```go
+func selfDividingNumbers(left int, right int) []int {
+	check := func(num int) bool {
+		for t := num; t != 0; t /= 10 {
+			x := t % 10
+			if x == 0 || num%x != 0 {
+				return false
+			}
+		}
+		return true
+	}
+
+	var ans []int
+	for i := left; i <= right; i++ {
+		if check(i) {
+			ans = append(ans, i)
+		}
+	}
+	return ans
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -116,57 +173,8 @@ impl Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    vector<int> selfDividingNumbers(int left, int right) {
-        vector<int> ans;
-        for (int i = left; i <= right; ++i)
-            if (check(i))
-                ans.push_back(i);
-        return ans;
-    }
-
-    bool check(int num) {
-        for (int t = num; t; t /= 10) {
-            int x = t % 10;
-            if (x == 0 || num % x) return false;
-        }
-        return true;
-    }
-};
-```
-
-### **Go**
-
-```go
-func selfDividingNumbers(left int, right int) []int {
-	check := func(num int) bool {
-		for t := num; t != 0; t /= 10 {
-			x := t % 10
-			if x == 0 || num%x != 0 {
-				return false
-			}
-		}
-		return true
-	}
-
-	var ans []int
-	for i := left; i <= right; i++ {
-		if check(i) {
-			ans = append(ans, i)
-		}
-	}
-	return ans
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

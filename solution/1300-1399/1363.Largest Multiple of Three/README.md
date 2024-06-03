@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1363.Largest%20Multiple%20of%20Three/README.md
+rating: 1822
+source: 第 177 场周赛 Q4
+tags:
+    - 贪心
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [1363. 形成三的最大倍数](https://leetcode.cn/problems/largest-multiple-of-three)
 
 [English Version](/solution/1300-1399/1363.Largest%20Multiple%20of%20Three/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组&nbsp;<code>digits</code>，你可以通过按 <strong>任意顺序</strong> 连接其中某些数字来形成 <strong>3</strong> 的倍数，请你返回所能得到的最大的 3 的倍数。</p>
 
@@ -49,11 +63,13 @@
 	<li><code>0 &lt;= digits[i] &lt;= 9</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 动态规划 + 逆推**
+### 方法一：贪心 + 动态规划 + 逆推
 
 我们定义 $f[i][j]$ 表示在前 $i$ 个数中选取若干个数，使得选取的数的和模 $3$ 为 $j$ 的最大长度。为了使得选取的数最大，我们需要尽可能选取更多的数，因此我们需要使得 $f[i][j]$ 尽可能大。我们初始化 $f[0][0] = 0$，其余的 $f[0][j] = -\infty$。
 
@@ -71,9 +87,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -100,9 +114,7 @@ class Solution:
         return "".join(map(str, arr[i:]))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -140,7 +152,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -176,7 +188,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func largestMultipleOfThree(digits []int) string {
@@ -215,7 +227,7 @@ func largestMultipleOfThree(digits []int) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function largestMultipleOfThree(digits: number[]): string {
@@ -247,10 +259,8 @@ function largestMultipleOfThree(digits: number[]): string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

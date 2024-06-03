@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2271.Maximum%20White%20Tiles%20Covered%20by%20a%20Carpet/README_EN.md
+rating: 2021
+source: Biweekly Contest 78 Q3
+tags:
+    - Greedy
+    - Array
+    - Binary Search
+    - Prefix Sum
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2271. Maximum White Tiles Covered by a Carpet](https://leetcode.com/problems/maximum-white-tiles-covered-by-a-carpet)
 
 [中文文档](/solution/2200-2299/2271.Maximum%20White%20Tiles%20Covered%20by%20a%20Carpet/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a 2D integer array <code>tiles</code> where <code>tiles[i] = [l<sub>i</sub>, r<sub>i</sub>]</code> represents that every tile <code>j</code> in the range <code>l<sub>i</sub> &lt;= j &lt;= r<sub>i</sub></code> is colored white.</p>
 
@@ -42,11 +60,17 @@ It covers 2 white tiles, so we return 2.
 	<li>The <code>tiles</code> are <strong>non-overlapping</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,7 +90,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +115,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -116,7 +140,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumWhiteTiles(tiles [][]int, carpetLen int) int {
@@ -139,16 +163,8 @@ func maximumWhiteTiles(tiles [][]int, carpetLen int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

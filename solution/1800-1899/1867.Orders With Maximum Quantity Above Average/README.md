@@ -1,10 +1,20 @@
-# [1867. 最大数量高于平均水平的订单](https://leetcode.cn/problems/orders-with-maximum-quantity-above-average)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1867.Orders%20With%20Maximum%20Quantity%20Above%20Average/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1867. 最大数量高于平均水平的订单 🔒](https://leetcode.cn/problems/orders-with-maximum-quantity-above-average)
 
 [English Version](/solution/1800-1899/1867.Orders%20With%20Maximum%20Quantity%20Above%20Average/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>&nbsp;<code>OrdersDetails</code> 表</p>
 
@@ -83,15 +93,17 @@ OrdersDetails 表:
 订单1和订单3是不平衡的，因为它们的最大数量超过了它们订单的平均数量。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -110,3 +122,7 @@ WHERE max_quantity > (SELECT MAX(avg_quantity) FROM t);
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

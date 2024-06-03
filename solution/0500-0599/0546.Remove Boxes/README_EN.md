@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0546.Remove%20Boxes/README_EN.md
+tags:
+    - Memoization
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [546. Remove Boxes](https://leetcode.com/problems/remove-boxes)
 
 [中文文档](/solution/0500-0599/0546.Remove%20Boxes/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given several <code>boxes</code> with different colors represented by different positive numbers.</p>
 
@@ -46,11 +60,17 @@
 	<li><code>1 &lt;= boxes[i]&nbsp;&lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -73,7 +93,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -110,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -140,7 +160,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func removeBoxes(boxes []int) int {
@@ -176,10 +196,8 @@ func removeBoxes(boxes []int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

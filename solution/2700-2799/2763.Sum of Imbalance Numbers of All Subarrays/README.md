@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2763.Sum%20of%20Imbalance%20Numbers%20of%20All%20Subarrays/README.md
+rating: 2277
+source: 第 352 场周赛 Q4
+tags:
+    - 数组
+    - 哈希表
+    - 有序集合
+---
+
+<!-- problem:start -->
+
 # [2763. 所有子数组中不平衡数字之和](https://leetcode.cn/problems/sum-of-imbalance-numbers-of-all-subarrays)
 
 [English Version](/solution/2700-2799/2763.Sum%20of%20Imbalance%20Numbers%20of%20All%20Subarrays/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一个长度为 <code>n</code>&nbsp;下标从 <strong>0</strong>&nbsp;开始的整数数组 <code>arr</code>&nbsp;的 <strong>不平衡数字</strong>&nbsp;定义为，在&nbsp;<code>sarr = sorted(arr)</code>&nbsp;数组中，满足以下条件的下标数目：</p>
 
@@ -55,11 +69,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= nums.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举 + 有序集合**
+### 方法一：枚举 + 有序集合
 
 我们可以先枚举子数组的左端点 $i$，对于每个 $i$，我们从小到大枚举子数组的右端点 $j$，并且用一个有序列表维护当前子数组中的所有元素，用一个变量 $cnt$ 维护当前子数组的不平衡数字。
 
@@ -75,9 +91,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 from sortedcontainers import SortedList
@@ -104,9 +118,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -137,7 +149,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -168,16 +180,8 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

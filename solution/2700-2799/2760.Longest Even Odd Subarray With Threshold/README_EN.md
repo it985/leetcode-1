@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2760.Longest%20Even%20Odd%20Subarray%20With%20Threshold/README_EN.md
+rating: 1420
+source: Weekly Contest 352 Q1
+tags:
+    - Array
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [2760. Longest Even Odd Subarray With Threshold](https://leetcode.com/problems/longest-even-odd-subarray-with-threshold)
 
 [中文文档](/solution/2700-2799/2760.Longest%20Even%20Odd%20Subarray%20With%20Threshold/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> and an integer <code>threshold</code>.</p>
 
@@ -55,23 +70,21 @@ Hence, the answer is the length of the subarray, 3. We can show that 3 is the ma
 	<li><code>1 &lt;= threshold &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Enumeration
 
 We enumerate all $l$ in the range $[0,..n-1]$. If $nums[l]$ satisfies $nums[l] \bmod 2 = 0$ and $nums[l] \leq threshold$, then we start from $l+1$ to find the largest $r$ that meets the condition. At this time, the length of the longest odd-even subarray with $nums[l]$ as the left endpoint is $r - l$. We take the maximum of all $r - l$ as the answer.
 
 The time complexity is $O(n^2)$, where $n$ is the length of the array $nums$. The space complexity is $O(1)$.
 
-**Solution 2: Optimized Enumeration**
-
-We notice that the problem actually divides the array into several disjoint subarrays that meet the condition. We only need to find the longest one among these subarrays. Therefore, when enumerating $l$ and $r$, we don't need to backtrack, we just need to traverse from left to right once.
-
-The time complexity is $O(n)$, where $n$ is the length of the array $nums$. The space complexity is $O(1)$.
-
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -86,23 +99,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def longestAlternatingSubarray(self, nums: List[int], threshold: int) -> int:
-        ans, l, n = 0, 0, len(nums)
-        while l < n:
-            if nums[l] % 2 == 0 and nums[l] <= threshold:
-                r = l + 1
-                while r < n and nums[r] % 2 != nums[r - 1] % 2 and nums[r] <= threshold:
-                    r += 1
-                ans = max(ans, r - l)
-                l = r
-            else:
-                l += 1
-        return ans
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -121,6 +118,98 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int longestAlternatingSubarray(vector<int>& nums, int threshold) {
+        int ans = 0, n = nums.size();
+        for (int l = 0; l < n; ++l) {
+            if (nums[l] % 2 == 0 && nums[l] <= threshold) {
+                int r = l + 1;
+                while (r < n && nums[r] % 2 != nums[r - 1] % 2 && nums[r] <= threshold) {
+                    ++r;
+                }
+                ans = max(ans, r - l);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func longestAlternatingSubarray(nums []int, threshold int) (ans int) {
+	n := len(nums)
+	for l := range nums {
+		if nums[l]%2 == 0 && nums[l] <= threshold {
+			r := l + 1
+			for r < n && nums[r]%2 != nums[r-1]%2 && nums[r] <= threshold {
+				r++
+			}
+			ans = max(ans, r-l)
+		}
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function longestAlternatingSubarray(nums: number[], threshold: number): number {
+    const n = nums.length;
+    let ans = 0;
+    for (let l = 0; l < n; ++l) {
+        if (nums[l] % 2 === 0 && nums[l] <= threshold) {
+            let r = l + 1;
+            while (r < n && nums[r] % 2 !== nums[r - 1] % 2 && nums[r] <= threshold) {
+                ++r;
+            }
+            ans = Math.max(ans, r - l);
+        }
+    }
+    return ans;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Optimized Enumeration
+
+We notice that the problem actually divides the array into several disjoint subarrays that meet the condition. We only need to find the longest one among these subarrays. Therefore, when enumerating $l$ and $r$, we don't need to backtrack, we just need to traverse from left to right once.
+
+The time complexity is $O(n)$, where $n$ is the length of the array $nums$. The space complexity is $O(1)$.
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def longestAlternatingSubarray(self, nums: List[int], threshold: int) -> int:
+        ans, l, n = 0, 0, len(nums)
+        while l < n:
+            if nums[l] % 2 == 0 and nums[l] <= threshold:
+                r = l + 1
+                while r < n and nums[r] % 2 != nums[r - 1] % 2 and nums[r] <= threshold:
+                    r += 1
+                ans = max(ans, r - l)
+                l = r
+            else:
+                l += 1
+        return ans
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -143,26 +232,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int longestAlternatingSubarray(vector<int>& nums, int threshold) {
-        int ans = 0, n = nums.size();
-        for (int l = 0; l < n; ++l) {
-            if (nums[l] % 2 == 0 && nums[l] <= threshold) {
-                int r = l + 1;
-                while (r < n && nums[r] % 2 != nums[r - 1] % 2 && nums[r] <= threshold) {
-                    ++r;
-                }
-                ans = max(ans, r - l);
-            }
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -186,23 +256,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func longestAlternatingSubarray(nums []int, threshold int) (ans int) {
-	n := len(nums)
-	for l := range nums {
-		if nums[l]%2 == 0 && nums[l] <= threshold {
-			r := l + 1
-			for r < n && nums[r]%2 != nums[r-1]%2 && nums[r] <= threshold {
-				r++
-			}
-			ans = max(ans, r-l)
-		}
-	}
-	return
-}
-```
+#### Go
 
 ```go
 func longestAlternatingSubarray(nums []int, threshold int) (ans int) {
@@ -222,24 +276,7 @@ func longestAlternatingSubarray(nums []int, threshold int) (ans int) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function longestAlternatingSubarray(nums: number[], threshold: number): number {
-    const n = nums.length;
-    let ans = 0;
-    for (let l = 0; l < n; ++l) {
-        if (nums[l] % 2 === 0 && nums[l] <= threshold) {
-            let r = l + 1;
-            while (r < n && nums[r] % 2 !== nums[r - 1] % 2 && nums[r] <= threshold) {
-                ++r;
-            }
-            ans = Math.max(ans, r - l);
-        }
-    }
-    return ans;
-}
-```
+#### TypeScript
 
 ```ts
 function longestAlternatingSubarray(nums: number[], threshold: number): number {
@@ -261,10 +298,8 @@ function longestAlternatingSubarray(nums: number[], threshold: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

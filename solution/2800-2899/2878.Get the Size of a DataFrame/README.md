@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2878.Get%20the%20Size%20of%20a%20DataFrame/README.md
+---
+
+<!-- problem:start -->
+
 # [2878. 获取 DataFrame 的大小](https://leetcode.cn/problems/get-the-size-of-a-dataframe)
 
 [English Version](/solution/2800-2899/2878.Get%20the%20Size%20of%20a%20DataFrame/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <pre>
 DataFrame <code>players:</code>
@@ -53,15 +61,17 @@ DataFrame <code>players:</code>
 这个 DataFrame 包含 10 行和 5 列。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Pandas**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 import pandas as pd
@@ -71,10 +81,8 @@ def getDataframeSize(players: pd.DataFrame) -> List[int]:
     return list(players.shape)
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

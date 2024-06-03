@@ -1,10 +1,20 @@
-# [2783. 航班入座率和等待名单分析](https://leetcode.cn/problems/flight-occupancy-and-waitlist-analysis)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2783.Flight%20Occupancy%20and%20Waitlist%20Analysis/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2783. 航班入座率和等待名单分析 🔒](https://leetcode.cn/problems/flight-occupancy-and-waitlist-analysis)
 
 [English Version](/solution/2700-2799/2783.Flight%20Occupancy%20and%20Waitlist%20Analysis/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><code><font face="monospace">Flights</font></code>表</p>
 
@@ -79,11 +89,13 @@ Passengers table:
 - 航班 2 的座位容量为 2。由于有 2 名乘客预订了机票，每个人都可以获得座位。结果是，有 2 名乘客成功预订了座位，且没有乘客在等待名单上。
 - 航班 3 的座位容量为 1。由于有 2 名乘客预订了机票，只有 1 名乘客可以获得座位。因此，有 1 名乘客成功预订，并且有 1 名乘客在等待名单上。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：左连接 + 分组**
+### 方法一：左连接 + 分组
 
 我们可以使用左连接将 `Flights` 和 `Passengers` 表连接起来，然后按照 `flight_id` 分组，统计每个航班的乘客数量。
 
@@ -91,9 +103,7 @@ Passengers table:
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -109,3 +119,7 @@ ORDER BY 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

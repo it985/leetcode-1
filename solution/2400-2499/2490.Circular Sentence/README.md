@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2490.Circular%20Sentence/README.md
+rating: 1262
+source: 第 322 场周赛 Q1
+tags:
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2490. 回环句](https://leetcode.cn/problems/circular-sentence)
 
 [English Version](/solution/2400-2499/2490.Circular%20Sentence/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><strong>句子</strong> 是由单个空格分隔的一组单词，且不含前导或尾随空格。</p>
 
@@ -68,27 +80,21 @@
 	<li>不含任何前导或尾随空格</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们将字符串按照空格分割成单词，然后判断每个单词的最后一个字符和下一个单词的第一个字符是否相等，如果不相等则返回 `false`，否则遍历完所有单词后返回 `true`。
 
 时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 是字符串的长度。
 
-**方法二：模拟（空间优化）**
-
-我们可以先判断字符串的第一个字符和最后一个字符是否相等，如果不相等则返回 `false`，否则遍历字符串，如果当前字符是空格，则判断前一个字符和后一个字符是否相等，如果不相等则返回 `false`，否则遍历完所有字符后返回 `true`。
-
-时间复杂度 $O(n)$，其中 $n$ 是字符串的长度。空间复杂度 $O(1)$。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -98,17 +104,7 @@ class Solution:
         return all(s[-1] == ss[(i + 1) % n][0] for i, s in enumerate(ss))
 ```
 
-```python
-class Solution:
-    def isCircularSentence(self, s: str) -> bool:
-        return s[0] == s[-1] and all(
-            c != " " or s[i - 1] == s[i + 1] for i, c in enumerate(s)
-        )
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -125,24 +121,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public boolean isCircularSentence(String s) {
-        int n = s.length();
-        if (s.charAt(0) != s.charAt(n - 1)) {
-            return false;
-        }
-        for (int i = 1; i < n; ++i) {
-            if (s.charAt(i) == ' ' && s.charAt(i - 1) != s.charAt(i + 1)) {
-                return false;
-            }
-        }
-        return true;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -170,25 +149,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    bool isCircularSentence(string s) {
-        int n = s.size();
-        if (s[0] != s.back()) {
-            return false;
-        }
-        for (int i = 1; i < n; ++i) {
-            if (s[i] == ' ' && s[i - 1] != s[i + 1]) {
-                return false;
-            }
-        }
-        return true;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func isCircularSentence(sentence string) bool {
@@ -203,22 +164,39 @@ func isCircularSentence(sentence string) bool {
 }
 ```
 
-```go
-func isCircularSentence(s string) bool {
-	n := len(s)
-	if s[0] != s[n-1] {
-		return false
-	}
-	for i := 1; i < n; i++ {
-		if s[i] == ' ' && s[i-1] != s[i+1] {
-			return false
-		}
-	}
-	return true
+#### TypeScript
+
+```ts
+function isCircularSentence(sentence: string): boolean {
+    const ss = sentence.split(' ');
+    const n = ss.length;
+    for (let i = 0; i < n; ++i) {
+        if (ss[i][ss[i].length - 1] !== ss[(i + 1) % n][0]) {
+            return false;
+        }
+    }
+    return true;
 }
 ```
 
-### **JavaScript**
+#### Rust
+
+```rust
+impl Solution {
+    pub fn is_circular_sentence(sentence: String) -> bool {
+        let ss: Vec<String> = sentence.split(' ').map(String::from).collect();
+        let n = ss.len();
+        for i in 0..n {
+            if ss[i].as_bytes()[ss[i].len() - 1] != ss[(i + 1) % n].as_bytes()[0] {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -237,39 +215,87 @@ var isCircularSentence = function (sentence) {
 };
 ```
 
-```js
-/**
- * @param {string} s
- * @return {boolean}
- */
-var isCircularSentence = function (s) {
-    const n = s.length;
-    if (s[0] !== s[n - 1]) {
-        return false;
-    }
-    for (let i = 1; i < n; ++i) {
-        if (s[i] === ' ' && s[i - 1] !== s[i + 1]) {
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：模拟（空间优化）
+
+我们可以先判断字符串的第一个字符和最后一个字符是否相等，如果不相等则返回 `false`，否则遍历字符串，如果当前字符是空格，则判断前一个字符和后一个字符是否相等，如果不相等则返回 `false`，否则遍历完所有字符后返回 `true`。
+
+时间复杂度 $O(n)$，其中 $n$ 是字符串的长度。空间复杂度 $O(1)$。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def isCircularSentence(self, s: str) -> bool:
+        return s[0] == s[-1] and all(
+            c != " " or s[i - 1] == s[i + 1] for i, c in enumerate(s)
+        )
+```
+
+#### Java
+
+```java
+class Solution {
+    public boolean isCircularSentence(String s) {
+        int n = s.length();
+        if (s.charAt(0) != s.charAt(n - 1)) {
             return false;
         }
+        for (int i = 1; i < n; ++i) {
+            if (s.charAt(i) == ' ' && s.charAt(i - 1) != s.charAt(i + 1)) {
+                return false;
+            }
+        }
+        return true;
     }
-    return true;
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    bool isCircularSentence(string s) {
+        int n = s.size();
+        if (s[0] != s.back()) {
+            return false;
+        }
+        for (int i = 1; i < n; ++i) {
+            if (s[i] == ' ' && s[i - 1] != s[i + 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
 };
 ```
 
-### **TypeScript**
+#### Go
 
-```ts
-function isCircularSentence(sentence: string): boolean {
-    const ss = sentence.split(' ');
-    const n = ss.length;
-    for (let i = 0; i < n; ++i) {
-        if (ss[i][ss[i].length - 1] !== ss[(i + 1) % n][0]) {
-            return false;
-        }
-    }
-    return true;
+```go
+func isCircularSentence(s string) bool {
+	n := len(s)
+	if s[0] != s[n-1] {
+		return false
+	}
+	for i := 1; i < n; i++ {
+		if s[i] == ' ' && s[i-1] != s[i+1] {
+			return false
+		}
+	}
+	return true
 }
 ```
+
+#### TypeScript
 
 ```ts
 function isCircularSentence(s: string): boolean {
@@ -286,22 +312,7 @@ function isCircularSentence(s: string): boolean {
 }
 ```
 
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn is_circular_sentence(sentence: String) -> bool {
-        let ss: Vec<String> = sentence.split(' ').map(String::from).collect();
-        let n = ss.len();
-        for i in 0..n {
-            if ss[i].as_bytes()[ss[i].len() - 1] != ss[(i + 1) % n].as_bytes()[0] {
-                return false;
-            }
-        }
-        return true;
-    }
-}
-```
+#### Rust
 
 ```rust
 impl Solution {
@@ -324,10 +335,29 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isCircularSentence = function (s) {
+    const n = s.length;
+    if (s[0] !== s[n - 1]) {
+        return false;
+    }
+    for (let i = 1; i < n; ++i) {
+        if (s[i] === ' ' && s[i - 1] !== s[i + 1]) {
+            return false;
+        }
+    }
+    return true;
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

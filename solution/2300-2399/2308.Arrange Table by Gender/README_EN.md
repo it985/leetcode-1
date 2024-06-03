@@ -1,8 +1,20 @@
-# [2308. Arrange Table by Gender](https://leetcode.com/problems/arrange-table-by-gender)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2308.Arrange%20Table%20by%20Gender/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [2308. Arrange Table by Gender 🔒](https://leetcode.com/problems/arrange-table-by-gender)
 
 [中文文档](/solution/2300-2399/2308.Arrange%20Table%20by%20Gender/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Genders</code></p>
 
@@ -68,11 +80,17 @@ We arrange the table alternating between &#39;female&#39;, &#39;other&#39;, and 
 Note that the IDs of each gender are sorted in ascending order.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -96,6 +114,18 @@ FROM t
 ORDER BY rk1, rk2;
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### MySQL
+
 ```sql
 SELECT
     user_id,
@@ -112,3 +142,7 @@ ORDER BY
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

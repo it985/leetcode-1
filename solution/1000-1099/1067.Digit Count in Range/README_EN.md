@@ -1,8 +1,23 @@
-# [1067. Digit Count in Range](https://leetcode.com/problems/digit-count-in-range)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1067.Digit%20Count%20in%20Range/README_EN.md
+rating: 2025
+source: Biweekly Contest 1 Q4
+tags:
+    - Math
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
+# [1067. Digit Count in Range 🔒](https://leetcode.com/problems/digit-count-in-range)
 
 [中文文档](/solution/1000-1099/1067.Digit%20Count%20in%20Range/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a single-digit integer <code>d</code> and two integers <code>low</code> and <code>high</code>, return <em>the number of times that </em><code>d</code><em> occurs as a digit in all integers in the inclusive range </em><code>[low, high]</code>.</p>
 
@@ -32,11 +47,17 @@ Note that the digit d = 1 occurs twice in the number 11.
 	<li><code>1 &lt;= low &lt;= high &lt;= 2 * 10<sup>8</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,7 +87,7 @@ class Solution:
         return dfs(l, 0, True, True)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -115,7 +136,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -163,7 +184,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func digitsCount(d int, low int, high int) int {
@@ -219,10 +240,8 @@ func digitsCount(d int, low int, high int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

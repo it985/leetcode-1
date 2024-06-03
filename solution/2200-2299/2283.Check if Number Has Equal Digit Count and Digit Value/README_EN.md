@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2283.Check%20if%20Number%20Has%20Equal%20Digit%20Count%20and%20Digit%20Value/README_EN.md
+rating: 1253
+source: Biweekly Contest 79 Q1
+tags:
+    - Hash Table
+    - String
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [2283. Check if Number Has Equal Digit Count and Digit Value](https://leetcode.com/problems/check-if-number-has-equal-digit-count-and-digit-value)
 
 [中文文档](/solution/2200-2299/2283.Check%20if%20Number%20Has%20Equal%20Digit%20Count%20and%20Digit%20Value/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> string <code>num</code> of length <code>n</code> consisting of digits.</p>
 
@@ -43,11 +59,17 @@ The indices 0 and 1 both violate the condition, so return false.
 	<li><code>num</code> consists of digits.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -56,7 +78,7 @@ class Solution:
         return all(cnt[str(i)] == int(v) for i, v in enumerate(num))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -76,7 +98,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -96,7 +118,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func digitCount(num string) bool {
@@ -113,7 +135,7 @@ func digitCount(num string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function digitCount(num: string): boolean {
@@ -129,7 +151,7 @@ function digitCount(num: string): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -148,7 +170,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 bool digitCount(char* num) {
@@ -168,10 +190,8 @@ bool digitCount(char* num) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

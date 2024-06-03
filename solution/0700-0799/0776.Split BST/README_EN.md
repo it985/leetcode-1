@@ -1,8 +1,23 @@
-# [776. Split BST](https://leetcode.com/problems/split-bst)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0776.Split%20BST/README_EN.md
+tags:
+    - Tree
+    - Binary Search Tree
+    - Recursion
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
+# [776. Split BST 🔒](https://leetcode.com/problems/split-bst)
 
 [中文文档](/solution/0700-0799/0776.Split%20BST/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>root</code> of a binary search tree (BST) and an integer <code>target</code>, split the tree into two subtrees where one subtree has nodes that are all smaller or equal to the target value, while the other subtree has all nodes that are greater than the target value. It Is not necessarily the case that the tree contains a node with the value <code>target</code>.</p>
 
@@ -33,11 +48,17 @@
 	<li><code>0 &lt;= Node.val, target &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -65,7 +86,7 @@ class Solution:
         return dfs(root)
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -110,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -150,7 +171,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -179,7 +200,7 @@ func splitBST(root *TreeNode, target int) []*TreeNode {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -213,10 +234,8 @@ var splitBST = function (root, target) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

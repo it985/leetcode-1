@@ -1,10 +1,20 @@
-# [2199. 找到每篇文章的主题](https://leetcode.cn/problems/finding-the-topic-of-each-post)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2199.Finding%20the%20Topic%20of%20Each%20Post/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2199. 找到每篇文章的主题 🔒](https://leetcode.cn/problems/finding-the-topic-of-each-post)
 
 [English Version](/solution/2100-2199/2199.Finding%20the%20Topic%20of%20Each%20Post/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Keywords</code></p>
 
@@ -101,15 +111,17 @@ Posts 表:
 所以这篇文章 “Ambiguous!”
 请注意，可以使用一个词来表达多个主题。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -123,3 +135,7 @@ GROUP BY post_id;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

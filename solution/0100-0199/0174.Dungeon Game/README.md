@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0174.Dungeon%20Game/README.md
+tags:
+    - 数组
+    - 动态规划
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [174. 地下城游戏](https://leetcode.cn/problems/dungeon-game)
 
 [English Version](/solution/0100-0199/0174.Dungeon%20Game/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <style type="text/css">table.dungeon, .dungeon th, .dungeon td {
   border:3px solid black;
@@ -55,13 +67,15 @@
 	<li><code>-1000 &lt;= dungeon[i][j] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
-定义 $dp[i][j]$ 表示从 $(i, j)$ 到终点所需的最小初始值，那么 $dp[i][j]$ 的值可以由 $dp[i+1][j]$ 和 $dp[i][j+1]$ 得到，即：
+我们定义 $dp[i][j]$ 表示从 $(i, j)$ 到终点所需的最小初始值，那么 $dp[i][j]$ 的值可以由 $dp[i+1][j]$ 和 $dp[i][j+1]$ 得到，即：
 
 $$
 dp[i][j] = \max(\min(dp[i+1][j], dp[i][j+1]) - dungeon[i][j], 1)
@@ -73,9 +87,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -89,9 +101,7 @@ class Solution:
         return dp[0][0]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -112,7 +122,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -132,7 +142,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func calculateMinimumHP(dungeon [][]int) int {
@@ -154,7 +164,7 @@ func calculateMinimumHP(dungeon [][]int) int {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -176,10 +186,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

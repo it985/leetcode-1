@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0981.Time%20Based%20Key-Value%20Store/README_EN.md
+tags:
+    - Design
+    - Hash Table
+    - String
+    - Binary Search
+---
+
+<!-- problem:start -->
+
 # [981. Time Based Key-Value Store](https://leetcode.com/problems/time-based-key-value-store)
 
 [中文文档](/solution/0900-0999/0981.Time%20Based%20Key-Value%20Store/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key&#39;s value at a certain timestamp.</p>
 
@@ -45,11 +60,17 @@ timeMap.get(&quot;foo&quot;, 5);         // return &quot;bar2&quot;
 	<li>At most <code>2 * 10<sup>5</sup></code> calls will be made to <code>set</code> and <code>get</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class TimeMap:
@@ -73,7 +94,7 @@ class TimeMap:
 # param_2 = obj.get(key,timestamp)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class TimeMap {
@@ -104,7 +125,7 @@ class TimeMap {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class TimeMap {
@@ -135,7 +156,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type TimeMap struct {
@@ -172,10 +193,8 @@ type pair struct {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

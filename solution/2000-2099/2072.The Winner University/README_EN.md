@@ -1,8 +1,20 @@
-# [2072. The Winner University](https://leetcode.com/problems/the-winner-university)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2072.The%20Winner%20University/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [2072. The Winner University 🔒](https://leetcode.com/problems/the-winner-university)
 
 [中文文档](/solution/2000-2099/2072.The%20Winner%20University/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>NewYork</code></p>
 
@@ -133,11 +145,17 @@ California table:
 Both New York University and California University have 1 excellent student.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -153,3 +171,7 @@ FROM
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

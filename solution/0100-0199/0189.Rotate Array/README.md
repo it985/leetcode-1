@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0189.Rotate%20Array/README.md
+tags:
+    - 数组
+    - 数学
+    - 双指针
+---
+
+<!-- problem:start -->
+
 # [189. 轮转数组](https://leetcode.cn/problems/rotate-array)
 
 [English Version](/solution/0100-0199/0189.Rotate%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个整数数组 <code>nums</code>，将数组中的元素向右轮转 <code>k</code><em>&nbsp;</em>个位置，其中&nbsp;<code>k</code><em>&nbsp;</em>是非负数。</p>
 
@@ -49,11 +61,13 @@
 	<li>你可以使用空间复杂度为&nbsp;<code>O(1)</code> 的&nbsp;<strong>原地&nbsp;</strong>算法解决这个问题吗？</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：三次翻转**
+### 方法一：三次翻转
 
 我们不妨记数组长度为 $n$，然后将 $k$ 对 $n$ 取模，得到实际需要旋转的步数 $k$。
 
@@ -73,9 +87,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -92,16 +104,7 @@ class Solution:
         reverse(k, n - 1)
 ```
 
-```python
-class Solution:
-    def rotate(self, nums: List[int], k: int) -> None:
-        k %= len(nums)
-        nums[:] = nums[-k:] + nums[:-k]
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -126,7 +129,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -141,7 +144,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func rotate(nums []int, k int) {
@@ -158,7 +161,7 @@ func rotate(nums []int, k int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -180,7 +183,43 @@ function rotate(nums: number[], k: number): void {
 }
 ```
 
-### **C#**
+#### Rust
+
+```rust
+impl Solution {
+    pub fn rotate(nums: &mut Vec<i32>, k: i32) {
+        let n = nums.len();
+        let k = (k as usize) % n;
+        nums.reverse();
+        nums[..k].reverse();
+        nums[k..].reverse();
+    }
+}
+```
+
+#### JavaScript
+
+```js
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var rotate = function (nums, k) {
+    const n = nums.length;
+    k %= n;
+    const reverse = (i, j) => {
+        for (; i < j; ++i, --j) {
+            [nums[i], nums[j]] = [nums[j], nums[i]];
+        }
+    };
+    reverse(0, n - 1);
+    reverse(0, k - 1);
+    reverse(k, n - 1);
+};
+```
+
+#### C#
 
 ```cs
 public class Solution {
@@ -205,46 +244,27 @@ public class Solution {
 }
 ```
 
-### **JavaScript**
+<!-- tabs:end -->
 
-```js
-/**
- * @param {number[]} nums
- * @param {number} k
- * @return {void} Do not return anything, modify nums in-place instead.
- */
-var rotate = function (nums, k) {
-    const n = nums.length;
-    k %= n;
-    const reverse = (i, j) => {
-        for (; i < j; ++i, --j) {
-            [nums[i], nums[j]] = [nums[j], nums[i]];
-        }
-    };
-    reverse(0, n - 1);
-    reverse(0, k - 1);
-    reverse(k, n - 1);
-};
-```
+<!-- solution:end -->
 
-### **Rust**
+<!-- solution:start -->
 
-```rust
-impl Solution {
-    pub fn rotate(nums: &mut Vec<i32>, k: i32) {
-        let n = nums.len();
-        let k = (k as usize) % n;
-        nums.reverse();
-        nums[..k].reverse();
-        nums[k..].reverse();
-    }
-}
-```
+### 方法二
 
-### **...**
+<!-- tabs:start -->
 
-```
+#### Python3
 
+```python
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        k %= len(nums)
+        nums[:] = nums[-k:] + nums[:-k]
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

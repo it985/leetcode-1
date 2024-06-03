@@ -1,10 +1,20 @@
-# [1107. 每日新用户统计](https://leetcode.cn/problems/new-users-daily-count)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1107.New%20Users%20Daily%20Count/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1107. 每日新用户统计 🔒](https://leetcode.cn/problems/new-users-daily-count)
 
 [English Version](/solution/1100-1199/1107.New%20Users%20Daily%20Count/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><code>Traffic</code>&nbsp;表：</p>
 
@@ -69,13 +79,17 @@ Traffic 表：
 ID 为 5 的用户第一次登陆于 2019-03-01，因此他不算在 2019-06-21 的的统计内。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -94,3 +108,7 @@ GROUP BY 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

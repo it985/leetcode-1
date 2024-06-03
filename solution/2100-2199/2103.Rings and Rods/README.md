@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2103.Rings%20and%20Rods/README.md
+rating: 1257
+source: 第 271 场周赛 Q1
+tags:
+    - 哈希表
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2103. 环和杆](https://leetcode.cn/problems/rings-and-rods)
 
 [English Version](/solution/2100-2199/2103.Rings%20and%20Rods/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>总计有 <code>n</code> 个环，环的颜色可以是红、绿、蓝中的一种。这些环分别穿在 10 根编号为 <code>0</code> 到 <code>9</code> 的杆上。</p>
 
@@ -64,11 +77,13 @@
 	<li>如 <code>i</code> 是 <strong>奇数</strong> ，则&nbsp;<code>rings[i]</code> 的值可以取 <code>'0'</code> 到 <code>'9'</code> 中的一个数字（下标从 <strong>0</strong> 开始计数）</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：位运算**
+### 方法一：位运算
 
 我们可以用一个长度为 $10$ 的数组 $mask$ 来表示每根杆上的环的颜色情况，其中 $mask[i]$ 表示第 $i$ 根杆上的环的颜色情况，如果第 $i$ 根杆上有红色、绿色、蓝色的环，那么 $mask[i]$ 的二进制表示为 $111$，即 $mask[i] = 7$。
 
@@ -80,9 +95,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -96,9 +109,7 @@ class Solution:
         return mask.count(7)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -124,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -142,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countPoints(rings string) (ans int) {
@@ -162,7 +173,7 @@ func countPoints(rings string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countPoints(rings: string): number {
@@ -181,17 +192,7 @@ function countPoints(rings: string): number {
 }
 ```
 
-```ts
-function countPoints(rings: string): number {
-    let c = 0;
-    for (let i = 0; i <= 9; i++) {
-        if (rings.includes('B' + i) && rings.includes('R' + i) && rings.includes('G' + i)) c++;
-    }
-    return c;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -219,7 +220,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 int countPoints(char* rings) {
@@ -249,10 +250,30 @@ int countPoints(char* rings) {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### TypeScript
+
+```ts
+function countPoints(rings: string): number {
+    let c = 0;
+    for (let i = 0; i <= 9; i++) {
+        if (rings.includes('B' + i) && rings.includes('R' + i) && rings.includes('G' + i)) c++;
+    }
+    return c;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

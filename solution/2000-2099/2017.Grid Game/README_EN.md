@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2017.Grid%20Game/README_EN.md
+rating: 1718
+source: Weekly Contest 260 Q2
+tags:
+    - Array
+    - Matrix
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [2017. Grid Game](https://leetcode.com/problems/grid-game)
 
 [中文文档](/solution/2000-2099/2017.Grid%20Game/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> 2D array <code>grid</code> of size <code>2 x n</code>, where <code>grid[r][c]</code> represents the number of points at position <code>(r, c)</code> on the matrix. Two robots are playing a game on this matrix.</p>
 
@@ -53,9 +69,13 @@ The second robot will collect 0 + 1 + 3 + 3 + 0 = 7 points.
 	<li><code>1 &lt;= grid[r][c] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Prefix Sum**
+<!-- solution:start -->
+
+### Solution 1: Prefix Sum
 
 We notice that if we determine the position $j$ where the first robot turns down, then the optimal path of the second robot is also determined. The optimal path of the second robot is the prefix sum of the first row from $j+1$ to $n-1$, or the prefix sum of the second row from $0$ to $j-1$, taking the maximum of the two.
 
@@ -69,7 +89,7 @@ The time complexity is $O(n)$, and the space complexity is $O(1)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -83,7 +103,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 using ll = long long;
@@ -126,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func gridGame(grid [][]int) int64 {
@@ -144,7 +164,7 @@ func gridGame(grid [][]int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function gridGame(grid: number[][]): number {
@@ -160,10 +180,8 @@ function gridGame(grid: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

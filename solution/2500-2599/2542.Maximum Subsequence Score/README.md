@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2542.Maximum%20Subsequence%20Score/README.md
+rating: 2056
+source: 第 96 场双周赛 Q3
+tags:
+    - 贪心
+    - 数组
+    - 排序
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [2542. 最大子序列的分数](https://leetcode.cn/problems/maximum-subsequence-score)
 
 [English Version](/solution/2500-2599/2542.Maximum%20Subsequence%20Score/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums1</code>&nbsp;和&nbsp;<code>nums2</code>&nbsp;，两者长度都是&nbsp;<code>n</code>&nbsp;，再给你一个正整数&nbsp;<code>k</code>&nbsp;。你必须从&nbsp;<code>nums1</code>&nbsp;中选一个长度为 <code>k</code>&nbsp;的 <strong>子序列</strong>&nbsp;对应的下标。</p>
 
@@ -55,11 +70,13 @@
 	<li><code>1 &lt;= k &lt;= n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 优先队列（小根堆）**
+### 方法一：排序 + 优先队列（小根堆）
 
 将 `nums2` 与 `nums1` 按照 `nums2` 降序排序，然后从前往后遍历，维护一个小根堆，堆中存储 `nums1` 中的元素，堆中元素个数不超过 $k$ 个，同时维护一个变量 $s$，表示堆中元素的和，遍历过程中不断更新答案。
 
@@ -67,9 +84,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -86,9 +101,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -114,7 +127,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -142,7 +155,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxScore(nums1 []int, nums2 []int, k int) int64 {
@@ -179,10 +192,8 @@ func (h *hp) Pop() any {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

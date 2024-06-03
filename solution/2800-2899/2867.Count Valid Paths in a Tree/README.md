@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2867.Count%20Valid%20Paths%20in%20a%20Tree/README.md
+rating: 2428
+source: 第 364 场周赛 Q4
+tags:
+    - 树
+    - 深度优先搜索
+    - 数学
+    - 动态规划
+    - 数论
+---
+
+<!-- problem:start -->
+
 # [2867. 统计树中的合法路径数目](https://leetcode.cn/problems/count-valid-paths-in-a-tree)
 
 [English Version](/solution/2800-2899/2867.Count%20Valid%20Paths%20in%20a%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一棵 <code>n</code>&nbsp;个节点的无向树，节点编号为&nbsp;<code>1</code>&nbsp;到&nbsp;<code>n</code>&nbsp;。给你一个整数&nbsp;<code>n</code>&nbsp;和一个长度为 <code>n - 1</code>&nbsp;的二维整数数组&nbsp;<code>edges</code>&nbsp;，其中&nbsp;<code>edges[i] = [u<sub>i</sub>, v<sub>i</sub>]</code>&nbsp;表示节点&nbsp;<code>u<sub>i</sub></code> 和&nbsp;<code>v<sub>i</sub></code>&nbsp;在树中有一条边。</p>
 
@@ -65,11 +81,13 @@
 	<li>输入保证&nbsp;<code>edges</code>&nbsp;形成一棵合法的树。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：预处理 + 并查集 + 枚举**
+### 方法一：预处理 + 并查集 + 枚举
 
 我们可以预处理得到 $[1, n]$ 中的所有质数，其中 $prime[i]$ 表示 $i$ 是否为质数。
 
@@ -83,9 +101,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class UnionFind:
@@ -143,54 +159,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def countPaths(self, n: int, edges: List[List[int]]) -> int:
-        def mul(x, y):
-            return x * y
-
-        def dfs(x, f, con, prime, r):
-            v = [1 - prime[x], prime[x]]
-            for y in con[x]:
-                if y == f:
-                    continue
-                p = dfs(y, x, con, prime, r)
-                r[0] += mul(p[0], v[1]) + mul(p[1], v[0])
-                if prime[x]:
-                    v[1] += p[0]
-                else:
-                    v[0] += p[0]
-                    v[1] += p[1]
-            return v
-
-        prime = [True] * (n + 1)
-        prime[1] = False
-
-        all_primes = []
-        for i in range(2, n + 1):
-            if prime[i]:
-                all_primes.append(i)
-            for x in all_primes:
-                temp = i * x
-                if temp > n:
-                    break
-                prime[temp] = False
-                if i % x == 0:
-                    break
-
-        con = [[] for _ in range(n + 1)]
-        for e in edges:
-            con[e[0]].append(e[1])
-            con[e[1]].append(e[0])
-
-        r = [0]
-        dfs(1, 0, con, prime, r)
-        return r[0]
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class PrimeTable {
@@ -289,79 +258,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public long countPaths(int n, int[][] edges) {
-        List<Boolean> prime = new ArrayList<>(n + 1);
-        for (int i = 0; i <= n; ++i) {
-            prime.add(true);
-        }
-        prime.set(1, false);
-
-        List<Integer> all = new ArrayList<>();
-        for (int i = 2; i <= n; ++i) {
-            if (prime.get(i)) {
-                all.add(i);
-            }
-            for (int x : all) {
-                int temp = i * x;
-                if (temp > n) {
-                    break;
-                }
-                prime.set(temp, false);
-                if (i % x == 0) {
-                    break;
-                }
-            }
-        }
-
-        List<List<Integer>> con = new ArrayList<>(n + 1);
-        for (int i = 0; i <= n; ++i) {
-            con.add(new ArrayList<>());
-        }
-        for (int[] e : edges) {
-            con.get(e[0]).add(e[1]);
-            con.get(e[1]).add(e[0]);
-        }
-
-        long[] r = {0};
-        dfs(1, 0, con, prime, r);
-        return r[0];
-    }
-
-    private long mul(long x, long y) {
-        return x * y;
-    }
-
-    private class Pair {
-        int first;
-        int second;
-
-        Pair(int first, int second) {
-            this.first = first;
-            this.second = second;
-        }
-    }
-
-    private Pair dfs(int x, int f, List<List<Integer>> con, List<Boolean> prime, long[] r) {
-        Pair v = new Pair(!prime.get(x) ? 1 : 0, prime.get(x) ? 1 : 0);
-        for (int y : con.get(x)) {
-            if (y == f) continue;
-            Pair p = dfs(y, x, con, prime, r);
-            r[0] += mul(p.first, v.second) + mul(p.second, v.first);
-            if (prime.get(x)) {
-                v.second += p.first;
-            } else {
-                v.first += p.first;
-                v.second += p.second;
-            }
-        }
-        return v;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 const int mx = 1e5 + 10;
@@ -448,61 +345,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-    long long mul(long long x, long long y) {
-        return x * y;
-    }
-
-    pair<int, int> dfs(int x, int f, const vector<vector<int>>& con, const vector<bool>& prime, long long& r) {
-        pair<int, int> v = {!prime[x], prime[x]};
-        for (int y : con[x]) {
-            if (y == f) continue;
-            const auto& p = dfs(y, x, con, prime, r);
-            r += mul(p.first, v.second) + mul(p.second, v.first);
-            if (prime[x]) {
-                v.second += p.first;
-            } else {
-                v.first += p.first;
-                v.second += p.second;
-            }
-        }
-        return v;
-    }
-
-public:
-    long long countPaths(int n, vector<vector<int>>& edges) {
-        vector<bool> prime(n + 1, true);
-        prime[1] = false;
-        vector<int> all;
-        for (int i = 2; i <= n; ++i) {
-            if (prime[i]) {
-                all.push_back(i);
-            }
-            for (int x : all) {
-                const int temp = i * x;
-                if (temp > n) {
-                    break;
-                }
-                prime[temp] = false;
-                if (i % x == 0) {
-                    break;
-                }
-            }
-        }
-        vector<vector<int>> con(n + 1);
-        for (const auto& e : edges) {
-            con[e[0]].push_back(e[1]);
-            con[e[1]].push_back(e[0]);
-        }
-        long long r = 0;
-        dfs(1, 0, con, prime, r);
-        return r;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 const mx int = 1e5 + 10
@@ -589,7 +432,7 @@ func countPaths(n int, edges [][]int) (ans int64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 const mx = 100010;
@@ -669,10 +512,195 @@ function countPaths(n: number, edges: number[][]): number {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def countPaths(self, n: int, edges: List[List[int]]) -> int:
+        def mul(x, y):
+            return x * y
+
+        def dfs(x, f, con, prime, r):
+            v = [1 - prime[x], prime[x]]
+            for y in con[x]:
+                if y == f:
+                    continue
+                p = dfs(y, x, con, prime, r)
+                r[0] += mul(p[0], v[1]) + mul(p[1], v[0])
+                if prime[x]:
+                    v[1] += p[0]
+                else:
+                    v[0] += p[0]
+                    v[1] += p[1]
+            return v
+
+        prime = [True] * (n + 1)
+        prime[1] = False
+
+        all_primes = []
+        for i in range(2, n + 1):
+            if prime[i]:
+                all_primes.append(i)
+            for x in all_primes:
+                temp = i * x
+                if temp > n:
+                    break
+                prime[temp] = False
+                if i % x == 0:
+                    break
+
+        con = [[] for _ in range(n + 1)]
+        for e in edges:
+            con[e[0]].append(e[1])
+            con[e[1]].append(e[0])
+
+        r = [0]
+        dfs(1, 0, con, prime, r)
+        return r[0]
 ```
 
+#### Java
+
+```java
+class Solution {
+    public long countPaths(int n, int[][] edges) {
+        List<Boolean> prime = new ArrayList<>(n + 1);
+        for (int i = 0; i <= n; ++i) {
+            prime.add(true);
+        }
+        prime.set(1, false);
+
+        List<Integer> all = new ArrayList<>();
+        for (int i = 2; i <= n; ++i) {
+            if (prime.get(i)) {
+                all.add(i);
+            }
+            for (int x : all) {
+                int temp = i * x;
+                if (temp > n) {
+                    break;
+                }
+                prime.set(temp, false);
+                if (i % x == 0) {
+                    break;
+                }
+            }
+        }
+
+        List<List<Integer>> con = new ArrayList<>(n + 1);
+        for (int i = 0; i <= n; ++i) {
+            con.add(new ArrayList<>());
+        }
+        for (int[] e : edges) {
+            con.get(e[0]).add(e[1]);
+            con.get(e[1]).add(e[0]);
+        }
+
+        long[] r = {0};
+        dfs(1, 0, con, prime, r);
+        return r[0];
+    }
+
+    private long mul(long x, long y) {
+        return x * y;
+    }
+
+    private class Pair {
+        int first;
+        int second;
+
+        Pair(int first, int second) {
+            this.first = first;
+            this.second = second;
+        }
+    }
+
+    private Pair dfs(int x, int f, List<List<Integer>> con, List<Boolean> prime, long[] r) {
+        Pair v = new Pair(!prime.get(x) ? 1 : 0, prime.get(x) ? 1 : 0);
+        for (int y : con.get(x)) {
+            if (y == f) continue;
+            Pair p = dfs(y, x, con, prime, r);
+            r[0] += mul(p.first, v.second) + mul(p.second, v.first);
+            if (prime.get(x)) {
+                v.second += p.first;
+            } else {
+                v.first += p.first;
+                v.second += p.second;
+            }
+        }
+        return v;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+    long long mul(long long x, long long y) {
+        return x * y;
+    }
+
+    pair<int, int> dfs(int x, int f, const vector<vector<int>>& con, const vector<bool>& prime, long long& r) {
+        pair<int, int> v = {!prime[x], prime[x]};
+        for (int y : con[x]) {
+            if (y == f) continue;
+            const auto& p = dfs(y, x, con, prime, r);
+            r += mul(p.first, v.second) + mul(p.second, v.first);
+            if (prime[x]) {
+                v.second += p.first;
+            } else {
+                v.first += p.first;
+                v.second += p.second;
+            }
+        }
+        return v;
+    }
+
+public:
+    long long countPaths(int n, vector<vector<int>>& edges) {
+        vector<bool> prime(n + 1, true);
+        prime[1] = false;
+        vector<int> all;
+        for (int i = 2; i <= n; ++i) {
+            if (prime[i]) {
+                all.push_back(i);
+            }
+            for (int x : all) {
+                const int temp = i * x;
+                if (temp > n) {
+                    break;
+                }
+                prime[temp] = false;
+                if (i % x == 0) {
+                    break;
+                }
+            }
+        }
+        vector<vector<int>> con(n + 1);
+        for (const auto& e : edges) {
+            con[e[0]].push_back(e[1]);
+            con[e[1]].push_back(e[0]);
+        }
+        long long r = 0;
+        dfs(1, 0, con, prime, r);
+        return r;
+    }
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

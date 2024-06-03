@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2397.Maximum%20Rows%20Covered%20by%20Columns/README.md
+rating: 1718
+source: 第 86 场双周赛 Q3
+tags:
+    - 位运算
+    - 数组
+    - 回溯
+    - 枚举
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [2397. 被列覆盖的最多行数](https://leetcode.cn/problems/maximum-rows-covered-by-columns)
 
 [English Version](/solution/2300-2399/2397.Maximum%20Rows%20Covered%20by%20Columns/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0 </strong>开始、大小为 <code>m x n</code> 的二进制矩阵 <code>matrix</code> ；另给你一个整数 <code>numSelect</code>，表示你必须从 <code>matrix</code> 中选择的 <strong>不同</strong> 列的数量。</p>
 
@@ -64,13 +80,15 @@
 	<li><code>1 &lt;= numSelect&nbsp;&lt;= n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二进制枚举**
+### 方法一：二进制枚举
 
-我们先将矩阵中的每一行转换成一个二进制数，记录在数组 $rows$ 中，其中 $rows[i]$ 表示第 $i$ 行对应的二进制数，而 $rows[i]$ 的第 $j$ 位表示第 $i$ 行第 $j$ 列的值。
+我们先将矩阵中的每一行转换成一个二进制数，记录在数组 $rows$ 中，其中 $rows[i]$ 表示第 $i$ 行对应的二进制数，而 $rows[i]$ 这个二进制数的第 $j$ 位表示第 $i$ 行第 $j$ 列的值。
 
 接下来，我们枚举所有的 $2^n$ 种列选择方案，其中 $n$ 为矩阵的列数。对于每一种列选择方案，我们判断是否选中了 `numSelect` 列，如果不是，则跳过。否则，我们统计矩阵中有多少行中的所有 $1$ 都被选中的列覆盖，即统计有多少行的二进制数 $rows[i]$ 与列选择方案 $mask$ 按位与的结果等于 $rows[i]$，并更新最大的行数。
 
@@ -78,9 +96,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -99,9 +115,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -133,7 +147,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -165,7 +179,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumRows(matrix [][]int, numSelect int) (ans int) {
@@ -196,17 +210,47 @@ func maximumRows(matrix [][]int, numSelect int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
+function maximumRows(matrix: number[][], numSelect: number): number {
+    const [m, n] = [matrix.length, matrix[0].length];
+    const rows: number[] = Array(m).fill(0);
+    for (let i = 0; i < m; ++i) {
+        for (let j = 0; j < n; ++j) {
+            if (matrix[i][j]) {
+                rows[i] |= 1 << j;
+            }
+        }
+    }
+    let ans = 0;
+    for (let mask = 1; mask < 1 << n; ++mask) {
+        if (bitCount(mask) !== numSelect) {
+            continue;
+        }
+        let t = 0;
+        for (const x of rows) {
+            if ((x & mask) === x) {
+                ++t;
+            }
+        }
+        ans = Math.max(ans, t);
+    }
+    return ans;
+}
 
-```
-
-### **...**
-
-```
-
-
+function bitCount(i: number): number {
+    i = i - ((i >>> 1) & 0x55555555);
+    i = (i & 0x33333333) + ((i >>> 2) & 0x33333333);
+    i = (i + (i >>> 4)) & 0x0f0f0f0f;
+    i = i + (i >>> 8);
+    i = i + (i >>> 16);
+    return i & 0x3f;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

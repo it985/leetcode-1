@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1313.Decompress%20Run-Length%20Encoded%20List/README_EN.md
+rating: 1317
+source: Biweekly Contest 17 Q1
+tags:
+    - Array
+---
+
+<!-- problem:start -->
+
 # [1313. Decompress Run-Length Encoded List](https://leetcode.com/problems/decompress-run-length-encoded-list)
 
 [中文文档](/solution/1300-1399/1313.Decompress%20Run-Length%20Encoded%20List/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>We are given a list <code>nums</code> of integers representing a list compressed with run-length encoding.</p>
 
@@ -37,11 +51,17 @@ At the end the concatenation [2] + [4,4,4] is [2,4,4,4].
 	<li><code><font face="monospace">1 &lt;= nums[i] &lt;= 100</font></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -52,7 +72,7 @@ class Solution:
         return res
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -72,7 +92,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -89,7 +109,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func decompressRLElist(nums []int) []int {
@@ -103,7 +123,7 @@ func decompressRLElist(nums []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function decompressRLElist(nums: number[]): number[] {
@@ -118,7 +138,7 @@ function decompressRLElist(nums: number[]): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -135,7 +155,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 /**
@@ -157,10 +177,8 @@ int* decompressRLElist(int* nums, int numsSize, int* returnSize) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1925.Count%20Square%20Sum%20Triples/README.md
+rating: 1323
+source: 第 56 场双周赛 Q1
+tags:
+    - 数学
+    - 枚举
+---
+
+<!-- problem:start -->
+
 # [1925. 统计平方和三元组的数目](https://leetcode.cn/problems/count-square-sum-triples)
 
 [English Version](/solution/1900-1999/1925.Count%20Square%20Sum%20Triples/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一个 <strong>平方和三元组</strong> <code>(a,b,c)</code> 指的是满足 <code>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></code> 的 <strong>整数 </strong>三元组 <code>a</code>，<code>b</code> 和 <code>c</code> 。</p>
 
@@ -34,15 +47,17 @@
 	<li><code>1 &lt;= n &lt;= 250</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -57,9 +72,7 @@ class Solution:
         return res
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -79,7 +92,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -100,7 +113,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countTriples(n int) int {
@@ -118,10 +131,8 @@ func countTriples(n int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

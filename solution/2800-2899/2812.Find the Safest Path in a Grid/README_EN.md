@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2812.Find%20the%20Safest%20Path%20in%20a%20Grid/README_EN.md
+rating: 2153
+source: Weekly Contest 357 Q3
+tags:
+    - Breadth-First Search
+    - Union Find
+    - Array
+    - Binary Search
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [2812. Find the Safest Path in a Grid](https://leetcode.com/problems/find-the-safest-path-in-a-grid)
 
 [中文文档](/solution/2800-2899/2812.Find%20the%20Safest%20Path%20in%20a%20Grid/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> 2D matrix <code>grid</code> of size <code>n x n</code>, where <code>(r, c)</code> represents:</p>
 
@@ -61,9 +79,13 @@ It can be shown that there are no other paths with a higher safeness factor.
 	<li>There is at least one thief in the <code>grid</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: BFS + Sorting + Union-Find**
+<!-- solution:start -->
+
+### Solution 1: BFS + Sorting + Union-Find
 
 We can first find out the positions of all thieves, and then start multi-source BFS from these positions to get the shortest distance from each position to the thieves. Then sort in descending order according to the distance, and add each position to the union-find set one by one. If the start and end points are in the same connected component, the current distance is the answer.
 
@@ -71,7 +93,7 @@ The time complexity is $O(n^2 \times \log n)$, and the space complexity $O(n^2)$
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class UnionFind:
@@ -131,7 +153,7 @@ class Solution:
         return 0
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -222,7 +244,7 @@ class UnionFind {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class UnionFind {
@@ -305,7 +327,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type unionFind struct {
@@ -398,7 +420,7 @@ func maximumSafenessFactor(grid [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class UnionFind {
@@ -483,65 +505,7 @@ function maximumSafenessFactor(grid: number[][]): number {
 }
 ```
 
-```ts
-function maximumSafenessFactor(grid: number[][]): number {
-    const n = grid.length;
-    const g = Array.from({ length: n }, () => new Array(n).fill(-1));
-    const vis = Array.from({ length: n }, () => new Array(n).fill(false));
-    let q: [number, number][] = [];
-    for (let i = 0; i < n; i++) {
-        for (let j = 0; j < n; j++) {
-            if (grid[i][j] === 1) {
-                q.push([i, j]);
-            }
-        }
-    }
-    let level = 0;
-    while (q.length) {
-        const t: [number, number][] = [];
-        for (const [x, y] of q) {
-            if (x < 0 || y < 0 || x === n || y === n || g[x][y] !== -1) {
-                continue;
-            }
-            g[x][y] = level;
-            t.push([x + 1, y]);
-            t.push([x - 1, y]);
-            t.push([x, y + 1]);
-            t.push([x, y - 1]);
-        }
-        q = t;
-        level++;
-    }
-    const dfs = (i: number, j: number, v: number) => {
-        if (i < 0 || j < 0 || i === n || j === n || vis[i][j] || g[i][j] <= v) {
-            return false;
-        }
-        vis[i][j] = true;
-        return (
-            (i === n - 1 && j === n - 1) ||
-            dfs(i + 1, j, v) ||
-            dfs(i, j + 1, v) ||
-            dfs(i - 1, j, v) ||
-            dfs(i, j - 1, v)
-        );
-    };
-
-    let left = 0;
-    let right = level;
-    while (left < right) {
-        vis.forEach(v => v.fill(false));
-        const mid = (left + right) >>> 1;
-        if (dfs(0, 0, mid)) {
-            left = mid + 1;
-        } else {
-            right = mid;
-        }
-    }
-    return right;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::VecDeque;
@@ -609,10 +573,78 @@ impl Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### TypeScript
+
+```ts
+function maximumSafenessFactor(grid: number[][]): number {
+    const n = grid.length;
+    const g = Array.from({ length: n }, () => new Array(n).fill(-1));
+    const vis = Array.from({ length: n }, () => new Array(n).fill(false));
+    let q: [number, number][] = [];
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            if (grid[i][j] === 1) {
+                q.push([i, j]);
+            }
+        }
+    }
+    let level = 0;
+    while (q.length) {
+        const t: [number, number][] = [];
+        for (const [x, y] of q) {
+            if (x < 0 || y < 0 || x === n || y === n || g[x][y] !== -1) {
+                continue;
+            }
+            g[x][y] = level;
+            t.push([x + 1, y]);
+            t.push([x - 1, y]);
+            t.push([x, y + 1]);
+            t.push([x, y - 1]);
+        }
+        q = t;
+        level++;
+    }
+    const dfs = (i: number, j: number, v: number) => {
+        if (i < 0 || j < 0 || i === n || j === n || vis[i][j] || g[i][j] <= v) {
+            return false;
+        }
+        vis[i][j] = true;
+        return (
+            (i === n - 1 && j === n - 1) ||
+            dfs(i + 1, j, v) ||
+            dfs(i, j + 1, v) ||
+            dfs(i - 1, j, v) ||
+            dfs(i, j - 1, v)
+        );
+    };
+
+    let left = 0;
+    let right = level;
+    while (left < right) {
+        vis.forEach(v => v.fill(false));
+        const mid = (left + right) >>> 1;
+        if (dfs(0, 0, mid)) {
+            left = mid + 1;
+        } else {
+            right = mid;
+        }
+    }
+    return right;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

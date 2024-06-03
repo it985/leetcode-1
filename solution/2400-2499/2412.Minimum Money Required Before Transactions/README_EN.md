@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2412.Minimum%20Money%20Required%20Before%20Transactions/README_EN.md
+rating: 2092
+source: Biweekly Contest 87 Q4
+tags:
+    - Greedy
+    - Array
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2412. Minimum Money Required Before Transactions](https://leetcode.com/problems/minimum-money-required-before-transactions)
 
 [中文文档](/solution/2400-2499/2412.Minimum%20Money%20Required%20Before%20Transactions/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> 2D integer array <code><font face="monospace">transactions</font></code>, where <code>transactions[i] = [cost<sub>i</sub>, cashback<sub>i</sub>]</code>.</p>
 
@@ -41,9 +57,13 @@ Thus, starting with money = 3, the transactions can be performed in any order.
 	<li><code>0 &lt;= cost<sub>i</sub>, cashback<sub>i</sub> &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy**
+<!-- solution:start -->
+
+### Solution 1: Greedy
 
 First, we accumulate all the negative profits, denoted as $s$. Then we enumerate each transaction as the last transaction. If `transactions[i].x > transactions[i].y`, it means the current transaction is losing money, and this transaction has been calculated when we previously accumulated negative profits, so we update the answer with `s + transactions[i].y`; otherwise, we update the answer with `s + transactions[i].x`.
 
@@ -51,7 +71,7 @@ The time complexity is $O(n)$, where $n$ is the number of transactions. The spac
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,7 +86,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -88,7 +108,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -110,7 +130,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumMoney(transactions [][]int) int64 {
@@ -129,17 +149,8 @@ func minimumMoney(transactions [][]int) int64 {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

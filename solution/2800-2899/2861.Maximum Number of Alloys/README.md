@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2861.Maximum%20Number%20of%20Alloys/README.md
+rating: 1981
+source: 第 363 场周赛 Q3
+tags:
+    - 数组
+    - 二分查找
+---
+
+<!-- problem:start -->
+
 # [2861. 最大合金数](https://leetcode.cn/problems/maximum-number-of-alloys)
 
 [English Version](/solution/2800-2899/2861.Maximum%20Number%20of%20Alloys/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>假设你是一家合金制造公司的老板，你的公司使用多种金属来制造合金。现在共有 <code>n</code> 种不同类型的金属可以使用，并且你可以使用 <code>k</code> 台机器来制造合金。每台机器都需要特定数量的每种金属来创建合金。</p>
 
@@ -75,11 +88,13 @@
 	<li><code>1 &lt;= cost[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找**
+### 方法一：二分查找
 
 我们注意到，所有合金都需要由同一台机器制造，因此我们可以枚举使用哪一台机器来制造合金。
 
@@ -89,9 +104,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -118,9 +131,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -166,7 +177,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -200,7 +211,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxNumberOfAlloys(n int, k int, budget int, composition [][]int, stock []int, cost []int) int {
@@ -231,7 +242,7 @@ func maxNumberOfAlloys(n int, k int, budget int, composition [][]int, stock []in
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxNumberOfAlloys(
@@ -269,10 +280,8 @@ function maxNumberOfAlloys(
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

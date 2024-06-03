@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0704.Binary%20Search/README.md
+tags:
+    - 数组
+    - 二分查找
+---
+
+<!-- problem:start -->
+
 # [704. 二分查找](https://leetcode.cn/problems/binary-search)
 
 [English Version](/solution/0700-0799/0704.Binary%20Search/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个&nbsp;<code>n</code>&nbsp;个元素有序的（升序）整型数组&nbsp;<code>nums</code> 和一个目标值&nbsp;<code>target</code> &nbsp;，写一个函数搜索&nbsp;<code>nums</code>&nbsp;中的 <code>target</code>，如果目标值存在返回下标，否则返回 <code>-1</code>。</p>
 
@@ -33,15 +44,28 @@
 	<li><code>nums</code>&nbsp;的每个元素都将在&nbsp;<code>[-9999, 9999]</code>之间。</li>
 </ol>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一：二分查找
+
+我们定义二分查找的左边界 $left=0$，右边界 $right=n-1$。
+
+每一次循环，我们计算中间位置 $mid=(left+right)/2$，然后判断 $nums[mid]$ 和 $target$ 的大小关系：
+
+-   如果 $nums[mid] \geq target$，则说明 $target$ 在 $[left, mid]$ 之间，我们将 $right$ 更新为 $mid$；
+-   否则，说明 $target$ 在 $[mid+1, right]$ 之间，我们将 $left$ 更新为 $mid+1$。
+
+当 $left \geq right$ 时，我们判断 $nums[left]$ 是否等于 $target$，如果等于则返回 $left$，否则返回 $-1$。
+
+时间复杂度 $O(\log n)$，其中 $n$ 是数组 $nums$ 的长度。空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -56,9 +80,7 @@ class Solution:
         return left if nums[left] == target else -1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -77,7 +99,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -96,7 +118,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func search(nums []int, target int) int {
@@ -116,32 +138,7 @@ func search(nums []int, target int) int {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- */
-var search = function (nums, target) {
-    let left = 0;
-    let right = nums.length - 1;
-    while (left < right) {
-        const mid = (left + right) >> 1;
-        if (nums[mid] >= target) {
-            right = mid;
-        } else {
-            left = mid + 1;
-        }
-    }
-    return nums[left] == target ? left : -1;
-};
-```
-
-### **Rust**
-
-循环：
+#### Rust
 
 ```rust
 use std::cmp::Ordering;
@@ -169,35 +166,50 @@ impl Solution {
 }
 ```
 
-递归：
+#### JavaScript
 
-```rust
-use std::cmp::Ordering;
-
-impl Solution {
-    fn binary_search(nums: Vec<i32>, target: i32, l: usize, r: usize) -> i32 {
-        if l == r {
-            return if nums[l] == target { l as i32 } else { -1 };
-        }
-        let mid = (l + r) >> 1;
-        match nums[mid].cmp(&target) {
-            Ordering::Less => Self::binary_search(nums, target, mid + 1, r),
-            Ordering::Greater => Self::binary_search(nums, target, l, mid),
-            Ordering::Equal => mid as i32,
+```js
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var search = function (nums, target) {
+    let left = 0;
+    let right = nums.length - 1;
+    while (left < right) {
+        const mid = (left + right) >> 1;
+        if (nums[mid] >= target) {
+            right = mid;
+        } else {
+            left = mid + 1;
         }
     }
+    return nums[left] == target ? left : -1;
+};
+```
 
-    pub fn search(nums: Vec<i32>, target: i32) -> i32 {
-        let r = nums.len() - 1;
-        Self::binary_search(nums, target, 0, r)
+#### C#
+
+```cs
+public class Solution {
+    public int Search(int[] nums, int target) {
+        int left = 0, right = nums.Length - 1;
+        while (left < right) {
+            int mid = (left + right) >> 1;
+            if (nums[mid] >= target) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return nums[left] == target ? left : -1;
     }
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

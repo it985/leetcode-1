@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1295.Find%20Numbers%20with%20Even%20Number%20of%20Digits/README_EN.md
+rating: 1139
+source: Weekly Contest 168 Q1
+tags:
+    - Array
+---
+
+<!-- problem:start -->
+
 # [1295. Find Numbers with Even Number of Digits](https://leetcode.com/problems/find-numbers-with-even-number-of-digits)
 
 [中文文档](/solution/1200-1299/1295.Find%20Numbers%20with%20Even%20Number%20of%20Digits/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array <code>nums</code> of integers, return how many of them contain an <strong>even number</strong> of digits.</p>
 
@@ -38,11 +52,17 @@ Only 1771 contains an even number of digits.
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -50,7 +70,7 @@ class Solution:
         return sum(len(str(v)) % 2 == 0 for v in nums)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -66,7 +86,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -81,7 +101,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findNumbers(nums []int) (ans int) {
@@ -94,7 +114,7 @@ func findNumbers(nums []int) (ans int) {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -110,10 +130,8 @@ var findNumbers = function (nums) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

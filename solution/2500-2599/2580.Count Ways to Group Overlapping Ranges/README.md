@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2580.Count%20Ways%20to%20Group%20Overlapping%20Ranges/README.md
+rating: 1631
+source: 第 99 场双周赛 Q3
+tags:
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2580. 统计将重叠区间合并成组的方案数](https://leetcode.cn/problems/count-ways-to-group-overlapping-ranges)
 
 [English Version](/solution/2500-2599/2580.Count%20Ways%20to%20Group%20Overlapping%20Ranges/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个二维整数数组&nbsp;<code>ranges</code>&nbsp;，其中&nbsp;<code>ranges[i] = [start<sub>i</sub>, end<sub>i</sub>]</code>&nbsp;表示&nbsp;<code>start<sub>i</sub></code>&nbsp;到&nbsp;<code>end<sub>i</sub></code>&nbsp;之间（包括二者）的所有整数都包含在第&nbsp;<code>i</code>&nbsp;个区间中。</p>
 
@@ -60,11 +73,13 @@
 	<li><code>0 &lt;= start<sub>i</sub> &lt;= end<sub>i</sub> &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 计数 + 快速幂**
+### 方法一：排序 + 计数 + 快速幂
 
 我们可以先对区间进行排序，相交的区间进行合并，统计有多少个不相交的区间，记为 $cnt$。
 
@@ -76,9 +91,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -93,23 +106,7 @@ class Solution:
         return pow(2, cnt, mod)
 ```
 
-```python
-class Solution:
-    def countWays(self, ranges: List[List[int]]) -> int:
-        ranges.sort()
-        mx = -1
-        mod = 10**9 + 7
-        ans = 1
-        for start, end in ranges:
-            if start > mx:
-                ans = ans * 2 % mod
-            mx = max(mx, end)
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -138,25 +135,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int countWays(int[][] ranges) {
-        Arrays.sort(ranges, (a, b) -> a[0] - b[0]);
-        int mx = -1;
-        int ans = 1;
-        final int mod = (int) 1e9 + 7;
-        for (int[] e : ranges) {
-            if (e[0] > mx) {
-                ans = ans * 2 % mod;
-            }
-            mx = Math.max(mx, e[1]);
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -184,25 +163,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int countWays(vector<vector<int>>& ranges) {
-        sort(ranges.begin(), ranges.end());
-        int ans = 1, mx = -1;
-        const int mod = 1e9 + 7;
-        for (auto& e : ranges) {
-            if (e[0] > mx) {
-                ans = ans * 2 % mod;
-            }
-            mx = max(mx, e[1]);
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func countWays(ranges [][]int) int {
@@ -230,24 +191,7 @@ func countWays(ranges [][]int) int {
 }
 ```
 
-```go
-func countWays(ranges [][]int) int {
-	sort.Slice(ranges, func(i, j int) bool { return ranges[i][0] < ranges[j][0] })
-	ans, mx := 1, -1
-	const mod = 1e9 + 7
-	for _, e := range ranges {
-		if e[0] > mx {
-			ans = ans * 2 % mod
-		}
-		if mx < e[1] {
-			mx = e[1]
-		}
-	}
-	return ans
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countWays(ranges: number[][]): number {
@@ -265,10 +209,93 @@ function countWays(ranges: number[][]): number {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def countWays(self, ranges: List[List[int]]) -> int:
+        ranges.sort()
+        mx = -1
+        mod = 10**9 + 7
+        ans = 1
+        for start, end in ranges:
+            if start > mx:
+                ans = ans * 2 % mod
+            mx = max(mx, end)
+        return ans
 ```
 
+#### Java
+
+```java
+class Solution {
+    public int countWays(int[][] ranges) {
+        Arrays.sort(ranges, (a, b) -> a[0] - b[0]);
+        int mx = -1;
+        int ans = 1;
+        final int mod = (int) 1e9 + 7;
+        for (int[] e : ranges) {
+            if (e[0] > mx) {
+                ans = ans * 2 % mod;
+            }
+            mx = Math.max(mx, e[1]);
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int countWays(vector<vector<int>>& ranges) {
+        sort(ranges.begin(), ranges.end());
+        int ans = 1, mx = -1;
+        const int mod = 1e9 + 7;
+        for (auto& e : ranges) {
+            if (e[0] > mx) {
+                ans = ans * 2 % mod;
+            }
+            mx = max(mx, e[1]);
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func countWays(ranges [][]int) int {
+	sort.Slice(ranges, func(i, j int) bool { return ranges[i][0] < ranges[j][0] })
+	ans, mx := 1, -1
+	const mod = 1e9 + 7
+	for _, e := range ranges {
+		if e[0] > mx {
+			ans = ans * 2 % mod
+		}
+		if mx < e[1] {
+			mx = e[1]
+		}
+	}
+	return ans
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

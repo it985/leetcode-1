@@ -1,8 +1,22 @@
-# [1427. Perform String Shifts](https://leetcode.com/problems/perform-string-shifts)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1427.Perform%20String%20Shifts/README_EN.md
+tags:
+    - Array
+    - Math
+    - String
+---
+
+<!-- problem:start -->
+
+# [1427. Perform String Shifts 🔒](https://leetcode.com/problems/perform-string-shifts)
 
 [中文文档](/solution/1400-1499/1427.Perform%20String%20Shifts/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>s</code> containing lowercase English letters, and a matrix <code>shift</code>, where <code>shift[i] = [direction<sub>i</sub>, amount<sub>i</sub>]</code>:</p>
 
@@ -48,9 +62,13 @@
 	<li><code>0 &lt;= amount<sub>i</sub> &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 We can denote the length of the string $s$ as $n$. Next, we traverse the array $shift$, accumulate to get the final offset $x$, then take $x$ modulo $n$, the final result is to move the first $n - x$ characters of $s$ to the end.
 
@@ -58,7 +76,7 @@ The time complexity is $O(n + m)$, where $n$ and $m$ are the lengths of the stri
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -68,7 +86,7 @@ class Solution:
         return s[-x:] + s[:-x]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -87,7 +105,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -107,7 +125,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func stringShift(s string, shift [][]int) string {
@@ -124,7 +142,7 @@ func stringShift(s string, shift [][]int) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function stringShift(s: string, shift: number[][]): string {
@@ -140,10 +158,8 @@ function stringShift(s: string, shift: number[][]): string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

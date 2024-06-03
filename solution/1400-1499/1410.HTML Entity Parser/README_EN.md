@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1410.HTML%20Entity%20Parser/README_EN.md
+rating: 1405
+source: Weekly Contest 184 Q3
+tags:
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [1410. HTML Entity Parser](https://leetcode.com/problems/html-entity-parser)
 
 [中文文档](/solution/1400-1499/1410.HTML%20Entity%20Parser/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p><strong>HTML entity parser</strong> is the parser that takes HTML code as input and replace all the entities of the special characters by the characters itself.</p>
 
@@ -45,9 +60,13 @@
 	<li>The string may contain any possible characters out of all the 256 ASCII characters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table + Simulation**
+<!-- solution:start -->
+
+### Solution 1: Hash Table + Simulation
 
 We can use a hash table to store the corresponding character for each character entity. Then, we traverse the string, and when we encounter a character entity, we replace it with the corresponding character.
 
@@ -55,7 +74,7 @@ The time complexity is $O(n \times l)$, and the space complexity is $O(l)$. Here
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -83,7 +102,7 @@ class Solution:
         return ''.join(ans)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -121,7 +140,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -158,7 +177,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func entityParser(text string) string {
@@ -197,7 +216,7 @@ func entityParser(text string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function entityParser(text: string): string {
@@ -238,6 +257,18 @@ function entityParser(text: string): string {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### TypeScript
+
 ```ts
 function entityParser(text: string): string {
     const d: { [key: string]: string } = {
@@ -254,10 +285,8 @@ function entityParser(text: string): string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0337.House%20Robber%20III/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 动态规划
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [337. 打家劫舍 III](https://leetcode.cn/problems/house-robber-iii)
 
 [English Version](/solution/0300-0399/0337.House%20Robber%20III/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为<meta charset="UTF-8" />&nbsp;<code>root</code>&nbsp;。</p>
 
@@ -44,11 +57,13 @@
 	<li><code>0 &lt;= Node.val &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：树形 DP**
+### 方法一：树形 DP
 
 我们定义一个函数 $dfs(root)$，表示偷取以 $root$ 为根的二叉树的最大金额。该函数返回一个二元组 $(a, b)$，其中 $a$ 表示偷取 $root$ 节点时能得到的最大金额，而 $b$ 表示不偷取 $root$ 节点时能得到的最大金额。
 
@@ -67,9 +82,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -90,9 +103,7 @@ class Solution:
         return max(dfs(root))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -127,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -158,7 +169,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -184,7 +195,7 @@ func rob(root *TreeNode) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -214,10 +225,8 @@ function rob(root: TreeNode | null): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

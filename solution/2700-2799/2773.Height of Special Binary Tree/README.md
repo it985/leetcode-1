@@ -1,10 +1,23 @@
-# [2773. 特殊二叉树的高度](https://leetcode.cn/problems/height-of-special-binary-tree)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2773.Height%20of%20Special%20Binary%20Tree/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 广度优先搜索
+    - 二叉树
+---
+
+<!-- problem:start -->
+
+# [2773. 特殊二叉树的高度 🔒](https://leetcode.cn/problems/height-of-special-binary-tree)
 
 [English Version](/solution/2700-2799/2773.Height%20of%20Special%20Binary%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一棵具有 <code>n</code> 个节点的 <strong>特殊</strong> 二叉树的根节点 <code>root</code> 。特殊二叉树的节点编号从 <code>1</code> 到 <code>n</code> 。假设这棵树有 <code>k</code> 个叶子，顺序如下：<code>b<sub>1</sub> &lt; b<sub>2</sub> &lt; ... &lt; b<sub>k</sub></code> 。</p>
 
@@ -62,11 +75,13 @@
 	<li>输入保证每个 <code>node.val</code> 的值是唯一的。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 题目的关键在于如何判断一个节点是叶子节点，我们设计一个函数 $dfs(root, d)$，其中 $root$ 表示当前节点，而 $d$ 表示当前节点的深度，我们每次搜索时，更新答案 $ans = \max(ans, d)$，然后判断当前节点是否为叶子节点，如果当前节点有左子节点，且左子节点的右子节点不是当前节点，那么我们递归调用 $dfs(root.left, d + 1)$，如果当前节点有右子节点，且右子节点的左子节点不是当前节点，那么我们递归调用 $dfs(root.right, d + 1)$。
 
@@ -74,9 +89,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -100,9 +113,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -140,7 +151,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -173,7 +184,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -203,7 +214,7 @@ func heightOfTree(root *TreeNode) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -236,10 +247,8 @@ function heightOfTree(root: TreeNode | null): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

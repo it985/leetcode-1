@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcp/LCP%2019.%20%E7%A7%8B%E5%8F%B6%E6%94%B6%E8%97%8F%E9%9B%86/README.md
+---
+
+<!-- problem:start -->
+
 # [LCP 19. 秋叶收藏集](https://leetcode.cn/problems/UlBDOe)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 小扣出去秋游，途中收集了一些红叶和黄叶，他利用这些叶子初步整理了一份秋叶收藏集 `leaves`， 字符串 `leaves` 仅包含小写字符 `r` 和 `y`， 其中字符 `r` 表示一片红叶，字符 `y` 表示一片黄叶。
 
@@ -38,11 +45,13 @@
 
 -   `leaves` 中只包含字符 `'r'` 和字符 `'y'`
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i][j]$ 表示对于第 $i$ 片叶子，处于状态 $j$ 时的最小操作次数，其中 $j$ 表示：
 
@@ -64,9 +73,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -86,9 +93,7 @@ class Solution:
         return f[n - 1][2]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -116,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -142,7 +147,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumOperations(leaves string) int {
@@ -172,7 +177,7 @@ func minimumOperations(leaves string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumOperations(leaves: string): number {
@@ -195,10 +200,8 @@ function minimumOperations(leaves: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1007.Minimum%20Domino%20Rotations%20For%20Equal%20Row/README.md
+rating: 1541
+source: 第 127 场周赛 Q3
+tags:
+    - 贪心
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [1007. 行相等的最少多米诺旋转](https://leetcode.cn/problems/minimum-domino-rotations-for-equal-row)
 
 [English Version](/solution/1000-1099/1007.Minimum%20Domino%20Rotations%20For%20Equal%20Row/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在一排多米诺骨牌中，<code>tops[i]</code> 和 <code>bottoms[i]</code>&nbsp;分别代表第 <code>i</code> 个多米诺骨牌的上半部分和下半部分。（一个多米诺是两个从 1 到 6 的数字同列平铺形成的&nbsp;—— 该平铺的每一半上都有一个数字。）</p>
 
@@ -44,11 +57,13 @@
 	<li><code>1 &lt;= tops[i], bottoms[i] &lt;= 6</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 根据题目描述，我们知道，要使得 $tops$ 中所有值或者 $bottoms$ 中所有值都相同，那么这个值必须是 $tops[0]$ 或者 $bottoms[0]$ 中的一个。
 
@@ -62,9 +77,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -82,9 +95,7 @@ class Solution:
         return -1 if ans == inf else ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -114,7 +125,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -138,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minDominoRotations(tops []int, bottoms []int) int {
@@ -167,7 +178,7 @@ func minDominoRotations(tops []int, bottoms []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minDominoRotations(tops: number[], bottoms: number[]): number {
@@ -188,10 +199,8 @@ function minDominoRotations(tops: number[], bottoms: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

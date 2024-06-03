@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2897.Apply%20Operations%20on%20Array%20to%20Maximize%20Sum%20of%20Squares/README_EN.md
+rating: 2301
+source: Weekly Contest 366 Q4
+tags:
+    - Greedy
+    - Bit Manipulation
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [2897. Apply Operations on Array to Maximize Sum of Squares](https://leetcode.com/problems/apply-operations-on-array-to-maximize-sum-of-squares)
 
 [中文文档](/solution/2800-2899/2897.Apply%20Operations%20on%20Array%20to%20Maximize%20Sum%20of%20Squares/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> and a <strong>positive</strong> integer <code>k</code>.</p>
 
@@ -49,9 +66,13 @@ It can be shown that this is the maximum value we can get.
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Bitwise Operation + Greedy**
+<!-- solution:start -->
+
+### Solution 1: Bitwise Operation + Greedy
 
 According to the problem description, for an operation, we can change $nums[i]$ to $nums[i] \text{ AND } nums[j]$, and change $nums[j]$ to $nums[i] \text{ OR } nums[j]$. Let's consider the bits of the numbers. If two bits are both $1$ or both $0$, the result of the operation will not change the bits. If two bits are different, the result of the operation will change the bits to $0$ and $1$, respectively. Therefore, we can move $1$ bits to $0$ bits, but not vice versa.
 
@@ -61,7 +82,7 @@ The time complexity is $O(n \times \log M)$, and the space complexity is $O(\log
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -83,7 +104,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -113,7 +134,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -144,7 +165,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxSum(nums []int, k int) (ans int) {
@@ -171,7 +192,7 @@ func maxSum(nums []int, k int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxSum(nums: number[], k: number): number {
@@ -199,10 +220,8 @@ function maxSum(nums: number[], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,20 @@
-# [2738. 统计文本中单词的出现次数](https://leetcode.cn/problems/count-occurrences-in-text)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2738.Count%20Occurrences%20in%20Text/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2738. 统计文本中单词的出现次数 🔒](https://leetcode.cn/problems/count-occurrences-in-text)
 
 [English Version](/solution/2700-2799/2738.Count%20Occurrences%20in%20Text/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<font face="monospace"><code>Files</code></font></p>
 
@@ -21,9 +31,9 @@ file_name 为该表的主键（具有唯一值的列）。
 
 <p>&nbsp;</p>
 
-<p>编写解决方案，找出单词 <strong>'bull' </strong>和 <strong>'bear'</strong> 作为 <strong>独立词</strong> 出现的次数，不考虑任何它出现在两侧没有空格的情况（例如，'bullet',&nbsp;'bears', 'bull.'，或者 'bear'&nbsp;在句首或句尾&nbsp;<strong>不会</strong> 被考虑）。</p>
+<p>编写解决方案，找出单词 <strong>'bull' </strong>和 <strong>'bear'</strong> 作为 <strong>独立词</strong> 有出现的文件数量，不考虑任何它出现在两侧没有空格的情况（例如，'bullet',&nbsp;'bears', 'bull.'，或者 'bear'&nbsp;在句首或句尾&nbsp;<strong>不会</strong> 被考虑）。</p>
 
-<p>返回单词 'bull' 和 'bear' 以及它们对应的出现次数，<strong>顺序没有限制</strong>&nbsp;。</p>
+<p>返回单词 'bull' 和 'bear' 以及它们对应的出现文件数量，<strong>顺序没有限制</strong>&nbsp;。</p>
 
 <p>结果的格式如下所示：</p>
 
@@ -54,18 +64,20 @@ Files 表:
 | bear |&nbsp;2     | 
 +------+-------+
 <b>解释：</b>
-- 单词 "bull" 在 "draft1.txt" 中出现1次，在 "draft2.txt" 中出现 1 次，在 "draft3.txt" 中出现 1 次。因此，单词 "bull" 的总出现次数为 3 次。
-- 单词 "bear" 在 "draft2.txt" 中出现1次，在 "draft3.txt" 中出现 1 次。因此，单词 "bear" 的总出现次数为 2 次。</pre>
+- 单词 "bull" 在 "draft1.txt" 中出现1次，在 "draft2.txt" 中出现 1 次，在 "draft3.txt" 中出现 1 次。因此，单词 "bull" 出现在 3 个文件中。
+- 单词 "bear" 在 "draft2.txt" 中出现1次，在 "draft3.txt" 中出现 1 次。因此，单词 "bear" 出现在 2 个文件中。</pre>
+
+<!-- description:end -->
 
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -79,3 +91,7 @@ WHERE content LIKE '% bear %';
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

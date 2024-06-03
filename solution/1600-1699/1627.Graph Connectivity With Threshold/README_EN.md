@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1627.Graph%20Connectivity%20With%20Threshold/README_EN.md
+rating: 2221
+source: Weekly Contest 211 Q4
+tags:
+    - Union Find
+    - Array
+    - Math
+    - Number Theory
+---
+
+<!-- problem:start -->
+
 # [1627. Graph Connectivity With Threshold](https://leetcode.com/problems/graph-connectivity-with-threshold)
 
 [中文文档](/solution/1600-1699/1627.Graph%20Connectivity%20With%20Threshold/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>We have <code>n</code> cities labeled from <code>1</code> to <code>n</code>. Two different cities with labels <code>x</code> and <code>y</code> are directly connected by a bidirectional road if and only if <code>x</code> and <code>y</code> share a common divisor <strong>strictly greater</strong> than some <code>threshold</code>. More formally, cities with labels <code>x</code> and <code>y</code> have a road between them if there exists an integer <code>z</code> such that all of the following are true:</p>
 
@@ -66,9 +83,13 @@ Please notice that there can be multiple queries for the same pair of nodes [x, 
 	<li><code>a<sub>i</sub> != b<sub>i</sub></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Union-Find**
+<!-- solution:start -->
+
+### Solution 1: Union-Find
 
 We can enumerate $z$ and its multiples, and use union-find to connect them. In this way, for each query $[a, b]$, we only need to determine whether $a$ and $b$ are in the same connected component.
 
@@ -76,7 +97,7 @@ The time complexity is $O(n \times \log n \times (\alpha(n) + q))$, and the spac
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class UnionFind:
@@ -113,7 +134,7 @@ class Solution:
         return [uf.find(a) == uf.find(b) for a, b in queries]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class UnionFind {
@@ -169,7 +190,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class UnionFind {
@@ -224,7 +245,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type unionFind struct {
@@ -278,7 +299,7 @@ func areConnected(n int, threshold int, queries [][]int) []bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class UnionFind {
@@ -325,10 +346,8 @@ function areConnected(n: number, threshold: number, queries: number[][]): boolea
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

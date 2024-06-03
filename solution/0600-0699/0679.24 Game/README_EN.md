@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0679.24%20Game/README_EN.md
+tags:
+    - Array
+    - Math
+    - Backtracking
+---
+
+<!-- problem:start -->
+
 # [679. 24 Game](https://leetcode.com/problems/24-game)
 
 [中文文档](/solution/0600-0699/0679.24%20Game/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>cards</code> of length <code>4</code>. You have four cards, each containing a number in the range <code>[1, 9]</code>. You should arrange the numbers on these cards in a mathematical expression using the operators <code>[&#39;+&#39;, &#39;-&#39;, &#39;*&#39;, &#39;/&#39;]</code> and the parentheses <code>&#39;(&#39;</code> and <code>&#39;)&#39;</code> to get the value 24.</p>
 
@@ -10,6 +24,7 @@
 
 <ul>
 	<li>The division operator <code>&#39;/&#39;</code> represents real division, not integer division.
+
     <ul>
     	<li>For example, <code>4 / (1 - 2 / 3) = 4 / (1 / 3) = 12</code>.</li>
     </ul>
@@ -24,6 +39,7 @@
     	<li>For example, if <code>cards = [1, 2, 1, 2]</code>, the expression <code>&quot;12 + 12&quot;</code> is not valid.</li>
     </ul>
     </li>
+
 </ul>
 
 <p>Return <code>true</code> if you can get such expression that evaluates to <code>24</code>, and <code>false</code> otherwise.</p>
@@ -52,9 +68,13 @@
 	<li><code>1 &lt;= cards[i] &lt;= 9</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: DFS**
+<!-- solution:start -->
+
+### Solution 1: DFS
 
 We design a function $dfs(nums)$, where $nums$ represents the current number sequence. The function returns a boolean value indicating whether there exists a permutation that makes this number sequence equal to $24$.
 
@@ -66,7 +86,7 @@ If none of the enumerated cases return $true$, we return $false$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -103,7 +123,7 @@ class Solution:
         return dfs(nums)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -164,7 +184,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -227,7 +247,7 @@ private:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func judgePoint24(cards []int) bool {
@@ -282,7 +302,7 @@ func judgePoint24(cards []int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function judgePoint24(cards: number[]): boolean {
@@ -336,10 +356,8 @@ function judgePoint24(cards: number[]): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

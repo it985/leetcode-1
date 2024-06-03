@@ -1,8 +1,23 @@
-# [2524. Maximum Frequency Score of a Subarray](https://leetcode.com/problems/maximum-frequency-score-of-a-subarray)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2524.Maximum%20Frequency%20Score%20of%20a%20Subarray/README_EN.md
+tags:
+    - Array
+    - Hash Table
+    - Math
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
+# [2524. Maximum Frequency Score of a Subarray 🔒](https://leetcode.com/problems/maximum-frequency-score-of-a-subarray)
 
 [中文文档](/solution/2500-2599/2524.Maximum%20Frequency%20Score%20of%20a%20Subarray/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code> and a <strong>positive</strong> integer <code>k</code>.</p>
 
@@ -41,11 +56,17 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -67,7 +88,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -119,7 +140,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -162,7 +183,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxFrequencyScore(nums []int, k int) int {
@@ -209,10 +230,8 @@ func maxFrequencyScore(nums []int, k int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

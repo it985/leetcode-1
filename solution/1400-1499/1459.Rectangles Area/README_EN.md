@@ -1,8 +1,20 @@
-# [1459. Rectangles Area](https://leetcode.com/problems/rectangles-area)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1459.Rectangles%20Area/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [1459. Rectangles Area 🔒](https://leetcode.com/problems/rectangles-area)
 
 [中文文档](/solution/1400-1499/1459.Rectangles%20Area/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Points</code></p>
 
@@ -58,11 +70,17 @@ The rectangle formed by p1 = 1 and p2 = 2 has an area equal to |2-4| * |7-8| = 2
 Note that the rectangle formed by p1 = 1 and p2 = 3 is invalid because the area is 0.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -78,3 +96,7 @@ ORDER BY area DESC, p1, p2;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

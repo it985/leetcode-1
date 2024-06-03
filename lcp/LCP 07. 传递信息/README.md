@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcp/LCP%2007.%20%E4%BC%A0%E9%80%92%E4%BF%A1%E6%81%AF/README.md
+---
+
+<!-- problem:start -->
+
 # [LCP 07. 传递信息](https://leetcode.cn/problems/chuan-di-xin-xi)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>小朋友 A 在和 ta 的小伙伴们玩传信息游戏，游戏规则如下：</p>
 
@@ -43,11 +50,13 @@
 	<li><code>0 &lt;= relation[i][0],relation[i][1] &lt; n 且 relation[i][0] != relation[i][1]</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i][j]$ 表示经过 $i$ 轮传递到编号 $j$ 的方案数，那么最终答案即为 $f[k][n-1]$。初始时 $f[0][0]=1$，其余均为 $0$。
 
@@ -61,9 +70,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -76,21 +83,7 @@ class Solution:
         return f[-1][-1]
 ```
 
-```python
-class Solution:
-    def numWays(self, n: int, relation: List[List[int]], k: int) -> int:
-        f = [1] + [0] * (n - 1)
-        for _ in range(k):
-            g = [0] * n
-            for a, b in relation:
-                g[b] += f[a]
-            f = g
-        return f[-1]
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -107,6 +100,86 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int numWays(int n, vector<vector<int>>& relation, int k) {
+        int f[k + 1][n];
+        memset(f, 0, sizeof(f));
+        f[0][0] = 1;
+        for (int i = 1; i <= k; ++i) {
+            for (auto& r : relation) {
+                int a = r[0], b = r[1];
+                f[i][b] += f[i - 1][a];
+            }
+        }
+        return f[k][n - 1];
+    }
+};
+```
+
+#### Go
+
+```go
+func numWays(n int, relation [][]int, k int) int {
+	f := make([][]int, k+1)
+	for i := range f {
+		f[i] = make([]int, n)
+	}
+	f[0][0] = 1
+	for i := 1; i <= k; i++ {
+		for _, r := range relation {
+			a, b := r[0], r[1]
+			f[i][b] += f[i-1][a]
+		}
+	}
+	return f[k][n-1]
+}
+```
+
+#### TypeScript
+
+```ts
+function numWays(n: number, relation: number[][], k: number): number {
+    const f: number[][] = Array.from({ length: k + 1 }, () => Array(n).fill(0));
+    f[0][0] = 1;
+    for (let i = 1; i <= k; ++i) {
+        for (const [a, b] of relation) {
+            f[i][b] += f[i - 1][a];
+        }
+    }
+    return f[k][n - 1];
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start-->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def numWays(self, n: int, relation: List[List[int]], k: int) -> int:
+        f = [1] + [0] * (n - 1)
+        for _ in range(k):
+            g = [0] * n
+            for a, b in relation:
+                g[b] += f[a]
+            f = g
+        return f[-1]
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -126,25 +199,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int numWays(int n, vector<vector<int>>& relation, int k) {
-        int f[k + 1][n];
-        memset(f, 0, sizeof(f));
-        f[0][0] = 1;
-        for (int i = 1; i <= k; ++i) {
-            for (auto& r : relation) {
-                int a = r[0], b = r[1];
-                f[i][b] += f[i - 1][a];
-            }
-        }
-        return f[k][n - 1];
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -165,24 +220,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func numWays(n int, relation [][]int, k int) int {
-	f := make([][]int, k+1)
-	for i := range f {
-		f[i] = make([]int, n)
-	}
-	f[0][0] = 1
-	for i := 1; i <= k; i++ {
-		for _, r := range relation {
-			a, b := r[0], r[1]
-			f[i][b] += f[i-1][a]
-		}
-	}
-	return f[k][n-1]
-}
-```
+#### Go
 
 ```go
 func numWays(n int, relation [][]int, k int) int {
@@ -200,20 +238,7 @@ func numWays(n int, relation [][]int, k int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function numWays(n: number, relation: number[][], k: number): number {
-    const f: number[][] = new Array(k + 1).fill(0).map(() => new Array(n).fill(0));
-    f[0][0] = 1;
-    for (let i = 1; i <= k; ++i) {
-        for (const [a, b] of relation) {
-            f[i][b] += f[i - 1][a];
-        }
-    }
-    return f[k][n - 1];
-}
-```
+#### TypeScript
 
 ```ts
 function numWays(n: number, relation: number[][], k: number): number {
@@ -230,10 +255,8 @@ function numWays(n: number, relation: number[][], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

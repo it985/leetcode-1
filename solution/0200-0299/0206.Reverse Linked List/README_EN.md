@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0206.Reverse%20Linked%20List/README_EN.md
+tags:
+    - Recursion
+    - Linked List
+---
+
+<!-- problem:start -->
+
 # [206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list)
 
 [中文文档](/solution/0200-0299/0206.Reverse%20Linked%20List/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>head</code> of a singly linked list, reverse the list, and return <em>the reversed list</em>.</p>
 
@@ -39,11 +52,17 @@
 <p>&nbsp;</p>
 <p><strong>Follow up:</strong> A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -63,25 +82,7 @@ class Solution:
         return dummy.next
 ```
 
-```python
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
-class Solution:
-    def reverseList(self, head: ListNode) -> ListNode:
-        if head is None or head.next is None:
-            return head
-        ans = self.reverseList(head.next)
-        head.next.next = head
-        head.next = None
-        return ans
-```
-
-### **Java**
-
-Iterative version:
+#### Java
 
 ```java
 /**
@@ -109,102 +110,7 @@ class Solution {
 }
 ```
 
-Recursive version:
-
-```java
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode reverseList(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode ans = reverseList(head.next);
-        head.next.next = head;
-        head.next = null;
-        return ans;
-    }
-}
-```
-
-### **JavaScript**
-
-```js
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode} head
- * @return {ListNode}
- */
-var reverseList = function (head) {
-    let dummy = new ListNode();
-    let curr = head;
-    while (curr) {
-        let next = curr.next;
-        curr.next = dummy.next;
-        dummy.next = curr;
-        curr = next;
-    }
-    return dummy.next;
-};
-```
-
-### **Go**
-
-```go
-/**
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
-func reverseList(head *ListNode) *ListNode {
-	dummy := &ListNode{}
-	curr := head
-	for curr != nil {
-		next := curr.Next
-		curr.Next = dummy.Next
-		dummy.Next = curr
-		curr = next
-	}
-	return dummy.Next
-}
-```
-
-```go
-/**
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
-func reverseList(head *ListNode) *ListNode {
-	if head == nil || head.Next == nil {
-		return head
-	}
-	ans := reverseList(head.Next)
-	head.Next.Next = head
-	head.Next = nil
-	return ans
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -233,61 +139,30 @@ public:
 };
 ```
 
-```cpp
+#### Go
+
+```go
 /**
  * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
-class Solution {
-public:
-    ListNode* reverseList(ListNode* head) {
-        if (!head || !head->next) return head;
-        ListNode* ans = reverseList(head->next);
-        head->next->next = head;
-        head->next = nullptr;
-        return ans;
-    }
-};
-```
-
-### **C#**
-
-```cs
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     public int val;
- *     public ListNode next;
- *     public ListNode(int val=0, ListNode next=null) {
- *         this.val = val;
- *         this.next = next;
- *     }
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
  * }
  */
-public class Solution {
-    public ListNode ReverseList(ListNode head) {
-        ListNode pre = null;
-        for (ListNode p = head; p != null;)
-        {
-            ListNode t = p.next;
-            p.next = pre;
-            pre = p;
-            p = t;
-        }
-        return pre;
-    }
+func reverseList(head *ListNode) *ListNode {
+	dummy := &ListNode{}
+	curr := head
+	for curr != nil {
+		next := curr.Next
+		curr.Next = dummy.Next
+		dummy.Next = curr
+		curr = next
+	}
+	return dummy.Next
 }
 ```
 
-### **TypeScript**
-
-Loop：
+#### TypeScript
 
 ```ts
 /**
@@ -317,42 +192,7 @@ function reverseList(head: ListNode | null): ListNode | null {
 }
 ```
 
-Recursion：
-
-```ts
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *     val: number
- *     next: ListNode | null
- *     constructor(val?: number, next?: ListNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.next = (next===undefined ? null : next)
- *     }
- * }
- */
-const rev = (pre: ListNode | null, cur: ListNode | null): ListNode | null => {
-    if (cur == null) {
-        return pre;
-    }
-    const next = cur.next;
-    cur.next = pre;
-    return rev(cur, next);
-};
-
-function reverseList(head: ListNode | null): ListNode | null {
-    if (head == null) {
-        return head;
-    }
-    const next = head.next;
-    head.next = null;
-    return rev(head, next);
-}
-```
-
-### **Rust**
-
-Loop：
+#### Rust
 
 ```rust
 // Definition for singly-linked list.
@@ -385,7 +225,196 @@ impl Solution {
 }
 ```
 
-Recursion：
+#### JavaScript
+
+```js
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var reverseList = function (head) {
+    let dummy = new ListNode();
+    let curr = head;
+    while (curr) {
+        let next = curr.next;
+        curr.next = dummy.next;
+        dummy.next = curr;
+        curr = next;
+    }
+    return dummy.next;
+};
+```
+
+#### C#
+
+```cs
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     public ListNode(int val=0, ListNode next=null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode ReverseList(ListNode head) {
+        ListNode pre = null;
+        for (ListNode p = head; p != null;)
+        {
+            ListNode t = p.next;
+            p.next = pre;
+            pre = p;
+            p = t;
+        }
+        return pre;
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        if head is None or head.next is None:
+            return head
+        ans = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+        return ans
+```
+
+#### Java
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode ans = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (!head || !head->next) return head;
+        ListNode* ans = reverseList(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func reverseList(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	ans := reverseList(head.Next)
+	head.Next.Next = head
+	head.Next = nil
+	return ans
+}
+```
+
+#### TypeScript
+
+```ts
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     val: number
+ *     next: ListNode | null
+ *     constructor(val?: number, next?: ListNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.next = (next===undefined ? null : next)
+ *     }
+ * }
+ */
+const rev = (pre: ListNode | null, cur: ListNode | null): ListNode | null => {
+    if (cur == null) {
+        return pre;
+    }
+    const next = cur.next;
+    cur.next = pre;
+    return rev(cur, next);
+};
+
+function reverseList(head: ListNode | null): ListNode | null {
+    if (head == null) {
+        return head;
+    }
+    const next = head.next;
+    head.next = null;
+    return rev(head, next);
+}
+```
+
+#### Rust
 
 ```rust
 // Definition for singly-linked list.
@@ -422,10 +451,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

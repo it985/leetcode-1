@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1870.Minimum%20Speed%20to%20Arrive%20on%20Time/README.md
+rating: 1675
+source: 第 242 场周赛 Q2
+tags:
+    - 数组
+    - 二分查找
+---
+
+<!-- problem:start -->
+
 # [1870. 准时到达的列车最小时速](https://leetcode.cn/problems/minimum-speed-to-arrive-on-time)
 
 [English Version](/solution/1800-1899/1870.Minimum%20Speed%20to%20Arrive%20on%20Time/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个浮点数 <code>hour</code> ，表示你到达办公室可用的总通勤时间。要到达办公室，你必须按给定次序乘坐 <code>n</code> 趟列车。另给你一个长度为 <code>n</code> 的整数数组 <code>dist</code> ，其中 <code>dist[i]</code> 表示第 <code>i</code> 趟列车的行驶距离（单位是千米）。</p>
 
@@ -62,11 +75,13 @@
 	<li><code>hours</code> 中，小数点后最多存在两位数字</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找**
+### 方法一：二分查找
 
 二分枚举速度值，找到满足条件的最小速度。
 
@@ -112,22 +127,20 @@ int search(int left, int right) {
 }
 ```
 
-做二分题目时，可以按照以下步骤：
+做二分题目时，可以按照以下套路：
 
-1. 写出循环条件：`while (left < right)`，注意是 `left < right`，而非 `left <= right`；
-1. 循环体内，先无脑写出 `mid = (left + right) >> 1`；
-1. 根据具体题目，实现 `check()` 函数（有时很简单的逻辑，可以不定义 `check`），想一下究竟要用 `right = mid`（模板 1） 还是 `left = mid`（模板 2）；
-    - 如果 `right = mid`，那么无脑写出 else 语句 `left = mid + 1`，并且不需要更改 mid 的计算，即保持 `mid = (left + right) >> 1`；
-    - 如果 `left = mid`，那么无脑写出 else 语句 `right = mid - 1`，并且在 mid 计算时补充 +1，即 `mid = (left + right + 1) >> 1`。
-1. 循环结束时，left 与 right 相等。
+1. 写出循环条件 $left < right$；
+1. 循环体内，不妨先写 $mid = \lfloor \frac{left + right}{2} \rfloor$；
+1. 根据具体题目，实现 $check()$ 函数（有时很简单的逻辑，可以不定义 $check$），想一下究竟要用 $right = mid$（模板 $1$） 还是 $left = mid$（模板 $2$）；
+       - 如果 $right = mid$，那么写出 else 语句 $left = mid + 1$，并且不需要更改 mid 的计算，即保持 $mid = \lfloor \frac{left + right}{2} \rfloor$；
+       - 如果 $left = mid$，那么写出 else 语句 $right = mid - 1$，并且在 $mid$ 计算时补充 +1，即 $mid = \lfloor \frac{left + right + 1}{2} \rfloor$；
+1. 循环结束时，$left$ 与 $right$ 相等。
 
-注意，这两个模板的优点是始终保持答案位于二分区间内，二分结束条件对应的值恰好在答案所处的位置。 对于可能无解的情况，只要判断二分结束后的 left 或者 right 是否满足题意即可。
+注意，这两个模板的优点是始终保持答案位于二分区间内，二分结束条件对应的值恰好在答案所处的位置。 对于可能无解的情况，只要判断二分结束后的 $left$ 或者 $right$ 是否满足题意即可。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -143,9 +156,7 @@ class Solution:
         return -1 if ans == r else ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -173,7 +184,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -202,7 +213,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minSpeedOnTime(dist []int, hour float64) int {
@@ -224,44 +235,7 @@ func minSpeedOnTime(dist []int, hour float64) int {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} dist
- * @param {number} hour
- * @return {number}
- */
-var minSpeedOnTime = function (dist, hour) {
-    if (dist.length > Math.ceil(hour)) return -1;
-    let left = 1,
-        right = 10 ** 7;
-    while (left < right) {
-        let mid = (left + right) >> 1;
-        if (arriveOnTime(dist, mid, hour)) {
-            right = mid;
-        } else {
-            left = mid + 1;
-        }
-    }
-    return left;
-};
-
-function arriveOnTime(dist, speed, hour) {
-    let res = 0.0;
-    let n = dist.length;
-    for (let i = 0; i < n; i++) {
-        let cost = parseFloat(dist[i]) / speed;
-        if (i != n - 1) {
-            cost = Math.ceil(cost);
-        }
-        res += cost;
-    }
-    return res <= hour;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -299,10 +273,45 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
+```js
+/**
+ * @param {number[]} dist
+ * @param {number} hour
+ * @return {number}
+ */
+var minSpeedOnTime = function (dist, hour) {
+    if (dist.length > Math.ceil(hour)) return -1;
+    let left = 1,
+        right = 10 ** 7;
+    while (left < right) {
+        let mid = (left + right) >> 1;
+        if (arriveOnTime(dist, mid, hour)) {
+            right = mid;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return left;
+};
 
+function arriveOnTime(dist, speed, hour) {
+    let res = 0.0;
+    let n = dist.length;
+    for (let i = 0; i < n; i++) {
+        let cost = parseFloat(dist[i]) / speed;
+        if (i != n - 1) {
+            cost = Math.ceil(cost);
+        }
+        res += cost;
+    }
+    return res <= hour;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,21 @@
-# [755. Pour Water](https://leetcode.com/problems/pour-water)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0755.Pour%20Water/README_EN.md
+tags:
+    - Array
+    - Simulation
+---
+
+<!-- problem:start -->
+
+# [755. Pour Water 🔒](https://leetcode.com/problems/pour-water)
 
 [中文文档](/solution/0700-0799/0755.Pour%20Water/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an elevation map represents as an integer array <code>heights</code> where <code>heights[i]</code> representing the height of the terrain at index <code>i</code>. The width at each index is <code>1</code>. You are also given two integers <code>volume</code> and <code>k</code>. <code>volume</code> units of water will fall at index <code>k</code>.</p>
 
@@ -61,11 +74,17 @@ Finally, the fourth droplet falls at index k = 3. Since moving left would not ev
 	<li><code>0 &lt;= k &lt; heights.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -85,7 +104,7 @@ class Solution:
         return heights
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -114,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -144,10 +163,36 @@ public:
 };
 ```
 
-### **...**
+#### Go
 
-```
-
+```go
+func pourWater(heights []int, volume int, k int) []int {
+	for ; volume > 0; volume-- {
+		find := false
+		for _, d := range [2]int{-1, 1} {
+			i, j := k, k
+			for i+d >= 0 && i+d < len(heights) && heights[i+d] <= heights[i] {
+				if heights[i+d] < heights[i] {
+					j = i + d
+				}
+				i += d
+			}
+			if j != k {
+				find = true
+				heights[j]++
+				break
+			}
+		}
+		if !find {
+			heights[k]++
+		}
+	}
+	return heights
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

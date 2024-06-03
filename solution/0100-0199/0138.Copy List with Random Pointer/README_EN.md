@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0138.Copy%20List%20with%20Random%20Pointer/README_EN.md
+tags:
+    - Hash Table
+    - Linked List
+---
+
+<!-- problem:start -->
+
 # [138. Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer)
 
 [中文文档](/solution/0100-0199/0138.Copy%20List%20with%20Random%20Pointer/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A linked list of length <code>n</code> is given such that each node contains an additional random pointer, which could point to any node in the list, or <code>null</code>.</p>
 
@@ -54,11 +67,17 @@
 	<li><code>Node.random</code> is <code>null</code> or is pointing to some node in the linked list.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 """
@@ -89,6 +108,230 @@ class Solution:
             cur = cur.next
         return dummy.next
 ```
+
+#### Java
+
+```java
+/*
+// Definition for a Node.
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+*/
+class Solution {
+    public Node copyRandomList(Node head) {
+        Map<Node, Node> d = new HashMap<>();
+        Node dummy = new Node(0);
+        Node tail = dummy;
+        for (Node cur = head; cur != null; cur = cur.next) {
+            tail.next = new Node(cur.val);
+            tail = tail.next;
+            d.put(cur, tail);
+        }
+        tail = dummy.next;
+        for (Node cur = head; cur != null; cur = cur.next) {
+            tail.random = d.get(cur.random);
+            tail = tail.next;
+        }
+        return dummy.next;
+    }
+}
+```
+
+#### C++
+
+```cpp
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* next;
+    Node* random;
+
+    Node(int _val) {
+        val = _val;
+        next = NULL;
+        random = NULL;
+    }
+};
+*/
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        unordered_map<Node*, Node*> d;
+        Node* dummy = new Node(0);
+        Node* tail = dummy;
+        for (auto cur = head; cur; cur = cur->next) {
+            tail->next = new Node(cur->val);
+            tail = tail->next;
+            d[cur] = tail;
+        }
+        tail = dummy->next;
+        for (auto cur = head; cur; cur = cur->next) {
+            tail->random = d[cur->random];
+            tail = tail->next;
+        }
+        return dummy->next;
+    }
+};
+```
+
+#### Go
+
+```go
+/**
+ * Definition for a Node.
+ * type Node struct {
+ *     Val int
+ *     Next *Node
+ *     Random *Node
+ * }
+ */
+
+func copyRandomList(head *Node) *Node {
+	d := map[*Node]*Node{}
+	dummy := &Node{}
+	tail := dummy
+	for cur := head; cur != nil; cur = cur.Next {
+		tail.Next = &Node{Val: cur.Val}
+		tail = tail.Next
+		d[cur] = tail
+	}
+	tail = dummy.Next
+	for cur := head; cur != nil; cur = cur.Next {
+		tail.Random = d[cur.Random]
+		tail = tail.Next
+	}
+	return dummy.Next
+}
+```
+
+#### TypeScript
+
+```ts
+/**
+ * Definition for Node.
+ * class Node {
+ *     val: number
+ *     next: Node | null
+ *     random: Node | null
+ *     constructor(val?: number, next?: Node, random?: Node) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.next = (next===undefined ? null : next)
+ *         this.random = (random===undefined ? null : random)
+ *     }
+ * }
+ */
+
+function copyRandomList(head: Node | null): Node | null {
+    const map = new Map<Node, Node>();
+    let cur = head;
+    while (cur != null) {
+        map.set(cur, new Node(cur.val));
+        cur = cur.next;
+    }
+    cur = head;
+    while (cur != null) {
+        map.get(cur).next = map.get(cur.next) ?? null;
+        map.get(cur).random = map.get(cur.random) ?? null;
+        cur = cur.next;
+    }
+    return map.get(head);
+}
+```
+
+#### JavaScript
+
+```js
+/**
+ * // Definition for a Node.
+ * function Node(val, next, random) {
+ *    this.val = val;
+ *    this.next = next;
+ *    this.random = random;
+ * };
+ */
+
+/**
+ * @param {Node} head
+ * @return {Node}
+ */
+var copyRandomList = function (head) {
+    const d = new Map();
+    const dummy = new Node(0);
+    let tail = dummy;
+    for (let cur = head; cur; cur = cur.next) {
+        tail.next = new Node(cur.val);
+        tail = tail.next;
+        d.set(cur, tail);
+    }
+    tail = dummy.next;
+    for (let cur = head; cur; cur = cur.next) {
+        tail.random = d.get(cur.random);
+        tail = tail.next;
+    }
+    return dummy.next;
+};
+```
+
+#### C#
+
+```cs
+/*
+// Definition for a Node.
+public class Node {
+    public int val;
+    public Node next;
+    public Node random;
+
+    public Node(int _val) {
+        val = _val;
+        next = null;
+        random = null;
+    }
+}
+*/
+
+public class Solution {
+    public Node CopyRandomList(Node head) {
+        Dictionary<Node, Node> d = new Dictionary<Node, Node>();
+        Node dummy = new Node(0);
+        Node tail = dummy;
+        for (Node cur = head; cur != null; cur = cur.next) {
+            tail.next = new Node(cur.val);
+            tail = tail.next;
+            d[cur] = tail;
+        }
+        tail = dummy.next;
+        for (Node cur = head; cur != null; cur = cur.next) {
+            tail.random = cur.random == null ? null : d[cur.random];
+            tail = tail.next;
+        }
+        return dummy.next;
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 """
@@ -127,42 +370,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-```java
-/*
-// Definition for a Node.
-class Node {
-    int val;
-    Node next;
-    Node random;
-
-    public Node(int val) {
-        this.val = val;
-        this.next = null;
-        this.random = null;
-    }
-}
-*/
-class Solution {
-    public Node copyRandomList(Node head) {
-        Map<Node, Node> d = new HashMap<>();
-        Node dummy = new Node(0);
-        Node tail = dummy;
-        for (Node cur = head; cur != null; cur = cur.next) {
-            tail.next = new Node(cur.val);
-            tail = tail.next;
-            d.put(cur, tail);
-        }
-        tail = dummy.next;
-        for (Node cur = head; cur != null; cur = cur.next) {
-            tail.random = d.get(cur.random);
-            tail = tail.next;
-        }
-        return dummy.next;
-    }
-}
-```
+#### Java
 
 ```java
 /*
@@ -207,44 +415,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-/*
-// Definition for a Node.
-class Node {
-public:
-    int val;
-    Node* next;
-    Node* random;
-
-    Node(int _val) {
-        val = _val;
-        next = NULL;
-        random = NULL;
-    }
-};
-*/
-class Solution {
-public:
-    Node* copyRandomList(Node* head) {
-        unordered_map<Node*, Node*> d;
-        Node* dummy = new Node(0);
-        Node* tail = dummy;
-        for (auto cur = head; cur; cur = cur->next) {
-            tail->next = new Node(cur->val);
-            tail = tail->next;
-            d[cur] = tail;
-        }
-        tail = dummy->next;
-        for (auto cur = head; cur; cur = cur->next) {
-            tail->random = d[cur->random];
-            tail = tail->next;
-        }
-        return dummy->next;
-    }
-};
-```
+#### C++
 
 ```cpp
 /*
@@ -292,35 +463,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-/**
- * Definition for a Node.
- * type Node struct {
- *     Val int
- *     Next *Node
- *     Random *Node
- * }
- */
-
-func copyRandomList(head *Node) *Node {
-	d := map[*Node]*Node{}
-	dummy := &Node{}
-	tail := dummy
-	for cur := head; cur != nil; cur = cur.Next {
-		tail.Next = &Node{Val: cur.Val}
-		tail = tail.Next
-		d[cur] = tail
-	}
-	tail = dummy.Next
-	for cur := head; cur != nil; cur = cur.Next {
-		tail.Random = d[cur.Random]
-		tail = tail.Next
-	}
-	return dummy.Next
-}
-```
+#### Go
 
 ```go
 /**
@@ -358,43 +501,49 @@ func copyRandomList(head *Node) *Node {
 }
 ```
 
-### **C#**
+#### JavaScript
 
-```cs
-/*
-// Definition for a Node.
-public class Node {
-    public int val;
-    public Node next;
-    public Node random;
+```js
+/**
+ * // Definition for a Node.
+ * function Node(val, next, random) {
+ *    this.val = val;
+ *    this.next = next;
+ *    this.random = random;
+ * };
+ */
 
-    public Node(int _val) {
-        val = _val;
-        next = null;
-        random = null;
+/**
+ * @param {Node} head
+ * @return {Node}
+ */
+var copyRandomList = function (head) {
+    if (!head) {
+        return null;
     }
-}
-*/
-
-public class Solution {
-    public Node CopyRandomList(Node head) {
-        Dictionary<Node, Node> d = new Dictionary<Node, Node>();
-        Node dummy = new Node(0);
-        Node tail = dummy;
-        for (Node cur = head; cur != null; cur = cur.next) {
-            tail.next = new Node(cur.val);
-            tail = tail.next;
-            d[cur] = tail;
-        }
-        tail = dummy.next;
-        for (Node cur = head; cur != null; cur = cur.next) {
-            tail.random = cur.random == null ? null : d[cur.random];
-            tail = tail.next;
-        }
-        return dummy.next;
+    for (let cur = head; cur; ) {
+        const node = new Node(cur.val, cur.next, null);
+        cur.next = node;
+        cur = node.next;
     }
-}
+    for (let cur = head; cur; cur = cur.next.next) {
+        if (cur.random) {
+            cur.next.random = cur.random.next;
+        }
+    }
+    const ans = head.next;
+    for (let cur = head; cur; ) {
+        const nxt = cur.next;
+        if (nxt) {
+            cur.next = nxt.next;
+        }
+        cur = nxt;
+    }
+    return ans;
+};
 ```
+
+#### C#
 
 ```cs
 /*
@@ -440,118 +589,8 @@ public class Solution {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * // Definition for a Node.
- * function Node(val, next, random) {
- *    this.val = val;
- *    this.next = next;
- *    this.random = random;
- * };
- */
-
-/**
- * @param {Node} head
- * @return {Node}
- */
-var copyRandomList = function (head) {
-    const d = new Map();
-    const dummy = new Node(0);
-    let tail = dummy;
-    for (let cur = head; cur; cur = cur.next) {
-        tail.next = new Node(cur.val);
-        tail = tail.next;
-        d.set(cur, tail);
-    }
-    tail = dummy.next;
-    for (let cur = head; cur; cur = cur.next) {
-        tail.random = d.get(cur.random);
-        tail = tail.next;
-    }
-    return dummy.next;
-};
-```
-
-```js
-/**
- * // Definition for a Node.
- * function Node(val, next, random) {
- *    this.val = val;
- *    this.next = next;
- *    this.random = random;
- * };
- */
-
-/**
- * @param {Node} head
- * @return {Node}
- */
-var copyRandomList = function (head) {
-    if (!head) {
-        return null;
-    }
-    for (let cur = head; cur; ) {
-        const node = new Node(cur.val, cur.next, null);
-        cur.next = node;
-        cur = node.next;
-    }
-    for (let cur = head; cur; cur = cur.next.next) {
-        if (cur.random) {
-            cur.next.random = cur.random.next;
-        }
-    }
-    const ans = head.next;
-    for (let cur = head; cur; ) {
-        const nxt = cur.next;
-        if (nxt) {
-            cur.next = nxt.next;
-        }
-        cur = nxt;
-    }
-    return ans;
-};
-```
-
-### **TypeScript**
-
-```ts
-/**
- * Definition for Node.
- * class Node {
- *     val: number
- *     next: Node | null
- *     random: Node | null
- *     constructor(val?: number, next?: Node, random?: Node) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.next = (next===undefined ? null : next)
- *         this.random = (random===undefined ? null : random)
- *     }
- * }
- */
-
-function copyRandomList(head: Node | null): Node | null {
-    const map = new Map<Node, Node>();
-    let cur = head;
-    while (cur != null) {
-        map.set(cur, new Node(cur.val));
-        cur = cur.next;
-    }
-    cur = head;
-    while (cur != null) {
-        map.get(cur).next = map.get(cur.next) ?? null;
-        map.get(cur).random = map.get(cur.random) ?? null;
-        cur = cur.next;
-    }
-    return map.get(head);
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

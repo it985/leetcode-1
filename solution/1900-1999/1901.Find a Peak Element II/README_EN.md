@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1901.Find%20a%20Peak%20Element%20II/README_EN.md
+tags:
+    - Array
+    - Binary Search
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [1901. Find a Peak Element II](https://leetcode.com/problems/find-a-peak-element-ii)
 
 [中文文档](/solution/1900-1999/1901.Find%20a%20Peak%20Element%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A <strong>peak</strong> element in a 2D grid is an element that is <strong>strictly greater</strong> than all of its <strong>adjacent </strong>neighbors to the left, right, top, and bottom.</p>
 
@@ -44,9 +58,13 @@
 	<li>No two adjacent cells are equal.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Binary Search
 
 Let $m$ and $n$ be the number of rows and columns of the matrix, respectively.
 
@@ -70,7 +88,7 @@ The time complexity is $O(n \times \log m)$, where $m$ and $n$ are the number of
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -86,7 +104,7 @@ class Solution:
         return [l, mat[l].index(max(mat[l]))]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -117,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,7 +157,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findPeakGrid(mat [][]int) []int {
@@ -166,7 +184,7 @@ func findPeakGrid(mat [][]int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findPeakGrid(mat: number[][]): number[] {
@@ -184,7 +202,7 @@ function findPeakGrid(mat: number[][]): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -212,10 +230,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1582.Special%20Positions%20in%20a%20Binary%20Matrix/README_EN.md
+rating: 1321
+source: Weekly Contest 206 Q1
+tags:
+    - Array
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [1582. Special Positions in a Binary Matrix](https://leetcode.com/problems/special-positions-in-a-binary-matrix)
 
 [中文文档](/solution/1500-1599/1582.Special%20Positions%20in%20a%20Binary%20Matrix/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an <code>m x n</code> binary matrix <code>mat</code>, return <em>the number of special positions in </em><code>mat</code><em>.</em></p>
 
@@ -35,11 +50,17 @@
 	<li><code>mat[i][j]</code> is either <code>0</code> or <code>1</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,7 +80,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -86,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -113,7 +134,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numSpecial(mat [][]int) int {
@@ -137,7 +158,66 @@ func numSpecial(mat [][]int) int {
 }
 ```
 
-### **C**
+#### TypeScript
+
+```ts
+function numSpecial(mat: number[][]): number {
+    const m = mat.length;
+    const n = mat[0].length;
+    const rows = new Array(m).fill(0);
+    const cols = new Array(n).fill(0);
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (mat[i][j] === 1) {
+                rows[i]++;
+                cols[j]++;
+            }
+        }
+    }
+
+    let res = 0;
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (mat[i][j] === 1 && rows[i] === 1 && cols[j] === 1) {
+                res++;
+            }
+        }
+    }
+
+    return res;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn num_special(mat: Vec<Vec<i32>>) -> i32 {
+        let m = mat.len();
+        let n = mat[0].len();
+        let mut rows = vec![0; m];
+        let mut cols = vec![0; n];
+        for i in 0..m {
+            for j in 0..n {
+                rows[i] += mat[i][j];
+                cols[j] += mat[i][j];
+            }
+        }
+
+        let mut res = 0;
+        for i in 0..m {
+            for j in 0..n {
+                if mat[i][j] == 1 && rows[i] == 1 && cols[j] == 1 {
+                    res += 1;
+                }
+            }
+        }
+        res
+    }
+}
+```
+
+#### C
 
 ```c
 int numSpecial(int** mat, int matSize, int* matColSize) {
@@ -169,69 +249,8 @@ int numSpecial(int** mat, int matSize, int* matColSize) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function numSpecial(mat: number[][]): number {
-    const m = mat.length;
-    const n = mat[0].length;
-    const rows = new Array(m).fill(0);
-    const cols = new Array(n).fill(0);
-    for (let i = 0; i < m; i++) {
-        for (let j = 0; j < n; j++) {
-            if (mat[i][j] === 1) {
-                rows[i]++;
-                cols[j]++;
-            }
-        }
-    }
-
-    let res = 0;
-    for (let i = 0; i < m; i++) {
-        for (let j = 0; j < n; j++) {
-            if (mat[i][j] === 1 && rows[i] === 1 && cols[j] === 1) {
-                res++;
-            }
-        }
-    }
-
-    return res;
-}
-```
-
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn num_special(mat: Vec<Vec<i32>>) -> i32 {
-        let m = mat.len();
-        let n = mat[0].len();
-        let mut rows = vec![0; m];
-        let mut cols = vec![0; n];
-        for i in 0..m {
-            for j in 0..n {
-                rows[i] += mat[i][j];
-                cols[j] += mat[i][j];
-            }
-        }
-
-        let mut res = 0;
-        for i in 0..m {
-            for j in 0..n {
-                if mat[i][j] == 1 && rows[i] == 1 && cols[j] == 1 {
-                    res += 1;
-                }
-            }
-        }
-        res
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

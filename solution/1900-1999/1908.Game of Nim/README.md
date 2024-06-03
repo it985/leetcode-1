@@ -1,10 +1,25 @@
-# [1908. Nim 游戏 II](https://leetcode.cn/problems/game-of-nim)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1908.Game%20of%20Nim/README.md
+tags:
+    - 位运算
+    - 脑筋急转弯
+    - 数组
+    - 数学
+    - 动态规划
+    - 博弈
+---
+
+<!-- problem:start -->
+
+# [1908. Nim 游戏 II 🔒](https://leetcode.cn/problems/game-of-nim)
 
 [English Version](/solution/1900-1999/1908.Game%20of%20Nim/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>Alice 和&nbsp;Bob 交替进行一个游戏，<strong>由 Alice 先手</strong>。</p>
 
@@ -63,11 +78,13 @@
 
 <p><strong>进阶：</strong>你能想出一个&nbsp;<strong>线性时间&nbsp;</strong>的解决方案吗？虽然这一答案可能超出了面试所需的范围，但了解它可能会很有趣。</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索**
+### 方法一：记忆化搜索
 
 我们发现，一共最多有 $7$ 堆石头，每堆石头最多有 $7$ 个，那么一共有 $7^7$ 种状态，因此我们可以用一个八进制数来表示当前的状态。
 
@@ -83,9 +100,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -104,9 +119,7 @@ class Solution:
         return dfs(tuple(piles))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -154,7 +167,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -194,7 +207,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func nimGame(piles []int) bool {
@@ -235,7 +248,7 @@ func nimGame(piles []int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function nimGame(piles: number[]): boolean {
@@ -274,10 +287,8 @@ function nimGame(piles: number[]): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

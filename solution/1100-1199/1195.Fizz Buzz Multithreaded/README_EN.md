@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1195.Fizz%20Buzz%20Multithreaded/README_EN.md
+tags:
+    - Concurrency
+---
+
+<!-- problem:start -->
+
 # [1195. Fizz Buzz Multithreaded](https://leetcode.com/problems/fizz-buzz-multithreaded)
 
 [中文文档](/solution/1100-1199/1195.Fizz%20Buzz%20Multithreaded/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You have the four functions:</p>
 
@@ -56,17 +68,17 @@
 	<li><code>1 &lt;= n &lt;= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
-
-```python
-
-```
-
-### **Java**
+#### Java
 
 ```java
 class FizzBuzz {
@@ -131,7 +143,7 @@ class FizzBuzz {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class FizzBuzz {
@@ -140,13 +152,14 @@ private:
     atomic<int> index;
     int n;
 
+    // 这里主要运用到了C++11中的RAII锁(lock_guard)的知识。
+    // 需要强调的一点是，在进入循环后，要时刻不忘加入index <= n的逻辑
 public:
     FizzBuzz(int n) {
         this->n = n;
         index = 1;
     }
 
-    // printFizz() outputs "fizz".
     void fizz(function<void()> printFizz) {
         while (index <= n) {
             std::lock_guard<std::mutex> lk(mtx);
@@ -157,7 +170,6 @@ public:
         }
     }
 
-    // printBuzz() outputs "buzz".
     void buzz(function<void()> printBuzz) {
         while (index <= n) {
             std::lock_guard<std::mutex> lk(mtx);
@@ -168,7 +180,6 @@ public:
         }
     }
 
-    // printFizzBuzz() outputs "fizzbuzz".
     void fizzbuzz(function<void()> printFizzBuzz) {
         while (index <= n) {
             std::lock_guard<std::mutex> lk(mtx);
@@ -179,7 +190,6 @@ public:
         }
     }
 
-    // printNumber(x) outputs "x", where x is an integer.
     void number(function<void(int)> printNumber) {
         while (index <= n) {
             std::lock_guard<std::mutex> lk(mtx);
@@ -192,10 +202,8 @@ public:
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

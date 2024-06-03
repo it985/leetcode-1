@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1987.Number%20of%20Unique%20Good%20Subsequences/README.md
+rating: 2422
+source: 第 256 场周赛 Q4
+tags:
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [1987. 不同的好子序列数目](https://leetcode.cn/problems/number-of-unique-good-subsequences)
 
 [English Version](/solution/1900-1999/1987.Number%20of%20Unique%20Good%20Subsequences/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个二进制字符串&nbsp;<code>binary</code>&nbsp;。&nbsp;<code>binary</code>&nbsp;的一个 <strong>子序列</strong>&nbsp;如果是 <strong>非空</strong>&nbsp;的且没有 <b>前导</b>&nbsp;<strong>0</strong>&nbsp;（除非数字是 <code>"0"</code>&nbsp;本身），那么它就是一个 <strong>好</strong>&nbsp;的子序列。</p>
 
@@ -52,11 +65,13 @@
 	<li><code>binary</code>&nbsp;只含有&nbsp;<code>'0'</code>&nbsp;和&nbsp;<code>'1'</code> 。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f$ 表示以 $1$ 结尾的不同好子序列的数目，定义 $g$ 表示以 $0$ 结尾的且以 $1$ 开头的不同好子序列的数目。初始时 $f = g = 0$。
 
@@ -71,13 +86,11 @@
 
 相似题目：
 
--   [940. 不同的子序列 II](/solution/0900-0999/0940.Distinct%20Subsequences%20II/README.md)
+-   [940. 不同的子序列 II](https://github.com/doocs/leetcode/blob/main/solution/0900-0999/0940.Distinct%20Subsequences%20II/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -95,9 +108,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -119,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -142,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfUniqueGoodSubsequences(binary string) (ans int) {
@@ -161,7 +172,7 @@ func numberOfUniqueGoodSubsequences(binary string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfUniqueGoodSubsequences(binary: string): number {
@@ -181,10 +192,8 @@ function numberOfUniqueGoodSubsequences(binary: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

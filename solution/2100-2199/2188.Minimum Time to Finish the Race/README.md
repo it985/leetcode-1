@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2188.Minimum%20Time%20to%20Finish%20the%20Race/README.md
+rating: 2315
+source: 第 282 场周赛 Q4
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2188. 完成比赛的最少时间](https://leetcode.cn/problems/minimum-time-to-finish-the-race)
 
 [English Version](/solution/2100-2199/2188.Minimum%20Time%20to%20Finish%20the%20Race/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的二维整数数组&nbsp;<code>tires</code>&nbsp;，其中&nbsp;<code>tires[i] = [f<sub>i</sub>, r<sub>i</sub>]</code>&nbsp;表示第&nbsp;<code>i</code>&nbsp;种轮胎如果连续使用，第&nbsp;<code>x</code>&nbsp;圈需要耗时&nbsp;<code>f<sub>i</sub> * r<sub>i</sub><sup>(x-1)</sup></code>&nbsp;秒。</p>
 
@@ -59,11 +72,13 @@
 	<li><code>1 &lt;= numLaps &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：预处理 + 动态规划**
+### 方法一：预处理 + 动态规划
 
 我们注意到，连续使用同一个轮胎 $(f, r)$ 跑 $i$ 圈，那么第 $i$ 圈的耗时不应该超过 $changeTime + f$，否则我们可以在第 $i$ 圈的时候换轮胎，这样总耗时会更少。即：
 
@@ -85,9 +100,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -111,9 +124,7 @@ class Solution:
         return f[numLaps]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -144,7 +155,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -176,7 +187,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumFinishTime(tires [][]int, changeTime int, numLaps int) int {
@@ -209,7 +220,7 @@ func minimumFinishTime(tires [][]int, changeTime int, numLaps int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumFinishTime(tires: number[][], changeTime: number, numLaps: number): number {
@@ -235,10 +246,8 @@ function minimumFinishTime(tires: number[][], changeTime: number, numLaps: numbe
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,12 +1,24 @@
-# [159. 至多包含两个不同字符的最长子串](https://leetcode.cn/problems/longest-substring-with-at-most-two-distinct-characters)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0159.Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters/README.md
+tags:
+    - 哈希表
+    - 字符串
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
+# [159. 至多包含两个不同字符的最长子串 🔒](https://leetcode.cn/problems/longest-substring-with-at-most-two-distinct-characters)
 
 [English Version](/solution/0100-0199/0159.Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-给你一个字符串 <code>s</code> ，请你找出&nbsp;<strong>至多&nbsp;</strong>包含 <strong>两个不同字符</strong> 的最长子串，并返回该子串的长度。
+给你一个字符串 <code>s</code> ，请你找出&nbsp;<strong>至多&nbsp;</strong>包含 <strong>两个不同字符</strong> 的最长<span data-keyword="substring">子串</span>，并返回该子串的长度。
 
 <p>&nbsp;</p>
 
@@ -35,11 +47,13 @@
 	<li><code>s</code> 由英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 滑动窗口**
+### 方法一：哈希表 + 滑动窗口
 
 我们维护一个哈希表 `cnt` 记录当前滑动窗口中各个字符出现的次数，如果哈希表中的键值对个数超过 $2$，则说明当前滑动窗口中包含了超过 $2$ 个不同的字符，此时需要移动左指针 `j`，直到哈希表中的键值对个数不超过 $2$ 为止，然后更新窗口的最大长度。
 
@@ -47,9 +61,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -67,9 +79,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +104,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +129,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func lengthOfLongestSubstringTwoDistinct(s string) (ans int) {
@@ -140,10 +150,8 @@ func lengthOfLongestSubstringTwoDistinct(s string) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

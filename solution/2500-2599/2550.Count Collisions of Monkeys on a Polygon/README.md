@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2550.Count%20Collisions%20of%20Monkeys%20on%20a%20Polygon/README.md
+rating: 1662
+source: 第 330 场周赛 Q2
+tags:
+    - 递归
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [2550. 猴子碰撞的方法数](https://leetcode.cn/problems/count-collisions-of-monkeys-on-a-polygon)
 
 [English Version](/solution/2500-2599/2550.Count%20Collisions%20of%20Monkeys%20on%20a%20Polygon/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>现在有一个正凸多边形，其上共有 <code>n</code> 个顶点。顶点按顺时针方向从 <code>0</code> 到 <code>n - 1</code> 依次编号。每个顶点上 <strong>正好有一只猴子</strong> 。下图中是一个 6 个顶点的凸多边形。</p>
 
@@ -52,23 +65,23 @@
 	<li><code>3 &lt;= n &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：数学（快速幂）**
+### 方法一：数学（快速幂）
 
-每一只猴子都有两种移动方式，即顺时针或逆时针。因此，一共有 $2^n$ 种移动方式。不碰撞的移动方式只有两种，即所有猴子都顺时针移动或所有猴子都逆时针移动。因此，碰撞的移动方式有 $2^n - 2$ 种。
+根据题目描述，每一只猴子都有两种移动方式，即顺时针或逆时针。因此，一共有 $2^n$ 种移动方式。不碰撞的移动方式只有两种，即所有猴子都顺时针移动或所有猴子都逆时针移动。因此，碰撞的移动方式有 $2^n - 2$ 种。
 
 我们可以用快速幂求出 $2^n$ 的值，然后用 $2^n - 2$ 求出碰撞的移动方式数，最后对 $10^9 + 7$ 取余即可。
 
-时间复杂度为 $O(\log n)$，空间复杂度为 $O(1)$。其中 $n$ 为猴子的数量。
+时间复杂度 $O(\log n)$，其中 $n$ 为猴子的数量。空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,9 +90,7 @@ class Solution:
         return (pow(2, n, mod) - 2) % mod
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -124,7 +135,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func monkeyMove(n int) int {
@@ -143,7 +154,7 @@ func monkeyMove(n int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function monkeyMove(n: number): number {
@@ -162,10 +173,8 @@ function monkeyMove(n: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

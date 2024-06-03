@@ -1,8 +1,18 @@
-# [2795. Parallel Execution of Promises for Individual Results Retrieval](https://leetcode.com/problems/parallel-execution-of-promises-for-individual-results-retrieval)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2795.Parallel%20Execution%20of%20Promises%20for%20Individual%20Results%20Retrieval/README_EN.md
+---
+
+<!-- problem:start -->
+
+# [2795. Parallel Execution of Promises for Individual Results Retrieval 🔒](https://leetcode.com/problems/parallel-execution-of-promises-for-individual-results-retrieval)
 
 [中文文档](/solution/2700-2799/2795.Parallel%20Execution%20of%20Promises%20for%20Individual%20Results%20Retrieval/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array&nbsp;<code>functions</code>, return a promise <code>promise</code>. <code>functions</code>&nbsp;is an array of functions that return promises <code>fnPromise.</code>&nbsp;Each <code>fnPromise</code>&nbsp;can be resolved or rejected.&nbsp;&nbsp;</p>
 
@@ -81,11 +91,17 @@ The returned promise resolves within 100 milliseconds. Since promise from the ar
 	<li><code>1 &lt;= functions.length &lt;= 10</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 type FulfilledObj = {
@@ -131,7 +147,7 @@ function promiseAllSettled(functions: Function[]): Promise<Obj[]> {
  */
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -158,3 +174,7 @@ var promiseAllSettled = function (functions) {
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -3,19 +3,19 @@ use std::collections::HashSet;
 impl Solution {
     pub fn distinct_difference_array(nums: Vec<i32>) -> Vec<i32> {
         let n = nums.len();
-        let mut s = vec![0; n + 1];
-        let mut set = HashSet::new();
+        let mut suf = vec![0; n + 1];
+        let mut s = HashSet::new();
 
         for i in (0..n).rev() {
-            set.insert(nums[i]);
-            s[i] = set.len();
+            s.insert(nums[i]);
+            suf[i] = s.len();
         }
 
         let mut ans = Vec::new();
-        set.clear();
+        s.clear();
         for i in 0..n {
-            set.insert(nums[i]);
-            ans.push((set.len() - s[i + 1]) as i32);
+            s.insert(nums[i]);
+            ans.push((s.len() - suf[i + 1]) as i32);
         }
 
         ans

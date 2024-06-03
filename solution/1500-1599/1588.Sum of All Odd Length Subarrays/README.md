@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1588.Sum%20of%20All%20Odd%20Length%20Subarrays/README.md
+rating: 1408
+source: 第 35 场双周赛 Q1
+tags:
+    - 数组
+    - 数学
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [1588. 所有奇数长度子数组的和](https://leetcode.cn/problems/sum-of-all-odd-length-subarrays)
 
 [English Version](/solution/1500-1599/1588.Sum%20of%20All%20Odd%20Length%20Subarrays/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个正整数数组&nbsp;<code>arr</code>&nbsp;，请你计算所有可能的奇数长度子数组的和。</p>
 
@@ -60,11 +74,13 @@
 
 <p>你可以设计一个 O(n) 时间复杂度的算法解决此问题吗？</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举 + 前缀和**
+### 方法一：枚举 + 前缀和
 
 我们可以枚举子数组的起点 $i$ 和终点 $j$，其中 $i \leq j$，维护每个子数组的和，然后判断子数组的长度是否为奇数，如果是，则将子数组的和加入答案。
 
@@ -72,9 +88,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -89,9 +103,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -112,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -134,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sumOddLengthSubarrays(arr []int) (ans int) {
@@ -152,7 +164,7 @@ func sumOddLengthSubarrays(arr []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumOddLengthSubarrays(arr: number[]): number {
@@ -171,7 +183,7 @@ function sumOddLengthSubarrays(arr: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -192,7 +204,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 int sumOddLengthSubarrays(int* arr, int arrSize) {
@@ -210,10 +222,8 @@ int sumOddLengthSubarrays(int* arr, int arrSize) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

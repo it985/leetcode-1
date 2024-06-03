@@ -1,10 +1,24 @@
-# [353. 贪吃蛇](https://leetcode.cn/problems/design-snake-game)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0353.Design%20Snake%20Game/README.md
+tags:
+    - 设计
+    - 队列
+    - 数组
+    - 哈希表
+    - 模拟
+---
+
+<!-- problem:start -->
+
+# [353. 贪吃蛇 🔒](https://leetcode.cn/problems/design-snake-game)
 
 [English Version](/solution/0300-0399/0353.Design%20Snake%20Game/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请你设计一个 <a href="https://baike.baidu.com/item/%E8%B4%AA%E5%90%83%E8%9B%87/9510203?fr=aladdin" target="_blank">贪吃蛇游戏</a>，该游戏将会在一个 <strong>屏幕尺寸 = 宽度 x 高度 </strong>的屏幕上运行。如果你不熟悉这个游戏，可以 <a href="http://patorjk.com/games/snake/">点击这里</a> 在线试玩。</p>
 
@@ -61,11 +75,13 @@ snakeGame.move("U"); // 返回 -1 ，蛇与边界相撞，游戏结束
 	<li>最多调用 <code>10<sup>4</sup></code> 次 <code>move</code> 方法</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双端队列模拟**
+### 方法一：双端队列模拟
 
 我们可以使用双端队列来模拟蛇的移动。
 
@@ -83,9 +99,7 @@ snakeGame.move("U"); // 返回 -1 ，蛇与边界相撞，游戏结束
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class SnakeGame:
@@ -133,9 +147,7 @@ class SnakeGame:
 # param_1 = obj.move(direction)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class SnakeGame {
@@ -199,7 +211,7 @@ class SnakeGame {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class SnakeGame {
@@ -268,7 +280,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type SnakeGame struct {
@@ -328,7 +340,7 @@ func (this *SnakeGame) Move(direction string) int {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class SnakeGame {
@@ -396,10 +408,8 @@ class SnakeGame {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

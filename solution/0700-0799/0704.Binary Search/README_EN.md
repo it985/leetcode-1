@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0704.Binary%20Search/README_EN.md
+tags:
+    - Array
+    - Binary Search
+---
+
+<!-- problem:start -->
+
 # [704. Binary Search](https://leetcode.com/problems/binary-search)
 
 [中文文档](/solution/0700-0799/0704.Binary%20Search/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of integers <code>nums</code> which is sorted in ascending order, and an integer <code>target</code>, write a function to search <code>target</code> in <code>nums</code>. If <code>target</code> exists, then return its index. Otherwise, return <code>-1</code>.</p>
 
@@ -35,11 +48,28 @@
 	<li><code>nums</code> is sorted in ascending order.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Binary Search
+
+We define the left boundary of the binary search as $left=0$, and the right boundary as $right=n-1$.
+
+In each iteration, we calculate the middle position $mid=(left+right)/2$, and then compare the size of $nums[mid]$ and $target$:
+
+-   If $nums[mid] \geq target$, it means that $target$ is in the interval $[left, mid]$, so we update $right$ to $mid$;
+-   Otherwise, $target$ is in the interval $[mid+1, right]$, so we update $left$ to $mid+1$.
+
+When $left \geq right$, we check if $nums[left]$ equals $target$. If it does, we return $left$, otherwise, we return $-1$.
+
+The time complexity is $O(\log n)$, where $n$ is the length of the array $nums$. The space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -54,7 +84,7 @@ class Solution:
         return left if nums[left] == target else -1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -73,7 +103,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -92,7 +122,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func search(nums []int, target int) int {
@@ -112,32 +142,7 @@ func search(nums []int, target int) int {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- */
-var search = function (nums, target) {
-    let left = 0;
-    let right = nums.length - 1;
-    while (left < right) {
-        const mid = (left + right) >> 1;
-        if (nums[mid] >= target) {
-            right = mid;
-        } else {
-            left = mid + 1;
-        }
-    }
-    return nums[left] == target ? left : -1;
-};
-```
-
-### **Rust**
-
-Cycle:
+#### Rust
 
 ```rust
 use std::cmp::Ordering;
@@ -165,35 +170,50 @@ impl Solution {
 }
 ```
 
-Recursion:
+#### JavaScript
 
-```rust
-use std::cmp::Ordering;
-
-impl Solution {
-    fn binary_search(nums: Vec<i32>, target: i32, l: usize, r: usize) -> i32 {
-        if l == r {
-            return if nums[l] == target { l as i32 } else { -1 };
-        }
-        let mid = (l + r) >> 1;
-        match nums[mid].cmp(&target) {
-            Ordering::Less => Self::binary_search(nums, target, mid + 1, r),
-            Ordering::Greater => Self::binary_search(nums, target, l, mid),
-            Ordering::Equal => mid as i32,
+```js
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var search = function (nums, target) {
+    let left = 0;
+    let right = nums.length - 1;
+    while (left < right) {
+        const mid = (left + right) >> 1;
+        if (nums[mid] >= target) {
+            right = mid;
+        } else {
+            left = mid + 1;
         }
     }
+    return nums[left] == target ? left : -1;
+};
+```
 
-    pub fn search(nums: Vec<i32>, target: i32) -> i32 {
-        let r = nums.len() - 1;
-        Self::binary_search(nums, target, 0, r)
+#### C#
+
+```cs
+public class Solution {
+    public int Search(int[] nums, int target) {
+        int left = 0, right = nums.Length - 1;
+        while (left < right) {
+            int mid = (left + right) >> 1;
+            if (nums[mid] >= target) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return nums[left] == target ? left : -1;
     }
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0807.Max%20Increase%20to%20Keep%20City%20Skyline/README.md
+tags:
+    - 贪心
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [807. 保持城市天际线](https://leetcode.cn/problems/max-increase-to-keep-city-skyline)
 
 [English Version](/solution/0800-0899/0807.Max%20Increase%20to%20Keep%20City%20Skyline/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一座由 <code>n x n</code> 个街区组成的城市，每个街区都包含一座立方体建筑。给你一个下标从 <strong>0</strong> 开始的 <code>n x n</code> 整数矩阵 <code>grid</code> ，其中 <code>grid[r][c]</code> 表示坐落于 <code>r</code> 行 <code>c</code> 列的建筑物的 <strong>高度</strong> 。</p>
 
@@ -49,17 +61,17 @@ gridNew = [ [8, 4, 8, 7],
 	<li><code>0 &lt;= grid[r][c] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-先求每一行、每一列的最大值 `rmx`, `cmx`，然后对于每个元素 `grid[i][j]`，能增加的高度是 `min(rmx[i], cmx[j]) - grid[i][j]`。累加所有能增加的高度即可。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -73,9 +85,7 @@ class Solution:
         )
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -100,7 +110,54 @@ class Solution {
 }
 ```
 
-### **TypeScript**
+#### C++
+
+```cpp
+class Solution {
+public:
+    int maxIncreaseKeepingSkyline(vector<vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size();
+        vector<int> rmx(m, 0);
+        vector<int> cmx(n, 0);
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                rmx[i] = max(rmx[i], grid[i][j]);
+                cmx[j] = max(cmx[j], grid[i][j]);
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < m; ++i)
+            for (int j = 0; j < n; ++j)
+                ans += min(rmx[i], cmx[j]) - grid[i][j];
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func maxIncreaseKeepingSkyline(grid [][]int) int {
+	m, n := len(grid), len(grid[0])
+	rmx := make([]int, m)
+	cmx := make([]int, n)
+	for i := 0; i < m; i++ {
+		for j := 0; j < n; j++ {
+			rmx[i] = max(rmx[i], grid[i][j])
+			cmx[j] = max(cmx[j], grid[i][j])
+		}
+	}
+	ans := 0
+	for i := 0; i < m; i++ {
+		for j := 0; j < n; j++ {
+			ans += min(rmx[i], cmx[j]) - grid[i][j]
+		}
+	}
+	return ans
+}
+```
+
+#### TypeScript
 
 ```ts
 function maxIncreaseKeepingSkyline(grid: number[][]): number {
@@ -125,57 +182,8 @@ function maxIncreaseKeepingSkyline(grid: number[][]): number {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int maxIncreaseKeepingSkyline(vector<vector<int>>& grid) {
-        int m = grid.size(), n = grid[0].size();
-        vector<int> rmx(m, 0);
-        vector<int> cmx(n, 0);
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < n; ++j) {
-                rmx[i] = max(rmx[i], grid[i][j]);
-                cmx[j] = max(cmx[j], grid[i][j]);
-            }
-        }
-        int ans = 0;
-        for (int i = 0; i < m; ++i)
-            for (int j = 0; j < n; ++j)
-                ans += min(rmx[i], cmx[j]) - grid[i][j];
-        return ans;
-    }
-};
-```
-
-### **Go**
-
-```go
-func maxIncreaseKeepingSkyline(grid [][]int) int {
-	m, n := len(grid), len(grid[0])
-	rmx := make([]int, m)
-	cmx := make([]int, n)
-	for i := 0; i < m; i++ {
-		for j := 0; j < n; j++ {
-			rmx[i] = max(rmx[i], grid[i][j])
-			cmx[j] = max(cmx[j], grid[i][j])
-		}
-	}
-	ans := 0
-	for i := 0; i < m; i++ {
-		for j := 0; j < n; j++ {
-			ans += min(rmx[i], cmx[j]) - grid[i][j]
-		}
-	}
-	return ans
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

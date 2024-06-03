@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2442.Count%20Number%20of%20Distinct%20Integers%20After%20Reverse%20Operations/README.md
+rating: 1218
+source: 第 315 场周赛 Q2
+tags:
+    - 数组
+    - 哈希表
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [2442. 反转之后不同整数的数目](https://leetcode.cn/problems/count-number-of-distinct-integers-after-reverse-operations)
 
 [English Version](/solution/2400-2499/2442.Count%20Number%20of%20Distinct%20Integers%20After%20Reverse%20Operations/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个由 <strong>正</strong> 整数组成的数组 <code>nums</code> 。</p>
 
@@ -41,11 +55,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们先用哈希表记录数组中的所有整数，然后遍历数组中的每个整数，对其进行反转，将反转后的整数添加到哈希表中，最后返回哈希表的大小即可。
 
@@ -53,9 +69,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -67,9 +81,7 @@ class Solution:
         return len(s)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +103,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -111,7 +123,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countDistinctIntegers(nums []int) int {
@@ -131,7 +143,7 @@ func countDistinctIntegers(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countDistinctIntegers(nums: number[]): number {
@@ -143,7 +155,7 @@ function countDistinctIntegers(nums: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashSet;
@@ -167,10 +179,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1822.Sign%20of%20the%20Product%20of%20an%20Array/README_EN.md
+rating: 1209
+source: Weekly Contest 236 Q1
+tags:
+    - Array
+    - Math
+---
+
+<!-- problem:start -->
+
 # [1822. Sign of the Product of an Array](https://leetcode.com/problems/sign-of-the-product-of-an-array)
 
 [中文文档](/solution/1800-1899/1822.Sign%20of%20the%20Product%20of%20an%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is a function <code>signFunc(x)</code> that returns:</p>
 
@@ -49,9 +64,13 @@
 	<li><code>-100 &lt;= nums[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Direct Traversal**
+<!-- solution:start -->
+
+### Solution 1: Direct Traversal
 
 The problem requires us to return the sign of the product of the array elements, i.e., return $1$ for positive numbers, $-1$ for negative numbers, and $0$ if it equals $0$.
 
@@ -65,7 +84,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array. The space c
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -79,7 +98,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +117,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -114,7 +133,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func arraySign(nums []int) int {
@@ -131,7 +150,26 @@ func arraySign(nums []int) int {
 }
 ```
 
-### **JavaScript**
+#### Rust
+
+```rust
+impl Solution {
+    pub fn array_sign(nums: Vec<i32>) -> i32 {
+        let mut ans = 1;
+        for &num in nums.iter() {
+            if num == 0 {
+                return 0;
+            }
+            if num < 0 {
+                ans *= -1;
+            }
+        }
+        ans
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -152,26 +190,7 @@ var arraySign = function (nums) {
 };
 ```
 
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn array_sign(nums: Vec<i32>) -> i32 {
-        let mut ans = 1;
-        for &num in nums.iter() {
-            if num == 0 {
-                return 0;
-            }
-            if num < 0 {
-                ans *= -1;
-            }
-        }
-        ans
-    }
-}
-```
-
-### **C**
+#### C
 
 ```c
 int arraySign(int* nums, int numsSize) {
@@ -188,10 +207,8 @@ int arraySign(int* nums, int numsSize) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

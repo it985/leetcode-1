@@ -1,10 +1,20 @@
-# [254. 因子的组合](https://leetcode.cn/problems/factor-combinations)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0254.Factor%20Combinations/README.md
+tags:
+    - 回溯
+---
+
+<!-- problem:start -->
+
+# [254. 因子的组合 🔒](https://leetcode.cn/problems/factor-combinations)
 
 [English Version](/solution/0200-0299/0254.Factor%20Combinations/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>整数可以被看作是其因子的乘积。</p>
 
@@ -57,11 +67,13 @@
 ]
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：回溯**
+### 方法一：回溯
 
 我们设计函数 $dfs(n, i)$，其中 $n$ 表示当前待分解的数，$i$ 表示当前分解的数的最大因子，函数的作用是将 $n$ 分解为若干个因子，其中每个因子都不小于 $i$，并将所有分解结果保存到 $ans$ 中。
 
@@ -71,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -95,9 +105,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -126,7 +134,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -154,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getFactors(n int) [][]int {
@@ -178,10 +186,8 @@ func getFactors(n int) [][]int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

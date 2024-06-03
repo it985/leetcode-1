@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2283.Check%20if%20Number%20Has%20Equal%20Digit%20Count%20and%20Digit%20Value/README.md
+rating: 1253
+source: 第 79 场双周赛 Q1
+tags:
+    - 哈希表
+    - 字符串
+    - 计数
+---
+
+<!-- problem:start -->
+
 # [2283. 判断一个数的数字计数是否等于数位的值](https://leetcode.cn/problems/check-if-number-has-equal-digit-count-and-digit-value)
 
 [English Version](/solution/2200-2299/2283.Check%20if%20Number%20Has%20Equal%20Digit%20Count%20and%20Digit%20Value/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始长度为 <code>n</code>&nbsp;的字符串&nbsp;<code>num</code>&nbsp;，它只包含数字。</p>
 
@@ -47,11 +61,13 @@ num[2] = '0' 。数字 2 在 num 中出现了 0 次。
 	<li><code>num</code>&nbsp;只包含数字。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数 + 枚举**
+### 方法一：计数 + 枚举
 
 统计字符串中每个数字出现的次数，然后枚举每个数字，判断其出现的次数是否与其值相等，若都相等则返回 `true`，否则返回 `false`。
 
@@ -59,9 +75,7 @@ num[2] = '0' 。数字 2 在 num 中出现了 0 次。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -70,9 +84,7 @@ class Solution:
         return all(cnt[str(i)] == int(v) for i, v in enumerate(num))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -92,7 +104,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -112,7 +124,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func digitCount(num string) bool {
@@ -129,7 +141,7 @@ func digitCount(num string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function digitCount(num: string): boolean {
@@ -145,7 +157,7 @@ function digitCount(num: string): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -164,7 +176,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 bool digitCount(char* num) {
@@ -184,10 +196,8 @@ bool digitCount(char* num) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

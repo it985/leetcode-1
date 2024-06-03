@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof2/%E5%89%91%E6%8C%87%20Offer%20II%20032.%20%E6%9C%89%E6%95%88%E7%9A%84%E5%8F%98%E4%BD%8D%E8%AF%8D/README.md
+---
+
+<!-- problem:start -->
+
 # [剑指 Offer II 032. 有效的变位词](https://leetcode.cn/problems/dKk3P7)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个字符串 <code>s</code> 和 <code>t</code> ，编写一个函数来判断它们是不是一组变位词（字母异位词）。</p>
 
@@ -46,11 +53,13 @@
 
 <p><meta charset="UTF-8" />注意：本题与主站 242&nbsp;题相似（字母异位词定义不同）：<a href="https://leetcode.cn/problems/valid-anagram/">https://leetcode.cn/problems/valid-anagram/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数**
+### 方法一：计数
 
 如果字符串 $s$ 与字符串 $t$ 长度不相等，或者字符串 $s$ 与字符串 $t$ 完全相等，那么 $s$ 和 $t$ 一定不是变位词，返回 `false`。
 
@@ -60,9 +69,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -72,9 +79,7 @@ class Solution:
         return Counter(s) == Counter(t)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +104,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -125,7 +130,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isAnagram(s string, t string) bool {
@@ -147,7 +152,7 @@ func isAnagram(s string, t string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function isAnagram(s: string, t: string): boolean {
@@ -165,10 +170,8 @@ function isAnagram(s: string, t: string): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

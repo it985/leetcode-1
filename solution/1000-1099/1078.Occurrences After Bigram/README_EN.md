@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1078.Occurrences%20After%20Bigram/README_EN.md
+rating: 1274
+source: Weekly Contest 140 Q1
+tags:
+    - String
+---
+
+<!-- problem:start -->
+
 # [1078. Occurrences After Bigram](https://leetcode.com/problems/occurrences-after-bigram)
 
 [中文文档](/solution/1000-1099/1078.Occurrences%20After%20Bigram/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two strings <code>first</code> and <code>second</code>, consider occurrences in some text of the form <code>&quot;first second third&quot;</code>, where <code>second</code> comes immediately after <code>first</code>, and <code>third</code> comes immediately after <code>second</code>.</p>
 
@@ -27,11 +41,17 @@
 	<li><code>first</code> and <code>second</code> consist of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -45,7 +65,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -63,7 +83,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -87,7 +107,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findOcurrences(text string, first string, second string) (ans []string) {
@@ -102,7 +122,7 @@ func findOcurrences(text string, first string, second string) (ans []string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findOcurrences(text: string, first: string, second: string): string[] {
@@ -118,10 +138,8 @@ function findOcurrences(text: string, first: string, second: string): string[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

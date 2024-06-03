@@ -1,20 +1,29 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0152.Maximum%20Product%20Subarray/README.md
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [152. 乘积最大子数组](https://leetcode.cn/problems/maximum-product-subarray)
 
 [English Version](/solution/0100-0199/0152.Maximum%20Product%20Subarray/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>给你一个整数数组 <code>nums</code>&nbsp;，请你找出数组中乘积最大的非空连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。</p>
+<p>给你一个整数数组 <code>nums</code>&nbsp;，请你找出数组中乘积最大的非空连续<span data-keyword="subarray-nonempty">子数组</span>（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。</p>
 
 <p>测试用例的答案是一个&nbsp;<strong>32-位</strong> 整数。</p>
 
-<p><strong>子数组</strong> 是数组的连续子序列。</p>
-
 <p>&nbsp;</p>
 
-<p><strong>示例 1:</strong></p>
+<p><strong class="example">示例 1:</strong></p>
 
 <pre>
 <strong>输入:</strong> nums = [2,3,-2,4]
@@ -22,7 +31,7 @@
 <strong>解释:</strong>&nbsp;子数组 [2,3] 有最大乘积 6。
 </pre>
 
-<p><strong>示例 2:</strong></p>
+<p><strong class="example">示例 2:</strong></p>
 
 <pre>
 <strong>输入:</strong> nums = [-2,0,-1]
@@ -39,11 +48,13 @@
 	<li><code>nums</code> 的任何前缀或后缀的乘积都 <strong>保证</strong>&nbsp;是一个 <strong>32-位</strong> 整数</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义两个变量 $f$ 和 $g$，其中 $f$ 表示以 $nums[i]$ 结尾的乘积最大子数组的乘积，而 $g$ 表示以 $nums[i]$ 结尾的乘积最小子数组的乘积。初始时 $f$ 和 $g$ 都等于 $nums[0]$。答案为所有 $f$ 中的最大值。
 
@@ -55,9 +66,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -71,9 +80,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -90,7 +97,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -108,7 +115,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxProduct(nums []int) int {
@@ -123,7 +130,7 @@ func maxProduct(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxProduct(nums: number[]): number {
@@ -138,24 +145,7 @@ function maxProduct(nums: number[]): number {
 }
 ```
 
-### **C#**
-
-```cs
-public class Solution {
-    public int MaxProduct(int[] nums) {
-        int f = nums[0], g = nums[0], ans = nums[0];
-        for (int i = 1; i < nums.Length; ++i) {
-            int ff = f, gg = g;
-            f = Math.Max(nums[i], Math.Max(ff * nums[i], gg * nums[i]));
-            g = Math.Min(nums[i], Math.Min(ff * nums[i], gg * nums[i]));
-            ans = Math.Max(ans, f);
-        }
-        return ans;
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -174,7 +164,7 @@ impl Solution {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -193,10 +183,25 @@ var maxProduct = function (nums) {
 };
 ```
 
-### **...**
+#### C#
 
-```
-
+```cs
+public class Solution {
+    public int MaxProduct(int[] nums) {
+        int f = nums[0], g = nums[0], ans = nums[0];
+        for (int i = 1; i < nums.Length; ++i) {
+            int ff = f, gg = g;
+            f = Math.Max(nums[i], Math.Max(ff * nums[i], gg * nums[i]));
+            g = Math.Min(nums[i], Math.Min(ff * nums[i], gg * nums[i]));
+            ans = Math.Max(ans, f);
+        }
+        return ans;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

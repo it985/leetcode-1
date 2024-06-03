@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0946.Validate%20Stack%20Sequences/README_EN.md
+tags:
+    - Stack
+    - Array
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [946. Validate Stack Sequences](https://leetcode.com/problems/validate-stack-sequences)
 
 [中文文档](/solution/0900-0999/0946.Validate%20Stack%20Sequences/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two integer arrays <code>pushed</code> and <code>popped</code> each with distinct values, return <code>true</code><em> if this could have been the result of a sequence of push and pop operations on an initially empty stack, or </em><code>false</code><em> otherwise.</em></p>
 
@@ -38,11 +52,17 @@ pop() -&gt; 5, pop() -&gt; 3, pop() -&gt; 2, pop() -&gt; 1
 	<li><code>popped</code> is a permutation of <code>pushed</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -56,7 +76,7 @@ class Solution:
         return j == len(pushed)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -75,7 +95,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -95,7 +115,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func validateStackSequences(pushed []int, popped []int) bool {
@@ -112,7 +132,7 @@ func validateStackSequences(pushed []int, popped []int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function validateStackSequences(pushed: number[], popped: number[]): boolean {
@@ -129,27 +149,7 @@ function validateStackSequences(pushed: number[], popped: number[]): boolean {
 }
 ```
 
-### **C#**
-
-```cs
-public class Solution {
-    public bool ValidateStackSequences(int[] pushed, int[] popped) {
-        Stack<int> stk = new Stack<int>();
-        int j = 0;
-        foreach (int x in pushed)
-        {
-            stk.Push(x);
-            while (stk.Count != 0 && stk.Peek() == popped[j]) {
-                stk.Pop();
-                ++j;
-            }
-        }
-        return stk.Count == 0;
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -168,7 +168,7 @@ impl Solution {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -190,10 +190,28 @@ var validateStackSequences = function (pushed, popped) {
 };
 ```
 
-### **...**
+#### C#
 
-```
-
+```cs
+public class Solution {
+    public bool ValidateStackSequences(int[] pushed, int[] popped) {
+        Stack<int> stk = new Stack<int>();
+        int j = 0;
+        foreach (int x in pushed)
+        {
+            stk.Push(x);
+            while (stk.Count != 0 && stk.Peek() == popped[j]) {
+                stk.Pop();
+                ++j;
+            }
+        }
+        return stk.Count == 0;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

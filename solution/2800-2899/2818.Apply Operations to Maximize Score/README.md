@@ -1,10 +1,27 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2818.Apply%20Operations%20to%20Maximize%20Score/README.md
+rating: 2396
+source: 第 358 场周赛 Q4
+tags:
+    - 栈
+    - 贪心
+    - 数组
+    - 数学
+    - 数论
+    - 单调栈
+---
+
+<!-- problem:start -->
+
 # [2818. 操作使得分最大](https://leetcode.cn/problems/apply-operations-to-maximize-score)
 
 [English Version](/solution/2800-2899/2818.Apply%20Operations%20to%20Maximize%20Score/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个长度为 <code>n</code>&nbsp;的正整数数组&nbsp;<code>nums</code>&nbsp;和一个整数 <code>k</code>&nbsp;。</p>
 
@@ -58,11 +75,13 @@
 	<li><code>1 &lt;= k &lt;= min(n * (n + 1) / 2, 10<sup>9</sup>)</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：单调栈 + 排序贪心**
+### 方法一：单调栈 + 排序贪心
 
 我们不妨考虑枚举每个元素 $nums[i]$ 作为质数分数最高的元素，那么我们需要找出左边第一个质数分数大于等于当前元素的位置 $l$，以及右边第一个质数分数大于当前元素的位置 $r$，那么以当前元素为最高质数分数的子数组有 $cnt = (i - l) \times (r - i)$ 个，它对答案的贡献为 $nums[i]^{cnt}$。
 
@@ -74,9 +93,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 def primeFactors(n):
@@ -94,7 +111,7 @@ def primeFactors(n):
 
 class Solution:
     def maximumScore(self, nums: List[int], k: int) -> int:
-        mod = 10 ** 9 + 7
+        mod = 10**9 + 7
         arr = [(i, primeFactors(x), x) for i, x in enumerate(nums)]
         n = len(nums)
 
@@ -130,9 +147,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -216,7 +231,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -297,7 +312,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumScore(nums []int, k int) int {
@@ -377,7 +392,7 @@ func primeFactors(n int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumScore(nums: number[], k: number): number {
@@ -457,10 +472,8 @@ function qpow(a: bigint, n: number, mod: number): bigint {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

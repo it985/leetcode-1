@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1321.Restaurant%20Growth/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
 # [1321. Restaurant Growth](https://leetcode.com/problems/restaurant-growth)
 
 [中文文档](/solution/1300-1399/1321.Restaurant%20Growth/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Customer</code></p>
 
@@ -68,11 +80,17 @@ Customer table:
 4th moving average from 2019-01-04 to 2019-01-10 has an average_amount of (130 + 110 + 140 + 150 + 80 + 110 + 130 + 150)/7 = 142.86
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -101,3 +119,33 @@ WHERE rk > 6;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### MySQL
+
+```sql
+# Write your MySQL query statement below
+SELECT
+    a.visited_on,
+    SUM(b.amount) AS amount,
+    ROUND(SUM(b.amount) / 7, 2) AS average_amount
+FROM
+    (SELECT DISTINCT visited_on FROM customer) AS a
+    JOIN customer AS b ON DATEDIFF(a.visited_on, b.visited_on) BETWEEN 0 AND 6
+WHERE a.visited_on >= (SELECT MIN(visited_on) FROM customer) + 6
+GROUP BY 1
+ORDER BY 1;
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

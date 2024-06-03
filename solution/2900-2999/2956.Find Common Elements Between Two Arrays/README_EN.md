@@ -1,38 +1,71 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2956.Find%20Common%20Elements%20Between%20Two%20Arrays/README_EN.md
+rating: 1214
+source: Biweekly Contest 119 Q1
+tags:
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [2956. Find Common Elements Between Two Arrays](https://leetcode.com/problems/find-common-elements-between-two-arrays)
 
 [中文文档](/solution/2900-2999/2956.Find%20Common%20Elements%20Between%20Two%20Arrays/README.md)
 
 ## Description
 
-<p>You are given two <strong>0-indexed</strong> integer arrays <code>nums1</code> and <code>nums2</code> of sizes <code>n</code> and <code>m</code>, respectively.</p>
+<!-- description:start -->
 
-<p>Consider calculating the following values:</p>
+<p>You are given two integer arrays <code>nums1</code> and <code>nums2</code> of sizes <code>n</code> and <code>m</code>, respectively. Calculate the following values:</p>
 
 <ul>
-	<li>The number of indices <code>i</code> such that <code>0 &lt;= i &lt; n</code> and <code>nums1[i]</code> occurs <strong>at least</strong> once in <code>nums2</code>.</li>
-	<li>The number of indices <code>i</code> such that <code>0 &lt;= i &lt; m</code> and <code>nums2[i]</code> occurs <strong>at least</strong> once in <code>nums1</code>.</li>
+	<li><code>answer1</code> : the number of indices <code>i</code> such that <code>nums1[i]</code> exists in <code>nums2</code>.</li>
+	<li><code>answer2</code> : the number of indices <code>i</code> such that <code>nums2[i]</code> exists in <code>nums1</code>.</li>
 </ul>
 
-<p>Return <em>an integer array </em><code>answer</code><em> of size </em><code>2</code><em> containing the two values <strong>in the above order</strong></em>.</p>
+<p>Return <code>[answer1,answer2]</code>.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre>
-<strong>Input:</strong> nums1 = [4,3,2,3,1], nums2 = [2,2,5,2,3,6]
-<strong>Output:</strong> [3,4]
-<strong>Explanation:</strong> We calculate the values as follows:
-- The elements at indices 1, 2, and 3 in nums1 occur at least once in nums2. So the first value is 3.
-- The elements at indices 0, 1, 3, and 4 in nums2 occur at least once in nums1. So the second value is 4.
-</pre>
+<div class="example-block">
+<p><strong>Input:</strong> <span class="example-io">nums1 = [2,3,2], nums2 = [1,2]</span></p>
+
+<p><strong>Output:</strong> <span class="example-io">[2,1]</span></p>
+
+<p><strong>Explanation:</strong></p>
+
+<p><img src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/2900-2999/2956.Find%20Common%20Elements%20Between%20Two%20Arrays/images/3488_find_common_elements_between_two_arrays-t1.gif" style="width: 225px; height: 150px;" /></p>
+</div>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre>
-<strong>Input:</strong> nums1 = [3,4,2,3], nums2 = [1,5]
-<strong>Output:</strong> [0,0]
-<strong>Explanation:</strong> There are no common elements between the two arrays, so the two values will be 0.
-</pre>
+<div class="example-block">
+<p><strong>Input:</strong> <span class="example-io">nums1 = [4,3,2,3,1], nums2 = [2,2,5,2,3,6]</span></p>
+
+<p><strong>Output:</strong> <span class="example-io">[3,4]</span></p>
+
+<p><strong>Explanation:</strong></p>
+
+<p>The elements at indices 1, 2, and 3 in <code>nums1</code> exist in <code>nums2</code> as well. So <code>answer1</code> is 3.</p>
+
+<p>The elements at indices 0, 1, 3, and 4 in <code>nums2</code> exist in <code>nums1</code>. So <code>answer2</code> is 4.</p>
+</div>
+
+<p><strong class="example">Example 3:</strong></p>
+
+<div class="example-block">
+<p><strong>Input:</strong> <span class="example-io">nums1 = [3,4,2,3], nums2 = [1,5]</span></p>
+
+<p><strong>Output:</strong> <span class="example-io">[0,0]</span></p>
+
+<p><strong>Explanation:</strong></p>
+
+<p>No numbers are common between <code>nums1</code> and <code>nums2</code>, so answer is [0,0].</p>
+</div>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
@@ -44,9 +77,13 @@
 	<li><code>1 &lt;= nums1[i], nums2[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table or Array**
+<!-- solution:start -->
+
+### Solution 1: Hash Table or Array
 
 We can use two hash tables or arrays $s1$ and $s2$ to record the elements that appear in the two arrays respectively.
 
@@ -60,7 +97,7 @@ The time complexity is $O(n + m)$, and the space complexity is $O(n + m)$. Here,
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +106,7 @@ class Solution:
         return [sum(x in s2 for x in nums1), sum(x in s1 for x in nums2)]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -120,7 +157,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findIntersectionValues(nums1 []int, nums2 []int) []int {
@@ -143,7 +180,7 @@ func findIntersectionValues(nums1 []int, nums2 []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findIntersectionValues(nums1: number[], nums2: number[]): number[] {
@@ -166,10 +203,8 @@ function findIntersectionValues(nums1: number[], nums2: number[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

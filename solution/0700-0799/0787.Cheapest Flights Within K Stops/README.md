@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0787.Cheapest%20Flights%20Within%20K%20Stops/README.md
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 图
+    - 动态规划
+    - 最短路
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [787. K 站中转内最便宜的航班](https://leetcode.cn/problems/cheapest-flights-within-k-stops)
 
 [English Version](/solution/0700-0799/0787.Cheapest%20Flights%20Within%20K%20Stops/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>有 <code>n</code> 个城市通过一些航班连接。给你一个数组&nbsp;<code>flights</code> ，其中&nbsp;<code>flights[i] = [from<sub>i</sub>, to<sub>i</sub>, price<sub>i</sub>]</code> ，表示该航班都从城市 <code>from<sub>i</sub></code> 开始，以价格 <code>price<sub>i</sub></code> 抵达 <code>to<sub>i</sub></code>。</p>
 
@@ -54,19 +69,17 @@ src = 0, dst = 2, k = 0
 	<li><code>src != dst</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：Bellman Ford 算法**
-
-**方法二：DFS + 记忆化搜索**
+### 方法一：Bellman Ford 算法
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -82,6 +95,88 @@ class Solution:
                 dist[t] = min(dist[t], backup[f] + p)
         return -1 if dist[dst] == INF else dist[dst]
 ```
+
+#### Java
+
+```java
+class Solution {
+    private static final int INF = 0x3f3f3f3f;
+
+    public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
+        int[] dist = new int[n];
+        int[] backup = new int[n];
+        Arrays.fill(dist, INF);
+        dist[src] = 0;
+        for (int i = 0; i < k + 1; ++i) {
+            System.arraycopy(dist, 0, backup, 0, n);
+            for (int[] e : flights) {
+                int f = e[0], t = e[1], p = e[2];
+                dist[t] = Math.min(dist[t], backup[f] + p);
+            }
+        }
+        return dist[dst] == INF ? -1 : dist[dst];
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
+        const int inf = 0x3f3f3f3f;
+        vector<int> dist(n, inf);
+        vector<int> backup;
+        dist[src] = 0;
+        for (int i = 0; i < k + 1; ++i) {
+            backup = dist;
+            for (auto& e : flights) {
+                int f = e[0], t = e[1], p = e[2];
+                dist[t] = min(dist[t], backup[f] + p);
+            }
+        }
+        return dist[dst] == inf ? -1 : dist[dst];
+    }
+};
+```
+
+#### Go
+
+```go
+func findCheapestPrice(n int, flights [][]int, src int, dst int, k int) int {
+	const inf = 0x3f3f3f3f
+	dist := make([]int, n)
+	backup := make([]int, n)
+	for i := range dist {
+		dist[i] = inf
+	}
+	dist[src] = 0
+	for i := 0; i < k+1; i++ {
+		copy(backup, dist)
+		for _, e := range flights {
+			f, t, p := e[0], e[1], e[2]
+			dist[t] = min(dist[t], backup[f]+p)
+		}
+	}
+	if dist[dst] == inf {
+		return -1
+	}
+	return dist[dst]
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：DFS + 记忆化搜索
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -107,30 +202,7 @@ class Solution:
         return -1 if ans >= inf else ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```java
-class Solution {
-    private static final int INF = 0x3f3f3f3f;
-
-    public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
-        int[] dist = new int[n];
-        int[] backup = new int[n];
-        Arrays.fill(dist, INF);
-        dist[src] = 0;
-        for (int i = 0; i < k + 1; ++i) {
-            System.arraycopy(dist, 0, backup, 0, n);
-            for (int[] e : flights) {
-                int f = e[0], t = e[1], p = e[2];
-                dist[t] = Math.min(dist[t], backup[f] + p);
-            }
-        }
-        return dist[dst] == INF ? -1 : dist[dst];
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -176,27 +248,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
-        const int inf = 0x3f3f3f3f;
-        vector<int> dist(n, inf);
-        vector<int> backup;
-        dist[src] = 0;
-        for (int i = 0; i < k + 1; ++i) {
-            backup = dist;
-            for (auto& e : flights) {
-                int f = e[0], t = e[1], p = e[2];
-                dist[t] = min(dist[t], backup[f] + p);
-            }
-        }
-        return dist[dst] == inf ? -1 : dist[dst];
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -230,30 +282,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func findCheapestPrice(n int, flights [][]int, src int, dst int, k int) int {
-	const inf = 0x3f3f3f3f
-	dist := make([]int, n)
-	backup := make([]int, n)
-	for i := range dist {
-		dist[i] = inf
-	}
-	dist[src] = 0
-	for i := 0; i < k+1; i++ {
-		copy(backup, dist)
-		for _, e := range flights {
-			f, t, p := e[0], e[1], e[2]
-			dist[t] = min(dist[t], backup[f]+p)
-		}
-	}
-	if dist[dst] == inf {
-		return -1
-	}
-	return dist[dst]
-}
-```
+#### Go
 
 ```go
 func findCheapestPrice(n int, flights [][]int, src int, dst int, k int) int {
@@ -300,10 +329,8 @@ func findCheapestPrice(n int, flights [][]int, src int, dst int, k int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

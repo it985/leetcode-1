@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2799.Count%20Complete%20Subarrays%20in%20an%20Array/README.md
+rating: 1397
+source: 第 356 场周赛 Q2
+tags:
+    - 数组
+    - 哈希表
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [2799. 统计完全子数组的数目](https://leetcode.cn/problems/count-complete-subarrays-in-an-array)
 
 [English Version](/solution/2700-2799/2799.Count%20Complete%20Subarrays%20in%20an%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个由 <strong>正</strong> 整数组成的数组 <code>nums</code> 。</p>
 
@@ -43,11 +57,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 2000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 枚举**
+### 方法一：哈希表 + 枚举
 
 我们先用哈希表统计数组中不同元素的数目，记为 $cnt$。
 
@@ -57,21 +73,9 @@
 
 时间复杂度 $O(n^2)$，空间复杂度 $O(n)$。其中 $n$ 是数组的长度。
 
-**方法二：哈希表 + 双指针**
-
-与方法一类似，我们可以使用哈希表统计数组中不同元素的数目，记为 $cnt$。
-
-接下来，我们使用双指针维护一个滑动窗口，滑动窗口的右端点下标为 $j$，左端点下标为 $i$。
-
-每次固定左端点下标 $i$，然后向右移动右端点下标 $j$，当滑动窗口中的元素种类数等于 $cnt$ 时，这意味着从左端点下标 $i$ 到右端点下标 $j$ 以及右侧的所有子数组都是完全子数组，我们将答案增加 $n - j$，其中 $n$ 是数组的长度。然后我们将左端点下标 $i$ 右移一位，继续上述过程。
-
-时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 是数组的长度。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -87,27 +91,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def countCompleteSubarrays(self, nums: List[int]) -> int:
-        cnt = len(set(nums))
-        d = Counter()
-        ans, n = 0, len(nums)
-        i = 0
-        for j, x in enumerate(nums):
-            d[x] += 1
-            while len(d) == cnt:
-                ans += n - j
-                d[nums[i]] -= 1
-                if d[nums[i]] == 0:
-                    d.pop(nums[i])
-                i += 1
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -131,6 +115,137 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int countCompleteSubarrays(vector<int>& nums) {
+        unordered_set<int> s(nums.begin(), nums.end());
+        int cnt = s.size();
+        int ans = 0, n = nums.size();
+        for (int i = 0; i < n; ++i) {
+            s.clear();
+            for (int j = i; j < n; ++j) {
+                s.insert(nums[j]);
+                if (s.size() == cnt) {
+                    ++ans;
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func countCompleteSubarrays(nums []int) (ans int) {
+	s := map[int]bool{}
+	for _, x := range nums {
+		s[x] = true
+	}
+	cnt := len(s)
+	for i := range nums {
+		s = map[int]bool{}
+		for _, x := range nums[i:] {
+			s[x] = true
+			if len(s) == cnt {
+				ans++
+			}
+		}
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function countCompleteSubarrays(nums: number[]): number {
+    const s: Set<number> = new Set(nums);
+    const cnt = s.size;
+    const n = nums.length;
+    let ans = 0;
+    for (let i = 0; i < n; ++i) {
+        s.clear();
+        for (let j = i; j < n; ++j) {
+            s.add(nums[j]);
+            if (s.size === cnt) {
+                ++ans;
+            }
+        }
+    }
+    return ans;
+}
+```
+
+#### Rust
+
+```rust
+use std::collections::HashSet;
+impl Solution {
+    pub fn count_complete_subarrays(nums: Vec<i32>) -> i32 {
+        let mut set: HashSet<&i32> = nums.iter().collect();
+        let n = nums.len();
+        let m = set.len();
+        let mut ans = 0;
+        for i in 0..n {
+            set.clear();
+            for j in i..n {
+                set.insert(&nums[j]);
+                if set.len() == m {
+                    ans += n - j;
+                    break;
+                }
+            }
+        }
+        ans as i32
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：哈希表 + 双指针
+
+与方法一类似，我们可以使用哈希表统计数组中不同元素的数目，记为 $cnt$。
+
+接下来，我们使用双指针维护一个滑动窗口，滑动窗口的右端点下标为 $j$，左端点下标为 $i$。
+
+每次固定左端点下标 $i$，然后向右移动右端点下标 $j$，当滑动窗口中的元素种类数等于 $cnt$ 时，这意味着从左端点下标 $i$ 到右端点下标 $j$ 以及右侧的所有子数组都是完全子数组，我们将答案增加 $n - j$，其中 $n$ 是数组的长度。然后我们将左端点下标 $i$ 右移一位，继续上述过程。
+
+时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 是数组的长度。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def countCompleteSubarrays(self, nums: List[int]) -> int:
+        cnt = len(set(nums))
+        d = Counter()
+        ans, n = 0, len(nums)
+        i = 0
+        for j, x in enumerate(nums):
+            d[x] += 1
+            while len(d) == cnt:
+                ans += n - j
+                d[nums[i]] -= 1
+                if d[nums[i]] == 0:
+                    d.pop(nums[i])
+                i += 1
+        return ans
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -157,28 +272,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int countCompleteSubarrays(vector<int>& nums) {
-        unordered_set<int> s(nums.begin(), nums.end());
-        int cnt = s.size();
-        int ans = 0, n = nums.size();
-        for (int i = 0; i < n; ++i) {
-            s.clear();
-            for (int j = i; j < n; ++j) {
-                s.insert(nums[j]);
-                if (s.size() == cnt) {
-                    ++ans;
-                }
-            }
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -206,27 +300,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func countCompleteSubarrays(nums []int) (ans int) {
-	s := map[int]bool{}
-	for _, x := range nums {
-		s[x] = true
-	}
-	cnt := len(s)
-	for i := range nums {
-		s = map[int]bool{}
-		for _, x := range nums[i:] {
-			s[x] = true
-			if len(s) == cnt {
-				ans++
-			}
-		}
-	}
-	return
-}
-```
+#### Go
 
 ```go
 func countCompleteSubarrays(nums []int) (ans int) {
@@ -252,26 +326,7 @@ func countCompleteSubarrays(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function countCompleteSubarrays(nums: number[]): number {
-    const s: Set<number> = new Set(nums);
-    const cnt = s.size;
-    const n = nums.length;
-    let ans = 0;
-    for (let i = 0; i < n; ++i) {
-        s.clear();
-        for (let j = i; j < n; ++j) {
-            s.add(nums[j]);
-            if (s.size === cnt) {
-                ++ans;
-            }
-        }
-    }
-    return ans;
-}
-```
+#### TypeScript
 
 ```ts
 function countCompleteSubarrays(nums: number[]): number {
@@ -299,30 +354,7 @@ function countCompleteSubarrays(nums: number[]): number {
 }
 ```
 
-### **Rust**
-
-```rust
-use std::collections::HashSet;
-impl Solution {
-    pub fn count_complete_subarrays(nums: Vec<i32>) -> i32 {
-        let mut set: HashSet<&i32> = nums.iter().collect();
-        let n = nums.len();
-        let m = set.len();
-        let mut ans = 0;
-        for i in 0..n {
-            set.clear();
-            for j in i..n {
-                set.insert(&nums[j]);
-                if set.len() == m {
-                    ans += n - j;
-                    break;
-                }
-            }
-        }
-        ans as i32
-    }
-}
-```
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -351,10 +383,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

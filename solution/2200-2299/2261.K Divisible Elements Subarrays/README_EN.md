@@ -1,8 +1,27 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2261.K%20Divisible%20Elements%20Subarrays/README_EN.md
+rating: 1724
+source: Weekly Contest 291 Q3
+tags:
+    - Trie
+    - Array
+    - Hash Table
+    - Enumeration
+    - Hash Function
+    - Rolling Hash
+---
+
+<!-- problem:start -->
+
 # [2261. K Divisible Elements Subarrays](https://leetcode.com/problems/k-divisible-elements-subarrays)
 
 [中文文档](/solution/2200-2299/2261.K%20Divisible%20Elements%20Subarrays/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code> and two integers <code>k</code> and <code>p</code>, return <em>the number of <strong>distinct subarrays,</strong> which have <strong>at most</strong></em> <code>k</code> <em>elements </em>that are <em>divisible by</em> <code>p</code>.</p>
 
@@ -54,11 +73,17 @@ Since all subarrays are distinct, the total number of subarrays satisfying all t
 
 <p>Can you solve this problem in O(n<sup>2</sup>) time complexity?</p>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,24 +100,7 @@ class Solution:
         return len(s)
 ```
 
-```python
-class Solution:
-    def countDistinct(self, nums: List[int], k: int, p: int) -> int:
-        n = len(nums)
-        s = set()
-        for i in range(n):
-            cnt = 0
-            t = ""
-            for x in nums[i:]:
-                cnt += x % p == 0
-                if cnt > k:
-                    break
-                t += str(x) + ","
-                s.add(t)
-        return len(s)
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -115,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,7 +147,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countDistinct(nums []int, k int, p int) int {
@@ -161,7 +169,7 @@ func countDistinct(nums []int, k int, p int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countDistinct(nums: number[], k: number, p: number): number {
@@ -182,10 +190,37 @@ function countDistinct(nums: number[], k: number, p: number): number {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def countDistinct(self, nums: List[int], k: int, p: int) -> int:
+        n = len(nums)
+        s = set()
+        for i in range(n):
+            cnt = 0
+            t = ""
+            for x in nums[i:]:
+                cnt += x % p == 0
+                if cnt > k:
+                    break
+                t += str(x) + ","
+                s.add(t)
+        return len(s)
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1330.Reverse%20Subarray%20To%20Maximize%20Array%20Value/README.md
+rating: 2481
+source: 第 18 场双周赛 Q4
+tags:
+    - 贪心
+    - 数组
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [1330. 翻转子数组得到最大的数组值](https://leetcode.cn/problems/reverse-subarray-to-maximize-array-value)
 
 [English Version](/solution/1300-1399/1330.Reverse%20Subarray%20To%20Maximize%20Array%20Value/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组&nbsp;<code>nums</code> 。「数组值」定义为所有满足&nbsp;<code>0 &lt;= i &lt; nums.length-1</code>&nbsp;的&nbsp;<code>|nums[i]-nums[i+1]|</code>&nbsp;的和。</p>
 
@@ -36,11 +50,13 @@
 	<li><code>-10^5 &lt;= nums[i] &lt;= 10^5</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：分类讨论 + 枚举**
+### 方法一：分类讨论 + 枚举
 
 根据题目描述，我们需要求出：在翻转一次子数组的情况下，数组值 $\sum_{i=0}^{n-2} |a_i - a_{i+1}|$ 的最大值。
 
@@ -85,13 +101,11 @@ $$
 
 相似题目：
 
--   [1131. 绝对值表达式的最大值](/solution/1100-1199/1131.Maximum%20of%20Absolute%20Value%20Expression/README.md)
+-   [1131. 绝对值表达式的最大值](https://github.com/doocs/leetcode/blob/main/solution/1100-1199/1131.Maximum%20of%20Absolute%20Value%20Expression/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -111,9 +125,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -148,7 +160,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -182,7 +194,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxValueAfterReverse(nums []int) int {
@@ -222,7 +234,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxValueAfterReverse(nums: number[]): number {
@@ -254,10 +266,8 @@ function maxValueAfterReverse(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

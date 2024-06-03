@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2697.Lexicographically%20Smallest%20Palindrome/README.md
+rating: 1303
+source: 第 346 场周赛 Q2
+tags:
+    - 贪心
+    - 双指针
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2697. 字典序最小回文串](https://leetcode.cn/problems/lexicographically-smallest-palindrome)
 
 [English Version](/solution/2600-2699/2697.Lexicographically%20Smallest%20Palindrome/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个由 <strong>小写英文字母</strong> 组成的字符串 <code>s</code> ，你可以对其执行一些操作。在一步操作中，你可以用其他小写英文字母 <strong>替换</strong>&nbsp; <code>s</code> 中的一个字符。</p>
 
@@ -48,11 +62,13 @@
 	<li><code>s</code> 仅由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 双指针**
+### 方法一：贪心 + 双指针
 
 我们用两个指针 $i$ 和 $j$ 分别指向字符串的首尾，初始时 $i = 0$, $j = n - 1$。
 
@@ -62,9 +78,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,9 +91,7 @@ class Solution:
         return "".join(cs)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -93,7 +105,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -107,7 +119,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func makeSmallestPalindrome(s string) string {
@@ -120,7 +132,7 @@ func makeSmallestPalindrome(s string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function makeSmallestPalindrome(s: string): string {
@@ -132,7 +144,7 @@ function makeSmallestPalindrome(s: string): string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -149,10 +161,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

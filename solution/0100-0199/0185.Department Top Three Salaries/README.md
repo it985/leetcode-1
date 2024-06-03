@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0185.Department%20Top%20Three%20Salaries/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
 # [185. 部门工资前三高的所有员工](https://leetcode.cn/problems/department-top-three-salaries)
 
 [English Version](/solution/0100-0199/0185.Department%20Top%20Three%20Salaries/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表:&nbsp;<code>Employee</code></p>
 
@@ -94,52 +104,17 @@ Department  表:
 - 山姆的薪水第二高
 - 没有第三高的工资，因为只有两名员工</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-```sql
-SELECT
-    Department.NAME AS Department,
-    Employee.NAME AS Employee,
-    Salary
-FROM
-    Employee,
-    Department
-WHERE
-    Employee.DepartmentId = Department.Id
-    AND (
-        SELECT
-            COUNT(DISTINCT e2.Salary)
-        FROM Employee AS e2
-        WHERE e2.Salary > Employee.Salary AND Employee.DepartmentId = e2.DepartmentId
-    ) < 3;
-```
-
-```sql
-# Write your MySQL query statement below
-WITH
-    T AS (
-        SELECT
-            *,
-            DENSE_RANK() OVER (
-                PARTITION BY departmentId
-                ORDER BY salary DESC
-            ) AS rk
-        FROM Employee
-    )
-SELECT d.name AS Department, t.name AS Employee, salary AS Salary
-FROM
-    T AS t
-    JOIN Department AS d ON t.departmentId = d.id
-WHERE rk <= 3;
-```
-
-### **Pandas**
+#### Python3
 
 ```python
 import pandas as pd
@@ -162,7 +137,61 @@ def top_three_salaries(
     return employee[employee["salary"] >= employee["cutoff"]].rename(
         columns={"name": "Employee", "salary": "Salary"}
     )[["Department", "Employee", "Salary"]]
+```
 
+#### MySQL
+
+```sql
+SELECT
+    Department.NAME AS Department,
+    Employee.NAME AS Employee,
+    Salary
+FROM
+    Employee,
+    Department
+WHERE
+    Employee.DepartmentId = Department.Id
+    AND (
+        SELECT
+            COUNT(DISTINCT e2.Salary)
+        FROM Employee AS e2
+        WHERE e2.Salary > Employee.Salary AND Employee.DepartmentId = e2.DepartmentId
+    ) < 3;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### MySQL
+
+```sql
+# Write your MySQL query statement below
+WITH
+    T AS (
+        SELECT
+            *,
+            DENSE_RANK() OVER (
+                PARTITION BY departmentId
+                ORDER BY salary DESC
+            ) AS rk
+        FROM Employee
+    )
+SELECT d.name AS Department, t.name AS Employee, salary AS Salary
+FROM
+    T AS t
+    JOIN Department AS d ON t.departmentId = d.id
+WHERE rk <= 3;
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

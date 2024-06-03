@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0066.Plus%20One/README.md
+tags:
+    - 数组
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [66. 加一](https://leetcode.cn/problems/plus-one)
 
 [English Version](/solution/0000-0099/0066.Plus%20One/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个由 <strong>整数 </strong>组成的<strong> 非空</strong> 数组所表示的非负整数，在该数的基础上加一。</p>
 
@@ -46,11 +57,13 @@
 	<li><code>0 <= digits[i] <= 9</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们从数组的最后一个元素开始遍历，将当前元素加一，然后对 $10$ 取模，如果取模后的结果不为 $0$，说明当前元素没有进位，直接返回数组即可。否则，当前元素为 $0$，需要进位，继续遍历前一个元素，重复上述操作。如果遍历完数组后，仍然没有返回，说明数组中所有元素都为 $0$，需要在数组的头部插入一个 $1$。
 
@@ -58,9 +71,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -74,9 +85,7 @@ class Solution:
         return [1] + digits
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -96,26 +105,7 @@ class Solution {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} digits
- * @return {number[]}
- */
-var plusOne = function (digits) {
-    for (let i = digits.length - 1; i >= 0; --i) {
-        ++digits[i];
-        digits[i] %= 10;
-        if (digits[i] != 0) {
-            return digits;
-        }
-    }
-    return [1, ...digits];
-};
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -132,7 +122,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func plusOne(digits []int) []int {
@@ -148,7 +138,7 @@ func plusOne(digits []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function plusOne(digits: number[]): number[] {
@@ -163,7 +153,7 @@ function plusOne(digits: number[]): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -182,10 +172,27 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+/**
+ * @param {number[]} digits
+ * @return {number[]}
+ */
+var plusOne = function (digits) {
+    for (let i = digits.length - 1; i >= 0; --i) {
+        ++digits[i];
+        digits[i] %= 10;
+        if (digits[i] != 0) {
+            return digits;
+        }
+    }
+    return [1, ...digits];
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

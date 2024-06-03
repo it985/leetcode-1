@@ -1,10 +1,22 @@
-# [1918. 第 K 小的子数组和·](https://leetcode.cn/problems/kth-smallest-subarray-sum)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1918.Kth%20Smallest%20Subarray%20Sum/README.md
+tags:
+    - 数组
+    - 二分查找
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
+# [1918. 第 K 小的子数组和 🔒](https://leetcode.cn/problems/kth-smallest-subarray-sum)
 
 [English Version](/solution/1900-1999/1918.Kth%20Smallest%20Subarray%20Sum/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个 长度为&nbsp;<code>n</code>&nbsp;的整型数组&nbsp;<code>nums</code>&nbsp;和一个数值&nbsp;<code>k</code>&nbsp;，返回<strong> 第<em>&nbsp;</em><code>k</code>&nbsp;小的子数组和<i>。</i></strong></p>
 
@@ -57,11 +69,13 @@
 	<li><code>1 &lt;= k &lt;= n * (n + 1) / 2</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找 + 双指针**
+### 方法一：二分查找 + 双指针
 
 我们注意到，题目中数组元素均为正整数，子数组的和 $s$ 越大，那么数组中子数组和小于等于 $s$ 的个数就越多。这存在一个单调性，因此我们可以考虑使用使用二分查找的方法来求解。
 
@@ -81,9 +95,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -103,9 +115,7 @@ class Solution:
         return l + bisect_left(range(l, r + 1), True, key=f)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -141,7 +151,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -176,7 +186,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func kthSmallestSubarraySum(nums []int, k int) int {
@@ -209,10 +219,8 @@ func kthSmallestSubarraySum(nums []int, k int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

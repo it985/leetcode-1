@@ -1,10 +1,22 @@
-# [1644. 二叉树的最近公共祖先 II](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree-ii)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1644.Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree%20II/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 二叉树
+---
+
+<!-- problem:start -->
+
+# [1644. 二叉树的最近公共祖先 II 🔒](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree-ii)
 
 [English Version](/solution/1600-1699/1644.Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一棵二叉树的根节点 <code>root</code>，返回给定节点 <code>p</code> 和 <code>q</code> 的最近公共祖先（LCA）节点。如果 <code>p</code> 或 <code>q</code> 之一<strong> 不存在</strong> 于该二叉树中，返回 <code>null</code>。树中的每个节点值都是互不相同的。</p>
 
@@ -53,11 +65,13 @@
 
 <p><strong>进阶：</strong> 在不检查节点是否存在的情况下，你可以遍历树找出最近公共祖先节点吗？</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：递归（后序遍历）**
+### 方法一：递归（后序遍历）
 
 我们设计一个函数 $dfs(root, p, q)$，该函数返回以 $root$ 为根节点的二叉树中是否包含节点 $p$ 或节点 $q$，如果包含，则返回 `true`，否则返回 `false`。
 
@@ -77,9 +91,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -111,9 +123,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -150,7 +160,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -189,10 +199,45 @@ private:
 };
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {TreeNode} p
+ * @param {TreeNode} q
+ * @return {TreeNode}
+ */
+var lowestCommonAncestor = function (root, p, q) {
+    const dfs = root => {
+        if (!root) {
+            return false;
+        }
+        const l = dfs(root.left);
+        const r = dfs(root.right);
+        if (l && r) {
+            ans = root;
+        }
+        if ((l || r) && (root.val === p.val || root.val === q.val)) {
+            ans = root;
+        }
+        return l || r || root.val === p.val || root.val === q.val;
+    };
+    let ans = null;
+    dfs(root);
+    return ans;
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

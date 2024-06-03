@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1154.Day%20of%20the%20Year/README_EN.md
+rating: 1199
+source: Weekly Contest 149 Q1
+tags:
+    - Math
+    - String
+---
+
+<!-- problem:start -->
+
 # [1154. Day of the Year](https://leetcode.com/problems/day-of-the-year)
 
 [中文文档](/solution/1100-1199/1154.Day%20of%20the%20Year/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a string <code>date</code> representing a <a href="https://en.wikipedia.org/wiki/Gregorian_calendar" target="_blank">Gregorian calendar</a> date formatted as <code>YYYY-MM-DD</code>, return <em>the day number of the year</em>.</p>
 
@@ -31,9 +46,13 @@
 	<li><code>date</code> represents a calendar date between Jan 1<sup>st</sup>, 1900 and Dec 31<sup>th</sup>, 2019.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Direct Calculation**
+<!-- solution:start -->
+
+### Solution 1: Direct Calculation
 
 According to the problem, the given date is in the Gregorian calendar, so we can directly calculate which day of the year it is.
 
@@ -49,7 +68,7 @@ The time complexity is $O(1)$, and the space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -60,7 +79,7 @@ class Solution:
         return sum(days[: m - 1]) + d
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -79,15 +98,14 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
 public:
     int dayOfYear(string date) {
-        int y = stoi(date.substr(0, 4));
-        int m = stoi(date.substr(5, 2));
-        int d = stoi(date.substr(8));
+        int y, m, d;
+        sscanf(date.c_str(), "%d-%d-%d", &y, &m, &d);
         int v = y % 400 == 0 || (y % 4 == 0 && y % 100) ? 29 : 28;
         int days[] = {31, v, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         int ans = d;
@@ -99,13 +117,12 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func dayOfYear(date string) (ans int) {
-	y, _ := strconv.Atoi(date[:4])
-	m, _ := strconv.Atoi(date[5:7])
-	d, _ := strconv.Atoi(date[8:])
+	var y, m, d int
+	fmt.Sscanf(date, "%d-%d-%d", &y, &m, &d)
 	days := []int{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
 	if y%400 == 0 || (y%4 == 0 && y%100 != 0) {
 		days[1] = 29
@@ -118,7 +135,20 @@ func dayOfYear(date string) (ans int) {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function dayOfYear(date: string): number {
+    const y = +date.slice(0, 4);
+    const m = +date.slice(5, 7);
+    const d = +date.slice(8);
+    const v = y % 400 == 0 || (y % 4 == 0 && y % 100) ? 29 : 28;
+    const days = [31, v, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    return days.slice(0, m - 1).reduce((a, b) => a + b, d);
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -135,10 +165,8 @@ var dayOfYear = function (date) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

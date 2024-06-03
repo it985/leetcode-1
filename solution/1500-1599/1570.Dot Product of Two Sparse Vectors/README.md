@@ -1,10 +1,23 @@
-# [1570. 两个稀疏向量的点积](https://leetcode.cn/problems/dot-product-of-two-sparse-vectors)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1570.Dot%20Product%20of%20Two%20Sparse%20Vectors/README.md
+tags:
+    - 设计
+    - 数组
+    - 哈希表
+    - 双指针
+---
+
+<!-- problem:start -->
+
+# [1570. 两个稀疏向量的点积 🔒](https://leetcode.cn/problems/dot-product-of-two-sparse-vectors)
 
 [English Version](/solution/1500-1599/1570.Dot%20Product%20of%20Two%20Sparse%20Vectors/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个稀疏向量，计算它们的点积（数量积）。</p>
 
@@ -56,11 +69,13 @@ v1.dotProduct(v2) = 0*0 + 1*0 + 0*0 + 0*0 + 0*2 = 0
 	<li><code>0 <= nums1[i], nums2[i] <= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们用哈希表 $d$ 来存储非零元素，其中键为下标，值为对应的值。我们遍历 $nums$，如果 $nums[i]$ 不为 $0$，我们就将 $(i, nums[i])$ 加入到哈希表 $d$ 中。
 
@@ -70,9 +85,7 @@ v1.dotProduct(v2) = 0*0 + 1*0 + 0*0 + 0*0 + 0*2 = 0
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class SparseVector:
@@ -93,9 +106,7 @@ class SparseVector:
 # ans = v1.dotProduct(v2)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class SparseVector {
@@ -133,7 +144,7 @@ class SparseVector {
 // int ans = v1.dotProduct(v2);
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class SparseVector {
@@ -171,7 +182,7 @@ public:
 // int ans = v1.dotProduct(v2);
 ```
 
-### **Go**
+#### Go
 
 ```go
 type SparseVector struct {
@@ -210,7 +221,7 @@ func (this *SparseVector) dotProduct(vec SparseVector) (ans int) {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class SparseVector {
@@ -250,10 +261,8 @@ class SparseVector {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

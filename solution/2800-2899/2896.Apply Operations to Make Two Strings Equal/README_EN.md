@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2896.Apply%20Operations%20to%20Make%20Two%20Strings%20Equal/README_EN.md
+rating: 2172
+source: Weekly Contest 366 Q3
+tags:
+    - String
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [2896. Apply Operations to Make Two Strings Equal](https://leetcode.com/problems/apply-operations-to-make-two-strings-equal)
 
 [中文文档](/solution/2800-2899/2896.Apply%20Operations%20to%20Make%20Two%20Strings%20Equal/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two <strong>0-indexed</strong> binary strings <code>s1</code> and <code>s2</code>, both of length <code>n</code>, and a positive integer <code>x</code>.</p>
 
@@ -47,9 +62,13 @@ The total cost is 1 + 1 + 2 = 4. It can be shown that it is the minimum cost pos
 	<li><code>s1</code> and <code>s2</code> consist only of the characters <code>&#39;0&#39;</code> and <code>&#39;1&#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Memoization**
+<!-- solution:start -->
+
+### Solution 1: Memoization
 
 We notice that since each operation reverses two characters, if the number of different characters in the two strings is odd, it is impossible to make them equal, and we directly return $-1$. Otherwise, we store the indices of the different characters in the two strings in an array $idx$, and let $m$ be the length of $idx$.
 
@@ -73,7 +92,7 @@ The time complexity is $O(n^2)$, and the space complexity is $O(n^2)$. Here, $n$
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -95,7 +114,7 @@ class Solution:
         return dfs(0, m - 1)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -134,37 +153,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int minOperations(String s1, String s2, int x) {
-        int n = s1.length();
-        int inf = 50_000;
-        int one = inf, two = inf, last = inf;
-        int done = 0;
-        for (int i = 0; i < n; i++) {
-            if (s1.charAt(i) == s2.charAt(i)) {
-                one = Math.min(one, last);
-                last = last + 1;
-                two = two + 1;
-                continue;
-            }
-            if (done < n) {
-                one = Math.min(two + 1, done + x);
-                last = Math.min(two + x, done);
-                done = two = inf;
-                continue;
-            }
-            done = Math.min(one + x, last + 1);
-            two = one;
-            one = last = inf;
-            continue;
-        }
-        return done == inf ? -1 : done;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -200,7 +189,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minOperations(s1 string, s2 string, x int) int {
@@ -238,7 +227,7 @@ func minOperations(s1 string, s2 string, x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minOperations(s1: string, s2: string, x: number): number {
@@ -272,10 +261,50 @@ function minOperations(s1: string, s2: string, x: number): number {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Java
+
+```java
+class Solution {
+    public int minOperations(String s1, String s2, int x) {
+        int n = s1.length();
+        int inf = 50_000;
+        int one = inf, two = inf, last = inf;
+        int done = 0;
+        for (int i = 0; i < n; i++) {
+            if (s1.charAt(i) == s2.charAt(i)) {
+                one = Math.min(one, last);
+                last = last + 1;
+                two = two + 1;
+                continue;
+            }
+            if (done < n) {
+                one = Math.min(two + 1, done + x);
+                last = Math.min(two + x, done);
+                done = two = inf;
+                continue;
+            }
+            done = Math.min(one + x, last + 1);
+            two = one;
+            one = last = inf;
+            continue;
+        }
+        return done == inf ? -1 : done;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

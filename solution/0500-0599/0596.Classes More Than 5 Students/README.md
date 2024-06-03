@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0596.Classes%20More%20Than%205%20Students/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
 # [596. 超过 5 名学生的课](https://leetcode.cn/problems/classes-more-than-5-students)
 
 [English Version](/solution/0500-0599/0596.Classes%20More%20Than%205%20Students/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表:&nbsp;<code>Courses</code></p>
 
@@ -59,17 +69,19 @@ Courses table:
 -生物课有1名学生，所以我们不包括它。
 -计算机课有1个学生，所以我们不包括它。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：分组统计**
+### 方法一：分组统计
 
 我们可以使用 `GROUP BY` 语句，按照班级分组，然后使用 `HAVING` 语句，筛选出学生数量大于等于 $5$ 的班级。
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -80,3 +92,7 @@ HAVING COUNT(1) >= 5;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

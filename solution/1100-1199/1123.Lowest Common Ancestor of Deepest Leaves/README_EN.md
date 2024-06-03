@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1123.Lowest%20Common%20Ancestor%20of%20Deepest%20Leaves/README_EN.md
+rating: 1607
+source: Weekly Contest 145 Q2
+tags:
+    - Tree
+    - Depth-First Search
+    - Breadth-First Search
+    - Hash Table
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [1123. Lowest Common Ancestor of Deepest Leaves](https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves)
 
 [中文文档](/solution/1100-1199/1123.Lowest%20Common%20Ancestor%20of%20Deepest%20Leaves/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>root</code> of a binary tree, return <em>the lowest common ancestor of its deepest leaves</em>.</p>
 
@@ -52,9 +70,13 @@ Note that nodes 6, 0, and 8 are also leaf nodes, but the depth of them is 2, but
 <p>&nbsp;</p>
 <p><strong>Note:</strong> This question is the same as 865: <a href="https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/" target="_blank">https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/</a></p>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: DFS**
+<!-- solution:start -->
+
+### Solution 1: DFS
 
 We design a function `dfs(root)` that returns a tuple `(l, d)`, where `l` is the deepest common ancestor of node `root`, and `d` is the depth of node `root`. The execution logic of the function `dfs(root)` is as follows:
 
@@ -67,7 +89,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -92,7 +114,7 @@ class Solution:
         return dfs(root)[0]
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -133,7 +155,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -170,7 +192,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -206,7 +228,7 @@ func lcaDeepestLeaves(root *TreeNode) *TreeNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -242,10 +264,8 @@ function lcaDeepestLeaves(root: TreeNode | null): TreeNode | null {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

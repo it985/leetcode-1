@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1305.All%20Elements%20in%20Two%20Binary%20Search%20Trees/README_EN.md
+rating: 1260
+source: Weekly Contest 169 Q2
+tags:
+    - Tree
+    - Depth-First Search
+    - Binary Search Tree
+    - Binary Tree
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1305. All Elements in Two Binary Search Trees](https://leetcode.com/problems/all-elements-in-two-binary-search-trees)
 
 [中文文档](/solution/1300-1399/1305.All%20Elements%20in%20Two%20Binary%20Search%20Trees/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two binary search trees <code>root1</code> and <code>root2</code>, return <em>a list containing all the integers from both trees sorted in <strong>ascending</strong> order</em>.</p>
 
@@ -29,11 +47,17 @@
 	<li><code>-10<sup>5</sup> &lt;= Node.val &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -75,7 +99,7 @@ class Solution:
         return merge(t1, t2)
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -132,7 +156,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -179,7 +203,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -229,7 +253,53 @@ func getAllElements(root1 *TreeNode, root2 *TreeNode) []int {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+/**
+ * Definition for a binary tree node.
+ * class TreeNode {
+ *     val: number
+ *     left: TreeNode | null
+ *     right: TreeNode | null
+ *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.left = (left===undefined ? null : left)
+ *         this.right = (right===undefined ? null : right)
+ *     }
+ * }
+ */
+
+function getAllElements(root1: TreeNode | null, root2: TreeNode | null): number[] {
+    const res = [];
+    const stacks = [[], []];
+    while (root1 != null || stacks[0].length !== 0 || root2 != null || stacks[1].length !== 0) {
+        if (root1 != null) {
+            stacks[0].push(root1);
+            root1 = root1.left;
+        } else if (root2 != null) {
+            stacks[1].push(root2);
+            root2 = root2.left;
+        } else {
+            if (
+                (stacks[0][stacks[0].length - 1] ?? { val: Infinity }).val <
+                (stacks[1][stacks[1].length - 1] ?? { val: Infinity }).val
+            ) {
+                const { val, right } = stacks[0].pop();
+                res.push(val);
+                root1 = right;
+            } else {
+                const { val, right } = stacks[1].pop();
+                res.push(val);
+                root2 = right;
+            }
+        }
+    }
+    return res;
+}
+```
+
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -295,56 +365,8 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-/**
- * Definition for a binary tree node.
- * class TreeNode {
- *     val: number
- *     left: TreeNode | null
- *     right: TreeNode | null
- *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.left = (left===undefined ? null : left)
- *         this.right = (right===undefined ? null : right)
- *     }
- * }
- */
-
-function getAllElements(root1: TreeNode | null, root2: TreeNode | null): number[] {
-    const res = [];
-    const stacks = [[], []];
-    while (root1 != null || stacks[0].length !== 0 || root2 != null || stacks[1].length !== 0) {
-        if (root1 != null) {
-            stacks[0].push(root1);
-            root1 = root1.left;
-        } else if (root2 != null) {
-            stacks[1].push(root2);
-            root2 = root2.left;
-        } else {
-            if (
-                (stacks[0][stacks[0].length - 1] ?? { val: Infinity }).val <
-                (stacks[1][stacks[1].length - 1] ?? { val: Infinity }).val
-            ) {
-                const { val, right } = stacks[0].pop();
-                res.push(val);
-                root1 = right;
-            } else {
-                const { val, right } = stacks[1].pop();
-                res.push(val);
-                root2 = right;
-            }
-        }
-    }
-    return res;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

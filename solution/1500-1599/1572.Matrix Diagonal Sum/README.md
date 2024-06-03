@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1572.Matrix%20Diagonal%20Sum/README.md
+rating: 1280
+source: 第 34 场双周赛 Q1
+tags:
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [1572. 矩阵对角线元素的和](https://leetcode.cn/problems/matrix-diagonal-sum)
 
 [English Version](/solution/1500-1599/1572.Matrix%20Diagonal%20Sum/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个正方形矩阵 <code>mat</code>，请你返回矩阵对角线元素的和。</p>
 
@@ -52,11 +65,13 @@
 	<li><code>1 &lt;= mat[i][j] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：逐行遍历**
+### 方法一：逐行遍历
 
 我们可以遍历矩阵的每一行 $row[i]$，对于每一行，我们可以计算出两个对角线上的元素，即 $row[i][i]$ 和 $row[i][n - i - 1]$，其中 $n$ 是矩阵的行数。如果 $i = n - i - 1$，则说明当前行的对角线上只有一个元素，否则有两个元素。我们将其加到答案中即可。
 
@@ -66,9 +81,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -81,9 +94,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +110,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -116,7 +127,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func diagonalSum(mat [][]int) (ans int) {
@@ -131,7 +142,7 @@ func diagonalSum(mat [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function diagonalSum(mat: number[][]): number {
@@ -145,21 +156,7 @@ function diagonalSum(mat: number[][]): number {
 }
 ```
 
-```ts
-function diagonalSum(mat: number[][]): number {
-    const n = mat.length;
-    let ans = 0;
-    for (let i = 0; i < n; i++) {
-        ans += mat[i][i] + mat[i][n - 1 - i];
-    }
-    if (n & 1) {
-        ans -= mat[n >> 1][n >> 1];
-    }
-    return ans;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -177,7 +174,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 int diagonalSum(int** mat, int matSize, int* matColSize) {
@@ -192,10 +189,34 @@ int diagonalSum(int** mat, int matSize, int* matColSize) {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### TypeScript
+
+```ts
+function diagonalSum(mat: number[][]): number {
+    const n = mat.length;
+    let ans = 0;
+    for (let i = 0; i < n; i++) {
+        ans += mat[i][i] + mat[i][n - 1 - i];
+    }
+    if (n & 1) {
+        ans -= mat[n >> 1][n >> 1];
+    }
+    return ans;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2094.Finding%203-Digit%20Even%20Numbers/README.md
+rating: 1454
+source: 第 270 场周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+    - 枚举
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2094. 找出 3 位偶数](https://leetcode.cn/problems/finding-3-digit-even-numbers)
 
 [English Version](/solution/2000-2099/2094.Finding%203-Digit%20Even%20Numbers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>digits</code> ，其中每个元素是一个数字（<code>0 - 9</code>）。数组中可能存在重复元素。</p>
 
@@ -59,15 +74,17 @@
 	<li><code>0 &lt;= digits[i] &lt;= 9</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -86,9 +103,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -128,39 +143,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```ts
-function findEvenNumbers(digits: number[]): number[] {
-    let record = new Array(10).fill(0);
-    for (let digit of digits) {
-        record[digit]++;
-    }
-    let ans = [];
-    for (let i = 100; i < 1000; i += 2) {
-        if (check(record, String(i))) {
-            ans.push(i);
-        }
-    }
-    return ans;
-}
-
-function check(target: Array<number>, digits: string): boolean {
-    let record = new Array(10).fill(0);
-    for (let digit of digits) {
-        record[digit]++;
-    }
-
-    for (let i = 0; i < 10; i++) {
-        if (record[i] > target[i]) return false;
-    }
-    return true;
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -195,7 +178,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findEvenNumbers(digits []int) []int {
@@ -234,10 +217,38 @@ func check(cnt1, cnt2 []int) bool {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
+```ts
+function findEvenNumbers(digits: number[]): number[] {
+    let record = new Array(10).fill(0);
+    for (let digit of digits) {
+        record[digit]++;
+    }
+    let ans = [];
+    for (let i = 100; i < 1000; i += 2) {
+        if (check(record, String(i))) {
+            ans.push(i);
+        }
+    }
+    return ans;
+}
 
+function check(target: Array<number>, digits: string): boolean {
+    let record = new Array(10).fill(0);
+    for (let digit of digits) {
+        record[digit]++;
+    }
+
+    for (let i = 0; i < 10; i++) {
+        if (record[i] > target[i]) return false;
+    }
+    return true;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

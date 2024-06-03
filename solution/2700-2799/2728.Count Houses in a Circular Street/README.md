@@ -1,10 +1,21 @@
-# [2728. 计算一个环形街道上的房屋数量](https://leetcode.cn/problems/count-houses-in-a-circular-street)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2728.Count%20Houses%20in%20a%20Circular%20Street/README.md
+tags:
+    - 数组
+    - 交互
+---
+
+<!-- problem:start -->
+
+# [2728. 计算一个环形街道上的房屋数量 🔒](https://leetcode.cn/problems/count-houses-in-a-circular-street)
 
 [English Version](/solution/2700-2799/2728.Count%20Houses%20in%20a%20Circular%20Street/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个代表环形街道的类 <code>Street</code> 和一个正整数 <code>k</code>，表示街道上房屋的最大数量（也就是说房屋数量不超过 <code>k</code>&nbsp;）。每个房屋的门初始时可以是开着的也可以是关着的。</p>
 
@@ -49,11 +60,13 @@
 	<li><code>1 &lt;= n &lt;= k &lt;= 10<sup>3</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：遍历**
+### 方法一：遍历
 
 我们先循环 $k$ 次，每次打开当前房子的门，然后向左移动一格，循环结束后，所有房子的门都是打开的。
 
@@ -63,13 +76,11 @@
 
 相似题目：
 
--   [2753. 计算一个环形街道上的房屋数量 II](/solution/2700-2799/2753.Count%20Houses%20in%20a%20Circular%20Street%20II/README.md)
+-   [2753. 计算一个环形街道上的房屋数量 🔒 II](https://github.com/doocs/leetcode/blob/main/solution/2700-2799/2753.Count%20Houses%20in%20a%20Circular%20Street%20II/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a street.
@@ -97,9 +108,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -130,7 +139,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -163,7 +172,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -189,7 +198,7 @@ func houseCount(street Street, k int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -218,10 +227,8 @@ function houseCount(street: Street | null, k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

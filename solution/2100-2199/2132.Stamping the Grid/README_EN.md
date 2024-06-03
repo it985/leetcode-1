@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2132.Stamping%20the%20Grid/README_EN.md
+rating: 2364
+source: Biweekly Contest 69 Q4
+tags:
+    - Greedy
+    - Array
+    - Matrix
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [2132. Stamping the Grid](https://leetcode.com/problems/stamping-the-grid)
 
 [中文文档](/solution/2100-2199/2132.Stamping%20the%20Grid/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an <code>m x n</code> binary matrix <code>grid</code> where each cell is either <code>0</code> (empty) or <code>1</code> (occupied).</p>
 
@@ -48,9 +65,13 @@
 	<li><code>1 &lt;= stampHeight, stampWidth &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two-Dimensional Prefix Sum + Two-Dimensional Difference**
+<!-- solution:start -->
+
+### Solution 1: Two-Dimensional Prefix Sum + Two-Dimensional Difference
 
 According to the problem description, every empty cell must be covered by a stamp, and no occupied cell can be covered. Therefore, we can traverse the two-dimensional matrix, and for each cell, if all cells in the area of $stampHeight \times stampWidth$ with this cell as the upper left corner are empty (i.e., not occupied), then we can place a stamp at this cell.
 
@@ -73,7 +94,7 @@ The time complexity is $O(m \times n)$, and the space complexity is $O(m \times 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -102,7 +123,7 @@ class Solution:
         return True
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -139,7 +160,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -179,7 +200,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func possibleToStamp(grid [][]int, stampHeight int, stampWidth int) bool {
@@ -223,7 +244,7 @@ func possibleToStamp(grid [][]int, stampHeight int, stampWidth int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function possibleToStamp(grid: number[][], stampHeight: number, stampWidth: number): boolean {
@@ -261,7 +282,7 @@ function possibleToStamp(grid: number[][], stampHeight: number, stampWidth: numb
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -332,7 +353,7 @@ impl Solution {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -376,10 +397,8 @@ var possibleToStamp = function (grid, stampHeight, stampWidth) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

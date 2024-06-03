@@ -1,10 +1,20 @@
-# [1501. 可以放心投资的国家](https://leetcode.cn/problems/countries-you-can-safely-invest-in)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1501.Countries%20You%20Can%20Safely%20Invest%20In/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1501. 可以放心投资的国家 🔒](https://leetcode.cn/problems/countries-you-can-safely-invest-in)
 
 [English Version](/solution/1500-1599/1501.Countries%20You%20Can%20Safely%20Invest%20In/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表&nbsp;<code>Person</code>:</p>
 
@@ -118,17 +128,19 @@ Calls 表:
 所以, Peru 是唯一的平均通话时长大于全球平均通话时长的国家, 也是唯一的推荐投资的国家.
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：等值连接 + 分组 + 子查询**
+### 方法一：等值连接 + 分组 + 子查询
 
 我们可以使用等值连接，将 `Person` 表和 `Calls` 表连接起来，连接的条件是 `Person.id = Calls.caller_id` 或者 `Person.id = Calls.callee_id`，然后再将连接后的表和 `Country` 表连接起来，连接的条件是 `left(phone_number, 3) = country_code`，最后按照国家分组，计算每个国家的平均通话时长，然后再使用子查询，找出平均通话时长大于全球平均通话时长的国家。
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -144,6 +156,18 @@ FROM
     ) AS t
 WHERE duration > (SELECT AVG(duration) FROM Calls);
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -162,3 +186,7 @@ WHERE duration > (SELECT AVG(duration) FROM Calls);
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

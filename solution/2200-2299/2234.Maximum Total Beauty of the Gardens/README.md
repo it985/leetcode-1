@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2234.Maximum%20Total%20Beauty%20of%20the%20Gardens/README.md
+rating: 2561
+source: 第 288 场周赛 Q4
+tags:
+    - 贪心
+    - 数组
+    - 双指针
+    - 二分查找
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2234. 花园的最大总美丽值](https://leetcode.cn/problems/maximum-total-beauty-of-the-gardens)
 
 [English Version](/solution/2200-2299/2234.Maximum%20Total%20Beauty%20of%20the%20Gardens/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>Alice 是&nbsp;<code>n</code>&nbsp;个花园的园丁，她想通过种花，最大化她所有花园的总美丽值。</p>
 
@@ -65,11 +81,13 @@
 	<li><code>1 &lt;= full, partial &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举 + 二分查找**
+### 方法一：枚举 + 二分查找
 
 我们注意到，如果一个花园中种的花的数目已经大于等于 $target$，那么这个花园就已经是完善的花园，不能再改变。而不完善的花园中，可以通过种更多的花来使得这个花园变成完善的花园。
 
@@ -85,9 +103,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -117,9 +133,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -163,7 +177,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -206,7 +220,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumBeauty(flowers []int, newFlowers int64, target int, full int, partial int) int64 {
@@ -245,7 +259,7 @@ func maximumBeauty(flowers []int, newFlowers int64, target int, full int, partia
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumBeauty(
@@ -289,10 +303,8 @@ function maximumBeauty(
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

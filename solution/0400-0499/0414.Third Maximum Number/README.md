@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0414.Third%20Maximum%20Number/README.md
+tags:
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [414. 第三大的数](https://leetcode.cn/problems/third-maximum-number)
 
 [English Version](/solution/0400-0499/0414.Third%20Maximum%20Number/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个非空数组，返回此数组中 <strong>第三大的数</strong> 。如果不存在，则返回数组中最大的数。</p>
 
@@ -46,27 +57,17 @@
 
 <p><strong>进阶：</strong>你能设计一个时间复杂度 <code>O(n)</code> 的解决方案吗？</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-定义 $m_1$, $m_2$, $m_3$ 分别表示数组的第 `1` 大、第 `2` 大、第 `3` 大的数，初始化为一个足够小的数。
-
-遍历数组每个元素 `num`：
-
--   若 `num` 与前三大数中的某一个相等，直接跳过，因为我们要找的是在所有不同数字中的第三大。
--   若 `num` 比 $m_1$ 大，说明找到了一个最大的数，此时我们要把 `num` 赋值给 $m_1$，即 $m_1 = num$，但在做赋值操作之前，我们要先把旧值赋给 $m_2$，依次类推。
--   对于 `num` 比 $m_2$、$m_3$ 大的情况，也按照上面的赋值方法进行处理。
-
-遍历结束，判断 $m_3$ 这个值是否在初始化之后改变过，若是，说明找到了第 `3` 大数，返回 $m_3$，否则返回 $m_1$。
-
-本方法时间复杂度 $O(n)$，空间复杂度 $O(1)$。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -84,9 +85,7 @@ class Solution:
         return m3 if m3 != -inf else m1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -114,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,7 +138,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func thirdMax(nums []int) int {
@@ -163,10 +162,8 @@ func thirdMax(nums []int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

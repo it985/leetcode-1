@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2038.Remove%20Colored%20Pieces%20if%20Both%20Neighbors%20are%20the%20Same%20Color/README.md
+rating: 1467
+source: 第 63 场双周赛 Q2
+tags:
+    - 贪心
+    - 数学
+    - 字符串
+    - 博弈
+---
+
+<!-- problem:start -->
+
 # [2038. 如果相邻两个颜色均相同则删除当前颜色](https://leetcode.cn/problems/remove-colored-pieces-if-both-neighbors-are-the-same-color)
 
 [English Version](/solution/2000-2099/2038.Remove%20Colored%20Pieces%20if%20Both%20Neighbors%20are%20the%20Same%20Color/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>总共有 <code>n</code>&nbsp;个颜色片段排成一列，每个颜色片段要么是&nbsp;<code>'A'</code>&nbsp;要么是&nbsp;<code>'B'</code>&nbsp;。给你一个长度为&nbsp;<code>n</code>&nbsp;的字符串&nbsp;<code>colors</code>&nbsp;，其中&nbsp;<code>colors[i]</code>&nbsp;表示第&nbsp;<code>i</code>&nbsp;个颜色片段的颜色。</p>
 
@@ -71,11 +86,13 @@ ABBBB<strong><em>B</em></strong>BBAA -&gt; ABBBBBBAA
 	<li><code>colors</code>&nbsp;只包含字母&nbsp;<code>'A'</code>&nbsp;和&nbsp;<code>'B'</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数**
+### 方法一：计数
 
 我们统计字符串 `colors` 中连续出现 $3$ 个 `'A'` 或 $3$ 个 `'B'` 的个数，分别记为 $a$ 和 $b$。
 
@@ -85,9 +102,7 @@ ABBBB<strong><em>B</em></strong>BBAA -&gt; ABBBBBBAA
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -102,9 +117,7 @@ class Solution:
         return a > b
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -129,7 +142,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -155,7 +168,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func winnerOfGame(colors string) bool {
@@ -178,7 +191,7 @@ func winnerOfGame(colors string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function winnerOfGame(colors: string): boolean {
@@ -201,10 +214,8 @@ function winnerOfGame(colors: string): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

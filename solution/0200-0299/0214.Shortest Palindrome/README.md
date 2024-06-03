@@ -1,14 +1,27 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0214.Shortest%20Palindrome/README.md
+tags:
+    - 字符串
+    - 字符串匹配
+    - 哈希函数
+    - 滚动哈希
+---
+
+<!-- problem:start -->
+
 # [214. 最短回文串](https://leetcode.cn/problems/shortest-palindrome)
 
 [English Version](/solution/0200-0299/0214.Shortest%20Palindrome/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>给定一个字符串 <em><strong>s</strong></em>，你可以通过在字符串前面添加字符将其转换为回文串。找到并返回可以用这种方式转换的最短回文串。</p>
+<p>给定一个字符串 <em><strong>s</strong></em>，你可以通过在字符串前面添加字符将其转换为<span data-keyword="palindrome-string">回文串</span>。找到并返回可以用这种方式转换的最短回文串。</p>
 
-<p> </p>
+<p>&nbsp;</p>
 
 <p><strong>示例 1：</strong></p>
 
@@ -24,20 +37,22 @@
 <strong>输出：</strong>"dcbabcd"
 </pre>
 
-<p> </p>
+<p>&nbsp;</p>
 
 <p><strong>提示：</strong></p>
 
 <ul>
-	<li><code>0 <= s.length <= 5 * 10<sup>4</sup></code></li>
+	<li><code>0 &lt;= s.length &lt;= 5 * 10<sup>4</sup></code></li>
 	<li><code>s</code> 仅由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：字符串哈希**
+### 方法一：字符串哈希
 
 **字符串哈希**是把一个任意长度的字符串映射成一个非负整数，并且其冲突的概率几乎为 0。字符串哈希用于计算字符串哈希值，快速判断两个字符串是否相等。
 
@@ -53,9 +68,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -75,9 +88,7 @@ class Solution:
         return s if idx == n else s[idx:][::-1] + s
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -105,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 typedef unsigned long long ull;
@@ -133,7 +144,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func shortestPalindrome(s string) string {
@@ -161,7 +172,7 @@ func shortestPalindrome(s string) string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -187,10 +198,52 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C#
 
-```
+```cs
+﻿// https://leetcode.com/problems/shortest-palindrome/
 
+using System.Text;
+
+public partial class Solution
+{
+    public string ShortestPalindrome(string s)
+    {
+        for (var i = s.Length - 1; i >= 0; --i)
+        {
+            var k = i;
+            var j = 0;
+            while (j < k)
+            {
+                if (s[j] == s[k])
+                {
+                    ++j;
+                    --k;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            if (j >= k)
+            {
+                var sb = new StringBuilder(s.Length * 2 - i - 1);
+                for (var l = s.Length - 1; l >= i + 1; --l)
+                {
+                    sb.Append(s[l]);
+                }
+                sb.Append(s);
+                return sb.ToString();
+            }
+        }
+
+        return string.Empty;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

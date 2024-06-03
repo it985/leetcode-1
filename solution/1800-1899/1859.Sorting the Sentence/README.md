@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1859.Sorting%20the%20Sentence/README.md
+rating: 1290
+source: 第 52 场双周赛 Q1
+tags:
+    - 字符串
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1859. 将句子排序](https://leetcode.cn/problems/sorting-the-sentence)
 
 [English Version](/solution/1800-1899/1859.Sorting%20the%20Sentence/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一个 <strong>句子</strong> 指的是一个序列的单词用单个空格连接起来，且开头和结尾没有任何空格。每个单词都只包含小写或大写英文字母。</p>
 
@@ -45,11 +58,13 @@
 	<li><code>s</code> 不包含任何前导或者后缀空格。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：字符串分割**
+### 方法一：字符串分割
 
 我们先将字符串 $s$ 按照空格分割，得到字符串数组 $words$。然后，我们创建一个长度为 $|words|$ 的字符串数组 $ans$，用于存放答案。
 
@@ -61,9 +76,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -73,19 +86,7 @@ class Solution:
         return ' '.join(w for w, _ in ws)
 ```
 
-```python
-class Solution:
-    def sortSentence(self, s: str) -> str:
-        ws = s.split()
-        ans = [None] * len(ws)
-        for w in ws:
-            ans[int(w[-1]) - 1] = w[:-1]
-        return ' '.join(ans)
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +103,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -128,7 +129,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sortSentence(s string) string {
@@ -141,7 +142,20 @@ func sortSentence(s string) string {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function sortSentence(s: string): string {
+    const ws = s.split(' ');
+    const ans = Array(ws.length);
+    for (const w of ws) {
+        ans[w.charCodeAt(w.length - 1) - '1'.charCodeAt(0)] = w.slice(0, -1);
+    }
+    return ans.join(' ');
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -158,23 +172,30 @@ var sortSentence = function (s) {
 };
 ```
 
-### **TypeScript**
+<!-- tabs:end -->
 
-```ts
-function sortSentence(s: string): string {
-    const ws = s.split(' ');
-    const ans = Array(ws.length);
-    for (const w of ws) {
-        ans[w.charCodeAt(w.length - 1) - '1'.charCodeAt(0)] = w.slice(0, -1);
-    }
-    return ans.join(' ');
-}
-```
+<!-- solution:end -->
 
-### **...**
+<!-- solution:start -->
 
-```
+### 方法二
 
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def sortSentence(self, s: str) -> str:
+        ws = s.split()
+        ans = [None] * len(ws)
+        for w in ws:
+            ans[int(w[-1]) - 1] = w[:-1]
+        return ' '.join(ans)
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

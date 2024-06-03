@@ -1,8 +1,28 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1631.Path%20With%20Minimum%20Effort/README_EN.md
+rating: 1947
+source: Weekly Contest 212 Q3
+tags:
+    - Depth-First Search
+    - Breadth-First Search
+    - Union Find
+    - Array
+    - Binary Search
+    - Matrix
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [1631. Path With Minimum Effort](https://leetcode.com/problems/path-with-minimum-effort)
 
 [中文文档](/solution/1600-1699/1631.Path%20With%20Minimum%20Effort/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are a hiker preparing for an upcoming hike. You are given <code>heights</code>, a 2D array of size <code>rows x columns</code>, where <code>heights[row][col]</code> represents the height of cell <code>(row, col)</code>. You are situated in the top-left cell, <code>(0, 0)</code>, and you hope to travel to the bottom-right cell, <code>(rows-1, columns-1)</code> (i.e.,&nbsp;<strong>0-indexed</strong>). You can move <strong>up</strong>, <strong>down</strong>, <strong>left</strong>, or <strong>right</strong>, and you wish to find a route that requires the minimum <strong>effort</strong>.</p>
 
@@ -50,9 +70,13 @@ This is better than the route of [1,2,2,2,5], where the maximum absolute differe
 	<li><code>1 &lt;= heights[i][j] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Union-Find**
+<!-- solution:start -->
+
+### Solution 1: Union-Find
 
 For this problem, we can treat each cell as a node in a graph, and the absolute difference in height between two adjacent cells as the weight of the edge. Therefore, this problem is to solve the connectivity problem from the top-left node to the bottom-right node.
 
@@ -60,27 +84,9 @@ We first construct a set of edges, then sort them in ascending order of edge wei
 
 The time complexity is $O(m \times n \times \log(m \times n))$, and the space complexity is $O(m \times n)$. Here, $m$ and $n$ are the number of rows and columns in the two-dimensional array, respectively.
 
-**Solution 2: Binary Search + BFS**
-
-We notice that if the maximum physical consumption value of a path is $x$, then for any $y > x$, this path also meets the conditions. This shows monotonicity, so we can use the binary search method to find the minimum physical consumption value that meets the conditions.
-
-We define the left boundary of the binary search as $l=0$, and the right boundary as $r=10^6$. Each time we take $mid=(l+r)/2$, then use BFS to determine whether there is a path from the top-left corner to the bottom-right corner, so that the absolute difference in height between adjacent nodes on the path is not greater than $mid$. If it exists, it means that $mid$ may still be the minimum physical consumption value that meets the conditions, so we set $r=mid$, otherwise we set $l=mid+1$.
-
-The time complexity is $O(m \times n \times \log M)$, and the space complexity is $O(m \times n)$. Here, $m$ and $n$ are the number of rows and columns in the two-dimensional array, respectively, and $M$ is the maximum value in the two-dimensional array. In this problem, $M=10^6$.
-
-**Solution 3: Heap-optimized Dijkstra Algorithm**
-
-We can treat each cell as a node in a graph, and the absolute difference in height between two adjacent cells as the weight of the edge. Therefore, this problem is to solve the shortest path problem from the top-left node to the bottom-right node.
-
-We can use the Dijkstra algorithm to solve the shortest path problem, and use a priority queue (heap) to optimize the time complexity. Specifically, we maintain a two-dimensional array $dist$ of size $m \times n$, where $dist[i][j]$ represents the maximum weight of the shortest path from the top-left corner to the node $(i,j)$. Initially, $dist[0][0]=0$, and all other elements are positive infinity.
-
-We use a priority queue (heap) to store nodes, and each time we take out the node with the smallest weight from the priority queue (heap), then update the weights of its adjacent nodes. If the weight of an adjacent node changes, then we add this node to the priority queue (heap). When the priority queue (heap) is empty, it means that we have found the shortest path.
-
-The time complexity is $O(m \times n \times \log(m \times n))$, and the space complexity is $O(m \times n)$. Here, $m$ and $n$ are the number of rows and columns in the two-dimensional array, respectively.
-
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class UnionFind:
@@ -131,57 +137,7 @@ class Solution:
         return 0
 ```
 
-```python
-class Solution:
-    def minimumEffortPath(self, heights: List[List[int]]) -> int:
-        def check(h: int) -> bool:
-            q = deque([(0, 0)])
-            vis = {(0, 0)}
-            dirs = (-1, 0, 1, 0, -1)
-            while q:
-                for _ in range(len(q)):
-                    i, j = q.popleft()
-                    if i == m - 1 and j == n - 1:
-                        return True
-                    for a, b in pairwise(dirs):
-                        x, y = i + a, j + b
-                        if (
-                            0 <= x < m
-                            and 0 <= y < n
-                            and (x, y) not in vis
-                            and abs(heights[i][j] - heights[x][y]) <= h
-                        ):
-                            q.append((x, y))
-                            vis.add((x, y))
-            return False
-
-        m, n = len(heights), len(heights[0])
-        return bisect_left(range(10**6), True, key=check)
-```
-
-```python
-class Solution:
-    def minimumEffortPath(self, heights: List[List[int]]) -> int:
-        m, n = len(heights), len(heights[0])
-        dist = [[inf] * n for _ in range(m)]
-        dist[0][0] = 0
-        dirs = (-1, 0, 1, 0, -1)
-        q = [(0, 0, 0)]
-        while q:
-            t, i, j = heappop(q)
-            for a, b in pairwise(dirs):
-                x, y = i + a, j + b
-                if (
-                    0 <= x < m
-                    and 0 <= y < n
-                    and (d := max(t, abs(heights[i][j] - heights[x][y]))) < dist[x][y]
-                ):
-                    dist[x][y] = d
-                    heappush(q, (d, x, y))
-        return int(dist[-1][-1])
-```
-
-### **Java**
+#### Java
 
 ```java
 class UnionFind {
@@ -253,79 +209,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int minimumEffortPath(int[][] heights) {
-        int l = 0, r = 1000000;
-        while (l < r) {
-            int mid = (l + r) >> 1;
-            if (check(heights, mid)) {
-                r = mid;
-            } else {
-                l = mid + 1;
-            }
-        }
-        return l;
-    }
-
-    private boolean check(int[][] heights, int h) {
-        int m = heights.length, n = heights[0].length;
-        boolean[][] vis = new boolean[m][n];
-        Deque<int[]> q = new ArrayDeque<>();
-        q.add(new int[] {0, 0});
-        vis[0][0] = true;
-        int[] dirs = {-1, 0, 1, 0, -1};
-        while (!q.isEmpty()) {
-            var p = q.poll();
-            int i = p[0], j = p[1];
-            if (i == m - 1 && j == n - 1) {
-                return true;
-            }
-            for (int k = 0; k < 4; ++k) {
-                int x = i + dirs[k], y = j + dirs[k + 1];
-                if (x >= 0 && x < m && y >= 0 && y < n && !vis[x][y] && Math.abs(heights[x][y] - heights[i][j]) <= h) {
-                    q.add(new int[] {x, y});
-                    vis[x][y] = true;
-                }
-            }
-        }
-        return false;
-    }
-}
-```
-
-```java
-class Solution {
-    public int minimumEffortPath(int[][] heights) {
-        int m = heights.length, n = heights[0].length;
-        int[][] dist = new int[m][n];
-        for (var row : dist) {
-            Arrays.fill(row, 1 << 30);
-        }
-        dist[0][0] = 0;
-        int[] dirs = {-1, 0, 1, 0, -1};
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] - b[0]);
-        pq.offer(new int[] {0, 0, 0});
-        while (!pq.isEmpty()) {
-            var p = pq.poll();
-            int t = p[0], i = p[1], j = p[2];
-            for (int k = 0; k < 4; ++k) {
-                int x = i + dirs[k], y = j + dirs[k + 1];
-                if (x >= 0 && x < m && y >= 0 && y < n) {
-                    int d = Math.max(t, Math.abs(heights[x][y] - heights[i][j]));
-                    if (d < dist[x][y]) {
-                        dist[x][y] = d;
-                        pq.offer(new int[] {d, x, y});
-                    }
-                }
-            }
-        }
-        return dist[m - 1][n - 1];
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class UnionFind {
@@ -395,80 +279,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int minimumEffortPath(vector<vector<int>>& heights) {
-        auto check = [&](int h) {
-            int m = heights.size(), n = heights[0].size();
-            bool vis[m][n];
-            memset(vis, false, sizeof(vis));
-            queue<pair<int, int>> q{{{0, 0}}};
-            vis[0][0] = true;
-            int dirs[5] = {-1, 0, 1, 0, -1};
-            while (!q.empty()) {
-                auto [i, j] = q.front();
-                q.pop();
-                if (i == m - 1 && j == n - 1) {
-                    return true;
-                }
-                for (int k = 0; k < 4; ++k) {
-                    int x = i + dirs[k], y = j + dirs[k + 1];
-                    if (x >= 0 && x < m && y >= 0 && y < n && !vis[x][y] && abs(heights[x][y] - heights[i][j]) <= h) {
-                        q.push({x, y});
-                        vis[x][y] = true;
-                    }
-                }
-            }
-            return false;
-        };
-        int l = 0, r = 1e6;
-        while (l < r) {
-            int mid = (l + r) >> 1;
-            if (check(mid)) {
-                r = mid;
-            } else {
-                l = mid + 1;
-            }
-        }
-        return l;
-    }
-};
-```
-
-```cpp
-class Solution {
-public:
-    int minimumEffortPath(vector<vector<int>>& heights) {
-        int m = heights.size(), n = heights[0].size();
-        int dist[m][n];
-        memset(dist, 0x3f, sizeof(dist));
-        dist[0][0] = 0;
-        int dirs[5] = {0, 1, 0, -1, 0};
-        using T = tuple<int, int, int>;
-        priority_queue<T, vector<T>, greater<T>> pq;
-        pq.emplace(0, 0, 0);
-        while (!pq.empty()) {
-            auto [t, i, j] = pq.top();
-            pq.pop();
-            for (int k = 0; k < 4; ++k) {
-                int x = i + dirs[k], y = j + dirs[k + 1];
-                if (x < 0 || x >= m || y < 0 || y >= n) {
-                    continue;
-                }
-                int d = max(t, abs(heights[x][y] - heights[i][j]));
-                if (d < dist[x][y]) {
-                    dist[x][y] = d;
-                    pq.emplace(d, x, y);
-                }
-            }
-        }
-        return dist[m - 1][n - 1];
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 type unionFind struct {
@@ -544,93 +355,7 @@ func abs(x int) int {
 }
 ```
 
-```go
-func minimumEffortPath(heights [][]int) int {
-	return sort.Search(1e6, func(h int) bool {
-		m, n := len(heights), len(heights[0])
-		vis := make([][]bool, m)
-		for i := range vis {
-			vis[i] = make([]bool, n)
-		}
-		vis[0][0] = true
-		q := [][2]int{}
-		q = append(q, [2]int{0, 0})
-		dirs := [5]int{-1, 0, 1, 0, -1}
-		for len(q) > 0 {
-			p := q[0]
-			q = q[1:]
-			i, j := p[0], p[1]
-			if i == m-1 && j == n-1 {
-				return true
-			}
-			for k := 0; k < 4; k++ {
-				x, y := i+dirs[k], j+dirs[k+1]
-				if x >= 0 && x < m && y >= 0 && y < n && !vis[x][y] && abs(heights[x][y]-heights[i][j]) <= h {
-					vis[x][y] = true
-					q = append(q, [2]int{x, y})
-				}
-			}
-		}
-		return false
-	})
-}
-
-func abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
-}
-```
-
-```go
-func minimumEffortPath(heights [][]int) int {
-	m, n := len(heights), len(heights[0])
-	dist := make([][]int, m)
-	for i := range dist {
-		dist[i] = make([]int, n)
-		for j := range dist[i] {
-			dist[i][j] = 1 << 30
-		}
-	}
-	dirs := [5]int{-1, 0, 1, 0, -1}
-	dist[0][0] = 0
-	pq := hp{}
-	heap.Push(&pq, tuple{0, 0, 0})
-	for pq.Len() > 0 {
-		p := heap.Pop(&pq).(tuple)
-		t, i, j := p.t, p.i, p.j
-		for k := 0; k < 4; k++ {
-			x, y := i+dirs[k], j+dirs[k+1]
-			if x >= 0 && x < m && y >= 0 && y < n {
-				if d := max(t, abs(heights[x][y]-heights[i][j])); d < dist[x][y] {
-					dist[x][y] = d
-					heap.Push(&pq, tuple{d, x, y})
-				}
-			}
-		}
-	}
-	return dist[m-1][n-1]
-}
-
-func abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
-}
-
-type tuple struct{ t, i, j int }
-type hp []tuple
-
-func (h hp) Len() int           { return len(h) }
-func (h hp) Less(i, j int) bool { return h[i].t < h[j].t }
-func (h hp) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
-func (h *hp) Push(v any)        { *h = append(*h, v.(tuple)) }
-func (h *hp) Pop() any          { a := *h; v := a[len(a)-1]; *h = a[:len(a)-1]; return v }
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class UnionFind {
@@ -703,6 +428,182 @@ function minimumEffortPath(heights: number[][]): number {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Binary Search + BFS
+
+We notice that if the maximum physical consumption value of a path is $x$, then for any $y > x$, this path also meets the conditions. This shows monotonicity, so we can use the binary search method to find the minimum physical consumption value that meets the conditions.
+
+We define the left boundary of the binary search as $l=0$, and the right boundary as $r=10^6$. Each time we take $mid=(l+r)/2$, then use BFS to determine whether there is a path from the top-left corner to the bottom-right corner, so that the absolute difference in height between adjacent nodes on the path is not greater than $mid$. If it exists, it means that $mid$ may still be the minimum physical consumption value that meets the conditions, so we set $r=mid$, otherwise we set $l=mid+1$.
+
+The time complexity is $O(m \times n \times \log M)$, and the space complexity is $O(m \times n)$. Here, $m$ and $n$ are the number of rows and columns in the two-dimensional array, respectively, and $M$ is the maximum value in the two-dimensional array. In this problem, $M=10^6$.
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minimumEffortPath(self, heights: List[List[int]]) -> int:
+        def check(h: int) -> bool:
+            q = deque([(0, 0)])
+            vis = {(0, 0)}
+            dirs = (-1, 0, 1, 0, -1)
+            while q:
+                for _ in range(len(q)):
+                    i, j = q.popleft()
+                    if i == m - 1 and j == n - 1:
+                        return True
+                    for a, b in pairwise(dirs):
+                        x, y = i + a, j + b
+                        if (
+                            0 <= x < m
+                            and 0 <= y < n
+                            and (x, y) not in vis
+                            and abs(heights[i][j] - heights[x][y]) <= h
+                        ):
+                            q.append((x, y))
+                            vis.add((x, y))
+            return False
+
+        m, n = len(heights), len(heights[0])
+        return bisect_left(range(10**6), True, key=check)
+```
+
+#### Java
+
+```java
+class Solution {
+    public int minimumEffortPath(int[][] heights) {
+        int l = 0, r = 1000000;
+        while (l < r) {
+            int mid = (l + r) >> 1;
+            if (check(heights, mid)) {
+                r = mid;
+            } else {
+                l = mid + 1;
+            }
+        }
+        return l;
+    }
+
+    private boolean check(int[][] heights, int h) {
+        int m = heights.length, n = heights[0].length;
+        boolean[][] vis = new boolean[m][n];
+        Deque<int[]> q = new ArrayDeque<>();
+        q.add(new int[] {0, 0});
+        vis[0][0] = true;
+        int[] dirs = {-1, 0, 1, 0, -1};
+        while (!q.isEmpty()) {
+            var p = q.poll();
+            int i = p[0], j = p[1];
+            if (i == m - 1 && j == n - 1) {
+                return true;
+            }
+            for (int k = 0; k < 4; ++k) {
+                int x = i + dirs[k], y = j + dirs[k + 1];
+                if (x >= 0 && x < m && y >= 0 && y < n && !vis[x][y]
+                    && Math.abs(heights[x][y] - heights[i][j]) <= h) {
+                    q.add(new int[] {x, y});
+                    vis[x][y] = true;
+                }
+            }
+        }
+        return false;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int minimumEffortPath(vector<vector<int>>& heights) {
+        auto check = [&](int h) {
+            int m = heights.size(), n = heights[0].size();
+            bool vis[m][n];
+            memset(vis, false, sizeof(vis));
+            queue<pair<int, int>> q{{{0, 0}}};
+            vis[0][0] = true;
+            int dirs[5] = {-1, 0, 1, 0, -1};
+            while (!q.empty()) {
+                auto [i, j] = q.front();
+                q.pop();
+                if (i == m - 1 && j == n - 1) {
+                    return true;
+                }
+                for (int k = 0; k < 4; ++k) {
+                    int x = i + dirs[k], y = j + dirs[k + 1];
+                    if (x >= 0 && x < m && y >= 0 && y < n && !vis[x][y] && abs(heights[x][y] - heights[i][j]) <= h) {
+                        q.push({x, y});
+                        vis[x][y] = true;
+                    }
+                }
+            }
+            return false;
+        };
+        int l = 0, r = 1e6;
+        while (l < r) {
+            int mid = (l + r) >> 1;
+            if (check(mid)) {
+                r = mid;
+            } else {
+                l = mid + 1;
+            }
+        }
+        return l;
+    }
+};
+```
+
+#### Go
+
+```go
+func minimumEffortPath(heights [][]int) int {
+	return sort.Search(1e6, func(h int) bool {
+		m, n := len(heights), len(heights[0])
+		vis := make([][]bool, m)
+		for i := range vis {
+			vis[i] = make([]bool, n)
+		}
+		vis[0][0] = true
+		q := [][2]int{}
+		q = append(q, [2]int{0, 0})
+		dirs := [5]int{-1, 0, 1, 0, -1}
+		for len(q) > 0 {
+			p := q[0]
+			q = q[1:]
+			i, j := p[0], p[1]
+			if i == m-1 && j == n-1 {
+				return true
+			}
+			for k := 0; k < 4; k++ {
+				x, y := i+dirs[k], j+dirs[k+1]
+				if x >= 0 && x < m && y >= 0 && y < n && !vis[x][y] && abs(heights[x][y]-heights[i][j]) <= h {
+					vis[x][y] = true
+					q = append(q, [2]int{x, y})
+				}
+			}
+		}
+		return false
+	})
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+```
+
+#### TypeScript
+
 ```ts
 function minimumEffortPath(heights: number[][]): number {
     const check = (h: number): boolean => {
@@ -751,6 +652,166 @@ function minimumEffortPath(heights: number[][]): number {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 3: Heap-optimized Dijkstra Algorithm
+
+We can treat each cell as a node in a graph, and the absolute difference in height between two adjacent cells as the weight of the edge. Therefore, this problem is to solve the shortest path problem from the top-left node to the bottom-right node.
+
+We can use the Dijkstra algorithm to solve the shortest path problem, and use a priority queue (heap) to optimize the time complexity. Specifically, we maintain a two-dimensional array $dist$ of size $m \times n$, where $dist[i][j]$ represents the maximum weight of the shortest path from the top-left corner to the node $(i,j)$. Initially, $dist[0][0]=0$, and all other elements are positive infinity.
+
+We use a priority queue (heap) to store nodes, and each time we take out the node with the smallest weight from the priority queue (heap), then update the weights of its adjacent nodes. If the weight of an adjacent node changes, then we add this node to the priority queue (heap). When the priority queue (heap) is empty, it means that we have found the shortest path.
+
+The time complexity is $O(m \times n \times \log(m \times n))$, and the space complexity is $O(m \times n)$. Here, $m$ and $n$ are the number of rows and columns in the two-dimensional array, respectively.
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minimumEffortPath(self, heights: List[List[int]]) -> int:
+        m, n = len(heights), len(heights[0])
+        dist = [[inf] * n for _ in range(m)]
+        dist[0][0] = 0
+        dirs = (-1, 0, 1, 0, -1)
+        q = [(0, 0, 0)]
+        while q:
+            t, i, j = heappop(q)
+            for a, b in pairwise(dirs):
+                x, y = i + a, j + b
+                if (
+                    0 <= x < m
+                    and 0 <= y < n
+                    and (d := max(t, abs(heights[i][j] - heights[x][y]))) < dist[x][y]
+                ):
+                    dist[x][y] = d
+                    heappush(q, (d, x, y))
+        return int(dist[-1][-1])
+```
+
+#### Java
+
+```java
+class Solution {
+    public int minimumEffortPath(int[][] heights) {
+        int m = heights.length, n = heights[0].length;
+        int[][] dist = new int[m][n];
+        for (var row : dist) {
+            Arrays.fill(row, 1 << 30);
+        }
+        dist[0][0] = 0;
+        int[] dirs = {-1, 0, 1, 0, -1};
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+        pq.offer(new int[] {0, 0, 0});
+        while (!pq.isEmpty()) {
+            var p = pq.poll();
+            int t = p[0], i = p[1], j = p[2];
+            for (int k = 0; k < 4; ++k) {
+                int x = i + dirs[k], y = j + dirs[k + 1];
+                if (x >= 0 && x < m && y >= 0 && y < n) {
+                    int d = Math.max(t, Math.abs(heights[x][y] - heights[i][j]));
+                    if (d < dist[x][y]) {
+                        dist[x][y] = d;
+                        pq.offer(new int[] {d, x, y});
+                    }
+                }
+            }
+        }
+        return dist[m - 1][n - 1];
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int minimumEffortPath(vector<vector<int>>& heights) {
+        int m = heights.size(), n = heights[0].size();
+        int dist[m][n];
+        memset(dist, 0x3f, sizeof(dist));
+        dist[0][0] = 0;
+        int dirs[5] = {0, 1, 0, -1, 0};
+        using T = tuple<int, int, int>;
+        priority_queue<T, vector<T>, greater<T>> pq;
+        pq.emplace(0, 0, 0);
+        while (!pq.empty()) {
+            auto [t, i, j] = pq.top();
+            pq.pop();
+            for (int k = 0; k < 4; ++k) {
+                int x = i + dirs[k], y = j + dirs[k + 1];
+                if (x < 0 || x >= m || y < 0 || y >= n) {
+                    continue;
+                }
+                int d = max(t, abs(heights[x][y] - heights[i][j]));
+                if (d < dist[x][y]) {
+                    dist[x][y] = d;
+                    pq.emplace(d, x, y);
+                }
+            }
+        }
+        return dist[m - 1][n - 1];
+    }
+};
+```
+
+#### Go
+
+```go
+func minimumEffortPath(heights [][]int) int {
+	m, n := len(heights), len(heights[0])
+	dist := make([][]int, m)
+	for i := range dist {
+		dist[i] = make([]int, n)
+		for j := range dist[i] {
+			dist[i][j] = 1 << 30
+		}
+	}
+	dirs := [5]int{-1, 0, 1, 0, -1}
+	dist[0][0] = 0
+	pq := hp{}
+	heap.Push(&pq, tuple{0, 0, 0})
+	for pq.Len() > 0 {
+		p := heap.Pop(&pq).(tuple)
+		t, i, j := p.t, p.i, p.j
+		for k := 0; k < 4; k++ {
+			x, y := i+dirs[k], j+dirs[k+1]
+			if x >= 0 && x < m && y >= 0 && y < n {
+				if d := max(t, abs(heights[x][y]-heights[i][j])); d < dist[x][y] {
+					dist[x][y] = d
+					heap.Push(&pq, tuple{d, x, y})
+				}
+			}
+		}
+	}
+	return dist[m-1][n-1]
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+
+type tuple struct{ t, i, j int }
+type hp []tuple
+
+func (h hp) Len() int           { return len(h) }
+func (h hp) Less(i, j int) bool { return h[i].t < h[j].t }
+func (h hp) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+func (h *hp) Push(v any)        { *h = append(*h, v.(tuple)) }
+func (h *hp) Pop() any          { a := *h; v := a[len(a)-1]; *h = a[:len(a)-1]; return v }
+```
+
+#### TypeScript
+
 ```ts
 function minimumEffortPath(heights: number[][]): number {
     const m = heights.length;
@@ -777,10 +838,8 @@ function minimumEffortPath(heights: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

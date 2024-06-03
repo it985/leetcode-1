@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0748.Shortest%20Completing%20Word/README_EN.md
+tags:
+    - Array
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [748. Shortest Completing Word](https://leetcode.com/problems/shortest-completing-word)
 
 [中文文档](/solution/0700-0799/0748.Shortest%20Completing%20Word/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a string <code>licensePlate</code> and an array of strings <code>words</code>, find the <strong>shortest completing</strong> word in <code>words</code>.</p>
 
@@ -45,9 +59,13 @@ Since &quot;steps&quot; is the only word containing all the letters, that is the
 	<li><code>words[i]</code> consists of lower case English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Counting**
+<!-- solution:start -->
+
+### Solution 1: Counting
 
 First, we use a hash table or an array $cnt$ of length $26$ to count the frequency of each letter in the string `licensePlate`. Note that we convert all letters to lowercase for counting.
 
@@ -57,7 +75,7 @@ The time complexity is $O(n \times |\Sigma|)$, and the space complexity is $O(|\
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -73,7 +91,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -110,7 +128,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -147,7 +165,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func shortestCompletingWord(licensePlate string, words []string) (ans string) {
@@ -180,7 +198,7 @@ func shortestCompletingWord(licensePlate string, words []string) (ans string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function shortestCompletingWord(licensePlate: string, words: string[]): string {
@@ -215,7 +233,7 @@ function shortestCompletingWord(licensePlate: string, words: string[]): string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -251,10 +269,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2967.Minimum%20Cost%20to%20Make%20Array%20Equalindromic/README.md
+rating: 2116
+source: 第 376 场周赛 Q3
+tags:
+    - 贪心
+    - 数组
+    - 数学
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2967. 使数组成为等数数组的最小代价](https://leetcode.cn/problems/minimum-cost-to-make-array-equalindromic)
 
 [English Version](/solution/2900-2999/2967.Minimum%20Cost%20to%20Make%20Array%20Equalindromic/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个长度为 <code>n</code>&nbsp;下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums</code>&nbsp;。</p>
 
@@ -60,11 +75,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：预处理 + 排序 + 二分查找**
+### 方法一：预处理 + 排序 + 二分查找
 
 题目中回文数的范围是 $[1, 10^9]$，回文数由于对称性，我们可以在 $[1, 10^5]$ 的范围内枚举，然后将其翻转后拼接，得到所有的回文数，注意，如果是奇数长度的回文数，我们在翻转前要去掉最后一位。预处理得到的回文数数组记为 $ps$。我们对数组 $ps$ 进行排序。
 
@@ -72,11 +89,13 @@
 
 时间复杂度 $O(n \times \log n)$，空间复杂度 $O(M)$。其中 $n$ 是数组 $nums$ 的长度，而 $M$ 是回文数组 $ps$ 的长度。
 
+相似题目：
+
+-   [906. 超级回文数](https://github.com/doocs/leetcode/blob/main/solution/0900-0999/0906.Super%20Palindromes/README.md)
+
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 ps = []
@@ -99,9 +118,7 @@ class Solution:
         return min(f(ps[j]) for j in range(i - 1, i + 2) if 0 <= j < len(ps))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 public class Solution {
@@ -144,7 +161,7 @@ public class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 using ll = long long;
@@ -188,7 +205,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 var ps [2 * 100000]int64
@@ -245,7 +262,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 const ps = Array(2e5).fill(0);
@@ -290,10 +307,8 @@ function minimumCost(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

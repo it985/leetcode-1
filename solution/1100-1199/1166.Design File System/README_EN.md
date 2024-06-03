@@ -1,8 +1,25 @@
-# [1166. Design File System](https://leetcode.com/problems/design-file-system)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1166.Design%20File%20System/README_EN.md
+rating: 1479
+source: Biweekly Contest 7 Q2
+tags:
+    - Design
+    - Trie
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
+# [1166. Design File System 🔒](https://leetcode.com/problems/design-file-system)
 
 [中文文档](/solution/1100-1199/1166.Design%20File%20System/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are asked to design a file system&nbsp;that allows you to create new paths and associate them with different values.</p>
 
@@ -59,9 +76,13 @@ fileSystem.get(&quot;/c&quot;); // return -1 because this path doesn&#39;t exist
 	<li>At most <code>10<sup>4</sup></code> calls <strong>in total</strong> will be made to <code>createPath</code> and <code>get</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Trie**
+<!-- solution:start -->
+
+### Solution 1: Trie
 
 We can use a trie to store the paths, where each node stores a value, representing the value of the path corresponding to the node.
 
@@ -79,7 +100,7 @@ The total time complexity is $O(\sum_{w \in W}|w|)$, and the total space complex
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Trie:
@@ -125,7 +146,7 @@ class FileSystem:
 # param_2 = obj.get(path)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Trie {
@@ -190,7 +211,7 @@ class FileSystem {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Trie {
@@ -270,7 +291,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type trie struct {
@@ -334,7 +355,7 @@ func (this *FileSystem) Get(path string) int {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class Trie {
@@ -400,10 +421,8 @@ class FileSystem {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

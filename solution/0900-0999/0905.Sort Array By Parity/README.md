@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0905.Sort%20Array%20By%20Parity/README.md
+tags:
+    - 数组
+    - 双指针
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [905. 按奇偶排序数组](https://leetcode.cn/problems/sort-array-by-parity)
 
 [English Version](/solution/0900-0999/0905.Sort%20Array%20By%20Parity/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code>，将 <code>nums</code> 中的的所有偶数元素移动到数组的前面，后跟所有奇数元素。</p>
 
@@ -36,11 +48,13 @@
 	<li><code>0 &lt;= nums[i] &lt;= 5000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双指针**
+### 方法一：双指针
 
 我们用两个指针 $i$ 和 $j$ 分别指向数组的首尾，当 $i < j$ 时，执行以下操作。
 
@@ -54,9 +68,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -73,9 +85,7 @@ class Solution:
         return nums
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +109,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -120,7 +130,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sortArrayByParity(nums []int) []int {
@@ -137,7 +147,26 @@ func sortArrayByParity(nums []int) []int {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function sortArrayByParity(nums: number[]): number[] {
+    for (let i = 0, j = nums.length - 1; i < j; ) {
+        if (nums[i] % 2 === 0) {
+            ++i;
+        } else if (nums[j] % 2 === 1) {
+            --j;
+        } else {
+            [nums[i], nums[j]] = [nums[j], nums[i]];
+            ++i;
+            --j;
+        }
+    }
+    return nums;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -159,26 +188,7 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function sortArrayByParity(nums: number[]): number[] {
-    for (let i = 0, j = nums.length - 1; i < j; ) {
-        if (nums[i] % 2 === 0) {
-            ++i;
-        } else if (nums[j] % 2 === 1) {
-            --j;
-        } else {
-            [nums[i], nums[j]] = [nums[j], nums[i]];
-            ++i;
-            --j;
-        }
-    }
-    return nums;
-}
-```
-
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -201,10 +211,8 @@ var sortArrayByParity = function (nums) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

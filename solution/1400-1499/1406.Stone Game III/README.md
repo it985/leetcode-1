@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1406.Stone%20Game%20III/README.md
+rating: 2026
+source: 第 183 场周赛 Q4
+tags:
+    - 数组
+    - 数学
+    - 动态规划
+    - 博弈
+---
+
+<!-- problem:start -->
+
 # [1406. 石子游戏 III](https://leetcode.cn/problems/stone-game-iii)
 
 [English Version](/solution/1400-1499/1406.Stone%20Game%20III/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>Alice 和 Bob 继续他们的石子游戏。几堆石子 <strong>排成一行</strong> ，每堆石子都对应一个得分，由数组 <code>stoneValue</code> 给出。</p>
 
@@ -55,11 +70,13 @@
 	<li><code>-1000&nbsp;&lt;= stoneValue[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索**
+### 方法一：记忆化搜索
 
 我们设计一个函数 $dfs(i)$，表示当前玩家在 $[i, n)$ 范围内进行游戏时，可以获得的最大得分差值。如果 $dfs(0) \gt 0$，则表示先手玩家 Alice 可以获胜；如果 $dfs(0) \lt 0$，则表示后手玩家 Bob 可以获胜；否则，表示两人打成平局。
 
@@ -78,9 +95,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -104,9 +119,7 @@ class Solution:
         return 'Alice' if ans > 0 else 'Bob'
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -143,7 +156,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -175,7 +188,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func stoneGameIII(stoneValue []int) string {
@@ -212,7 +225,7 @@ func stoneGameIII(stoneValue []int) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function stoneGameIII(stoneValue: number[]): string {
@@ -242,10 +255,8 @@ function stoneGameIII(stoneValue: number[]): string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

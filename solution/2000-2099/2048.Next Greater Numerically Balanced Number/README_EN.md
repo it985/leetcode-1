@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2048.Next%20Greater%20Numerically%20Balanced%20Number/README_EN.md
+rating: 1734
+source: Weekly Contest 264 Q2
+tags:
+    - Math
+    - Backtracking
+    - Enumeration
+---
+
+<!-- problem:start -->
+
 # [2048. Next Greater Numerically Balanced Number](https://leetcode.com/problems/next-greater-numerically-balanced-number)
 
 [中文文档](/solution/2000-2099/2048.Next%20Greater%20Numerically%20Balanced%20Number/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>An integer <code>x</code> is <strong>numerically balanced</strong> if for every digit <code>d</code> in the number <code>x</code>, there are <strong>exactly</strong> <code>d</code> occurrences of that digit in <code>x</code>.</p>
 
@@ -52,9 +68,13 @@ It is also the smallest numerically balanced number strictly greater than 3000.
 	<li><code>0 &lt;= n &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Enumeration
 
 We note that the range of $n$ in the problem is $[0, 10^6]$, and one of the balanced numbers greater than $10^6$ is $1224444$. Therefore, we directly enumerate $x \in [n + 1, ..]$ and then judge whether $x$ is a balanced number. The enumerated $x$ will definitely not exceed $1224444$.
 
@@ -62,7 +82,7 @@ The time complexity is $O(M - n)$, where $M = 1224444$. The space complexity is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -77,7 +97,7 @@ class Solution:
                 return x
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +122,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -128,7 +148,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func nextBeautifulNumber(n int) int {
@@ -151,7 +171,7 @@ func nextBeautifulNumber(n int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function nextBeautifulNumber(n: number): number {
@@ -174,10 +194,8 @@ function nextBeautifulNumber(n: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

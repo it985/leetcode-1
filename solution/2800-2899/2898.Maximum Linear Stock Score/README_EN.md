@@ -1,8 +1,21 @@
-# [2898. Maximum Linear Stock Score](https://leetcode.com/problems/maximum-linear-stock-score)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2898.Maximum%20Linear%20Stock%20Score/README_EN.md
+tags:
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
+# [2898. Maximum Linear Stock Score 🔒](https://leetcode.com/problems/maximum-linear-stock-score)
 
 [中文文档](/solution/2800-2899/2898.Maximum%20Linear%20Stock%20Score/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a <strong>1-indexed</strong> integer array <code>prices</code>, where <code>prices[i]</code> is the price of a particular stock on the <code>i<sup>th</sup></code> day, your task is to select some of the elements of <code>prices</code> such that your selection is <strong>linear</strong>.</p>
 
@@ -51,9 +64,13 @@ The sum of all the elements is 35 which is the maximum possible some out of ever
 	<li><code>1 &lt;= prices[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Hash Table
 
 We can transform the equation as follows:
 
@@ -69,7 +86,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$, where $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -80,7 +97,7 @@ class Solution:
         return max(cnt.values())
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +115,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -117,7 +134,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxScore(prices []int) (ans int64) {
@@ -132,7 +149,20 @@ func maxScore(prices []int) (ans int64) {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function maxScore(prices: number[]): number {
+    const cnt: Map<number, number> = new Map();
+    for (let i = 0; i < prices.length; ++i) {
+        const j = prices[i] - i;
+        cnt.set(j, (cnt.get(j) || 0) + prices[i]);
+    }
+    return Math.max(...cnt.values());
+}
+```
+
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -152,23 +182,8 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function maxScore(prices: number[]): number {
-    const cnt: Map<number, number> = new Map();
-    for (let i = 0; i < prices.length; ++i) {
-        const j = prices[i] - i;
-        cnt.set(j, (cnt.get(j) || 0) + prices[i]);
-    }
-    return Math.max(...cnt.values());
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

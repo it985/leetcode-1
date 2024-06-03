@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2058.Find%20the%20Minimum%20and%20Maximum%20Number%20of%20Nodes%20Between%20Critical%20Points/README.md
+rating: 1310
+source: 第 265 场周赛 Q2
+tags:
+    - 链表
+---
+
+<!-- problem:start -->
+
 # [2058. 找出临界点之间的最小和最大距离](https://leetcode.cn/problems/find-the-minimum-and-maximum-number-of-nodes-between-critical-points)
 
 [English Version](/solution/2000-2099/2058.Find%20the%20Minimum%20and%20Maximum%20Number%20of%20Nodes%20Between%20Critical%20Points/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>链表中的 <strong>临界点</strong> 定义为一个 <strong>局部极大值点</strong> <strong>或</strong> <strong>局部极小值点 。</strong></p>
 
@@ -77,17 +89,17 @@
 	<li><code>1 &lt;= Node.val &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-遍历链表，维护第一个临界点 first、最后一个临界点 last，以及相邻临界点的最小距离。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -116,9 +128,7 @@ class Solution:
         return ans if first != last else [-1, -1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -160,7 +170,83 @@ class Solution {
 }
 ```
 
-### **TypeScript**
+#### C++
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> nodesBetweenCriticalPoints(ListNode* head) {
+        ListNode* prev = head;
+        ListNode* curr = head->next;
+        int first = 0, last = 0;
+        int i = 1;
+        vector<int> ans(2, INT_MAX);
+        while (curr->next) {
+            if (curr->val < min(prev->val, curr->next->val) || curr->val > max(prev->val, curr->next->val)) {
+                if (last == 0)
+                    first = i;
+                else {
+                    ans[0] = min(ans[0], i - last);
+                    ans[1] = i - first;
+                }
+                last = i;
+            }
+            ++i;
+            prev = curr;
+            curr = curr->next;
+        }
+        if (first == last) return {-1, -1};
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func nodesBetweenCriticalPoints(head *ListNode) []int {
+	prev, curr := head, head.Next
+	first, last := 0, 0
+	i := 1
+	ans := []int{math.MaxInt32, 0}
+	for curr.Next != nil {
+		if curr.Val < min(prev.Val, curr.Next.Val) || curr.Val > max(prev.Val, curr.Next.Val) {
+			if last == 0 {
+				first, last = i, i
+			} else {
+				ans[0] = min(ans[0], i-last)
+				ans[1] = i - first
+				last = i
+			}
+		}
+		i++
+		prev, curr = curr, curr.Next
+	}
+	if first == last {
+		return []int{-1, -1}
+	}
+	return ans
+}
+```
+
+#### TypeScript
 
 ```ts
 /**
@@ -203,86 +289,8 @@ function nodesBetweenCriticalPoints(head: ListNode | null): number[] {
 }
 ```
 
-### **C++**
-
-```cpp
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
-class Solution {
-public:
-    vector<int> nodesBetweenCriticalPoints(ListNode* head) {
-        ListNode* prev = head;
-        ListNode* curr = head->next;
-        int first = 0, last = 0;
-        int i = 1;
-        vector<int> ans(2, INT_MAX);
-        while (curr->next) {
-            if (curr->val < min(prev->val, curr->next->val) || curr->val > max(prev->val, curr->next->val)) {
-                if (last == 0)
-                    first = i;
-                else {
-                    ans[0] = min(ans[0], i - last);
-                    ans[1] = i - first;
-                }
-                last = i;
-            }
-            ++i;
-            prev = curr;
-            curr = curr->next;
-        }
-        if (first == last) return {-1, -1};
-        return ans;
-    }
-};
-```
-
-### **Go**
-
-```go
-/**
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
-func nodesBetweenCriticalPoints(head *ListNode) []int {
-	prev, curr := head, head.Next
-	first, last := 0, 0
-	i := 1
-	ans := []int{math.MaxInt32, 0}
-	for curr.Next != nil {
-		if curr.Val < min(prev.Val, curr.Next.Val) || curr.Val > max(prev.Val, curr.Next.Val) {
-			if last == 0 {
-				first, last = i, i
-			} else {
-				ans[0] = min(ans[0], i-last)
-				ans[1] = i - first
-				last = i
-			}
-		}
-		i++
-		prev, curr = curr, curr.Next
-	}
-	if first == last {
-		return []int{-1, -1}
-	}
-	return ans
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2903.Find%20Indices%20With%20Index%20and%20Value%20Difference%20I/README.md
+rating: 1157
+source: 第 367 场周赛 Q1
+tags:
+    - 数组
+    - 双指针
+---
+
+<!-- problem:start -->
+
 # [2903. 找出满足差值条件的下标 I](https://leetcode.cn/problems/find-indices-with-index-and-value-difference-i)
 
 [English Version](/solution/2900-2999/2903.Find%20Indices%20With%20Index%20and%20Value%20Difference%20I/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始、长度为 <code>n</code> 的整数数组 <code>nums</code> ，以及整数 <code>indexDifference</code> 和整数 <code>valueDifference</code> 。</p>
 
@@ -63,11 +76,13 @@ abs(0 - 0) &gt;= 0 且 abs(nums[0] - nums[0]) &gt;= 0 。
 	<li><code>0 &lt;= valueDifference &lt;= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双指针 + 维护最大最小值**
+### 方法一：双指针 + 维护最大最小值
 
 我们用两个指针 $i$ 和 $j$ 来维护一个间隔为 $indexDifference$ 的滑动窗口，其中指针 $j$ 和 $i$ 分别指向窗口的左右边界。初始时 $i$ 指向 $indexDifference$，而 $j$ 指向 $0$。
 
@@ -81,9 +96,7 @@ abs(0 - 0) &gt;= 0 且 abs(nums[0] - nums[0]) &gt;= 0 。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -104,9 +117,7 @@ class Solution:
         return [-1, -1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -133,7 +144,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -160,7 +171,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findIndices(nums []int, indexDifference int, valueDifference int) []int {
@@ -184,7 +195,7 @@ func findIndices(nums []int, indexDifference int, valueDifference int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findIndices(nums: number[], indexDifference: number, valueDifference: number): number[] {
@@ -208,7 +219,7 @@ function findIndices(nums: number[], indexDifference: number, valueDifference: n
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -242,10 +253,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

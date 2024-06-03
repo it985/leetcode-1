@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2767.Partition%20String%20Into%20Minimum%20Beautiful%20Substrings/README.md
+rating: 1864
+source: 第 108 场双周赛 Q3
+tags:
+    - 哈希表
+    - 字符串
+    - 动态规划
+    - 回溯
+---
+
+<!-- problem:start -->
+
 # [2767. 将字符串分割为最少的美丽子字符串](https://leetcode.cn/problems/partition-string-into-minimum-beautiful-substrings)
 
 [English Version](/solution/2700-2799/2767.Partition%20String%20Into%20Minimum%20Beautiful%20Substrings/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个二进制字符串&nbsp;<code>s</code>&nbsp;，你需要将字符串分割成一个或者多个&nbsp;<strong>子字符串</strong>&nbsp;&nbsp;，使每个子字符串都是 <strong>美丽</strong>&nbsp;的。</p>
 
@@ -56,11 +71,13 @@
 	<li><code>s[i]</code>&nbsp;要么是&nbsp;<code>'0'</code>&nbsp;要么是&nbsp;<code>'1'</code> 。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索**
+### 方法一：记忆化搜索
 
 题目中需要判断一个字符串是否是 $5$ 的幂的二进制表示，因此，我们不妨先预处理出所有 $5$ 的幂的数字，记录在哈希表 $ss$ 中。
 
@@ -80,9 +97,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -111,9 +126,7 @@ class Solution:
         return -1 if ans == inf else ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -158,7 +171,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -199,7 +212,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumBeautifulSubstrings(s string) int {
@@ -241,7 +254,7 @@ func minimumBeautifulSubstrings(s string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumBeautifulSubstrings(s: string): number {
@@ -276,10 +289,8 @@ function minimumBeautifulSubstrings(s: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

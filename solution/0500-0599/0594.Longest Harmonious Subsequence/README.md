@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0594.Longest%20Harmonious%20Subsequence/README.md
+tags:
+    - 数组
+    - 哈希表
+    - 计数
+    - 排序
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [594. 最长和谐子序列](https://leetcode.cn/problems/longest-harmonious-subsequence)
 
 [English Version](/solution/0500-0599/0594.Longest%20Harmonious%20Subsequence/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>和谐数组是指一个数组里元素的最大值和最小值之间的差别 <strong>正好是 <code>1</code></strong> 。</p>
 
@@ -45,17 +59,17 @@
 	<li><code>-10<sup>9</sup> <= nums[i] <= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-先用哈希表统计每个元素出现的次数。然后遍历数组，判断比每个元素 `num` 大 1 的数字 `num + 1` 是否在哈希表中，若是，累计 `num` 和 `num + 1` 出现的次数，与最大值 ans 比较。若更大，则替换。最后返回 ans 即可。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -68,19 +82,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def findLHS(self, nums: List[int]) -> int:
-        counter = Counter(nums)
-        return max(
-            [counter[num] + counter[num + 1] for num in nums if num + 1 in counter],
-            default=0,
-        )
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -100,7 +102,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -121,7 +123,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findLHS(nums []int) int {
@@ -139,10 +141,30 @@ func findLHS(nums []int) int {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def findLHS(self, nums: List[int]) -> int:
+        counter = Counter(nums)
+        return max(
+            [counter[num] + counter[num + 1] for num in nums if num + 1 in counter],
+            default=0,
+        )
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

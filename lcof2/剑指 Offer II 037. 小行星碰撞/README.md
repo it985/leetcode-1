@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof2/%E5%89%91%E6%8C%87%20Offer%20II%20037.%20%E5%B0%8F%E8%A1%8C%E6%98%9F%E7%A2%B0%E6%92%9E/README.md
+---
+
+<!-- problem:start -->
+
 # [剑指 Offer II 037. 小行星碰撞](https://leetcode.cn/problems/XagZNi)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个整数数组 <code>asteroids</code>，表示在同一行的小行星。</p>
 
@@ -54,11 +61,13 @@
 
 <p><meta charset="UTF-8" />注意：本题与主站 735&nbsp;题相同：&nbsp;<a href="https://leetcode.cn/problems/asteroid-collision/">https://leetcode.cn/problems/asteroid-collision/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：栈**
+### 方法一：栈
 
 我们从左到右遍历每个小行星 $x$，由于每个小行星可能与之前的多个小行星发生碰撞，考虑用栈来存储。
 
@@ -71,9 +80,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -92,9 +99,7 @@ class Solution:
         return stk
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -119,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -145,7 +150,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func asteroidCollision(asteroids []int) (stk []int) {
@@ -167,7 +172,7 @@ func asteroidCollision(asteroids []int) (stk []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function asteroidCollision(asteroids: number[]): number[] {
@@ -190,7 +195,7 @@ function asteroidCollision(asteroids: number[]): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -216,10 +221,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

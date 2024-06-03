@@ -1,10 +1,23 @@
-# [251. 展开二维向量](https://leetcode.cn/problems/flatten-2d-vector)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0251.Flatten%202D%20Vector/README.md
+tags:
+    - 设计
+    - 数组
+    - 双指针
+    - 迭代器
+---
+
+<!-- problem:start -->
+
+# [251. 展开二维向量 🔒](https://leetcode.cn/problems/flatten-2d-vector)
 
 [English Version](/solution/0200-0299/0251.Flatten%202D%20Vector/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请设计并实现一个能够展开二维向量的迭代器。该迭代器需要支持 <code>next</code> 和 <code>hasNext</code> 两种操作。</p>
 
@@ -37,11 +50,13 @@ iterator.hasNext(); // 返回 false
 
 <p><strong>进阶：</strong>尝试在代码中仅使用 <a href="http://www.cplusplus.com/reference/iterator/iterator/">C++ 提供的迭代器</a> 或 <a href="https://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html">Java 提供的迭代器</a>。</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双指针**
+### 方法一：双指针
 
 我们定义两个指针 $i$ 和 $j$，分别指向当前二维向量的行和列，初始时 $i = 0$，$j = 0$。
 
@@ -55,9 +70,7 @@ iterator.hasNext(); // 返回 false
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Vector2D:
@@ -88,9 +101,7 @@ class Vector2D:
 # param_2 = obj.hasNext()
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Vector2D {
@@ -128,7 +139,7 @@ class Vector2D {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Vector2D {
@@ -168,7 +179,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Vector2D struct {
@@ -207,7 +218,7 @@ func (this *Vector2D) forward() {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class Vector2D {
@@ -247,10 +258,8 @@ class Vector2D {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

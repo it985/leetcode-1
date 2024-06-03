@@ -1,10 +1,24 @@
-# [716. 最大栈](https://leetcode.cn/problems/max-stack)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0716.Max%20Stack/README.md
+tags:
+    - 栈
+    - 设计
+    - 链表
+    - 双向链表
+    - 有序集合
+---
+
+<!-- problem:start -->
+
+# [716. 最大栈 🔒](https://leetcode.cn/problems/max-stack)
 
 [English Version](/solution/0700-0799/0716.Max%20Stack/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>设计一个最大栈数据结构，既支持栈操作，又支持查找栈中最大元素。</p>
 
@@ -61,11 +75,13 @@ stk.top();     // 返回 5，[<strong>5</strong>] - 栈没有改变
 	<li>试着设计解决方案：调用 <code>top</code> 方法的时间复杂度为 <code>O(1)</code> ，调用其他方法的时间复杂度为 <code>O(logn)</code> 。 </li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双向链表 + 有序集合**
+### 方法一：双向链表 + 有序集合
 
 使用双向链表存储栈中的元素，使用有序集合存储栈中的元素，有序集合中的元素按照从小到大的顺序存储，每个元素都对应着双向链表中的一个节点。
 
@@ -79,9 +95,7 @@ stk.top();     // 返回 5，[<strong>5</strong>] - 栈没有改变
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 from sortedcontainers import SortedList
@@ -157,9 +171,7 @@ class MaxStack:
 # param_5 = obj.popMax()
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Node {
@@ -260,7 +272,7 @@ class MaxStack {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class MaxStack {
@@ -315,10 +327,8 @@ private:
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

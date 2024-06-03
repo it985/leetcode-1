@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1619.Mean%20of%20Array%20After%20Removing%20Some%20Elements/README_EN.md
+rating: 1374
+source: Biweekly Contest 37 Q1
+tags:
+    - Array
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1619. Mean of Array After Removing Some Elements](https://leetcode.com/problems/mean-of-array-after-removing-some-elements)
 
 [中文文档](/solution/1600-1699/1619.Mean%20of%20Array%20After%20Removing%20Some%20Elements/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>arr</code>, return <em>the mean of the remaining integers after removing the smallest <code>5%</code> and the largest <code>5%</code> of the elements.</em></p>
 
@@ -40,11 +55,17 @@
 	<li><code><font face="monospace">0 &lt;= arr[i] &lt;= 10<sup>5</sup></font></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -56,7 +77,7 @@ class Solution:
         return round(sum(t) / len(t), 5)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -72,22 +93,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function trimMean(arr: number[]): number {
-    arr.sort((a, b) => a - b);
-    let n = arr.length,
-        rmLen = n * 0.05;
-    let sum = 0;
-    for (let i = rmLen; i < n - rmLen; i++) {
-        sum += arr[i];
-    }
-    return sum / (n * 0.9);
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -103,7 +109,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func trimMean(arr []int) float64 {
@@ -117,7 +123,22 @@ func trimMean(arr []int) float64 {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function trimMean(arr: number[]): number {
+    arr.sort((a, b) => a - b);
+    let n = arr.length,
+        rmLen = n * 0.05;
+    let sum = 0;
+    for (let i = rmLen; i < n - rmLen; i++) {
+        sum += arr[i];
+    }
+    return sum / (n * 0.9);
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -134,10 +155,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

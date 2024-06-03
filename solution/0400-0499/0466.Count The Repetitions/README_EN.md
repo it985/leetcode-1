@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0466.Count%20The%20Repetitions/README_EN.md
+tags:
+    - String
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [466. Count The Repetitions](https://leetcode.com/problems/count-the-repetitions)
 
 [中文文档](/solution/0400-0499/0466.Count%20The%20Repetitions/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>We define <code>str = [s, n]</code> as the string <code>str</code> which consists of the string <code>s</code> concatenated <code>n</code> times.</p>
 
@@ -37,11 +50,17 @@
 	<li><code>1 &lt;= n1, n2 &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -67,7 +86,7 @@ class Solution:
         return ans // n2
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -97,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -128,7 +147,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getMaxRepetitions(s1 string, n1 int, s2 string, n2 int) (ans int) {
@@ -157,7 +176,7 @@ func getMaxRepetitions(s1 string, n1 int, s2 string, n2 int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function getMaxRepetitions(s1: string, n1: number, s2: string, n2: number): number {
@@ -185,10 +204,8 @@ function getMaxRepetitions(s1: string, n1: number, s2: string, n2: number): numb
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1911.Maximum%20Alternating%20Subsequence%20Sum/README.md
+rating: 1785
+source: 第 55 场双周赛 Q3
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [1911. 最大子序列交替和](https://leetcode.cn/problems/maximum-alternating-subsequence-sum)
 
 [English Version](/solution/1900-1999/1911.Maximum%20Alternating%20Subsequence%20Sum/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一个下标从 <strong>0</strong> 开始的数组的 <strong>交替和</strong> 定义为 <strong>偶数</strong> 下标处元素之 <strong>和</strong> 减去 <strong>奇数</strong> 下标处元素之 <strong>和</strong> 。</p>
 
@@ -51,11 +64,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i]$ 表示从前 $i$ 个元素中选出的子序列，且最后一个元素为奇数下标时的最大交替和，定义 $g[i]$ 表示从前 $i$ 个元素中选出的子序列，且最后一个元素为偶数下标时的最大交替和。初始时 $f[0] = g[0] = 0$。答案为 $max(f[n], g[n])$。
 
@@ -82,9 +97,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -98,18 +111,7 @@ class Solution:
         return max(f[n], g[n])
 ```
 
-```python
-class Solution:
-    def maxAlternatingSum(self, nums: List[int]) -> int:
-        f = g = 0
-        for x in nums:
-            f, g = max(g - x, f), max(f + x, g)
-        return max(f, g)
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -126,22 +128,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public long maxAlternatingSum(int[] nums) {
-        long f = 0, g = 0;
-        for (int x : nums) {
-            long ff = Math.max(g - x, f);
-            long gg = Math.max(f + x, g);
-            f = ff;
-            g = gg;
-        }
-        return Math.max(f, g);
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -158,21 +145,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    long long maxAlternatingSum(vector<int>& nums) {
-        long long f = 0, g = 0;
-        for (int& x : nums) {
-            long ff = max(g - x, f), gg = max(f + x, g);
-            f = ff, g = gg;
-        }
-        return max(f, g);
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func maxAlternatingSum(nums []int) int64 {
@@ -188,17 +161,7 @@ func maxAlternatingSum(nums []int) int64 {
 }
 ```
 
-```go
-func maxAlternatingSum(nums []int) int64 {
-	var f, g int
-	for _, x := range nums {
-		f, g = max(g-x, f), max(f+x, g)
-	}
-	return int64(max(f, g))
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxAlternatingSum(nums: number[]): number {
@@ -213,6 +176,74 @@ function maxAlternatingSum(nums: number[]): number {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def maxAlternatingSum(self, nums: List[int]) -> int:
+        f = g = 0
+        for x in nums:
+            f, g = max(g - x, f), max(f + x, g)
+        return max(f, g)
+```
+
+#### Java
+
+```java
+class Solution {
+    public long maxAlternatingSum(int[] nums) {
+        long f = 0, g = 0;
+        for (int x : nums) {
+            long ff = Math.max(g - x, f);
+            long gg = Math.max(f + x, g);
+            f = ff;
+            g = gg;
+        }
+        return Math.max(f, g);
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    long long maxAlternatingSum(vector<int>& nums) {
+        long long f = 0, g = 0;
+        for (int& x : nums) {
+            long ff = max(g - x, f), gg = max(f + x, g);
+            f = ff, g = gg;
+        }
+        return max(f, g);
+    }
+};
+```
+
+#### Go
+
+```go
+func maxAlternatingSum(nums []int) int64 {
+	var f, g int
+	for _, x := range nums {
+		f, g = max(g-x, f), max(f+x, g)
+	}
+	return int64(max(f, g))
+}
+```
+
+#### TypeScript
+
 ```ts
 function maxAlternatingSum(nums: number[]): number {
     let [f, g] = [0, 0];
@@ -223,10 +254,8 @@ function maxAlternatingSum(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

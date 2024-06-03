@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0393.UTF-8%20Validation/README.md
+tags:
+    - 位运算
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [393. UTF-8 编码验证](https://leetcode.cn/problems/utf-8-validation)
 
 [English Version](/solution/0300-0399/0393.UTF-8%20Validation/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个表示数据的整数数组&nbsp;<code>data</code>&nbsp;，返回它是否为有效的 <strong>UTF-8</strong> 编码。</p>
 
@@ -62,15 +73,17 @@
 	<li><code>0 &lt;= data[i] &lt;= 255</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -94,9 +107,7 @@ class Solution:
         return n == 0
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -125,7 +136,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -152,7 +163,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func validUtf8(data []int) bool {
@@ -179,10 +190,8 @@ func validUtf8(data []int) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

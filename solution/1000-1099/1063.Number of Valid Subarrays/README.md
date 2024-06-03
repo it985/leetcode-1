@@ -1,10 +1,22 @@
-# [1063. 有效子数组的数目](https://leetcode.cn/problems/number-of-valid-subarrays)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1063.Number%20of%20Valid%20Subarrays/README.md
+tags:
+    - 栈
+    - 数组
+    - 单调栈
+---
+
+<!-- problem:start -->
+
+# [1063. 有效子数组的数目 🔒](https://leetcode.cn/problems/number-of-valid-subarrays)
 
 [English Version](/solution/1000-1099/1063.Number%20of%20Valid%20Subarrays/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个整数数组&nbsp;<code>nums</code>&nbsp;，返回满足下面条件的&nbsp;<em>非空、连续</em><strong>&nbsp;子数组</strong>的数目：</p>
 
@@ -48,11 +60,13 @@
 	<li><code>0 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：单调栈**
+### 方法一：单调栈
 
 题目实际上是求解每个位置 $i$ 的右边第一个小于 $nums[i]$ 的位置 $j$，那么以 $i$ 为左端点的有效子数组的个数就是 $j - i$。
 
@@ -64,9 +78,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,23 +95,7 @@ class Solution:
         return sum(j - i for i, j in enumerate(right))
 ```
 
-```python
-class Solution:
-    def validSubarrays(self, nums: List[int]) -> int:
-        n = len(nums)
-        stk = []
-        ans = 0
-        for i in range(n - 1, -1, -1):
-            while stk and nums[stk[-1]] >= nums[i]:
-                stk.pop()
-            ans += (stk[-1] if stk else n) - i
-            stk.append(i)
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -126,26 +122,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int validSubarrays(int[] nums) {
-        int n = nums.length;
-        Deque<Integer> stk = new ArrayDeque<>();
-        int ans = 0;
-        for (int i = n - 1; i >= 0; --i) {
-            while (!stk.isEmpty() && nums[stk.peek()] >= nums[i]) {
-                stk.pop();
-            }
-            ans += (stk.isEmpty() ? n : stk.peek()) - i;
-
-            stk.push(i);
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -172,26 +149,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int validSubarrays(vector<int>& nums) {
-        int n = nums.size();
-        stack<int> stk;
-        int ans = 0;
-        for (int i = n - 1; ~i; --i) {
-            while (stk.size() && nums[stk.top()] >= nums[i]) {
-                stk.pop();
-            }
-            ans += (stk.size() ? stk.top() : n) - i;
-            stk.push(i);
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func validSubarrays(nums []int) (ans int) {
@@ -217,27 +175,7 @@ func validSubarrays(nums []int) (ans int) {
 }
 ```
 
-```go
-func validSubarrays(nums []int) (ans int) {
-	n := len(nums)
-	stk := []int{}
-	for i := n - 1; i >= 0; i-- {
-		for len(stk) > 0 && nums[stk[len(stk)-1]] >= nums[i] {
-			stk = stk[:len(stk)-1]
-		}
-		ans -= i
-		if len(stk) > 0 {
-			ans += stk[len(stk)-1]
-		} else {
-			ans += n
-		}
-		stk = append(stk, i)
-	}
-	return
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function validSubarrays(nums: number[]): number {
@@ -261,6 +199,98 @@ function validSubarrays(nums: number[]): number {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def validSubarrays(self, nums: List[int]) -> int:
+        n = len(nums)
+        stk = []
+        ans = 0
+        for i in range(n - 1, -1, -1):
+            while stk and nums[stk[-1]] >= nums[i]:
+                stk.pop()
+            ans += (stk[-1] if stk else n) - i
+            stk.append(i)
+        return ans
+```
+
+#### Java
+
+```java
+class Solution {
+    public int validSubarrays(int[] nums) {
+        int n = nums.length;
+        Deque<Integer> stk = new ArrayDeque<>();
+        int ans = 0;
+        for (int i = n - 1; i >= 0; --i) {
+            while (!stk.isEmpty() && nums[stk.peek()] >= nums[i]) {
+                stk.pop();
+            }
+            ans += (stk.isEmpty() ? n : stk.peek()) - i;
+
+            stk.push(i);
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int validSubarrays(vector<int>& nums) {
+        int n = nums.size();
+        stack<int> stk;
+        int ans = 0;
+        for (int i = n - 1; ~i; --i) {
+            while (stk.size() && nums[stk.top()] >= nums[i]) {
+                stk.pop();
+            }
+            ans += (stk.size() ? stk.top() : n) - i;
+            stk.push(i);
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func validSubarrays(nums []int) (ans int) {
+	n := len(nums)
+	stk := []int{}
+	for i := n - 1; i >= 0; i-- {
+		for len(stk) > 0 && nums[stk[len(stk)-1]] >= nums[i] {
+			stk = stk[:len(stk)-1]
+		}
+		ans -= i
+		if len(stk) > 0 {
+			ans += stk[len(stk)-1]
+		} else {
+			ans += n
+		}
+		stk = append(stk, i)
+	}
+	return
+}
+```
+
+#### TypeScript
+
 ```ts
 function validSubarrays(nums: number[]): number {
     const n = nums.length;
@@ -277,10 +307,8 @@ function validSubarrays(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

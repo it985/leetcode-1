@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1363.Largest%20Multiple%20of%20Three/README_EN.md
+rating: 1822
+source: Weekly Contest 177 Q4
+tags:
+    - Greedy
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [1363. Largest Multiple of Three](https://leetcode.com/problems/largest-multiple-of-three)
 
 [中文文档](/solution/1300-1399/1363.Largest%20Multiple%20of%20Three/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of digits <code>digits</code>, return <em>the largest multiple of <strong>three</strong> that can be formed by concatenating some of the given digits in <strong>any order</strong></em>. If there is no answer return an empty string.</p>
 
@@ -38,11 +54,31 @@
 	<li><code>0 &lt;= digits[i] &lt;= 9</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Greedy + Dynamic Programming + Backtracking
+
+We define $f[i][j]$ as the maximum length of selecting several numbers from the first $i$ numbers, so that the sum of the selected numbers modulo $3$ equals $j$. To make the selected numbers as large as possible, we need to select as many numbers as possible, so we need to make $f[i][j]$ as large as possible. We initialize $f[0][0] = 0$, and the rest of $f[0][j] = -\infty$.
+
+Consider how $f[i][j]$ transitions. We can choose not to select the $i$-th number, in which case $f[i][j] = f[i - 1][j]$; we can also choose to select the $i$-th number, in which case $f[i][j] = f[i - 1][(j - x_i \bmod 3 + 3) \bmod 3] + 1$, where $x_i$ represents the value of the $i$-th number. Therefore, we have the following state transition equation:
+
+$$
+f[i][j] = \max \{ f[i - 1][j], f[i - 1][(j - x_i \bmod 3 + 3) \bmod 3] + 1 \}
+$$
+
+If $f[n][0] \le 0$, then we cannot select any number, so the answer string is empty. Otherwise, we can backtrack through the $f$ array to find out the selected numbers.
+
+Define $i = n$, $j = 0$, start backtracking from $f[i][j]$, let $k = (j - x_i \bmod 3 + 3) \bmod 3$, if $f[i - 1][k] + 1 = f[i][j]$, then we have selected the $i$-th number, otherwise we have not selected the $i$-th number. If we have selected the $i$-th number, then we update $j$ to $k$, otherwise we keep $j$ unchanged. To make the number of the same length as large as possible, we should prefer to select larger numbers, so we should sort the array first.
+
+The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$. Where $n$ is the length of the array.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +105,7 @@ class Solution:
         return "".join(map(str, arr[i:]))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +143,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -143,7 +179,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func largestMultipleOfThree(digits []int) string {
@@ -182,7 +218,7 @@ func largestMultipleOfThree(digits []int) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function largestMultipleOfThree(digits: number[]): string {
@@ -214,10 +250,8 @@ function largestMultipleOfThree(digits: number[]): string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

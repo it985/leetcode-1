@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1661.Average%20Time%20of%20Process%20per%20Machine/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
 # [1661. 每台机器的进程平均运行时间](https://leetcode.cn/problems/average-time-of-process-per-machine)
 
 [English Version](/solution/1600-1699/1661.Average%20Time%20of%20Process%20per%20Machine/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Activity</code></p>
 
@@ -75,11 +85,13 @@ Activity table:
 机器 1 的平均耗时: ((1.550 - 0.550) + (1.420 - 0.430)) / 2 = 0.995
 机器 2 的平均耗时: ((4.512 - 4.100) + (5.000 - 2.500)) / 2 = 1.456</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：分组统计**
+### 方法一：分组统计
 
 我们可以根据 `machine_id` 分组，然后利用 `AVG` 函数计算每台机器上所有进程任务的平均耗时。由于机器上的每个进程任务都有一对开始时间戳和结束时间戳，完成一个进程任务的时间指进程的 `end` 时间戳 减去 `start` 时间戳，因此我们可以利用 `CASE WHEN` 或者 `IF` 函数来计算每个进程任务的耗时，最后再利用 `AVG` 函数计算每台机器上所有进程任务的平均耗时。
 
@@ -87,7 +99,7 @@ Activity table:
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -106,6 +118,18 @@ FROM Activity
 GROUP BY 1;
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### MySQL
+
 ```sql
 # Write your MySQL query statement below
 SELECT
@@ -116,3 +140,7 @@ GROUP BY 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

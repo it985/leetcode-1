@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0051.N-Queens/README.md
+tags:
+    - 数组
+    - 回溯
+---
+
+<!-- problem:start -->
+
 # [51. N 皇后](https://leetcode.cn/problems/n-queens)
 
 [English Version](/solution/0000-0099/0051.N-Queens/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>按照国际象棋的规则，皇后可以攻击与之处在同一行或同一列或同一斜线上的棋子。</p>
 
@@ -43,11 +54,13 @@
 </div>
 </div>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS(回溯)**
+### 方法一：DFS(回溯)
 
 我们定义三个数组 $col$, $dg$ 和 $udg$，分别表示列、正对角线和反对角线上的是否有皇后，如果位置 $(i, j)$ 有皇后，那么 $col[j]$, $dg[i + j]$ 和 $udg[n - i + j]$ 都为 $1$。另外，我们用一个数组 $g$ 记录当前棋盘的状态，初始时 $g$ 中的所有元素都是 `'.'`。
 
@@ -63,9 +76,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -91,9 +102,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -139,7 +148,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -171,7 +180,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func solveNQueens(n int) (ans [][]string) {
@@ -210,17 +219,15 @@ func solveNQueens(n int) (ans [][]string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function solveNQueens(n: number): string[][] {
-    const col: number[] = new Array(n).fill(0);
-    const dg: number[] = new Array(n << 1).fill(0);
-    const udg: number[] = new Array(n << 1).fill(0);
+    const col: number[] = Array(n).fill(0);
+    const dg: number[] = Array(n << 1).fill(0);
+    const udg: number[] = Array(n << 1).fill(0);
     const ans: string[][] = [];
-    const t: string[][] = Array(n)
-        .fill(0)
-        .map(() => Array(n).fill('.'));
+    const t: string[][] = Array.from({ length: n }, () => Array(n).fill('.'));
     const dfs = (i: number) => {
         if (i === n) {
             ans.push(t.map(x => x.join('')));
@@ -241,7 +248,7 @@ function solveNQueens(n: number): string[][] {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -282,10 +289,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

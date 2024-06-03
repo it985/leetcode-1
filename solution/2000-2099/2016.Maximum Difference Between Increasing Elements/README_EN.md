@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2016.Maximum%20Difference%20Between%20Increasing%20Elements/README_EN.md
+rating: 1246
+source: Weekly Contest 260 Q1
+tags:
+    - Array
+---
+
+<!-- problem:start -->
+
 # [2016. Maximum Difference Between Increasing Elements](https://leetcode.com/problems/maximum-difference-between-increasing-elements)
 
 [中文文档](/solution/2000-2099/2016.Maximum%20Difference%20Between%20Increasing%20Elements/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a <strong>0-indexed</strong> integer array <code>nums</code> of size <code>n</code>, find the <strong>maximum difference</strong> between <code>nums[i]</code> and <code>nums[j]</code> (i.e., <code>nums[j] - nums[i]</code>), such that <code>0 &lt;= i &lt; j &lt; n</code> and <code>nums[i] &lt; nums[j]</code>.</p>
 
@@ -46,9 +60,13 @@ The maximum difference occurs with i = 0 and j = 3, nums[j] - nums[i] = 10 - 1 =
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Maintaining Prefix Minimum**
+<!-- solution:start -->
+
+### Solution 1: Maintaining Prefix Minimum
 
 We use the variable $mi$ to represent the minimum value of the elements we have traversed so far, and the variable $ans$ to represent the maximum difference. Initially, $mi$ is set to $+\infty$, and $ans$ is set to $-1$.
 
@@ -60,7 +78,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array. The space c
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +93,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -114,7 +132,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumDifference(nums []int) int {
@@ -131,7 +149,7 @@ func maximumDifference(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumDifference(nums: number[]): number {
@@ -146,7 +164,7 @@ function maximumDifference(nums: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -165,7 +183,7 @@ impl Solution {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -186,10 +204,8 @@ var maximumDifference = function (nums) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

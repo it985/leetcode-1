@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0983.Minimum%20Cost%20For%20Tickets/README.md
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [983. 最低票价](https://leetcode.cn/problems/minimum-cost-for-tickets)
 
 [English Version](/solution/0900-0999/0983.Minimum%20Cost%20For%20Tickets/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在一个火车旅行很受欢迎的国度，你提前一年计划了一些火车旅行。在接下来的一年里，你要旅行的日子将以一个名为&nbsp;<code>days</code>&nbsp;的数组给出。每一项是一个从&nbsp;<code>1</code>&nbsp;到&nbsp;<code>365</code>&nbsp;的整数。</p>
 
@@ -29,10 +40,10 @@
 <strong>输出：</strong>11
 <strong>解释： </strong>
 例如，这里有一种购买通行证的方法，可以让你完成你的旅行计划：
-在第 1 天，你花了 costs[0] = 2 买了一张为期 1 天的通行证，它将在第 1 天生效。
-在第 3 天，你花了 costs[1] = 7 买了一张为期 7 天的通行证，它将在第 3, 4, ..., 9 天生效。
-在第 20 天，你花了 costs[0] = 2 买了一张为期 1 天的通行证，它将在第 20 天生效。
-你总共花了 11，并完成了你计划的每一天旅行。
+在第 1 天，你花了 costs[0] = $2 买了一张为期 1 天的通行证，它将在第 1 天生效。
+在第 3 天，你花了 costs[1] = $7 买了一张为期 7 天的通行证，它将在第 3, 4, ..., 9 天生效。
+在第 20 天，你花了 costs[0] = $2 买了一张为期 1 天的通行证，它将在第 20 天生效。
+你总共花了 $11，并完成了你计划的每一天旅行。
 </pre>
 
 <p><strong>示例 2：</strong></p>
@@ -42,9 +53,9 @@
 <strong>输出：</strong>17
 <strong>解释：
 </strong>例如，这里有一种购买通行证的方法，可以让你完成你的旅行计划： 
-在第 1 天，你花了 costs[2] = 15 买了一张为期 30 天的通行证，它将在第 1, 2, ..., 30 天生效。
-在第 31 天，你花了 costs[0] = 2 买了一张为期 1 天的通行证，它将在第 31 天生效。 
-你总共花了 17，并完成了你计划的每一天旅行。
+在第 1 天，你花了 costs[2] = $15 买了一张为期 30 天的通行证，它将在第 1, 2, ..., 30 天生效。
+在第 31 天，你花了 costs[0] = $2 买了一张为期 1 天的通行证，它将在第 31 天生效。 
+你总共花了 $17，并完成了你计划的每一天旅行。
 </pre>
 
 <p>&nbsp;</p>
@@ -59,11 +70,13 @@
 	<li><code>1 &lt;= costs[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索 + 二分查找**
+### 方法一：记忆化搜索 + 二分查找
 
 定义 $dfs(i)$ 表示从第 $i$ 次出行开始的最低消费。答案为 $dfs(0)$。
 
@@ -73,9 +86,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -93,9 +104,7 @@ class Solution:
         return dfs(0)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -146,7 +155,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -179,7 +188,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func mincostTickets(days []int, costs []int) int {
@@ -222,7 +231,7 @@ func lowerBound(arr []int, x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function mincostTickets(days: number[], costs: number[]): number {
@@ -240,10 +249,8 @@ function mincostTickets(days: number[], costs: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,20 @@
-# [1355. 活动参与者](https://leetcode.cn/problems/activity-participants)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1355.Activity%20Participants/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1355. 活动参与者 🔒](https://leetcode.cn/problems/activity-participants)
 
 [English Version](/solution/1300-1399/1355.Activity%20Participants/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Friends</code></p>
 
@@ -82,13 +92,17 @@ Eating 活动有三个人参加, 是最多人参加的活动 (Jonathan D. , Elvi
 Horse Riding 活动有一个人参加, 是最少人参加的活动 (Bob B.)
 Singing 活动有两个人参加 (Victor J. and Jade W.)</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -104,3 +118,7 @@ WHERE cnt > (SELECT MIN(cnt) FROM t) AND cnt < (SELECT MAX(cnt) FROM t);
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2968.Apply%20Operations%20to%20Maximize%20Frequency%20Score/README_EN.md
+rating: 2444
+source: Weekly Contest 376 Q4
+tags:
+    - Array
+    - Binary Search
+    - Prefix Sum
+    - Sorting
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [2968. Apply Operations to Maximize Frequency Score](https://leetcode.com/problems/apply-operations-to-maximize-frequency-score)
 
 [中文文档](/solution/2900-2999/2968.Apply%20Operations%20to%20Maximize%20Frequency%20Score/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> and an integer <code>k</code>.</p>
 
@@ -49,9 +67,13 @@ It can be shown that we cannot achieve a better score.
 	<li><code>0 &lt;= k &lt;= 10<sup>14</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sorting + Prefix Sum + Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Sorting + Prefix Sum + Binary Search
 
 The problem asks for the maximum frequency of the mode we can get after performing at most $k$ operations. If we sort the array $nums$ in ascending order, it would be best to turn a continuous segment of numbers into the same number, which can reduce the number of operations and increase the frequency of the mode.
 
@@ -83,7 +105,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -110,7 +132,7 @@ class Solution:
         return l
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -149,7 +171,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -191,7 +213,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxFrequencyScore(nums []int, k int64) int {
@@ -230,7 +252,7 @@ func maxFrequencyScore(nums []int, k int64) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxFrequencyScore(nums: number[], k: number): number {
@@ -267,10 +289,8 @@ function maxFrequencyScore(nums: number[], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

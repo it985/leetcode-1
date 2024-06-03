@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0275.H-Index%20II/README.md
+tags:
+    - 数组
+    - 二分查找
+---
+
+<!-- problem:start -->
+
 # [275. H 指数 II](https://leetcode.cn/problems/h-index-ii)
 
 [English Version](/solution/0200-0299/0275.H-Index%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>citations</code> ，其中 <code>citations[i]</code> 表示研究者的第 <code>i</code> 篇论文被引用的次数，<code>citations</code> 已经按照&nbsp;<strong>升序排列&nbsp;</strong>。计算并返回该研究者的 h<strong><em>&nbsp;</em></strong>指数。</p>
 
@@ -40,11 +51,13 @@
 	<li><code>citations</code> 按 <strong>升序排列</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找**
+### 方法一：二分查找
 
 我们注意到，如果有至少 $x$ 篇论文的引用次数大于等于 $x$，那么对于任意 $y \lt x$，其引用次数也一定大于等于 $y$。这存在着单调性。
 
@@ -54,9 +67,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -72,9 +83,7 @@ class Solution:
         return left
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +103,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -114,7 +123,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func hIndex(citations []int) int {
@@ -132,7 +141,26 @@ func hIndex(citations []int) int {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function hIndex(citations: number[]): number {
+    const n = citations.length;
+    let left = 0,
+        right = n;
+    while (left < right) {
+        const mid = (left + right + 1) >> 1;
+        if (citations[n - mid] >= mid) {
+            left = mid;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return left;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -152,26 +180,7 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function hIndex(citations: number[]): number {
-    const n = citations.length;
-    let left = 0,
-        right = n;
-    while (left < right) {
-        const mid = (left + right + 1) >> 1;
-        if (citations[n - mid] >= mid) {
-            left = mid;
-        } else {
-            right = mid - 1;
-        }
-    }
-    return left;
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -191,10 +200,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0685.Redundant%20Connection%20II/README_EN.md
+tags:
+    - Depth-First Search
+    - Breadth-First Search
+    - Union Find
+    - Graph
+---
+
+<!-- problem:start -->
+
 # [685. Redundant Connection II](https://leetcode.com/problems/redundant-connection-ii)
 
 [中文文档](/solution/0600-0699/0685.Redundant%20Connection%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>In this problem, a rooted tree is a <b>directed</b> graph such that, there is exactly one node (the root) for which all other nodes are descendants of this node, plus every node has exactly one parent, except for the root node which has no parents.</p>
 
@@ -38,13 +53,17 @@
 	<li><code>u<sub>i</sub> != v<sub>i</sub></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-Union find.
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class UnionFind:
@@ -86,7 +105,7 @@ class Solution:
         return edges[conflict]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -152,7 +171,7 @@ class UnionFind {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class UnionFind {
@@ -205,7 +224,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type unionFind struct {
@@ -267,10 +286,8 @@ func findRedundantDirectedConnection(edges [][]int) []int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0566.Reshape%20the%20Matrix/README_EN.md
+tags:
+    - Array
+    - Matrix
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [566. Reshape the Matrix](https://leetcode.com/problems/reshape-the-matrix)
 
 [中文文档](/solution/0500-0599/0566.Reshape%20the%20Matrix/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>In MATLAB, there is a handy function called <code>reshape</code> which can reshape an <code>m x n</code> matrix into a new one with a different size <code>r x c</code> keeping its original data.</p>
 
@@ -38,11 +52,17 @@
 	<li><code>1 &lt;= r, c &lt;= 300</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -56,7 +76,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -74,7 +94,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -93,7 +113,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func matrixReshape(mat [][]int, r int, c int) [][]int {
@@ -112,7 +132,7 @@ func matrixReshape(mat [][]int, r int, c int) [][]int {
 }
 ```
 
-### **TypeScrpt**
+#### TypeScript
 
 ```ts
 function matrixReshape(mat: number[][], r: number, c: number): number[][] {
@@ -131,22 +151,7 @@ function matrixReshape(mat: number[][], r: number, c: number): number[][] {
 }
 ```
 
-```ts
-function matrixReshape(mat: number[][], r: number, c: number): number[][] {
-    const m = mat.length;
-    const n = mat[0].length;
-    if (m * n !== r * c) {
-        return mat;
-    }
-    const ans = Array.from({ length: r }, () => new Array(c).fill(0));
-    for (let i = 0; i < r * c; i++) {
-        ans[Math.floor(i / c)][i % c] = mat[Math.floor(i / n)][i % n];
-    }
-    return ans;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -181,7 +186,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 /**
@@ -209,10 +214,35 @@ int** matrixReshape(int** mat, int matSize, int* matColSize, int r, int c, int* 
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### TypeScript
+
+```ts
+function matrixReshape(mat: number[][], r: number, c: number): number[][] {
+    const m = mat.length;
+    const n = mat[0].length;
+    if (m * n !== r * c) {
+        return mat;
+    }
+    const ans = Array.from({ length: r }, () => new Array(c).fill(0));
+    for (let i = 0; i < r * c; i++) {
+        ans[Math.floor(i / c)][i % c] = mat[Math.floor(i / n)][i % n];
+    }
+    return ans;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

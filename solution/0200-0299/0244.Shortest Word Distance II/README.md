@@ -1,10 +1,24 @@
-# [244. 最短单词距离 II](https://leetcode.cn/problems/shortest-word-distance-ii)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0244.Shortest%20Word%20Distance%20II/README.md
+tags:
+    - 设计
+    - 数组
+    - 哈希表
+    - 双指针
+    - 字符串
+---
+
+<!-- problem:start -->
+
+# [244. 最短单词距离 II 🔒](https://leetcode.cn/problems/shortest-word-distance-ii)
 
 [English Version](/solution/0200-0299/0244.Shortest%20Word%20Distance%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请设计一个类，使该类的构造函数能够接收一个字符串数组。然后再实现一个方法，该方法能够分别接收两个单词<em>，</em>并返回列表中这两个单词之间的最短距离。</p>
 
@@ -44,11 +58,13 @@ wordDistance.shortest("makes", "coding");    // 返回 1</pre>
 	<li>&nbsp;<code>shortest</code>&nbsp;操作次数不大于&nbsp;<code>5000</code>&nbsp;</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 双指针**
+### 方法一：哈希表 + 双指针
 
 我们用哈希表 $d$ 存储每个单词在数组中出现的所有下标，然后用双指针 $i$ 和 $j$ 分别指向两个单词在数组中出现的下标列表 $a$ 和 $b$，每次更新下标差值的最小值，然后移动下标较小的指针，直到其中一个指针遍历完下标列表。
 
@@ -56,9 +72,7 @@ wordDistance.shortest("makes", "coding");    // 返回 1</pre>
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class WordDistance:
@@ -85,9 +99,7 @@ class WordDistance:
 # param_1 = obj.shortest(word1,word2)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class WordDistance {
@@ -122,7 +134,7 @@ class WordDistance {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class WordDistance {
@@ -159,7 +171,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type WordDistance struct {
@@ -203,10 +215,8 @@ func abs(x int) int {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

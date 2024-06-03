@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1840.Maximum%20Building%20Height/README_EN.md
+rating: 2374
+source: Weekly Contest 238 Q4
+tags:
+    - Array
+    - Math
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1840. Maximum Building Height](https://leetcode.com/problems/maximum-building-height)
 
 [中文文档](/solution/1800-1899/1840.Maximum%20Building%20Height/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You want to build <code>n</code> new buildings in a city. The new buildings will be built in a line and are labeled from <code>1</code> to <code>n</code>.</p>
 
@@ -58,25 +74,17 @@ We can build the buildings with heights [0,1,2,3,3,4,4,5,4,3], and the tallest b
 	<li><code>0 &lt;= maxHeight<sub>i</sub> &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Soution 1: Sorting + Mathematics**
+<!-- solution:start -->
 
-First, we sort all the restrictions by the building number in ascending order.
-
-Then we traverse all the restrictions from left to right. For each restriction, we can get an upper bound of the maximum height, that is, $r_i[1] = \min(r_i[1], r_{i-1}[1] + r_i[0] - r_{i-1}[0])$, where $r_i$ represents the $i$-th restriction, and $r_i[0]$ and $r_i[1]$ represent the building number and the upper bound of the maximum height of the building, respectively.
-
-Then we traverse all the restrictions from right to left. For each restriction, we can get an upper bound of the maximum height, that is, $r_i[1] = \min(r_i[1], r_{i+1}[1] + r_{i+1}[0] - r_i[0])$.
-
-In this way, we get the upper bound of the maximum height for each restricted building.
-
-The problem asks for the height of the tallest building. We can enumerate the buildings $i$ and $i+1$ between two adjacent restrictions. To maximize the height, the height should first increase and then decrease. Suppose the maximum height is $t$, then $t - r_i[1] + t - r_{i+1}[1] \leq r_{i+1}[0] - r_i[0]$, that is, $t \leq \frac{r_i[1] + r_{i+1}[1] + r_{i+1}[0] - r_{i}[0]}{2}$. We can take the maximum value among all $t$.
-
-The time complexity is $O(m \times \log m)$, and the space complexity is $O(m)$. Where $m$ is the number of restrictions.
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -98,7 +106,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -130,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -157,7 +165,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxBuilding(n int, restrictions [][]int) (ans int) {
@@ -182,10 +190,8 @@ func maxBuilding(n int, restrictions [][]int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

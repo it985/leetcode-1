@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1567.Maximum%20Length%20of%20Subarray%20With%20Positive%20Product/README_EN.md
+rating: 1710
+source: Weekly Contest 204 Q2
+tags:
+    - Greedy
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [1567. Maximum Length of Subarray With Positive Product](https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product)
 
 [中文文档](/solution/1500-1599/1567.Maximum%20Length%20of%20Subarray%20With%20Positive%20Product/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of integers <code>nums</code>, find the maximum length of a subarray where the product of all its elements is positive.</p>
 
@@ -43,11 +59,17 @@ Notice that we cannot include 0 in the subarray since that&#39;ll make the produ
 	<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -77,7 +99,7 @@ class Solution:
         return res
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -104,34 +126,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function getMaxLen(nums: number[]): number {
-    // 连续正数计数n1, 连续负数计数n2
-    let n1 = nums[0] > 0 ? 1 : 0,
-        n2 = nums[0] < 0 ? 1 : 0;
-    let ans = n1;
-    for (let i = 1; i < nums.length; ++i) {
-        let cur = nums[i];
-        if (cur == 0) {
-            (n1 = 0), (n2 = 0);
-        } else if (cur > 0) {
-            ++n1;
-            n2 = n2 > 0 ? n2 + 1 : 0;
-        } else {
-            let t1 = n1,
-                t2 = n2;
-            n1 = t2 > 0 ? t2 + 1 : 0;
-            n2 = t1 + 1;
-        }
-        ans = Math.max(ans, n1);
-    }
-    return ans;
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -159,7 +154,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getMaxLen(nums []int) int {
@@ -196,10 +191,35 @@ func getMaxLen(nums []int) int {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
-
+```ts
+function getMaxLen(nums: number[]): number {
+    // 连续正数计数n1, 连续负数计数n2
+    let n1 = nums[0] > 0 ? 1 : 0,
+        n2 = nums[0] < 0 ? 1 : 0;
+    let ans = n1;
+    for (let i = 1; i < nums.length; ++i) {
+        let cur = nums[i];
+        if (cur == 0) {
+            (n1 = 0), (n2 = 0);
+        } else if (cur > 0) {
+            ++n1;
+            n2 = n2 > 0 ? n2 + 1 : 0;
+        } else {
+            let t1 = n1,
+                t2 = n2;
+            n1 = t2 > 0 ? t2 + 1 : 0;
+            n2 = t1 + 1;
+        }
+        ans = Math.max(ans, n1);
+    }
+    return ans;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

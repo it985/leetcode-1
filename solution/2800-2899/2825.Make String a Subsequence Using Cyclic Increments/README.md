@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2825.Make%20String%20a%20Subsequence%20Using%20Cyclic%20Increments/README.md
+rating: 1414
+source: 第 111 场双周赛 Q2
+tags:
+    - 双指针
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2825. 循环增长使字符串子序列等于另一个字符串](https://leetcode.cn/problems/make-string-a-subsequence-using-cyclic-increments)
 
 [English Version](/solution/2800-2899/2825.Make%20String%20a%20Subsequence%20Using%20Cyclic%20Increments/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的字符串&nbsp;<code>str1</code> 和&nbsp;<code>str2</code>&nbsp;。</p>
 
@@ -53,11 +66,13 @@
 	<li><code>str1</code>&nbsp;和&nbsp;<code>str2</code>&nbsp;只包含小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双指针**
+### 方法一：双指针
 
 本题实际上需要我们判断一个字符串 $s$ 是否为另一个字符串 $t$ 的子序列，只不过字符之间可以不完全匹配，如果两个字符相同，或者一个字符是另一个字符的下一个字符，就可以匹配。
 
@@ -65,9 +80,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,9 +93,7 @@ class Solution:
         return i == len(str2)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +110,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -117,7 +128,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canMakeSubsequence(str1 string, str2 string) bool {
@@ -135,7 +146,7 @@ func canMakeSubsequence(str1 string, str2 string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canMakeSubsequence(str1: string, str2: string): boolean {
@@ -151,10 +162,8 @@ function canMakeSubsequence(str1: string, str2: string): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

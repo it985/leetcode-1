@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2785.Sort%20Vowels%20in%20a%20String/README.md
+rating: 1266
+source: 第 109 场双周赛 Q2
+tags:
+    - 字符串
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2785. 将字符串中的元音字母排序](https://leetcode.cn/problems/sort-vowels-in-a-string)
 
 [English Version](/solution/2700-2799/2785.Sort%20Vowels%20in%20a%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的字符串&nbsp;<code>s</code>&nbsp;，将&nbsp;<code>s</code>&nbsp;中的元素重新 <b>排列</b>&nbsp;得到新的字符串&nbsp;<code>t</code>&nbsp;，它满足：</p>
 
@@ -44,15 +57,23 @@
 	<li><code>s</code>&nbsp;只包含英语字母表中的 <strong>大写&nbsp;</strong>和 <strong>小写&nbsp;</strong>字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一：排序
+
+我们先将字符串中的所有元音字母存到数组或列表 $vs$ 中，然后我们对 $vs$ 进行排序。
+
+接下来，我们遍历字符串 $s$，保持辅音字母不变，如果是元音字母，则依次按顺序替换为 $vs$ 数组中的字母。
+
+时间复杂度 $O(n \times \log n)$，空间复杂度 $O(n)$。其中 $n$ 是字符串 $s$ 的长度。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -68,9 +89,7 @@ class Solution:
         return "".join(cs)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -95,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -120,7 +139,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sortVowels(s string) string {
@@ -145,7 +164,7 @@ func sortVowels(s string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sortVowels(s: string): string {
@@ -163,7 +182,7 @@ function sortVowels(s: string): string {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -191,10 +210,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

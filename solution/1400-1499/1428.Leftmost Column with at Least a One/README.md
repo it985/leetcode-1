@@ -1,10 +1,23 @@
-# [1428. 至少有一个 1 的最左端列](https://leetcode.cn/problems/leftmost-column-with-at-least-a-one)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1428.Leftmost%20Column%20with%20at%20Least%20a%20One/README.md
+tags:
+    - 数组
+    - 二分查找
+    - 交互
+    - 矩阵
+---
+
+<!-- problem:start -->
+
+# [1428. 至少有一个 1 的最左端列 🔒](https://leetcode.cn/problems/leftmost-column-with-at-least-a-one)
 
 [English Version](/solution/1400-1499/1428.Leftmost%20Column%20with%20at%20Least%20a%20One/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><em>（这是一个<strong>交互题</strong>）</em></p>
 
@@ -72,11 +85,13 @@
 	<li><code>mat[i]</code>&nbsp;已按非递减顺序排序。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找**
+### 方法一：二分查找
 
 我们先调用 `BinaryMatrix.dimensions()` 得到矩阵的行数 $m$ 和列数 $n$，然后对于每一行，我们使用二分查找来找到最左边的 $1$ 所在的列数 $j$，找出所有行中最小的满足 $j$ 的值即为答案。如果不存在这样的列，则返回 $-1$。
 
@@ -84,9 +99,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # """
@@ -108,9 +121,7 @@ class Solution:
         return -1 if ans >= n else ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -144,7 +155,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -180,7 +191,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -215,7 +226,7 @@ func leftMostColumnWithOne(binaryMatrix BinaryMatrix) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -247,9 +258,10 @@ function leftMostColumnWithOne(binaryMatrix: BinaryMatrix) {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
+
 /**
  * // This is the BinaryMatrix's API interface.
  * // You should not implement it, or speculate about its implementation
@@ -289,7 +301,7 @@ impl Solution {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 /**
@@ -323,10 +335,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

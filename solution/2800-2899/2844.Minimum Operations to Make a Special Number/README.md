@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2844.Minimum%20Operations%20to%20Make%20a%20Special%20Number/README.md
+rating: 1588
+source: 第 361 场周赛 Q2
+tags:
+    - 贪心
+    - 数学
+    - 字符串
+    - 枚举
+---
+
+<!-- problem:start -->
+
 # [2844. 生成特殊数字的最少操作](https://leetcode.cn/problems/minimum-operations-to-make-a-special-number)
 
 [English Version](/solution/2800-2899/2844.Minimum%20Operations%20to%20Make%20a%20Special%20Number/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的字符串 <code>num</code> ，表示一个非负整数。</p>
 
@@ -53,11 +68,13 @@
 	<li><code>num</code> 不含任何前导零</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索**
+### 方法一：记忆化搜索
 
 我们注意到，整数 $x$ 要能被 $25$ 整除，即 $x \bmod 25 = 0$。因此，我们可以设计一个函数 $dfs(i, k)$，表示从字符串 $num$ 的第 $i$ 位开始，且当前数字模 $25$ 的结果为 $k$ 的情况下，要使得数字变成特殊数字，最少需要删除多少位数字。那么答案为 $dfs(0, 0)$。
 
@@ -72,9 +89,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -91,9 +106,7 @@ class Solution:
         return dfs(0, 0)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -122,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -147,7 +160,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumOperations(num string) int {
@@ -177,7 +190,7 @@ func minimumOperations(num string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumOperations(num: string): number {
@@ -198,10 +211,8 @@ function minimumOperations(num: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

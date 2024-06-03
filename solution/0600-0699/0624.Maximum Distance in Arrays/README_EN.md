@@ -1,8 +1,21 @@
-# [624. Maximum Distance in Arrays](https://leetcode.com/problems/maximum-distance-in-arrays)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0624.Maximum%20Distance%20in%20Arrays/README_EN.md
+tags:
+    - Greedy
+    - Array
+---
+
+<!-- problem:start -->
+
+# [624. Maximum Distance in Arrays 🔒](https://leetcode.com/problems/maximum-distance-in-arrays)
 
 [中文文档](/solution/0600-0699/0624.Maximum%20Distance%20in%20Arrays/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given <code>m</code> <code>arrays</code>, where each array is sorted in <strong>ascending order</strong>.</p>
 
@@ -38,11 +51,17 @@
 	<li>There will be at most <code>10<sup>5</sup></code> integers in all the arrays.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -57,7 +76,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -78,7 +97,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -98,7 +117,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxDistance(arrays [][]int) (ans int) {
@@ -120,10 +139,8 @@ func abs(x int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

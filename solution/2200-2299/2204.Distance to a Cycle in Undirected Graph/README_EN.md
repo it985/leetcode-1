@@ -1,8 +1,23 @@
-# [2204. Distance to a Cycle in Undirected Graph](https://leetcode.com/problems/distance-to-a-cycle-in-undirected-graph)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2204.Distance%20to%20a%20Cycle%20in%20Undirected%20Graph/README_EN.md
+tags:
+    - Depth-First Search
+    - Breadth-First Search
+    - Union Find
+    - Graph
+---
+
+<!-- problem:start -->
+
+# [2204. Distance to a Cycle in Undirected Graph 🔒](https://leetcode.com/problems/distance-to-a-cycle-in-undirected-graph)
 
 [中文文档](/solution/2200-2299/2204.Distance%20to%20a%20Cycle%20in%20Undirected%20Graph/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a positive integer <code>n</code> representing the number of nodes in a <strong>connected undirected graph</strong> containing <strong>exactly one</strong> cycle. The nodes are numbered from <code>0</code> to <code>n - 1</code> (<strong>inclusive</strong>).</p>
 
@@ -61,9 +76,13 @@ The distance from 8 to 2 is 2.
 	<li>There is at most one edge between any pair of vertices.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Topological Sorting**
+<!-- solution:start -->
+
+### Solution 1: Topological Sorting
 
 We can first convert the edges in $edges$ into an adjacency list $g$, where $g[i]$ represents all adjacent nodes of node $i$, represented as a set.
 
@@ -79,11 +98,11 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 Similar problems:
 
--   [2603. Collect Coins in a Tree](/solution/2600-2699/2603.Collect%20Coins%20in%20a%20Tree/README_EN.md)
+-   [2603. Collect Coins in a Tree](https://github.com/doocs/leetcode/blob/main/solution/2600-2699/2603.Collect%20Coins%20in%20a%20Tree/README_EN.md)
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -110,7 +129,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -151,7 +170,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -195,7 +214,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func distanceToCycle(n int, edges [][]int) []int {
@@ -238,7 +257,7 @@ func distanceToCycle(n int, edges [][]int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function distanceToCycle(n: number, edges: number[][]): number[] {
@@ -276,10 +295,8 @@ function distanceToCycle(n: number, edges: number[][]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

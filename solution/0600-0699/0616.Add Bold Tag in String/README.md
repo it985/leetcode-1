@@ -1,10 +1,24 @@
-# [616. 给字符串添加加粗标签](https://leetcode.cn/problems/add-bold-tag-in-string)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0616.Add%20Bold%20Tag%20in%20String/README.md
+tags:
+    - 字典树
+    - 数组
+    - 哈希表
+    - 字符串
+    - 字符串匹配
+---
+
+<!-- problem:start -->
+
+# [616. 给字符串添加加粗标签 🔒](https://leetcode.cn/problems/add-bold-tag-in-string)
 
 [English Version](/solution/0600-0699/0616.Add%20Bold%20Tag%20in%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定字符串 <code>s</code> 和字符串数组 <code>words</code>。</p>
 
@@ -31,8 +45,8 @@
 <p><strong>示例 2：</strong></p>
 
 <pre>
-<strong>输入：</strong>s = "aaabbcc", words = ["aaa","aab","bc"]
-<strong>输出：</strong>"&lt;b&gt;aaabbc&lt;/b&gt;c"
+<strong>输入：</strong>s = "aaabbb", words = ["aa","b"]
+<strong>输出：</strong>"&lt;b&gt;aaabbb&lt;/b&gt;"
 <strong>解释：</strong>
 "aa"作为子字符串出现了两次: "<u>aa</u>abbb" 和 "a<u>aa</u>bbb"。
 "b"作为子字符串出现了三次: "aaa<u>b</u>bb"、"aaab<u>b</u>b" 和 "aaabb<u>b</u>"。
@@ -59,19 +73,22 @@
 
 <p>&nbsp;</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：前缀树 + 区间合并**
+### 方法一：前缀树 + 区间合并
 
-相似题目：[1065. 字符串的索引对](/solution/1000-1099/1065.Index%20Pairs%20of%20a%20String/README.md)、[758. 字符串中的加粗单词](/solution/0700-0799/0758.Bold%20Words%20in%20String/README.md)
+相似题目：
+
+-   [1065. 字符串的索引对](https://github.com/doocs/leetcode/blob/main/solution/1000-1099/1065.Index%20Pairs%20of%20a%20String/README.md)
+-   [758. 字符串中的加粗单词](https://github.com/doocs/leetcode/blob/main/solution/0700-0799/0758.Bold%20Words%20in%20String/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Trie:
@@ -135,9 +152,7 @@ class Solution:
         return ''.join(ans)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Trie {
@@ -216,7 +231,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Trie {
@@ -287,7 +302,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Trie struct {
@@ -365,10 +380,8 @@ func addBoldTag(s string, words []string) string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

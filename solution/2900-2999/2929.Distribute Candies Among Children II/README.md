@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2929.Distribute%20Candies%20Among%20Children%20II/README.md
+rating: 1701
+source: 第 117 场双周赛 Q2
+tags:
+    - 数学
+    - 组合数学
+    - 枚举
+---
+
+<!-- problem:start -->
+
 # [2929. 给小朋友们分糖果 II](https://leetcode.cn/problems/distribute-candies-among-children-ii)
 
 [English Version](/solution/2900-2999/2929.Distribute%20Candies%20Among%20Children%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个正整数&nbsp;<code>n</code> 和&nbsp;<code>limit</code>&nbsp;。</p>
 
@@ -37,11 +51,13 @@
 	<li><code>1 &lt;= limit &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：组合数学 + 容斥原理**
+### 方法一：组合数学 + 容斥原理
 
 根据题目描述，我们需要将 $n$ 个糖果分给 $3$ 个小孩，每个小孩分到的糖果数在 $[0, limit]$ 之间。
 
@@ -53,9 +69,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -70,9 +84,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -96,7 +108,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -120,7 +132,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func distributeCandies(n int, limit int) int64 {
@@ -130,7 +142,7 @@ func distributeCandies(n int, limit int) int64 {
 	if n > 3*limit {
 		return 0
 	}
-	ans := comb2(n+2)
+	ans := comb2(n + 2)
 	if n > limit {
 		ans -= 3 * comb2(n-limit+1)
 	}
@@ -141,7 +153,7 @@ func distributeCandies(n int, limit int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function distributeCandies(n: number, limit: number): number {
@@ -160,10 +172,8 @@ function distributeCandies(n: number, limit: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

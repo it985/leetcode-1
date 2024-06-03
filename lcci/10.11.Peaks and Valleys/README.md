@@ -1,10 +1,19 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/10.11.Peaks%20and%20Valleys/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 10.11. 峰与谷](https://leetcode.cn/problems/peaks-and-valleys-lcci)
 
 [English Version](/lcci/10.11.Peaks%20and%20Valleys/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
+
 <p>在一个整数数组中，&ldquo;峰&rdquo;是大于或等于相邻整数的元素，相应地，&ldquo;谷&rdquo;是小于或等于相邻整数的元素。例如，在数组{5, 8, 6, 2, 3, 4, 6}中，{8, 6}是峰， {5, 2}是谷。现在给定一个整数数组，将该数组按峰与谷的交替顺序排序。</p>
 <p><strong>示例:</strong></p>
 <pre><strong>输入: </strong>[5, 3, 1, 2, 3]
@@ -15,11 +24,13 @@
 	<li><code>nums.length &lt;= 10000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序**
+### 方法一：排序
 
 我们先对数组进行排序，然后遍历数组，将偶数下标的元素与后一个元素交换即可。
 
@@ -27,9 +38,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -39,9 +48,7 @@ class Solution:
             nums[i : i + 2] = nums[i : i + 2][::-1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -57,7 +64,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -72,7 +79,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func wiggleSort(nums []int) {
@@ -83,7 +90,7 @@ func wiggleSort(nums []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -98,10 +105,26 @@ function wiggleSort(nums: number[]): void {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    func wiggleSort(_ nums: inout [Int]) {
+        nums.sort()
 
+        let n = nums.count
+
+        for i in stride(from: 0, to: n - 1, by: 2) {
+            let temp = nums[i]
+            nums[i] = nums[i + 1]
+            nums[i + 1] = temp
+        }
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

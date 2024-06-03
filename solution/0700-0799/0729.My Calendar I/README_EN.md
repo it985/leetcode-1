@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0729.My%20Calendar%20I/README_EN.md
+tags:
+    - Design
+    - Segment Tree
+    - Array
+    - Binary Search
+    - Ordered Set
+---
+
+<!-- problem:start -->
+
 # [729. My Calendar I](https://leetcode.com/problems/my-calendar-i)
 
 [中文文档](/solution/0700-0799/0729.My%20Calendar%20I/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are implementing a program to use as your calendar. We can add a new event if adding the event will not cause a <strong>double booking</strong>.</p>
 
@@ -41,11 +57,17 @@ myCalendar.book(20, 30); // return True, The event can be booked, as the first e
 	<li>At most <code>1000</code> calls will be made to <code>book</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 from sortedcontainers import SortedDict
@@ -68,7 +90,7 @@ class MyCalendar:
 # param_1 = obj.book(start,end)
 ```
 
-### **Java**
+#### Java
 
 ```java
 import java.util.Map;
@@ -101,38 +123,7 @@ class MyCalendar {
  */
 ```
 
-### **Go**
-
-```go
-type MyCalendar struct {
-	rbt *redblacktree.Tree
-}
-
-func Constructor() MyCalendar {
-	return MyCalendar{
-		rbt: redblacktree.NewWithIntComparator(),
-	}
-}
-
-func (this *MyCalendar) Book(start int, end int) bool {
-	if p, ok := this.rbt.Floor(start); ok && p.Value.(int) > start {
-		return false
-	}
-	if p, ok := this.rbt.Ceiling(start); ok && p.Key.(int) < end {
-		return false
-	}
-	this.rbt.Put(start, end)
-	return true
-}
-
-/**
- * Your MyCalendar object will be instantiated and called as such:
- * obj := Constructor();
- * param_1 := obj.Book(start,end);
- */
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class MyCalendar {
@@ -165,7 +156,38 @@ public:
  */
 ```
 
-### **TypeScript**
+#### Go
+
+```go
+type MyCalendar struct {
+	rbt *redblacktree.Tree
+}
+
+func Constructor() MyCalendar {
+	return MyCalendar{
+		rbt: redblacktree.NewWithIntComparator(),
+	}
+}
+
+func (this *MyCalendar) Book(start int, end int) bool {
+	if p, ok := this.rbt.Floor(start); ok && p.Value.(int) > start {
+		return false
+	}
+	if p, ok := this.rbt.Ceiling(start); ok && p.Key.(int) < end {
+		return false
+	}
+	this.rbt.Put(start, end)
+	return true
+}
+
+/**
+ * Your MyCalendar object will be instantiated and called as such:
+ * obj := Constructor();
+ * param_1 := obj.Book(start,end);
+ */
+```
+
+#### TypeScript
 
 ```ts
 class MyCalendar {
@@ -194,7 +216,7 @@ class MyCalendar {
  */
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::BTreeMap;
@@ -236,10 +258,8 @@ impl MyCalendar {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

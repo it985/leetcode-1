@@ -1,10 +1,20 @@
-# [580. 统计各专业学生人数](https://leetcode.cn/problems/count-student-number-in-departments)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0580.Count%20Student%20Number%20in%20Departments/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [580. 统计各专业学生人数 🔒](https://leetcode.cn/problems/count-student-number-in-departments)
 
 [English Version](/solution/0500-0599/0580.Count%20Student%20Number%20in%20Departments/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表:&nbsp;<code>Student</code></p>
 
@@ -75,17 +85,19 @@ Department 表:
 | Law         | 0              |
 +-------------+----------------+</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：左连接 + 分组统计**
+### 方法一：左连接 + 分组统计
 
 我们可以使用左连接，将 `Department` 表与 `Student` 表按照 `dept_id` 进行连接，然后按照 `dept_id` 分组统计学生人数，最后按照 `student_number` 降序、`dept_name` 升序排序即可。
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -98,3 +110,7 @@ ORDER BY 2 DESC, 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

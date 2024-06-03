@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2537.Count%20the%20Number%20of%20Good%20Subarrays/README_EN.md
+rating: 1891
+source: Weekly Contest 328 Q3
+tags:
+    - Array
+    - Hash Table
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [2537. Count the Number of Good Subarrays](https://leetcode.com/problems/count-the-number-of-good-subarrays)
 
 [中文文档](/solution/2500-2599/2537.Count%20the%20Number%20of%20Good%20Subarrays/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code> and an integer <code>k</code>, return <em>the number of <strong>good</strong> subarrays of</em> <code>nums</code>.</p>
 
@@ -39,9 +55,13 @@
 	<li><code>1 &lt;= nums[i], k &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table + Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Hash Table + Two Pointers
 
 If a subarray contains $k$ pairs of identical elements, then an array that contains this subarray must contain at least $k$ pairs of identical elements.
 
@@ -55,7 +75,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$, where $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +95,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +118,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -122,7 +142,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countGood(nums []int, k int) int64 {
@@ -145,10 +165,8 @@ func countGood(nums []int, k int) int64 {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

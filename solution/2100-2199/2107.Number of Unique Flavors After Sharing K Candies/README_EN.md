@@ -1,8 +1,22 @@
-# [2107. Number of Unique Flavors After Sharing K Candies](https://leetcode.com/problems/number-of-unique-flavors-after-sharing-k-candies)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2107.Number%20of%20Unique%20Flavors%20After%20Sharing%20K%20Candies/README_EN.md
+tags:
+    - Array
+    - Hash Table
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
+# [2107. Number of Unique Flavors After Sharing K Candies 🔒](https://leetcode.com/problems/number-of-unique-flavors-after-sharing-k-candies)
 
 [中文文档](/solution/2100-2199/2107.Number%20of%20Unique%20Flavors%20After%20Sharing%20K%20Candies/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>candies</code>, where <code>candies[i]</code> represents the flavor of the <code>i<sup>th</sup></code> candy. Your mom wants you to share these candies with your little sister by giving her <code>k</code> <strong>consecutive</strong> candies, but you want to keep as many flavors of candies as possible.</p>
 
@@ -52,9 +66,13 @@ There are 3 unique flavors, so return 3.
 	<li><code>0 &lt;= k &lt;= candies.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sliding Window + Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Sliding Window + Hash Table
 
 We can maintain a sliding window of size $k$, where the candies outside the window are for ourselves, and the $k$ candies inside the window are shared with our sister and mother. We can use a hash table $cnt$ to record the flavors of the candies outside the window and their corresponding quantities.
 
@@ -68,7 +86,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -84,7 +102,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +125,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -131,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func shareCandies(candies []int, k int) (ans int) {
@@ -152,7 +170,28 @@ func shareCandies(candies []int, k int) (ans int) {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function shareCandies(candies: number[], k: number): number {
+    const cnt: Map<number, number> = new Map();
+    for (const x of candies.slice(k)) {
+        cnt.set(x, (cnt.get(x) || 0) + 1);
+    }
+    let ans = cnt.size;
+    for (let i = k; i < candies.length; ++i) {
+        cnt.set(candies[i - k], (cnt.get(candies[i - k]) || 0) + 1);
+        cnt.set(candies[i], (cnt.get(candies[i]) || 0) - 1);
+        if (cnt.get(candies[i]) === 0) {
+            cnt.delete(candies[i]);
+        }
+        ans = Math.max(ans, cnt.size);
+    }
+    return ans;
+}
+```
+
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -185,31 +224,8 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function shareCandies(candies: number[], k: number): number {
-    const cnt: Map<number, number> = new Map();
-    for (const x of candies.slice(k)) {
-        cnt.set(x, (cnt.get(x) || 0) + 1);
-    }
-    let ans = cnt.size;
-    for (let i = k; i < candies.length; ++i) {
-        cnt.set(candies[i - k], (cnt.get(candies[i - k]) || 0) + 1);
-        cnt.set(candies[i], (cnt.get(candies[i]) || 0) - 1);
-        if (cnt.get(candies[i]) === 0) {
-            cnt.delete(candies[i]);
-        }
-        ans = Math.max(ans, cnt.size);
-    }
-    return ans;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

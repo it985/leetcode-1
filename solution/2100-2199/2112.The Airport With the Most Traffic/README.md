@@ -1,10 +1,20 @@
-# [2112. 最繁忙的机场](https://leetcode.cn/problems/the-airport-with-the-most-traffic)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2112.The%20Airport%20With%20the%20Most%20Traffic/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2112. 最繁忙的机场 🔒](https://leetcode.cn/problems/the-airport-with-the-most-traffic)
 
 [English Version](/solution/2100-2199/2112.The%20Airport%20With%20the%20Most%20Traffic/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Flights</code></p>
 
@@ -87,15 +97,17 @@ Flights 表:
 6 号机场有 7 个航班 (7 个到达).
 流量最大的机场是机场 1、2、3 和 4。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -116,3 +128,7 @@ WHERE cnt = (SELECT MAX(cnt) FROM P);
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

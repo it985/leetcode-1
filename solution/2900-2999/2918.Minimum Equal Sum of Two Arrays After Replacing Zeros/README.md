@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2918.Minimum%20Equal%20Sum%20of%20Two%20Arrays%20After%20Replacing%20Zeros/README.md
+rating: 1526
+source: 第 369 场周赛 Q2
+tags:
+    - 贪心
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [2918. 数组的最小相等和](https://leetcode.cn/problems/minimum-equal-sum-of-two-arrays-after-replacing-zeros)
 
 [English Version](/solution/2900-2999/2918.Minimum%20Equal%20Sum%20of%20Two%20Arrays%20After%20Replacing%20Zeros/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个由正整数和 <code>0</code> 组成的数组 <code>nums1</code> 和 <code>nums2</code> 。</p>
 
@@ -42,11 +55,13 @@
 	<li><code>0 &lt;= nums1[i], nums2[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：分情况讨论**
+### 方法一：分情况讨论
 
 我们记把数组中的 $0$ 视为 $1$，统计两个数组的和，分别记为 $s_1$ 和 $s_2$。不妨设 $s_1 \le s_2$。
 
@@ -57,9 +72,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -73,9 +86,7 @@ class Solution:
         return -1 if nums1.count(0) == 0 else s2
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -100,7 +111,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -126,7 +137,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minSum(nums1 []int, nums2 []int) int64 {
@@ -154,7 +165,7 @@ func minSum(nums1 []int, nums2 []int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minSum(nums1: number[], nums2: number[]): number {
@@ -179,10 +190,33 @@ function minSum(nums1: number[], nums2: number[]): number {
 }
 ```
 
-### **...**
+#### C#
 
-```
-
+```cs
+public class Solution {
+    public long MinSum(int[] nums1, int[] nums2) {
+        long s1 = 0, s2 = 0;
+        bool hasZero = false;
+        foreach (int x in nums1) {
+            hasZero |= x == 0;
+            s1 += Math.Max(x, 1);
+        }
+        foreach (int x in nums2) {
+            s2 += Math.Max(x, 1);
+        }
+        if (s1 > s2) {
+            return MinSum(nums2, nums1);
+        }
+        if (s1 == s2) {
+            return s1;
+        }
+        return hasZero ? s2 : -1;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

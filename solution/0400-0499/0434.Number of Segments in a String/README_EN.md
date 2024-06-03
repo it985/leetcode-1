@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0434.Number%20of%20Segments%20in%20a%20String/README_EN.md
+tags:
+    - String
+---
+
+<!-- problem:start -->
+
 # [434. Number of Segments in a String](https://leetcode.com/problems/number-of-segments-in-a-string)
 
 [中文文档](/solution/0400-0499/0434.Number%20of%20Segments%20in%20a%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a string <code>s</code>, return <em>the number of segments in the string</em>.</p>
 
@@ -33,11 +45,17 @@
 	<li>The only space character in <code>s</code> is <code>&#39; &#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -45,31 +63,7 @@ class Solution:
         return len(s.split())
 ```
 
-```python
-class Solution:
-    def countSegments(self, s: str) -> int:
-        ans = 0
-        for i, c in enumerate(s):
-            if c != ' ' and (i == 0 or s[i - 1] == ' '):
-                ans += 1
-        return ans
-```
-
-### **Java**
-
-```java
-class Solution {
-    public int countSegments(String s) {
-        int res = 0;
-        for (String t : s.split(" ")) {
-            if (!"".equals(t)) {
-                ++res;
-            }
-        }
-        return res;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -85,7 +79,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -99,22 +93,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int countSegments(string s) {
-        int ans = 0;
-        for (int i = 0; i < s.size(); ++i) {
-            if (s[i] != ' ' && (i == 0 || s[i - 1] == ' ')) {
-                ++ans;
-            }
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func countSegments(s string) int {
@@ -128,19 +107,7 @@ func countSegments(s string) int {
 }
 ```
 
-```go
-func countSegments(s string) int {
-	ans := 0
-	for i, c := range s {
-		if c != ' ' && (i == 0 || s[i-1] == ' ') {
-			ans++
-		}
-	}
-	return ans
-}
-```
-
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -161,10 +128,77 @@ class Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def countSegments(self, s: str) -> int:
+        ans = 0
+        for i, c in enumerate(s):
+            if c != ' ' and (i == 0 or s[i - 1] == ' '):
+                ans += 1
+        return ans
 ```
 
+#### Java
+
+```java
+class Solution {
+    public int countSegments(String s) {
+        int ans = 0;
+        for (int i = 0; i < s.length(); ++i) {
+            if (s.charAt(i) != ' ' && (i == 0 || s.charAt(i - 1) == ' ')) {
+                ++ans;
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int countSegments(string s) {
+        int ans = 0;
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] != ' ' && (i == 0 || s[i - 1] == ' ')) {
+                ++ans;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func countSegments(s string) int {
+	ans := 0
+	for i, c := range s {
+		if c != ' ' && (i == 0 || s[i-1] == ' ') {
+			ans++
+		}
+	}
+	return ans
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

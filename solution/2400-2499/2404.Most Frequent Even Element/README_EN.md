@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2404.Most%20Frequent%20Even%20Element/README_EN.md
+rating: 1259
+source: Weekly Contest 310 Q1
+tags:
+    - Array
+    - Hash Table
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [2404. Most Frequent Even Element](https://leetcode.com/problems/most-frequent-even-element)
 
 [中文文档](/solution/2400-2499/2404.Most%20Frequent%20Even%20Element/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code>, return <em>the most frequent even element</em>.</p>
 
@@ -42,9 +58,13 @@ We return the smallest one, which is 2.</pre>
 	<li><code>0 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Hash Table
 
 We use a hash table $cnt$ to count the occurrence of all even elements, and then find the even element with the highest occurrence and the smallest value.
 
@@ -52,7 +72,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,7 +85,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -89,7 +109,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -113,7 +133,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func mostFrequentEven(nums []int) int {
@@ -133,7 +153,7 @@ func mostFrequentEven(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function mostFrequentEven(nums: number[]): number {
@@ -155,7 +175,7 @@ function mostFrequentEven(nums: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -180,7 +200,7 @@ impl Solution {
 }
 ```
 
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -207,10 +227,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

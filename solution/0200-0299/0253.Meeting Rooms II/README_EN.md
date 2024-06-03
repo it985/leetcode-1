@@ -1,8 +1,25 @@
-# [253. Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0253.Meeting%20Rooms%20II/README_EN.md
+tags:
+    - Greedy
+    - Array
+    - Two Pointers
+    - Prefix Sum
+    - Sorting
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
+# [253. Meeting Rooms II 🔒](https://leetcode.com/problems/meeting-rooms-ii)
 
 [中文文档](/solution/0200-0299/0253.Meeting%20Rooms%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of meeting time intervals <code>intervals</code> where <code>intervals[i] = [start<sub>i</sub>, end<sub>i</sub>]</code>, return <em>the minimum number of conference rooms required</em>.</p>
 
@@ -22,11 +39,17 @@
 	<li><code>0 &lt;= start<sub>i</sub> &lt; end<sub>i</sub> &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -38,7 +61,7 @@ class Solution:
         return max(accumulate(delta))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -59,7 +82,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -79,7 +102,24 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func minMeetingRooms(intervals [][]int) int {
+	n := 1000010
+	delta := make([]int, n)
+	for _, e := range intervals {
+		delta[e[0]]++
+		delta[e[1]]--
+	}
+	for i := 1; i < n; i++ {
+		delta[i] += delta[i-1]
+	}
+	return slices.Max(delta)
+}
+```
+
+#### Rust
 
 ```rust
 use std::{ collections::BinaryHeap, cmp::Reverse };
@@ -119,27 +159,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func minMeetingRooms(intervals [][]int) int {
-	n := 1000010
-	delta := make([]int, n)
-	for _, e := range intervals {
-		delta[e[0]]++
-		delta[e[1]]--
-	}
-	for i := 1; i < n; i++ {
-		delta[i] += delta[i-1]
-	}
-	return slices.Max(delta)
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

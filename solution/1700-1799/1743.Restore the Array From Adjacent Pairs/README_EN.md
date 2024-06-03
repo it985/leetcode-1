@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1743.Restore%20the%20Array%20From%20Adjacent%20Pairs/README_EN.md
+rating: 1579
+source: Weekly Contest 226 Q2
+tags:
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [1743. Restore the Array From Adjacent Pairs](https://leetcode.com/problems/restore-the-array-from-adjacent-pairs)
 
 [中文文档](/solution/1700-1799/1743.Restore%20the%20Array%20From%20Adjacent%20Pairs/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is an integer array <code>nums</code> that consists of <code>n</code> <strong>unique </strong>elements, but you have forgotten it. However, you do remember every pair of adjacent elements in <code>nums</code>.</p>
 
@@ -50,13 +65,17 @@ Another solution is [-3,1,4,-2], which would also be accepted.
 	<li>There exists some <code>nums</code> that has <code>adjacentPairs</code> as its pairs.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-Traverse the graph from the point where the degree is one.
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -78,26 +97,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def restoreArray(self, adjacentPairs: List[List[int]]) -> List[int]:
-        def dfs(i, fa):
-            ans.append(i)
-            for j in g[i]:
-                if j != fa:
-                    dfs(j, i)
-
-        g = defaultdict(list)
-        for a, b in adjacentPairs:
-            g[a].append(b)
-            g[b].append(a)
-        i = next(i for i, v in g.items() if len(v) == 1)
-        ans = []
-        dfs(i, 1e6)
-        return ans
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -126,40 +126,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    private Map<Integer, List<Integer>> g = new HashMap<>();
-    private int[] ans;
-
-    public int[] restoreArray(int[][] adjacentPairs) {
-        for (var e : adjacentPairs) {
-            int a = e[0], b = e[1];
-            g.computeIfAbsent(a, k -> new ArrayList<>()).add(b);
-            g.computeIfAbsent(b, k -> new ArrayList<>()).add(a);
-        }
-        int n = adjacentPairs.length + 1;
-        ans = new int[n];
-        for (var e : g.entrySet()) {
-            if (e.getValue().size() == 1) {
-                dfs(e.getKey(), 1000000, 0);
-                break;
-            }
-        }
-        return ans;
-    }
-
-    private void dfs(int i, int fa, int k) {
-        ans[k++] = i;
-        for (int j : g.get(i)) {
-            if (j != fa) {
-                dfs(j, i, k);
-            }
-        }
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -189,38 +156,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    vector<int> restoreArray(vector<vector<int>>& adjacentPairs) {
-        unordered_map<int, vector<int>> g;
-        for (auto& e : adjacentPairs) {
-            int a = e[0], b = e[1];
-            g[a].emplace_back(b);
-            g[b].emplace_back(a);
-        }
-        int n = adjacentPairs.size() + 1;
-        vector<int> ans;
-        function<void(int, int)> dfs = [&](int i, int fa) {
-            ans.emplace_back(i);
-            for (int& j : g[i]) {
-                if (j != fa) {
-                    dfs(j, i);
-                }
-            }
-        };
-        for (auto& [i, v] : g) {
-            if (v.size() == 1) {
-                dfs(i, 1e6);
-                break;
-            }
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func restoreArray(adjacentPairs [][]int) []int {
@@ -250,35 +186,7 @@ func restoreArray(adjacentPairs [][]int) []int {
 }
 ```
 
-```go
-func restoreArray(adjacentPairs [][]int) []int {
-	g := map[int][]int{}
-	for _, e := range adjacentPairs {
-		a, b := e[0], e[1]
-		g[a] = append(g[a], b)
-		g[b] = append(g[b], a)
-	}
-	ans := []int{}
-	var dfs func(i, fa int)
-	dfs = func(i, fa int) {
-		ans = append(ans, i)
-		for _, j := range g[i] {
-			if j != fa {
-				dfs(j, i)
-			}
-		}
-	}
-	for i, v := range g {
-		if len(v) == 1 {
-			dfs(i, 1000000)
-			break
-		}
-	}
-	return ans
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -318,10 +226,137 @@ public class Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def restoreArray(self, adjacentPairs: List[List[int]]) -> List[int]:
+        def dfs(i, fa):
+            ans.append(i)
+            for j in g[i]:
+                if j != fa:
+                    dfs(j, i)
+
+        g = defaultdict(list)
+        for a, b in adjacentPairs:
+            g[a].append(b)
+            g[b].append(a)
+        i = next(i for i, v in g.items() if len(v) == 1)
+        ans = []
+        dfs(i, 1e6)
+        return ans
 ```
 
+#### Java
+
+```java
+class Solution {
+    private Map<Integer, List<Integer>> g = new HashMap<>();
+    private int[] ans;
+
+    public int[] restoreArray(int[][] adjacentPairs) {
+        for (var e : adjacentPairs) {
+            int a = e[0], b = e[1];
+            g.computeIfAbsent(a, k -> new ArrayList<>()).add(b);
+            g.computeIfAbsent(b, k -> new ArrayList<>()).add(a);
+        }
+        int n = adjacentPairs.length + 1;
+        ans = new int[n];
+        for (var e : g.entrySet()) {
+            if (e.getValue().size() == 1) {
+                dfs(e.getKey(), 1000000, 0);
+                break;
+            }
+        }
+        return ans;
+    }
+
+    private void dfs(int i, int fa, int k) {
+        ans[k++] = i;
+        for (int j : g.get(i)) {
+            if (j != fa) {
+                dfs(j, i, k);
+            }
+        }
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> restoreArray(vector<vector<int>>& adjacentPairs) {
+        unordered_map<int, vector<int>> g;
+        for (auto& e : adjacentPairs) {
+            int a = e[0], b = e[1];
+            g[a].emplace_back(b);
+            g[b].emplace_back(a);
+        }
+        int n = adjacentPairs.size() + 1;
+        vector<int> ans;
+        function<void(int, int)> dfs = [&](int i, int fa) {
+            ans.emplace_back(i);
+            for (int& j : g[i]) {
+                if (j != fa) {
+                    dfs(j, i);
+                }
+            }
+        };
+        for (auto& [i, v] : g) {
+            if (v.size() == 1) {
+                dfs(i, 1e6);
+                break;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func restoreArray(adjacentPairs [][]int) []int {
+	g := map[int][]int{}
+	for _, e := range adjacentPairs {
+		a, b := e[0], e[1]
+		g[a] = append(g[a], b)
+		g[b] = append(g[b], a)
+	}
+	ans := []int{}
+	var dfs func(i, fa int)
+	dfs = func(i, fa int) {
+		ans = append(ans, i)
+		for _, j := range g[i] {
+			if j != fa {
+				dfs(j, i)
+			}
+		}
+	}
+	for i, v := range g {
+		if len(v) == 1 {
+			dfs(i, 1000000)
+			break
+		}
+	}
+	return ans
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

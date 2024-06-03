@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1589.Maximum%20Sum%20Obtained%20of%20Any%20Permutation/README_EN.md
+rating: 1871
+source: Biweekly Contest 35 Q2
+tags:
+    - Greedy
+    - Array
+    - Prefix Sum
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1589. Maximum Sum Obtained of Any Permutation](https://leetcode.com/problems/maximum-sum-obtained-of-any-permutation)
 
 [中文文档](/solution/1500-1599/1589.Maximum%20Sum%20Obtained%20of%20Any%20Permutation/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>We have an array of integers, <code>nums</code>, and an array of <code>requests</code> where <code>requests[i] = [start<sub>i</sub>, end<sub>i</sub>]</code>. The <code>i<sup>th</sup></code> request asks for the sum of <code>nums[start<sub>i</sub>] + nums[start<sub>i</sub> + 1] + ... + nums[end<sub>i</sub> - 1] + nums[end<sub>i</sub>]</code>. Both <code>start<sub>i</sub></code> and <code>end<sub>i</sub></code> are <em>0-indexed</em>.</p>
 
@@ -52,11 +69,17 @@ Total sum: 11 + 8 = 19, which is the best that you can do.
 	<li><code>0 &lt;= start<sub>i</sub>&nbsp;&lt;= end<sub>i</sub>&nbsp;&lt;&nbsp;n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +98,7 @@ class Solution:
         return sum(a * b for a, b in zip(nums, d)) % mod
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +127,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -135,7 +158,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxSumRangeQuery(nums []int, requests [][]int) (ans int) {
@@ -159,10 +182,9 @@ func maxSumRangeQuery(nums []int, requests [][]int) (ans int) {
 		ans = (ans + a*b) % mod
 	}
 	return
-}
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxSumRangeQuery(nums: number[], requests: number[][]): number {
@@ -188,10 +210,8 @@ function maxSumRangeQuery(nums: number[], requests: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

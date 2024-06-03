@@ -1,18 +1,30 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0409.Longest%20Palindrome/README.md
+tags:
+    - 贪心
+    - 哈希表
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [409. 最长回文串](https://leetcode.cn/problems/longest-palindrome)
 
 [English Version](/solution/0400-0499/0409.Longest%20Palindrome/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>给定一个包含大写字母和小写字母的字符串<meta charset="UTF-8" />&nbsp;<code>s</code>&nbsp;，返回&nbsp;<em>通过这些字母构造成的 <strong>最长的回文串</strong></em>&nbsp;。</p>
+<p>给定一个包含大写字母和小写字母的字符串<meta charset="UTF-8" />&nbsp;<code>s</code>&nbsp;，返回&nbsp;<em>通过这些字母构造成的 <strong>最长的 <span data-keyword="palindrome-string">回文串</span></strong></em>&nbsp;的长度。</p>
 
 <p>在构造过程中，请注意 <strong>区分大小写</strong> 。比如&nbsp;<code>"Aa"</code>&nbsp;不能当做一个回文字符串。</p>
 
 <p>&nbsp;</p>
 
-<p><strong>示例 1: </strong></p>
+<p><strong class="example">示例 1: </strong></p>
 
 <pre>
 <strong>输入:</strong>s = "abccccdd"
@@ -21,18 +33,13 @@
 我们可以构造的最长的回文串是"dccaccd", 它的长度是 7。
 </pre>
 
-<p><strong>示例 2:</strong></p>
+<p><strong class="example">示例 2:</strong></p>
 
 <pre>
 <strong>输入:</strong>s = "a"
 <strong>输出:</strong>1
+<strong>解释：</strong>可以构造的最长回文串是"a"，它的长度是 1。
 </pre>
-
-<p><strong>示例 3：</strong></p>
-
-<pre>
-<strong>输入:</strong>s = "aaaaaccc"
-<strong>输出:</strong>7</pre>
 
 <p>&nbsp;</p>
 
@@ -43,11 +50,13 @@
 	<li><code>s</code>&nbsp;只由小写 <strong>和/或</strong> 大写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数**
+### 方法一：计数
 
 一个合法的回文字符串，最多存在一个出现奇数次数的字符，其余字符出现次数均为偶数。
 
@@ -61,9 +70,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -76,9 +83,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +104,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -121,7 +126,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func longestPalindrome(s string) (ans int) {
@@ -139,7 +144,7 @@ func longestPalindrome(s string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function longestPalindrome(s: string): number {
@@ -157,26 +162,7 @@ function longestPalindrome(s: string): number {
 }
 ```
 
-```ts
-function longestPalindrome(s: string): number {
-    const map = new Map();
-    for (const c of s) {
-        map.set(c, (map.get(c) ?? 0) + 1);
-    }
-    let hasOdd = false;
-    let res = 0;
-    for (const v of map.values()) {
-        res += v;
-        if (v & 1) {
-            hasOdd = true;
-            res--;
-        }
-    }
-    return res + (hasOdd ? 1 : 0);
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -201,10 +187,39 @@ impl Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### TypeScript
+
+```ts
+function longestPalindrome(s: string): number {
+    const map = new Map();
+    for (const c of s) {
+        map.set(c, (map.get(c) ?? 0) + 1);
+    }
+    let hasOdd = false;
+    let res = 0;
+    for (const v of map.values()) {
+        res += v;
+        if (v & 1) {
+            hasOdd = true;
+            res--;
+        }
+    }
+    return res + (hasOdd ? 1 : 0);
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

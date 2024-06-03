@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0874.Walking%20Robot%20Simulation/README_EN.md
+tags:
+    - Array
+    - Hash Table
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [874. Walking Robot Simulation](https://leetcode.com/problems/walking-robot-simulation)
 
 [中文文档](/solution/0800-0899/0874.Walking%20Robot%20Simulation/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A robot on an infinite XY-plane starts at point <code>(0, 0)</code> facing north. The robot can receive a sequence of these three possible types of <code>commands</code>:</p>
 
@@ -77,9 +91,13 @@ The furthest point the robot ever gets from the origin is (0, 6), which squared 
 	<li>The answer is guaranteed to be less than <code>2<sup>31</sup></code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash table + simulation**
+<!-- solution:start -->
+
+### Solution 1: Hash table + simulation
 
 We define a direction array $dirs=[0, 1, 0, -1, 0]$ of length $5$, where adjacent elements in the array represent a direction. That is, $(dirs[0], dirs[1])$ represents north, and $(dirs[1], dirs[2])$ represents east, and so on.
 
@@ -99,7 +117,7 @@ Time complexity is $O(C \times n + m)$, space complexity is $O(m)$. Where $C$ re
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -123,7 +141,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -161,7 +179,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -199,7 +217,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func robotSim(commands []int, obstacles [][]int) (ans int) {
@@ -227,7 +245,7 @@ func robotSim(commands []int, obstacles [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function robotSim(commands: number[], obstacles: number[][]): number {
@@ -258,10 +276,8 @@ function robotSim(commands: number[], obstacles: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

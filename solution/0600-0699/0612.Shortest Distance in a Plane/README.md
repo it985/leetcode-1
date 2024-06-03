@@ -1,10 +1,20 @@
-# [612. 平面上的最近距离](https://leetcode.cn/problems/shortest-distance-in-a-plane)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0612.Shortest%20Distance%20in%20a%20Plane/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [612. 平面上的最近距离 🔒](https://leetcode.cn/problems/shortest-distance-in-a-plane)
 
 [English Version](/solution/0600-0699/0612.Shortest%20Distance%20in%20a%20Plane/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><code>Point2D</code> 表：</p>
 
@@ -56,13 +66,17 @@ Point2D table:
 
 <p>&nbsp;</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -75,3 +89,7 @@ LIMIT 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

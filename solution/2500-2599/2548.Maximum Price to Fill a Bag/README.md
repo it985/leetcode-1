@@ -1,10 +1,22 @@
-# [2548. 填满背包的最大价格](https://leetcode.cn/problems/maximum-price-to-fill-a-bag)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2548.Maximum%20Price%20to%20Fill%20a%20Bag/README.md
+tags:
+    - 贪心
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [2548. 填满背包的最大价格 🔒](https://leetcode.cn/problems/maximum-price-to-fill-a-bag)
 
 [English Version](/solution/2500-2599/2548.Maximum%20Price%20to%20Fill%20a%20Bag/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个二维整数数组 <code>items</code> ，其中 <code>items[i] = [price<sub>i</sub>, weight<sub>i</sub>]</code> 表示第 <code>i</code> 个物品的价格和重量。</p>
 
@@ -53,13 +65,15 @@
 	<li><code>1 &lt;= capacity &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 排序**
+### 方法一：贪心 + 排序
 
-将物品按照单位价格从大到小排序，然后依次取出物品，直到背包装满。
+我们将物品按照单位价格从大到小排序，然后依次取出物品，直到背包装满。
 
 若最后背包未装满，则返回 $-1$，否则返回总价格。
 
@@ -67,9 +81,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -82,9 +94,7 @@ class Solution:
         return -1 if capacity else ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -121,7 +131,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxPrice(items [][]int, capacity int) (ans float64) {
@@ -139,7 +149,7 @@ func maxPrice(items [][]int, capacity int) (ans float64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxPrice(items: number[][], capacity: number): number {
@@ -154,10 +164,8 @@ function maxPrice(items: number[][], capacity: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,18 +1,28 @@
-# [2805. 自定义间隔](https://leetcode.cn/problems/custom-interval)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2805.Custom%20Interval/README.md
+---
+
+<!-- problem:start -->
+
+# [2805. 自定义间隔 🔒](https://leetcode.cn/problems/custom-interval)
 
 [English Version](/solution/2800-2899/2805.Custom%20Interval/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><strong>函数</strong>&nbsp;<code>customInterval</code></p>
 
-<p>给定一个函数 <code>fn</code>、一个数字 <code>delay</code> 和一个数字 <code>period</code>，返回一个数字 <code>id</code>。<code>customInterval</code> 是一个函数，它应该根据公式 <code>delay + period * count</code> 在间隔中执行提供的函数 <code>fn</code>，公式中的 <code>count</code> 表示从初始值 0 开始执行间隔的次数。</p>
+<p>给定一个函数 <code>fn</code>、一个数字 <code>delay</code> 和一个数字 <code>period</code>，返回一个数字 <code>id</code>。<code>customInterval</code> 是一个函数，它应该根据公式 <code>delay + period * count</code> 在间隔中执行提供的函数 <code>fn</code>，公式中的 <code>count</code> 表示从初始值 <code>0</code> 开始执行间隔的次数。</p>
 
 <p><strong>函数</strong> <code>customClearInterval</code></p>
 
 <p>给定 <code>id</code>。<code>id</code> 是从函数 <code>customInterval</code> 返回的值。<code>customClearInterval</code> 应该停止在间隔中执行提供的函数 <code>fn</code>。</p>
+
+<p><strong>注意：</strong>在 Node.js 中，<code>setTimeout</code> 和 <code>setInterval</code> 函数返回一个对象，而不是一个数字。</p>
 
 <p>&nbsp;</p>
 
@@ -69,15 +79,17 @@ setTimeout(() =&gt; {
 	<li><code>20 &lt;= stopTime &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **TypeScript**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### TypeScript
 
 ```ts
 const intervalMap = new Map<number, NodeJS.Timeout>();
@@ -109,3 +121,7 @@ function customClearInterval(id: number) {
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

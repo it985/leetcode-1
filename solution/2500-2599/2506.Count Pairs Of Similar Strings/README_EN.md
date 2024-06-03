@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2506.Count%20Pairs%20Of%20Similar%20Strings/README_EN.md
+rating: 1335
+source: Weekly Contest 324 Q1
+tags:
+    - Bit Manipulation
+    - Array
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [2506. Count Pairs Of Similar Strings](https://leetcode.com/problems/count-pairs-of-similar-strings)
 
 [中文文档](/solution/2500-2599/2506.Count%20Pairs%20Of%20Similar%20Strings/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> string array <code>words</code>.</p>
 
@@ -53,11 +70,17 @@
 	<li><code>words[i]</code> consist of only lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -73,7 +96,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -93,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -112,7 +135,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func similarPairs(words []string) (ans int) {
@@ -129,7 +152,25 @@ func similarPairs(words []string) (ans int) {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function similarPairs(words: string[]): number {
+    let ans = 0;
+    const cnt: Map<number, number> = new Map();
+    for (const w of words) {
+        let v = 0;
+        for (let i = 0; i < w.length; ++i) {
+            v |= 1 << (w.charCodeAt(i) - 'a'.charCodeAt(0));
+        }
+        ans += cnt.get(v) || 0;
+        cnt.set(v, (cnt.get(v) || 0) + 1);
+    }
+    return ans;
+}
+```
+
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -155,28 +196,8 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function similarPairs(words: string[]): number {
-    let ans = 0;
-    const cnt: Map<number, number> = new Map();
-    for (const w of words) {
-        let v = 0;
-        for (let i = 0; i < w.length; ++i) {
-            v |= 1 << (w.charCodeAt(i) - 'a'.charCodeAt(0));
-        }
-        ans += cnt.get(v) || 0;
-        cnt.set(v, (cnt.get(v) || 0) + 1);
-    }
-    return ans;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0699.Falling%20Squares/README.md
+tags:
+    - 线段树
+    - 数组
+    - 有序集合
+---
+
+<!-- problem:start -->
+
 # [699. 掉落的方块](https://leetcode.cn/problems/falling-squares)
 
 [English Version](/solution/0600-0699/0699.Falling%20Squares/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在二维平面上的 x 轴上，放置着一些方块。</p>
 
@@ -52,11 +64,13 @@
 	<li><code>1 &lt;= sideLength<sub>i</sub> &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：线段树**
+### 方法一：线段树
 
 线段树将整个区间分割为多个不连续的子区间，子区间的数量不超过 $log(width)$。更新某个元素的值，只需要更新 $log(width)$ 个区间，并且这些区间都包含在一个包含该元素的大区间内。区间修改时，需要使用**懒标记**保证效率。
 
@@ -74,9 +88,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Node:
@@ -155,9 +167,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Node {
@@ -265,7 +275,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Node {
@@ -364,7 +374,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type node struct {
@@ -464,10 +474,8 @@ func fallingSquares(positions [][]int) []int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

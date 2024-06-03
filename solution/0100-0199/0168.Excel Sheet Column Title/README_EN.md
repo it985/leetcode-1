@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0168.Excel%20Sheet%20Column%20Title/README_EN.md
+tags:
+    - Math
+    - String
+---
+
+<!-- problem:start -->
+
 # [168. Excel Sheet Column Title](https://leetcode.com/problems/excel-sheet-column-title)
 
 [中文文档](/solution/0100-0199/0168.Excel%20Sheet%20Column%20Title/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer <code>columnNumber</code>, return <em>its corresponding column title as it appears in an Excel sheet</em>.</p>
 
@@ -48,11 +61,17 @@ AB -&gt; 28
 	<li><code>1 &lt;= columnNumber &lt;= 2<sup>31</sup> - 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,7 +84,7 @@ class Solution:
         return ''.join(res[::-1])
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -81,7 +100,36 @@ class Solution {
 }
 ```
 
-### **Rust**
+#### Go
+
+```go
+func convertToTitle(columnNumber int) string {
+	res := []rune{}
+	for columnNumber != 0 {
+		columnNumber -= 1
+		res = append([]rune{rune(columnNumber%26 + int('A'))}, res...)
+		columnNumber /= 26
+	}
+	return string(res)
+}
+```
+
+#### TypeScript
+
+```ts
+function convertToTitle(columnNumber: number): string {
+    let res: string[] = [];
+    while (columnNumber > 0) {
+        --columnNumber;
+        let num: number = columnNumber % 26;
+        res.unshift(String.fromCharCode(num + 65));
+        columnNumber = Math.floor(columnNumber / 26);
+    }
+    return res.join('');
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -107,22 +155,7 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function convertToTitle(columnNumber: number): string {
-    let res: string[] = [];
-    while (columnNumber > 0) {
-        --columnNumber;
-        let num: number = columnNumber % 26;
-        res.unshift(String.fromCharCode(num + 65));
-        columnNumber = Math.floor(columnNumber / 26);
-    }
-    return res.join('');
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -138,24 +171,8 @@ public class Solution {
 }
 ```
 
-### **Go**
-
-```go
-func convertToTitle(columnNumber int) string {
-	res := []rune{}
-	for columnNumber != 0 {
-		columnNumber -= 1
-		res = append([]rune{rune(columnNumber%26 + int('A'))}, res...)
-		columnNumber /= 26
-	}
-	return string(res)
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

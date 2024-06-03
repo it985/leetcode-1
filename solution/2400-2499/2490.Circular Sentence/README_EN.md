@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2490.Circular%20Sentence/README_EN.md
+rating: 1262
+source: Weekly Contest 322 Q1
+tags:
+    - String
+---
+
+<!-- problem:start -->
+
 # [2490. Circular Sentence](https://leetcode.com/problems/circular-sentence)
 
 [中文文档](/solution/2400-2499/2490.Circular%20Sentence/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A <strong>sentence</strong> is a list of words that are separated by a<strong> single</strong> space with no leading or trailing spaces.</p>
 
@@ -64,11 +78,21 @@ The sentence is <strong>not</strong> circular.</pre>
 	<li>There are no leading or trailing spaces.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Simulation
+
+We split the string into words by spaces, then check whether the last character of each word is equal to the first character of the next word. If they are not equal, return `false`. Otherwise, return `true` after traversing all the words.
+
+The time complexity is $O(n)$, and the space complexity is $O(n)$. Where $n$ is the length of the string.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -78,15 +102,7 @@ class Solution:
         return all(s[-1] == ss[(i + 1) % n][0] for i, s in enumerate(ss))
 ```
 
-```python
-class Solution:
-    def isCircularSentence(self, s: str) -> bool:
-        return s[0] == s[-1] and all(
-            c != " " or s[i - 1] == s[i + 1] for i, c in enumerate(s)
-        )
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -103,24 +119,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public boolean isCircularSentence(String s) {
-        int n = s.length();
-        if (s.charAt(0) != s.charAt(n - 1)) {
-            return false;
-        }
-        for (int i = 1; i < n; ++i) {
-            if (s.charAt(i) == ' ' && s.charAt(i - 1) != s.charAt(i + 1)) {
-                return false;
-            }
-        }
-        return true;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -148,25 +147,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    bool isCircularSentence(string s) {
-        int n = s.size();
-        if (s[0] != s.back()) {
-            return false;
-        }
-        for (int i = 1; i < n; ++i) {
-            if (s[i] == ' ' && s[i - 1] != s[i + 1]) {
-                return false;
-            }
-        }
-        return true;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func isCircularSentence(sentence string) bool {
@@ -181,22 +162,39 @@ func isCircularSentence(sentence string) bool {
 }
 ```
 
-```go
-func isCircularSentence(s string) bool {
-	n := len(s)
-	if s[0] != s[n-1] {
-		return false
-	}
-	for i := 1; i < n; i++ {
-		if s[i] == ' ' && s[i-1] != s[i+1] {
-			return false
-		}
-	}
-	return true
+#### TypeScript
+
+```ts
+function isCircularSentence(sentence: string): boolean {
+    const ss = sentence.split(' ');
+    const n = ss.length;
+    for (let i = 0; i < n; ++i) {
+        if (ss[i][ss[i].length - 1] !== ss[(i + 1) % n][0]) {
+            return false;
+        }
+    }
+    return true;
 }
 ```
 
-### **JavaScript**
+#### Rust
+
+```rust
+impl Solution {
+    pub fn is_circular_sentence(sentence: String) -> bool {
+        let ss: Vec<String> = sentence.split(' ').map(String::from).collect();
+        let n = ss.len();
+        for i in 0..n {
+            if ss[i].as_bytes()[ss[i].len() - 1] != ss[(i + 1) % n].as_bytes()[0] {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -215,39 +213,87 @@ var isCircularSentence = function (sentence) {
 };
 ```
 
-```js
-/**
- * @param {string} s
- * @return {boolean}
- */
-var isCircularSentence = function (s) {
-    const n = s.length;
-    if (s[0] !== s[n - 1]) {
-        return false;
-    }
-    for (let i = 1; i < n; ++i) {
-        if (s[i] === ' ' && s[i - 1] !== s[i + 1]) {
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Simulation (Space Optimization)
+
+We can first check whether the first and last characters of the string are equal. If they are not equal, return `false`. Otherwise, traverse the string. If the current character is a space, check whether the previous character and the next character are equal. If they are not equal, return `false`. Otherwise, return `true` after traversing all the characters.
+
+The time complexity is $O(n)$, where $n$ is the length of the string. The space complexity is $O(1)$.
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def isCircularSentence(self, s: str) -> bool:
+        return s[0] == s[-1] and all(
+            c != " " or s[i - 1] == s[i + 1] for i, c in enumerate(s)
+        )
+```
+
+#### Java
+
+```java
+class Solution {
+    public boolean isCircularSentence(String s) {
+        int n = s.length();
+        if (s.charAt(0) != s.charAt(n - 1)) {
             return false;
         }
+        for (int i = 1; i < n; ++i) {
+            if (s.charAt(i) == ' ' && s.charAt(i - 1) != s.charAt(i + 1)) {
+                return false;
+            }
+        }
+        return true;
     }
-    return true;
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    bool isCircularSentence(string s) {
+        int n = s.size();
+        if (s[0] != s.back()) {
+            return false;
+        }
+        for (int i = 1; i < n; ++i) {
+            if (s[i] == ' ' && s[i - 1] != s[i + 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
 };
 ```
 
-### **TypeScript**
+#### Go
 
-```ts
-function isCircularSentence(sentence: string): boolean {
-    const ss = sentence.split(' ');
-    const n = ss.length;
-    for (let i = 0; i < n; ++i) {
-        if (ss[i][ss[i].length - 1] !== ss[(i + 1) % n][0]) {
-            return false;
-        }
-    }
-    return true;
+```go
+func isCircularSentence(s string) bool {
+	n := len(s)
+	if s[0] != s[n-1] {
+		return false
+	}
+	for i := 1; i < n; i++ {
+		if s[i] == ' ' && s[i-1] != s[i+1] {
+			return false
+		}
+	}
+	return true
 }
 ```
+
+#### TypeScript
 
 ```ts
 function isCircularSentence(s: string): boolean {
@@ -264,22 +310,7 @@ function isCircularSentence(s: string): boolean {
 }
 ```
 
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn is_circular_sentence(sentence: String) -> bool {
-        let ss: Vec<String> = sentence.split(' ').map(String::from).collect();
-        let n = ss.len();
-        for i in 0..n {
-            if ss[i].as_bytes()[ss[i].len() - 1] != ss[(i + 1) % n].as_bytes()[0] {
-                return false;
-            }
-        }
-        return true;
-    }
-}
-```
+#### Rust
 
 ```rust
 impl Solution {
@@ -302,10 +333,29 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isCircularSentence = function (s) {
+    const n = s.length;
+    if (s[0] !== s[n - 1]) {
+        return false;
+    }
+    for (let i = 1; i < n; ++i) {
+        if (s[i] === ' ' && s[i - 1] !== s[i + 1]) {
+            return false;
+        }
+    }
+    return true;
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

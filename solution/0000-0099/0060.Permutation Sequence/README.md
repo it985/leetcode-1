@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0060.Permutation%20Sequence/README.md
+tags:
+    - 递归
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [60. 排列序列](https://leetcode.cn/problems/permutation-sequence)
 
 [English Version](/solution/0000-0099/0060.Permutation%20Sequence/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给出集合 <code>[1,2,3,...,n]</code>，其所有元素共有 <code>n!</code> 种排列。</p>
 
@@ -53,11 +64,13 @@
 	<li><code>1 <= k <= n!</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举**
+### 方法一：枚举
 
 我们知道，集合 $[1,2,..n]$ 一共有 $n!$ 种排列，如果我们确定首位，那剩余位能组成的排列数量为 $(n-1)!$。
 
@@ -69,9 +82,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -93,9 +104,7 @@ class Solution:
         return ''.join(ans)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -124,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -151,7 +160,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getPermutation(n int, k int) string {
@@ -178,36 +187,7 @@ func getPermutation(n int, k int) string {
 }
 ```
 
-### **C#**
-
-```cs
-public class Solution {
-    public string GetPermutation(int n, int k) {
-        var ans = new StringBuilder();
-        int vis = 0;
-        for (int i = 0; i < n; ++i) {
-            int fact = 1;
-            for (int j = 1; j < n - i; ++j) {
-                fact *= j;
-            }
-            for (int j = 1; j <= n; ++j) {
-                if (((vis >> j) & 1) == 0) {
-                    if (k > fact) {
-                        k -= fact;
-                    } else {
-                        ans.Append(j);
-                        vis |= 1 << j;
-                        break;
-                    }
-                }
-            }
-        }
-        return ans.ToString();
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -241,10 +221,64 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C#
 
+```cs
+public class Solution {
+    public string GetPermutation(int n, int k) {
+        var ans = new StringBuilder();
+        int vis = 0;
+        for (int i = 0; i < n; ++i) {
+            int fact = 1;
+            for (int j = 1; j < n - i; ++j) {
+                fact *= j;
+            }
+            for (int j = 1; j <= n; ++j) {
+                if (((vis >> j) & 1) == 0) {
+                    if (k > fact) {
+                        k -= fact;
+                    } else {
+                        ans.Append(j);
+                        vis |= 1 << j;
+                        break;
+                    }
+                }
+            }
+        }
+        return ans.ToString();
+    }
+}
 ```
 
+#### TypeScript
+
+```ts
+function getPermutation(n: number, k: number): string {
+    let ans = '';
+    const vis = Array.from({ length: n + 1 }, () => false);
+    for (let i = 0; i < n; i++) {
+        let fact = 1;
+        for (let j = 1; j < n - i; j++) {
+            fact *= j;
+        }
+        for (let j = 1; j <= n; j++) {
+            if (!vis[j]) {
+                if (k > fact) {
+                    k -= fact;
+                } else {
+                    ans += j;
+                    vis[j] = true;
+                    break;
+                }
+            }
+        }
+    }
+    return ans;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

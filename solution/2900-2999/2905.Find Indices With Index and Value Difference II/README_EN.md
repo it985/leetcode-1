@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2905.Find%20Indices%20With%20Index%20and%20Value%20Difference%20II/README_EN.md
+rating: 1763
+source: Weekly Contest 367 Q3
+tags:
+    - Array
+    - Two Pointers
+---
+
+<!-- problem:start -->
+
 # [2905. Find Indices With Index and Value Difference II](https://leetcode.com/problems/find-indices-with-index-and-value-difference-ii)
 
 [中文文档](/solution/2900-2999/2905.Find%20Indices%20With%20Index%20and%20Value%20Difference%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> having length <code>n</code>, an integer <code>indexDifference</code>, and an integer <code>valueDifference</code>.</p>
 
@@ -58,11 +73,17 @@ Hence, [-1,-1] is returned.</pre>
 	<li><code>0 &lt;= valueDifference &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -83,7 +104,7 @@ class Solution:
         return [-1, -1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -110,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -137,7 +158,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findIndices(nums []int, indexDifference int, valueDifference int) []int {
@@ -161,7 +182,7 @@ func findIndices(nums []int, indexDifference int, valueDifference int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findIndices(nums: number[], indexDifference: number, valueDifference: number): number[] {
@@ -185,10 +206,42 @@ function findIndices(nums: number[], indexDifference: number, valueDifference: n
 }
 ```
 
-### **...**
+#### Rust
 
-```
+```rust
+impl Solution {
+    pub fn find_indices(nums: Vec<i32>, index_difference: i32, value_difference: i32) -> Vec<i32> {
+        let index_difference = index_difference as usize;
+        let mut mi = 0;
+        let mut mx = 0;
 
+        for i in index_difference..nums.len() {
+            let j = i - index_difference;
+
+            if nums[j] < nums[mi] {
+                mi = j;
+            }
+
+            if nums[j] > nums[mx] {
+                mx = j;
+            }
+
+            if nums[i] - nums[mi] >= value_difference {
+                return vec![mi as i32, i as i32];
+            }
+
+            if nums[mx] - nums[i] >= value_difference {
+                return vec![mx as i32, i as i32];
+            }
+        }
+
+        vec![-1, -1]
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

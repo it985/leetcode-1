@@ -1,14 +1,20 @@
-# [2774. 数组的上界](https://leetcode.cn/problems/array-upper-bound)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2774.Array%20Upper%20Bound/README.md
+---
+
+<!-- problem:start -->
+
+# [2774. 数组的上界 🔒](https://leetcode.cn/problems/array-upper-bound)
 
 [English Version](/solution/2700-2799/2774.Array%20Upper%20Bound/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请你编写代码实现一个数组方法，任何数组都可以调用&nbsp;<code>upperBound()</code>&nbsp;方法，并返回给定目标数字的最后一个索引。<code>nums</code>&nbsp;是一个可能包含重复数字的按升序排序的数组。如果在数组中找不到目标数字，则返回-1。</p>
-
-<p>&nbsp;</p>
 
 <p>&nbsp;</p>
 
@@ -45,15 +51,21 @@
 	<li><code>nums</code>&nbsp;按升序排序。</li>
 </ul>
 
+<p>&nbsp;</p>
+
+<p><strong>进阶：</strong>你能编写一个时间复杂度为 O(log n) 的算法吗？</p>
+
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **TypeScript**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### TypeScript
 
 ```ts
 declare global {
@@ -81,6 +93,18 @@ Array.prototype.upperBound = function (target: number) {
 // [3,4,6,6,6,6,7].upperBound(6) // 5
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### TypeScript
+
 ```ts
 declare global {
     interface Array<T> {
@@ -98,3 +122,7 @@ Array.prototype.upperBound = function (target: number) {
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

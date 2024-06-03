@@ -1,10 +1,20 @@
-# [615. 平均工资：部门与公司比较](https://leetcode.cn/problems/average-salary-departments-vs-company)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0615.Average%20Salary%20Departments%20VS%20Company/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [615. 平均工资：部门与公司比较 🔒](https://leetcode.cn/problems/average-salary-departments-vs-company)
 
 [English Version](/solution/0600-0699/0615.Average%20Salary%20Departments%20VS%20Company/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code>Salary</code></p>
 
@@ -84,13 +94,17 @@ Employee 表:
 
 根据同样的公式，对于二月份的平均薪资比较，结果为 'same'，因为部门 '1' 和 '2' 都与公司的平均薪资相同，即为 7000。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -115,6 +129,18 @@ SELECT DISTINCT
     END AS comparison
 FROM t;
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -146,3 +172,7 @@ GROUP BY 1, 2;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

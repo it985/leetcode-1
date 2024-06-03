@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0715.Range%20Module/README.md
+tags:
+    - 设计
+    - 线段树
+    - 有序集合
+---
+
+<!-- problem:start -->
+
 # [715. Range 模块](https://leetcode.cn/problems/range-module)
 
 [English Version](/solution/0700-0799/0715.Range%20Module/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>Range模块是跟踪数字范围的模块。设计一个数据结构来跟踪表示为 <strong>半开区间</strong> 的范围并查询它们。</p>
 
@@ -48,11 +60,13 @@ rangeModule.queryRange(16, 17); 返回 true （尽管执行了删除操作，区
 	<li>在单个测试用例中，对&nbsp;<code>addRange</code>&nbsp;、&nbsp; <code>queryRange</code>&nbsp;和 <code>removeRange</code> 的调用总数不超过&nbsp;<code>10<sup>4</sup></code>&nbsp;次</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：线段树**
+### 方法一：线段树
 
 根据题目描述，我们需要维护一个区间集合，支持区间的添加、删除和查询操作。对于区间的添加和删除操作，我们可以使用线段树来维护区间集合。
 
@@ -69,9 +83,7 @@ rangeModule.queryRange(16, 17); 返回 true （尽管执行了删除操作，区
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Node:
@@ -151,6 +163,7 @@ class RangeModule:
     def removeRange(self, left: int, right: int) -> None:
         self.tree.modify(left, right - 1, -1)
 
+
 # Your RangeModule object will be instantiated and called as such:
 # obj = RangeModule()
 # obj.addRange(left,right)
@@ -158,9 +171,7 @@ class RangeModule:
 # obj.removeRange(left,right)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Node {
@@ -266,7 +277,7 @@ class RangeModule {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 template <class T>
@@ -395,7 +406,7 @@ public:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 const N int = 1e9
@@ -501,7 +512,7 @@ func (this *RangeModule) RemoveRange(left int, right int) {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class Node {
@@ -641,10 +652,8 @@ class RangeModule {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0699.Falling%20Squares/README_EN.md
+tags:
+    - Segment Tree
+    - Array
+    - Ordered Set
+---
+
+<!-- problem:start -->
+
 # [699. Falling Squares](https://leetcode.com/problems/falling-squares)
 
 [中文文档](/solution/0600-0699/0699.Falling%20Squares/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are several squares being dropped onto the X-axis of a 2D plane.</p>
 
@@ -48,13 +62,17 @@ Note that square 2 only brushes the right side of square 1, which does not count
 	<li><code>1 &lt;= sideLength<sub>i</sub> &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-Segment Tree.
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Node:
@@ -133,7 +151,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Node {
@@ -241,7 +259,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Node {
@@ -340,7 +358,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type node struct {
@@ -440,10 +458,8 @@ func fallingSquares(positions [][]int) []int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

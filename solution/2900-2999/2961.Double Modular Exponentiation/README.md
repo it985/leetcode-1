@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2961.Double%20Modular%20Exponentiation/README.md
+rating: 1450
+source: 第 375 场周赛 Q2
+tags:
+    - 数组
+    - 数学
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [2961. 双模幂运算](https://leetcode.cn/problems/double-modular-exponentiation)
 
 [English Version](/solution/2900-2999/2961.Double%20Modular%20Exponentiation/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0 </strong>开始的二维数组 <code>variables</code> ，其中 <code>variables[i] = [a<sub>i</sub>, b<sub>i</sub>, c<sub>i,</sub> m<sub>i</sub>]</code>，以及一个整数 <code>target</code> 。</p>
 
@@ -52,11 +66,13 @@
 	<li><code><font face="monospace">0 &lt;= target &lt;= 10<sup>3</sup></font></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟 + 快速幂**
+### 方法一：模拟 + 快速幂
 
 我们直接根据题目描述模拟即可。对于幂运算取模，我们可以使用快速幂来加速运算。
 
@@ -64,9 +80,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -78,9 +92,7 @@ class Solution:
         ]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -109,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -138,7 +150,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getGoodIndices(variables [][]int, target int) (ans []int) {
@@ -162,7 +174,7 @@ func getGoodIndices(variables [][]int, target int) (ans []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function getGoodIndices(variables: number[][], target: number): number[] {
@@ -187,10 +199,8 @@ function getGoodIndices(variables: number[][], target: number): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

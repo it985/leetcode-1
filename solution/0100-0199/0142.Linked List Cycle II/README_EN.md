@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0142.Linked%20List%20Cycle%20II/README_EN.md
+tags:
+    - Hash Table
+    - Linked List
+    - Two Pointers
+---
+
+<!-- problem:start -->
+
 # [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii)
 
 [中文文档](/solution/0100-0199/0142.Linked%20List%20Cycle%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>head</code> of a linked list, return <em>the node where the cycle begins. If there is no cycle, return </em><code>null</code>.</p>
 
@@ -47,9 +61,13 @@
 <p>&nbsp;</p>
 <p><strong>Follow up:</strong> Can you solve it using <code>O(1)</code> (i.e. constant) memory?</p>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Two Pointers
 
 We first use the fast and slow pointers to judge whether the linked list has a ring. If there is a ring, the fast and slow pointers will definitely meet, and the meeting node must be in the ring.
 
@@ -71,7 +89,7 @@ The time complexity is $O(n)$, where $n$ is the number of nodes in the linked li
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -95,7 +113,7 @@ class Solution:
                 return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -129,7 +147,7 @@ public class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -162,7 +180,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -190,7 +208,7 @@ func detectCycle(head *ListNode) *ListNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -223,7 +241,7 @@ function detectCycle(head: ListNode | null): ListNode | null {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -256,10 +274,8 @@ var detectCycle = function (head) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

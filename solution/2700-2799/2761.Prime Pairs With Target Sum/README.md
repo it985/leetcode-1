@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2761.Prime%20Pairs%20With%20Target%20Sum/README.md
+rating: 1504
+source: 第 352 场周赛 Q2
+tags:
+    - 数组
+    - 数学
+    - 枚举
+    - 数论
+---
+
+<!-- problem:start -->
+
 # [2761. 和等于目标值的质数对](https://leetcode.cn/problems/prime-pairs-with-target-sum)
 
 [English Version](/solution/2700-2799/2761.Prime%20Pairs%20With%20Target%20Sum/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数 <code>n</code> 。如果两个整数 <code>x</code> 和 <code>y</code> 满足下述条件，则认为二者形成一个质数对：</p>
 
@@ -43,11 +58,13 @@
 	<li><code>1 &lt;= n &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：预处理 + 枚举**
+### 方法一：预处理 + 枚举
 
 我们先预处理出 $n$ 范围内的所有质数，记录在数组 $primes$ 中，其中 $primes[i]$ 为 `true` 表示 $i$ 是一个质数。
 
@@ -59,9 +76,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -79,9 +94,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +120,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -134,7 +147,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findPrimePairs(n int) (ans [][]int) {
@@ -159,7 +172,7 @@ func findPrimePairs(n int) (ans [][]int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findPrimePairs(n: number): number[][] {
@@ -182,10 +195,8 @@ function findPrimePairs(n: number): number[][] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

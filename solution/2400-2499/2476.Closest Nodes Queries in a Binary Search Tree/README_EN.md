@@ -1,8 +1,27 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2476.Closest%20Nodes%20Queries%20in%20a%20Binary%20Search%20Tree/README_EN.md
+rating: 1596
+source: Weekly Contest 320 Q2
+tags:
+    - Tree
+    - Depth-First Search
+    - Binary Search Tree
+    - Array
+    - Binary Search
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [2476. Closest Nodes Queries in a Binary Search Tree](https://leetcode.com/problems/closest-nodes-queries-in-a-binary-search-tree)
 
 [中文文档](/solution/2400-2499/2476.Closest%20Nodes%20Queries%20in%20a%20Binary%20Search%20Tree/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given the <code>root</code> of a <strong>binary search tree </strong>and an array <code>queries</code> of size <code>n</code> consisting of positive integers.</p>
 
@@ -46,9 +65,13 @@
 	<li><code>1 &lt;= queries[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: In-order Traversal + Binary Search**
+<!-- solution:start -->
+
+### Solution 1: In-order Traversal + Binary Search
 
 Since the problem provides a binary search tree, we can obtain a sorted array through in-order traversal. Then for each query, we can find the maximum value less than or equal to the query value and the minimum value greater than or equal to the query value through binary search.
 
@@ -56,7 +79,7 @@ The time complexity is $O(n + m \times \log n)$, and the space complexity is $O(
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -88,7 +111,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -135,7 +158,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -176,7 +199,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -215,7 +238,7 @@ func closestNodes(root *TreeNode, queries []int) (ans [][]int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -267,10 +290,53 @@ function closestNodes(root: TreeNode | null, queries: number[]): number[][] {
 }
 ```
 
-### **...**
+#### C#
 
-```
+```cs
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     public int val;
+ *     public TreeNode left;
+ *     public TreeNode right;
+ *     public TreeNode(int val=0, TreeNode left=null, TreeNode right=null) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+public class Solution {
+    private List<int> nums = new List<int>();
 
+    public IList<IList<int>> ClosestNodes(TreeNode root, IList<int> queries) {
+        Dfs(root);
+        List<IList<int>> ans = new List<IList<int>>();
+        foreach (int x in queries) {
+            int i = nums.BinarySearch(x + 1);
+            int j = nums.BinarySearch(x);
+            i = i < 0 ? -i - 2 : i - 1;
+            j = j < 0 ? -j - 1 : j;
+            int mi = i >= 0 && i < nums.Count ? nums[i] : -1;
+            int mx = j >= 0 && j < nums.Count ? nums[j] : -1;
+            ans.Add(new List<int> {mi, mx});
+        }
+        return ans;
+    }
+
+    private void Dfs(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        Dfs(root.left);
+        nums.Add(root.val);
+        Dfs(root.right);
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

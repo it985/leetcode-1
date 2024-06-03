@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2835.Minimum%20Operations%20to%20Form%20Subsequence%20With%20Target%20Sum/README.md
+rating: 2207
+source: 第 360 场周赛 Q3
+tags:
+    - 贪心
+    - 位运算
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [2835. 使子序列的和等于目标的最少操作次数](https://leetcode.cn/problems/minimum-operations-to-form-subsequence-with-target-sum)
 
 [English Version](/solution/2800-2899/2835.Minimum%20Operations%20to%20Form%20Subsequence%20With%20Target%20Sum/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的数组&nbsp;<code>nums</code>&nbsp;，它包含 <strong>非负</strong>&nbsp;整数，且全部为 <code>2</code>&nbsp;的幂，同时给你一个整数&nbsp;<code>target</code>&nbsp;。</p>
 
@@ -61,11 +75,13 @@
 	<li><code>1 &lt;= target &lt; 2<sup>31</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 位运算**
+### 方法一：贪心 + 位运算
 
 观察题目中的操作，我们发现，每次操作实际上是把一个大于 $1$ 的数拆分为两个相等的数，这意味着操作后数组的元素和不会发生变化。因此，如果数组的元素和 $s$ 小于 $target$，则无法通过题目描述的操作得到和为 $target$ 的子序列，直接返回 $-1$ 即可。否则，我们一定可以通过拆分操作，使得数组某个子序列的元素和等于 $target$。
 
@@ -79,9 +95,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -115,9 +129,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -162,7 +174,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -208,7 +220,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minOperations(nums []int, target int) (ans int) {
@@ -250,7 +262,7 @@ func minOperations(nums []int, target int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minOperations(nums: number[], target: number): number {
@@ -292,10 +304,8 @@ function minOperations(nums: number[], target: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

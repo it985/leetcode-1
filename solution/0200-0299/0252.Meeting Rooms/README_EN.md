@@ -1,8 +1,21 @@
-# [252. Meeting Rooms](https://leetcode.com/problems/meeting-rooms)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0252.Meeting%20Rooms/README_EN.md
+tags:
+    - Array
+    - Sorting
+---
+
+<!-- problem:start -->
+
+# [252. Meeting Rooms 🔒](https://leetcode.com/problems/meeting-rooms)
 
 [中文文档](/solution/0200-0299/0252.Meeting%20Rooms/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of meeting time <code>intervals</code>&nbsp;where <code>intervals[i] = [start<sub>i</sub>, end<sub>i</sub>]</code>, determine if a person could attend all meetings.</p>
 
@@ -23,11 +36,17 @@
 	<li><code>0 &lt;= start<sub>i</sub> &lt;&nbsp;end<sub>i</sub> &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -36,7 +55,7 @@ class Solution:
         return all(a[1] <= b[0] for a, b in pairwise(intervals))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -54,7 +73,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -73,7 +92,37 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func canAttendMeetings(intervals [][]int) bool {
+	sort.Slice(intervals, func(i, j int) bool {
+		return intervals[i][0] < intervals[j][0]
+	})
+	for i := 1; i < len(intervals); i++ {
+		if intervals[i][0] < intervals[i-1][1] {
+			return false
+		}
+	}
+	return true
+}
+```
+
+#### TypeScript
+
+```ts
+function canAttendMeetings(intervals: number[][]): boolean {
+    intervals.sort((a, b) => a[0] - b[0]);
+    for (let i = 1; i < intervals.length; ++i) {
+        if (intervals[i][0] < intervals[i - 1][1]) {
+            return false;
+        }
+    }
+    return true;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -108,40 +157,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func canAttendMeetings(intervals [][]int) bool {
-	sort.Slice(intervals, func(i, j int) bool {
-		return intervals[i][0] < intervals[j][0]
-	})
-	for i := 1; i < len(intervals); i++ {
-		if intervals[i][0] < intervals[i-1][1] {
-			return false
-		}
-	}
-	return true
-}
-```
-
-### **TypeScript**
-
-```ts
-function canAttendMeetings(intervals: number[][]): boolean {
-    intervals.sort((a, b) => a[0] - b[0]);
-    for (let i = 1; i < intervals.length; ++i) {
-        if (intervals[i][0] < intervals[i - 1][1]) {
-            return false;
-        }
-    }
-    return true;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

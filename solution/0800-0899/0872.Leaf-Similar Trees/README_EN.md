@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0872.Leaf-Similar%20Trees/README_EN.md
+tags:
+    - Tree
+    - Depth-First Search
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [872. Leaf-Similar Trees](https://leetcode.com/problems/leaf-similar-trees)
 
 [中文文档](/solution/0800-0899/0872.Leaf-Similar%20Trees/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Consider all the leaves of a binary tree, from&nbsp;left to right order, the values of those&nbsp;leaves form a <strong>leaf value sequence</strong><em>.</em></p>
 
@@ -37,11 +51,17 @@
 	<li>Both of the given trees will have values in the range <code>[0, 200]</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -61,7 +81,7 @@ class Solution:
         return dfs(root1) == dfs(root2)
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -100,7 +120,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -131,7 +151,35 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func leafSimilar(root1 *TreeNode, root2 *TreeNode) bool {
+	var dfs func(*TreeNode) []int
+	dfs = func(root *TreeNode) []int {
+		if root == nil {
+			return []int{}
+		}
+		ans := dfs(root.Left)
+		ans = append(ans, dfs(root.Right)...)
+		if len(ans) == 0 {
+			ans = append(ans, root.Val)
+		}
+		return ans
+	}
+	return reflect.DeepEqual(dfs(root1), dfs(root2))
+}
+```
+
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -192,38 +240,28 @@ impl Solution {
 }
 ```
 
-### **Go**
+#### JavaScript
 
-```go
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func leafSimilar(root1 *TreeNode, root2 *TreeNode) bool {
-	var dfs func(*TreeNode) []int
-	dfs = func(root *TreeNode) []int {
-		if root == nil {
-			return []int{}
-		}
-		ans := dfs(root.Left)
-		ans = append(ans, dfs(root.Right)...)
-		if len(ans) == 0 {
-			ans = append(ans, root.Val)
-		}
-		return ans
-	}
-	return reflect.DeepEqual(dfs(root1), dfs(root2))
-}
-```
-
-### **...**
-
-```
-
+```js
+var leafSimilar = function (root1, root2) {
+    const dfs = root => {
+        if (!root) {
+            return [];
+        }
+        let ans = [...dfs(root.left), ...dfs(root.right)];
+        if (!ans.length) {
+            ans = [root.val];
+        }
+        return ans;
+    };
+    const l1 = dfs(root1);
+    const l2 = dfs(root2);
+    return l1.toString() === l2.toString();
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

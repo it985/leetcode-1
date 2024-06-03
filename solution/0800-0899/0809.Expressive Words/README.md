@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0809.Expressive%20Words/README.md
+tags:
+    - 数组
+    - 双指针
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [809. 情感丰富的文字](https://leetcode.cn/problems/expressive-words)
 
 [English Version](/solution/0800-0899/0809.Expressive%20Words/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>有时候人们会用重复写一些字母来表示额外的感受，比如 <code>"hello" -&gt; "heeellooo"</code>, <code>"hi" -&gt; "hiii"</code>。我们将相邻字母都相同的一串字符定义为相同字母组，例如："h", "eee", "ll", "ooo"。</p>
 
@@ -38,11 +50,13 @@ words = ["hello", "hi", "helo"]
 	<li><font color="#c7254e" face="Menlo, Monaco, Consolas, Courier New, monospace"><span style="font-size: 12.6px; background-color: rgb(249, 242, 244);">s</span></font> 和所有在&nbsp;<code>words</code>&nbsp;中的单词都只由小写字母组成。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：遍历计数 + 双指针**
+### 方法一：遍历计数 + 双指针
 
 我们可以遍历数组 `words`，对于数组中的每个单词 $t$，判断 $t$ 是否可以通过扩张得到 $s$，如果可以，那么答案加一。
 
@@ -58,9 +72,7 @@ words = ["hello", "hi", "helo"]
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -89,9 +101,7 @@ class Solution:
         return sum(check(s, t) for t in words)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -136,7 +146,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -167,7 +177,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func expressiveWords(s string, words []string) (ans int) {
@@ -207,10 +217,8 @@ func expressiveWords(s string, words []string) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

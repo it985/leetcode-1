@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0523.Continuous%20Subarray%20Sum/README.md
+tags:
+    - 数组
+    - 哈希表
+    - 数学
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [523. 连续的子数组和](https://leetcode.cn/problems/continuous-subarray-sum)
 
 [English Version](/solution/0500-0599/0523.Continuous%20Subarray%20Sum/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code> ，编写一个函数来判断该数组是否含有同时满足下述条件的连续子数组：</p>
 
@@ -53,19 +66,17 @@
 	<li><code>1 <= k <= 2<sup>31</sup> - 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-前缀和 + 哈希表。
-
-要满足区间和是 k 的倍数，也即 `s[i] - s[j] = n * k` (其中 `i - j >= 2`)，变形，得 `s[i] / k - s[j] / k = n`，所以只要满足 `s[i] % k == s[j] % k` 即可。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -82,9 +93,7 @@ class Solution:
         return False
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -127,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func checkSubarraySum(nums []int, k int) bool {
@@ -147,10 +156,8 @@ func checkSubarraySum(nums []int, k int) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

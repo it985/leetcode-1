@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1462.Course%20Schedule%20IV/README_EN.md
+rating: 1692
+source: Biweekly Contest 27 Q3
+tags:
+    - Depth-First Search
+    - Breadth-First Search
+    - Graph
+    - Topological Sort
+---
+
+<!-- problem:start -->
+
 # [1462. Course Schedule IV](https://leetcode.com/problems/course-schedule-iv)
 
 [中文文档](/solution/1400-1499/1462.Course%20Schedule%20IV/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are a total of <code>numCourses</code> courses you have to take, labeled from <code>0</code> to <code>numCourses - 1</code>. You are given an array <code>prerequisites</code> where <code>prerequisites[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> indicates that you <strong>must</strong> take course <code>a<sub>i</sub></code> first if you want to take course <code>b<sub>i</sub></code>.</p>
 
@@ -57,11 +74,17 @@ Course 0 is not a prerequisite of course 1, but the opposite is true.
 	<li><code>u<sub>i</sub> != v<sub>i</sub></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -78,6 +101,112 @@ class Solution:
                         f[i][j] = True
         return [f[a][b] for a, b in queries]
 ```
+
+#### Java
+
+```java
+class Solution {
+    public List<Boolean> checkIfPrerequisite(int n, int[][] prerequisites, int[][] queries) {
+        boolean[][] f = new boolean[n][n];
+        for (var p : prerequisites) {
+            f[p[0]][p[1]] = true;
+        }
+        for (int k = 0; k < n; ++k) {
+            for (int i = 0; i < n; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    f[i][j] |= f[i][k] && f[k][j];
+                }
+            }
+        }
+        List<Boolean> ans = new ArrayList<>();
+        for (var q : queries) {
+            ans.add(f[q[0]][q[1]]);
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<bool> checkIfPrerequisite(int n, vector<vector<int>>& prerequisites, vector<vector<int>>& queries) {
+        bool f[n][n];
+        memset(f, false, sizeof(f));
+        for (auto& p : prerequisites) {
+            f[p[0]][p[1]] = true;
+        }
+        for (int k = 0; k < n; ++k) {
+            for (int i = 0; i < n; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    f[i][j] |= (f[i][k] && f[k][j]);
+                }
+            }
+        }
+        vector<bool> ans;
+        for (auto& q : queries) {
+            ans.push_back(f[q[0]][q[1]]);
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func checkIfPrerequisite(n int, prerequisites [][]int, queries [][]int) (ans []bool) {
+	f := make([][]bool, n)
+	for i := range f {
+		f[i] = make([]bool, n)
+	}
+	for _, p := range prerequisites {
+		f[p[0]][p[1]] = true
+	}
+	for k := 0; k < n; k++ {
+		for i := 0; i < n; i++ {
+			for j := 0; j < n; j++ {
+				f[i][j] = f[i][j] || (f[i][k] && f[k][j])
+			}
+		}
+	}
+	for _, q := range queries {
+		ans = append(ans, f[q[0]][q[1]])
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function checkIfPrerequisite(n: number, prerequisites: number[][], queries: number[][]): boolean[] {
+    const f = Array.from({ length: n }, () => Array(n).fill(false));
+    prerequisites.forEach(([a, b]) => (f[a][b] = true));
+    for (let k = 0; k < n; ++k) {
+        for (let i = 0; i < n; ++i) {
+            for (let j = 0; j < n; ++j) {
+                f[i][j] ||= f[i][k] && f[k][j];
+            }
+        }
+    }
+    return queries.map(([a, b]) => f[a][b]);
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -103,30 +232,7 @@ class Solution:
         return [f[a][b] for a, b in queries]
 ```
 
-### **Java**
-
-```java
-class Solution {
-    public List<Boolean> checkIfPrerequisite(int n, int[][] prerequisites, int[][] queries) {
-        boolean[][] f = new boolean[n][n];
-        for (var p : prerequisites) {
-            f[p[0]][p[1]] = true;
-        }
-        for (int k = 0; k < n; ++k) {
-            for (int i = 0; i < n; ++i) {
-                for (int j = 0; j < n; ++j) {
-                    f[i][j] |= f[i][k] && f[k][j];
-                }
-            }
-        }
-        List<Boolean> ans = new ArrayList<>();
-        for (var q : queries) {
-            ans.add(f[q[0]][q[1]]);
-        }
-        return ans;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -166,32 +272,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    vector<bool> checkIfPrerequisite(int n, vector<vector<int>>& prerequisites, vector<vector<int>>& queries) {
-        bool f[n][n];
-        memset(f, false, sizeof(f));
-        for (auto& p : prerequisites) {
-            f[p[0]][p[1]] = true;
-        }
-        for (int k = 0; k < n; ++k) {
-            for (int i = 0; i < n; ++ i) {
-                for (int j = 0; j < n; ++ j) {
-                    f[i][j] |= (f[i][k] && f[k][j]);
-                }
-            }
-        }
-        vector<bool> ans;
-        for (auto& q : queries) {
-            ans.push_back(f[q[0]][q[1]]);
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -233,30 +314,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func checkIfPrerequisite(n int, prerequisites [][]int, queries [][]int) (ans []bool) {
-	f := make([][]bool, n)
-	for i := range f {
-		f[i] = make([]bool, n)
-	}
-	for _, p := range prerequisites {
-		f[p[0]][p[1]] = true
-	}
-	for k := 0; k < n; k++ {
-		for i := 0; i < n; i++ {
-			for j := 0; j < n; j++ {
-				f[i][j] = f[i][j] || (f[i][k] && f[k][j])
-			}
-		}
-	}
-	for _, q := range queries {
-		ans = append(ans, f[q[0]][q[1]])
-	}
-	return
-}
-```
+#### Go
 
 ```go
 func checkIfPrerequisite(n int, prerequisites [][]int, queries [][]int) (ans []bool) {
@@ -298,22 +356,7 @@ func checkIfPrerequisite(n int, prerequisites [][]int, queries [][]int) (ans []b
 }
 ```
 
-### **TypeScript**
-
-```ts
-function checkIfPrerequisite(n: number, prerequisites: number[][], queries: number[][]): boolean[] {
-    const f = Array.from({ length: n }, () => Array(n).fill(false));
-    prerequisites.forEach(([a, b]) => (f[a][b] = true));
-    for (let k = 0; k < n; ++k) {
-        for (let i = 0; i < n; ++i) {
-            for (let j = 0; j < n; ++j) {
-                f[i][j] ||= f[i][k] && f[k][j];
-            }
-        }
-    }
-    return queries.map(([a, b]) => f[a][b]);
-}
-```
+#### TypeScript
 
 ```ts
 function checkIfPrerequisite(n: number, prerequisites: number[][], queries: number[][]): boolean[] {
@@ -346,10 +389,8 @@ function checkIfPrerequisite(n: number, prerequisites: number[][], queries: numb
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

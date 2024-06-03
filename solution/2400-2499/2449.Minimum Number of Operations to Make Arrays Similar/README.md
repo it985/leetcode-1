@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2449.Minimum%20Number%20of%20Operations%20to%20Make%20Arrays%20Similar/README.md
+rating: 2076
+source: 第 316 场周赛 Q4
+tags:
+    - 贪心
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2449. 使数组相似的最少操作次数](https://leetcode.cn/problems/minimum-number-of-operations-to-make-arrays-similar)
 
 [English Version](/solution/2400-2499/2449.Minimum%20Number%20of%20Operations%20to%20Make%20Arrays%20Similar/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个正整数数组&nbsp;<code>nums</code> 和&nbsp;<code>target</code>&nbsp;，两个数组长度相等。</p>
 
@@ -60,11 +74,13 @@
 	<li><code>nums</code>&nbsp;一定可以变得与&nbsp;<code>target</code> 相似。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：奇偶分类 + 排序**
+### 方法一：奇偶分类 + 排序
 
 注意到，由于每次操作，元素的值只会增加 $2$ 或减少 $2$，因此，元素的奇偶性不会改变。
 
@@ -78,9 +94,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -90,9 +104,7 @@ class Solution:
         return sum(abs(a - b) for a, b in zip(nums, target)) // 4
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -129,7 +141,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -161,7 +173,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func makeSimilar(nums []int, target []int) int64 {
@@ -200,7 +212,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function makeSimilar(nums: number[], target: number[]): number {
@@ -241,10 +253,8 @@ function makeSimilar(nums: number[], target: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

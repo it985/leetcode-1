@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1321.Restaurant%20Growth/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
 # [1321. 餐馆营业额变化增长](https://leetcode.cn/problems/restaurant-growth)
 
 [English Version](/solution/1300-1399/1321.Restaurant%20Growth/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Customer</code></p>
 
@@ -70,13 +80,17 @@ Customer 表:
 第三个七天消费平均值从 2019-01-03 到 2019-01-09 是 (120 + 130 + 110 + 140 + 150 + 80 + 110)/7 = 120
 第四个七天消费平均值从 2019-01-04 到 2019-01-10 是 (130 + 110 + 140 + 150 + 80 + 110 + 130 + 150)/7 = 142.86</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -105,3 +119,33 @@ WHERE rk > 6;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### MySQL
+
+```sql
+# Write your MySQL query statement below
+SELECT
+    a.visited_on,
+    SUM(b.amount) AS amount,
+    ROUND(SUM(b.amount) / 7, 2) AS average_amount
+FROM
+    (SELECT DISTINCT visited_on FROM customer) AS a
+    JOIN customer AS b ON DATEDIFF(a.visited_on, b.visited_on) BETWEEN 0 AND 6
+WHERE a.visited_on >= (SELECT MIN(visited_on) FROM customer) + 6
+GROUP BY 1
+ORDER BY 1;
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

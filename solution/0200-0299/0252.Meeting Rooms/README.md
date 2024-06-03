@@ -1,10 +1,21 @@
-# [252. 会议室](https://leetcode.cn/problems/meeting-rooms)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0252.Meeting%20Rooms/README.md
+tags:
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [252. 会议室 🔒](https://leetcode.cn/problems/meeting-rooms)
 
 [English Version](/solution/0200-0299/0252.Meeting%20Rooms/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个会议时间安排的数组 <code>intervals</code> ，每个会议时间都会包括开始和结束的时间 <code>intervals[i] = [start<sub>i</sub>, end<sub>i</sub>]</code> ，请你判断一个人是否能够参加这里面的全部会议。</p>
 
@@ -34,11 +45,13 @@
 	<li><code>0 <= start<sub>i</sub> < end<sub>i</sub> <= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序**
+### 方法一：排序
 
 我们将会议按照开始时间进行排序，然后遍历排序后的会议，如果当前会议的开始时间小于前一个会议的结束时间，则说明两个会议有重叠，返回 `false` 即可。
 
@@ -48,9 +61,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -59,9 +70,7 @@ class Solution:
         return all(a[1] <= b[0] for a, b in pairwise(intervals))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -79,7 +88,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -98,7 +107,37 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func canAttendMeetings(intervals [][]int) bool {
+	sort.Slice(intervals, func(i, j int) bool {
+		return intervals[i][0] < intervals[j][0]
+	})
+	for i := 1; i < len(intervals); i++ {
+		if intervals[i][0] < intervals[i-1][1] {
+			return false
+		}
+	}
+	return true
+}
+```
+
+#### TypeScript
+
+```ts
+function canAttendMeetings(intervals: number[][]): boolean {
+    intervals.sort((a, b) => a[0] - b[0]);
+    for (let i = 1; i < intervals.length; ++i) {
+        if (intervals[i][0] < intervals[i - 1][1]) {
+            return false;
+        }
+    }
+    return true;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -133,40 +172,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func canAttendMeetings(intervals [][]int) bool {
-	sort.Slice(intervals, func(i, j int) bool {
-		return intervals[i][0] < intervals[j][0]
-	})
-	for i := 1; i < len(intervals); i++ {
-		if intervals[i][0] < intervals[i-1][1] {
-			return false
-		}
-	}
-	return true
-}
-```
-
-### **TypeScript**
-
-```ts
-function canAttendMeetings(intervals: number[][]): boolean {
-    intervals.sort((a, b) => a[0] - b[0]);
-    for (let i = 1; i < intervals.length; ++i) {
-        if (intervals[i][0] < intervals[i - 1][1]) {
-            return false;
-        }
-    }
-    return true;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0086.Partition%20List/README_EN.md
+tags:
+    - Linked List
+    - Two Pointers
+---
+
+<!-- problem:start -->
+
 # [86. Partition List](https://leetcode.com/problems/partition-list)
 
 [中文文档](/solution/0000-0099/0086.Partition%20List/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>head</code> of a linked list and a value <code>x</code>, partition it such that all nodes <strong>less than</strong> <code>x</code> come before nodes <strong>greater than or equal</strong> to <code>x</code>.</p>
 
@@ -32,9 +45,13 @@
 	<li><code>-200 &lt;= x &lt;= 200</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 We create two linked lists, one to store nodes less than $x$, and the other to store nodes greater than or equal to $x$. Then we concatenate them.
 
@@ -42,7 +59,7 @@ The time complexity is $O(n)$, where $n$ is the length of the original linked li
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -67,7 +84,7 @@ class Solution:
         return d1.next
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -102,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -139,7 +156,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -168,43 +185,7 @@ func partition(head *ListNode, x int) *ListNode {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode} head
- * @param {number} x
- * @return {ListNode}
- */
-var partition = function (head, x) {
-    const d1 = new ListNode();
-    const d2 = new ListNode();
-    let t1 = d1,
-        t2 = d2;
-    while (head) {
-        if (head.val < x) {
-            t1.next = head;
-            t1 = t1.next;
-        } else {
-            t2.next = head;
-            t2 = t2.next;
-        }
-        head = head.next;
-    }
-    t1.next = d2.next;
-    t2.next = null;
-    return d1.next;
-};
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for singly-linked list.
@@ -245,10 +226,44 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} x
+ * @return {ListNode}
+ */
+var partition = function (head, x) {
+    const d1 = new ListNode();
+    const d2 = new ListNode();
+    let t1 = d1,
+        t2 = d2;
+    while (head) {
+        if (head.val < x) {
+            t1.next = head;
+            t1 = t1.next;
+        } else {
+            t2.next = head;
+            t2 = t2.next;
+        }
+        head = head.next;
+    }
+    t1.next = d2.next;
+    t2.next = null;
+    return d1.next;
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0942.DI%20String%20Match/README.md
+tags:
+    - 贪心
+    - 数组
+    - 双指针
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [942. 增减字符串匹配](https://leetcode.cn/problems/di-string-match)
 
 [English Version](/solution/0900-0999/0942.DI%20String%20Match/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>由范围 <code>[0,n]</code> 内所有整数组成的 <code>n + 1</code> 个整数的排列序列可以表示为长度为 <code>n</code> 的字符串 <code>s</code> ，其中:</p>
 
@@ -46,17 +59,17 @@
 	<li><code><font color="#c7254e"><font face="Menlo, Monaco, Consolas, Courier New, monospace"><span style="font-size:12.6px"><span style="background-color:#f9f2f4">s</span></span></font></font></code> 只包含字符&nbsp;<code>"I"</code>&nbsp;或&nbsp;<code>"D"</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-类似贪心思想，如果当前字母是 `I`，我们只需要选择当前可选的最小数字，就能保证后面的数字无论怎么排列，当前数字和下一个数字一定是递增关系。`D` 同理，选择当前可选的最大数字即可
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -75,9 +88,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +109,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -120,7 +131,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func diStringMatch(s string) []int {
@@ -141,7 +152,7 @@ func diStringMatch(s string) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function diStringMatch(s: string): number[] {
@@ -161,7 +172,7 @@ function diStringMatch(s: string): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -187,10 +198,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,23 @@
-# [2557. 从一个范围内选择最多整数 II](https://leetcode.cn/problems/maximum-number-of-integers-to-choose-from-a-range-ii)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2557.Maximum%20Number%20of%20Integers%20to%20Choose%20From%20a%20Range%20II/README.md
+tags:
+    - 贪心
+    - 数组
+    - 二分查找
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [2557. 从一个范围内选择最多整数 II 🔒](https://leetcode.cn/problems/maximum-number-of-integers-to-choose-from-a-range-ii)
 
 [English Version](/solution/2500-2599/2557.Maximum%20Number%20of%20Integers%20to%20Choose%20From%20a%20Range%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>banned</code> 和两个整数 <code>n</code> 和 <code>maxSum</code>&nbsp;。你需要按照以下规则选择一些整数：</p>
 
@@ -47,11 +60,13 @@
 	<li><code>1 &lt;= maxSum &lt;= 10<sup>15</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：去重 + 排序 + 二分查找**
+### 方法一：去重 + 排序 + 二分查找
 
 我们可以在数组 `banned` 中加入 $0$ 和 $n + 1$，将数组 `banned` 去重并排序。
 
@@ -61,9 +76,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -86,9 +99,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -124,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -157,7 +168,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxCount(banned []int, n int, maxSum int64) (ans int) {
@@ -191,10 +202,8 @@ func maxCount(banned []int, n int, maxSum int64) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

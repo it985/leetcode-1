@@ -1,10 +1,27 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2019.The%20Score%20of%20Students%20Solving%20Math%20Expression/README.md
+rating: 2583
+source: 第 260 场周赛 Q4
+tags:
+    - 栈
+    - 记忆化搜索
+    - 数组
+    - 数学
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2019. 解出数学表达式的学生分数](https://leetcode.cn/problems/the-score-of-students-solving-math-expression)
 
 [English Version](/solution/2000-2099/2019.The%20Score%20of%20Students%20Solving%20Math%20Expression/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串&nbsp;<code>s</code>&nbsp;，它 <strong>只</strong> 包含数字&nbsp;<code>0-9</code>&nbsp;，加法运算符&nbsp;<code>'+'</code>&nbsp;和乘法运算符&nbsp;<code>'*'</code>&nbsp;，这个字符串表示一个&nbsp;<strong>合法</strong>&nbsp;的只含有&nbsp;<strong>个位数</strong><strong>数字</strong>&nbsp;的数学表达式（比方说&nbsp;<code>3+5*2</code>）。有 <code>n</code>&nbsp;位小学生将计算这个数学表达式，并遵循如下 <strong>运算顺序</strong>&nbsp;：</p>
 
@@ -70,11 +87,13 @@
 	<li><code>0 &lt;= answers[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划（区间 DP）**
+### 方法一：动态规划（区间 DP）
 
 我们先设计一个函数 $cal(s)$，用于计算一个合法的只含有个位数数字的数学表达式的结果。那么正确答案就是 $x = cal(s)$。
 
@@ -101,9 +120,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -142,9 +159,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -206,7 +221,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -266,7 +281,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func scoreOfStudents(s string, answers []int) int {
@@ -326,7 +341,7 @@ func cal(s string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function scoreOfStudents(s: string, answers: number[]): number {
@@ -388,10 +403,8 @@ function scoreOfStudents(s: string, answers: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

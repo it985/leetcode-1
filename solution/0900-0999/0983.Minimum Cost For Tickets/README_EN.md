@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0983.Minimum%20Cost%20For%20Tickets/README_EN.md
+tags:
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [983. Minimum Cost For Tickets](https://leetcode.com/problems/minimum-cost-for-tickets)
 
 [中文文档](/solution/0900-0999/0983.Minimum%20Cost%20For%20Tickets/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You have planned some train traveling one year in advance. The days of the year in which you will travel are given as an integer array <code>days</code>. Each day is an integer from <code>1</code> to <code>365</code>.</p>
 
@@ -29,10 +42,10 @@
 <strong>Input:</strong> days = [1,4,6,7,8,20], costs = [2,7,15]
 <strong>Output:</strong> 11
 <strong>Explanation:</strong> For example, here is one way to buy passes that lets you travel your travel plan:
-On day 1, you bought a 1-day pass for costs[0] = 2, which covered day 1.
-On day 3, you bought a 7-day pass for costs[1] = 7, which covered days 3, 4, ..., 9.
-On day 20, you bought a 1-day pass for costs[0] = 2, which covered day 20.
-In total, you spent 11 and covered all the days of your travel.
+On day 1, you bought a 1-day pass for costs[0] = $2, which covered day 1.
+On day 3, you bought a 7-day pass for costs[1] = $7, which covered days 3, 4, ..., 9.
+On day 20, you bought a 1-day pass for costs[0] = $2, which covered day 20.
+In total, you spent $11 and covered all the days of your travel.
 </pre>
 
 <p><strong class="example">Example 2:</strong></p>
@@ -41,9 +54,9 @@ In total, you spent 11 and covered all the days of your travel.
 <strong>Input:</strong> days = [1,2,3,4,5,6,7,8,9,10,30,31], costs = [2,7,15]
 <strong>Output:</strong> 17
 <strong>Explanation:</strong> For example, here is one way to buy passes that lets you travel your travel plan:
-On day 1, you bought a 30-day pass for costs[2] = 15 which covered days 1, 2, ..., 30.
-On day 31, you bought a 1-day pass for costs[0] = 2 which covered day 31.
-In total, you spent 17 and covered all the days of your travel.
+On day 1, you bought a 30-day pass for costs[2] = $15 which covered days 1, 2, ..., 30.
+On day 31, you bought a 1-day pass for costs[0] = $2 which covered day 31.
+In total, you spent $17 and covered all the days of your travel.
 </pre>
 
 <p>&nbsp;</p>
@@ -57,11 +70,17 @@ In total, you spent 17 and covered all the days of your travel.
 	<li><code>1 &lt;= costs[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -79,7 +98,7 @@ class Solution:
         return dfs(0)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -130,7 +149,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -163,7 +182,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func mincostTickets(days []int, costs []int) int {
@@ -206,7 +225,7 @@ func lowerBound(arr []int, x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function mincostTickets(days: number[], costs: number[]): number {
@@ -224,10 +243,8 @@ function mincostTickets(days: number[], costs: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

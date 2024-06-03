@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0134.Gas%20Station/README_EN.md
+tags:
+    - Greedy
+    - Array
+---
+
+<!-- problem:start -->
+
 # [134. Gas Station](https://leetcode.com/problems/gas-station)
 
 [中文文档](/solution/0100-0199/0134.Gas%20Station/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are <code>n</code> gas stations along a circular route, where the amount of gas at the <code>i<sup>th</sup></code> station is <code>gas[i]</code>.</p>
 
@@ -49,11 +62,17 @@ Therefore, you can&#39;t travel around the circuit once no matter where you star
 	<li><code>0 &lt;= gas[i], cost[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -72,7 +91,7 @@ class Solution:
         return -1 if s < 0 else i
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -95,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +138,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canCompleteCircuit(gas []int, cost []int) int {
@@ -143,7 +162,7 @@ func canCompleteCircuit(gas []int, cost []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canCompleteCircuit(gas: number[], cost: number[]): number {
@@ -166,7 +185,7 @@ function canCompleteCircuit(gas: number[], cost: number[]): number {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -189,10 +208,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

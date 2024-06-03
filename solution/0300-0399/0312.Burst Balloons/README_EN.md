@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0312.Burst%20Balloons/README_EN.md
+tags:
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [312. Burst Balloons](https://leetcode.com/problems/burst-balloons)
 
 [中文文档](/solution/0300-0399/0312.Burst%20Balloons/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given <code>n</code> balloons, indexed from <code>0</code> to <code>n - 1</code>. Each balloon is painted with a number on it represented by an array <code>nums</code>. You are asked to burst all the balloons.</p>
 
@@ -36,11 +49,17 @@ coins =  3*1*5    +   3*5*8   +  1*3*8  + 1*8*1 = 167</pre>
 	<li><code>0 &lt;= nums[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -58,7 +77,7 @@ class Solution:
         return dp[0][-1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -83,26 +102,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function maxCoins(nums: number[]): number {
-    let n = nums.length;
-    let dp = Array.from({ length: n + 1 }, v => new Array(n + 2).fill(0));
-    nums.unshift(1);
-    nums.push(1);
-    for (let i = n - 1; i >= 0; --i) {
-        for (let j = i + 2; j < n + 2; ++j) {
-            for (let k = i + 1; k < j; ++k) {
-                dp[i][j] = Math.max(nums[i] * nums[k] * nums[j] + dp[i][k] + dp[k][j], dp[i][j]);
-            }
-        }
-    }
-    return dp[0][n + 1];
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -125,7 +125,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxCoins(nums []int) int {
@@ -151,10 +151,27 @@ func maxCoins(nums []int) int {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
-
+```ts
+function maxCoins(nums: number[]): number {
+    let n = nums.length;
+    let dp = Array.from({ length: n + 1 }, v => new Array(n + 2).fill(0));
+    nums.unshift(1);
+    nums.push(1);
+    for (let i = n - 1; i >= 0; --i) {
+        for (let j = i + 2; j < n + 2; ++j) {
+            for (let k = i + 1; k < j; ++k) {
+                dp[i][j] = Math.max(nums[i] * nums[k] * nums[j] + dp[i][k] + dp[k][j], dp[i][j]);
+            }
+        }
+    }
+    return dp[0][n + 1];
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

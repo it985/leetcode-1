@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2652.Sum%20Multiples/README.md
+rating: 1182
+source: 第 342 场周赛 Q2
+tags:
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [2652. 倍数求和](https://leetcode.cn/problems/sum-multiples)
 
 [English Version](/solution/2600-2699/2652.Sum%20Multiples/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个正整数 <code>n</code> ，请你计算在 <code>[1，n]</code> 范围内能被 <code>3</code>、<code>5</code>、<code>7</code> 整除的所有整数之和。</p>
 
@@ -42,11 +54,13 @@
 	<li>1 &lt;= n &lt;= 10<sup>3</sup></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举**
+### 方法一：枚举
 
 我们直接枚举 $[1,..n]$ 中的每一个数 $x$，如果 $x$ 能被 $3$, $5$, $7$ 整除，那么就将 $x$ 累加到答案中。
 
@@ -54,23 +68,9 @@
 
 时间复杂度 $O(n)$，其中 $n$ 为题目给定的整数。空间复杂度 $O(1)$。
 
-**方法二：数学（容斥原理）**
-
-我们定义函数 $f(x)$ 表示 $[1,..n]$ 中能被 $x$ 整除的数之和，那么一共有 $m = \left\lfloor \frac{n}{x} \right\rfloor$ 个数能被 $x$ 整除，这些数字分别为 $x$, $2x$, $3x$, $\cdots$, $mx$，构成一个等差数列，首项为 $x$，末项为 $mx$，项数为 $m$，因此 $f(x) = \frac{(x + mx) \times m}{2}$。
-
-根据容斥原理，我们可以得到答案为：
-
-$$
-f(3) + f(5) + f(7) - f(3 \times 5) - f(3 \times 7) - f(5 \times 7) + f(3 \times 5 \times 7)
-$$
-
-时间复杂度 $O(1)$，空间复杂度 $O(1)$。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -78,19 +78,7 @@ class Solution:
         return sum(x for x in range(1, n + 1) if x % 3 == 0 or x % 5 == 0 or x % 7 == 0)
 ```
 
-```python
-class Solution:
-    def sumOfMultiples(self, n: int) -> int:
-        def f(x: int) -> int:
-            m = n // x
-            return (x + m * x) * m // 2
-
-        return f(3) + f(5) + f(7) - f(3 * 5) - f(3 * 7) - f(5 * 7) + f(3 * 5 * 7)
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -106,23 +94,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    private int n;
-
-    public int sumOfMultiples(int n) {
-        this.n = n;
-        return f(3) + f(5) + f(7) - f(3 * 5) - f(3 * 7) - f(5 * 7) + f(3 * 5 * 7);
-    }
-
-    private int f(int x) {
-        int m = n / x;
-        return (x + m * x) * m / 2;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,20 +111,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int sumOfMultiples(int n) {
-        auto f = [&](int x) {
-            int m = n / x;
-            return (x + m * x) * m / 2;
-        };
-        return f(3) + f(5) + f(7) - f(3 * 5) - f(3 * 7) - f(5 * 7) + f(3 * 5 * 7);
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func sumOfMultiples(n int) (ans int) {
@@ -165,17 +124,7 @@ func sumOfMultiples(n int) (ans int) {
 }
 ```
 
-```go
-func sumOfMultiples(n int) int {
-	f := func(x int) int {
-		m := n / x
-		return (x + m*x) * m / 2
-	}
-	return f(3) + f(5) + f(7) - f(3*5) - f(3*7) - f(5*7) + f(3*5*7)
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumOfMultiples(n: number): number {
@@ -189,17 +138,7 @@ function sumOfMultiples(n: number): number {
 }
 ```
 
-```ts
-function sumOfMultiples(n: number): number {
-    const f = (x: number): number => {
-        const m = Math.floor(n / x);
-        return ((x + m * x) * m) >> 1;
-    };
-    return f(3) + f(5) + f(7) - f(3 * 5) - f(3 * 7) - f(5 * 7) + f(3 * 5 * 7);
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -217,6 +156,97 @@ impl Solution {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：数学（容斥原理）
+
+我们定义函数 $f(x)$ 表示 $[1,..n]$ 中能被 $x$ 整除的数之和，那么一共有 $m = \left\lfloor \frac{n}{x} \right\rfloor$ 个数能被 $x$ 整除，这些数字分别为 $x$, $2x$, $3x$, $\cdots$, $mx$，构成一个等差数列，首项为 $x$，末项为 $mx$，项数为 $m$，因此 $f(x) = \frac{(x + mx) \times m}{2}$。
+
+根据容斥原理，我们可以得到答案为：
+
+$$
+f(3) + f(5) + f(7) - f(3 \times 5) - f(3 \times 7) - f(5 \times 7) + f(3 \times 5 \times 7)
+$$
+
+时间复杂度 $O(1)$，空间复杂度 $O(1)$。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def sumOfMultiples(self, n: int) -> int:
+        def f(x: int) -> int:
+            m = n // x
+            return (x + m * x) * m // 2
+
+        return f(3) + f(5) + f(7) - f(3 * 5) - f(3 * 7) - f(5 * 7) + f(3 * 5 * 7)
+```
+
+#### Java
+
+```java
+class Solution {
+    private int n;
+
+    public int sumOfMultiples(int n) {
+        this.n = n;
+        return f(3) + f(5) + f(7) - f(3 * 5) - f(3 * 7) - f(5 * 7) + f(3 * 5 * 7);
+    }
+
+    private int f(int x) {
+        int m = n / x;
+        return (x + m * x) * m / 2;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int sumOfMultiples(int n) {
+        auto f = [&](int x) {
+            int m = n / x;
+            return (x + m * x) * m / 2;
+        };
+        return f(3) + f(5) + f(7) - f(3 * 5) - f(3 * 7) - f(5 * 7) + f(3 * 5 * 7);
+    }
+};
+```
+
+#### Go
+
+```go
+func sumOfMultiples(n int) int {
+	f := func(x int) int {
+		m := n / x
+		return (x + m*x) * m / 2
+	}
+	return f(3) + f(5) + f(7) - f(3*5) - f(3*7) - f(5*7) + f(3*5*7)
+}
+```
+
+#### TypeScript
+
+```ts
+function sumOfMultiples(n: number): number {
+    const f = (x: number): number => {
+        const m = Math.floor(n / x);
+        return ((x + m * x) * m) >> 1;
+    };
+    return f(3) + f(5) + f(7) - f(3 * 5) - f(3 * 7) - f(5 * 7) + f(3 * 5 * 7);
+}
+```
+
+#### Rust
+
 ```rust
 impl Solution {
     pub fn sum_of_multiples(n: i32) -> i32 {
@@ -224,6 +254,18 @@ impl Solution {
     }
 }
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法三
+
+<!-- tabs:start -->
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -238,10 +280,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

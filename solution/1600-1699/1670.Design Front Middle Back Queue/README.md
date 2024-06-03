@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1670.Design%20Front%20Middle%20Back%20Queue/README.md
+rating: 1610
+source: 第 40 场双周赛 Q3
+tags:
+    - 设计
+    - 队列
+    - 数组
+    - 链表
+    - 数据流
+---
+
+<!-- problem:start -->
+
 # [1670. 设计前中后队列](https://leetcode.cn/problems/design-front-middle-back-queue)
 
 [English Version](/solution/1600-1699/1670.Design%20Front%20Middle%20Back%20Queue/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请你设计一个队列，支持在前，中，后三个位置的 <code>push</code> 和 <code>pop</code> 操作。</p>
 
@@ -60,11 +76,13 @@ q.popFront();     // 返回 -1 -> [] （队列为空）
 	<li>最多调用 <code>1000</code> 次 <code>pushFront</code>， <code>pushMiddle</code>， <code>pushBack</code>， <code>popFront</code>， <code>popMiddle</code> 和 <code>popBack</code> 。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：两个双端队列**
+### 方法一：两个双端队列
 
 我们用两个双端队列，其中 $q_1$ 存储前半部分，而 $q_2$ 存储后半部分。每次由 `rebalance` 函数来维护两个队列的平衡性，即保持 $q_2$ 的长度大于等于 $q_1$ 的长度，且长度之差不超过 $1$。
 
@@ -80,9 +98,7 @@ q.popFront();     // 返回 -1 -> [] （队列为空）
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class FrontMiddleBackQueue:
@@ -146,9 +162,7 @@ class FrontMiddleBackQueue:
 # param_6 = obj.popBack()
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class FrontMiddleBackQueue {
@@ -222,7 +236,7 @@ class FrontMiddleBackQueue {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class FrontMiddleBackQueue {
@@ -309,7 +323,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type FrontMiddleBackQueue struct {
@@ -451,7 +465,7 @@ func (q Deque) Get(i int) int {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class FrontMiddleBackQueue {
@@ -624,7 +638,7 @@ class Deque<T> {
  */
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 class FrontMiddleBackQueue {
@@ -786,10 +800,8 @@ class Deque {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

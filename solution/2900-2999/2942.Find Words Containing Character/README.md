@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2942.Find%20Words%20Containing%20Character/README.md
+rating: 1182
+source: 第 118 场双周赛 Q1
+tags:
+    - 数组
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2942. 查找包含给定字符的单词](https://leetcode.cn/problems/find-words-containing-character)
 
 [English Version](/solution/2900-2999/2942.Find%20Words%20Containing%20Character/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的字符串数组&nbsp;<code>words</code>&nbsp;和一个字符&nbsp;<code>x</code>&nbsp;。</p>
 
@@ -49,11 +62,13 @@
 	<li><code>words[i]</code>&nbsp;只包含小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：遍历**
+### 方法一：遍历
 
 我们直接遍历字符串数组 $words$ 中的每一个字符串 $words[i]$，如果 $x$ 在 $words[i]$ 中出现，就将 $i$ 加入答案数组中。
 
@@ -63,9 +78,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -73,9 +86,7 @@ class Solution:
         return [i for i, w in enumerate(words) if x in w]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +102,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -108,7 +119,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findWordsContaining(words []string, x byte) (ans []int) {
@@ -124,7 +135,7 @@ func findWordsContaining(words []string, x byte) (ans []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findWordsContaining(words: string[], x: string): number[] {
@@ -138,10 +149,8 @@ function findWordsContaining(words: string[], x: string): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

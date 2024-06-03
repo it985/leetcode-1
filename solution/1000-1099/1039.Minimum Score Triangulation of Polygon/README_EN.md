@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1039.Minimum%20Score%20Triangulation%20of%20Polygon/README_EN.md
+rating: 2130
+source: Weekly Contest 135 Q3
+tags:
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [1039. Minimum Score Triangulation of Polygon](https://leetcode.com/problems/minimum-score-triangulation-of-polygon)
 
 [中文文档](/solution/1000-1099/1039.Minimum%20Score%20Triangulation%20of%20Polygon/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You have a convex <code>n</code>-sided polygon where each vertex has an integer value. You are given an integer array <code>values</code> where <code>values[i]</code> is the value of the <code>i<sup>th</sup></code> vertex (i.e., <strong>clockwise order</strong>).</p>
 
@@ -45,11 +60,17 @@ The minimum score is 144.
 	<li><code>1 &lt;= values[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,36 +87,7 @@ class Solution:
         return dfs(0, len(values) - 1)
 ```
 
-```python
-class Solution:
-    def minScoreTriangulation(self, values: List[int]) -> int:
-        n = len(values)
-        f = [[0] * n for _ in range(n)]
-        for i in range(n - 3, -1, -1):
-            for j in range(i + 2, n):
-                f[i][j] = min(
-                    f[i][k] + f[k][j] + values[i] * values[k] * values[j]
-                    for k in range(i + 1, j)
-                )
-        return f[0][-1]
-```
-
-```python
-class Solution:
-    def minScoreTriangulation(self, values: List[int]) -> int:
-        n = len(values)
-        f = [[0] * n for _ in range(n)]
-        for l in range(3, n + 1):
-            for i in range(n - l + 1):
-                j = i + l - 1
-                f[i][j] = min(
-                    f[i][k] + f[k][j] + values[i] * values[k] * values[j]
-                    for k in range(i + 1, j)
-                )
-        return f[0][-1]
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -126,46 +118,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int minScoreTriangulation(int[] values) {
-        int n = values.length;
-        int[][] f = new int[n][n];
-        for (int i = n - 3; i >= 0; --i) {
-            for (int j = i + 2; j < n; ++j) {
-                f[i][j] = 1 << 30;
-                for (int k = i + 1; k < j; ++k) {
-                    f[i][j]
-                        = Math.min(f[i][j], f[i][k] + f[k][j] + values[i] * values[k] * values[j]);
-                }
-            }
-        }
-        return f[0][n - 1];
-    }
-}
-```
-
-```java
-class Solution {
-    public int minScoreTriangulation(int[] values) {
-        int n = values.length;
-        int[][] f = new int[n][n];
-        for (int l = 3; l <= n; ++l) {
-            for (int i = 0; i + l - 1 < n; ++i) {
-                int j = i + l - 1;
-                f[i][j] = 1 << 30;
-                for (int k = i + 1; k < j; ++k) {
-                    f[i][j]
-                        = Math.min(f[i][j], f[i][k] + f[k][j] + values[i] * values[k] * values[j]);
-                }
-            }
-        }
-        return f[0][n - 1];
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -192,48 +145,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int minScoreTriangulation(vector<int>& values) {
-        int n = values.size();
-        int f[n][n];
-        memset(f, 0, sizeof(f));
-        for (int i = n - 3; i >= 0; --i) {
-            for (int j = i + 2; j < n; ++j) {
-                f[i][j] = 1 << 30;
-                for (int k = i + 1; k < j; ++k) {
-                    f[i][j] = min(f[i][j], f[i][k] + f[k][j] + values[i] * values[k] * values[j]);
-                }
-            }
-        }
-        return f[0][n - 1];
-    }
-};
-```
-
-```cpp
-class Solution {
-public:
-    int minScoreTriangulation(vector<int>& values) {
-        int n = values.size();
-        int f[n][n];
-        memset(f, 0, sizeof(f));
-        for (int l = 3; l <= n; ++l) {
-            for (int i = 0; i + l - 1 < n; ++i) {
-                int j = i + l - 1;
-                f[i][j] = 1 << 30;
-                for (int k = i + 1; k < j; ++k) {
-                    f[i][j] = min(f[i][j], f[i][k] + f[k][j] + values[i] * values[k] * values[j]);
-                }
-            }
-        }
-        return f[0][n - 1];
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func minScoreTriangulation(values []int) int {
@@ -257,40 +169,7 @@ func minScoreTriangulation(values []int) int {
 }
 ```
 
-```go
-func minScoreTriangulation(values []int) int {
-	n := len(values)
-	f := [50][50]int{}
-	for i := n - 3; i >= 0; i-- {
-		for j := i + 2; j < n; j++ {
-			f[i][j] = 1 << 30
-			for k := i + 1; k < j; k++ {
-				f[i][j] = min(f[i][j], f[i][k]+f[k][j]+values[i]*values[k]*values[j])
-			}
-		}
-	}
-	return f[0][n-1]
-}
-```
-
-```go
-func minScoreTriangulation(values []int) int {
-	n := len(values)
-	f := [50][50]int{}
-	for l := 3; l <= n; l++ {
-		for i := 0; i+l-1 < n; i++ {
-			j := i + l - 1
-			f[i][j] = 1 << 30
-			for k := i + 1; k < j; k++ {
-				f[i][j] = min(f[i][j], f[i][k]+f[k][j]+values[i]*values[k]*values[j])
-			}
-		}
-	}
-	return f[0][n-1]
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minScoreTriangulation(values: number[]): number {
@@ -314,6 +193,95 @@ function minScoreTriangulation(values: number[]): number {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minScoreTriangulation(self, values: List[int]) -> int:
+        n = len(values)
+        f = [[0] * n for _ in range(n)]
+        for i in range(n - 3, -1, -1):
+            for j in range(i + 2, n):
+                f[i][j] = min(
+                    f[i][k] + f[k][j] + values[i] * values[k] * values[j]
+                    for k in range(i + 1, j)
+                )
+        return f[0][-1]
+```
+
+#### Java
+
+```java
+class Solution {
+    public int minScoreTriangulation(int[] values) {
+        int n = values.length;
+        int[][] f = new int[n][n];
+        for (int i = n - 3; i >= 0; --i) {
+            for (int j = i + 2; j < n; ++j) {
+                f[i][j] = 1 << 30;
+                for (int k = i + 1; k < j; ++k) {
+                    f[i][j]
+                        = Math.min(f[i][j], f[i][k] + f[k][j] + values[i] * values[k] * values[j]);
+                }
+            }
+        }
+        return f[0][n - 1];
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int minScoreTriangulation(vector<int>& values) {
+        int n = values.size();
+        int f[n][n];
+        memset(f, 0, sizeof(f));
+        for (int i = n - 3; i >= 0; --i) {
+            for (int j = i + 2; j < n; ++j) {
+                f[i][j] = 1 << 30;
+                for (int k = i + 1; k < j; ++k) {
+                    f[i][j] = min(f[i][j], f[i][k] + f[k][j] + values[i] * values[k] * values[j]);
+                }
+            }
+        }
+        return f[0][n - 1];
+    }
+};
+```
+
+#### Go
+
+```go
+func minScoreTriangulation(values []int) int {
+	n := len(values)
+	f := [50][50]int{}
+	for i := n - 3; i >= 0; i-- {
+		for j := i + 2; j < n; j++ {
+			f[i][j] = 1 << 30
+			for k := i + 1; k < j; k++ {
+				f[i][j] = min(f[i][j], f[i][k]+f[k][j]+values[i]*values[k]*values[j])
+			}
+		}
+	}
+	return f[0][n-1]
+}
+```
+
+#### TypeScript
+
 ```ts
 function minScoreTriangulation(values: number[]): number {
     const n = values.length;
@@ -329,6 +297,99 @@ function minScoreTriangulation(values: number[]): number {
     return f[0][n - 1];
 }
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 3
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minScoreTriangulation(self, values: List[int]) -> int:
+        n = len(values)
+        f = [[0] * n for _ in range(n)]
+        for l in range(3, n + 1):
+            for i in range(n - l + 1):
+                j = i + l - 1
+                f[i][j] = min(
+                    f[i][k] + f[k][j] + values[i] * values[k] * values[j]
+                    for k in range(i + 1, j)
+                )
+        return f[0][-1]
+```
+
+#### Java
+
+```java
+class Solution {
+    public int minScoreTriangulation(int[] values) {
+        int n = values.length;
+        int[][] f = new int[n][n];
+        for (int l = 3; l <= n; ++l) {
+            for (int i = 0; i + l - 1 < n; ++i) {
+                int j = i + l - 1;
+                f[i][j] = 1 << 30;
+                for (int k = i + 1; k < j; ++k) {
+                    f[i][j]
+                        = Math.min(f[i][j], f[i][k] + f[k][j] + values[i] * values[k] * values[j]);
+                }
+            }
+        }
+        return f[0][n - 1];
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int minScoreTriangulation(vector<int>& values) {
+        int n = values.size();
+        int f[n][n];
+        memset(f, 0, sizeof(f));
+        for (int l = 3; l <= n; ++l) {
+            for (int i = 0; i + l - 1 < n; ++i) {
+                int j = i + l - 1;
+                f[i][j] = 1 << 30;
+                for (int k = i + 1; k < j; ++k) {
+                    f[i][j] = min(f[i][j], f[i][k] + f[k][j] + values[i] * values[k] * values[j]);
+                }
+            }
+        }
+        return f[0][n - 1];
+    }
+};
+```
+
+#### Go
+
+```go
+func minScoreTriangulation(values []int) int {
+	n := len(values)
+	f := [50][50]int{}
+	for l := 3; l <= n; l++ {
+		for i := 0; i+l-1 < n; i++ {
+			j := i + l - 1
+			f[i][j] = 1 << 30
+			for k := i + 1; k < j; k++ {
+				f[i][j] = min(f[i][j], f[i][k]+f[k][j]+values[i]*values[k]*values[j])
+			}
+		}
+	}
+	return f[0][n-1]
+}
+```
+
+#### TypeScript
 
 ```ts
 function minScoreTriangulation(values: number[]): number {
@@ -347,10 +408,8 @@ function minScoreTriangulation(values: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

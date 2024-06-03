@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2048.Next%20Greater%20Numerically%20Balanced%20Number/README.md
+rating: 1734
+source: 第 264 场周赛 Q2
+tags:
+    - 数学
+    - 回溯
+    - 枚举
+---
+
+<!-- problem:start -->
+
 # [2048. 下一个更大的数值平衡数](https://leetcode.cn/problems/next-greater-numerically-balanced-number)
 
 [English Version](/solution/2000-2099/2048.Next%20Greater%20Numerically%20Balanced%20Number/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>如果整数&nbsp; <code>x</code> 满足：对于每个数位&nbsp;<code>d</code> ，这个数位&nbsp;<strong>恰好</strong> 在 <code>x</code> 中出现 <code>d</code> 次。那么整数 <code>x</code> 就是一个 <strong>数值平衡数</strong> 。</p>
 
@@ -55,11 +69,13 @@
 	<li><code>0 &lt;= n &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举**
+### 方法一：枚举
 
 我们注意到，题目中 $n$ 的范围是 $[0, 10^6]$，而大于 $10^6$ 的其中一个数值平衡数是 $1224444$，因此我们直接枚举 $x \in [n + 1, ..]$，然后判断 $x$ 是否是数值平衡数即可。枚举的 $x$ 一定不会超过 $1224444$。
 
@@ -67,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -84,9 +98,7 @@ class Solution:
                 return x
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -111,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -137,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func nextBeautifulNumber(n int) int {
@@ -160,7 +172,7 @@ func nextBeautifulNumber(n int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function nextBeautifulNumber(n: number): number {
@@ -183,10 +195,8 @@ function nextBeautifulNumber(n: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

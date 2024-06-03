@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2768.Number%20of%20Black%20Blocks/README.md
+rating: 2175
+source: 第 108 场双周赛 Q4
+tags:
+    - 数组
+    - 哈希表
+    - 枚举
+---
+
+<!-- problem:start -->
+
 # [2768. 黑格子的数目](https://leetcode.cn/problems/number-of-black-blocks)
 
 [English Version](/solution/2700-2799/2768.Number%20of%20Black%20Blocks/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个整数&nbsp;<code>m</code> 和&nbsp;<code>n</code>&nbsp;，表示一个下标从 <strong>0</strong>&nbsp;开始的&nbsp;<code>m x n</code>&nbsp;的网格图。</p>
 
@@ -54,11 +68,13 @@
 	<li><code>coordinates</code>&nbsp;中的坐标对两两互不相同。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表计数**
+### 方法一：哈希表计数
 
 对于每个 $2 \times 2$ 的子矩阵，我们可以用其左上角的坐标 $(x, y)$ 来表示它。
 
@@ -72,9 +88,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -94,9 +108,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -123,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -151,7 +163,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countBlackBlocks(m int, n int, coordinates [][]int) []int64 {
@@ -176,7 +188,7 @@ func countBlackBlocks(m int, n int, coordinates [][]int) []int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countBlackBlocks(m: number, n: number, coordinates: number[][]): number[] {
@@ -201,10 +213,8 @@ function countBlackBlocks(m: number, n: number, coordinates: number[][]): number
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

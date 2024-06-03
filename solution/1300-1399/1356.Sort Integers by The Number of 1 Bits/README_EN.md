@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1356.Sort%20Integers%20by%20The%20Number%20of%201%20Bits/README_EN.md
+rating: 1257
+source: Biweekly Contest 20 Q1
+tags:
+    - Bit Manipulation
+    - Array
+    - Counting
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1356. Sort Integers by The Number of 1 Bits](https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits)
 
 [中文文档](/solution/1300-1399/1356.Sort%20Integers%20by%20The%20Number%20of%201%20Bits/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>arr</code>. Sort the integers in the array&nbsp;in ascending order by the number of <code>1</code>&#39;s&nbsp;in their binary representation and in case of two or more integers have the same number of <code>1</code>&#39;s you have to sort them in ascending order.</p>
 
@@ -37,11 +54,21 @@ The sorted array by bits is [0,1,2,4,8,3,5,6,7]
 	<li><code>0 &lt;= arr[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Custom Sorting
+
+We sort the array $arr$ according to the requirements of the problem, that is, sort in ascending order according to the number of $1$s in the binary representation. If there are multiple numbers with the same number of $1$s in the binary representation, they must be sorted in ascending order by numerical value.
+
+The time complexity is $O(n \log n)$, and the space complexity is $O(n)$. Where $n$ is the length of the array $arr$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -49,7 +76,7 @@ class Solution:
         return sorted(arr, key=lambda x: (x.bit_count(), x))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -67,27 +94,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int[] sortByBits(int[] arr) {
-        int n = arr.length;
-        Integer[] t = new Integer[n];
-        for (int i = 0; i < n; ++i) {
-            t[i] = arr[i];
-        }
-        Arrays.sort(t, (a, b) -> {
-            int x = Integer.bitCount(a), y = Integer.bitCount(b);
-            return x == y ? a - b : x - y;
-        });
-        for (int i = 0; i < n; ++i) {
-            arr[i] = t[i];
-        }
-        return arr;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -105,20 +112,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    vector<int> sortByBits(vector<int>& arr) {
-        sort(arr.begin(), arr.end(), [&](auto& a, auto& b) -> bool {
-            int x = __builtin_popcount(a), y = __builtin_popcount(b);
-            return x < y || (x == y && a < b);
-        });
-        return arr;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func sortByBits(arr []int) []int {
@@ -133,17 +127,7 @@ func sortByBits(arr []int) []int {
 }
 ```
 
-```go
-func sortByBits(arr []int) []int {
-	sort.Slice(arr, func(i, j int) bool {
-		a, b := bits.OnesCount(uint(arr[i])), bits.OnesCount(uint(arr[j]))
-		return a < b || (a == b && arr[i] < arr[j])
-	})
-	return arr
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sortByBits(arr: number[]): number[] {
@@ -159,7 +143,7 @@ function sortByBits(arr: number[]): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -176,7 +160,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 /**
@@ -208,10 +192,67 @@ int* sortByBits(int* arr, int arrSize, int* returnSize) {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Java
+
+```java
+class Solution {
+    public int[] sortByBits(int[] arr) {
+        int n = arr.length;
+        Integer[] t = new Integer[n];
+        for (int i = 0; i < n; ++i) {
+            t[i] = arr[i];
+        }
+        Arrays.sort(t, (a, b) -> {
+            int x = Integer.bitCount(a), y = Integer.bitCount(b);
+            return x == y ? a - b : x - y;
+        });
+        for (int i = 0; i < n; ++i) {
+            arr[i] = t[i];
+        }
+        return arr;
+    }
+}
 ```
 
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> sortByBits(vector<int>& arr) {
+        sort(arr.begin(), arr.end(), [&](auto& a, auto& b) -> bool {
+            int x = __builtin_popcount(a), y = __builtin_popcount(b);
+            return x < y || (x == y && a < b);
+        });
+        return arr;
+    }
+};
+```
+
+#### Go
+
+```go
+func sortByBits(arr []int) []int {
+	sort.Slice(arr, func(i, j int) bool {
+		a, b := bits.OnesCount(uint(arr[i])), bits.OnesCount(uint(arr[j]))
+		return a < b || (a == b && arr[i] < arr[j])
+	})
+	return arr
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

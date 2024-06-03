@@ -1,12 +1,26 @@
-# [786. 第 K 个最小的素数分数](https://leetcode.cn/problems/k-th-smallest-prime-fraction)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0786.K-th%20Smallest%20Prime%20Fraction/README.md
+tags:
+    - 数组
+    - 双指针
+    - 二分查找
+    - 排序
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
+# [786. 第 K 个最小的质数分数](https://leetcode.cn/problems/k-th-smallest-prime-fraction)
 
 [English Version](/solution/0700-0799/0786.K-th%20Smallest%20Prime%20Fraction/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>给你一个按递增顺序排序的数组 <code>arr</code> 和一个整数 <code>k</code> 。数组 <code>arr</code> 由 <code>1</code> 和若干 <strong>素数</strong>&nbsp; 组成，且其中所有整数互不相同。</p>
+<p>给你一个按递增顺序排序的数组 <code>arr</code> 和一个整数 <code>k</code> 。数组 <code>arr</code> 由 <code>1</code> 和若干 <strong>质数</strong> 组成，且其中所有整数互不相同。</p>
 
 <p>对于每对满足 <code>0 &lt;= i &lt; j &lt; arr.length</code> 的 <code>i</code> 和 <code>j</code> ，可以得到分数 <code>arr[i] / arr[j]</code> 。</p>
 
@@ -38,7 +52,7 @@
 	<li><code>2 &lt;= arr.length &lt;= 1000</code></li>
 	<li><code>1 &lt;= arr[i] &lt;= 3 * 10<sup>4</sup></code></li>
 	<li><code>arr[0] == 1</code></li>
-	<li><code>arr[i]</code> 是一个 <strong>素数</strong> ，<code>i &gt; 0</code></li>
+	<li><code>arr[i]</code> 是一个 <strong>质数</strong> ，<code>i &gt; 0</code></li>
 	<li><code>arr</code> 中的所有数字 <strong>互不相同</strong> ，且按 <strong>严格递增</strong> 排序</li>
 	<li><code>1 &lt;= k &lt;= arr.length * (arr.length - 1) / 2</code></li>
 </ul>
@@ -47,15 +61,17 @@
 
 <p><strong>进阶：</strong>你可以设计并实现时间复杂度小于 <code>O(n<sup>2</sup>)</code> 的算法解决此问题吗？</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -69,9 +85,7 @@ class Solution:
         return [arr[h[0][1]], arr[h[0][2]]]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -109,7 +123,34 @@ class Solution {
 }
 ```
 
-### **Go**
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> kthSmallestPrimeFraction(vector<int>& arr, int k) {
+        using pii = pair<int, int>;
+        int n = arr.size();
+        auto cmp = [&](const pii& a, const pii& b) {
+            return arr[a.first] * arr[b.second] > arr[b.first] * arr[a.second];
+        };
+        priority_queue<pii, vector<pii>, decltype(cmp)> pq(cmp);
+        for (int i = 1; i < n; ++i) {
+            pq.push({0, i});
+        }
+        for (int i = 1; i < k; ++i) {
+            pii f = pq.top();
+            pq.pop();
+            if (f.first + 1 < f.second) {
+                pq.push({f.first + 1, f.second});
+            }
+        }
+        return {arr[pq.top().first], arr[pq.top().second]};
+    }
+};
+```
+
+#### Go
 
 ```go
 type frac struct{ x, y, i, j int }
@@ -138,37 +179,8 @@ func kthSmallestPrimeFraction(arr []int, k int) []int {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    vector<int> kthSmallestPrimeFraction(vector<int>& arr, int k) {
-        using pii = pair<int, int>;
-        int n = arr.size();
-        auto cmp = [&](const pii& a, const pii& b) {
-            return arr[a.first] * arr[b.second] > arr[b.first] * arr[a.second];
-        };
-        priority_queue<pii, vector<pii>, decltype(cmp)> pq(cmp);
-        for (int i = 1; i < n; ++i) {
-            pq.push({0, i});
-        }
-        for (int i = 1; i < k; ++i) {
-            pii f = pq.top();
-            pq.pop();
-            if (f.first + 1 < f.second) {
-                pq.push({f.first + 1, f.second});
-            }
-        }
-        return {arr[pq.top().first], arr[pq.top().second]};
-    }
-};
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2808.Minimum%20Seconds%20to%20Equalize%20a%20Circular%20Array/README_EN.md
+rating: 1875
+source: Biweekly Contest 110 Q3
+tags:
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [2808. Minimum Seconds to Equalize a Circular Array](https://leetcode.com/problems/minimum-seconds-to-equalize-a-circular-array)
 
 [中文文档](/solution/2800-2899/2808.Minimum%20Seconds%20to%20Equalize%20a%20Circular%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> array <code>nums</code> containing <code>n</code> integers.</p>
 
@@ -54,11 +69,25 @@ It can be proven that 2 seconds is the minimum amount of seconds needed for equa
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Enumeration
+
+We assume that all elements eventually become $x$, and $x$ must be an element in the array.
+
+The number $x$ can expand one bit to the left and right every second. If there are multiple identical $x$, then the time required to expand the entire array depends on the maximum distance between two adjacent $x$.
+
+Therefore, we enumerate each element as the final $x$, calculate the maximum distance $t$ between two adjacent elements in each $x$, then the final answer is $\min\limits_{x \in nums} \left\lfloor \frac{t}{2} \right\rfloor$.
+
+The time complexity is $O(n)$, and the space complexity is $O(n)$, where $n$ is the length of the array.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -76,7 +105,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -100,7 +129,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -125,7 +154,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumSeconds(nums []int) int {
@@ -147,7 +176,7 @@ func minimumSeconds(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumSeconds(nums: number[]): number {
@@ -172,10 +201,8 @@ function minimumSeconds(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

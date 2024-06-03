@@ -1,14 +1,26 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0108.Convert%20Sorted%20Array%20to%20Binary%20Search%20Tree/README.md
+tags:
+    - 树
+    - 二叉搜索树
+    - 数组
+    - 分治
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [108. 将有序数组转换为二叉搜索树](https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree)
 
 [English Version](/solution/0100-0199/0108.Convert%20Sorted%20Array%20to%20Binary%20Search%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>给你一个整数数组 <code>nums</code> ，其中元素已经按 <strong>升序</strong> 排列，请你将其转换为一棵 <strong>高度平衡</strong> 二叉搜索树。</p>
-
-<p><strong>高度平衡 </strong>二叉树是一棵满足「每个节点的左右两个子树的高度差的绝对值不超过 1 」的二叉树。</p>
+<p>给你一个整数数组 <code>nums</code> ，其中元素已经按 <strong>升序</strong> 排列，请你将其转换为一棵 <span data-keyword="height-balanced">平衡</span> 二叉搜索树。</p>
 
 <p>&nbsp;</p>
 
@@ -39,11 +51,13 @@
 	<li><code>nums</code> 按 <strong>严格递增</strong> 顺序排列</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分 + 递归**
+### 方法一：二分 + 递归
 
 我们设计一个递归函数 $dfs(l, r)$，表示当前待构造的二叉搜索树的节点值都在数组 `nums` 的下标范围 $[l, r]$ 内。该函数返回构造出的二叉搜索树的根节点。
 
@@ -61,9 +75,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -85,9 +97,7 @@ class Solution:
         return dfs(0, len(nums) - 1)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -125,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -156,36 +166,32 @@ public:
 };
 ```
 
-### **JavaScript**
+#### Go
 
-```js
+```go
 /**
  * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
  * }
  */
-/**
- * @param {number[]} nums
- * @return {TreeNode}
- */
-var sortedArrayToBST = function (nums) {
-    const dfs = (l, r) => {
-        if (l > r) {
-            return null;
-        }
-        const mid = (l + r) >> 1;
-        const left = dfs(l, mid - 1);
-        const right = dfs(mid + 1, r);
-        return new TreeNode(nums[mid], left, right);
-    };
-    return dfs(0, nums.length - 1);
-};
+func sortedArrayToBST(nums []int) *TreeNode {
+	var dfs func(int, int) *TreeNode
+	dfs = func(l, r int) *TreeNode {
+		if l > r {
+			return nil
+		}
+		mid := (l + r) >> 1
+		left, right := dfs(l, mid-1), dfs(mid+1, r)
+		return &TreeNode{nums[mid], left, right}
+	}
+	return dfs(0, len(nums)-1)
+}
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -216,32 +222,7 @@ function sortedArrayToBST(nums: number[]): TreeNode | null {
 }
 ```
 
-### **Go**
-
-```go
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func sortedArrayToBST(nums []int) *TreeNode {
-	var dfs func(int, int) *TreeNode
-	dfs = func(l, r int) *TreeNode {
-		if l > r {
-			return nil
-		}
-		mid := (l + r) >> 1
-		left, right := dfs(l, mid-1), dfs(mid+1, r)
-		return &TreeNode{nums[mid], left, right}
-	}
-	return dfs(0, len(nums)-1)
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -287,10 +268,37 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {number[]} nums
+ * @return {TreeNode}
+ */
+var sortedArrayToBST = function (nums) {
+    const dfs = (l, r) => {
+        if (l > r) {
+            return null;
+        }
+        const mid = (l + r) >> 1;
+        const left = dfs(l, mid - 1);
+        const right = dfs(mid + 1, r);
+        return new TreeNode(nums[mid], left, right);
+    };
+    return dfs(0, nums.length - 1);
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

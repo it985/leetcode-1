@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0178.Rank%20Scores/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
 # [178. Rank Scores](https://leetcode.com/problems/rank-scores)
 
 [中文文档](/solution/0100-0199/0178.Rank%20Scores/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Scores</code></p>
 
@@ -60,28 +72,33 @@ Scores table:
 +-------+------+
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
 
+<!-- solution:start -->
+
+### Solution 1
+
 <!-- tabs:start -->
 
-**Solution 1: Use `DENSE_RANK()`**
+#### Python3
 
-Use `DENSE_RANK()` to solve this problem.
+```python
+import pandas as pd
 
-```sql
-DENSE_RANK() OVER (
-    PARTITION BY <expression>[{,<expression>...}]
-    ORDER BY <expression> [ASC|DESC], [{,<expression>...}]
-)
+
+def order_scores(scores: pd.DataFrame) -> pd.DataFrame:
+    # Use the rank method to assign ranks to the scores in descending order with no gaps
+    scores["rank"] = scores["score"].rank(method="dense", ascending=False)
+
+    # Drop id column & Sort the DataFrame by score in descending order
+    result_df = scores.drop("id", axis=1).sort_values(by="score", ascending=False)
+
+    return result_df
 ```
 
-**Solution 2: Use variables**
-
-MySQL only provides [window function](https://dev.mysql.com/doc/refman/8.0/en/window-function-descriptions.html) after version 8. In previous versions, variables can be used to achieve similar functions.
-
-<!-- tabs:start -->
-
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -90,6 +107,18 @@ SELECT
     DENSE_RANK() OVER (ORDER BY score DESC) AS 'rank'
 FROM Scores;
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 SELECT
@@ -113,20 +142,8 @@ FROM
     ) s;
 ```
 
-### **Pandas**
-
-```python
-import pandas as pd
-
-
-def order_scores(scores: pd.DataFrame) -> pd.DataFrame:
-    # Use the rank method to assign ranks to the scores in descending order with no gaps
-    scores["rank"] = scores["score"].rank(method="dense", ascending=False)
-
-    # Drop id column & Sort the DataFrame by score in descending order
-    result_df = scores.drop("id", axis=1).sort_values(by="score", ascending=False)
-
-    return result_df
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

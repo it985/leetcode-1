@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0766.Toeplitz%20Matrix/README_EN.md
+tags:
+    - Array
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [766. Toeplitz Matrix](https://leetcode.com/problems/toeplitz-matrix)
 
 [中文文档](/solution/0700-0799/0766.Toeplitz%20Matrix/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an <code>m x n</code> <code>matrix</code>, return&nbsp;<em><code>true</code>&nbsp;if the matrix is Toeplitz. Otherwise, return <code>false</code>.</em></p>
 
@@ -47,11 +60,17 @@ The diagonal &quot;[1, 2]&quot; has different elements.
 	<li>What if the <code>matrix</code> is so large that you can only load up a partial row into the memory at once?</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -64,7 +83,7 @@ class Solution:
         )
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -82,7 +101,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -101,7 +120,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isToeplitzMatrix(matrix [][]int) bool {
@@ -117,7 +136,7 @@ func isToeplitzMatrix(matrix [][]int) bool {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -138,10 +157,8 @@ var isToeplitzMatrix = function (matrix) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

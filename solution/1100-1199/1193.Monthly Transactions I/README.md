@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1193.Monthly%20Transactions%20I/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
 # [1193. 每月交易 I](https://leetcode.cn/problems/monthly-transactions-i)
 
 [English Version](/solution/1100-1199/1193.Monthly%20Transactions%20I/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code>Transactions</code></p>
 
@@ -55,17 +65,19 @@ Transactions</code> table:
 | 2019-01  | DE      | 1           | 1              | 2000               | 2000                  |
 +----------+---------+-------------+----------------+--------------------+-----------------------+</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：分组求和**
+### 方法一：分组求和
 
 我们可以先按照月份和国家分组，然后利用 `COUNT` 和 `SUM` 函数分别求出每个分组的事务数、已批准的事务数、总金额和已批准的总金额。
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -81,3 +93,7 @@ GROUP BY 1, 2;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

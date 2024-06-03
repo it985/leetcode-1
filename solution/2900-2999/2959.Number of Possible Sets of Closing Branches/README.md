@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2959.Number%20of%20Possible%20Sets%20of%20Closing%20Branches/README.md
+rating: 2077
+source: 第 119 场双周赛 Q4
+tags:
+    - 位运算
+    - 图
+    - 枚举
+    - 最短路
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [2959. 关闭分部的可行集合数目](https://leetcode.cn/problems/number-of-possible-sets-of-closing-branches)
 
 [English Version](/solution/2900-2999/2959.Number%20of%20Possible%20Sets%20of%20Closing%20Branches/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一个公司在全国有 <code>n</code>&nbsp;个分部，它们之间有的有道路连接。一开始，所有分部通过这些道路两两之间互相可以到达。</p>
 
@@ -82,11 +98,13 @@
 	<li>一开始所有分部之间通过道路互相可以到达。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二进制枚举 + Floyd 算法**
+### 方法一：二进制枚举 + Floyd 算法
 
 我们注意到 $n \leq 10$，所以我们不妨考虑使用二进制枚举的方法来枚举所有的分部集合。
 
@@ -96,9 +114,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -128,9 +144,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -175,7 +189,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -217,7 +231,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfSets(n int, maxDistance int, roads [][]int) (ans int) {
@@ -260,7 +274,7 @@ func numberOfSets(n int, maxDistance int, roads [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfSets(n: number, maxDistance: number, roads: number[][]): number {
@@ -297,10 +311,8 @@ function numberOfSets(n: number, maxDistance: number, roads: number[][]): number
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

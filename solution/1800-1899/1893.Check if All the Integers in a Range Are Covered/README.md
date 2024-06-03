@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1893.Check%20if%20All%20the%20Integers%20in%20a%20Range%20Are%20Covered/README.md
+rating: 1307
+source: 第 54 场双周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [1893. 检查是否区域内所有整数都被覆盖](https://leetcode.cn/problems/check-if-all-the-integers-in-a-range-are-covered)
 
 [English Version](/solution/1800-1899/1893.Check%20if%20All%20the%20Integers%20in%20a%20Range%20Are%20Covered/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个二维整数数组 <code>ranges</code> 和两个整数 <code>left</code> 和 <code>right</code> 。每个 <code>ranges[i] = [start<sub>i</sub>, end<sub>i</sub>]</code> 表示一个从 <code>start<sub>i</sub></code> 到 <code>end<sub>i</sub></code> 的 <strong>闭区间</strong> 。</p>
 
@@ -43,11 +57,13 @@
 	<li><code>1 <= left <= right <= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：差分数组**
+### 方法一：差分数组
 
 我们可以使用差分数组的思想，对于每个区间 $[l, r]$，我们将 $diff[l]$ 加 $1$，将 $diff[r + 1]$ 减 $1$。
 
@@ -59,9 +75,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -78,9 +92,7 @@ class Solution:
         return True
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -103,7 +115,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -127,7 +139,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isCovered(ranges [][]int, left int, right int) bool {
@@ -148,7 +160,7 @@ func isCovered(ranges [][]int, left int, right int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function isCovered(ranges: number[][], left: number, right: number): boolean {
@@ -168,7 +180,7 @@ function isCovered(ranges: number[][], left: number, right: number): boolean {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -194,10 +206,8 @@ var isCovered = function (ranges, left, right) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

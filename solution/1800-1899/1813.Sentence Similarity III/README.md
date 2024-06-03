@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1813.Sentence%20Similarity%20III/README.md
+rating: 1588
+source: 第 49 场双周赛 Q2
+tags:
+    - 数组
+    - 双指针
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [1813. 句子相似性 III](https://leetcode.cn/problems/sentence-similarity-iii)
 
 [English Version](/solution/1800-1899/1813.Sentence%20Similarity%20III/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一个句子是由一些单词与它们之间的单个空格组成，且句子的开头和结尾没有多余空格。比方说，<code>"Hello World"</code> ，<code>"HELLO"</code> ，<code>"hello world hello world"</code> 都是句子。每个单词都 <strong>只</strong> 包含大写和小写英文字母。</p>
 
@@ -51,11 +65,13 @@
 	<li><code>sentence1</code> 和 <code>sentence2</code> 中的单词都只由单个空格隔开。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双指针**
+### 方法一：双指针
 
 我们将两个句子按照空格分割成两个单词数组 `words1` 和 `words2`，假设 `words1` 和 `words2` 的长度分别为 $m$ 和 $n$，不妨设 $m \geq n$。
 
@@ -67,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -87,9 +101,7 @@ class Solution:
         return i + j >= n
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -114,7 +126,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -148,7 +160,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func areSentencesSimilar(sentence1 string, sentence2 string) bool {
@@ -168,7 +180,7 @@ func areSentencesSimilar(sentence1 string, sentence2 string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function areSentencesSimilar(sentence1: string, sentence2: string): boolean {
@@ -189,10 +201,8 @@ function areSentencesSimilar(sentence1: string, sentence2: string): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

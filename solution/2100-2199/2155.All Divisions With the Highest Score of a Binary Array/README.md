@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2155.All%20Divisions%20With%20the%20Highest%20Score%20of%20a%20Binary%20Array/README.md
+rating: 1390
+source: 第 278 场周赛 Q2
+tags:
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [2155. 分组得分最高的所有下标](https://leetcode.cn/problems/all-divisions-with-the-highest-score-of-a-binary-array)
 
 [English Version](/solution/2100-2199/2155.All%20Divisions%20With%20the%20Highest%20Score%20of%20a%20Binary%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的二进制数组 <code>nums</code> ，数组长度为 <code>n</code> 。<code>nums</code> 可以按下标 <code>i</code>（ <code>0 &lt;= i &lt;= n</code> ）拆分成两个数组（可能为空）：<code>nums<sub>left</sub></code> 和 <code>nums<sub>right</sub></code> 。</p>
 
@@ -66,15 +78,17 @@
 	<li><code>nums[i]</code> 为 <code>0</code> 或 <code>1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -96,9 +110,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -136,35 +148,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function maxScoreIndices(nums: number[]): number[] {
-    const n = nums.length;
-    const total = nums.reduce((a, c) => a + c, 0);
-    let left = 0,
-        right = total;
-    let record: Array<number> = [total];
-    for (const num of nums) {
-        if (num == 0) {
-            left++;
-        } else {
-            right--;
-        }
-        record.push(left + right);
-    }
-    const max = Math.max(...record);
-    let ans: Array<number> = [];
-    for (let i = 0; i <= n; i++) {
-        if (record[i] == max) {
-            ans.push(i);
-        }
-    }
-    return ans;
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -193,7 +177,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxScoreIndices(nums []int) []int {
@@ -221,10 +205,36 @@ func maxScoreIndices(nums []int) []int {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
-
+```ts
+function maxScoreIndices(nums: number[]): number[] {
+    const n = nums.length;
+    const total = nums.reduce((a, c) => a + c, 0);
+    let left = 0,
+        right = total;
+    let record: Array<number> = [total];
+    for (const num of nums) {
+        if (num == 0) {
+            left++;
+        } else {
+            right--;
+        }
+        record.push(left + right);
+    }
+    const max = Math.max(...record);
+    let ans: Array<number> = [];
+    for (let i = 0; i <= n; i++) {
+        if (record[i] == max) {
+            ans.push(i);
+        }
+    }
+    return ans;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

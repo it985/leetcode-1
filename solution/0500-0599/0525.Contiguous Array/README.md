@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0525.Contiguous%20Array/README.md
+tags:
+    - 数组
+    - 哈希表
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [525. 连续数组](https://leetcode.cn/problems/contiguous-array)
 
 [English Version](/solution/0500-0599/0525.Contiguous%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个二进制数组 <code>nums</code> , 找到含有相同数量的 <code>0</code> 和 <code>1</code> 的最长连续子数组，并返回该子数组的长度。</p>
 
@@ -33,25 +45,17 @@
 	<li><code>nums[i]</code> 不是 <code>0</code> 就是 <code>1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-前缀和 + 哈希表，把 0 当作 -1 处理，题目变成求和为 0 的子数组。
-
-遍历数组，用哈希表 mp 记录某个前缀和第一次出现的位置。初始值 `mp[0] = -1`。
-
-当前缀和 s 在此前出现过，说明这两个前缀和区间差构成的所有元素和为 0，满足条件，更新 ans 值。否则将 s 记录到 mp 中。
-
-最后返回 ans。
-
-> 这里初始化 `mp[0] = -1`，是为了统一操作。当数组从第一个元素开始的前 n 个元素的和为 0 时，也可以用 `ans = max(ans, i - mp[s])`。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -67,9 +71,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -90,7 +92,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -111,7 +113,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findMaxLength(nums []int) int {
@@ -132,7 +134,7 @@ func findMaxLength(nums []int) int {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -153,10 +155,8 @@ var findMaxLength = function (nums) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

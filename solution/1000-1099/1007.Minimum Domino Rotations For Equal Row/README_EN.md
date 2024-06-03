@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1007.Minimum%20Domino%20Rotations%20For%20Equal%20Row/README_EN.md
+rating: 1541
+source: Weekly Contest 127 Q3
+tags:
+    - Greedy
+    - Array
+---
+
+<!-- problem:start -->
+
 # [1007. Minimum Domino Rotations For Equal Row](https://leetcode.com/problems/minimum-domino-rotations-for-equal-row)
 
 [中文文档](/solution/1000-1099/1007.Minimum%20Domino%20Rotations%20For%20Equal%20Row/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>In a row of dominoes, <code>tops[i]</code> and <code>bottoms[i]</code> represent the top and bottom halves of the <code>i<sup>th</sup></code> domino. (A domino is a tile with two numbers from 1 to 6 - one on each half of the tile.)</p>
 
@@ -41,9 +56,13 @@ In this case, it is not possible to rotate the dominoes to make one row of value
 	<li><code>1 &lt;= tops[i], bottoms[i] &lt;= 6</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy**
+<!-- solution:start -->
+
+### Solution 1: Greedy
 
 According to the problem description, we know that in order to make all values in $tops$ or all values in $bottoms$ the same, the value must be one of $tops[0]$ or $bottoms[0]$.
 
@@ -57,7 +76,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array. The space c
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +94,7 @@ class Solution:
         return -1 if ans == inf else ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -105,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -129,7 +148,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minDominoRotations(tops []int, bottoms []int) int {
@@ -158,7 +177,7 @@ func minDominoRotations(tops []int, bottoms []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minDominoRotations(tops: number[], bottoms: number[]): number {
@@ -179,10 +198,8 @@ function minDominoRotations(tops: number[], bottoms: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

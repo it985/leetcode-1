@@ -1,8 +1,23 @@
-# [1469. Find All The Lonely Nodes](https://leetcode.com/problems/find-all-the-lonely-nodes)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1469.Find%20All%20The%20Lonely%20Nodes/README_EN.md
+tags:
+    - Tree
+    - Depth-First Search
+    - Breadth-First Search
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
+# [1469. Find All The Lonely Nodes 🔒](https://leetcode.com/problems/find-all-the-lonely-nodes)
 
 [中文文档](/solution/1400-1499/1469.Find%20All%20The%20Lonely%20Nodes/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>In a binary tree, a <strong>lonely</strong> node is a node that is the only child of its parent node. The root of the tree is not lonely because it does not have a parent node.</p>
 
@@ -46,11 +61,17 @@ All other nodes are lonely.
 	<li><code>1 &lt;= Node.val &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -76,7 +97,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -118,7 +139,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -150,7 +171,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -182,10 +203,8 @@ func getLonelyNodes(root *TreeNode) []int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

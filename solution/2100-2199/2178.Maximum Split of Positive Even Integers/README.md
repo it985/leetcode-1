@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2178.Maximum%20Split%20of%20Positive%20Even%20Integers/README.md
+rating: 1538
+source: 第 72 场双周赛 Q3
+tags:
+    - 贪心
+    - 数学
+    - 回溯
+---
+
+<!-- problem:start -->
+
 # [2178. 拆分成最多数目的正偶数之和](https://leetcode.cn/problems/maximum-split-of-positive-even-integers)
 
 [English Version](/solution/2100-2199/2178.Maximum%20Split%20of%20Positive%20Even%20Integers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数&nbsp;<code>finalSum</code>&nbsp;。请你将它拆分成若干个&nbsp;<strong>互不相同</strong> 的正偶数之和，且拆分出来的正偶数数目&nbsp;<strong>最多</strong>&nbsp;。</p>
 
@@ -53,11 +67,13 @@
 	<li><code>1 &lt;= finalSum &lt;= 10<sup>10</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 如果 $finalSum$ 是奇数，那么无法拆分成若干个互不相同的正偶数之和，直接返回空数组。
 
@@ -67,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -86,9 +100,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -125,7 +137,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumEvenSplit(finalSum int64) (ans []int64) {
@@ -141,7 +153,7 @@ func maximumEvenSplit(finalSum int64) (ans []int64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumEvenSplit(finalSum: number): number[] {
@@ -158,7 +170,7 @@ function maximumEvenSplit(finalSum: number): number[] {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -177,10 +189,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

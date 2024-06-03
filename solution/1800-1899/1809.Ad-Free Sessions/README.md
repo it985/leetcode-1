@@ -1,10 +1,20 @@
-# [1809. 没有广告的剧集](https://leetcode.cn/problems/ad-free-sessions)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1809.Ad-Free%20Sessions/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1809. 没有广告的剧集 🔒](https://leetcode.cn/problems/ad-free-sessions)
 
 [English Version](/solution/1800-1899/1809.Ad-Free%20Sessions/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code>Playback</code></p>
 
@@ -85,15 +95,17 @@ Ads table:
 广告3出现在了剧集4的时间段，被观众2看到了。
 我们可以得出结论，剧集1 、4 内，起码有1处广告。 剧集2 、3 、5 没有广告。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -110,3 +122,7 @@ WHERE
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

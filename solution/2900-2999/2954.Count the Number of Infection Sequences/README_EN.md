@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2954.Count%20the%20Number%20of%20Infection%20Sequences/README_EN.md
+rating: 2644
+source: Weekly Contest 374 Q4
+tags:
+    - Array
+    - Math
+    - Combinatorics
+---
+
+<!-- problem:start -->
+
 # [2954. Count the Number of Infection Sequences](https://leetcode.com/problems/count-the-number-of-infection-sequences)
 
 [中文文档](/solution/2900-2999/2954.Count%20the%20Number%20of%20Infection%20Sequences/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer <code>n</code> and a <strong>0-indexed</strong><strong> </strong>integer array <code>sick</code> which is <strong>sorted</strong> in <strong>increasing</strong> order.</p>
 
@@ -52,9 +68,13 @@ Finally, the child at position 2 gets infected because it is adjacent to childre
 	<li><code>sick</code> is sorted in increasing order.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Combinatorial Mathematics + Multiplicative Inverse + Fast Power**
+<!-- solution:start -->
+
+### Solution 1: Combinatorial Mathematics + Multiplicative Inverse + Fast Power
 
 According to the problem description, the children who have a cold have divided the children who have not yet caught a cold into several continuous segments. We can use an array $nums$ to record the number of children who are not cold in each segment, and there are a total of $s = \sum_{i=0}^{k} nums[k]$ children who are not cold. We can find that the number of cold sequences is the number of permutations of $s$ different elements, that is, $s!$.
 
@@ -74,7 +94,7 @@ The time complexity is $O(m)$, where $m$ is the length of the array $sick$. Igno
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 mod = 10**9 + 7
@@ -99,7 +119,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -153,7 +173,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 const int MX = 1e5;
@@ -208,7 +228,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 const MX = 1e5
@@ -264,7 +284,7 @@ func numberOfSequence(n int, sick []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 const MX = 1e5;
@@ -315,10 +335,8 @@ function numberOfSequence(n: number, sick: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

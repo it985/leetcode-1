@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0975.Odd%20Even%20Jump/README.md
+tags:
+    - 栈
+    - 数组
+    - 动态规划
+    - 有序集合
+    - 单调栈
+---
+
+<!-- problem:start -->
+
 # [975. 奇偶跳](https://leetcode.cn/problems/odd-even-jump)
 
 [English Version](/solution/0900-0999/0975.Odd%20Even%20Jump/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个整数数组 <code>A</code>，你可以从某一起始索引出发，跳跃一定次数。在你跳跃的过程中，第 1、3、5... 次跳跃称为奇数跳跃，而第 2、4、6... 次跳跃称为偶数跳跃。</p>
 
@@ -74,11 +88,13 @@
 	<li><code>0 &lt;= A[i] &lt; 100000</code></li>
 </ol>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：有序集合 + 记忆化搜索**
+### 方法一：有序集合 + 记忆化搜索
 
 我们先利用有序集合，预处理出每个位置能跳到的位置，记录在数组 $g$ 中，其中 $g[i][1]$ 和 $g[i][0]$ 分别表示当前位置是奇数次跳还是偶数次跳时能跳到的位置。如果不能跳到任何位置，那么 $g[i][1]$ 和 $g[i][0]$ 都为 $-1$。
 
@@ -88,9 +104,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 from sortedcontainers import SortedDict
@@ -118,9 +132,7 @@ class Solution:
         return sum(dfs(i, 1) for i in range(n))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -162,7 +174,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -201,7 +213,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func oddEvenJumps(arr []int) (ans int) {
@@ -245,10 +257,8 @@ func oddEvenJumps(arr []int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

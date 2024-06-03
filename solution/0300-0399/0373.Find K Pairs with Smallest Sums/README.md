@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0373.Find%20K%20Pairs%20with%20Smallest%20Sums/README.md
+tags:
+    - 数组
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [373. 查找和最小的 K 对数字](https://leetcode.cn/problems/find-k-pairs-with-smallest-sums)
 
 [English Version](/solution/0300-0399/0373.Find%20K%20Pairs%20with%20Smallest%20Sums/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个以 <strong>非递减顺序排列</strong> 的整数数组 <code>nums1</code> 和<strong> </strong><code>nums2</code><strong>&nbsp;</strong>,&nbsp;以及一个整数 <code>k</code><strong>&nbsp;</strong>。</p>
 
@@ -32,14 +43,6 @@
 &nbsp;    [1,1],[1,1],[1,2],[2,1],[1,2],[2,2],[1,3],[1,3],[2,3]
 </pre>
 
-<p><strong class="example">示例 3:</strong></p>
-
-<pre>
-<strong>输入: </strong>nums1 = [1,2], nums2 = [3], k = 3 
-<strong>输出:</strong> [1,3],[2,3]
-<strong>解释: </strong>也可能序列中所有的数对都被返回:[1,3],[2,3]
-</pre>
-
 <p>&nbsp;</p>
 
 <p><strong>提示:</strong></p>
@@ -47,21 +50,22 @@
 <ul>
 	<li><code>1 &lt;= nums1.length, nums2.length &lt;= 10<sup>5</sup></code></li>
 	<li><code>-10<sup>9</sup> &lt;= nums1[i], nums2[i] &lt;= 10<sup>9</sup></code></li>
-	<li><code>nums1</code> 和 <code>nums2</code> 均为升序排列</li>
-	<li><code>1 &lt;= k &lt;= 10<sup>4</sup></code></li>
+	<li><code>nums1</code> 和 <code>nums2</code> 均为 <strong>升序排列</strong></li>
+	<li><meta charset="UTF-8" /><code>1 &lt;= k &lt;= 10<sup>4</sup></code></li>
+	<li><code>k &lt;=&nbsp;nums1.length *&nbsp;nums2.length</code></li>
 </ul>
+
+<!-- description:end -->
 
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-<img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0300-0399/0373.Find%20K%20Pairs%20with%20Smallest%20Sums/images/demo.png"/>
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,9 +84,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -105,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -134,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func kSmallestPairs(nums1, nums2 []int, k int) (ans [][]int) {
@@ -170,10 +172,8 @@ func (h *hp) Push(v any)   { h.data = append(h.data, v.(pair)) }
 func (h *hp) Pop() any     { a := h.data; v := a[len(a)-1]; h.data = a[:len(a)-1]; return v }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

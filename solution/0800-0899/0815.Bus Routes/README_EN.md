@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0815.Bus%20Routes/README_EN.md
+tags:
+    - Breadth-First Search
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [815. Bus Routes](https://leetcode.com/problems/bus-routes)
 
 [中文文档](/solution/0800-0899/0815.Bus%20Routes/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an array <code>routes</code> representing bus routes where <code>routes[i]</code> is a bus route that the <code>i<sup>th</sup></code> bus repeats forever.</p>
 
@@ -44,11 +58,17 @@
 	<li><code>0 &lt;= source, target &lt; 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -58,7 +78,10 @@ class Solution:
         if source == target:
             return 0
 
+        # 一条公交线路有哪些公交站
         s = [set(r) for r in routes]
+
+        # 一个公交站在哪些公交线路有
         d = defaultdict(list)
         for i, r in enumerate(routes):
             for v in r:
@@ -88,7 +111,7 @@ class Solution:
         return -1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -145,7 +168,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -202,7 +225,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numBusesToDestination(routes [][]int, source int, target int) int {
@@ -258,7 +281,7 @@ func numBusesToDestination(routes [][]int, source int, target int) int {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -317,10 +340,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

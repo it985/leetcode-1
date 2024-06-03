@@ -1,8 +1,23 @@
-# [346. Moving Average from Data Stream](https://leetcode.com/problems/moving-average-from-data-stream)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0346.Moving%20Average%20from%20Data%20Stream/README_EN.md
+tags:
+    - Design
+    - Queue
+    - Array
+    - Data Stream
+---
+
+<!-- problem:start -->
+
+# [346. Moving Average from Data Stream 🔒](https://leetcode.com/problems/moving-average-from-data-stream)
 
 [中文文档](/solution/0300-0399/0346.Moving%20Average%20from%20Data%20Stream/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.</p>
 
@@ -40,11 +55,17 @@ movingAverage.next(5); // return 6.0 = (10 + 3 + 5) / 3
 	<li>At most <code>10<sup>4</sup></code> calls will be made to <code>next</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class MovingAverage:
@@ -66,27 +87,7 @@ class MovingAverage:
 # param_1 = obj.next(val)
 ```
 
-```python
-class MovingAverage:
-    def __init__(self, size: int):
-        self.n = size
-        self.s = 0
-        self.q = deque()
-
-    def next(self, val: int) -> float:
-        if len(self.q) == self.n:
-            self.s -= self.q.popleft()
-        self.q.append(val)
-        self.s += val
-        return self.s / len(self.q)
-
-
-# Your MovingAverage object will be instantiated and called as such:
-# obj = MovingAverage(size)
-# param_1 = obj.next(val)
-```
-
-### **Java**
+#### Java
 
 ```java
 class MovingAverage {
@@ -114,34 +115,7 @@ class MovingAverage {
  */
 ```
 
-```java
-class MovingAverage {
-    private Deque<Integer> q = new ArrayDeque<>();
-    private int n;
-    private int s;
-
-    public MovingAverage(int size) {
-        n = size;
-    }
-
-    public double next(int val) {
-        if (q.size() == n) {
-            s -= q.pollFirst();
-        }
-        q.offer(val);
-        s += val;
-        return s * 1.0 / q.size();
-    }
-}
-
-/**
- * Your MovingAverage object will be instantiated and called as such:
- * MovingAverage obj = new MovingAverage(size);
- * double param_1 = obj.next(val);
- */
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class MovingAverage {
@@ -170,6 +144,98 @@ private:
  * double param_1 = obj->next(val);
  */
 ```
+
+#### Go
+
+```go
+type MovingAverage struct {
+	arr []int
+	cnt int
+	s   int
+}
+
+func Constructor(size int) MovingAverage {
+	arr := make([]int, size)
+	return MovingAverage{arr, 0, 0}
+}
+
+func (this *MovingAverage) Next(val int) float64 {
+	idx := this.cnt % len(this.arr)
+	this.s += val - this.arr[idx]
+	this.arr[idx] = val
+	this.cnt++
+	return float64(this.s) / float64(min(this.cnt, len(this.arr)))
+}
+
+/**
+ * Your MovingAverage object will be instantiated and called as such:
+ * obj := Constructor(size);
+ * param_1 := obj.Next(val);
+ */
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class MovingAverage:
+    def __init__(self, size: int):
+        self.n = size
+        self.s = 0
+        self.q = deque()
+
+    def next(self, val: int) -> float:
+        if len(self.q) == self.n:
+            self.s -= self.q.popleft()
+        self.q.append(val)
+        self.s += val
+        return self.s / len(self.q)
+
+
+# Your MovingAverage object will be instantiated and called as such:
+# obj = MovingAverage(size)
+# param_1 = obj.next(val)
+```
+
+#### Java
+
+```java
+class MovingAverage {
+    private Deque<Integer> q = new ArrayDeque<>();
+    private int n;
+    private int s;
+
+    public MovingAverage(int size) {
+        n = size;
+    }
+
+    public double next(int val) {
+        if (q.size() == n) {
+            s -= q.pollFirst();
+        }
+        q.offer(val);
+        s += val;
+        return s * 1.0 / q.size();
+    }
+}
+
+/**
+ * Your MovingAverage object will be instantiated and called as such:
+ * MovingAverage obj = new MovingAverage(size);
+ * double param_1 = obj.next(val);
+ */
+```
+
+#### C++
 
 ```cpp
 class MovingAverage {
@@ -201,34 +267,7 @@ private:
  */
 ```
 
-### **Go**
-
-```go
-type MovingAverage struct {
-	arr []int
-	cnt int
-	s   int
-}
-
-func Constructor(size int) MovingAverage {
-	arr := make([]int, size)
-	return MovingAverage{arr, 0, 0}
-}
-
-func (this *MovingAverage) Next(val int) float64 {
-	idx := this.cnt % len(this.arr)
-	this.s += val - this.arr[idx]
-	this.arr[idx] = val
-	this.cnt++
-	return float64(this.s) / float64(min(this.cnt, len(this.arr)))
-}
-
-/**
- * Your MovingAverage object will be instantiated and called as such:
- * obj := Constructor(size);
- * param_1 := obj.Next(val);
- */
-```
+#### Go
 
 ```go
 type MovingAverage struct {
@@ -258,10 +297,8 @@ func (this *MovingAverage) Next(val int) float64 {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

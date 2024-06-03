@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0289.Game%20of%20Life/README.md
+tags:
+    - 数组
+    - 矩阵
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [289. 生命游戏](https://leetcode.cn/problems/game-of-life)
 
 [English Version](/solution/0200-0299/0289.Game%20of%20Life/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>根据&nbsp;<a href="https://baike.baidu.com/item/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/2926434?fr=aladdin" target="_blank">百度百科</a>&nbsp;，&nbsp;<strong>生命游戏</strong>&nbsp;，简称为 <strong>生命</strong> ，是英国数学家约翰·何顿·康威在 1970 年发明的细胞自动机。</p>
 
@@ -55,11 +67,13 @@
 	<li>本题中，我们使用二维数组来表示面板。原则上，面板是无限的，但当活细胞侵占了面板边界时会造成问题。你将如何解决这些问题？</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：原地标记**
+### 方法一：原地标记
 
 我们不妨定义两个新的状态，其中状态 $2$ 表示活细胞在下一个状态转为死细胞，状态 $-1$ 表示死细胞在下一个状态转为活细胞。那么，对于当前遍历到的格子，如果格子大于 $0$，就表示当前格子是活细胞，否则就是死细胞。
 
@@ -71,9 +85,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -98,9 +110,7 @@ class Solution:
                     board[i][j] = 1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -137,7 +147,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -175,7 +185,83 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func gameOfLife(board [][]int) {
+	m, n := len(board), len(board[0])
+	for i := 0; i < m; i++ {
+		for j, v := range board[i] {
+			live := -v
+			for x := i - 1; x <= i+1; x++ {
+				for y := j - 1; y <= j+1; y++ {
+					if x >= 0 && x < m && y >= 0 && y < n && board[x][y] > 0 {
+						live++
+					}
+				}
+			}
+			if v == 1 && (live < 2 || live > 3) {
+				board[i][j] = 2
+			}
+			if v == 0 && live == 3 {
+				board[i][j] = -1
+			}
+		}
+	}
+	for i := 0; i < m; i++ {
+		for j, v := range board[i] {
+			if v == 2 {
+				board[i][j] = 0
+			}
+			if v == -1 {
+				board[i][j] = 1
+			}
+		}
+	}
+}
+```
+
+#### TypeScript
+
+```ts
+/**
+ Do not return anything, modify board in-place instead.
+ */
+function gameOfLife(board: number[][]): void {
+    const m = board.length;
+    const n = board[0].length;
+    for (let i = 0; i < m; ++i) {
+        for (let j = 0; j < n; ++j) {
+            let live = -board[i][j];
+            for (let x = i - 1; x <= i + 1; ++x) {
+                for (let y = j - 1; y <= j + 1; ++y) {
+                    if (x >= 0 && x < m && y >= 0 && y < n && board[x][y] > 0) {
+                        ++live;
+                    }
+                }
+            }
+            if (board[i][j] === 1 && (live < 2 || live > 3)) {
+                board[i][j] = 2;
+            }
+            if (board[i][j] === 0 && live === 3) {
+                board[i][j] = -1;
+            }
+        }
+    }
+    for (let i = 0; i < m; ++i) {
+        for (let j = 0; j < n; ++j) {
+            if (board[i][j] === 2) {
+                board[i][j] = 0;
+            }
+            if (board[i][j] === -1) {
+                board[i][j] = 1;
+            }
+        }
+    }
+}
+```
+
+#### Rust
 
 ```rust
 const DIR: [(i32, i32); 8] = [
@@ -235,83 +321,7 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func gameOfLife(board [][]int) {
-	m, n := len(board), len(board[0])
-	for i := 0; i < m; i++ {
-		for j, v := range board[i] {
-			live := -v
-			for x := i - 1; x <= i+1; x++ {
-				for y := j - 1; y <= j+1; y++ {
-					if x >= 0 && x < m && y >= 0 && y < n && board[x][y] > 0 {
-						live++
-					}
-				}
-			}
-			if v == 1 && (live < 2 || live > 3) {
-				board[i][j] = 2
-			}
-			if v == 0 && live == 3 {
-				board[i][j] = -1
-			}
-		}
-	}
-	for i := 0; i < m; i++ {
-		for j, v := range board[i] {
-			if v == 2 {
-				board[i][j] = 0
-			}
-			if v == -1 {
-				board[i][j] = 1
-			}
-		}
-	}
-}
-```
-
-### **TypeScript**
-
-```ts
-/**
- Do not return anything, modify board in-place instead.
- */
-function gameOfLife(board: number[][]): void {
-    const m = board.length;
-    const n = board[0].length;
-    for (let i = 0; i < m; ++i) {
-        for (let j = 0; j < n; ++j) {
-            let live = -board[i][j];
-            for (let x = i - 1; x <= i + 1; ++x) {
-                for (let y = j - 1; y <= j + 1; ++y) {
-                    if (x >= 0 && x < m && y >= 0 && y < n && board[x][y] > 0) {
-                        ++live;
-                    }
-                }
-            }
-            if (board[i][j] === 1 && (live < 2 || live > 3)) {
-                board[i][j] = 2;
-            }
-            if (board[i][j] === 0 && live === 3) {
-                board[i][j] = -1;
-            }
-        }
-    }
-    for (let i = 0; i < m; ++i) {
-        for (let j = 0; j < n; ++j) {
-            if (board[i][j] === 2) {
-                board[i][j] = 0;
-            }
-            if (board[i][j] === -1) {
-                board[i][j] = 1;
-            }
-        }
-    }
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -350,10 +360,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

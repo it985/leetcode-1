@@ -1,10 +1,24 @@
-# [2852. 所有单元格的远离程度之和](https://leetcode.cn/problems/sum-of-remoteness-of-all-cells)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2852.Sum%20of%20Remoteness%20of%20All%20Cells/README.md
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 并查集
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
+# [2852. 所有单元格的远离程度之和 🔒](https://leetcode.cn/problems/sum-of-remoteness-of-all-cells)
 
 [English Version](/solution/2800-2899/2852.Sum%20of%20Remoteness%20of%20All%20Cells/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个下标从 <strong>0</strong> 开始的大小为 <code>n * n</code> 的矩阵 <code>grid</code>，其中每个单元格的值 <code>grid[i][j]</code> 要么是 <strong>正整数</strong>，要么是表示阻塞单元格的值 <code>-1</code> 。</p>
 
@@ -62,11 +76,13 @@
 	<li><code>1 &lt;= grid[i][j] &lt;= 10<sup>6</sup></code> 或&nbsp;<code>grid[i][j] == -1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们先统计矩阵中非阻塞的格子的个数，记为 $cnt$，然后从每个非阻塞的格子出发，使用 DFS 计算出每个连通块中格子之和 $s$ 以及格子个数 $t$，那么其它连通块的所有 $(cnt - t)$ 个格子都可以累加上 $s$。我们累加所有连通块的结果即可。
 
@@ -74,9 +90,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -103,9 +117,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -154,7 +166,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -197,7 +209,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sumRemoteness(grid [][]int) (ans int64) {
@@ -237,7 +249,7 @@ func sumRemoteness(grid [][]int) (ans int64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumRemoteness(grid: number[][]): number {
@@ -278,10 +290,8 @@ function sumRemoteness(grid: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1781.Sum%20of%20Beauty%20of%20All%20Substrings/README_EN.md
+rating: 1714
+source: Biweekly Contest 47 Q3
+tags:
+    - Hash Table
+    - String
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [1781. Sum of Beauty of All Substrings](https://leetcode.com/problems/sum-of-beauty-of-all-substrings)
 
 [中文文档](/solution/1700-1799/1781.Sum%20of%20Beauty%20of%20All%20Substrings/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>The <strong>beauty</strong> of a string is the difference in frequencies between the most frequent and least frequent characters.</p>
 
@@ -35,9 +51,13 @@
 	<li><code>s</code> consists of only lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumeration + Counting**
+<!-- solution:start -->
+
+### Solution 1: Enumeration + Counting
 
 Enumerate the starting position $i$ of each substring, find all substrings with the character at this starting position as the left endpoint, then calculate the beauty value of each substring, and accumulate it to the answer.
 
@@ -45,7 +65,7 @@ The time complexity is $O(n^2 \times C)$, and the space complexity is $O(C)$. He
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -58,6 +78,119 @@ class Solution:
                 ans += max(cnt.values()) - min(cnt.values())
         return ans
 ```
+
+#### Java
+
+```java
+class Solution {
+    public int beautySum(String s) {
+        int ans = 0;
+        int n = s.length();
+        for (int i = 0; i < n; ++i) {
+            int[] cnt = new int[26];
+            for (int j = i; j < n; ++j) {
+                ++cnt[s.charAt(j) - 'a'];
+                int mi = 1000, mx = 0;
+                for (int v : cnt) {
+                    if (v > 0) {
+                        mi = Math.min(mi, v);
+                        mx = Math.max(mx, v);
+                    }
+                }
+                ans += mx - mi;
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int beautySum(string s) {
+        int ans = 0;
+        int n = s.size();
+        int cnt[26];
+        for (int i = 0; i < n; ++i) {
+            memset(cnt, 0, sizeof cnt);
+            for (int j = i; j < n; ++j) {
+                ++cnt[s[j] - 'a'];
+                int mi = 1000, mx = 0;
+                for (int& v : cnt) {
+                    if (v > 0) {
+                        mi = min(mi, v);
+                        mx = max(mx, v);
+                    }
+                }
+                ans += mx - mi;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func beautySum(s string) (ans int) {
+	for i := range s {
+		cnt := [26]int{}
+		for j := i; j < len(s); j++ {
+			cnt[s[j]-'a']++
+			mi, mx := 1000, 0
+			for _, v := range cnt {
+				if v > 0 {
+					if mi > v {
+						mi = v
+					}
+					if mx < v {
+						mx = v
+					}
+				}
+			}
+			ans += mx - mi
+		}
+	}
+	return
+}
+```
+
+#### JavaScript
+
+```js
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var beautySum = function (s) {
+    let ans = 0;
+    for (let i = 0; i < s.length; ++i) {
+        const cnt = new Map();
+        for (let j = i; j < s.length; ++j) {
+            cnt.set(s[j], (cnt.get(s[j]) || 0) + 1);
+            const t = Array.from(cnt.values());
+            ans += Math.max(...t) - Math.min(...t);
+        }
+    }
+    return ans;
+};
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -83,31 +216,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-```java
-class Solution {
-    public int beautySum(String s) {
-        int ans = 0;
-        int n = s.length();
-        for (int i = 0; i < n; ++i) {
-            int[] cnt = new int[26];
-            for (int j = i; j < n; ++j) {
-                ++cnt[s.charAt(j) - 'a'];
-                int mi = 1000, mx = 0;
-                for (int v : cnt) {
-                    if (v > 0) {
-                        mi = Math.min(mi, v);
-                        mx = Math.max(mx, v);
-                    }
-                }
-                ans += mx - mi;
-            }
-        }
-        return ans;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -141,33 +250,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int beautySum(string s) {
-        int ans = 0;
-        int n = s.size();
-        int cnt[26];
-        for (int i = 0; i < n; ++i) {
-            memset(cnt, 0, sizeof cnt);
-            for (int j = i; j < n; ++j) {
-                ++cnt[s[j] - 'a'];
-                int mi = 1000, mx = 0;
-                for (int& v : cnt) {
-                    if (v > 0) {
-                        mi = min(mi, v);
-                        mx = max(mx, v);
-                    }
-                }
-                ans += mx - mi;
-            }
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -202,31 +285,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func beautySum(s string) (ans int) {
-	for i := range s {
-		cnt := [26]int{}
-		for j := i; j < len(s); j++ {
-			cnt[s[j]-'a']++
-			mi, mx := 1000, 0
-			for _, v := range cnt {
-				if v > 0 {
-					if mi > v {
-						mi = v
-					}
-					if mx < v {
-						mx = v
-					}
-				}
-			}
-			ans += mx - mi
-		}
-	}
-	return
-}
-```
+#### Go
 
 ```go
 func beautySum(s string) (ans int) {
@@ -257,26 +316,7 @@ func beautySum(s string) (ans int) {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {string} s
- * @return {number}
- */
-var beautySum = function (s) {
-    let ans = 0;
-    for (let i = 0; i < s.length; ++i) {
-        const cnt = new Map();
-        for (let j = i; j < s.length; ++j) {
-            cnt.set(s[j], (cnt.get(s[j]) || 0) + 1);
-            const t = Array.from(cnt.values());
-            ans += Math.max(...t) - Math.min(...t);
-        }
-    }
-    return ans;
-};
-```
+#### JavaScript
 
 ```js
 /**
@@ -311,10 +351,8 @@ var beautySum = function (s) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

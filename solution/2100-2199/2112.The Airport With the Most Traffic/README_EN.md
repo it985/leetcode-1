@@ -1,8 +1,20 @@
-# [2112. The Airport With the Most Traffic](https://leetcode.com/problems/the-airport-with-the-most-traffic)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2112.The%20Airport%20With%20the%20Most%20Traffic/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [2112. The Airport With the Most Traffic 🔒](https://leetcode.com/problems/the-airport-with-the-most-traffic)
 
 [中文文档](/solution/2100-2199/2112.The%20Airport%20With%20the%20Most%20Traffic/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Flights</code></p>
 
@@ -85,11 +97,17 @@ Airport 6 was engaged with 7 flights (7 arrivals).
 The airports with the most traffic are airports 1, 2, 3, and 4.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -110,3 +128,7 @@ WHERE cnt = (SELECT MAX(cnt) FROM P);
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

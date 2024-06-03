@@ -1,10 +1,23 @@
-# [296. 最佳的碰头地点](https://leetcode.cn/problems/best-meeting-point)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0296.Best%20Meeting%20Point/README.md
+tags:
+    - 数组
+    - 数学
+    - 矩阵
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [296. 最佳的碰头地点 🔒](https://leetcode.cn/problems/best-meeting-point)
 
 [English Version](/solution/0200-0299/0296.Best%20Meeting%20Point/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个&nbsp;<code>m x n</code>&nbsp;&nbsp;的二进制网格&nbsp;<code>grid</code>&nbsp;，其中 <code>1</code> 表示某个朋友的家所处的位置。返回 <em>最小的 <strong>总行走距离</strong></em> 。</p>
 
@@ -42,11 +55,13 @@
 	<li><code>grid</code>&nbsp;中 <strong>至少</strong> 有两个朋友</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 中位数**
+### 方法一：排序 + 中位数
 
 对于每一行，我们可以将所有的 $1$ 的下标排序，然后取中位数 $i$ 作为碰头地点的横坐标。
 
@@ -58,14 +73,12 @@
 
 相似题目：
 
--   [462. 最少移动次数使数组元素相等 II](/solution/0400-0499/0462.Minimum%20Moves%20to%20Equal%20Array%20Elements%20II/README.md)
--   [2448. 使数组相等的最小开销](/solution/2400-2499/2448.Minimum%20Cost%20to%20Make%20Array%20Equal/README.md)
+-   [462. 最少移动次数使数组元素相等 II](https://github.com/doocs/leetcode/blob/main/solution/0400-0499/0462.Minimum%20Moves%20to%20Equal%20Array%20Elements%20II/README.md)
+-   [2448. 使数组相等的最小开销](https://github.com/doocs/leetcode/blob/main/solution/2400-2499/2448.Minimum%20Cost%20to%20Make%20Array%20Equal/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -85,9 +98,7 @@ class Solution:
         return f(rows, i) + f(cols, j)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -119,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -151,7 +162,41 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func minTotalDistance(grid [][]int) int {
+	rows, cols := []int{}, []int{}
+	for i, row := range grid {
+		for j, v := range row {
+			if v == 1 {
+				rows = append(rows, i)
+				cols = append(cols, j)
+			}
+		}
+	}
+	sort.Ints(cols)
+	i := rows[len(rows)>>1]
+	j := cols[len(cols)>>1]
+	f := func(arr []int, x int) int {
+		s := 0
+		for _, v := range arr {
+			s += abs(v - x)
+		}
+		return s
+	}
+	return f(rows, i) + f(cols, j)
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -193,44 +238,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func minTotalDistance(grid [][]int) int {
-	rows, cols := []int{}, []int{}
-	for i, row := range grid {
-		for j, v := range row {
-			if v == 1 {
-				rows = append(rows, i)
-				cols = append(cols, j)
-			}
-		}
-	}
-	sort.Ints(cols)
-	i := rows[len(rows)>>1]
-	j := cols[len(cols)>>1]
-	f := func(arr []int, x int) int {
-		s := 0
-		for _, v := range arr {
-			s += abs(v - x)
-		}
-		return s
-	}
-	return f(rows, i) + f(cols, j)
-}
-
-func abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1742.Maximum%20Number%20of%20Balls%20in%20a%20Box/README_EN.md
+rating: 1277
+source: Weekly Contest 226 Q1
+tags:
+    - Hash Table
+    - Math
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [1742. Maximum Number of Balls in a Box](https://leetcode.com/problems/maximum-number-of-balls-in-a-box)
 
 [中文文档](/solution/1700-1799/1742.Maximum%20Number%20of%20Balls%20in%20a%20Box/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are working in a ball factory where you have <code>n</code> balls numbered from <code>lowLimit</code> up to <code>highLimit</code> <strong>inclusive</strong> (i.e., <code>n == highLimit - lowLimit + 1</code>), and an infinite number of boxes numbered from <code>1</code> to <code>infinity</code>.</p>
 
@@ -50,9 +66,13 @@ Box 10 has the most number of balls with 2 balls.
 	<li><code>1 &lt;= lowLimit &lt;= highLimit &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Array + Simulation**
+<!-- solution:start -->
+
+### Solution 1: Array + Simulation
 
 Observing the data range of the problem, the maximum number of the ball does not exceed $10^5$, so the maximum value of the sum of each digit of the number is less than $50$. Therefore, we can directly create an array $cnt$ with a length of $50$ to count the number of each digit sum of each number.
 
@@ -62,7 +82,7 @@ The time complexity is $O(n \times \log_{10}m)$. Here, $n = highLimit - lowLimit
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -77,7 +97,7 @@ class Solution:
         return max(cnt)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -95,7 +115,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -115,7 +135,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countBalls(lowLimit int, highLimit int) (ans int) {
@@ -134,7 +154,7 @@ func countBalls(lowLimit int, highLimit int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countBalls(lowLimit: number, highLimit: number): number {
@@ -150,10 +170,8 @@ function countBalls(lowLimit: number, highLimit: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

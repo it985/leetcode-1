@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2926.Maximum%20Balanced%20Subsequence%20Sum/README_EN.md
+rating: 2448
+source: Weekly Contest 370 Q4
+tags:
+    - Binary Indexed Tree
+    - Segment Tree
+    - Array
+    - Binary Search
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [2926. Maximum Balanced Subsequence Sum](https://leetcode.com/problems/maximum-balanced-subsequence-sum)
 
 [中文文档](/solution/2900-2999/2926.Maximum%20Balanced%20Subsequence%20Sum/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code>.</p>
 
@@ -59,9 +77,13 @@ It is a balanced subsequence, and its sum is the maximum among the balanced subs
 	<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Dynamic Programming + Binary Indexed Tree**
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming + Binary Indexed Tree
 
 According to the problem description, we can transform the inequality $nums[i] - nums[j] \ge i - j$ into $nums[i] - i \ge nums[j] - j$. Therefore, we consider defining a new array $arr$, where $arr[i] = nums[i] - i$. A balanced subsequence satisfies that for any $j < i$, $arr[j] \le arr[i]$. The problem is transformed into selecting an increasing subsequence in $arr$ such that the corresponding sum in $nums$ is maximized.
 
@@ -83,7 +105,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class BinaryIndexedTree:
@@ -116,7 +138,7 @@ class Solution:
         return tree.query(len(s))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class BinaryIndexedTree {
@@ -185,7 +207,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class BinaryIndexedTree {
@@ -239,7 +261,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 const inf int = 1e18
@@ -298,7 +320,7 @@ func maxBalancedSubsequenceSum(nums []int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class BinaryIndexedTree {
@@ -363,10 +385,8 @@ function maxBalancedSubsequenceSum(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

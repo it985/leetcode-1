@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0035.Search%20Insert%20Position/README_EN.md
+tags:
+    - Array
+    - Binary Search
+---
+
+<!-- problem:start -->
+
 # [35. Search Insert Position](https://leetcode.com/problems/search-insert-position)
 
 [中文文档](/solution/0000-0099/0035.Search%20Insert%20Position/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
 
@@ -40,9 +53,13 @@
 	<li><code>-10<sup>4</sup> &lt;= target &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Binary Search
 
 Since the array $nums$ is already sorted, we can use the binary search method to find the insertion position of the target value $target$.
 
@@ -50,7 +67,7 @@ The time complexity is $O(\log n)$, and the space complexity is $O(1)$. Here, $n
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,13 +82,7 @@ class Solution:
         return left
 ```
 
-```python
-class Solution:
-    def searchInsert(self, nums: List[int], target: int) -> int:
-        return bisect_left(nums, target)
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -90,7 +101,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -109,16 +120,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int searchInsert(vector<int>& nums, int target) {
-        return lower_bound(nums.begin(), nums.end(), target) - nums.begin();
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func searchInsert(nums []int, target int) int {
@@ -135,36 +137,7 @@ func searchInsert(nums []int, target int) int {
 }
 ```
 
-```go
-func searchInsert(nums []int, target int) int {
-	return sort.SearchInts(nums, target)
-}
-```
-
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- */
-var searchInsert = function (nums, target) {
-    let left = 0;
-    let right = nums.length;
-    while (left < right) {
-        const mid = (left + right) >> 1;
-        if (nums[mid] >= target) {
-            right = mid;
-        } else {
-            left = mid + 1;
-        }
-    }
-    return left;
-};
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 use std::cmp::Ordering;
@@ -191,10 +164,106 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var searchInsert = function (nums, target) {
+    let left = 0;
+    let right = nums.length;
+    while (left < right) {
+        const mid = (left + right) >> 1;
+        if (nums[mid] >= target) {
+            right = mid;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return left;
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Binary Search (Built-in Function)
+
+We can also directly use the built-in function for binary search.
+
+The time complexity is $O(\log n)$, where $n$ is the length of the array $nums$. The space complexity is $O(1)$.
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        return bisect_left(nums, target)
+```
+
+#### Java
+
+```java
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int i = Arrays.binarySearch(nums, target);
+        return i < 0 ? -i - 1 : i;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        return lower_bound(nums.begin(), nums.end(), target) - nums.begin();
+    }
+};
+```
+
+#### Go
+
+```go
+func searchInsert(nums []int, target int) int {
+	return sort.SearchInts(nums, target)
+}
+```
+
+#### PHP
+
+```php
+class Solution {
+    /**
+     * @param integer[] $nums
+     * @param integer $target
+     * @return integer
+     */
+
+    function searchInsert($nums, $target) {
+        $key = array_search($target, $nums);
+        if ($key !== false) {
+            return $key;
+        }
+
+        $nums[] = $target;
+        sort($nums);
+        return array_search($target, $nums);
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

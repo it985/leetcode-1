@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1145.Binary%20Tree%20Coloring%20Game/README_EN.md
+rating: 1741
+source: Weekly Contest 148 Q2
+tags:
+    - Tree
+    - Depth-First Search
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [1145. Binary Tree Coloring Game](https://leetcode.com/problems/binary-tree-coloring-game)
 
 [中文文档](/solution/1100-1199/1145.Binary%20Tree%20Coloring%20Game/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Two players play a turn based game on a binary tree. We are given the <code>root</code> of this binary tree, and the number of nodes <code>n</code> in the tree. <code>n</code> is odd, and each node has a distinct value from <code>1</code> to <code>n</code>.</p>
 
@@ -41,9 +57,13 @@
 	<li>All the values of the tree are <strong>unique</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: DFS**
+<!-- solution:start -->
+
+### Solution 1: DFS
 
 First, we use DFS to find the node where player 1's colored point $x$ is located, denoted as $node$.
 
@@ -53,7 +73,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -79,7 +99,7 @@ class Solution:
         return max(l, r, n - l - r - 1) > n // 2
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -122,7 +142,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -161,7 +181,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -199,46 +219,7 @@ func btreeGameWinningMove(root *TreeNode, n int, x int) bool {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
-/**
- * @param {TreeNode} root
- * @param {number} n
- * @param {number} x
- * @return {boolean}
- */
-var btreeGameWinningMove = function (root, n, x) {
-    const dfs = root => {
-        if (!root || root.val === x) {
-            return root;
-        }
-        return dfs(root.left) || dfs(root.right);
-    };
-
-    const count = root => {
-        if (!root) {
-            return 0;
-        }
-        return 1 + count(root.left) + count(root.right);
-    };
-
-    const node = dfs(root);
-    const l = count(node.left);
-    const r = count(node.right);
-    return Math.max(l, r, n - l - r - 1) > n / 2;
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -277,10 +258,47 @@ function btreeGameWinningMove(root: TreeNode | null, n: number, x: number): bool
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number} n
+ * @param {number} x
+ * @return {boolean}
+ */
+var btreeGameWinningMove = function (root, n, x) {
+    const dfs = root => {
+        if (!root || root.val === x) {
+            return root;
+        }
+        return dfs(root.left) || dfs(root.right);
+    };
 
+    const count = root => {
+        if (!root) {
+            return 0;
+        }
+        return 1 + count(root.left) + count(root.right);
+    };
+
+    const node = dfs(root);
+    const l = count(node.left);
+    const r = count(node.right);
+    return Math.max(l, r, n - l - r - 1) > n / 2;
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

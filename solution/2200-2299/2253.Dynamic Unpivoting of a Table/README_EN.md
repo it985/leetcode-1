@@ -1,8 +1,20 @@
-# [2253. Dynamic Unpivoting of a Table](https://leetcode.com/problems/dynamic-unpivoting-of-a-table)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2253.Dynamic%20Unpivoting%20of%20a%20Table/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [2253. Dynamic Unpivoting of a Table 🔒](https://leetcode.com/problems/dynamic-unpivoting-of-a-table)
 
 [中文文档](/solution/2200-2299/2253.Dynamic%20Unpivoting%20of%20a%20Table/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Products</code></p>
 
@@ -66,11 +78,17 @@ Product 2 is sold in Nozama and Souq with prices of 200 and 190.
 Product 3 is sold in Shop and Souq with prices of 1000 and 1900.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 CREATE PROCEDURE UnpivotProducts()
@@ -103,3 +121,7 @@ END;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0661.Image%20Smoother/README_EN.md
+tags:
+    - Array
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [661. Image Smoother](https://leetcode.com/problems/image-smoother)
 
 [中文文档](/solution/0600-0699/0661.Image%20Smoother/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>An <strong>image smoother</strong> is a filter of the size <code>3 x 3</code> that can be applied to each cell of an image by rounding down the average of the cell and the eight surrounding cells (i.e., the average of the nine cells in the blue smoother). If one or more of the surrounding cells of a cell is not present, we do not consider it in the average (i.e., the average of the four cells in the red smoother).</p>
 <img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0600-0699/0661.Image%20Smoother/images/smoother-grid.jpg" style="width: 493px; height: 493px;" />
@@ -41,11 +54,17 @@ For the point (1,1): floor((50+200+200+200+200+100+100+100+100)/9) = floor(138.8
 	<li><code>0 &lt;= img[i][j] &lt;= 255</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -64,7 +83,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -92,7 +111,58 @@ class Solution {
 }
 ```
 
-### **TypeScript**
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> imageSmoother(vector<vector<int>>& img) {
+        int m = img.size(), n = img[0].size();
+        vector<vector<int>> ans(m, vector<int>(n));
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                int s = 0, cnt = 0;
+                for (int x = i - 1; x <= i + 1; ++x) {
+                    for (int y = j - 1; y <= j + 1; ++y) {
+                        if (x < 0 || x >= m || y < 0 || y >= n) continue;
+                        ++cnt;
+                        s += img[x][y];
+                    }
+                }
+                ans[i][j] = s / cnt;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func imageSmoother(img [][]int) [][]int {
+	m, n := len(img), len(img[0])
+	ans := make([][]int, m)
+	for i, row := range img {
+		ans[i] = make([]int, n)
+		for j := range row {
+			s, cnt := 0, 0
+			for x := i - 1; x <= i+1; x++ {
+				for y := j - 1; y <= j+1; y++ {
+					if x >= 0 && x < m && y >= 0 && y < n {
+						cnt++
+						s += img[x][y]
+					}
+				}
+			}
+			ans[i][j] = s / cnt
+		}
+	}
+	return ans
+}
+```
+
+#### TypeScript
 
 ```ts
 function imageSmoother(img: number[][]): number[][] {
@@ -129,7 +199,7 @@ function imageSmoother(img: number[][]): number[][] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -171,61 +241,8 @@ impl Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    vector<vector<int>> imageSmoother(vector<vector<int>>& img) {
-        int m = img.size(), n = img[0].size();
-        vector<vector<int>> ans(m, vector<int>(n));
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < n; ++j) {
-                int s = 0, cnt = 0;
-                for (int x = i - 1; x <= i + 1; ++x) {
-                    for (int y = j - 1; y <= j + 1; ++y) {
-                        if (x < 0 || x >= m || y < 0 || y >= n) continue;
-                        ++cnt;
-                        s += img[x][y];
-                    }
-                }
-                ans[i][j] = s / cnt;
-            }
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
-
-```go
-func imageSmoother(img [][]int) [][]int {
-	m, n := len(img), len(img[0])
-	ans := make([][]int, m)
-	for i, row := range img {
-		ans[i] = make([]int, n)
-		for j := range row {
-			s, cnt := 0, 0
-			for x := i - 1; x <= i+1; x++ {
-				for y := j - 1; y <= j+1; y++ {
-					if x >= 0 && x < m && y >= 0 && y < n {
-						cnt++
-						s += img[x][y]
-					}
-				}
-			}
-			ans[i][j] = s / cnt
-		}
-	}
-	return ans
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0959.Regions%20Cut%20By%20Slashes/README_EN.md
+tags:
+    - Depth-First Search
+    - Breadth-First Search
+    - Union Find
+    - Array
+    - Hash Table
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [959. Regions Cut By Slashes](https://leetcode.com/problems/regions-cut-by-slashes)
 
 [中文文档](/solution/0900-0999/0959.Regions%20Cut%20By%20Slashes/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>An <code>n x n</code> grid is composed of <code>1 x 1</code> squares where each <code>1 x 1</code> square consists of a <code>&#39;/&#39;</code>, <code>&#39;\&#39;</code>, or blank space <code>&#39; &#39;</code>. These characters divide the square into contiguous regions.</p>
 
@@ -42,11 +59,17 @@
 	<li><code>grid[i][j]</code> is either <code>&#39;/&#39;</code>, <code>&#39;\&#39;</code>, or <code>&#39; &#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -86,7 +109,7 @@ class Solution:
         return size
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -145,7 +168,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -195,7 +218,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func regionsBySlashes(grid []string) int {
@@ -246,10 +269,8 @@ func regionsBySlashes(grid []string) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

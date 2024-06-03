@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0306.Additive%20Number/README_EN.md
+tags:
+    - String
+    - Backtracking
+---
+
+<!-- problem:start -->
+
 # [306. Additive Number](https://leetcode.com/problems/additive-number)
 
 [中文文档](/solution/0300-0399/0306.Additive%20Number/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>An <strong>additive number</strong> is a string whose digits can form an <strong>additive sequence</strong>.</p>
 
@@ -44,11 +57,17 @@ The additive sequence is: 1, 99, 100, 199.&nbsp;
 <p>&nbsp;</p>
 <p><strong>Follow up:</strong> How would you handle overflow for very large input integers?</p>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -76,7 +95,7 @@ class Solution:
         return False
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -119,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -150,7 +169,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isAdditiveNumber(num string) bool {
@@ -192,10 +211,8 @@ func isAdditiveNumber(num string) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

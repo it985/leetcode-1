@@ -1,12 +1,20 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcp/LCP%2041.%20%E9%BB%91%E7%99%BD%E7%BF%BB%E8%BD%AC%E6%A3%8B/README.md
+---
+
+<!-- problem:start -->
+
 # [LCP 41. 黑白翻转棋](https://leetcode.cn/problems/fHi6rV)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 在 `n*m` 大小的棋盘中，有黑白两种棋子，黑棋记作字母 `"X"`, 白棋记作字母 `"O"`，空余位置记作 `"."`。当落下的棋子与其他相同颜色的棋子在行、列或对角线完全包围（中间不存在空白位置）另一种颜色的棋子，则可以翻转这些棋子的颜色。
 
-![1.gif](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcp/LCP%2041.%20黑白翻转棋/images/1630396029-eTgzpN-6da662e67368466a96d203f67bb6e793.gif)![2.gif](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcp/LCP%2041.%20黑白翻转棋/images/1630396240-nMvdcc-8e4261afe9f60e05a4f740694b439b6b.gif)![3.gif](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcp/LCP%2041.%20黑白翻转棋/images/1630396291-kEtzLL-6fcb682daeecb5c3f56eb88b23c81d33.gif)
+![1.gif](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcp/LCP%2041.%20%E9%BB%91%E7%99%BD%E7%BF%BB%E8%BD%AC%E6%A3%8B/images/1630396029-eTgzpN-6da662e67368466a96d203f67bb6e793.gif){:height=170px}![2.gif](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcp/LCP%2041.%20%E9%BB%91%E7%99%BD%E7%BF%BB%E8%BD%AC%E6%A3%8B/images/1630396240-nMvdcc-8e4261afe9f60e05a4f740694b439b6b.gif){:height=170px}![3.gif](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcp/LCP%2041.%20%E9%BB%91%E7%99%BD%E7%BF%BB%E8%BD%AC%E6%A3%8B/images/1630396291-kEtzLL-6fcb682daeecb5c3f56eb88b23c81d33.gif){:height=170px}
 
 「力扣挑战赛」黑白翻转棋项目中，将提供给选手一个未形成可翻转棋子的棋盘残局，其状态记作 `chessboard`。若下一步可放置一枚黑棋，请问选手最多能翻转多少枚白棋。
 
@@ -32,7 +40,7 @@
 >
 > 解释：
 > 可以选择下在 `[2,2]` 处，能够翻转白方两枚棋子。
-> ![2126c1d21b1b9a9924c639d449cc6e65.gif](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcp/LCP%2041.%20黑白翻转棋/images/1626683255-OBtBud-2126c1d21b1b9a9924c639d449cc6e65.gif)
+> ![2126c1d21b1b9a9924c639d449cc6e65.gif](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcp/LCP%2041.%20%E9%BB%91%E7%99%BD%E7%BF%BB%E8%BD%AC%E6%A3%8B/images/1626683255-OBtBud-2126c1d21b1b9a9924c639d449cc6e65.gif)
 
 **示例 3：**
 
@@ -42,18 +50,20 @@
 >
 > 解释：
 > 可以选择下在 `[6,3]` 处，能够翻转白方四枚棋子。
-> ![803f2f04098b6174397d6c696f54d709.gif](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcp/LCP%2041.%20黑白翻转棋/images/1630393770-Puyked-803f2f04098b6174397d6c696f54d709.gif)
+> ![803f2f04098b6174397d6c696f54d709.gif](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcp/LCP%2041.%20%E9%BB%91%E7%99%BD%E7%BF%BB%E8%BD%AC%E6%A3%8B/images/1630393770-Puyked-803f2f04098b6174397d6c696f54d709.gif)
 
 **提示：**
 
 -   `1 <= chessboard.length, chessboard[i].length <= 8`
 -   `chessboard[i]` 仅包含 `"."、"O"` 和 `"X"`
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：BFS**
+### 方法一：BFS
 
 我们注意到，题目中棋盘的大小最大为 $8 \times 8$，因此，我们可以尝试枚举所有的空余位置作为下一步放置黑棋的位置，然后使用广度优先搜索的方法计算在该位置下可以翻转的白棋的数量，找出最大值即可。
 
@@ -65,9 +75,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -99,9 +107,7 @@ class Solution:
         )
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -166,7 +172,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -225,7 +231,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func flipChess(chessboard []string) (ans int) {
@@ -286,10 +292,8 @@ func abs(x int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

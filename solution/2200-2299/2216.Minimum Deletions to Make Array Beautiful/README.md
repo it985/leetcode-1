@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2216.Minimum%20Deletions%20to%20Make%20Array%20Beautiful/README.md
+rating: 1509
+source: 第 286 场周赛 Q2
+tags:
+    - 栈
+    - 贪心
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [2216. 美化数组的最少删除数](https://leetcode.cn/problems/minimum-deletions-to-make-array-beautiful)
 
 [English Version](/solution/2200-2299/2216.Minimum%20Deletions%20to%20Make%20Array%20Beautiful/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> ，如果满足下述条件，则认为数组 <code>nums</code> 是一个 <strong>美丽数组</strong> ：</p>
 
@@ -43,11 +57,13 @@
 	<li><code>0 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 根据题目描述，我们知道，一个美丽数组有偶数个元素，且如果我们把这个数组中每相邻两个元素划分为一组，那么每一组中的两个元素都不相等。这意味着，组内的元素不能重复，但组与组之间的元素可以重复。
 
@@ -59,9 +75,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -78,24 +92,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def minDeletion(self, nums: List[int]) -> int:
-        n = len(nums)
-        ans = i = 0
-        while i < n:
-            j = i + 1
-            while j < n and nums[j] == nums[i]:
-                j += 1
-                ans += 1
-            i = j + 1
-        ans += (n - ans) % 2
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -115,26 +112,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int minDeletion(int[] nums) {
-        int n = nums.length;
-        int ans = 0;
-        for (int i = 0; i < n;) {
-            int j = i + 1;
-            while (j < n && nums[j] == nums[i]) {
-                ++j;
-                ++ans;
-            }
-            i = j + 1;
-        }
-        ans += (n - ans) % 2;
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -155,27 +133,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int minDeletion(vector<int>& nums) {
-        int n = nums.size();
-        int ans = 0;
-        for (int i = 0; i < n;) {
-            int j = i + 1;
-            while (j < n && nums[j] == nums[i]) {
-                ++j;
-                ++ans;
-            }
-            i = j + 1;
-        }
-        ans += (n - ans) % 2;
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func minDeletion(nums []int) (ans int) {
@@ -192,22 +150,7 @@ func minDeletion(nums []int) (ans int) {
 }
 ```
 
-```go
-func minDeletion(nums []int) (ans int) {
-	n := len(nums)
-	for i := 0; i < n; {
-		j := i + 1
-		for ; j < n && nums[j] == nums[i]; j++ {
-			ans++
-		}
-		i = j + 1
-	}
-	ans += (n - ans) % 2
-	return
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minDeletion(nums: number[]): number {
@@ -225,23 +168,7 @@ function minDeletion(nums: number[]): number {
 }
 ```
 
-```ts
-function minDeletion(nums: number[]): number {
-    const n = nums.length;
-    let ans = 0;
-    for (let i = 0; i < n; ) {
-        let j = i + 1;
-        for (; j < n && nums[j] === nums[i]; ++j) {
-            ++ans;
-        }
-        i = j + 1;
-    }
-    ans += (n - ans) % 2;
-    return ans;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -263,6 +190,113 @@ impl Solution {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minDeletion(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = i = 0
+        while i < n:
+            j = i + 1
+            while j < n and nums[j] == nums[i]:
+                j += 1
+                ans += 1
+            i = j + 1
+        ans += (n - ans) % 2
+        return ans
+```
+
+#### Java
+
+```java
+class Solution {
+    public int minDeletion(int[] nums) {
+        int n = nums.length;
+        int ans = 0;
+        for (int i = 0; i < n;) {
+            int j = i + 1;
+            while (j < n && nums[j] == nums[i]) {
+                ++j;
+                ++ans;
+            }
+            i = j + 1;
+        }
+        ans += (n - ans) % 2;
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int minDeletion(vector<int>& nums) {
+        int n = nums.size();
+        int ans = 0;
+        for (int i = 0; i < n;) {
+            int j = i + 1;
+            while (j < n && nums[j] == nums[i]) {
+                ++j;
+                ++ans;
+            }
+            i = j + 1;
+        }
+        ans += (n - ans) % 2;
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func minDeletion(nums []int) (ans int) {
+	n := len(nums)
+	for i := 0; i < n; {
+		j := i + 1
+		for ; j < n && nums[j] == nums[i]; j++ {
+			ans++
+		}
+		i = j + 1
+	}
+	ans += (n - ans) % 2
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function minDeletion(nums: number[]): number {
+    const n = nums.length;
+    let ans = 0;
+    for (let i = 0; i < n; ) {
+        let j = i + 1;
+        for (; j < n && nums[j] === nums[i]; ++j) {
+            ++ans;
+        }
+        i = j + 1;
+    }
+    ans += (n - ans) % 2;
+    return ans;
+}
+```
+
+#### Rust
+
 ```rust
 impl Solution {
     pub fn min_deletion(nums: Vec<i32>) -> i32 {
@@ -283,10 +317,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

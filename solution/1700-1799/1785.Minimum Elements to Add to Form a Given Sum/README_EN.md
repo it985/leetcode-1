@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1785.Minimum%20Elements%20to%20Add%20to%20Form%20a%20Given%20Sum/README_EN.md
+rating: 1432
+source: Weekly Contest 231 Q2
+tags:
+    - Greedy
+    - Array
+---
+
+<!-- problem:start -->
+
 # [1785. Minimum Elements to Add to Form a Given Sum](https://leetcode.com/problems/minimum-elements-to-add-to-form-a-given-sum)
 
 [中文文档](/solution/1700-1799/1785.Minimum%20Elements%20to%20Add%20to%20Form%20a%20Given%20Sum/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code> and two integers <code>limit</code> and <code>goal</code>. The array <code>nums</code> has an interesting property that <code>abs(nums[i]) &lt;= limit</code>.</p>
 
@@ -36,9 +51,13 @@
 	<li><code>-10<sup>9</sup> &lt;= goal &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy**
+<!-- solution:start -->
+
+### Solution 1: Greedy
 
 First, we calculate the sum of the array elements $s$, and then calculate the difference $d$ between $s$ and $goal$.
 
@@ -50,7 +69,7 @@ The time complexity is $O(n)$, and the space complexity is $O(1)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,7 +78,7 @@ class Solution:
         return (d + limit - 1) // limit
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -75,7 +94,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -88,7 +107,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minElements(nums []int, limit int, goal int) int {
@@ -108,7 +127,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minElements(nums: number[], limit: number, goal: number): number {
@@ -118,7 +137,7 @@ function minElements(nums: number[], limit: number, goal: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -135,7 +154,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 int minElements(int* nums, int numsSize, int limit, int goal) {
@@ -148,10 +167,8 @@ int minElements(int* nums, int numsSize, int limit, int goal) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

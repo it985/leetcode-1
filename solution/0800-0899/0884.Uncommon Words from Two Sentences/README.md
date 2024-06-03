@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0884.Uncommon%20Words%20from%20Two%20Sentences/README.md
+tags:
+    - 哈希表
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [884. 两句话中的不常见单词](https://leetcode.cn/problems/uncommon-words-from-two-sentences)
 
 [English Version](/solution/0800-0899/0884.Uncommon%20Words%20from%20Two%20Sentences/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><strong>句子</strong> 是一串由空格分隔的单词。每个 <strong>单词</strong><em> </em>仅由小写字母组成。</p>
 
@@ -42,11 +53,13 @@
 	<li><code>s1</code> 和 <code>s2</code> 中的所有单词间均由单个空格分隔</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 根据题目描述，只要单词出现一次，就符合题目要求。因此，我们用哈希表 $cnt$ 记录所有单词以及出现的次数。
 
@@ -56,9 +69,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -67,19 +78,17 @@ class Solution:
         return [s for s, v in cnt.items() if v == 1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
     public String[] uncommonFromSentences(String s1, String s2) {
         Map<String, Integer> cnt = new HashMap<>();
         for (String s : s1.split(" ")) {
-            cnt.put(s, cnt.getOrDefault(s, 0) + 1);
+            cnt.merge(s, 1, Integer::sum);
         }
         for (String s : s2.split(" ")) {
-            cnt.put(s, cnt.getOrDefault(s, 0) + 1);
+            cnt.merge(s, 1, Integer::sum);
         }
         List<String> ans = new ArrayList<>();
         for (var e : cnt.entrySet()) {
@@ -92,7 +101,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -114,7 +123,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func uncommonFromSentences(s1 string, s2 string) (ans []string) {
@@ -134,7 +143,7 @@ func uncommonFromSentences(s1 string, s2 string) (ans []string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function uncommonFromSentences(s1: string, s2: string): string[] {
@@ -152,7 +161,7 @@ function uncommonFromSentences(s1: string, s2: string): string[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -177,7 +186,7 @@ impl Solution {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -200,10 +209,8 @@ var uncommonFromSentences = function (s1, s2) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

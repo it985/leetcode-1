@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1792.Maximum%20Average%20Pass%20Ratio/README_EN.md
+rating: 1817
+source: Weekly Contest 232 Q3
+tags:
+    - Greedy
+    - Array
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [1792. Maximum Average Pass Ratio](https://leetcode.com/problems/maximum-average-pass-ratio)
 
 [中文文档](/solution/1700-1799/1792.Maximum%20Average%20Pass%20Ratio/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is a school that has classes of students and each class will be having a final exam. You are given a 2D integer array <code>classes</code>, where <code>classes[i] = [pass<sub>i</sub>, total<sub>i</sub>]</code>. You know beforehand that in the <code>i<sup>th</sup></code> class, there are <code>total<sub>i</sub></code> total students, but only <code>pass<sub>i</sub></code> number of students will pass the exam.</p>
 
@@ -38,9 +54,13 @@
 	<li><code>1 &lt;= extraStudents &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Priority Queue (Max-Heap of Increment)**
+<!-- solution:start -->
+
+### Solution 1: Priority Queue (Max-Heap of Increment)
 
 Suppose a class currently has a pass rate of $\frac{a}{b}$. If we arrange a smart student into this class, then the pass rate of the class will become $\frac{a+1}{b+1}$. We can find that the increment of the pass rate is $\frac{a+1}{b+1} - \frac{a}{b}$.
 
@@ -54,7 +74,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -68,7 +88,7 @@ class Solution:
         return sum(v[1] / v[2] for v in h) / len(classes)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -96,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -127,7 +147,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxAverageRatio(classes [][]int, extraStudents int) float64 {
@@ -169,10 +189,8 @@ func (h *hp) Push(v any)   { *h = append(*h, v.(tuple)) }
 func (h *hp) Pop() any     { a := *h; v := a[len(a)-1]; *h = a[:len(a)-1]; return v }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

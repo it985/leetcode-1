@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1504.Count%20Submatrices%20With%20All%20Ones/README.md
+rating: 1845
+source: 第 196 场周赛 Q3
+tags:
+    - 栈
+    - 数组
+    - 动态规划
+    - 矩阵
+    - 单调栈
+---
+
+<!-- problem:start -->
+
 # [1504. 统计全 1 子矩形](https://leetcode.cn/problems/count-submatrices-with-all-ones)
 
 [English Version](/solution/1500-1599/1504.Count%20Submatrices%20With%20All%20Ones/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个&nbsp;<code>m x n</code>&nbsp;的二进制矩阵&nbsp;<code>mat</code>&nbsp;，请你返回有多少个&nbsp;<strong>子矩形</strong>&nbsp;的元素全部都是 1 。</p>
 
@@ -54,11 +70,13 @@
 	<li><code>mat[i][j]</code>&nbsp;仅包含&nbsp;<code>0</code>&nbsp;或&nbsp;<code>1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举 + 前缀和**
+### 方法一：枚举 + 前缀和
 
 我们可以枚举矩阵的右下角 $(i, j)$，然后向上枚举矩阵的第一行 $k$，那么每一行以 $(i, j)$ 为右下角的矩阵的宽度就是 $\min_{k \leq i} \textit{g}[k][j]$，其中 $\textit{g}[k][j]$ 表示第 $k$ 行以 $(k, j)$ 为右下角的矩阵的宽度。
 
@@ -68,9 +86,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -91,9 +107,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -122,7 +136,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -152,7 +166,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numSubmat(mat [][]int) (ans int) {
@@ -183,10 +197,8 @@ func numSubmat(mat [][]int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

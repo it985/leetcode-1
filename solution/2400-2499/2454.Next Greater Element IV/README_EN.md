@@ -1,8 +1,27 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2454.Next%20Greater%20Element%20IV/README_EN.md
+rating: 2175
+source: Biweekly Contest 90 Q4
+tags:
+    - Stack
+    - Array
+    - Binary Search
+    - Sorting
+    - Monotonic Stack
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [2454. Next Greater Element IV](https://leetcode.com/problems/next-greater-element-iv)
 
 [中文文档](/solution/2400-2499/2454.Next%20Greater%20Element%20IV/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> array of non-negative integers <code>nums</code>. For each integer in <code>nums</code>, you must find its respective <strong>second greater</strong> integer.</p>
 
@@ -54,9 +73,13 @@ We return [-1,-1] since neither integer has any integer greater than it.
 	<li><code>0 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sorting + Ordered Set**
+<!-- solution:start -->
+
+### Solution 1: Sorting + Ordered Set
 
 We can convert the elements in the array into pairs $(x, i)$, where $x$ is the value of the element and $i$ is the index of the element. Then sort by the value of the elements in descending order.
 
@@ -66,7 +89,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 from sortedcontainers import SortedList
@@ -87,7 +110,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -114,7 +137,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -140,7 +163,7 @@ public:
 };
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function secondGreaterElement(nums: number[]): number[] {
@@ -806,10 +829,8 @@ class TreeMultiSet<T = number> {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

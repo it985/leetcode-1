@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2108.Find%20First%20Palindromic%20String%20in%20the%20Array/README.md
+rating: 1215
+source: 第 272 场周赛 Q1
+tags:
+    - 数组
+    - 双指针
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2108. 找出数组中的第一个回文字符串](https://leetcode.cn/problems/find-first-palindromic-string-in-the-array)
 
 [English Version](/solution/2100-2199/2108.Find%20First%20Palindromic%20String%20in%20the%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串数组 <code>words</code> ，找出并返回数组中的 <strong>第一个回文字符串</strong> 。如果不存在满足要求的字符串，返回一个 <strong>空字符串</strong><em> </em><code>""</code> 。</p>
 
@@ -44,11 +58,13 @@
 	<li><code>words[i]</code> 仅由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 遍历数组 `words`，对于每个字符串 `w`，判断其是否为回文字符串，如果是，则返回 `w`，否则继续遍历。
 
@@ -58,9 +74,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -68,9 +82,7 @@ class Solution:
         return next((w for w in words if w == w[::-1]), "")
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +103,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -113,7 +125,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func firstPalindrome(words []string) string {
@@ -132,7 +144,7 @@ func firstPalindrome(words []string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function firstPalindrome(words: string[]): string {
@@ -154,7 +166,7 @@ function firstPalindrome(words: string[]): string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -179,7 +191,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 char* firstPalindrome(char** words, int wordsSize) {
@@ -201,10 +213,8 @@ char* firstPalindrome(char** words, int wordsSize) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

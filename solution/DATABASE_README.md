@@ -247,6 +247,41 @@
 | 2854 | [滚动平均步数](/solution/2800-2899/2854.Rolling%20Average%20Steps/README.md)                                                                                 | `数据库` | 中等 | 🔒   |
 | 2893 | [计算每个区间内的订单](/solution/2800-2899/2893.Calculate%20Orders%20Within%20Each%20Interval/README.md)                                                     | `数据库` | 中等 | 🔒   |
 | 2922 | [市场分析 III](/solution/2900-2999/2922.Market%20Analysis%20III/README.md)                                                                                   | `数据库` | 中等 | 🔒   |
+| 2978 | [对称坐标](/solution/2900-2999/2978.Symmetric%20Coordinates/README.md)                                                                                       | `数据库` | 中等 | 🔒   |
+| 2984 | [找到每座城市的高峰通话时间](/solution/2900-2999/2984.Find%20Peak%20Calling%20Hours%20for%20Each%20City/README.md)                                           | `数据库` | 中等 | 🔒   |
+| 2985 | [计算订单平均商品数量](/solution/2900-2999/2985.Calculate%20Compressed%20Mean/README.md)                                                                     | `数据库` | 简单 | 🔒   |
+| 2986 | [找到第三笔交易](/solution/2900-2999/2986.Find%20Third%20Transaction/README.md)                                                                              | `数据库` | 中等 | 🔒   |
+| 2987 | [寻找房价最贵的城市](/solution/2900-2999/2987.Find%20Expensive%20Cities/README.md)                                                                           | `数据库` | 简单 | 🔒   |
+| 2988 | [最大部门的经理](/solution/2900-2999/2988.Manager%20of%20the%20Largest%20Department/README.md)                                                               | `数据库` | 中等 | 🔒   |
+| 2989 | [班级表现](/solution/2900-2999/2989.Class%20Performance/README.md)                                                                                           | `数据库` | 中等 | 🔒   |
+| 2990 | [贷款类型](/solution/2900-2999/2990.Loan%20Types/README.md)                                                                                                  | `数据库` | 简单 | 🔒   |
+| 2991 | [最好的三家酒庄](/solution/2900-2999/2991.Top%20Three%20Wineries/README.md)                                                                                  | `数据库` | 困难 | 🔒   |
+| 2993 | [发生在周五的交易 I](/solution/2900-2999/2993.Friday%20Purchases%20I/README.md)                                                                              | `数据库` | 中等 | 🔒   |
+| 2994 | [发生在周五的交易 II](/solution/2900-2999/2994.Friday%20Purchases%20II/README.md)                                                                            | `数据库` | 困难 | 🔒   |
+| 2995 | [观众变主播](/solution/2900-2999/2995.Viewers%20Turned%20Streamers/README.md)                                                                                | `数据库` | 困难 | 🔒   |
+| 3050 | [披萨配料成本分析](/solution/3000-3099/3050.Pizza%20Toppings%20Cost%20Analysis/README.md)                                                                    | `数据库` | 中等 | 🔒   |
+| 3051 | [寻找数据科学家职位的候选人](/solution/3000-3099/3051.Find%20Candidates%20for%20Data%20Scientist%20Position/README.md)                                       | `数据库` | 简单 | 🔒   |
+| 3052 | [最大化商品](/solution/3000-3099/3052.Maximize%20Items/README.md)                                                                                            | `数据库` | 困难 | 🔒   |
+| 3053 | [根据长度分类三角形](/solution/3000-3099/3053.Classifying%20Triangles%20by%20Lengths/README.md)                                                              | `数据库` | 简单 | 🔒   |
+| 3054 | [二叉树节点](/solution/3000-3099/3054.Binary%20Tree%20Nodes/README.md)                                                                                       | `数据库` | 中等 | 🔒   |
+| 3055 | [最高欺诈百分位数](/solution/3000-3099/3055.Top%20Percentile%20Fraud/README.md)                                                                              | `数据库` | 中等 | 🔒   |
+| 3056 | [快照分析](/solution/3000-3099/3056.Snaps%20Analysis/README.md)                                                                                              | `数据库` | 中等 | 🔒   |
+| 3057 | [员工项目分配](/solution/3000-3099/3057.Employees%20Project%20Allocation/README.md)                                                                          | `数据库` | 困难 | 🔒   |
+| 3058 | [没有共同朋友的朋友](/solution/3000-3099/3058.Friends%20With%20No%20Mutual%20Friends/README.md)                                                              | `数据库` | 中等 | 🔒   |
+| 3059 | [找到所有不同的邮件域名](/solution/3000-3099/3059.Find%20All%20Unique%20Email%20Domains/README.md)                                                           | `数据库` | 简单 | 🔒   |
+| 3060 | [时间范围内的用户活动](/solution/3000-3099/3060.User%20Activities%20within%20Time%20Bounds/README.md)                                                        | `数据库` | 困难 | 🔒   |
+| 3061 | [计算滞留雨水](/solution/3000-3099/3061.Calculate%20Trapping%20Rain%20Water/README.md)                                                                       | `数据库` | 困难 | 🔒   |
+| 3087 | [查找热门话题标签](/solution/3000-3099/3087.Find%20Trending%20Hashtags/README.md)                                                                            | `数据库` | 中等 | 🔒   |
+| 3089 | [查找突发行为](/solution/3000-3099/3089.Find%20Bursty%20Behavior/README.md)                                                                                  | `数据库` | 中等 | 🔒   |
+| 3103 | [查找热门话题标签 II](/solution/3100-3199/3103.Find%20Trending%20Hashtags%20II/README.md)                                                                    | `数据库` | 困难 | 🔒   |
+| 3118 | [Friday Purchase III](/solution/3100-3199/3118.Friday%20Purchase%20III/README.md)                                                                            | `数据库` | 中等 | 🔒   |
+| 3124 | [查找最长的电话](/solution/3100-3199/3124.Find%20Longest%20Calls/README.md)                                                                                  | `数据库` | 中等 | 🔒   |
+| 3126 | [服务器利用时间](/solution/3100-3199/3126.Server%20Utilization%20Time/README.md)                                                                             | `数据库` | 中等 | 🔒   |
+| 3140 | [连续空余座位 II](/solution/3100-3199/3140.Consecutive%20Available%20Seats%20II/README.md)                                                                   | `数据库` | 中等 | 🔒   |
+| 3150 | [无效的推文 II](/solution/3100-3199/3150.Invalid%20Tweets%20II/README.md)                                                                                    | `数据库` | 简单 | 🔒   |
+| 3156 | [员工任务持续时间和并发任务](/solution/3100-3199/3156.Employee%20Task%20Duration%20and%20Concurrent%20Tasks/README.md)                                       | `数据库` | 困难 | 🔒   |
+| 3166 | [计算停车费与时长](/solution/3100-3199/3166.Calculate%20Parking%20Fees%20and%20Duration/README.md)                                                           | `数据库` | 中等 | 🔒   |
+| 3172 | [第二天验证](/solution/3100-3199/3172.Second%20Day%20Verification/README.md)                                                                                 |          | 简单 | 🔒   |
 
 ## 版权
 

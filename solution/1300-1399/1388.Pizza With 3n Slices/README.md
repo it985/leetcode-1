@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1388.Pizza%20With%203n%20Slices/README.md
+rating: 2409
+source: 第 22 场双周赛 Q4
+tags:
+    - 贪心
+    - 数组
+    - 动态规划
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [1388. 3n 块披萨](https://leetcode.cn/problems/pizza-with-3n-slices)
 
 [English Version](/solution/1300-1399/1388.Pizza%20With%203n%20Slices/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个披萨，它由 3n 块不同大小的部分组成，现在你和你的朋友们需要按照如下规则来分披萨：</p>
 
@@ -51,11 +66,13 @@
 	<li><code>1 &lt;= slices[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们可以将这个问题转化为：在一个长度为 $3n$ 的环形数组中，选择其中 $n$ 个不相邻的数，使得这 $n$ 个数的和最大。
 
@@ -86,9 +103,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -108,9 +123,7 @@ class Solution:
         return max(a, b)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -139,7 +152,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -166,7 +179,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxSizeSlices(slices []int) int {
@@ -192,7 +205,7 @@ func maxSizeSlices(slices []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxSizeSlices(slices: number[]): number {
@@ -215,10 +228,8 @@ function maxSizeSlices(slices: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

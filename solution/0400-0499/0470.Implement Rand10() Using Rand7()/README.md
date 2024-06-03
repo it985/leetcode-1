@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0470.Implement%20Rand10%28%29%20Using%20Rand7%28%29/README.md
+tags:
+    - 数学
+    - 拒绝采样
+    - 概率与统计
+    - 随机化
+---
+
+<!-- problem:start -->
+
 # [470. 用 Rand7() 实现 Rand10()](https://leetcode.cn/problems/implement-rand10-using-rand7)
 
 [English Version](/solution/0400-0499/0470.Implement%20Rand10%28%29%20Using%20Rand7%28%29/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定方法&nbsp;<code>rand7</code>&nbsp;可生成 <code>[1,7]</code> 范围内的均匀随机整数，试写一个方法&nbsp;<code>rand10</code>&nbsp;生成 <code>[1,10]</code> 范围内的均匀随机整数。</p>
 
@@ -55,11 +68,13 @@
 	<li>你能否尽量少调用 <code>rand7()</code> ?</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：拒绝采样**
+### 方法一：拒绝采样
 
 我们可以使用拒绝采样的方法实现等概率生成任意区间的随机数。拒绝采样的思路是如果生成的随机数落在我们希望的区间内，那么就返回该随机数，否则会不断生成直到生成一个落在区间内的随机数为止。
 
@@ -71,9 +86,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # The rand7() API is already defined for you.
@@ -94,9 +107,7 @@ class Solution:
                 return x % 10 + 1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -118,7 +129,7 @@ class Solution extends SolBase {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 // The rand7() API is already defined for you.
@@ -140,7 +151,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func rand10() int {
@@ -155,7 +166,7 @@ func rand10() int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -176,9 +187,10 @@ function rand10(): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
+
 /**
  * The rand7() API is already defined for you.
  * @return a random integer in the range 1 to 7
@@ -199,10 +211,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

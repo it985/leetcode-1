@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1998.GCD%20Sort%20of%20an%20Array/README.md
+rating: 2429
+source: 第 257 场周赛 Q4
+tags:
+    - 并查集
+    - 数组
+    - 数学
+    - 数论
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1998. 数组的最大公因数排序](https://leetcode.cn/problems/gcd-sort-of-an-array)
 
 [English Version](/solution/1900-1999/1998.GCD%20Sort%20of%20an%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code> ，你可以在 <code>nums</code> 上执行下述操作 <strong>任意次</strong> ：</p>
 
@@ -52,88 +68,17 @@
 	<li><code>2 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-并查集。
-
-并查集模板：
-
-模板 1——朴素并查集：
-
-```python
-# 初始化，p存储每个点的父节点
-p = list(range(n))
-
-
-# 返回x的祖宗节点
-def find(x):
-    if p[x] != x:
-        # 路径压缩
-        p[x] = find(p[x])
-    return p[x]
-
-
-# 合并a和b所在的两个集合
-p[find(a)] = find(b)
-```
-
-模板 2——维护 size 的并查集：
-
-```python
-# 初始化，p存储每个点的父节点，size只有当节点是祖宗节点时才有意义，表示祖宗节点所在集合中，点的数量
-p = list(range(n))
-size = [1] * n
-
-
-# 返回x的祖宗节点
-def find(x):
-    if p[x] != x:
-        # 路径压缩
-        p[x] = find(p[x])
-    return p[x]
-
-
-# 合并a和b所在的两个集合
-if find(a) != find(b):
-    size[find(b)] += size[find(a)]
-    p[find(a)] = find(b)
-```
-
-模板 3——维护到祖宗节点距离的并查集：
-
-```python
-# 初始化，p存储每个点的父节点，d[x]存储x到p[x]的距离
-p = list(range(n))
-d = [0] * n
-
-
-# 返回x的祖宗节点
-def find(x):
-    if p[x] != x:
-        t = find(p[x])
-        d[x] += d[p[x]]
-        p[x] = t
-    return p[x]
-
-
-# 合并a和b所在的两个集合
-p[find(a)] = find(b)
-d[find(a)] = distance
-```
-
-对于本题，最大公因数大于 1 的两个数，可以进行交换，因此，只要一个集合中所有数都存在相同公因数，那么这个集合中任意数都能进行两两交换，因此可以用并查集，把同个集合中的所有数字进行合并。
-
-> 在这道题中，可以先预处理每个数的质因数，数字与质因数归属同一个集合。
-
-合并之后，将原数组复制一份，并进行升序排列，得到新数组 s。然后遍历原数组，若原数组对应元素与新数组对应元素不相同，并且两个元素也不在同一个集合中，说明不满足条件，直接返回 false，否则遍历结束返回 true。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -164,9 +109,7 @@ class Solution:
         return True
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -216,7 +159,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -252,7 +195,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 var p []int
@@ -302,10 +245,8 @@ func find(x int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

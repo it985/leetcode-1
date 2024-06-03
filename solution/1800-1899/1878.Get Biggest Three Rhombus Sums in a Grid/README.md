@@ -1,10 +1,27 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1878.Get%20Biggest%20Three%20Rhombus%20Sums%20in%20a%20Grid/README.md
+rating: 1897
+source: 第 53 场双周赛 Q3
+tags:
+    - 数组
+    - 数学
+    - 矩阵
+    - 前缀和
+    - 排序
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [1878. 矩阵中最大的三个菱形和](https://leetcode.cn/problems/get-biggest-three-rhombus-sums-in-a-grid)
 
 [English Version](/solution/1800-1899/1878.Get%20Biggest%20Three%20Rhombus%20Sums%20in%20a%20Grid/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个 <code>m x n</code> 的整数矩阵 <code>grid</code> 。</p>
 
@@ -59,11 +76,13 @@
 	<li><code>1 <= grid[i][j] <= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举菱形中心点 + 前缀和 + 有序集合**
+### 方法一：枚举菱形中心点 + 前缀和 + 有序集合
 
 我们可以预处理得到两个前缀和数组 $s_1$ 和 $s_2$，其中 $s_1[i][j]$ 表示以 $(i, j)$ 为末尾的左上对角线上的元素之和，而 $s_2[i][j]$ 表示以 $(i, j)$ 为末尾的右上对角线上的元素之和。
 
@@ -83,9 +102,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 from sortedcontainers import SortedSet
@@ -118,9 +135,7 @@ class Solution:
         return list(ss)[::-1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -160,7 +175,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -197,7 +212,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getBiggestThree(grid [][]int) []int {
@@ -241,7 +256,7 @@ func getBiggestThree(grid [][]int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function getBiggestThree(grid: number[][]): number[] {
@@ -916,10 +931,8 @@ class TreeMultiSet<T = number> {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

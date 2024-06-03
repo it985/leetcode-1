@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0076.Minimum%20Window%20Substring/README.md
+tags:
+    - 哈希表
+    - 字符串
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [76. 最小覆盖子串](https://leetcode.cn/problems/minimum-window-substring)
 
 [English Version](/solution/0000-0099/0076.Minimum%20Window%20Substring/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串 <code>s</code> 、一个字符串 <code>t</code> 。返回 <code>s</code> 中涵盖 <code>t</code> 所有字符的最小子串。如果 <code>s</code> 中不存在涵盖 <code>t</code> 所有字符的子串，则返回空字符串 <code>""</code> 。</p>
 
@@ -57,11 +69,13 @@
 <p>&nbsp;</p>
 <strong>进阶：</strong>你能设计一个在 <code>o(m+n)</code> 时间内解决此问题的算法吗？
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数 + 双指针**
+### 方法一：计数 + 双指针
 
 我们用一个哈希表或数组 $need$ 统计字符串 $t$ 中每个字符出现的次数，用另一个哈希表或数组 $window$ 统计滑动窗口中每个字符出现的次数。另外，定义两个指针 $j$ 和 $i$ 分别指向窗口的左右边界，变量 $cnt$ 表示窗口中已经包含了 $t$ 中的多少个字符，变量 $k$ 和 $mi$ 分别表示最小覆盖子串的起始位置和长度。
 
@@ -75,9 +89,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -100,9 +112,7 @@ class Solution:
         return '' if k < 0 else s[k : k + mi]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -135,7 +145,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -169,7 +179,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minWindow(s string, t string) string {
@@ -203,7 +213,7 @@ func minWindow(s string, t string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minWindow(s: string, t: string): string {
@@ -236,39 +246,7 @@ function minWindow(s: string, t: string): string {
 }
 ```
 
-### **C#**
-
-```cs
-public class Solution {
-    public string MinWindow(string s, string t) {
-        int[] need = new int[128];
-        int[] window = new int[128];
-        foreach (var c in t) {
-            ++need[c];
-        }
-        int cnt = 0, j = 0, k = -1, mi = 1 << 30;
-        for (int i = 0; i < s.Length; ++i) {
-            ++window[s[i]];
-            if (need[s[i]] >= window[s[i]]) {
-                ++cnt;
-            }
-            while (cnt == t.Length) {
-                if (i - j + 1 < mi) {
-                    mi = i - j + 1;
-                    k = j;
-                }
-                if (need[s[j]] >= window[s[j]]) {
-                    --cnt;
-                }
-                --window[s[j++]];
-            }
-        }
-        return k < 0 ? "" : s.Substring(k, mi);
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -306,10 +284,40 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C#
 
-```
-
+```cs
+public class Solution {
+    public string MinWindow(string s, string t) {
+        int[] need = new int[128];
+        int[] window = new int[128];
+        foreach (var c in t) {
+            ++need[c];
+        }
+        int cnt = 0, j = 0, k = -1, mi = 1 << 30;
+        for (int i = 0; i < s.Length; ++i) {
+            ++window[s[i]];
+            if (need[s[i]] >= window[s[i]]) {
+                ++cnt;
+            }
+            while (cnt == t.Length) {
+                if (i - j + 1 < mi) {
+                    mi = i - j + 1;
+                    k = j;
+                }
+                if (need[s[j]] >= window[s[j]]) {
+                    --cnt;
+                }
+                --window[s[j++]];
+            }
+        }
+        return k < 0 ? "" : s.Substring(k, mi);
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

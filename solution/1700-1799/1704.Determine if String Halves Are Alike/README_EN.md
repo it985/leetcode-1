@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1704.Determine%20if%20String%20Halves%20Are%20Alike/README_EN.md
+rating: 1207
+source: Weekly Contest 221 Q1
+tags:
+    - String
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [1704. Determine if String Halves Are Alike](https://leetcode.com/problems/determine-if-string-halves-are-alike)
 
 [中文文档](/solution/1700-1799/1704.Determine%20if%20String%20Halves%20Are%20Alike/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>s</code> of even length. Split this string into two halves of equal lengths, and let <code>a</code> be the first half and <code>b</code> be the second half.</p>
 
@@ -37,9 +52,13 @@ Notice that the vowel o is counted twice.
 	<li><code>s</code> consists of <strong>uppercase and lowercase</strong> letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Counting**
+<!-- solution:start -->
+
+### Solution 1: Counting
 
 Traverse the string. If the number of vowels in the first half of the string is equal to the number of vowels in the second half, return `true`. Otherwise, return `false`.
 
@@ -47,7 +66,7 @@ The time complexity is $O(n)$, where $n$ is the length of the string. The space 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -60,15 +79,7 @@ class Solution:
         return cnt == 0
 ```
 
-```python
-class Solution:
-    def halvesAreAlike(self, s: str) -> bool:
-        vowels = set('aeiouAEIOU')
-        a, b = s[: len(s) >> 1], s[len(s) >> 1 :]
-        return sum(c in vowels for c in a) == sum(c in vowels for c in b)
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -86,7 +97,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -103,7 +114,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func halvesAreAlike(s string) bool {
@@ -124,7 +135,7 @@ func halvesAreAlike(s string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function halvesAreAlike(s: string): boolean {
@@ -139,7 +150,7 @@ function halvesAreAlike(s: string): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashSet;
@@ -164,7 +175,25 @@ impl Solution {
 }
 ```
 
-### **PHP**
+#### JavaScript
+
+```js
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var halvesAreAlike = function (s) {
+    const str = 'aeiouAEIOU';
+    let cnt = 0;
+    for (let i = 0; i < s.length / 2; i++) {
+        if (str.indexOf(s[i]) > -1) cnt++;
+        if (str.indexOf(s[s.length - 1 - i]) > -1) cnt--;
+    }
+    return cnt === 0;
+};
+```
+
+#### PHP
 
 ```php
 class Solution {
@@ -187,28 +216,28 @@ class Solution {
 }
 ```
 
-### **JavaScript**
+<!-- tabs:end -->
 
-```js
-/**
- * @param {string} s
- * @return {boolean}
- */
-var halvesAreAlike = function (s) {
-    const str = 'aeiouAEIOU';
-    let cnt = 0;
-    for (let i = 0; i < s.length / 2; i++) {
-        if (str.indexOf(s[i]) > -1) cnt++;
-        if (str.indexOf(s[s.length - 1 - i]) > -1) cnt--;
-    }
-    return cnt === 0;
-};
-```
+<!-- solution:end -->
 
-### **...**
+<!-- solution:start -->
 
-```
+### Solution 2
 
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def halvesAreAlike(self, s: str) -> bool:
+        vowels = set('aeiouAEIOU')
+        a, b = s[: len(s) >> 1], s[len(s) >> 1 :]
+        return sum(c in vowels for c in a) == sum(c in vowels for c in b)
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

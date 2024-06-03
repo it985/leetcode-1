@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcp/LCP%2006.%20%E6%8B%BF%E7%A1%AC%E5%B8%81/README.md
+---
+
+<!-- problem:start -->
+
 # [LCP 06. 拿硬币](https://leetcode.cn/problems/na-ying-bi)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>桌上有 <code>n</code> 堆力扣币，每堆的数量保存在数组 <code>coins</code> 中。我们每次可以选择任意一堆，拿走其中的一枚或者两枚，求拿完所有力扣币的最少次数。</p>
 
@@ -31,11 +38,13 @@
 	<li><code>1 &lt;= coins[i] &lt;= 10</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：数学**
+### 方法一：数学
 
 我们可以发现，每堆力扣币拿完的最少次数，等于该堆力扣币数量除以 $2$ 向上取整的结果之和。
 
@@ -45,9 +54,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -55,9 +62,7 @@ class Solution:
         return sum((x + 1) >> 1 for x in coins)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -71,7 +76,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -86,7 +91,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minCount(coins []int) (ans int) {
@@ -97,7 +102,7 @@ func minCount(coins []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minCount(coins: number[]): number {
@@ -109,7 +114,7 @@ function minCount(coins: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -122,19 +127,7 @@ impl Solution {
 }
 ```
 
-### **C**
-
-```c
-int minCount(int* coins, int coinsSize) {
-    int ans = 0;
-    for (int i = 0; i < coinsSize; ++i) {
-        ans += (coins[i] + 1) >> 1;
-    }
-    return ans;
-}
-```
-
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -152,10 +145,20 @@ class Solution {
 }
 ```
 
-### **...**
+#### C
 
-```
-
+```c
+int minCount(int* coins, int coinsSize) {
+    int ans = 0;
+    for (int i = 0; i < coinsSize; ++i) {
+        ans += (coins[i] + 1) >> 1;
+    }
+    return ans;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

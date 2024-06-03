@@ -1,10 +1,21 @@
-# [471. 编码最短长度的字符串](https://leetcode.cn/problems/encode-string-with-shortest-length)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0471.Encode%20String%20with%20Shortest%20Length/README.md
+tags:
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
+# [471. 编码最短长度的字符串 🔒](https://leetcode.cn/problems/encode-string-with-shortest-length)
 
 [English Version](/solution/0400-0499/0471.Encode%20String%20with%20Shortest%20Length/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个 <strong>非空</strong> 字符串，将其编码为具有最短长度的字符串。</p>
 
@@ -68,11 +79,13 @@
 	<li><code>s</code> 由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划（区间 DP）**
+### 方法一：动态规划（区间 DP）
 
 在这道题中，我们需要判断一个字符串是否能够进行压缩，也即是说，一个字符串是否能通过其子串重复多次构成。我们可以利用第 $459$ 题的方法来判断，定义一个方法 $g(i, j)$，表示将字符串 $s[i...j]$ 进行压缩后得到的字符串。
 
@@ -86,9 +99,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -116,9 +127,7 @@ class Solution:
         return f[0][-1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -160,7 +169,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -200,7 +209,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func encode(s string) string {
@@ -238,7 +247,7 @@ func encode(s string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function encode(s: string): string {
@@ -273,10 +282,8 @@ function encode(s: string): string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

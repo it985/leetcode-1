@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0030.Substring%20with%20Concatenation%20of%20All%20Words/README.md
+tags:
+    - 哈希表
+    - 字符串
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [30. 串联所有单词的子串](https://leetcode.cn/problems/substring-with-concatenation-of-all-words)
 
 [English Version](/solution/0000-0099/0030.Substring%20with%20Concatenation%20of%20All%20Words/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个字符串&nbsp;<code>s</code><strong>&nbsp;</strong>和一个字符串数组&nbsp;<code>words</code><strong>。</strong>&nbsp;<code>words</code>&nbsp;中所有字符串 <strong>长度相同</strong>。</p>
 
@@ -60,11 +72,13 @@ s 中没有子串长度为 16 并且等于 words 的任何顺序排列的连接�
 	<li><code>words[i]</code>&nbsp;和&nbsp;<code>s</code> 由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 滑动窗口**
+### 方法一：哈希表 + 滑动窗口
 
 我们用哈希表 $cnt$ 统计 $words$ 中每个单词出现的次数，用哈希表 $cnt1$ 统计当前滑动窗口中每个单词出现的次数。我们记字符串 $s$ 的长度为 $m$，字符串数组 $words$ 中单词的数量为 $n$，每个单词的长度为 $k$。
 
@@ -76,9 +90,7 @@ s 中没有子串长度为 16 并且等于 words 的任何顺序排列的连接�
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -111,9 +123,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -156,7 +166,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -199,35 +209,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    vector<int> findSubstring(string s, vector<string>& words) {
-        unordered_map<string, int> d;
-        for (auto& w : words) ++d[w];
-        vector<int> ans;
-        int n = s.size(), m = words.size(), k = words[0].size();
-        for (int i = 0; i < k; ++i) {
-            int cnt = 0;
-            unordered_map<string, int> t;
-            for (int j = i; j <= n; j += k) {
-                if (j - i >= m * k) {
-                    auto s1 = s.substr(j - m * k, k);
-                    --t[s1];
-                    cnt -= d[s1] > t[s1];
-                }
-                auto s2 = s.substr(j, k);
-                ++t[s2];
-                cnt += d[s2] >= t[s2];
-                if (cnt == m) ans.emplace_back(j - (m - 1) * k);
-            }
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func findSubstring(s string, words []string) (ans []int) {
@@ -263,7 +245,50 @@ func findSubstring(s string, words []string) (ans []int) {
 }
 ```
 
-### **C#**
+#### TypeScript
+
+```ts
+function findSubstring(s: string, words: string[]): number[] {
+    const cnt: Map<string, number> = new Map();
+    for (const w of words) {
+        cnt.set(w, (cnt.get(w) || 0) + 1);
+    }
+    const m = s.length;
+    const n = words.length;
+    const k = words[0].length;
+    const ans: number[] = [];
+    for (let i = 0; i < k; ++i) {
+        const cnt1: Map<string, number> = new Map();
+        let l = i;
+        let r = i;
+        let t = 0;
+        while (r + k <= m) {
+            const w = s.slice(r, r + k);
+            r += k;
+            if (!cnt.has(w)) {
+                cnt1.clear();
+                l = r;
+                t = 0;
+                continue;
+            }
+            cnt1.set(w, (cnt1.get(w) || 0) + 1);
+            ++t;
+            while (cnt1.get(w)! - cnt.get(w)! > 0) {
+                const remove = s.slice(l, l + k);
+                cnt1.set(remove, cnt1.get(remove)! - 1);
+                l += k;
+                --t;
+            }
+            if (t === n) {
+                ans.push(l);
+            }
+        }
+    }
+    return ans;
+}
+```
+
+#### C#
 
 ```cs
 public class Solution {
@@ -309,53 +334,106 @@ public class Solution {
 }
 ```
 
-### **TypeScript**
+#### PHP
 
-```ts
-function findSubstring(s: string, words: string[]): number[] {
-    const cnt: Map<string, number> = new Map();
-    for (const w of words) {
-        cnt.set(w, (cnt.get(w) || 0) + 1);
-    }
-    const m = s.length;
-    const n = words.length;
-    const k = words[0].length;
-    const ans: number[] = [];
-    for (let i = 0; i < k; ++i) {
-        const cnt1: Map<string, number> = new Map();
-        let l = i;
-        let r = i;
-        let t = 0;
-        while (r + k <= m) {
-            const w = s.slice(r, r + k);
-            r += k;
-            if (!cnt.has(w)) {
-                cnt1.clear();
-                l = r;
-                t = 0;
-                continue;
-            }
-            cnt1.set(w, (cnt1.get(w) || 0) + 1);
-            ++t;
-            while (cnt1.get(w)! - cnt.get(w)! > 0) {
-                const remove = s.slice(l, l + k);
-                cnt1.set(remove, cnt1.get(remove)! - 1);
-                l += k;
-                --t;
-            }
-            if (t === n) {
-                ans.push(l);
+```php
+class Solution {
+    /**
+     * @param String $s
+     * @param String[] $words
+     * @return Integer[]
+     */
+    function findSubstring($s, $words) {
+        $cnt = [];
+        foreach ($words as $w) {
+            if (!isset($cnt[$w])) {
+                $cnt[$w] = 1;
+            } else {
+                $cnt[$w]++;
             }
         }
+        $m = strlen($s);
+        $n = count($words);
+        $k = strlen($words[0]);
+        $ans = [];
+        for ($i = 0; $i < $k; ++$i) {
+            $cnt1 = [];
+            $l = $i;
+            $r = $i;
+            $t = 0;
+            while ($r + $k <= $m) {
+                $w = substr($s, $r, $k);
+                $r += $k;
+                if (!array_key_exists($w, $cnt)) {
+                    $cnt1 = [];
+                    $l = $r;
+                    $t = 0;
+                    continue;
+                }
+                if (!isset($cnt1[$w])) {
+                    $cnt1[$w] = 1;
+                } else {
+                    $cnt1[$w]++;
+                }
+                ++$t;
+                while ($cnt1[$w] > $cnt[$w]) {
+                    $remove = substr($s, $l, $k);
+                    $l += $k;
+                    $cnt1[$remove]--;
+                    $t--;
+                }
+                if ($t == $n) {
+                    $ans[] = $l;
+                }
+            }
+        }
+        return $ans;
     }
-    return ans;
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> findSubstring(string s, vector<string>& words) {
+        unordered_map<string, int> d;
+        for (auto& w : words) ++d[w];
+        vector<int> ans;
+        int n = s.size(), m = words.size(), k = words[0].size();
+        for (int i = 0; i < k; ++i) {
+            int cnt = 0;
+            unordered_map<string, int> t;
+            for (int j = i; j <= n; j += k) {
+                if (j - i >= m * k) {
+                    auto s1 = s.substr(j - m * k, k);
+                    --t[s1];
+                    cnt -= d[s1] > t[s1];
+                }
+                auto s2 = s.substr(j, k);
+                ++t[s2];
+                cnt += d[s2] >= t[s2];
+                if (cnt == m) ans.emplace_back(j - (m - 1) * k);
+            }
+        }
+        return ans;
+    }
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,27 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2251.Number%20of%20Flowers%20in%20Full%20Bloom/README.md
+rating: 2022
+source: 第 290 场周赛 Q4
+tags:
+    - 数组
+    - 哈希表
+    - 二分查找
+    - 有序集合
+    - 前缀和
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2251. 花期内花的数目](https://leetcode.cn/problems/number-of-flowers-in-full-bloom)
 
 [English Version](/solution/2200-2299/2251.Number%20of%20Flowers%20in%20Full%20Bloom/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的二维整数数组&nbsp;<code>flowers</code>&nbsp;，其中&nbsp;<code>flowers[i] = [start<sub>i</sub>, end<sub>i</sub>]</code>&nbsp;表示第&nbsp;<code>i</code>&nbsp;朵花的 <strong>花期</strong>&nbsp;从&nbsp;<code>start<sub>i</sub></code>&nbsp;到&nbsp;<code>end<sub>i</sub></code>&nbsp;（都 <strong>包含</strong>）。同时给你一个下标从 <strong>0</strong>&nbsp;开始大小为 <code>n</code>&nbsp;的整数数组&nbsp;<code>people</code> ，<code>people[i]</code>&nbsp;是第&nbsp;<code>i</code>&nbsp;个人来看花的时间。</p>
 
@@ -46,27 +63,21 @@
 	<li><code>1 &lt;= people[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 二分查找**
+### 方法一：排序 + 二分查找
 
 我们将花按照开始时间和结束时间分别排序，然后对于每个人，我们可以使用二分查找来找到他们到达时在花期内花的数目。就是说，找出在每个人到达时，已经开花的花的数目，减去在每个人到达时，已经凋谢的花的数目，即可得到答案。
 
 时间复杂度 $O((m + n) \times \log n)$，空间复杂度 $O(n)$。其中 $n$ 和 $m$ 分别是数组 $flowers$ 和 $people$ 的长度。
 
-**方法二：差分 + 排序 + 离线查询**
-
-我们可以利用差分来维护每个时间点的花的数目。接下来，我们将 $people$ 按照到达时间从小到大排序，在每个人到达时，我们对差分数组进行前缀和运算，就可以得到答案。
-
-时间复杂度 $O(m \times \log m + n \times \log n)$，空间复杂度 $O(n + m)$。其中 $n$ 和 $m$ 分别是数组 $flowers$ 和 $people$ 的长度。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,30 +88,7 @@ class Solution:
         return [bisect_right(start, p) - bisect_left(end, p) for p in people]
 ```
 
-```python
-class Solution:
-    def fullBloomFlowers(
-        self, flowers: List[List[int]], people: List[int]
-    ) -> List[int]:
-        d = defaultdict(int)
-        for st, ed in flowers:
-            d[st] += 1
-            d[ed + 1] -= 1
-        ts = sorted(d)
-        s = i = 0
-        m = len(people)
-        ans = [0] * m
-        for t, j in sorted(zip(people, range(m))):
-            while i < len(ts) and ts[i] <= t:
-                s += d[ts[i]]
-                i += 1
-            ans[j] = s
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -137,35 +125,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int[] fullBloomFlowers(int[][] flowers, int[] people) {
-        TreeMap<Integer, Integer> d = new TreeMap<>();
-        for (int[] f : flowers) {
-            d.merge(f[0], 1, Integer::sum);
-            d.merge(f[1] + 1, -1, Integer::sum);
-        }
-        int s = 0;
-        int m = people.length;
-        Integer[] idx = new Integer[m];
-        for (int i = 0; i < m; i++) {
-            idx[i] = i;
-        }
-        Arrays.sort(idx, Comparator.comparingInt(i -> people[i]));
-        int[] ans = new int[m];
-        for (int i : idx) {
-            int t = people[i];
-            while (!d.isEmpty() && d.firstKey() <= t) {
-                s += d.pollFirstEntry().getValue();
-            }
-            ans[i] = s;
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -191,37 +151,66 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    vector<int> fullBloomFlowers(vector<vector<int>>& flowers, vector<int>& people) {
-        map<int, int> d;
-        for (auto& f : flowers) {
-            d[f[0]]++;
-            d[f[1] + 1]--;
-        }
-        int m = people.size();
-        vector<int> idx(m);
-        iota(idx.begin(), idx.end(), 0);
-        sort(idx.begin(), idx.end(), [&](int i, int j) {
-            return people[i] < people[j];
-        });
-        vector<int> ans(m);
-        int s = 0;
-        for (int i : idx) {
-            int t = people[i];
-            while (!d.empty() && d.begin()->first <= t) {
-                s += d.begin()->second;
-                d.erase(d.begin());
-            }
-            ans[i] = s;
-        }
-        return ans;
-    }
-};
+#### Go
+
+```go
+func fullBloomFlowers(flowers [][]int, people []int) (ans []int) {
+	n := len(flowers)
+	start := make([]int, n)
+	end := make([]int, n)
+	for i, f := range flowers {
+		start[i] = f[0]
+		end[i] = f[1]
+	}
+	sort.Ints(start)
+	sort.Ints(end)
+	for _, p := range people {
+		r := sort.SearchInts(start, p+1)
+		l := sort.SearchInts(end, p)
+		ans = append(ans, r-l)
+	}
+	return
+}
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function fullBloomFlowers(flowers: number[][], people: number[]): number[] {
+    const n = flowers.length;
+    const start = new Array(n).fill(0);
+    const end = new Array(n).fill(0);
+    for (let i = 0; i < n; ++i) {
+        start[i] = flowers[i][0];
+        end[i] = flowers[i][1];
+    }
+    start.sort((a, b) => a - b);
+    end.sort((a, b) => a - b);
+    const ans: number[] = [];
+    for (const p of people) {
+        const r = search(start, p + 1);
+        const l = search(end, p);
+        ans.push(r - l);
+    }
+    return ans;
+}
+
+function search(nums: number[], x: number): number {
+    let l = 0;
+    let r = nums.length;
+    while (l < r) {
+        const mid = (l + r) >> 1;
+        if (nums[mid] >= x) {
+            r = mid;
+        } else {
+            l = mid + 1;
+        }
+    }
+    return l;
+}
+```
+
+#### Rust
 
 ```rust
 use std::collections::BTreeMap;
@@ -274,27 +263,106 @@ impl Solution {
 }
 ```
 
-### **Go**
+<!-- tabs:end -->
 
-```go
-func fullBloomFlowers(flowers [][]int, people []int) (ans []int) {
-	n := len(flowers)
-	start := make([]int, n)
-	end := make([]int, n)
-	for i, f := range flowers {
-		start[i] = f[0]
-		end[i] = f[1]
-	}
-	sort.Ints(start)
-	sort.Ints(end)
-	for _, p := range people {
-		r := sort.SearchInts(start, p+1)
-		l := sort.SearchInts(end, p)
-		ans = append(ans, r-l)
-	}
-	return
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：差分 + 排序 + 离线查询
+
+我们可以利用差分来维护每个时间点的花的数目。接下来，我们将 $people$ 按照到达时间从小到大排序，在每个人到达时，我们对差分数组进行前缀和运算，就可以得到答案。
+
+时间复杂度 $O(m \times \log m + n \times \log n)$，空间复杂度 $O(n + m)$。其中 $n$ 和 $m$ 分别是数组 $flowers$ 和 $people$ 的长度。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def fullBloomFlowers(
+        self, flowers: List[List[int]], people: List[int]
+    ) -> List[int]:
+        d = defaultdict(int)
+        for st, ed in flowers:
+            d[st] += 1
+            d[ed + 1] -= 1
+        ts = sorted(d)
+        s = i = 0
+        m = len(people)
+        ans = [0] * m
+        for t, j in sorted(zip(people, range(m))):
+            while i < len(ts) and ts[i] <= t:
+                s += d[ts[i]]
+                i += 1
+            ans[j] = s
+        return ans
+```
+
+#### Java
+
+```java
+class Solution {
+    public int[] fullBloomFlowers(int[][] flowers, int[] people) {
+        TreeMap<Integer, Integer> d = new TreeMap<>();
+        for (int[] f : flowers) {
+            d.merge(f[0], 1, Integer::sum);
+            d.merge(f[1] + 1, -1, Integer::sum);
+        }
+        int s = 0;
+        int m = people.length;
+        Integer[] idx = new Integer[m];
+        for (int i = 0; i < m; i++) {
+            idx[i] = i;
+        }
+        Arrays.sort(idx, Comparator.comparingInt(i -> people[i]));
+        int[] ans = new int[m];
+        for (int i : idx) {
+            int t = people[i];
+            while (!d.isEmpty() && d.firstKey() <= t) {
+                s += d.pollFirstEntry().getValue();
+            }
+            ans[i] = s;
+        }
+        return ans;
+    }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> fullBloomFlowers(vector<vector<int>>& flowers, vector<int>& people) {
+        map<int, int> d;
+        for (auto& f : flowers) {
+            d[f[0]]++;
+            d[f[1] + 1]--;
+        }
+        int m = people.size();
+        vector<int> idx(m);
+        iota(idx.begin(), idx.end(), 0);
+        sort(idx.begin(), idx.end(), [&](int i, int j) {
+            return people[i] < people[j];
+        });
+        vector<int> ans(m);
+        int s = 0;
+        for (int i : idx) {
+            int t = people[i];
+            while (!d.empty() && d.begin()->first <= t) {
+                s += d.begin()->second;
+                d.erase(d.begin());
+            }
+            ans[i] = s;
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
 
 ```go
 func fullBloomFlowers(flowers [][]int, people []int) []int {
@@ -328,42 +396,7 @@ func fullBloomFlowers(flowers [][]int, people []int) []int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function fullBloomFlowers(flowers: number[][], people: number[]): number[] {
-    const n = flowers.length;
-    const start = new Array(n).fill(0);
-    const end = new Array(n).fill(0);
-    for (let i = 0; i < n; ++i) {
-        start[i] = flowers[i][0];
-        end[i] = flowers[i][1];
-    }
-    start.sort((a, b) => a - b);
-    end.sort((a, b) => a - b);
-    const ans: number[] = [];
-    for (const p of people) {
-        const r = search(start, p + 1);
-        const l = search(end, p);
-        ans.push(r - l);
-    }
-    return ans;
-}
-
-function search(nums: number[], x: number): number {
-    let l = 0;
-    let r = nums.length;
-    while (l < r) {
-        const mid = (l + r) >> 1;
-        if (nums[mid] >= x) {
-            r = mid;
-        } else {
-            l = mid + 1;
-        }
-    }
-    return l;
-}
-```
+#### TypeScript
 
 ```ts
 function fullBloomFlowers(flowers: number[][], people: number[]): number[] {
@@ -390,10 +423,8 @@ function fullBloomFlowers(flowers: number[][], people: number[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

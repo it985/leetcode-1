@@ -1,8 +1,22 @@
-# [2782. Number of Unique Categories](https://leetcode.com/problems/number-of-unique-categories)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2782.Number%20of%20Unique%20Categories/README_EN.md
+tags:
+    - Union Find
+    - Counting
+    - Interactive
+---
+
+<!-- problem:start -->
+
+# [2782. Number of Unique Categories 🔒](https://leetcode.com/problems/number-of-unique-categories)
 
 [中文文档](/solution/2700-2799/2782.Number%20of%20Unique%20Categories/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer <code>n</code> and an object <code>categoryHandler</code> of class <code>CategoryHandler</code>.</p>
 
@@ -48,11 +62,17 @@
 	<li><code>1 &lt;= n &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a category handler.
@@ -76,7 +96,7 @@ class Solution:
         return sum(i == x for i, x in enumerate(p))
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -119,7 +139,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -157,7 +177,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -194,7 +214,7 @@ func numberOfCategories(n int, categoryHandler CategoryHandler) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -229,10 +249,8 @@ function numberOfCategories(n: number, categoryHandler: CategoryHandler): number
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

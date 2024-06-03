@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0211.Design%20Add%20and%20Search%20Words%20Data%20Structure/README.md
+tags:
+    - 深度优先搜索
+    - 设计
+    - 字典树
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [211. 添加与搜索单词 - 数据结构设计](https://leetcode.cn/problems/design-add-and-search-words-data-structure)
 
 [English Version](/solution/0200-0299/0211.Design%20Add%20and%20Search%20Words%20Data%20Structure/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请你设计一个数据结构，支持 添加新单词 和 查找字符串是否与任何先前添加的字符串匹配 。</p>
 
@@ -49,17 +62,17 @@ wordDictionary.search("b.."); // 返回 True
 	<li>最多调用 <code>10<sup>4</sup></code> 次 <code>addWord</code> 和 <code>search</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-“前缀树”实现。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Trie:
@@ -105,9 +118,7 @@ class WordDictionary:
 # param_2 = obj.search(word)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Trie {
@@ -168,74 +179,7 @@ class WordDictionary {
  */
 ```
 
-### **Go**
-
-```go
-type WordDictionary struct {
-	root *trie
-}
-
-func Constructor() WordDictionary {
-	return WordDictionary{new(trie)}
-}
-
-func (this *WordDictionary) AddWord(word string) {
-	this.root.insert(word)
-}
-
-func (this *WordDictionary) Search(word string) bool {
-	n := len(word)
-
-	var dfs func(int, *trie) bool
-	dfs = func(i int, cur *trie) bool {
-		if i == n {
-			return cur.isEnd
-		}
-		c := word[i]
-		if c != '.' {
-			child := cur.children[c-'a']
-			if child != nil && dfs(i+1, child) {
-				return true
-			}
-		} else {
-			for _, child := range cur.children {
-				if child != nil && dfs(i+1, child) {
-					return true
-				}
-			}
-		}
-		return false
-	}
-
-	return dfs(0, this.root)
-}
-
-type trie struct {
-	children [26]*trie
-	isEnd    bool
-}
-
-func (t *trie) insert(word string) {
-	cur := t
-	for _, c := range word {
-		c -= 'a'
-		if cur.children[c] == nil {
-			cur.children[c] = new(trie)
-		}
-		cur = cur.children[c]
-	}
-	cur.isEnd = true
-}
-
-/**
- * Your WordDictionary object will be instantiated and called as such:
- * obj := Constructor();
- * obj.AddWord(word);
- * param_2 := obj.Search(word);
- */
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class trie {
@@ -307,10 +251,147 @@ private:
  */
 ```
 
-### **...**
+#### Go
 
+```go
+type WordDictionary struct {
+	root *trie
+}
+
+func Constructor() WordDictionary {
+	return WordDictionary{new(trie)}
+}
+
+func (this *WordDictionary) AddWord(word string) {
+	this.root.insert(word)
+}
+
+func (this *WordDictionary) Search(word string) bool {
+	n := len(word)
+
+	var dfs func(int, *trie) bool
+	dfs = func(i int, cur *trie) bool {
+		if i == n {
+			return cur.isEnd
+		}
+		c := word[i]
+		if c != '.' {
+			child := cur.children[c-'a']
+			if child != nil && dfs(i+1, child) {
+				return true
+			}
+		} else {
+			for _, child := range cur.children {
+				if child != nil && dfs(i+1, child) {
+					return true
+				}
+			}
+		}
+		return false
+	}
+
+	return dfs(0, this.root)
+}
+
+type trie struct {
+	children [26]*trie
+	isEnd    bool
+}
+
+func (t *trie) insert(word string) {
+	cur := t
+	for _, c := range word {
+		c -= 'a'
+		if cur.children[c] == nil {
+			cur.children[c] = new(trie)
+		}
+		cur = cur.children[c]
+	}
+	cur.isEnd = true
+}
+
+/**
+ * Your WordDictionary object will be instantiated and called as such:
+ * obj := Constructor();
+ * obj.AddWord(word);
+ * param_2 := obj.Search(word);
+ */
 ```
 
+#### C#
+
+```cs
+using System.Collections.Generic;
+using System.Linq;
+
+class TrieNode {
+    public bool IsEnd { get; set; }
+    public TrieNode[] Children { get; set; }
+    public TrieNode() {
+        Children = new TrieNode[26];
+    }
+}
+
+public class WordDictionary {
+    private TrieNode root;
+
+    public WordDictionary() {
+        root = new TrieNode();
+    }
+
+    public void AddWord(string word) {
+        var node = root;
+        for (var i = 0; i < word.Length; ++i)
+        {
+            TrieNode nextNode;
+            var index = word[i] - 'a';
+            nextNode = node.Children[index];
+            if (nextNode == null)
+            {
+                nextNode = new TrieNode();
+                node.Children[index] = nextNode;
+            }
+            node = nextNode;
+        }
+        node.IsEnd = true;
+    }
+
+    public bool Search(string word) {
+        var queue = new Queue<TrieNode>();
+        queue.Enqueue(root);
+        for (var i = 0; i < word.Length; ++i)
+        {
+            var count = queue.Count;
+            while (count-- > 0)
+            {
+                var node = queue.Dequeue();
+                if (word[i] == '.')
+                {
+                    foreach (var nextNode in node.Children)
+                    {
+                        if (nextNode != null)
+                        {
+                            queue.Enqueue(nextNode);
+                        }
+                    }
+                }
+                else
+                {
+                    var nextNode = node.Children[word[i] - 'a'];
+                    if (nextNode != null)
+                    {
+                        queue.Enqueue(nextNode);
+                    }
+                }
+            }
+        }
+        return queue.Any(n => n.IsEnd);
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

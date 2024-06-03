@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0421.Maximum%20XOR%20of%20Two%20Numbers%20in%20an%20Array/README_EN.md
+tags:
+    - Bit Manipulation
+    - Trie
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [421. Maximum XOR of Two Numbers in an Array](https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array)
 
 [中文文档](/solution/0400-0499/0421.Maximum%20XOR%20of%20Two%20Numbers%20in%20an%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code>, return <em>the maximum result of </em><code>nums[i] XOR nums[j]</code>, where <code>0 &lt;= i &lt;= j &lt; n</code>.</p>
 
@@ -30,11 +45,17 @@
 	<li><code>0 &lt;= nums[i] &lt;= 2<sup>31</sup> - 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Trie:
@@ -72,14 +93,13 @@ class Solution:
         return max(trie.search(x) for x in nums)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Trie {
     private Trie[] children = new Trie[2];
 
     public Trie() {
-
     }
 
     public void insert(int x) {
@@ -122,7 +142,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Trie {
@@ -173,7 +193,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Trie struct {
@@ -220,7 +240,7 @@ func findMaximumXOR(nums []int) (ans int) {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 struct Trie {
@@ -274,10 +294,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

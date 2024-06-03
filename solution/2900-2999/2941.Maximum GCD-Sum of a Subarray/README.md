@@ -1,10 +1,23 @@
-# [2941. 子数组的最大 GCD-Sum](https://leetcode.cn/problems/maximum-gcd-sum-of-a-subarray)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2941.Maximum%20GCD-Sum%20of%20a%20Subarray/README.md
+tags:
+    - 数组
+    - 数学
+    - 二分查找
+    - 数论
+---
+
+<!-- problem:start -->
+
+# [2941. 子数组的最大 GCD-Sum 🔒](https://leetcode.cn/problems/maximum-gcd-sum-of-a-subarray)
 
 [English Version](/solution/2900-2999/2941.Maximum%20GCD-Sum%20of%20a%20Subarray/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个整数数组 <code>nums</code> 和一个整数 <code>k</code>.</p>
 
@@ -47,15 +60,17 @@
 	<li><code>1 &lt;= k &lt;= n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,9 +92,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -118,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -153,7 +166,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxGcdSum(nums []int, k int) int64 {
@@ -195,7 +208,7 @@ func gcd(a, b int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxGcdSum(nums: number[], k: number): number {
@@ -231,50 +244,58 @@ function maxGcdSum(nums: number[], k: number): number {
 function gcd(a: number, b: number): number {
     return b === 0 ? a : gcd(b, a % b);
 }
-```
-
-### **TypeScript**
-
-```ts
-function maxGcdSum(nums: number[], k: number): number {
-    const n: number = nums.length;
-    const s: number[] = Array(n + 1).fill(0);
-    for (let i = 1; i <= n; i++) {
-        s[i] = s[i - 1] + nums[i - 1];
-    }
-
-    let f: [number, number][] = [];
-    let ans: number = 0;
-
-    for (let i = 0; i < n; ++i) {
-        const g: [number, number][] = [];
-        for (const [j, x] of f) {
-            const y: number = gcd(x, nums[i]);
-            if (g.length === 0 || g.at(-1)[1] !== y) {
-                g.push([j, y]);
-            }
-        }
-        f = g;
-        f.push([i, nums[i]]);
-        for (const [j, x] of f) {
-            if (i - j + 1 >= k) {
-                ans = Math.max(ans, (s[i + 1] - s[j]) * x);
-            }
-        }
-    }
-
-    return ans;
-}
-
-function gcd(a: number, b: number): number {
-    return b === 0 ? a : gcd(b, a % b);
-}
-```
-
-### **...**
-
-```
-
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### TypeScript
+
+```ts
+function maxGcdSum(nums: number[], k: number): number {
+    const n: number = nums.length;
+    const s: number[] = Array(n + 1).fill(0);
+    for (let i = 1; i <= n; i++) {
+        s[i] = s[i - 1] + nums[i - 1];
+    }
+
+    let f: [number, number][] = [];
+    let ans: number = 0;
+
+    for (let i = 0; i < n; ++i) {
+        const g: [number, number][] = [];
+        for (const [j, x] of f) {
+            const y: number = gcd(x, nums[i]);
+            if (g.length === 0 || g.at(-1)[1] !== y) {
+                g.push([j, y]);
+            }
+        }
+        f = g;
+        f.push([i, nums[i]]);
+        for (const [j, x] of f) {
+            if (i - j + 1 >= k) {
+                ans = Math.max(ans, (s[i + 1] - s[j]) * x);
+            }
+        }
+    }
+
+    return ans;
+}
+
+function gcd(a: number, b: number): number {
+    return b === 0 ? a : gcd(b, a % b);
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

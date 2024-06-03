@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2276.Count%20Integers%20in%20Intervals/README.md
+rating: 2222
+source: 第 293 场周赛 Q4
+tags:
+    - 设计
+    - 线段树
+    - 有序集合
+---
+
+<!-- problem:start -->
+
 # [2276. 统计区间中的整数数目](https://leetcode.cn/problems/count-integers-in-intervals)
 
 [English Version](/solution/2200-2299/2276.Count%20Integers%20in%20Intervals/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你区间的 <strong>空</strong> 集，请你设计并实现满足要求的数据结构：</p>
 
@@ -58,11 +72,13 @@ countIntervals.count();    // 返回 8
 	<li>调用 <code>count</code> 方法至少一次</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：线段树（动态开点）**
+### 方法一：线段树（动态开点）
 
 根据题目描述，我们需要维护一个区间集合，支持区间的添加和查询操作。对于区间的添加，我们可以使用线段树来维护区间集合。
 
@@ -79,9 +95,7 @@ countIntervals.count();    // 返回 8
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Node:
@@ -128,92 +142,7 @@ class CountIntervals:
 # param_2 = obj.count()
 ```
 
-```python
-class Node:
-    __slots__ = ("left", "right", "l", "r", "mid", "v", "add")
-
-    def __init__(self, l, r):
-        self.left = None
-        self.right = None
-        self.l = l
-        self.r = r
-        self.mid = (l + r) // 2
-        self.v = 0
-        self.add = 0
-
-
-class SegmentTree:
-    def __init__(self):
-        self.root = Node(1, int(1e9) + 1)
-
-    def modify(self, l, r, v, node=None):
-        if node is None:
-            node = self.root
-        if l > r:
-            return
-        if node.l >= l and node.r <= r:
-            node.v = node.r - node.l + 1
-            node.add = v
-            return
-        self.pushdown(node)
-        if l <= node.mid:
-            self.modify(l, r, v, node.left)
-        if r > node.mid:
-            self.modify(l, r, v, node.right)
-        self.pushup(node)
-
-    def query(self, l, r, node=None):
-        if node is None:
-            node = self.root
-        if l > r:
-            return 0
-        if node.l >= l and node.r <= r:
-            return node.v
-        self.pushdown(node)
-        v = 0
-        if l <= node.mid:
-            v += self.query(l, r, node.left)
-        if r > node.mid:
-            v += self.query(l, r, node.right)
-        return v
-
-    def pushup(self, node):
-        node.v = node.left.v + node.right.v
-
-    def pushdown(self, node):
-        if node.left is None:
-            node.left = Node(node.l, node.mid)
-        if node.right is None:
-            node.right = Node(node.mid + 1, node.r)
-        if node.add != 0:
-            left, right = node.left, node.right
-            left.add = node.add
-            right.add = node.add
-            left.v = left.r - left.l + 1
-            right.v = right.r - right.l + 1
-            node.add = 0
-
-
-class CountIntervals:
-    def __init__(self):
-        self.tree = SegmentTree()
-
-    def add(self, left, right):
-        self.tree.modify(left, right, 1)
-
-    def count(self):
-        return self.tree.query(1, int(1e9))
-
-
-# Your CountIntervals object will be instantiated and called as such:
-# obj = CountIntervals()
-# obj.add(left, right)
-# param_2 = obj.count()
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Node {
@@ -328,7 +257,7 @@ class CountIntervals {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Node {
@@ -445,7 +374,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Node struct {
@@ -571,7 +500,7 @@ func (ci *CountIntervals) Count() int {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class CountIntervals {
@@ -615,10 +544,103 @@ class CountIntervals {
  */
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Node:
+    __slots__ = ("left", "right", "l", "r", "mid", "v", "add")
+
+    def __init__(self, l, r):
+        self.left = None
+        self.right = None
+        self.l = l
+        self.r = r
+        self.mid = (l + r) // 2
+        self.v = 0
+        self.add = 0
+
+
+class SegmentTree:
+    def __init__(self):
+        self.root = Node(1, int(1e9) + 1)
+
+    def modify(self, l, r, v, node=None):
+        if node is None:
+            node = self.root
+        if l > r:
+            return
+        if node.l >= l and node.r <= r:
+            node.v = node.r - node.l + 1
+            node.add = v
+            return
+        self.pushdown(node)
+        if l <= node.mid:
+            self.modify(l, r, v, node.left)
+        if r > node.mid:
+            self.modify(l, r, v, node.right)
+        self.pushup(node)
+
+    def query(self, l, r, node=None):
+        if node is None:
+            node = self.root
+        if l > r:
+            return 0
+        if node.l >= l and node.r <= r:
+            return node.v
+        self.pushdown(node)
+        v = 0
+        if l <= node.mid:
+            v += self.query(l, r, node.left)
+        if r > node.mid:
+            v += self.query(l, r, node.right)
+        return v
+
+    def pushup(self, node):
+        node.v = node.left.v + node.right.v
+
+    def pushdown(self, node):
+        if node.left is None:
+            node.left = Node(node.l, node.mid)
+        if node.right is None:
+            node.right = Node(node.mid + 1, node.r)
+        if node.add != 0:
+            left, right = node.left, node.right
+            left.add = node.add
+            right.add = node.add
+            left.v = left.r - left.l + 1
+            right.v = right.r - right.l + 1
+            node.add = 0
+
+
+class CountIntervals:
+    def __init__(self):
+        self.tree = SegmentTree()
+
+    def add(self, left, right):
+        self.tree.modify(left, right, 1)
+
+    def count(self):
+        return self.tree.query(1, int(1e9))
+
+
+# Your CountIntervals object will be instantiated and called as such:
+# obj = CountIntervals()
+# obj.add(left, right)
+# param_2 = obj.count()
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

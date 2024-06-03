@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2201.Count%20Artifacts%20That%20Can%20Be%20Extracted/README_EN.md
+rating: 1525
+source: Weekly Contest 284 Q2
+tags:
+    - Array
+    - Hash Table
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [2201. Count Artifacts That Can Be Extracted](https://leetcode.com/problems/count-artifacts-that-can-be-extracted)
 
 [中文文档](/solution/2200-2299/2201.Count%20Artifacts%20That%20Can%20Be%20Extracted/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is an <code>n x n</code> <strong>0-indexed</strong> grid with some artifacts buried in it. You are given the integer <code>n</code> and a <strong>0-indexed </strong>2D integer array <code>artifacts</code> describing the positions of the rectangular artifacts where <code>artifacts[i] = [r1<sub>i</sub>, c1<sub>i</sub>, r2<sub>i</sub>, c2<sub>i</sub>]</code> denotes that the <code>i<sup>th</sup></code> artifact is buried in the subgrid where:</p>
 
@@ -60,9 +76,13 @@ Thus, we return 1.
 	<li>The entries of <code>dig</code> are unique.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Hash Table
 
 We can use a hash table $s$ to record all the excavated cells, then traverse all the workpieces, and check whether all parts of the workpiece are in the hash table. If so, we can extract the workpiece, and the answer is increased by one.
 
@@ -70,7 +90,7 @@ The time complexity is $O(m + k)$, and the space complexity is $O(k)$. Here, $m$
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -87,7 +107,7 @@ class Solution:
         return sum(check(a) for a in artifacts)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -120,7 +140,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -150,7 +170,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func digArtifacts(n int, artifacts [][]int, dig [][]int) (ans int) {
@@ -176,7 +196,7 @@ func digArtifacts(n int, artifacts [][]int, dig [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function digArtifacts(n: number, artifacts: number[][], dig: number[][]): number {
@@ -203,7 +223,7 @@ function digArtifacts(n: number, artifacts: number[][], dig: number[][]): number
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashSet;
@@ -237,10 +257,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

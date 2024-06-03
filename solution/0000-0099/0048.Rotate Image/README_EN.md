@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0048.Rotate%20Image/README_EN.md
+tags:
+    - Array
+    - Math
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [48. Rotate Image](https://leetcode.com/problems/rotate-image)
 
 [中文文档](/solution/0000-0099/0048.Rotate%20Image/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an <code>n x n</code> 2D <code>matrix</code> representing an image, rotate the image by <strong>90</strong> degrees (clockwise).</p>
 
@@ -32,9 +46,13 @@
 	<li><code>-1000 &lt;= matrix[i][j] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: In-place Rotation**
+<!-- solution:start -->
+
+### Solution 1: In-place Rotation
 
 According to the problem requirements, we actually need to rotate $matrix[i][j]$ to $matrix[j][n - i - 1]$.
 
@@ -44,7 +62,7 @@ The time complexity is $O(n^2)$, where $n$ is the side length of the matrix. The
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -58,7 +76,7 @@ class Solution:
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -82,7 +100,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -103,7 +121,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func rotate(matrix [][]int) {
@@ -121,24 +139,7 @@ func rotate(matrix [][]int) {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[][]} matrix
- * @return {void} Do not return anything, modify matrix in-place instead.
- */
-var rotate = function (matrix) {
-    matrix.reverse();
-    for (let i = 0; i < matrix.length; ++i) {
-        for (let j = 0; j < i; ++j) {
-            [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
-        }
-    }
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -156,31 +157,7 @@ function rotate(matrix: number[][]): void {
 }
 ```
 
-### **C#**
-
-```cs
-public class Solution {
-    public void Rotate(int[][] matrix) {
-        int n = matrix.Length;
-        for (int i = 0; i < n >> 1; ++i) {
-            for (int j = 0; j < n; ++j) {
-                int t = matrix[i][j];
-                matrix[i][j] = matrix[n - i - 1][j];
-                matrix[n - i - 1][j] = t;
-            }
-        }
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < i; ++j) {
-                int t = matrix[i][j];
-                matrix[i][j] = matrix[j][i];
-                matrix[j][i] = t;
-            }
-        }
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -204,10 +181,49 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
+```js
+/**
+ * @param {number[][]} matrix
+ * @return {void} Do not return anything, modify matrix in-place instead.
+ */
+var rotate = function (matrix) {
+    matrix.reverse();
+    for (let i = 0; i < matrix.length; ++i) {
+        for (let j = 0; j < i; ++j) {
+            [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+        }
+    }
+};
 ```
 
+#### C#
+
+```cs
+public class Solution {
+    public void Rotate(int[][] matrix) {
+        int n = matrix.Length;
+        for (int i = 0; i < n >> 1; ++i) {
+            for (int j = 0; j < n; ++j) {
+                int t = matrix[i][j];
+                matrix[i][j] = matrix[n - i - 1][j];
+                matrix[n - i - 1][j] = t;
+            }
+        }
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < i; ++j) {
+                int t = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = t;
+            }
+        }
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

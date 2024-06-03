@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1283.Find%20the%20Smallest%20Divisor%20Given%20a%20Threshold/README.md
+rating: 1541
+source: 第 166 场周赛 Q3
+tags:
+    - 数组
+    - 二分查找
+---
+
+<!-- problem:start -->
+
 # [1283. 使结果不超过阈值的最小除数](https://leetcode.cn/problems/find-the-smallest-divisor-given-a-threshold)
 
 [English Version](/solution/1200-1299/1283.Find%20the%20Smallest%20Divisor%20Given%20a%20Threshold/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组&nbsp;<code>nums</code> 和一个正整数&nbsp;<code>threshold</code> &nbsp;，你需要选择一个正整数作为除数，然后将数组里每个数都除以它，并对除法结果求和。</p>
 
@@ -49,11 +62,13 @@
 	<li><code>nums.length &lt;=&nbsp;threshold &lt;= 10^6</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找**
+### 方法一：二分查找
 
 我们注意到，对于一个数字 $v$，如果将 $nums$ 中的每个数字都除以 $v$ 的结果之和小于等于 $threshold$，那么所有大于 $v$ 的值都满足条件。这存在着单调性，因此我们可以使用二分查找的方法找到最小的满足条件的 $v$。
 
@@ -65,9 +80,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -82,6 +95,8 @@ class Solution:
         return l
 ```
 
+#### Python3
+
 ```python
 class Solution:
     def smallestDivisor(self, nums: List[int], threshold: int) -> int:
@@ -92,9 +107,7 @@ class Solution:
         return bisect_left(range(max(nums)), True, key=f) + 1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -117,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -142,7 +155,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func smallestDivisor(nums []int, threshold int) int {
@@ -157,7 +170,29 @@ func smallestDivisor(nums []int, threshold int) int {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function smallestDivisor(nums: number[], threshold: number): number {
+    let l = 1;
+    let r = Math.max(...nums);
+    while (l < r) {
+        const mid = (l + r) >> 1;
+        let s = 0;
+        for (const x of nums) {
+            s += Math.ceil(x / mid);
+        }
+        if (s <= threshold) {
+            r = mid;
+        } else {
+            l = mid + 1;
+        }
+    }
+    return l;
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -184,29 +219,7 @@ var smallestDivisor = function (nums, threshold) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function smallestDivisor(nums: number[], threshold: number): number {
-    let l = 1;
-    let r = Math.max(...nums);
-    while (l < r) {
-        const mid = (l + r) >> 1;
-        let s = 0;
-        for (const x of nums) {
-            s += Math.ceil(x / mid);
-        }
-        if (s <= threshold) {
-            r = mid;
-        } else {
-            l = mid + 1;
-        }
-    }
-    return l;
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -230,10 +243,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,22 @@
-# [644. 子数组最大平均数 II](https://leetcode.cn/problems/maximum-average-subarray-ii)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0644.Maximum%20Average%20Subarray%20II/README.md
+tags:
+    - 数组
+    - 二分查找
+    - 前缀和
+---
+
+<!-- problem:start -->
+
+# [644. 子数组最大平均数 II 🔒](https://leetcode.cn/problems/maximum-average-subarray-ii)
 
 [English Version](/solution/0600-0699/0644.Maximum%20Average%20Subarray%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个包含 <code>n</code> 个整数的数组 <code>nums</code> ，和一个整数 <code>k</code> 。</p>
 
@@ -42,11 +54,13 @@
 	<li><code>-10<sup>4</sup> <= nums[i] <= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找**
+### 方法一：二分查找
 
 我们注意到，如果一个长度大于等于 $k$ 的子数组的平均值为 $v$，那么最大平均数一定大于等于 $v$，否则最大平均数一定小于 $v$。因此，我们可以使用二分查找的方法找出最大平均数。
 
@@ -84,9 +98,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -115,9 +127,7 @@ class Solution:
         return l
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -162,7 +172,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -204,7 +214,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findMaxAverage(nums []int, k int) float64 {
@@ -243,7 +253,7 @@ func findMaxAverage(nums []int, k int) float64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findMaxAverage(nums: number[], k: number): number {
@@ -279,10 +289,8 @@ function findMaxAverage(nums: number[], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,13 +1,28 @@
-# [1538. Guess the Majority in a Hidden Array](https://leetcode.com/problems/guess-the-majority-in-a-hidden-array)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1538.Guess%20the%20Majority%20in%20a%20Hidden%20Array/README_EN.md
+tags:
+    - Array
+    - Math
+    - Interactive
+---
+
+<!-- problem:start -->
+
+# [1538. Guess the Majority in a Hidden Array 🔒](https://leetcode.com/problems/guess-the-majority-in-a-hidden-array)
 
 [中文文档](/solution/1500-1599/1538.Guess%20the%20Majority%20in%20a%20Hidden%20Array/README.md)
 
 ## Description
 
+<!-- description:start -->
+
 <p>We have an integer array <code>nums</code>, where all the integers in <code>nums</code> are <strong>0</strong> or <strong>1</strong>. You will not be given direct access to the array, instead, you will have an <strong>API</strong> <code>ArrayReader</code> which have the following functions:</p>
 
 <ul>
 	<li><code>int query(int a, int b, int c, int d)</code>: where <code>0 &lt;= a &lt; b &lt; c &lt; d &lt; ArrayReader.length()</code>. The function returns the distribution of the value of the 4 elements and returns:
+
     <ul>
     	<li><strong>4 </strong>: if the values of the 4 elements are the same (0 or 1).</li>
     	<li><strong>2</strong> : if three elements have a value equal to 0 and one element has value equal to 1 or vice versa.</li>
@@ -15,6 +30,7 @@
     </ul>
     </li>
     <li><code>int length()</code>: Returns the size of the array.</li>
+
 </ul>
 
 <p>You are allowed to call <code>query()</code> <b>2 * n times</b> at most where n is equal to <code>ArrayReader.length()</code>.</p>
@@ -61,11 +77,17 @@ Index 2, 4, 6, 7 is also a correct answer.
 <p>&nbsp;</p>
 <p><strong>Follow up:</strong> What is the minimum number of calls needed to find the majority element?</p>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # """
@@ -119,7 +141,7 @@ class Solution:
         return 3 if a > b else k
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -129,9 +151,10 @@ class Solution:
  *   public:
  *     // Compares 4 different elements in the array
  *     // return 4 if the values of the 4 elements are the same (0 or 1).
- *     // return 2 if three elements have a value equal to 0 and one element has value equal to 1 or vice versa.
- *     // return 0 : if two element have a value equal to 0 and two elements have a value equal to 1.
- *     public int query(int a, int b, int c, int d);
+ *     // return 2 if three elements have a value equal to 0 and one element has value equal to 1 or
+ * vice versa.
+ *     // return 0 : if two element have a value equal to 0 and two elements have a value equal
+ * to 1. public int query(int a, int b, int c, int d);
  *
  *     // Returns the length of the array
  *     public int length();
@@ -180,7 +203,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -201,7 +224,7 @@ class Solution {
 
 class Solution {
 public:
-    int guessMajority(ArrayReader &reader) {
+    int guessMajority(ArrayReader& reader) {
         int n = reader.length();
         int x = reader.query(0, 1, 2, 3);
         int a = 1, b = 0;
@@ -242,7 +265,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -303,7 +326,7 @@ func guessMajority(reader *ArrayReader) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -361,10 +384,8 @@ function guessMajority(reader: ArrayReader): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

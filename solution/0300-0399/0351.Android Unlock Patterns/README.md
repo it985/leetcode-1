@@ -1,10 +1,23 @@
-# [351. 安卓系统手势解锁](https://leetcode.cn/problems/android-unlock-patterns)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0351.Android%20Unlock%20Patterns/README.md
+tags:
+    - 位运算
+    - 动态规划
+    - 回溯
+    - 状态压缩
+---
+
+<!-- problem:start -->
+
+# [351. 安卓系统手势解锁 🔒](https://leetcode.cn/problems/android-unlock-patterns)
 
 [English Version](/solution/0300-0399/0351.Android%20Unlock%20Patterns/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>我们都知道安卓有个手势解锁的界面，是一个&nbsp;<code>3 x 3</code><strong> </strong>的点所绘制出来的网格。用户可以设置一个 “解锁模式” ，通过连接特定序列中的点，形成一系列彼此连接的线段，每个线段的端点都是序列中两个连续的点。如果满足以下两个条件，则 <code>k</code> 点序列是有效的解锁模式：</p>
 
@@ -57,11 +70,13 @@
 	<li><code>1 &lt;= m, n &lt;= 9</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们定义一个二维数组 $cross$，其中 $cross[i][j]$ 表示数字 $i$ 和数字 $j$ 之间是否有中间数字，如果有则 $cross[i][j]$ 的值为中间数字，否则为 $0$。
 
@@ -91,9 +106,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -123,9 +136,7 @@ class Solution:
         return dfs(1) * 4 + dfs(2) * 4 + dfs(5)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -166,7 +177,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -206,7 +217,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfPatterns(m int, n int) int {
@@ -251,7 +262,7 @@ func numberOfPatterns(m int, n int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfPatterns(m: number, n: number): number {
@@ -289,10 +300,8 @@ function numberOfPatterns(m: number, n: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

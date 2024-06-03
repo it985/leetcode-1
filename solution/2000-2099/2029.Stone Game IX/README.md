@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2029.Stone%20Game%20IX/README.md
+rating: 2277
+source: 第 261 场周赛 Q3
+tags:
+    - 贪心
+    - 数组
+    - 数学
+    - 计数
+    - 博弈
+---
+
+<!-- problem:start -->
+
 # [2029. 石子游戏 IX](https://leetcode.cn/problems/stone-game-ix)
 
 [English Version](/solution/2000-2099/2029.Stone%20Game%20IX/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>Alice 和 Bob 再次设计了一款新的石子游戏。现有一行 n 个石子，每个石子都有一个关联的数字表示它的价值。给你一个整数数组 <code>stones</code> ，其中 <code>stones[i]</code> 是第 <code>i</code> 个石子的价值。</p>
 
@@ -62,29 +78,17 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
 	<li><code>1 &lt;= stones[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-由于我们只关心总和能否被 3 整除，我们可以将 stones 按照模 3 的结果进行分组计数。
-
-根据题意，第一回合不能移除 0，否则直接输掉游戏，因此第一回合只能移除 1 或者 2。我们可以枚举这两种情况，如果其中一种可以让 Alice 获胜就返回 true，否则返回 false。
-
-下面以第一回合移除 1 来说明。在不考虑移除 0 的前提下，后面的移除由于要满足总和不能被 3 整除，因此移除的石子是固定的，整体构成一个 112121212… 循环的序列。
-
-对于 0，由于移除之后不会改变总和模 3 的结果，因此不会改变后续 1 和 2 的移除顺序，所以我们可以在序列的任意非开头位置插入 0。
-
-两人为了不让自己输掉，必然会按照上述序列进行，直到没有石子，或某一方只能移除导致总和被 3 整除的石子时分出胜负。因此我们需要求出让总和不能被 3 整除的最大的回合数，这相当于 112121212... 序列的最长长度，加上 0 的个数。
-
-若该回合数为奇数，且还有剩余石子，那么下一回合要轮到 Bob 移除石子，且他只能移除一枚让总和被 3 整除的石子，于是 Alice 获胜；否则 Bob 获胜。
-
-对于第一回合移除 2 的情况，同样会构成一个 221212121... 循环的序列，做法同上。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -106,9 +110,7 @@ class Solution:
         return check(c) or check(c1)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -136,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -161,7 +163,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func stoneGameIX(stones []int) bool {
@@ -185,10 +187,8 @@ func stoneGameIX(stones []int) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

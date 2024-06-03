@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2299.Strong%20Password%20Checker%20II/README_EN.md
+rating: 1241
+source: Biweekly Contest 80 Q1
+tags:
+    - String
+---
+
+<!-- problem:start -->
+
 # [2299. Strong Password Checker II](https://leetcode.com/problems/strong-password-checker-ii)
 
 [中文文档](/solution/2200-2299/2299.Strong%20Password%20Checker%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A password is said to be <strong>strong</strong> if it satisfies all the following criteria:</p>
 
@@ -49,11 +63,17 @@
 	<li><code>password</code> consists of letters, digits, and special characters: <code>&quot;!@#$%^&amp;*()-+&quot;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +95,7 @@ class Solution:
         return mask == 15
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -134,7 +154,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func strongPasswordCheckerII(password string) bool {
@@ -160,7 +180,7 @@ func strongPasswordCheckerII(password string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function strongPasswordCheckerII(password: string): boolean {
@@ -187,7 +207,7 @@ function strongPasswordCheckerII(password: string): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -219,7 +239,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 bool strongPasswordCheckerII(char* password) {
@@ -248,10 +268,8 @@ bool strongPasswordCheckerII(char* password) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

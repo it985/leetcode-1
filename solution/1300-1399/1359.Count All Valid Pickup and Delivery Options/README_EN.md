@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1359.Count%20All%20Valid%20Pickup%20and%20Delivery%20Options/README_EN.md
+rating: 1722
+source: Biweekly Contest 20 Q4
+tags:
+    - Math
+    - Dynamic Programming
+    - Combinatorics
+---
+
+<!-- problem:start -->
+
 # [1359. Count All Valid Pickup and Delivery Options](https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options)
 
 [中文文档](/solution/1300-1399/1359.Count%20All%20Valid%20Pickup%20and%20Delivery%20Options/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given <code>n</code> orders, each order consists of a pickup and a delivery service.</p>
 
@@ -43,11 +59,31 @@ This is an invalid order (P1,D2,P2,D1) because Pickup 2 is after of Delivery 2.
 	<li><code>1 &lt;= n &lt;= 500</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming
+
+We define $f[i]$ as the number of all valid pickup/delivery sequences for $i$ orders. Initially, $f[1] = 1$.
+
+We can choose any of these $i$ orders as the last delivery order $D_i$, then its pickup order $P_i$ can be at any position in the previous $2 \times i - 1$, and the number of pickup/delivery sequences for the remaining $i - 1$ orders is $f[i - 1]$, so $f[i]$ can be expressed as:
+
+$$
+f[i] = i \times (2 \times i - 1) \times f[i - 1]
+$$
+
+The final answer is $f[n]$.
+
+We notice that the value of $f[i]$ is only related to $f[i - 1]$, so we can use a variable instead of an array to reduce the space complexity.
+
+The time complexity is $O(n)$, where $n$ is the number of orders. The space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,7 +95,7 @@ class Solution:
         return f
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -74,7 +110,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -90,7 +126,20 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func countOrders(n int) int {
+	const mod = 1e9 + 7
+	f := 1
+	for i := 2; i <= n; i++ {
+		f = f * i * (2*i - 1) % mod
+	}
+	return f
+}
+```
+
+#### Rust
 
 ```rust
 const MOD: i64 = (1e9 as i64) + 7;
@@ -107,23 +156,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func countOrders(n int) int {
-	const mod = 1e9 + 7
-	f := 1
-	for i := 2; i <= n; i++ {
-		f = f * i * (2*i - 1) % mod
-	}
-	return f
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

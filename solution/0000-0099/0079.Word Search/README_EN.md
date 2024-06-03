@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0079.Word%20Search/README_EN.md
+tags:
+    - Array
+    - String
+    - Backtracking
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [79. Word Search](https://leetcode.com/problems/word-search)
 
 [中文文档](/solution/0000-0099/0079.Word%20Search/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an <code>m x n</code> grid of characters <code>board</code> and a string <code>word</code>, return <code>true</code> <em>if</em> <code>word</code> <em>exists in the grid</em>.</p>
 
@@ -44,9 +59,13 @@
 <p>&nbsp;</p>
 <p><strong>Follow up:</strong> Could you use search pruning to make your solution faster with a larger <code>board</code>?</p>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: DFS (Backtracking)**
+<!-- solution:start -->
+
+### Solution 1: DFS (Backtracking)
 
 We can enumerate each position $(i, j)$ in the grid as the starting point of the search, and then start a depth-first search from the starting point. If we can search to the end of the word, it means the word exists, otherwise, it means the word does not exist.
 
@@ -62,7 +81,7 @@ The time complexity is $O(m \times n \times 3^k)$, and the space complexity is $
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -86,7 +105,7 @@ class Solution:
         return any(dfs(i, j, 0) for i in range(m) for j in range(n))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -132,7 +151,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -170,7 +189,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func exist(board [][]byte, word string) bool {
@@ -206,7 +225,7 @@ func exist(board [][]byte, word string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function exist(board: string[][], word: string): boolean {
@@ -242,54 +261,7 @@ function exist(board: string[][], word: string): boolean {
 }
 ```
 
-### **C#**
-
-```cs
-public class Solution {
-    private int m;
-    private int n;
-    private char[][] board;
-    private string word;
-
-    public bool Exist(char[][] board, string word) {
-        m = board.Length;
-        n = board[0].Length;
-        this.board = board;
-        this.word = word;
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < n; ++j) {
-                if (dfs(i, j, 0)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    private bool dfs(int i, int j, int k) {
-        if (k == word.Length - 1) {
-            return board[i][j] == word[k];
-        }
-        if (board[i][j] != word[k]) {
-            return false;
-        }
-        char c = board[i][j];
-        board[i][j] = '0';
-        int[] dirs = { -1, 0, 1, 0, -1 };
-        for (int u = 0; u < 4; ++u) {
-            int x = i + dirs[u];
-            int y = j + dirs[u + 1];
-            if (x >= 0 && x < m && y >= 0 && y < n && board[x][y] != '0' && dfs(x, y, k + 1)) {
-                return true;
-            }
-        }
-        board[i][j] = c;
-        return false;
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -346,10 +318,55 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C#
 
-```
+```cs
+public class Solution {
+    private int m;
+    private int n;
+    private char[][] board;
+    private string word;
 
+    public bool Exist(char[][] board, string word) {
+        m = board.Length;
+        n = board[0].Length;
+        this.board = board;
+        this.word = word;
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (dfs(i, j, 0)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private bool dfs(int i, int j, int k) {
+        if (k == word.Length - 1) {
+            return board[i][j] == word[k];
+        }
+        if (board[i][j] != word[k]) {
+            return false;
+        }
+        char c = board[i][j];
+        board[i][j] = '0';
+        int[] dirs = { -1, 0, 1, 0, -1 };
+        for (int u = 0; u < 4; ++u) {
+            int x = i + dirs[u];
+            int y = j + dirs[u + 1];
+            if (x >= 0 && x < m && y >= 0 && y < n && board[x][y] != '0' && dfs(x, y, k + 1)) {
+                return true;
+            }
+        }
+        board[i][j] = c;
+        return false;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

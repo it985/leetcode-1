@@ -1,10 +1,20 @@
-# [1843. 可疑银行账户](https://leetcode.cn/problems/suspicious-bank-accounts)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1843.Suspicious%20Bank%20Accounts/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1843. 可疑银行账户 🔒](https://leetcode.cn/problems/suspicious-bank-accounts)
 
 [English Version](/solution/1800-1899/1843.Suspicious%20Bank%20Accounts/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Accounts</code></p>
 
@@ -95,15 +105,17 @@ Transactions 表:
 - 在 2021年7月，用户收入为 56300。
 可见收入在5月与7月超过了最大收入，但6月没有。因为账户没有没有连续两月超过最大收入，账户4不列入结果表中。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -129,6 +141,18 @@ WHERE s1.marked = 1 AND s2.marked = 1
 ORDER BY s1.tx;
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### MySQL
+
 ```sql
 # Write your MySQL query statement below
 WITH
@@ -151,3 +175,7 @@ ORDER BY tx;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

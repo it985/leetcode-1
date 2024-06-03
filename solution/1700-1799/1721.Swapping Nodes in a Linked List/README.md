@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1721.Swapping%20Nodes%20in%20a%20Linked%20List/README.md
+rating: 1386
+source: 第 223 场周赛 Q2
+tags:
+    - 链表
+    - 双指针
+---
+
+<!-- problem:start -->
+
 # [1721. 交换链表中的节点](https://leetcode.cn/problems/swapping-nodes-in-a-linked-list)
 
 [English Version](/solution/1700-1799/1721.Swapping%20Nodes%20in%20a%20Linked%20List/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你链表的头节点 <code>head</code> 和一个整数 <code>k</code> 。</p>
 
@@ -57,11 +70,13 @@
 	<li><code>0 <= Node.val <= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：快慢指针**
+### 方法一：快慢指针
 
 我们可以先用快指针 $fast$ 找到链表的第 $k$ 个节点，用指针 $p$ 指向它。然后我们再用慢指针 $slow$ 从链表的头节点出发，快慢指针同时向后移动，当快指针到达链表的最后一个节点时，慢指针 $slow$ 恰好指向倒数第 $k$ 个节点，用指针 $q$ 指向它。此时，我们只需要交换 $p$ 和 $q$ 的值即可。
 
@@ -69,9 +84,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -92,9 +105,7 @@ class Solution:
         return head
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -128,7 +139,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -161,7 +172,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -187,7 +198,7 @@ func swapNodes(head *ListNode, k int) *ListNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -218,7 +229,7 @@ function swapNodes(head: ListNode | null, k: number): ListNode | null {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 /**
@@ -253,10 +264,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

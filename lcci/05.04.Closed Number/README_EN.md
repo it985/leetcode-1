@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/05.04.Closed%20Number/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [05.04. Closed Number](https://leetcode.cn/problems/closed-number-lcci)
 
 [中文文档](/lcci/05.04.Closed%20Number/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a positive integer, print the next smallest and the next largest number that have the same number of 1 bits in their binary representation.</p>
 <p><strong>Example1:</strong></p>
@@ -27,9 +37,13 @@
 	<li>If there is no next smallest or next largest number, output -1.</li>
 </ol>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Bit Manipulation**
+<!-- solution:start -->
+
+### Solution 1: Bit Manipulation
 
 First, let's consider how to find the first number that is larger than $num$ and has the same number of $1$s in its binary representation.
 
@@ -45,7 +59,7 @@ The time complexity is $O(\log n)$, where $n$ is the size of $num$. The space co
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -73,7 +87,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -110,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -148,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findClosedNumbers(num int) []int {
@@ -183,7 +197,7 @@ func findClosedNumbers(num int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findClosedNumbers(num: number): number[] {
@@ -218,10 +232,54 @@ function findClosedNumbers(num: number): number[] {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    func findClosedNumbers(_ num: Int) -> [Int] {
+        var ans = [-1, -1]
+        let dirs = [0, 1, 0]
 
+        for p in 0..<2 {
+            let a = dirs[p], b = dirs[p + 1]
+            var x = num
+            var found = false
+
+            for i in 1..<31 {
+                if ((x >> i) & 1) == a && ((x >> (i - 1)) & 1) == b {
+                    x ^= (1 << i)
+                    x ^= (1 << (i - 1))
+
+                    var j = 0, k = i - 2
+                    while j < k {
+                        while j < k && ((x >> j) & 1) == b {
+                            j += 1
+                        }
+                        while j < k && ((x >> k) & 1) == a {
+                            k -= 1
+                        }
+                        if j < k {
+                            x ^= (1 << j)
+                            x ^= (1 << k)
+                        }
+                    }
+                    ans[p] = x
+                    found = true
+                    break
+                }
+            }
+            if !found {
+                ans[p] = -1
+            }
+        }
+
+        return ans
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

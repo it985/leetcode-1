@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1003.Check%20If%20Word%20Is%20Valid%20After%20Substitutions/README_EN.md
+rating: 1426
+source: Weekly Contest 126 Q2
+tags:
+    - Stack
+    - String
+---
+
+<!-- problem:start -->
+
 # [1003. Check If Word Is Valid After Substitutions](https://leetcode.com/problems/check-if-word-is-valid-after-substitutions)
 
 [中文文档](/solution/1000-1099/1003.Check%20If%20Word%20Is%20Valid%20After%20Substitutions/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a string <code>s</code>, determine if it is <strong>valid</strong>.</p>
 
@@ -50,9 +65,13 @@ Thus, &quot;abcabcababcc&quot; is valid.
 	<li><code>s</code> consists of letters <code>&#39;a&#39;</code>, <code>&#39;b&#39;</code>, and <code>&#39;c&#39;</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Stack**
+<!-- solution:start -->
+
+### Solution 1: Stack
 
 If the string is valid, it's length must be the multiple of $3$.
 
@@ -64,7 +83,7 @@ The time complexity is $O(n)$ and the space complexity is $O(n)$. Where $n$ is t
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -79,7 +98,7 @@ class Solution:
         return not t
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +118,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -120,7 +139,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isValid(s string) bool {
@@ -138,7 +157,7 @@ func isValid(s string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function isValid(s: string): boolean {
@@ -156,10 +175,8 @@ function isValid(s: string): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

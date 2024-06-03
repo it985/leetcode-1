@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0649.Dota2%20Senate/README.md
+tags:
+    - 贪心
+    - 队列
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [649. Dota2 参议院](https://leetcode.cn/problems/dota2-senate)
 
 [English Version](/solution/0600-0699/0649.Dota2%20Senate/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>Dota2 的世界里有两个阵营：<code>Radiant</code>（天辉）和&nbsp;<code>Dire</code>（夜魇）</p>
 
@@ -23,7 +35,7 @@
 
 <p>&nbsp;</p>
 
-<p><strong>示例 1：</strong></p>
+<p><strong class="example">示例 1：</strong></p>
 
 <pre>
 <strong>输入：</strong>senate = "RD"
@@ -34,7 +46,7 @@
 第 2 轮时，第一个参议员可以宣布胜利，因为他是唯一一个有投票权的人</code>。
 </pre>
 
-<p><strong>示例 2：</strong></p>
+<p><strong class="example">示例 2：</strong></p>
 
 <pre>
 <strong>输入：</strong>senate = "RDD"
@@ -56,11 +68,13 @@
 	<li><code>senate[i]</code> 为 <code>'R'</code> 或 <code>'D'</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：队列 + 模拟**
+### 方法一：队列 + 模拟
 
 我们创建两个队列 $qr$ 和 $qd$，分别记录天辉和夜魇阵营的参议员的下标。然后我们开始进行模拟，每一轮各从队首取出一位参议员，然后根据他的阵营进行不同的操作：
 
@@ -73,9 +87,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -98,9 +110,7 @@ class Solution:
         return "Radiant" if qr else "Dire"
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -129,7 +139,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -161,7 +171,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func predictPartyVictory(senate string) string {
@@ -191,7 +201,7 @@ func predictPartyVictory(senate string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function predictPartyVictory(senate: string): string {
@@ -218,7 +228,7 @@ function predictPartyVictory(senate: string): string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -253,10 +263,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

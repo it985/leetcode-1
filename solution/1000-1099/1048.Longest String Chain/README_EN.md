@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1048.Longest%20String%20Chain/README_EN.md
+rating: 1599
+source: Weekly Contest 137 Q3
+tags:
+    - Array
+    - Hash Table
+    - Two Pointers
+    - String
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [1048. Longest String Chain](https://leetcode.com/problems/longest-string-chain)
 
 [中文文档](/solution/1000-1099/1048.Longest%20String%20Chain/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an array of <code>words</code> where each word consists of lowercase English letters.</p>
 
@@ -51,11 +69,17 @@
 	<li><code>words[i]</code> only consists of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -84,23 +108,7 @@ class Solution:
         return res
 ```
 
-```python
-class Solution:
-    def longestStrChain(self, words: List[str]) -> int:
-        words.sort(key=lambda x: len(x))
-        res = 0
-        mp = {}
-        for word in words:
-            x = 1
-            for i in range(len(word)):
-                pre = word[:i] + word[i + 1 :]
-                x = max(x, mp.get(pre, 0) + 1)
-            mp[word] = x
-            res = max(res, x)
-        return res
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -122,27 +130,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function longestStrChain(words: string[]): number {
-    words.sort((a, b) => a.length - b.length);
-    let ans = 0;
-    let hashTable = new Map();
-    for (let word of words) {
-        let c = 1;
-        for (let i = 0; i < word.length; i++) {
-            let pre = word.substring(0, i) + word.substring(i + 1);
-            c = Math.max(c, (hashTable.get(pre) || 0) + 1);
-        }
-        hashTable.set(word, c);
-        ans = Math.max(ans, c);
-    }
-    return ans;
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -165,7 +153,47 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func longestStrChain(words []string) int {
+	sort.Slice(words, func(i, j int) bool { return len(words[i]) < len(words[j]) })
+	res := 0
+	mp := make(map[string]int)
+	for _, word := range words {
+		x := 1
+		for i := 0; i < len(word); i++ {
+			pre := word[0:i] + word[i+1:len(word)]
+			x = max(x, mp[pre]+1)
+		}
+		mp[word] = x
+		res = max(res, x)
+	}
+	return res
+}
+```
+
+#### TypeScript
+
+```ts
+function longestStrChain(words: string[]): number {
+    words.sort((a, b) => a.length - b.length);
+    let ans = 0;
+    let hashTable = new Map();
+    for (let word of words) {
+        let c = 1;
+        for (let i = 0; i < word.length; i++) {
+            let pre = word.substring(0, i) + word.substring(i + 1);
+            c = Math.max(c, (hashTable.get(pre) || 0) + 1);
+        }
+        hashTable.set(word, c);
+        ans = Math.max(ans, c);
+    }
+    return ans;
+}
+```
+
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -201,30 +229,36 @@ impl Solution {
 }
 ```
 
-### **Go**
+<!-- tabs:end -->
 
-```go
-func longestStrChain(words []string) int {
-	sort.Slice(words, func(i, j int) bool { return len(words[i]) < len(words[j]) })
-	res := 0
-	mp := make(map[string]int)
-	for _, word := range words {
-		x := 1
-		for i := 0; i < len(word); i++ {
-			pre := word[0:i] + word[i+1:len(word)]
-			x = max(x, mp[pre]+1)
-		}
-		mp[word] = x
-		res = max(res, x)
-	}
-	return res
-}
-```
+<!-- solution:end -->
 
-### **...**
+<!-- solution:start -->
 
-```
+### Solution 2
 
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def longestStrChain(self, words: List[str]) -> int:
+        words.sort(key=lambda x: len(x))
+        res = 0
+        mp = {}
+        for word in words:
+            x = 1
+            for i in range(len(word)):
+                pre = word[:i] + word[i + 1 :]
+                x = max(x, mp.get(pre, 0) + 1)
+            mp[word] = x
+            res = max(res, x)
+        return res
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

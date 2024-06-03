@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0136.Single%20Number/README_EN.md
+tags:
+    - Bit Manipulation
+    - Array
+---
+
+<!-- problem:start -->
+
 # [136. Single Number](https://leetcode.com/problems/single-number)
 
 [中文文档](/solution/0100-0199/0136.Single%20Number/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a <strong>non-empty</strong>&nbsp;array of integers <code>nums</code>, every element appears <em>twice</em> except for one. Find that single one.</p>
 
@@ -28,9 +41,13 @@
 	<li>Each element in the array appears twice except for one element which appears only once.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Bitwise Operation**
+<!-- solution:start -->
+
+### Solution 1: Bitwise Operation
 
 The XOR operation has the following properties:
 
@@ -43,7 +60,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array. The space c
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -51,7 +68,7 @@ class Solution:
         return reduce(xor, nums)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -65,15 +82,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int singleNumber(int[] nums) {
-        return Arrays.stream(nums).reduce(0, (a, b) -> a ^ b);
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -88,7 +97,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func singleNumber(nums []int) (ans int) {
@@ -99,19 +108,7 @@ func singleNumber(nums []int) (ans int) {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var singleNumber = function (nums) {
-    return nums.reduce((a, b) => a ^ b);
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function singleNumber(nums: number[]): number {
@@ -119,7 +116,7 @@ function singleNumber(nums: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -131,7 +128,29 @@ impl Solution {
 }
 ```
 
-### **C**
+#### JavaScript
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNumber = function (nums) {
+    return nums.reduce((a, b) => a ^ b);
+};
+```
+
+#### C#
+
+```cs
+public class Solution {
+    public int SingleNumber(int[] nums) {
+        return nums.Aggregate(0, (a, b) => a ^ b);
+    }
+}
+```
+
+#### C
 
 ```c
 int singleNumber(int* nums, int numsSize) {
@@ -143,7 +162,7 @@ int singleNumber(int* nums, int numsSize) {
 }
 ```
 
-### **Swift**
+#### Swift
 
 ```swift
 class Solution {
@@ -153,20 +172,28 @@ class Solution {
 }
 ```
 
-### **C#**
+<!-- tabs:end -->
 
-```cs
-public class Solution {
-    public int SingleNumber(int[] nums) {
-        return nums.Aggregate(0, (a, b) => a ^ b);
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Java
+
+```java
+class Solution {
+    public int singleNumber(int[] nums) {
+        return Arrays.stream(nums).reduce(0, (a, b) -> a ^ b);
     }
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

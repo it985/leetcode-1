@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0664.Strange%20Printer/README_EN.md
+tags:
+    - String
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [664. Strange Printer](https://leetcode.com/problems/strange-printer)
 
 [中文文档](/solution/0600-0699/0664.Strange%20Printer/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is a strange printer with the following two special properties:</p>
 
@@ -38,9 +51,13 @@
 	<li><code>s</code> consists of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming
 
 We define $f[i][j]$ as the minimum operations to print $s[i..j]$, with the initial value $f[i][j]=\infty$, and the answer is $f[0][n-1]$, where $n$ is the length of string $s$.
 
@@ -61,7 +78,7 @@ The time complexity is $O(n^3)$ and the space complexity is $O(n^2)$. Where $n$ 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -79,7 +96,7 @@ class Solution:
         return f[0][-1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -133,7 +150,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func strangePrinter(s string) int {
@@ -161,7 +178,7 @@ func strangePrinter(s string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function strangePrinter(s: string): number {
@@ -183,10 +200,8 @@ function strangePrinter(s: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1028.Recover%20a%20Tree%20From%20Preorder%20Traversal/README_EN.md
+rating: 1797
+source: Weekly Contest 132 Q4
+tags:
+    - Tree
+    - Depth-First Search
+    - String
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [1028. Recover a Tree From Preorder Traversal](https://leetcode.com/problems/recover-a-tree-from-preorder-traversal)
 
 [中文文档](/solution/1000-1099/1028.Recover%20a%20Tree%20From%20Preorder%20Traversal/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>We run a&nbsp;preorder&nbsp;depth-first search (DFS) on the <code>root</code> of a binary tree.</p>
 
@@ -42,26 +59,69 @@
 	<li><code>1 &lt;= Node.val &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### C++
 
-```python
-
-```
-
-### **Java**
-
-```java
-
-```
-
-### **...**
-
-```
-
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* recoverFromPreorder(string S) {
+        stack<TreeNode*> st;
+        int depth = 0;
+        int num = 0;
+        for (int i = 0; i < S.length(); ++i) {
+            if (S[i] == '-') {
+                depth++;
+            } else {
+                num = 10 * num + S[i] - '0';
+            }
+            if (i + 1 >= S.length() || (isdigit(S[i]) && S[i + 1] == '-')) {
+                TreeNode* newNode = new TreeNode(num);
+                while (st.size() > depth) {
+                    st.pop();
+                }
+                if (!st.empty()) {
+                    if (st.top()->left == nullptr) {
+                        st.top()->left = newNode;
+                    } else {
+                        st.top()->right = newNode;
+                    }
+                }
+                st.push(newNode);
+                depth = 0;
+                num = 0;
+            }
+        }
+        TreeNode* res;
+        while (!st.empty()) {
+            res = st.top();
+            st.pop();
+        }
+        return res;
+    }
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

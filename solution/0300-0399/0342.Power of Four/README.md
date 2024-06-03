@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0342.Power%20of%20Four/README.md
+tags:
+    - 位运算
+    - 递归
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [342. 4 的幂](https://leetcode.cn/problems/power-of-four)
 
 [English Version](/solution/0300-0399/0342.Power%20of%20Four/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个整数，写一个函数来判断它是否是 4 的幂次方。如果是，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
 
@@ -45,15 +57,17 @@
 
 <p><strong>进阶：</strong>你能不使用循环或者递归来完成本题吗？</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -61,9 +75,7 @@ class Solution:
         return n > 0 and (n & (n - 1)) == 0 and (n & 0xAAAAAAAA) == 0
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -73,7 +85,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -84,7 +96,23 @@ public:
 };
 ```
 
-### **JavaScript**
+#### Go
+
+```go
+func isPowerOfFour(n int) bool {
+	return n > 0 && (n&(n-1)) == 0 && (n&0xaaaaaaaa) == 0
+}
+```
+
+#### TypeScript
+
+```ts
+function isPowerOfFour(n: number): boolean {
+    return n > 0 && (n & (n - 1)) == 0 && (n & 0xaaaaaaaa) == 0;
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -96,26 +124,8 @@ var isPowerOfFour = function (n) {
 };
 ```
 
-### **Go**
-
-```go
-func isPowerOfFour(n int) bool {
-	return n > 0 && (n&(n-1)) == 0 && (n&0xaaaaaaaa) == 0
-}
-```
-
-### **TypeScript**
-
-```ts
-function isPowerOfFour(n: number): boolean {
-    return n > 0 && (n & (n - 1)) == 0 && (n & 0xaaaaaaaa) == 0;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

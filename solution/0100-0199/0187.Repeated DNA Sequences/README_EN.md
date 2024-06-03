@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0187.Repeated%20DNA%20Sequences/README_EN.md
+tags:
+    - Bit Manipulation
+    - Hash Table
+    - String
+    - Sliding Window
+    - Hash Function
+    - Rolling Hash
+---
+
+<!-- problem:start -->
+
 # [187. Repeated DNA Sequences](https://leetcode.com/problems/repeated-dna-sequences)
 
 [中文文档](/solution/0100-0199/0187.Repeated%20DNA%20Sequences/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>The <strong>DNA sequence</strong> is composed of a series of nucleotides abbreviated as <code>&#39;A&#39;</code>, <code>&#39;C&#39;</code>, <code>&#39;G&#39;</code>, and <code>&#39;T&#39;</code>.</p>
 
@@ -30,9 +47,13 @@
 	<li><code>s[i]</code> is either <code>&#39;A&#39;</code>, <code>&#39;C&#39;</code>, <code>&#39;G&#39;</code>, or <code>&#39;T&#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Hash Table
 
 We define a hash table $cnt$ to store the occurrence count of all substrings of length $10$.
 
@@ -42,15 +63,9 @@ After the iteration, we return the answer array.
 
 The time complexity is $O(n \times 10)$, and the space complexity is $O(n \times 10)$. Here, $n$ is the length of the string $s$.
 
-**Solution 2: Rabin-Karp String Matching Algorithm**
-
-This method essentially combines sliding window and hash. Similar to 0028. Find the Index of the First Occurrence in a String, this problem can use a hash function to reduce the time complexity of counting subsequences to $O(1)$.
-
-The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is the length of the string $s$.
-
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,7 +80,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -83,7 +98,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -102,86 +117,23 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
-func findRepeatedDnaSequences(s string) []string {
-	ans, cnt := []string{}, map[string]int{}
-	for i := 0; i <= len(s)-10; i++ {
-		sub := s[i : i+10]
-		cnt[sub]++
-		if cnt[sub] == 2 {
-			ans = append(ans, sub)
+func findRepeatedDnaSequences(s string) (ans []string) {
+	cnt := map[string]int{}
+	for i := 0; i < len(s)-10+1; i++ {
+		t := s[i : i+10]
+		cnt[t]++
+		if cnt[t] == 2 {
+			ans = append(ans, t)
 		}
 	}
-	return ans
+	return
 }
 ```
 
-```go
-func findRepeatedDnaSequences(s string) []string {
-	hashCode := map[byte]int{'A': 0, 'C': 1, 'G': 2, 'T': 3}
-	ans, cnt, left, right := []string{}, map[int]int{}, 0, 0
-
-	sha, multi := 0, int(math.Pow(4, 9))
-	for ; right < len(s); right++ {
-		sha = sha*4 + hashCode[s[right]]
-		if right-left+1 < 10 {
-			continue
-		}
-		cnt[sha]++
-		if cnt[sha] == 2 {
-			ans = append(ans, s[left:right+1])
-		}
-		sha, left = sha-multi*hashCode[s[left]], left+1
-	}
-	return ans
-}
-```
-
-### **JavaScript**
-
-```js
-/**
- * @param {string} s
- * @return {string[]}
- */
-var findRepeatedDnaSequences = function (s) {
-    const cnt = new Map();
-    const ans = [];
-    for (let i = 0; i < s.length - 10 + 1; ++i) {
-        const t = s.slice(i, i + 10);
-        cnt.set(t, (cnt.get(t) || 0) + 1);
-        if (cnt.get(t) === 2) {
-            ans.push(t);
-        }
-    }
-    return ans;
-};
-```
-
-### **C#**
-
-```cs
-public class Solution {
-    public IList<string> FindRepeatedDnaSequences(string s) {
-        var cnt = new Dictionary<string, int>();
-        var ans = new List<string>();
-        for (int i = 0; i < s.Length - 10 + 1; ++i) {
-            var t = s.Substring(i, 10);
-            if (!cnt.ContainsKey(t)) {
-                cnt[t] = 0;
-            }
-            if (++cnt[t] == 2) {
-                ans.Add(t);
-            }
-        }
-        return ans;
-    }
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findRepeatedDnaSequences(s: string): string[] {
@@ -199,7 +151,7 @@ function findRepeatedDnaSequences(s: string): string[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -224,10 +176,87 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
+```js
+/**
+ * @param {string} s
+ * @return {string[]}
+ */
+var findRepeatedDnaSequences = function (s) {
+    const cnt = new Map();
+    const ans = [];
+    for (let i = 0; i < s.length - 10 + 1; ++i) {
+        const t = s.slice(i, i + 10);
+        cnt.set(t, (cnt.get(t) || 0) + 1);
+        if (cnt.get(t) === 2) {
+            ans.push(t);
+        }
+    }
+    return ans;
+};
 ```
 
+#### C#
+
+```cs
+public class Solution {
+    public IList<string> FindRepeatedDnaSequences(string s) {
+        var cnt = new Dictionary<string, int>();
+        var ans = new List<string>();
+        for (int i = 0; i < s.Length - 10 + 1; ++i) {
+            var t = s.Substring(i, 10);
+            if (!cnt.ContainsKey(t)) {
+                cnt[t] = 0;
+            }
+            if (++cnt[t] == 2) {
+                ans.Add(t);
+            }
+        }
+        return ans;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Rabin-Karp String Matching Algorithm
+
+This method essentially combines sliding window and hash. Similar to 0028. Find the Index of the First Occurrence in a String, this problem can use a hash function to reduce the time complexity of counting subsequences to $O(1)$.
+
+The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is the length of the string $s$.
+
+<!-- tabs:start -->
+
+#### Go
+
+```go
+func findRepeatedDnaSequences(s string) []string {
+	hashCode := map[byte]int{'A': 0, 'C': 1, 'G': 2, 'T': 3}
+	ans, cnt, left, right := []string{}, map[int]int{}, 0, 0
+
+	sha, multi := 0, int(math.Pow(4, 9))
+	for ; right < len(s); right++ {
+		sha = sha*4 + hashCode[s[right]]
+		if right-left+1 < 10 {
+			continue
+		}
+		cnt[sha]++
+		if cnt[sha] == 2 {
+			ans = append(ans, s[left:right+1])
+		}
+		sha, left = sha-multi*hashCode[s[left]], left+1
+	}
+	return ans
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

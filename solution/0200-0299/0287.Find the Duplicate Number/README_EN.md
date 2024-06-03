@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0287.Find%20the%20Duplicate%20Number/README_EN.md
+tags:
+    - Bit Manipulation
+    - Array
+    - Two Pointers
+    - Binary Search
+---
+
+<!-- problem:start -->
+
 # [287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number)
 
 [中文文档](/solution/0200-0299/0287.Find%20the%20Duplicate%20Number/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of integers <code>nums</code> containing&nbsp;<code>n + 1</code> integers where each integer is in the range <code>[1, n]</code> inclusive.</p>
 
@@ -25,6 +40,12 @@
 <strong>Output:</strong> 3
 </pre>
 
+<p><strong class="example">Example 3:</strong></p>
+
+<pre>
+<strong>Input:</strong> nums = [3,3,3,3,3]
+<strong>Output:</strong> 3</pre>
+
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
@@ -43,9 +64,13 @@
 	<li>Can you solve the problem in linear runtime complexity?</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Binary Search
 
 We can observe that if the number of elements in $[1,..x]$ is greater than $x$, then the duplicate number must be in $[1,..x]$, otherwise the duplicate number must be in $[x+1,..n]$.
 
@@ -55,7 +80,7 @@ The time complexity is $O(n \times \log n)$, where $n$ is the length of the arra
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,7 +91,7 @@ class Solution:
         return bisect_left(range(len(nums)), True, key=f)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -115,7 +140,47 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func findDuplicate(nums []int) int {
+	return sort.Search(len(nums), func(x int) bool {
+		cnt := 0
+		for _, v := range nums {
+			if v <= x {
+				cnt++
+			}
+		}
+		return cnt > x
+	})
+}
+```
+
+#### TypeScript
+
+```ts
+function findDuplicate(nums: number[]): number {
+    let l = 0;
+    let r = nums.length - 1;
+    while (l < r) {
+        const mid = (l + r) >> 1;
+        let cnt = 0;
+        for (const v of nums) {
+            if (v <= mid) {
+                ++cnt;
+            }
+        }
+        if (cnt > mid) {
+            r = mid;
+        } else {
+            l = mid + 1;
+        }
+    }
+    return l;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -142,23 +207,7 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func findDuplicate(nums []int) int {
-	return sort.Search(len(nums), func(x int) bool {
-		cnt := 0
-		for _, v := range nums {
-			if v <= x {
-				cnt++
-			}
-		}
-		return cnt > x
-	})
-}
-```
-
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -186,34 +235,8 @@ var findDuplicate = function (nums) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function findDuplicate(nums: number[]): number {
-    let l = 0;
-    let r = nums.length - 1;
-    while (l < r) {
-        const mid = (l + r) >> 1;
-        let cnt = 0;
-        for (const v of nums) {
-            if (v <= mid) {
-                ++cnt;
-            }
-        }
-        if (cnt > mid) {
-            r = mid;
-        } else {
-            l = mid + 1;
-        }
-    }
-    return l;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

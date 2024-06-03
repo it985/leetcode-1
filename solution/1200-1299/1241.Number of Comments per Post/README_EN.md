@@ -1,8 +1,20 @@
-# [1241. Number of Comments per Post](https://leetcode.com/problems/number-of-comments-per-post)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1241.Number%20of%20Comments%20per%20Post/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [1241. Number of Comments per Post 🔒](https://leetcode.com/problems/number-of-comments-per-post)
 
 [中文文档](/solution/1200-1299/1241.Number%20of%20Comments%20per%20Post/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Submissions</code></p>
 
@@ -67,11 +79,17 @@ The post with id 12 has no comments in the table.
 The comment with id 6 is a comment on a deleted post with id 7 so we ignored it.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -90,3 +108,7 @@ ORDER BY post_id;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

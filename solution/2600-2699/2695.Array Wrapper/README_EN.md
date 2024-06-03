@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2695.Array%20Wrapper/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [2695. Array Wrapper](https://leetcode.com/problems/array-wrapper)
 
 [中文文档](/solution/2600-2699/2695.Array%20Wrapper/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Create a class&nbsp;<code>ArrayWrapper</code> that accepts&nbsp;an array of integers in its constructor. This class should have two features:</p>
 
@@ -53,11 +63,17 @@ obj1 + obj2; // 0
 	<li><code>Note: nums is the array passed to the constructor</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class ArrayWrapper {
@@ -88,3 +104,7 @@ class ArrayWrapper {
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

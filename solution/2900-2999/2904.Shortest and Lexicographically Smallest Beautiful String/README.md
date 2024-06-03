@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2904.Shortest%20and%20Lexicographically%20Smallest%20Beautiful%20String/README.md
+rating: 1483
+source: 第 367 场周赛 Q2
+tags:
+    - 字符串
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [2904. 最短且字典序最小的美丽子字符串](https://leetcode.cn/problems/shortest-and-lexicographically-smallest-beautiful-string)
 
 [English Version](/solution/2900-2999/2904.Shortest%20and%20Lexicographically%20Smallest%20Beautiful%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个二进制字符串 <code>s</code> 和一个正整数 <code>k</code> 。</p>
 
@@ -69,31 +82,21 @@
 	<li><code>1 &lt;= k &lt;= s.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举**
+### 方法一：枚举
 
 我们可以枚举所有子字符串 $s[i: j]$，其中 $i \lt j$，并检查它们是否是美丽子字符串。如果是，我们就更新答案。
 
 时间复杂度 $O(n^3)$，空间复杂度 $O(n)$。其中 $n$ 是字符串 $s$ 的长度。
 
-**方法二：双指针**
-
-我们也可以用两个指针维护一个滑动窗口，其中指针 $i$ 指向滑动窗口的左端点，指针 $j$ 指向滑动窗口的右端点。初始时 $i = j = 0$。另外，我们用变量 $cnt$ 记录滑动窗口中的 $1$ 的个数。
-
-我们首先将指针 $j$ 向右移动，将 $s[j]$ 加入到滑动窗口中，并更新 $cnt$。如果 $cnt \gt k$，或者 $i \lt j$ 并且 $s[i]=0$，我们就循环将指针 $i$ 往右移动，并且更新 $cnt$。
-
-当 $cnt = k$ 时，我们就找到了一个美丽子字符串。我们将它与当前的答案进行比较，并更新答案。
-
-时间复杂度 $O(n^2)$，空间复杂度 $O(n)$。其中 $n$ 是字符串 $s$ 的长度。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -109,6 +112,143 @@ class Solution:
                     ans = t
         return ans
 ```
+
+#### Java
+
+```java
+class Solution {
+    public String shortestBeautifulSubstring(String s, int k) {
+        int n = s.length();
+        String ans = "";
+        for (int i = 0; i < n; ++i) {
+            for (int j = i + k; j <= n; ++j) {
+                String t = s.substring(i, j);
+                int cnt = 0;
+                for (char c : t.toCharArray()) {
+                    cnt += c - '0';
+                }
+                if (cnt == k
+                    && ("".equals(ans) || j - i < ans.length()
+                        || (j - i == ans.length() && t.compareTo(ans) < 0))) {
+                    ans = t;
+                }
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    string shortestBeautifulSubstring(string s, int k) {
+        int n = s.size();
+        string ans = "";
+        for (int i = 0; i < n; ++i) {
+            for (int j = i + k; j <= n; ++j) {
+                string t = s.substr(i, j - i);
+                int cnt = count(t.begin(), t.end(), '1');
+                if (cnt == k && (ans == "" || j - i < ans.size() || (j - i == ans.size() && t < ans))) {
+                    ans = t;
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func shortestBeautifulSubstring(s string, k int) (ans string) {
+	n := len(s)
+	for i := 0; i < n; i++ {
+		for j := i + k; j <= n; j++ {
+			t := s[i:j]
+			cnt := 0
+			for _, c := range t {
+				if c == '1' {
+					cnt++
+				}
+			}
+			if cnt == k && (ans == "" || j-i < len(ans) || (j-i == len(ans) && t < ans)) {
+				ans = t
+			}
+		}
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function shortestBeautifulSubstring(s: string, k: number): string {
+    const n = s.length;
+    let ans: string = '';
+    for (let i = 0; i < n; ++i) {
+        for (let j = i + k; j <= n; ++j) {
+            const t = s.slice(i, j);
+            const cnt = t.split('').filter(c => c === '1').length;
+            if (
+                cnt === k &&
+                (ans === '' || j - i < ans.length || (j - i === ans.length && t < ans))
+            ) {
+                ans = t;
+            }
+        }
+    }
+    return ans;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn shortest_beautiful_substring(s: String, k: i32) -> String {
+        let n = s.len();
+        let mut ans = String::new();
+
+        for i in 0..n {
+            for j in i + (k as usize)..=n {
+                let t = &s[i..j];
+                if
+                    (t.matches('1').count() as i32) == k &&
+                    (ans.is_empty() || j - i < ans.len() || (j - i == ans.len() && t < &ans))
+                {
+                    ans = t.to_string();
+                }
+            }
+        }
+        ans
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：双指针
+
+我们也可以用两个指针维护一个滑动窗口，其中指针 $i$ 指向滑动窗口的左端点，指针 $j$ 指向滑动窗口的右端点。初始时 $i = j = 0$。另外，我们用变量 $cnt$ 记录滑动窗口中的 $1$ 的个数。
+
+我们首先将指针 $j$ 向右移动，将 $s[j]$ 加入到滑动窗口中，并更新 $cnt$。如果 $cnt \gt k$，或者 $i \lt j$ 并且 $s[i]=0$，我们就循环将指针 $i$ 往右移动，并且更新 $cnt$。
+
+当 $cnt = k$ 时，我们就找到了一个美丽子字符串。我们将它与当前的答案进行比较，并更新答案。
+
+时间复杂度 $O(n^2)$，空间复杂度 $O(n)$。其中 $n$ 是字符串 $s$ 的长度。
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -129,31 +269,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```java
-class Solution {
-    public String shortestBeautifulSubstring(String s, int k) {
-        int n = s.length();
-        String ans = "";
-        for (int i = 0; i < n; ++i) {
-            for (int j = i + k; j <= n; ++j) {
-                String t = s.substring(i, j);
-                int cnt = 0;
-                for (char c : t.toCharArray()) {
-                    cnt += c - '0';
-                }
-                if (cnt == k && ("".equals(ans) || j - i < ans.length() || (j - i == ans.length() && t.compareTo(ans) < 0))) {
-                    ans = t;
-                }
-            }
-        }
-        return ans;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -180,27 +296,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    string shortestBeautifulSubstring(string s, int k) {
-        int n = s.size();
-        string ans = "";
-        for (int i = 0; i < n; ++i) {
-            for (int j = i + k; j <= n; ++j) {
-                string t = s.substr(i, j - i);
-                int cnt = count(t.begin(), t.end(), '1');
-                if (cnt == k && (ans == "" || j - i < ans.size() || (j - i == ans.size() && t < ans))) {
-                    ans = t;
-                }
-            }
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -225,28 +321,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func shortestBeautifulSubstring(s string, k int) (ans string) {
-	n := len(s)
-	for i := 0; i < n; i++ {
-		for j := i + k; j <= n; j++ {
-			t := s[i:j]
-			cnt := 0
-			for _, c := range t {
-				if c == '1' {
-					cnt++
-				}
-			}
-			if cnt == k && (ans == "" || j-i < len(ans) || (j-i == len(ans) && t < ans)) {
-				ans = t
-			}
-		}
-	}
-	return
-}
-```
+#### Go
 
 ```go
 func shortestBeautifulSubstring(s string, k int) (ans string) {
@@ -268,27 +343,7 @@ func shortestBeautifulSubstring(s string, k int) (ans string) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function shortestBeautifulSubstring(s: string, k: number): string {
-    const n = s.length;
-    let ans: string = '';
-    for (let i = 0; i < n; ++i) {
-        for (let j = i + k; j <= n; ++j) {
-            const t = s.slice(i, j);
-            const cnt = t.split('').filter(c => c === '1').length;
-            if (
-                cnt === k &&
-                (ans === '' || j - i < ans.length || (j - i === ans.length && t < ans))
-            ) {
-                ans = t;
-            }
-        }
-    }
-    return ans;
-}
-```
+#### TypeScript
 
 ```ts
 function shortestBeautifulSubstring(s: string, k: number): string {
@@ -310,29 +365,7 @@ function shortestBeautifulSubstring(s: string, k: number): string {
 }
 ```
 
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn shortest_beautiful_substring(s: String, k: i32) -> String {
-        let n = s.len();
-        let mut ans = String::new();
-
-        for i in 0..n {
-            for j in i + (k as usize)..=n {
-                let t = &s[i..j];
-                if
-                    (t.matches('1').count() as i32) == k &&
-                    (ans.is_empty() || j - i < ans.len() || (j - i == ans.len() && t < &ans))
-                {
-                    ans = t.to_string();
-                }
-            }
-        }
-        ans
-    }
-}
-```
+#### Rust
 
 ```rust
 impl Solution {
@@ -371,10 +404,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

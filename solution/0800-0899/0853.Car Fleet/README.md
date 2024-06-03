@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0853.Car%20Fleet/README.md
+tags:
+    - 栈
+    - 数组
+    - 排序
+    - 单调栈
+---
+
+<!-- problem:start -->
+
 # [853. 车队](https://leetcode.cn/problems/car-fleet)
 
 [English Version](/solution/0800-0899/0853.Car%20Fleet/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在一条单行道上，有 <code>n</code> 辆车开往同一目的地。目的地是几英里以外的&nbsp;<code>target</code>&nbsp;。</p>
 
@@ -62,11 +75,13 @@
 	<li><code>0 &lt; speed[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序**
+### 方法一：排序
 
 我们将车辆按照位置降序排序，这样我们只需要比较相邻两辆车的到达时间即可。
 
@@ -76,9 +91,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -93,9 +106,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -120,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -146,7 +157,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func carFleet(target int, position []int, speed []int) (ans int) {
@@ -168,7 +179,7 @@ func carFleet(target int, position []int, speed []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function carFleet(target: number, position: number[], speed: number[]): number {
@@ -190,10 +201,8 @@ function carFleet(target: number, position: number[], speed: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

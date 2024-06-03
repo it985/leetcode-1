@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2662.Minimum%20Cost%20of%20a%20Path%20With%20Special%20Roads/README.md
+rating: 2153
+source: 第 343 场周赛 Q3
+tags:
+    - 图
+    - 数组
+    - 最短路
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [2662. 前往目标的最小代价](https://leetcode.cn/problems/minimum-cost-of-a-path-with-special-roads)
 
 [English Version](/solution/2600-2699/2662.Minimum%20Cost%20of%20a%20Path%20With%20Special%20Roads/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个数组 <code>start</code> ，其中 <code>start = [startX, startY]</code> 表示你的初始位置位于二维空间上的 <code>(startX, startY)</code> 。另给你一个数组 <code>target</code> ，其中 <code>target = [targetX, targetY]</code> 表示你的目标位置 <code>(targetX, targetY)</code> 。</p>
 
@@ -51,11 +66,13 @@
 	<li><code>1 &lt;= cost<sub>i</sub> &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：Dijkstra**
+### 方法一：Dijkstra
 
 我们可以发现，对于访问到的每个坐标点 $(x, y)$，假设从起点到 $(x, y)$ 的最小代价为 $d$。如果选择直接移动到 $(targetX, targetY)$，那么总代价就是 $d + |x - targetX| + |y - targetY|$。如果选择经过某条特殊路径 $(x_1, y_1) \rightarrow (x_2, y_2)$，那么我们需要可以花费 $|x - x_1| + |y - y_1| + cost$ 的代价，从 $(x, y)$ 移动到 $(x_2, y_2)$。
 
@@ -71,9 +88,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -97,9 +112,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -133,7 +146,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -166,7 +179,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumCost(start []int, target []int, specialRoads [][]int) int {
@@ -214,7 +227,7 @@ func (h *hp) Push(v any)        { *h = append(*h, v.(tuple)) }
 func (h *hp) Pop() any          { a := *h; v := a[len(a)-1]; *h = a[:len(a)-1]; return v }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumCost(start: number[], target: number[], specialRoads: number[][]): number {
@@ -308,10 +321,8 @@ class Heap<T = number> {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0072.Edit%20Distance/README_EN.md
+tags:
+    - String
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [72. Edit Distance](https://leetcode.com/problems/edit-distance)
 
 [中文文档](/solution/0000-0099/0072.Edit%20Distance/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two strings <code>word1</code> and <code>word2</code>, return <em>the minimum number of operations required to convert <code>word1</code> to <code>word2</code></em>.</p>
 
@@ -47,9 +60,13 @@ exection -&gt; execution (insert &#39;u&#39;)
 	<li><code>word1</code> and <code>word2</code> consist of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming
 
 We define $f[i][j]$ as the minimum number of operations to convert $word1$ of length $i$ to $word2$ of length $j$. $f[i][0] = i$, $f[0][j] = j$, $i \in [1, m], j \in [0, n]$.
 
@@ -75,7 +92,7 @@ The time complexity is $O(m \times n)$, and the space complexity is $O(m \times 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -94,7 +111,7 @@ class Solution:
         return f[m][n]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -119,7 +136,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -145,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minDistance(word1 string, word2 string) int {
@@ -171,7 +188,7 @@ func minDistance(word1 string, word2 string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minDistance(word1: string, word2: string): number {
@@ -197,7 +214,7 @@ function minDistance(word1: string, word2: string): number {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -228,10 +245,8 @@ var minDistance = function (word1, word2) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

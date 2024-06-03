@@ -1,10 +1,18 @@
-# [2755. 深度合并两个对象](https://leetcode.cn/problems/deep-merge-of-two-objects)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2755.Deep%20Merge%20of%20Two%20Objects/README.md
+---
+
+<!-- problem:start -->
+
+# [2755. 深度合并两个对象 🔒](https://leetcode.cn/problems/deep-merge-of-two-objects)
 
 [English Version](/solution/2700-2799/2755.Deep%20Merge%20of%20Two%20Objects/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个值 <code>obj1</code> 和 <code>obj2</code>，返回一个 <strong>深度合并</strong> 的值。</p>
 
@@ -65,15 +73,17 @@ obj2 = {"a": 1, "b": {"c": [6, [6], [9]], "e": 3}}
 	<li><code>1 &lt;= JSON.stringify(obj2).length &lt;= 5&nbsp;* 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **TypeScript**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### TypeScript
 
 ```ts
 function deepMerge(obj1: any, obj2: any): any {
@@ -98,3 +108,7 @@ function deepMerge(obj1: any, obj2: any): any {
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

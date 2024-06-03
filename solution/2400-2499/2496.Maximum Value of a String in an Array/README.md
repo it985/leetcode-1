@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2496.Maximum%20Value%20of%20a%20String%20in%20an%20Array/README.md
+rating: 1292
+source: 第 93 场双周赛 Q1
+tags:
+    - 数组
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2496. 数组中字符串的最大值](https://leetcode.cn/problems/maximum-value-of-a-string-in-an-array)
 
 [English Version](/solution/2400-2499/2496.Maximum%20Value%20of%20a%20String%20in%20an%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一个由字母和数字组成的字符串的 <strong>值</strong>&nbsp;定义如下：</p>
 
@@ -49,11 +62,13 @@
 	<li><code>strs[i]</code>&nbsp;只包含小写英文字母和数字。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们定义一个函数 $f(s)$，用于计算字符串 $s$ 的值。如果 $s$ 只包含数字，那么 $f(s)$ 就是 $s$ 在十进制下的值；否则 $f(s)$ 就是 $s$ 的长度。
 
@@ -63,9 +78,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -76,23 +89,7 @@ class Solution:
         return max(f(s) for s in strs)
 ```
 
-```python
-class Solution:
-    def maximumValue(self, strs: List[str]) -> int:
-        def f(s: str) -> int:
-            x = 0
-            for c in s:
-                if c.isalpha():
-                    return len(s)
-                x = x * 10 + ord(c) - ord("0")
-            return x
-
-        return max(f(s) for s in strs)
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -118,7 +115,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -143,7 +140,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumValue(strs []string) (ans int) {
@@ -165,7 +162,7 @@ func maximumValue(strs []string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumValue(strs: string[]): number {
@@ -174,7 +171,22 @@ function maximumValue(strs: string[]): number {
 }
 ```
 
-### **C#**
+#### Rust
+
+```rust
+impl Solution {
+    pub fn maximum_value(strs: Vec<String>) -> i32 {
+        let mut ans = 0;
+        for s in strs.iter() {
+            let num = s.parse().unwrap_or(s.len());
+            ans = ans.max(num);
+        }
+        ans as i32
+    }
+}
+```
+
+#### C#
 
 ```cs
 public class Solution {
@@ -195,20 +207,60 @@ public class Solution {
 }
 ```
 
-### **Rust**
+#### C
 
-```rust
-impl Solution {
-    pub fn maximum_value(strs: Vec<String>) -> i32 {
-        let mut ans = 0;
-        for s in strs.iter() {
-            let num = s.parse().unwrap_or(s.len());
-            ans = ans.max(num);
+```c
+#define max(a, b) (((a) > (b)) ? (a) : (b))
+
+int parseInt(char* s) {
+    int n = strlen(s);
+    int res = 0;
+    for (int i = 0; i < n; i++) {
+        if (!isdigit(s[i])) {
+            return n;
         }
-        ans as i32
+        res = res * 10 + s[i] - '0';
     }
+    return res;
+}
+
+int maximumValue(char** strs, int strsSize) {
+    int ans = 0;
+    for (int i = 0; i < strsSize; i++) {
+        int num = parseInt(strs[i]);
+        ans = max(ans, num);
+    }
+    return ans;
 }
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def maximumValue(self, strs: List[str]) -> int:
+        def f(s: str) -> int:
+            x = 0
+            for c in s:
+                if c.isalpha():
+                    return len(s)
+                x = x * 10 + ord(c) - ord("0")
+            return x
+
+        return max(f(s) for s in strs)
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -241,6 +293,18 @@ impl Solution {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法三
+
+<!-- tabs:start -->
+
+#### Rust
+
 ```rust
 use std::cmp::max;
 
@@ -264,37 +328,8 @@ impl Solution {
 }
 ```
 
-### **C**
-
-```c
-#define max(a, b) (((a) > (b)) ? (a) : (b))
-
-int parseInt(char* s) {
-    int n = strlen(s);
-    int res = 0;
-    for (int i = 0; i < n; i++) {
-        if (!isdigit(s[i])) {
-            return n;
-        }
-        res = res * 10 + s[i] - '0';
-    }
-    return res;
-}
-
-int maximumValue(char** strs, int strsSize) {
-    int ans = 0;
-    for (int i = 0; i < strsSize; i++) {
-        int num = parseInt(strs[i]);
-        ans = max(ans, num);
-    }
-    return ans;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

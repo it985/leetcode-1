@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1301.Number%20of%20Paths%20with%20Max%20Score/README_EN.md
+rating: 1853
+source: Biweekly Contest 16 Q4
+tags:
+    - Array
+    - Dynamic Programming
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [1301. Number of Paths with Max Score](https://leetcode.com/problems/number-of-paths-with-max-score)
 
 [中文文档](/solution/1300-1399/1301.Number%20of%20Paths%20with%20Max%20Score/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a square <code>board</code>&nbsp;of characters. You can move on the board starting at the bottom right square marked with the character&nbsp;<code>&#39;S&#39;</code>.</p>
 
@@ -13,28 +29,48 @@
 <p>In case there is no path, return&nbsp;<code>[0, 0]</code>.</p>
 
 <p>&nbsp;</p>
+
 <p><strong class="example">Example 1:</strong></p>
+
 <pre><strong>Input:</strong> board = ["E23","2X2","12S"]
+
 <strong>Output:</strong> [7,1]
+
 </pre><p><strong class="example">Example 2:</strong></p>
+
 <pre><strong>Input:</strong> board = ["E12","1X1","21S"]
+
 <strong>Output:</strong> [4,2]
+
 </pre><p><strong class="example">Example 3:</strong></p>
+
 <pre><strong>Input:</strong> board = ["E11","XXX","11S"]
+
 <strong>Output:</strong> [0,0]
+
 </pre>
+
 <p>&nbsp;</p>
+
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>2 &lt;= board.length == board[i].length &lt;= 100</code></li>
+
+    <li><code>2 &lt;= board.length == board[i].length &lt;= 100</code></li>
+
 </ul>
+
+<!-- description:end -->
 
 ## Solutions
 
+<!-- solution:start -->
+
+### Solution 1
+
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -63,7 +99,7 @@ class Solution:
         return [0, 0] if f[0][0] == -1 else [f[0][0], g[0][0] % mod]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -119,7 +155,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -168,7 +204,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func pathsWithMaxScore(board []string) []int {
@@ -215,10 +251,8 @@ func pathsWithMaxScore(board []string) []int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

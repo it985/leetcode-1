@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2220.Minimum%20Bit%20Flips%20to%20Convert%20Number/README_EN.md
+rating: 1282
+source: Biweekly Contest 75 Q1
+tags:
+    - Bit Manipulation
+---
+
+<!-- problem:start -->
+
 # [2220. Minimum Bit Flips to Convert Number](https://leetcode.com/problems/minimum-bit-flips-to-convert-number)
 
 [中文文档](/solution/2200-2299/2220.Minimum%20Bit%20Flips%20to%20Convert%20Number/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A <strong>bit flip</strong> of a number <code>x</code> is choosing a bit in the binary representation of <code>x</code> and <strong>flipping</strong> it from either <code>0</code> to <code>1</code> or <code>1</code> to <code>0</code>.</p>
 
@@ -43,11 +57,17 @@ It can be shown we cannot convert 3 to 4 in less than 3 steps. Hence, we return 
 	<li><code>0 &lt;= start, goal &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -60,7 +80,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -76,7 +96,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -93,7 +113,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minBitFlips(start int, goal int) int {
@@ -107,7 +127,7 @@ func minBitFlips(start int, goal int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minBitFlips(start: number, goal: number): number {
@@ -121,7 +141,7 @@ function minBitFlips(start: number, goal: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -137,7 +157,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 int minBitFlips(int start, int goal) {
@@ -151,10 +171,8 @@ int minBitFlips(int start, int goal) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

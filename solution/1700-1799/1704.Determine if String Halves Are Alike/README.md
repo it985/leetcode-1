@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1704.Determine%20if%20String%20Halves%20Are%20Alike/README.md
+rating: 1207
+source: 第 221 场周赛 Q1
+tags:
+    - 字符串
+    - 计数
+---
+
+<!-- problem:start -->
+
 # [1704. 判断字符串的两半是否相似](https://leetcode.cn/problems/determine-if-string-halves-are-alike)
 
 [English Version](/solution/1700-1799/1704.Determine%20if%20String%20Halves%20Are%20Alike/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个偶数长度的字符串 <code>s</code> 。将其拆分成长度相同的两半，前一半为 <code>a</code> ，后一半为 <code>b</code> 。</p>
 
@@ -41,11 +54,13 @@
 	<li><code>s</code> 由 <strong>大写和小写</strong> 字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数**
+### 方法一：计数
 
 遍历字符串，若字符串前半段的元音个数等于后半段的元音个数，则返回 `true`，否则返回 `false`。
 
@@ -53,9 +68,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -68,17 +81,7 @@ class Solution:
         return cnt == 0
 ```
 
-```python
-class Solution:
-    def halvesAreAlike(self, s: str) -> bool:
-        vowels = set('aeiouAEIOU')
-        a, b = s[: len(s) >> 1], s[len(s) >> 1 :]
-        return sum(c in vowels for c in a) == sum(c in vowels for c in b)
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -96,7 +99,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -113,7 +116,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func halvesAreAlike(s string) bool {
@@ -134,7 +137,7 @@ func halvesAreAlike(s string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function halvesAreAlike(s: string): boolean {
@@ -149,7 +152,7 @@ function halvesAreAlike(s: string): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashSet;
@@ -174,7 +177,25 @@ impl Solution {
 }
 ```
 
-### **PHP**
+#### JavaScript
+
+```js
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var halvesAreAlike = function (s) {
+    const str = 'aeiouAEIOU';
+    let cnt = 0;
+    for (let i = 0; i < s.length / 2; i++) {
+        if (str.indexOf(s[i]) > -1) cnt++;
+        if (str.indexOf(s[s.length - 1 - i]) > -1) cnt--;
+    }
+    return cnt === 0;
+};
+```
+
+#### PHP
 
 ```php
 class Solution {
@@ -197,28 +218,28 @@ class Solution {
 }
 ```
 
-### **JavaScript**
+<!-- tabs:end -->
 
-```js
-/**
- * @param {string} s
- * @return {boolean}
- */
-var halvesAreAlike = function (s) {
-    const str = 'aeiouAEIOU';
-    let cnt = 0;
-    for (let i = 0; i < s.length / 2; i++) {
-        if (str.indexOf(s[i]) > -1) cnt++;
-        if (str.indexOf(s[s.length - 1 - i]) > -1) cnt--;
-    }
-    return cnt === 0;
-};
-```
+<!-- solution:end -->
 
-### **...**
+<!-- solution:start -->
 
-```
+### 方法二
 
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def halvesAreAlike(self, s: str) -> bool:
+        vowels = set('aeiouAEIOU')
+        a, b = s[: len(s) >> 1], s[len(s) >> 1 :]
+        return sum(c in vowels for c in a) == sum(c in vowels for c in b)
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

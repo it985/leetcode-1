@@ -1,10 +1,26 @@
-# [1066. 校园自行车分配 II](https://leetcode.cn/problems/campus-bikes-ii)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1066.Campus%20Bikes%20II/README.md
+rating: 1885
+source: 第 1 场双周赛 Q3
+tags:
+    - 位运算
+    - 数组
+    - 动态规划
+    - 回溯
+    - 状态压缩
+---
+
+<!-- problem:start -->
+
+# [1066. 校园自行车分配 II 🔒](https://leetcode.cn/problems/campus-bikes-ii)
 
 [English Version](/solution/1000-1099/1066.Campus%20Bikes%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在由 2D 网格表示的校园里有&nbsp;<code>n</code>&nbsp;位工人（<code>worker</code>）和 <code>m</code>&nbsp;辆自行车（<code>bike</code>），<code>n &lt;= m</code>。所有工人和自行车的位置都用网格上的 2D 坐标表示。</p>
 
@@ -59,11 +75,13 @@
 	<li>所有的工人和自行车的位置都是 <strong>不同</strong>&nbsp;的。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：状态压缩动态规划**
+### 方法一：状态压缩动态规划
 
 我们定义 $f[i][j]$ 表示前 $i$ 个工人分配到自行车的状态为 $j$ 时的最小曼哈顿距离总和，其中 $j$ 是一个二进制数，表示自行车的分配情况。初始时 $f[0][0]=0$，其余 $f[0][j]=+\infty$。
 
@@ -79,9 +97,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -100,9 +116,7 @@ class Solution:
         return min(f[n])
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -130,7 +144,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -155,7 +169,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func assignBikes(workers [][]int, bikes [][]int) int {
@@ -190,7 +204,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function assignBikes(workers: number[][], bikes: number[][]): number {
@@ -215,10 +229,8 @@ function assignBikes(workers: number[][], bikes: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

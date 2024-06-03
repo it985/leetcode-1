@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0605.Can%20Place%20Flowers/README_EN.md
+tags:
+    - Greedy
+    - Array
+---
+
+<!-- problem:start -->
+
 # [605. Can Place Flowers](https://leetcode.com/problems/can-place-flowers)
 
 [中文文档](/solution/0600-0699/0605.Can%20Place%20Flowers/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in <strong>adjacent</strong> plots.</p>
 
@@ -26,9 +39,13 @@
 	<li><code>0 &lt;= n &lt;= flowerbed.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy**
+<!-- solution:start -->
+
+### Solution 1: Greedy
 
 We directly traverse the array $flowerbed$. For each position $i$, if $flowerbed[i]=0$ and its adjacent positions on the left and right are also $0$, then we can plant a flower at this position. Otherwise, we cannot. Finally, we count the number of flowers that can be planted. If it is not less than $n$, we return $true$, otherwise we return $false$.
 
@@ -36,7 +53,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array $flowerbed$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -49,7 +66,7 @@ class Solution:
         return n <= 0
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -68,7 +85,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -88,7 +105,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canPlaceFlowers(flowerbed []int, n int) bool {
@@ -110,7 +127,7 @@ func canPlaceFlowers(flowerbed []int, n int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canPlaceFlowers(flowerbed: number[], n: number): boolean {
@@ -127,7 +144,28 @@ function canPlaceFlowers(flowerbed: number[], n: number): boolean {
 }
 ```
 
-### **PHP**
+#### Rust
+
+```rust
+impl Solution {
+    pub fn can_place_flowers(flowerbed: Vec<i32>, n: i32) -> bool {
+        let (mut flowers, mut cnt) = (vec![0], 0);
+        flowers.append(&mut flowerbed.clone());
+        flowers.push(0);
+
+        for i in 1..flowers.len() - 1 {
+            let (l, r) = (flowers[i - 1], flowers[i + 1]);
+            if l + flowers[i] + r == 0 {
+                flowers[i] = 1;
+                cnt += 1;
+            }
+        }
+        cnt >= n
+    }
+}
+```
+
+#### PHP
 
 ```php
 class Solution {
@@ -152,31 +190,8 @@ class Solution {
 }
 ```
 
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn can_place_flowers(flowerbed: Vec<i32>, n: i32) -> bool {
-        let (mut flowers, mut cnt) = (vec![0], 0);
-        flowers.append(&mut flowerbed.clone());
-        flowers.push(0);
-
-        for i in 1..flowers.len() - 1 {
-            let (l, r) = (flowers[i - 1], flowers[i + 1]);
-            if l + flowers[i] + r == 0 {
-                flowers[i] = 1;
-                cnt += 1;
-            }
-        }
-        cnt >= n
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

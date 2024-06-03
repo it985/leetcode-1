@@ -1,10 +1,20 @@
-# [2394. 开除员工](https://leetcode.cn/problems/employees-with-deductions)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2394.Employees%20With%20Deductions/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2394. 开除员工 🔒](https://leetcode.cn/problems/employees-with-deductions)
 
 [English Version](/solution/2300-2399/2394.Employees%20With%20Deductions/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Employees</code></p>
 
@@ -96,15 +106,17 @@ Logs 表:
  - 员工 3 没有工作足够的时长，将被开除。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -124,3 +136,7 @@ WHERE IFNULL(tot, 0) < needed_hours;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

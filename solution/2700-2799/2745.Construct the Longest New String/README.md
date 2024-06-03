@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2745.Construct%20the%20Longest%20New%20String/README.md
+rating: 1607
+source: 第 107 场双周赛 Q2
+tags:
+    - 贪心
+    - 脑筋急转弯
+    - 数学
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2745. 构造最长的新字符串](https://leetcode.cn/problems/construct-the-longest-new-string)
 
 [English Version](/solution/2700-2799/2745.Construct%20the%20Longest%20New%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你三个整数&nbsp;<code>x</code>&nbsp;，<code>y</code>&nbsp;和&nbsp;<code>z</code>&nbsp;。</p>
 
@@ -42,11 +57,13 @@
 	<li><code>1 &lt;= x, y, z &lt;= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：分类讨论**
+### 方法一：分类讨论
 
 我们观察发现，字符串 `'AA'` 之后只能跟 `'BB'`，而字符串 `'AB'` 可以放在字符串开头或结尾。因此：
 
@@ -58,9 +75,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -72,9 +87,7 @@ class Solution:
         return (x + y + z) * 2
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -90,7 +103,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -107,7 +120,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func longestString(x int, y int, z int) int {
@@ -121,7 +134,7 @@ func longestString(x int, y int, z int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function longestString(x: number, y: number, z: number): number {
@@ -135,10 +148,8 @@ function longestString(x: number, y: number, z: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

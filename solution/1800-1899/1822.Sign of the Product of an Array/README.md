@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1822.Sign%20of%20the%20Product%20of%20an%20Array/README.md
+rating: 1209
+source: 第 236 场周赛 Q1
+tags:
+    - 数组
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [1822. 数组元素积的符号](https://leetcode.cn/problems/sign-of-the-product-of-an-array)
 
 [English Version](/solution/1800-1899/1822.Sign%20of%20the%20Product%20of%20an%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>已知函数 <code>signFunc(x)</code> 将会根据 <code>x</code> 的正负返回特定值：</p>
 
@@ -53,11 +66,13 @@
 	<li><code>-100 <= nums[i] <= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：直接遍历**
+### 方法一：直接遍历
 
 题目要求返回数组元素乘积的符号，即正数返回 $1$，负数返回 $-1$， 等于 $0$ 则返回 $0$。
 
@@ -71,9 +86,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -87,9 +100,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -124,7 +135,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func arraySign(nums []int) int {
@@ -141,7 +152,26 @@ func arraySign(nums []int) int {
 }
 ```
 
-### **JavaScript**
+#### Rust
+
+```rust
+impl Solution {
+    pub fn array_sign(nums: Vec<i32>) -> i32 {
+        let mut ans = 1;
+        for &num in nums.iter() {
+            if num == 0 {
+                return 0;
+            }
+            if num < 0 {
+                ans *= -1;
+            }
+        }
+        ans
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -162,26 +192,7 @@ var arraySign = function (nums) {
 };
 ```
 
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn array_sign(nums: Vec<i32>) -> i32 {
-        let mut ans = 1;
-        for &num in nums.iter() {
-            if num == 0 {
-                return 0;
-            }
-            if num < 0 {
-                ans *= -1;
-            }
-        }
-        ans
-    }
-}
-```
-
-### **C**
+#### C
 
 ```c
 int arraySign(int* nums, int numsSize) {
@@ -198,10 +209,8 @@ int arraySign(int* nums, int numsSize) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

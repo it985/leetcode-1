@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2231.Largest%20Number%20After%20Digit%20Swaps%20by%20Parity/README_EN.md
+rating: 1365
+source: Weekly Contest 288 Q1
+tags:
+    - Sorting
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [2231. Largest Number After Digit Swaps by Parity](https://leetcode.com/problems/largest-number-after-digit-swaps-by-parity)
 
 [中文文档](/solution/2200-2299/2231.Largest%20Number%20After%20Digit%20Swaps%20by%20Parity/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a positive integer <code>num</code>. You may swap any two digits of <code>num</code> that have the same <strong>parity</strong> (i.e. both odd digits or both even digits).</p>
 
@@ -37,11 +52,17 @@ Note that there may be other sequences of swaps but it can be shown that 87655 i
 	<li><code>1 &lt;= num &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,7 +86,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -96,7 +117,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -128,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func largestInteger(num int) int {
@@ -156,14 +177,14 @@ func largestInteger(num int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function largestInteger(num: number): number {
-    let arrs = String(num).split('').map(Number);
-    let odds = []; // 奇数
-    let evens = [];
-    for (let i of arrs) {
+    const arrs: number[] = String(num).split('').map(Number);
+    const odds: number[] = []; // 奇数
+    const evens: number[] = [];
+    for (const i of arrs) {
         if ((i & 1) == 1) {
             odds.push(i);
         } else {
@@ -172,18 +193,16 @@ function largestInteger(num: number): number {
     }
     odds.sort((a, b) => a - b);
     evens.sort((a, b) => a - b);
-    let ans = [];
-    for (let i of arrs) {
-        ans.push((i & 1) == 1 ? odds.pop() : evens.pop());
+    const ans: number[] = [];
+    for (const i of arrs) {
+        ans.push((i & 1) === 1 ? odds.pop() : evens.pop());
     }
     return Number(ans.join(''));
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

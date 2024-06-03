@@ -1,10 +1,22 @@
-# [2534. 通过门的时间](https://leetcode.cn/problems/time-taken-to-cross-the-door)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2534.Time%20Taken%20to%20Cross%20the%20Door/README.md
+tags:
+    - 队列
+    - 数组
+    - 模拟
+---
+
+<!-- problem:start -->
+
+# [2534. 通过门的时间 🔒](https://leetcode.cn/problems/time-taken-to-cross-the-door)
 
 [English Version](/solution/2500-2599/2534.Time%20Taken%20to%20Cross%20the%20Door/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p><code>n</code> 个人，按从 <code>0</code> 到 <code>n - 1</code> 编号。现在有一扇门，每个人只能通过门进入或离开一次，耗时一秒。</p>
 
@@ -65,44 +77,42 @@
 	<li><code>state[i]</code> 为 <code>0</code> 或 <code>1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 
 ```
 
-### **Go**
+#### Go
 
 ```go
 
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2769.Find%20the%20Maximum%20Achievable%20Number/README.md
+rating: 1191
+source: 第 353 场周赛 Q1
+tags:
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [2769. 找出最大的可达成数字](https://leetcode.cn/problems/find-the-maximum-achievable-number)
 
 [English Version](/solution/2700-2799/2769.Find%20the%20Maximum%20Achievable%20Number/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个整数 <code>num</code> 和 <code>t</code> 。</p>
 
@@ -45,11 +57,13 @@
 	<li><code>1 &lt;= num, t&nbsp;&lt;= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：数学**
+### 方法一：数学
 
 我们注意到，每次操作可以将 $x$ 减少 $1$，同时将 $num$ 增加 $1$，这样 $x$ 和 $num$ 的差值就会减少 $2$，而最多可以操作 $t$ 次，所以最大可达成数字为 $num + t \times 2$。
 
@@ -57,9 +71,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -67,9 +79,7 @@ class Solution:
         return num + t * 2
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -79,7 +89,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -90,7 +100,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func theMaximumAchievableX(num int, t int) int {
@@ -98,7 +108,7 @@ func theMaximumAchievableX(num int, t int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function theMaximumAchievableX(num: number, t: number): number {
@@ -106,10 +116,8 @@ function theMaximumAchievableX(num: number, t: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

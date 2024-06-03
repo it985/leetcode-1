@@ -1,10 +1,20 @@
-# [2175. 世界排名的变化](https://leetcode.cn/problems/the-change-in-global-rankings)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2175.The%20Change%20in%20Global%20Rankings/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2175. 世界排名的变化 🔒](https://leetcode.cn/problems/the-change-in-global-rankings)
 
 [English Version](/solution/2100-2199/2175.The%20Change%20in%20Global%20Rankings/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code>TeamPoints</code></p>
 
@@ -111,19 +121,19 @@ Algeria 获得399分，排名上升了1名。
 New Zealand 没有获得或丢失分数，他们的排名也没有发生变化。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：窗口函数**
+### 方法一：窗口函数
 
 利用 `rank()` 函数求出新老排名，然后用 `CAST` 将字段类型改为 `signed`，保证两个排名可以进行减法操作。
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -145,3 +155,7 @@ FROM
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0055.Jump%20Game/README.md
+tags:
+    - 贪心
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [55. 跳跃游戏](https://leetcode.cn/problems/jump-game)
 
 [English Version](/solution/0000-0099/0055.Jump%20Game/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个非负整数数组&nbsp;<code>nums</code> ，你最初位于数组的 <strong>第一个下标</strong> 。数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
 
@@ -37,11 +49,13 @@
 	<li><code>0 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 我们用变量 $mx$ 维护当前能够到达的最远下标，初始时 $mx = 0$。
 
@@ -53,15 +67,13 @@
 
 相似题目：
 
--   [45. 跳跃游戏 II](/solution/0000-0099/0045.Jump%20Game%20II/README.md)
--   [1024. 视频拼接](/solution/1000-1099/1024.Video%20Stitching/README.md)
--   [1326. 灌溉花园的最少水龙头数目](/solution/1300-1399/1326.Minimum%20Number%20of%20Taps%20to%20Open%20to%20Water%20a%20Garden/README.md)
+-   [45. 跳跃游戏 II](https://github.com/doocs/leetcode/blob/main/solution/0000-0099/0045.Jump%20Game%20II/README.md)
+-   [1024. 视频拼接](https://github.com/doocs/leetcode/blob/main/solution/1000-1099/1024.Video%20Stitching/README.md)
+-   [1326. 灌溉花园的最少水龙头数目](https://github.com/doocs/leetcode/blob/main/solution/1300-1399/1326.Minimum%20Number%20of%20Taps%20to%20Open%20to%20Water%20a%20Garden/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -74,9 +86,7 @@ class Solution:
         return True
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -93,7 +103,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -111,7 +121,37 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func canJump(nums []int) bool {
+	mx := 0
+	for i, x := range nums {
+		if mx < i {
+			return false
+		}
+		mx = max(mx, i+x)
+	}
+	return true
+}
+```
+
+#### TypeScript
+
+```ts
+function canJump(nums: number[]): boolean {
+    let mx: number = 0;
+    for (let i = 0; i < nums.length; ++i) {
+        if (mx < i) {
+            return false;
+        }
+        mx = Math.max(mx, i + nums[i]);
+    }
+    return true;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -132,37 +172,7 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func canJump(nums []int) bool {
-	mx := 0
-	for i, x := range nums {
-		if mx < i {
-			return false
-		}
-		mx = max(mx, i+x)
-	}
-	return true
-}
-```
-
-### **TypeScript**
-
-```ts
-function canJump(nums: number[]): boolean {
-    let mx: number = 0;
-    for (let i = 0; i < nums.length; ++i) {
-        if (mx < i) {
-            return false;
-        }
-        mx = Math.max(mx, i + nums[i]);
-    }
-    return true;
-}
-```
-
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -181,7 +191,7 @@ var canJump = function (nums) {
 };
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -198,10 +208,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

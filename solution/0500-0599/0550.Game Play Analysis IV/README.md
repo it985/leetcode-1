@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0550.Game%20Play%20Analysis%20IV/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
 # [550. 游戏玩法分析 IV](https://leetcode.cn/problems/game-play-analysis-iv)
 
 [English Version](/solution/0500-0599/0550.Game%20Play%20Analysis%20IV/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>Table:&nbsp;<code>Activity</code></p>
 
@@ -54,21 +64,36 @@ Activity table:
 只有 ID 为 1 的玩家在第一天登录后才重新登录，所以答案是 1/3 = 0.33
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：分组取最小值 + 左连接**
+### 方法一：分组取最小值 + 左连接
 
 我们可以先找到每个玩家的首次登录日期，然后与原表进行左连接，连接条件为玩家 ID 相同且日期差为 $-1$，即第二天登录。那么，我们只需要统计出第二天登录的玩家数量中，玩家不为空的比率即可。
 
-**方法二：窗口函数**
-
-我们也可以使用窗口函数 `LEAD` 获取每个玩家的下一次登录日期，如果下一次登录日期与当前登录日期相差 $1$ 天，则说明该玩家在第二天登录，我们用一个字段 $st$ 记录该信息。然后，我们用窗口函数 `RANK` 对玩家 ID 按照日期升序排列，得到每个玩家的登录排名。最后，我们只需要统计出排名为 $1$ 的玩家中，字段 $st$ 不为空的比率即可。
-
 <!-- tabs:start -->
 
-### **SQL**
+#### Python3
+
+```python
+import pandas as pd
+
+
+def gameplay_analysis(activity: pd.DataFrame) -> pd.DataFrame:
+    activity["first"] = activity.groupby("player_id").event_date.transform(min)
+    activity_2nd_day = activity[
+        activity["first"] + pd.DateOffset(1) == activity["event_date"]
+    ]
+
+    return pd.DataFrame(
+        {"fraction": [round(len(activity_2nd_day) / activity.player_id.nunique(), 2)]}
+    )
+```
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -82,6 +107,20 @@ FROM
     LEFT JOIN Activity AS b
         ON a.player_id = b.player_id AND DATEDIFF(a.event_date, b.event_date) = -1;
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：窗口函数
+
+我们也可以使用窗口函数 `LEAD` 获取每个玩家的下一次登录日期，如果下一次登录日期与当前登录日期相差 $1$ 天，则说明该玩家在第二天登录，我们用一个字段 $st$ 记录该信息。然后，我们用窗口函数 `RANK` 对玩家 ID 按照日期升序排列，得到每个玩家的登录排名。最后，我们只需要统计出排名为 $1$ 的玩家中，字段 $st$ 不为空的比率即可。
+
+<!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -107,22 +146,8 @@ FROM T
 WHERE rk = 1;
 ```
 
-### **Pandas**
-
-```python
-import pandas as pd
-
-
-def gameplay_analysis(activity: pd.DataFrame) -> pd.DataFrame:
-    activity["first"] = activity.groupby("player_id").event_date.transform(min)
-    activity_2nd_day = activity[
-        activity["first"] + pd.DateOffset(1) == activity["event_date"]
-    ]
-
-    return pd.DataFrame(
-        {"fraction": [round(len(activity_2nd_day) / activity.player_id.nunique(), 2)]}
-    )
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

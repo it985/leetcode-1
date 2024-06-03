@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0372.Super%20Pow/README_EN.md
+tags:
+    - Math
+    - Divide and Conquer
+---
+
+<!-- problem:start -->
+
 # [372. Super Pow](https://leetcode.com/problems/super-pow)
 
 [中文文档](/solution/0300-0399/0372.Super%20Pow/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Your task is to calculate <code>a<sup>b</sup></code> mod <code>1337</code> where <code>a</code> is a positive integer and <code>b</code> is an extremely large positive integer given in the form of an array.</p>
 
@@ -38,11 +51,17 @@
 	<li><code>b</code> does not contain leading zeros.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -55,7 +74,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -83,7 +102,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -111,7 +130,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func superPow(a int, b []int) int {
@@ -135,7 +154,7 @@ func superPow(a int, b []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function superPow(a: number, b: number[]): number {
@@ -159,10 +178,8 @@ function superPow(a: number, b: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,20 @@
-# [1285. Find the Start and End Number of Continuous Ranges](https://leetcode.com/problems/find-the-start-and-end-number-of-continuous-ranges)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1285.Find%20the%20Start%20and%20End%20Number%20of%20Continuous%20Ranges/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [1285. Find the Start and End Number of Continuous Ranges 🔒](https://leetcode.com/problems/find-the-start-and-end-number-of-continuous-ranges)
 
 [中文文档](/solution/1200-1299/1285.Find%20the%20Start%20and%20End%20Number%20of%20Continuous%20Ranges/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Logs</code></p>
 
@@ -57,9 +69,13 @@ Number 9 is missing from the table.
 Number 10 is contained in the table.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Group By + Window Function**
+<!-- solution:start -->
+
+### Solution 1: Group By + Window Function
 
 We need to find a way to group a continuous sequence of logs into the same group, and then aggregate each group to obtain the start and end logs of each group.
 
@@ -70,7 +86,7 @@ There are two ways to implement grouping:
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -92,6 +108,18 @@ FROM T
 GROUP BY pid;
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### MySQL
+
 ```sql
 # Write your MySQL query statement below
 WITH
@@ -107,3 +135,7 @@ GROUP BY pid;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

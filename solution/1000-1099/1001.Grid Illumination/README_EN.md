@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1001.Grid%20Illumination/README_EN.md
+rating: 1873
+source: Weekly Contest 125 Q4
+tags:
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [1001. Grid Illumination](https://leetcode.com/problems/grid-illumination)
 
 [中文文档](/solution/1000-1099/1001.Grid%20Illumination/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is a 2D <code>grid</code> of size <code>n x n</code> where each cell of this grid has a lamp that is initially <strong>turned off</strong>.</p>
 
@@ -54,11 +69,17 @@ The 1<sup>st</sup>&nbsp;query asks if the lamp at grid[1][0] is illuminated or n
 	<li><code>0 &lt;= row<sub>j</sub>, col<sub>j</sub> &lt; n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -87,7 +108,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -147,7 +168,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -193,7 +214,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func gridIllumination(n int, lamps [][]int, queries [][]int) []int {
@@ -235,7 +256,7 @@ func gridIllumination(n int, lamps [][]int, queries [][]int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function gridIllumination(n: number, lamps: number[][], queries: number[][]): number[] {
@@ -278,10 +299,8 @@ function gridIllumination(n: number, lamps: number[][], queries: number[][]): nu
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

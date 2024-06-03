@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof2/%E5%89%91%E6%8C%87%20Offer%20II%20004.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/README.md
+---
+
+<!-- problem:start -->
+
 # [剑指 Offer II 004. 只出现一次的数字](https://leetcode.cn/problems/WGki4K)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组&nbsp;<code>nums</code> ，除某个元素仅出现 <strong>一次</strong> 外，其余每个元素都恰出现 <strong>三次 。</strong>请你找出并返回那个只出现了一次的元素。</p>
 
@@ -40,11 +47,13 @@
 
 <p><meta charset="UTF-8" />注意：本题与主站 137&nbsp;题相同：<a href="https://leetcode.cn/problems/single-number-ii/">https://leetcode.cn/problems/single-number-ii/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：位运算**
+### 方法一：位运算
 
 我们可以统计所有数字中每个位上出现的 $1$ 的个数，然后对 $3$ 取模。如果某一位上的出现的 $1$ 的个数无法被 $3$ 整除，说明只出现一次的数字在该位上是 $1$，否则是 $0$。
 
@@ -52,9 +61,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -70,9 +77,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +96,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -111,7 +116,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func singleNumber(nums []int) int {
@@ -128,7 +133,7 @@ func singleNumber(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function singleNumber(nums: number[]): number {
@@ -145,10 +150,27 @@ function singleNumber(nums: number[]): number {
 }
 ```
 
-### **...**
+#### Swift
 
-```
-
+```swift
+class Solution {
+    func singleNumber(_ nums: [Int]) -> Int {
+        var ans: Int32 = 0
+        for i in 0..<32 {
+            var cnt = 0
+            for num in nums {
+                cnt += (num >> i) & 1
+            }
+            cnt %= 3
+            ans |= Int32(cnt) << i
+        }
+        return Int(ans)
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

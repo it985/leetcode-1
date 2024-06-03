@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0822.Card%20Flipping%20Game/README.md
+tags:
+    - 数组
+    - 哈希表
+---
+
+<!-- problem:start -->
+
 # [822. 翻转卡片游戏](https://leetcode.cn/problems/card-flipping-game)
 
 [English Version](/solution/0800-0899/0822.Card%20Flipping%20Game/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在桌子上有 <code>n</code> 张卡片，每张卡片的正面和背面都写着一个正数（正面与背面上的数有可能不一样）。</p>
 
@@ -47,11 +58,13 @@
 	<li><code>1 &lt;= fronts[i], backs[i] &lt;= 2000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们注意到，对于位置 $i$，若 $fronts[i]$ 与 $backs[i]$ 元素相同，则一定不满足条件。
 
@@ -65,9 +78,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -76,9 +87,7 @@ class Solution:
         return min((x for x in chain(fronts, backs) if x not in s), default=0)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -106,7 +115,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -135,7 +144,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func flipgame(fronts []int, backs []int) int {
@@ -160,7 +169,7 @@ func flipgame(fronts []int, backs []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function flipgame(fronts: number[], backs: number[]): number {
@@ -186,7 +195,7 @@ function flipgame(fronts: number[], backs: number[]): number {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -212,10 +221,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2925.Maximum%20Score%20After%20Applying%20Operations%20on%20a%20Tree/README.md
+rating: 1939
+source: 第 370 场周赛 Q3
+tags:
+    - 树
+    - 深度优先搜索
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2925. 在树上执行操作以后得到的最大分数](https://leetcode.cn/problems/maximum-score-after-applying-operations-on-a-tree)
 
 [English Version](/solution/2900-2999/2925.Maximum%20Score%20After%20Applying%20Operations%20on%20a%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>有一棵 <code>n</code>&nbsp;个节点的无向树，节点编号为 <code>0</code>&nbsp;到 <code>n - 1</code>&nbsp;，根节点编号为 <code>0</code>&nbsp;。给你一个长度为 <code>n - 1</code>&nbsp;的二维整数数组&nbsp;<code>edges</code>&nbsp;表示这棵树，其中&nbsp;<code>edges[i] = [a<sub>i</sub>, b<sub>i</sub>]</code>&nbsp;表示树中节点&nbsp;<code>a<sub>i</sub></code>&nbsp;和&nbsp;<code>b<sub>i</sub></code>&nbsp;有一条边。</p>
 
@@ -65,11 +79,13 @@
 	<li>输入保证&nbsp;<code>edges</code>&nbsp;构成一棵合法的树。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：树形 DP**
+### 方法一：树形 DP
 
 题目实际上是让我们从树的所有节点中选出一些节点，使得这些节点的值之和最大，并且每条从根节点到叶子节点的路径上都有一个点没有被选中。
 
@@ -87,9 +103,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -116,9 +130,7 @@ class Solution:
         return dfs(0)[1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -157,7 +169,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -193,7 +205,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumScoreAfterOperations(edges [][]int, values []int) int64 {
@@ -225,7 +237,7 @@ func maximumScoreAfterOperations(edges [][]int, values []int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumScoreAfterOperations(edges: number[][], values: number[]): number {
@@ -254,10 +266,8 @@ function maximumScoreAfterOperations(edges: number[][], values: number[]): numbe
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

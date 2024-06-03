@@ -1,8 +1,20 @@
-# [1933. Check if String Is Decomposable Into Value-Equal Substrings](https://leetcode.com/problems/check-if-string-is-decomposable-into-value-equal-substrings)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1933.Check%20if%20String%20Is%20Decomposable%20Into%20Value-Equal%20Substrings/README_EN.md
+tags:
+    - String
+---
+
+<!-- problem:start -->
+
+# [1933. Check if String Is Decomposable Into Value-Equal Substrings 🔒](https://leetcode.com/problems/check-if-string-is-decomposable-into-value-equal-substrings)
 
 [中文文档](/solution/1900-1999/1933.Check%20if%20String%20Is%20Decomposable%20Into%20Value-Equal%20Substrings/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A <strong>value-equal</strong> string is a string where <strong>all</strong> characters are the same.</p>
 
@@ -50,9 +62,13 @@
 	<li><code>s</code> consists of only digits <code>&#39;0&#39;</code> through <code>&#39;9&#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Two Pointers
 
 We traverse the string $s$, using two pointers $i$ and $j$ to count the length of each equal substring. If the length modulo $3$ is $1$, it means that the length of this substring does not meet the requirements, so we return `false`. If the length modulo $3$ is $2$, it means that a substring of length $2$ has appeared. If a substring of length $2$ has appeared before, return `false`, otherwise assign the value of $j$ to $i$ and continue to traverse.
 
@@ -62,7 +78,7 @@ The time complexity is $O(n)$, where $n$ is the length of the string $s$. The sp
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -82,21 +98,7 @@ class Solution:
         return cnt2 == 1
 ```
 
-```python
-class Solution:
-    def isDecomposable(self, s: str) -> bool:
-        cnt2 = 0
-        for _, g in groupby(s):
-            m = len(list(g))
-            if m % 3 == 1:
-                return False
-            cnt2 += m % 3 == 2
-            if cnt2 > 1:
-                return False
-        return cnt2 == 1
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -121,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -147,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isDecomposable(s string) bool {
@@ -173,7 +175,7 @@ func isDecomposable(s string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function isDecomposable(s: string): boolean {
@@ -196,10 +198,34 @@ function isDecomposable(s: string): boolean {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def isDecomposable(self, s: str) -> bool:
+        cnt2 = 0
+        for _, g in groupby(s):
+            m = len(list(g))
+            if m % 3 == 1:
+                return False
+            cnt2 += m % 3 == 2
+            if cnt2 > 1:
+                return False
+        return cnt2 == 1
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

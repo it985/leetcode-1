@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1862.Sum%20of%20Floored%20Pairs/README.md
+rating: 2170
+source: 第 52 场双周赛 Q4
+tags:
+    - 数组
+    - 数学
+    - 二分查找
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [1862. 向下取整数对和](https://leetcode.cn/problems/sum-of-floored-pairs)
 
 [English Version](/solution/1800-1899/1862.Sum%20of%20Floored%20Pairs/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code> ，请你返回所有下标对 <code>0 &lt;= i, j &lt; nums.length</code> 的 <code>floor(nums[i] / nums[j])</code> 结果之和。由于答案可能会很大，请你返回答案对<code>10<sup>9</sup> + 7</code> <strong>取余</strong> 的结果。</p>
 
@@ -40,11 +55,13 @@ floor(9 / 5) = 1
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：值域前缀和 + 优化枚举**
+### 方法一：值域前缀和 + 优化枚举
 
 我们先统计数组 $nums$ 中每个元素出现的次数，记录在数组 $cnt$ 中，然后计算数组 $cnt$ 的前缀和，记录在数组 $s$ 中，即 $s[i]$ 表示小于等于 $i$ 的元素的个数。
 
@@ -54,9 +71,7 @@ floor(9 / 5) = 1
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -78,9 +93,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -112,7 +125,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -142,7 +155,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sumOfFlooredPairs(nums []int) (ans int) {
@@ -168,7 +181,7 @@ func sumOfFlooredPairs(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumOfFlooredPairs(nums: number[]): number {
@@ -195,7 +208,7 @@ function sumOfFlooredPairs(nums: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -238,10 +251,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

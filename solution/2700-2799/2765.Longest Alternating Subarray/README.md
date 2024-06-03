@@ -1,12 +1,25 @@
-# [2765. 最长交替子序列](https://leetcode.cn/problems/longest-alternating-subarray)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2765.Longest%20Alternating%20Subarray/README.md
+rating: 1580
+source: 第 108 场双周赛 Q1
+tags:
+    - 数组
+    - 枚举
+---
+
+<!-- problem:start -->
+
+# [2765. 最长交替子数组](https://leetcode.cn/problems/longest-alternating-subarray)
 
 [English Version](/solution/2700-2799/2765.Longest%20Alternating%20Subarray/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>给你一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums</code>&nbsp;。如果 <code>nums</code>&nbsp;中长度为&nbsp;<code>m</code>&nbsp;的子数组&nbsp;<code>s</code>&nbsp;满足以下条件，我们称它是一个 <strong>交替子序列</strong> ：</p>
+<p>给你一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums</code>&nbsp;。如果 <code>nums</code>&nbsp;中长度为&nbsp;<code>m</code>&nbsp;的子数组&nbsp;<code>s</code>&nbsp;满足以下条件，我们称它是一个 <strong>交替子数组</strong> ：</p>
 
 <ul>
 	<li><code>m</code>&nbsp;大于&nbsp;<code>1</code>&nbsp;。</li>
@@ -45,11 +58,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举**
+### 方法一：枚举
 
 我们可以枚举子数组的左端点 $i$，对于每个 $i$，我们需要找到最长的满足条件的子数组。我们可以从 $i$ 开始向右遍历，每次遇到相邻元素差值不满足交替条件时，我们就找到了一个满足条件的子数组。我们可以用一个变量 $k$ 来记录当前元素的差值应该是 $1$ 还是 $-1$，如果当前元素的差值应该是 $-k$，那么我们就将 $k$ 取反。当我们找到一个满足条件的子数组 $nums[i..j]$ 时，我们更新答案为 $\max(ans, j - i + 1)$。
 
@@ -57,9 +72,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -76,9 +89,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +110,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -121,7 +132,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func alternatingSubarray(nums []int) int {
@@ -140,7 +151,7 @@ func alternatingSubarray(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function alternatingSubarray(nums: number[]): number {
@@ -160,10 +171,8 @@ function alternatingSubarray(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

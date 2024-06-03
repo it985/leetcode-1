@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1735.Count%20Ways%20to%20Make%20Array%20With%20Product/README_EN.md
+rating: 2499
+source: Biweekly Contest 44 Q4
+tags:
+    - Array
+    - Math
+    - Dynamic Programming
+    - Combinatorics
+    - Number Theory
+---
+
+<!-- problem:start -->
+
 # [1735. Count Ways to Make Array With Product](https://leetcode.com/problems/count-ways-to-make-array-with-product)
 
 [中文文档](/solution/1700-1799/1735.Count%20Ways%20to%20Make%20Array%20With%20Product/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a 2D integer array, <code>queries</code>. For each <code>queries[i]</code>, where <code>queries[i] = [n<sub>i</sub>, k<sub>i</sub>]</code>, find the number of different ways you can place positive integers into an array of size <code>n<sub>i</sub></code> such that the product of the integers is <code>k<sub>i</sub></code>. As the number of ways may be too large, the answer to the <code>i<sup>th</sup></code> query is the number of ways <strong>modulo</strong> <code>10<sup>9</sup> + 7</code>.</p>
 
@@ -35,9 +53,13 @@
 	<li><code>1 &lt;= n<sub>i</sub>, k<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Prime Factorization + Combinatorial Mathematics**
+<!-- solution:start -->
+
+### Solution 1: Prime Factorization + Combinatorial Mathematics
 
 We can perform prime factorization on $k$, i.e., $k = p_1^{x_1} \times p_2^{x_2} \times \cdots \times p_m^{x_m}$, where $p_i$ is a prime number, and $x_i$ is the exponent of $p_i$. The problem is equivalent to: placing $x_1$ $p_1$s, $x_2$ $p_2$s, $\cdots$, $x_m$ $p_m$s into $n$ positions respectively, where a single position can be empty. The question is how many schemes are there.
 
@@ -55,7 +77,7 @@ The time complexity is $O(K \times \log \log K + N + m \times \log K)$, and the 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 N = 10020
@@ -95,7 +117,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -161,7 +183,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 int N = 10020;
@@ -227,7 +249,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 const n = 1e4 + 20
@@ -288,10 +310,8 @@ func waysToFillArray(queries [][]int) (ans []int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

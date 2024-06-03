@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2139.Minimum%20Moves%20to%20Reach%20Target%20Score/README.md
+rating: 1417
+source: 第 276 场周赛 Q2
+tags:
+    - 贪心
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [2139. 得到目标值的最少行动次数](https://leetcode.cn/problems/minimum-moves-to-reach-target-score)
 
 [English Version](/solution/2100-2199/2139.Minimum%20Moves%20to%20Reach%20Target%20Score/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你正在玩一个整数游戏。从整数 <code>1</code> 开始，期望得到整数 <code>target</code> 。</p>
 
@@ -61,11 +74,13 @@
 	<li><code>0 &lt;= maxDoubles &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：倒推 + 贪心**
+### 方法一：倒推 + 贪心
 
 我们不妨从最终的状态开始倒推，假设最终的状态为 $target$，那么我们可以得到 $target$ 的前一个状态为 $target - 1$ 或者 $target / 2$，这取决于 $target$ 的奇偶性以及 $maxDoubles$ 的值。
 
@@ -83,9 +98,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -98,6 +111,91 @@ class Solution:
             return 1 + self.minMoves(target >> 1, maxDoubles - 1)
         return 1 + self.minMoves(target - 1, maxDoubles)
 ```
+
+#### Java
+
+```java
+class Solution {
+    public int minMoves(int target, int maxDoubles) {
+        if (target == 1) {
+            return 0;
+        }
+        if (maxDoubles == 0) {
+            return target - 1;
+        }
+        if (target % 2 == 0 && maxDoubles > 0) {
+            return 1 + minMoves(target >> 1, maxDoubles - 1);
+        }
+        return 1 + minMoves(target - 1, maxDoubles);
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int minMoves(int target, int maxDoubles) {
+        if (target == 1) {
+            return 0;
+        }
+        if (maxDoubles == 0) {
+            return target - 1;
+        }
+        if (target % 2 == 0 && maxDoubles > 0) {
+            return 1 + minMoves(target >> 1, maxDoubles - 1);
+        }
+        return 1 + minMoves(target - 1, maxDoubles);
+    }
+};
+```
+
+#### Go
+
+```go
+func minMoves(target int, maxDoubles int) int {
+	if target == 1 {
+		return 0
+	}
+	if maxDoubles == 0 {
+		return target - 1
+	}
+	if target%2 == 0 && maxDoubles > 0 {
+		return 1 + minMoves(target>>1, maxDoubles-1)
+	}
+	return 1 + minMoves(target-1, maxDoubles)
+}
+```
+
+#### TypeScript
+
+```ts
+function minMoves(target: number, maxDoubles: number): number {
+    if (target === 1) {
+        return 0;
+    }
+    if (maxDoubles === 0) {
+        return target - 1;
+    }
+    if (target % 2 === 0 && maxDoubles) {
+        return 1 + minMoves(target >> 1, maxDoubles - 1);
+    }
+    return 1 + minMoves(target - 1, maxDoubles);
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -114,26 +212,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```java
-class Solution {
-    public int minMoves(int target, int maxDoubles) {
-        if (target == 1) {
-            return 0;
-        }
-        if (maxDoubles == 0) {
-            return target - 1;
-        }
-        if (target % 2 == 0 && maxDoubles > 0) {
-            return 1 + minMoves(target >> 1, maxDoubles - 1);
-        }
-        return 1 + minMoves(target - 1, maxDoubles);
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -154,25 +233,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int minMoves(int target, int maxDoubles) {
-        if (target == 1) {
-            return 0;
-        }
-        if (maxDoubles == 0) {
-            return target - 1;
-        }
-        if (target % 2 == 0 && maxDoubles > 0) {
-            return 1 + minMoves(target >> 1, maxDoubles - 1);
-        }
-        return 1 + minMoves(target - 1, maxDoubles);
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -194,22 +255,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func minMoves(target int, maxDoubles int) int {
-	if target == 1 {
-		return 0
-	}
-	if maxDoubles == 0 {
-		return target - 1
-	}
-	if target%2 == 0 && maxDoubles > 0 {
-		return 1 + minMoves(target>>1, maxDoubles-1)
-	}
-	return 1 + minMoves(target-1, maxDoubles)
-}
-```
+#### Go
 
 ```go
 func minMoves(target int, maxDoubles int) (ans int) {
@@ -227,22 +273,7 @@ func minMoves(target int, maxDoubles int) (ans int) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function minMoves(target: number, maxDoubles: number): number {
-    if (target === 1) {
-        return 0;
-    }
-    if (maxDoubles === 0) {
-        return target - 1;
-    }
-    if (target % 2 === 0 && maxDoubles) {
-        return 1 + minMoves(target >> 1, maxDoubles - 1);
-    }
-    return 1 + minMoves(target - 1, maxDoubles);
-}
-```
+#### TypeScript
 
 ```ts
 function minMoves(target: number, maxDoubles: number): number {
@@ -261,10 +292,8 @@ function minMoves(target: number, maxDoubles: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

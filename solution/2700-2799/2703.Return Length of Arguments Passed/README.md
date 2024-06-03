@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2703.Return%20Length%20of%20Arguments%20Passed/README.md
+---
+
+<!-- problem:start -->
+
 # [2703. 返回传递的参数的长度](https://leetcode.cn/problems/return-length-of-arguments-passed)
 
 [English Version](/solution/2700-2799/2703.Return%20Length%20of%20Arguments%20Passed/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 请你编写一个函数 <code>argumentsLength</code>，返回传递给该函数的参数数量。
 
@@ -41,15 +49,17 @@ argumentsLength({}, null, "3"); // 3
 	<li><code>0 &lt;= args.length &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **TypeScript**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### TypeScript
 
 ```ts
 function argumentsLength(...args: any[]): number {
@@ -62,3 +72,7 @@ function argumentsLength(...args: any[]): number {
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

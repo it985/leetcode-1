@@ -1,10 +1,29 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1728.Cat%20and%20Mouse%20II/README.md
+rating: 2849
+source: 第 224 场周赛 Q4
+tags:
+    - 图
+    - 拓扑排序
+    - 记忆化搜索
+    - 数组
+    - 数学
+    - 动态规划
+    - 博弈
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [1728. 猫和老鼠 II](https://leetcode.cn/problems/cat-and-mouse-ii)
 
 [English Version](/solution/1700-1799/1728.Cat%20and%20Mouse%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一只猫和一只老鼠在玩一个叫做猫和老鼠的游戏。</p>
 
@@ -94,15 +113,17 @@
 	<li><code>1 <= catJump, mouseJump <= 8</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -175,21 +196,10 @@ class Solution:
                 return True
 
         return dp(cat, mouse, 0)
-
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```java
-
-```
-
-### **...**
-
-```
-
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2844.Minimum%20Operations%20to%20Make%20a%20Special%20Number/README_EN.md
+rating: 1588
+source: Weekly Contest 361 Q2
+tags:
+    - Greedy
+    - Math
+    - String
+    - Enumeration
+---
+
+<!-- problem:start -->
+
 # [2844. Minimum Operations to Make a Special Number](https://leetcode.com/problems/minimum-operations-to-make-a-special-number)
 
 [中文文档](/solution/2800-2899/2844.Minimum%20Operations%20to%20Make%20a%20Special%20Number/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> string <code>num</code> representing a non-negative integer.</p>
 
@@ -48,9 +65,13 @@ It can be shown that 1 is the minimum number of operations required to get a spe
 	<li><code>num</code> does not contain any leading zeros.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Memoization Search**
+<!-- solution:start -->
+
+### Solution 1: Memoization Search
 
 We notice that an integer $x$ can be divisible by $25$, i.e., $x \bmod 25 = 0$. Therefore, we can design a function $dfs(i, k)$, which represents the minimum number of digits to be deleted to make the number a special number, starting from the $i$th digit of the string $num$, and the current number modulo $25$ is $k$. The answer is $dfs(0, 0)$.
 
@@ -65,7 +86,7 @@ The time complexity is $O(n \times 25)$, and the space complexity is $O(n \times
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -82,7 +103,7 @@ class Solution:
         return dfs(0, 0)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -111,7 +132,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -136,7 +157,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumOperations(num string) int {
@@ -166,7 +187,7 @@ func minimumOperations(num string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumOperations(num: string): number {
@@ -187,10 +208,8 @@ function minimumOperations(num: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

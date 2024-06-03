@@ -1,8 +1,24 @@
-# [2838. Maximum Coins Heroes Can Collect](https://leetcode.com/problems/maximum-coins-heroes-can-collect)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2838.Maximum%20Coins%20Heroes%20Can%20Collect/README_EN.md
+tags:
+    - Array
+    - Two Pointers
+    - Binary Search
+    - Prefix Sum
+    - Sorting
+---
+
+<!-- problem:start -->
+
+# [2838. Maximum Coins Heroes Can Collect 🔒](https://leetcode.com/problems/maximum-coins-heroes-can-collect)
 
 [中文文档](/solution/2800-2899/2838.Maximum%20Coins%20Heroes%20Can%20Collect/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is a battle and <code>n</code> heroes are trying to defeat <code>m</code> monsters. You are given two <strong>1-indexed</strong> arrays of <strong>positive</strong> integers <code><font face="monospace">heroes</font></code> and <code><font face="monospace">monsters</font></code> of length <code>n</code> and <code>m</code>, respectively. <code><font face="monospace">heroes</font>[i]</code> is the power of <code>i<sup>th</sup></code> hero, and <code><font face="monospace">monsters</font>[i]</code> is the power of <code>i<sup>th</sup></code> monster.</p>
 
@@ -57,9 +73,13 @@ So the answer would be [5,16,10].</pre>
 	<li><code>1 &lt;= heroes[i], monsters[i], coins[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sorting + Prefix Sum + Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Sorting + Prefix Sum + Binary Search
 
 We can sort the monsters and coins in ascending order of the monsters' combat power, and then use prefix sum to calculate the total number of coins each hero can get by defeating the first $i$ monsters.
 
@@ -69,7 +89,7 @@ The time complexity is $O((m + n) \times \log n)$, and the space complexity is $
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -86,7 +106,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -126,7 +146,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -164,7 +184,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumCoins(heroes []int, monsters []int, coins []int) (ans []int64) {
@@ -186,7 +206,7 @@ func maximumCoins(heroes []int, monsters []int, coins []int) (ans []int64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumCoins(heroes: number[], monsters: number[], coins: number[]): number[] {
@@ -214,10 +234,8 @@ function maximumCoins(heroes: number[], monsters: number[], coins: number[]): nu
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

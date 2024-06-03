@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1583.Count%20Unhappy%20Friends/README.md
+rating: 1658
+source: 第 206 场周赛 Q2
+tags:
+    - 数组
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [1583. 统计不开心的朋友](https://leetcode.cn/problems/count-unhappy-friends)
 
 [English Version](/solution/1500-1599/1583.Count%20Unhappy%20Friends/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一份 <code>n</code> 位朋友的亲近程度列表，其中 <code>n</code> 总是 <strong>偶数</strong> 。</p>
 
@@ -72,11 +85,13 @@
 	<li>每位朋友都 <strong>恰好</strong> 被包含在一对中</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：数组 + 枚举**
+### 方法一：数组 + 枚举
 
 我们用数组 $d$ 记录每个朋友与其它朋友的亲近程度，其中 $d[i][j]$ 表示朋友 $i$ 对 $j$ 的亲近程度（值越小，越亲近），另外，用数组 $p$ 记录每个朋友的配对朋友。
 
@@ -88,9 +103,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -109,9 +122,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -146,7 +157,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -182,7 +193,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func unhappyFriends(n int, preferences [][]int, pairs [][]int) (ans int) {
@@ -215,10 +226,8 @@ func unhappyFriends(n int, preferences [][]int, pairs [][]int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

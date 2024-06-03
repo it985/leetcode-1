@@ -1,10 +1,21 @@
-# [2847. 给定数字乘积的最小数字](https://leetcode.cn/problems/smallest-number-with-given-digit-product)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2847.Smallest%20Number%20With%20Given%20Digit%20Product/README.md
+tags:
+    - 贪心
+    - 数学
+---
+
+<!-- problem:start -->
+
+# [2847. 给定数字乘积的最小数字 🔒](https://leetcode.cn/problems/smallest-number-with-given-digit-product)
 
 [English Version](/solution/2800-2899/2847.Smallest%20Number%20With%20Given%20Digit%20Product/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个 <strong>正</strong> 整数 <code>n</code>，返回一个字符串，表示 <strong>最小的正整数</strong>，使其各位数字的乘积等于 <code>n</code>&nbsp;，如果不存在这样的数字，则返回 <code>"-1"</code>&nbsp;。</p>
 
@@ -42,11 +53,13 @@
 	<li><code>1 &lt;= n &lt;= 10<sup>18</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：质因数分解 + 贪心**
+### 方法一：质因数分解 + 贪心
 
 我们考虑对数字 $n$ 进行质因数分解，如果 $n$ 的质因数中存在大于 $9$ 的质数，那么一定无法找到符合条件的数字，因为大于 $9$ 的质数无法通过 $1$ 到 $9$ 的数字相乘得到，例如 $11$ 无法通过 $1$ 到 $9$ 的数字相乘得到，因此我们只需要考虑 $n$ 的质因数中是否存在大于 $9$ 的质数即可，如果存在，直接返回 $-1$。
 
@@ -56,9 +69,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -74,9 +85,7 @@ class Solution:
         return ans if ans else "1"
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -129,7 +138,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func smallestNumber(n int64) string {
@@ -157,10 +166,8 @@ func smallestNumber(n int64) string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

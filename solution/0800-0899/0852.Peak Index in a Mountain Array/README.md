@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0852.Peak%20Index%20in%20a%20Mountain%20Array/README.md
+tags:
+    - 数组
+    - 二分查找
+---
+
+<!-- problem:start -->
+
 # [852. 山脉数组的峰顶索引](https://leetcode.cn/problems/peak-index-in-a-mountain-array)
 
 [English Version](/solution/0800-0899/0852.Peak%20Index%20in%20a%20Mountain%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 符合下列属性的数组 <code>arr</code> 称为 <strong>山脉数组</strong> ：
 
@@ -55,17 +66,17 @@
 	<li>题目数据保证 <code>arr</code> 是一个山脉数组</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-二分查找。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,9 +91,7 @@ class Solution:
         return left
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +110,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -120,7 +129,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func peakIndexInMountainArray(arr []int) int {
@@ -137,7 +146,45 @@ func peakIndexInMountainArray(arr []int) int {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function peakIndexInMountainArray(arr: number[]): number {
+    let left = 1,
+        right = arr.length - 2;
+    while (left < right) {
+        const mid = (left + right) >> 1;
+        if (arr[mid] > arr[mid + 1]) {
+            right = mid;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return left;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn peak_index_in_mountain_array(arr: Vec<i32>) -> i32 {
+        let mut left = 1;
+        let mut right = arr.len() - 2;
+        while left < right {
+            let mid = left + (right - left) / 2;
+            if arr[mid] > arr[mid + 1] {
+                right = mid;
+            } else {
+                left = left + 1;
+            }
+        }
+        left as i32
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -159,48 +206,8 @@ var peakIndexInMountainArray = function (arr) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function peakIndexInMountainArray(arr: number[]): number {
-    let left = 1,
-        right = arr.length - 2;
-    while (left < right) {
-        const mid = (left + right) >> 1;
-        if (arr[mid] > arr[mid + 1]) {
-            right = mid;
-        } else {
-            left = mid + 1;
-        }
-    }
-    return left;
-}
-```
-
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn peak_index_in_mountain_array(arr: Vec<i32>) -> i32 {
-        let mut left = 1;
-        let mut right = arr.len() - 2;
-        while left < right {
-            let mid = left + (right - left) / 2;
-            if arr[mid] > arr[mid + 1] {
-                right = mid;
-            } else {
-                left = left + 1;
-            }
-        }
-        left as i32
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

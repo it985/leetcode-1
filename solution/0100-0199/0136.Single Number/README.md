@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0136.Single%20Number/README.md
+tags:
+    - 位运算
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [136. 只出现一次的数字](https://leetcode.cn/problems/single-number)
 
 [English Version](/solution/0100-0199/0136.Single%20Number/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个 <strong>非空</strong> 整数数组 <code>nums</code> ，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p>
 
@@ -47,11 +58,13 @@
 </div>
 </div>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：位运算**
+### 方法一：位运算
 
 异或运算的性质：
 
@@ -64,9 +77,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -74,9 +85,7 @@ class Solution:
         return reduce(xor, nums)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -90,15 +99,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int singleNumber(int[] nums) {
-        return Arrays.stream(nums).reduce(0, (a, b) -> a ^ b);
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -113,7 +114,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func singleNumber(nums []int) (ans int) {
@@ -124,19 +125,7 @@ func singleNumber(nums []int) (ans int) {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var singleNumber = function (nums) {
-    return nums.reduce((a, b) => a ^ b);
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function singleNumber(nums: number[]): number {
@@ -144,7 +133,7 @@ function singleNumber(nums: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -156,7 +145,29 @@ impl Solution {
 }
 ```
 
-### **C**
+#### JavaScript
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNumber = function (nums) {
+    return nums.reduce((a, b) => a ^ b);
+};
+```
+
+#### C#
+
+```cs
+public class Solution {
+    public int SingleNumber(int[] nums) {
+        return nums.Aggregate(0, (a, b) => a ^ b);
+    }
+}
+```
+
+#### C
 
 ```c
 int singleNumber(int* nums, int numsSize) {
@@ -168,7 +179,7 @@ int singleNumber(int* nums, int numsSize) {
 }
 ```
 
-### **Swift**
+#### Swift
 
 ```swift
 class Solution {
@@ -178,20 +189,28 @@ class Solution {
 }
 ```
 
-### **C#**
+<!-- tabs:end -->
 
-```cs
-public class Solution {
-    public int SingleNumber(int[] nums) {
-        return nums.Aggregate(0, (a, b) => a ^ b);
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Java
+
+```java
+class Solution {
+    public int singleNumber(int[] nums) {
+        return Arrays.stream(nums).reduce(0, (a, b) -> a ^ b);
     }
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

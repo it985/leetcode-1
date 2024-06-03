@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0679.24%20Game/README.md
+tags:
+    - 数组
+    - 数学
+    - 回溯
+---
+
+<!-- problem:start -->
+
 # [679. 24 点游戏](https://leetcode.cn/problems/24-game)
 
 [English Version](/solution/0600-0699/0679.24%20Game/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个长度为4的整数数组&nbsp;<code>cards</code>&nbsp;。你有 <code>4</code> 张卡片，每张卡片上都包含一个范围在 <code>[1,9]</code> 的数字。您应该使用运算符&nbsp;<code>['+', '-', '*', '/']</code>&nbsp;和括号&nbsp;<code>'('</code>&nbsp;和&nbsp;<code>')'</code>&nbsp;将这些卡片上的数字排列成数学表达式，以获得值24。</p>
 
@@ -12,6 +24,7 @@
 
 <ul>
 	<li>除法运算符 <code>'/'</code> 表示实数除法，而不是整数除法。
+
     <ul>
     	<li>例如，&nbsp;<code>4 /(1 - 2 / 3)= 4 /(1 / 3)= 12</code>&nbsp;。</li>
     </ul>
@@ -26,6 +39,7 @@
     	<li>例如，如果 <code>cards =[1,2,1,2]</code> ，则表达式 <code>“12 + 12”</code> 无效。</li>
     </ul>
     </li>
+
 </ul>
 
 <p>如果可以得到这样的表达式，其计算结果为 <code>24</code> ，则返回 <code>true </code>，否则返回 <code>false</code>&nbsp;。</p>
@@ -56,11 +70,13 @@
 	<li><code>1 &lt;= cards[i] &lt;= 9</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们设计一个函数 $dfs(nums)$，其中 $nums$ 表示当前的数字序列，函数返回一个布尔值，表示是否存在一种排列方式，使得这个数字序列可以得到 $24$。
 
@@ -72,9 +88,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -111,9 +125,7 @@ class Solution:
         return dfs(nums)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -174,7 +186,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -237,7 +249,7 @@ private:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func judgePoint24(cards []int) bool {
@@ -292,7 +304,7 @@ func judgePoint24(cards []int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function judgePoint24(cards: number[]): boolean {
@@ -346,10 +358,8 @@ function judgePoint24(cards: number[]): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

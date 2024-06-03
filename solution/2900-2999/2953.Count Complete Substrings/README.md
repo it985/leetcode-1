@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2953.Count%20Complete%20Substrings/README.md
+rating: 2449
+source: 第 374 场周赛 Q3
+tags:
+    - 哈希表
+    - 字符串
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [2953. 统计完全子字符串](https://leetcode.cn/problems/count-complete-substrings)
 
 [English Version](/solution/2900-2999/2953.Count%20Complete%20Substrings/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串&nbsp;<code>word</code>&nbsp;和一个整数 <code>k</code>&nbsp;。</p>
 
@@ -47,11 +61,13 @@
 	<li><code>1 &lt;= k &lt;= word.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举字符种类数 + 滑动窗口**
+### 方法一：枚举字符种类数 + 滑动窗口
 
 根据题目描述中的条件 $2$，我们可以发现，一个完全字符串中，相邻两个字符之差不超过 $2$。因此，我们遍历字符串 $word$，可以利用双指针把 $word$ 分割成若干个子字符串，这些子字符串中的字符种类数不超过 $26$，且相邻字符之差不超过 $2$。接下来，我们只需要在每个子字符串中，统计每个字符都出现 $k$ 次的子字符串的个数即可。
 
@@ -63,9 +79,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -103,9 +117,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -161,7 +173,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -218,7 +230,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countCompleteSubstrings(word string, k int) (ans int) {
@@ -277,7 +289,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countCompleteSubstrings(word: string, k: number): number {
@@ -335,10 +347,8 @@ function countCompleteSubstrings(word: string, k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

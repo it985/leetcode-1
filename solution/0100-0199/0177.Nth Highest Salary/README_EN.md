@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0177.Nth%20Highest%20Salary/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
 # [177. Nth Highest Salary](https://leetcode.com/problems/nth-highest-salary)
 
 [中文文档](/solution/0100-0199/0177.Nth%20Highest%20Salary/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Employee</code></p>
 
@@ -64,11 +76,32 @@ n = 2
 +------------------------+
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### Python3
+
+```python
+import pandas as pd
+
+
+def nth_highest_salary(employee: pd.DataFrame, N: int) -> pd.DataFrame:
+    unique_salaries = employee.salary.unique()
+    if len(unique_salaries) < N:
+        return pd.DataFrame([np.NaN], columns=[f"getNthHighestSalary({N})"])
+    else:
+        salary = sorted(unique_salaries, reverse=True)[N - 1]
+        return pd.DataFrame([salary], columns=[f"getNthHighestSalary({N})"])
+```
+
+#### MySQL
 
 ```sql
 CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
@@ -86,19 +119,8 @@ BEGIN
 END
 ```
 
-### **Pandas**
-
-```python
-import pandas as pd
-
-
-def nth_highest_salary(employee: pd.DataFrame, N: int) -> pd.DataFrame:
-    unique_salaries = employee.salary.unique()
-    if len(unique_salaries) < N:
-        return pd.DataFrame([np.NaN], columns=[f"getNthHighestSalary({N})"])
-    else:
-        salary = sorted(unique_salaries, reverse=True)[N - 1]
-        return pd.DataFrame([salary], columns=[f"getNthHighestSalary({N})"])
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

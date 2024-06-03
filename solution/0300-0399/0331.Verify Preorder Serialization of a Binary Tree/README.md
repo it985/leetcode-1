@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0331.Verify%20Preorder%20Serialization%20of%20a%20Binary%20Tree/README.md
+tags:
+    - 栈
+    - 树
+    - 字符串
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [331. 验证二叉树的前序序列化](https://leetcode.cn/problems/verify-preorder-serialization-of-a-binary-tree)
 
 [English Version](/solution/0300-0399/0331.Verify%20Preorder%20Serialization%20of%20a%20Binary%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>序列化二叉树的一种方法是使用 <strong>前序遍历 </strong>。当我们遇到一个非空节点时，我们可以记录下这个节点的值。如果它是一个空节点，我们可以使用一个标记值记录，例如 <code>#</code>。</p>
 
@@ -55,11 +68,13 @@
 	<li><code>preorder</code>&nbsp;由以逗号&nbsp;<code>“，”</code> 分隔的 <code>[0,100]</code> 范围内的整数和 <code>“#”</code> 组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：栈**
+### 方法一：栈
 
 我们将字符串 `preorder` 按逗号分割成数组，然后遍历数组，如果遇到了连续两个 `'#'`，并且第三个元素不是 `'#'`，那么就将这三个元素替换成一个 `'#'`，这个过程一直持续到数组遍历结束。
 
@@ -69,9 +84,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -85,27 +98,7 @@ class Solution:
         return len(stk) == 1 and stk[0] == "#"
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```java
-class Solution {
-    public boolean isValidSerialization(String preorder) {
-        String[] strs = preorder.split(",");
-        int diff = 1;
-        for (String s : strs) {
-            if (--diff < 0) {
-                return false;
-            }
-            if (!s.equals("#")) {
-                diff += 2;
-            }
-        }
-        return diff == 0;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -126,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -149,7 +142,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isValidSerialization(preorder string) bool {
@@ -165,10 +158,23 @@ func isValidSerialization(preorder string) bool {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
-
+```ts
+function isValidSerialization(preorder: string): boolean {
+    const stk: string[] = [];
+    for (const s of preorder.split(',')) {
+        stk.push(s);
+        while (stk.length >= 3 && stk.at(-1) === '#' && stk.at(-2) === '#' && stk.at(-3) !== '#') {
+            stk.splice(-3, 3, '#');
+        }
+    }
+    return stk.length === 1 && stk[0] === '#';
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

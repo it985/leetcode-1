@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.15.Master%20Mind/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [16.15. Master Mind](https://leetcode.cn/problems/master-mind-lcci)
 
 [中文文档](/lcci/16.15.Master%20Mind/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>The Game of Master Mind is played as follows:</p>
 <p>The computer has four slots, and each slot will contain a ball that is red (R). yellow (Y). green (G) or blue (B). For example, the computer might have RGGB (Slot #1 is red, Slots #2 and #3 are green, Slot #4 is blue).</p>
@@ -26,9 +36,13 @@
 	<li>There are only <code>&quot;R&quot;</code>,<code>&quot;G&quot;</code>,<code>&quot;B&quot;</code>,<code>&quot;Y&quot;</code> in <code>solution</code>&nbsp;and&nbsp;<code>guess</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Hash Table
 
 We simultaneously traverse both strings, count the number of corresponding characters that are the same, and accumulate them in $x$. Then we record the characters and their frequencies in both strings in hash tables $cnt1$ and $cnt2$, respectively.
 
@@ -38,7 +52,7 @@ The time complexity is $O(C)$, and the space complexity is $O(C)$. Here, $C=4$ f
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -48,7 +62,7 @@ class Solution:
         return [x, y - x]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -70,7 +84,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -90,7 +104,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func masterMind(solution string, guess string) []int {
@@ -112,7 +126,7 @@ func masterMind(solution string, guess string) []int {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -125,24 +139,53 @@ var masterMind = function (solution, guess) {
     let counts2 = { R: 0, G: 0, B: 0, Y: 0 };
     let res1 = 0;
     for (let i = 0; i < solution.length; i++) {
-        let s1 = solution.charAt(i),
-            s2 = guess.charAt(i);
-        if (s1 == s2) {
+        let s1 = solution[i],
+            s2 = guess[i];
+        if (s1 === s2) {
             res1++;
         } else {
             counts1[s1] += 1;
             counts2[s2] += 1;
         }
     }
-    let res2 = ['R', 'G', 'B', 'Y'].reduce((a, c) => a + Math.min(counts1[c], counts2[c]), 0);
+    let res2 = Object.keys(counts1).reduce((a, c) => a + Math.min(counts1[c], counts2[c]), 0);
     return [res1, res2];
 };
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    func masterMind(_ solution: String, _ guess: String) -> [Int] {
+        var x = 0
+        var y = 0
+        var cnt1: [Character: Int] = [:]
+        var cnt2: [Character: Int] = [:]
 
+        for i in solution.indices {
+            let a = solution[i]
+            let b = guess[i]
+            if a == b {
+                x += 1
+            }
+            cnt1[a, default: 0] += 1
+            cnt2[b, default: 0] += 1
+        }
+
+        let colors = "RYGB"
+        for c in colors {
+            let minCount = min(cnt1[c, default: 0], cnt2[c, default: 0])
+            y += minCount
+        }
+
+        return [x, y - x]
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

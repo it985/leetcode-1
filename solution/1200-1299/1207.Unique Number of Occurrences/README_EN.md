@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1207.Unique%20Number%20of%20Occurrences/README_EN.md
+rating: 1195
+source: Weekly Contest 156 Q1
+tags:
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [1207. Unique Number of Occurrences](https://leetcode.com/problems/unique-number-of-occurrences)
 
 [中文文档](/solution/1200-1299/1207.Unique%20Number%20of%20Occurrences/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of integers <code>arr</code>, return <code>true</code> <em>if the number of occurrences of each value in the array is <strong>unique</strong> or </em><code>false</code><em> otherwise</em>.</p>
 
@@ -36,9 +51,13 @@
 	<li><code>-1000 &lt;= arr[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Hash Table
 
 We use a hash table $cnt$ to count the frequency of each number in the array $arr$, and then use another hash table $vis$ to count the types of frequencies. Finally, we check whether the sizes of $cnt$ and $vis$ are equal.
 
@@ -46,7 +65,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -55,7 +74,7 @@ class Solution:
         return len(set(cnt.values())) == len(cnt)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -69,7 +88,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -91,7 +110,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func uniqueOccurrences(arr []int) bool {
@@ -110,7 +129,7 @@ func uniqueOccurrences(arr []int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function uniqueOccurrences(arr: number[]): boolean {
@@ -122,10 +141,8 @@ function uniqueOccurrences(arr: number[]): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

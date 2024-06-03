@@ -1,8 +1,22 @@
-# [555. Split Concatenated Strings](https://leetcode.com/problems/split-concatenated-strings)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0555.Split%20Concatenated%20Strings/README_EN.md
+tags:
+    - Greedy
+    - Array
+    - String
+---
+
+<!-- problem:start -->
+
+# [555. Split Concatenated Strings 🔒](https://leetcode.com/problems/split-concatenated-strings)
 
 [中文文档](/solution/0500-0599/0555.Split%20Concatenated%20Strings/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an array of strings <code>strs</code>. You could concatenate these strings together into a loop, where for each string, you could choose to reverse it or not. Among all the possible loops</p>
 
@@ -44,11 +58,17 @@ The answer string came from the fourth looped one, where you could cut from the 
 	<li><code>strs[i]</code> consists of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,7 +85,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -111,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -152,7 +172,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func splitLoopedString(strs []string) (ans string) {
@@ -195,10 +215,8 @@ func reverse(s string) string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

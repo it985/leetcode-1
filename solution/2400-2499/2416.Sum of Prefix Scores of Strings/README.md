@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2416.Sum%20of%20Prefix%20Scores%20of%20Strings/README.md
+rating: 1725
+source: 第 311 场周赛 Q4
+tags:
+    - 字典树
+    - 数组
+    - 字符串
+    - 计数
+---
+
+<!-- problem:start -->
+
 # [2416. 字符串的前缀分数和](https://leetcode.cn/problems/sum-of-prefix-scores-of-strings)
 
 [English Version](/solution/2400-2499/2416.Sum%20of%20Prefix%20Scores%20of%20Strings/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个长度为 <code>n</code> 的数组 <code>words</code> ，该数组由 <strong>非空</strong> 字符串组成。</p>
 
@@ -58,11 +73,13 @@
 	<li><code>words[i]</code> 由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：前缀树**
+### 方法一：前缀树
 
 用前缀树维护所有字符串的前缀以及每个前缀出现的次数。
 
@@ -72,9 +89,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Trie:
@@ -111,9 +126,7 @@ class Solution:
         return [trie.search(w) for w in words]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Trie {
@@ -162,7 +175,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Trie {
@@ -214,7 +227,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Trie struct {
@@ -264,7 +277,7 @@ func sumPrefixScores(words []string) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumPrefixScores(words: string[]): number[] {
@@ -289,6 +302,18 @@ function sumPrefixScores(words: string[]): number[] {
     });
 }
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### TypeScript
 
 ```ts
 class Trie {
@@ -340,11 +365,8 @@ function sumPrefixScores(words: string[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

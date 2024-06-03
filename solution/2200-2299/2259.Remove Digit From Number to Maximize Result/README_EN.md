@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2259.Remove%20Digit%20From%20Number%20to%20Maximize%20Result/README_EN.md
+rating: 1331
+source: Weekly Contest 291 Q1
+tags:
+    - Greedy
+    - String
+    - Enumeration
+---
+
+<!-- problem:start -->
+
 # [2259. Remove Digit From Number to Maximize Result](https://leetcode.com/problems/remove-digit-from-number-to-maximize-result)
 
 [中文文档](/solution/2200-2299/2259.Remove%20Digit%20From%20Number%20to%20Maximize%20Result/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>number</code> representing a <strong>positive integer</strong> and a character <code>digit</code>.</p>
 
@@ -45,11 +61,17 @@ Both result in the string &quot;51&quot;.
 	<li><code>digit</code> occurs at least once in <code>number</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,20 +81,7 @@ class Solution:
         )
 ```
 
-```python
-class Solution:
-    def removeDigit(self, number: str, digit: str) -> str:
-        last = -1
-        n = len(number)
-        for i, d in enumerate(number):
-            if d == digit:
-                last = i
-                if i + 1 < n and d < number[i + 1]:
-                    break
-        return number[:last] + number[last + 1 :]
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -92,26 +101,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public String removeDigit(String number, char digit) {
-        int last = -1;
-        int n = number.length();
-        for (int i = 0; i < n; ++i) {
-            char d = number.charAt(i);
-            if (d == digit) {
-                last = i;
-                if (i + 1 < n && d < number.charAt(i + 1)) {
-                    break;
-                }
-            }
-        }
-        return number.substring(0, last) + number.substring(last + 1);
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -132,27 +122,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    string removeDigit(string number, char digit) {
-        int n = number.size();
-        int last = -1;
-        for (int i = 0; i < n; ++i) {
-            char d = number[i];
-            if (d == digit) {
-                last = i;
-                if (i + 1 < n && number[i] < number[i + 1]) {
-                    break;
-                }
-            }
-        }
-        return number.substr(0, last) + number.substr(last + 1);
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func removeDigit(number string, digit byte) string {
@@ -169,23 +139,7 @@ func removeDigit(number string, digit byte) string {
 }
 ```
 
-```go
-func removeDigit(number string, digit byte) string {
-	last := -1
-	n := len(number)
-	for i := range number {
-		if number[i] == digit {
-			last = i
-			if i+1 < n && number[i] < number[i+1] {
-				break
-			}
-		}
-	}
-	return number[:last] + number[last+1:]
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function removeDigit(number: string, digit: string): string {
@@ -203,7 +157,7 @@ function removeDigit(number: string, digit: string): string {
 }
 ```
 
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -227,10 +181,94 @@ class Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def removeDigit(self, number: str, digit: str) -> str:
+        last = -1
+        n = len(number)
+        for i, d in enumerate(number):
+            if d == digit:
+                last = i
+                if i + 1 < n and d < number[i + 1]:
+                    break
+        return number[:last] + number[last + 1 :]
 ```
 
+#### Java
+
+```java
+class Solution {
+    public String removeDigit(String number, char digit) {
+        int last = -1;
+        int n = number.length();
+        for (int i = 0; i < n; ++i) {
+            char d = number.charAt(i);
+            if (d == digit) {
+                last = i;
+                if (i + 1 < n && d < number.charAt(i + 1)) {
+                    break;
+                }
+            }
+        }
+        return number.substring(0, last) + number.substring(last + 1);
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    string removeDigit(string number, char digit) {
+        int n = number.size();
+        int last = -1;
+        for (int i = 0; i < n; ++i) {
+            char d = number[i];
+            if (d == digit) {
+                last = i;
+                if (i + 1 < n && number[i] < number[i + 1]) {
+                    break;
+                }
+            }
+        }
+        return number.substr(0, last) + number.substr(last + 1);
+    }
+};
+```
+
+#### Go
+
+```go
+func removeDigit(number string, digit byte) string {
+	last := -1
+	n := len(number)
+	for i := range number {
+		if number[i] == digit {
+			last = i
+			if i+1 < n && number[i] < number[i+1] {
+				break
+			}
+		}
+	}
+	return number[:last] + number[last+1:]
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,22 @@
-# [271. Encode and Decode Strings](https://leetcode.com/problems/encode-and-decode-strings)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0271.Encode%20and%20Decode%20Strings/README_EN.md
+tags:
+    - Design
+    - Array
+    - String
+---
+
+<!-- problem:start -->
+
+# [271. Encode and Decode Strings 🔒](https://leetcode.com/problems/encode-and-decode-strings)
 
 [中文文档](/solution/0200-0299/0271.Encode%20and%20Decode%20Strings/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Design an algorithm to encode <b>a list of strings</b> to <b>a string</b>. The encoded string is then sent over the network and is decoded back to the original list of strings.</p>
 
@@ -77,27 +91,23 @@ String[] strs = decoder.decode(msg);
 <p>&nbsp;</p>
 <p><strong>Follow up: </strong>Could you write a generalized algorithm to work on any possible set of characters?</p>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Encode String Length
+
+During encoding, we convert the length of the string into a fixed 4-digit string, add the string itself, and append it to the result string in sequence.
+
+During decoding, we first take the first four digits of the string to get the length, and then cut the following string according to the length. We cut it in sequence until we get the list of strings.
+
+The time complexity is $O(n)$.
 
 <!-- tabs:start -->
 
-### **Python3**
-
-```python
-class Codec:
-    def encode(self, strs: List[str]) -> str:
-        """Encodes a list of strings to a single string."""
-        return chr(257).join(strs)
-
-    def decode(self, s: str) -> List[str]:
-        """Decodes a single string to a list of strings."""
-        return s.split(chr(257))
-
-
-# Your Codec object will be instantiated and called as such:
-# codec = Codec()
-# codec.decode(codec.encode(strs))
-```
+#### Python3
 
 ```python
 class Codec:
@@ -125,7 +135,7 @@ class Codec:
 # codec.decode(codec.encode(strs))
 ```
 
-### **Java**
+#### Java
 
 ```java
 public class Codec {
@@ -157,7 +167,7 @@ public class Codec {
 // codec.decode(codec.encode(strs));
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Codec {
@@ -193,7 +203,7 @@ public:
 // codec.decode(codec.encode(strs));
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Codec struct {
@@ -229,10 +239,8 @@ func (codec *Codec) Decode(strs string) []string {
 // codec.Decode(codec.Encode(strs));
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

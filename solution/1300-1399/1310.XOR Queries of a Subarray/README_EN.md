@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1310.XOR%20Queries%20of%20a%20Subarray/README_EN.md
+rating: 1459
+source: Weekly Contest 170 Q2
+tags:
+    - Bit Manipulation
+    - Array
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [1310. XOR Queries of a Subarray](https://leetcode.com/problems/xor-queries-of-a-subarray)
 
 [中文文档](/solution/1300-1399/1310.XOR%20Queries%20of%20a%20Subarray/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an array <code>arr</code> of positive integers. You are also given the array <code>queries</code> where <code>queries[i] = [left<sub>i, </sub>right<sub>i</sub>]</code>.</p>
 
@@ -46,11 +62,17 @@ The XOR values for queries are:
 	<li><code>0 &lt;= left<sub>i</sub> &lt;= right<sub>i</sub> &lt; arr.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,7 +81,7 @@ class Solution:
         return [s[r + 1] ^ s[l] for l, r in queries]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -80,29 +102,7 @@ class Solution {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} arr
- * @param {number[][]} queries
- * @return {number[]}
- */
-var xorQueries = function (arr, queries) {
-    let n = arr.length;
-    let xors = new Array(n + 1).fill(0);
-    for (let i = 0; i < n; i++) {
-        xors[i + 1] = xors[i] ^ arr[i];
-    }
-    let res = [];
-    for (let [l, r] of queries) {
-        res.push(xors[l] ^ xors[r + 1]);
-    }
-    return res;
-};
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -124,7 +124,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func xorQueries(arr []int, queries [][]int) (ans []int) {
@@ -141,7 +141,7 @@ func xorQueries(arr []int, queries [][]int) (ans []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function xorQueries(arr: number[], queries: number[][]): number[] {
@@ -158,7 +158,7 @@ function xorQueries(arr: number[], queries: number[][]): number[] {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -180,10 +180,8 @@ var xorQueries = function (arr, queries) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

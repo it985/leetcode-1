@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2512.Reward%20Top%20K%20Students/README_EN.md
+rating: 1636
+source: Biweekly Contest 94 Q2
+tags:
+    - Array
+    - Hash Table
+    - String
+    - Sorting
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [2512. Reward Top K Students](https://leetcode.com/problems/reward-top-k-students)
 
 [中文文档](/solution/2500-2599/2512.Reward%20Top%20K%20Students/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two string arrays <code>positive_feedback</code> and <code>negative_feedback</code>, containing the words denoting positive and negative feedback, respectively. Note that <strong>no</strong> word is both positive and negative.</p>
 
@@ -51,9 +69,13 @@ Since student 2 has more points, [2,1] is returned.
 	<li><code>1 &lt;= k &lt;= n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table + Sorting**
+<!-- solution:start -->
+
+### Solution 1: Hash Table + Sorting
 
 We can store the positive words in a hash table $ps$ and the negative words in a hash table $ns$.
 
@@ -65,7 +87,7 @@ The time complexity is $O(n \times \log n + (|ps| + |ns| + n) \times |s|)$, and 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -92,7 +114,7 @@ class Solution:
         return [v[1] for v in arr[:k]]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -130,7 +152,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -173,7 +195,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func topStudents(positive_feedback []string, negative_feedback []string, report []string, student_id []int, k int) (ans []int) {
@@ -205,7 +227,7 @@ func topStudents(positive_feedback []string, negative_feedback []string, report 
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function topStudents(
@@ -245,7 +267,7 @@ function topStudents(
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::{ HashMap, HashSet };
@@ -289,10 +311,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0412.Fizz%20Buzz/README.md
+tags:
+    - 数学
+    - 字符串
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [412. Fizz Buzz](https://leetcode.cn/problems/fizz-buzz)
 
 [English Version](/solution/0400-0499/0412.Fizz%20Buzz/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数 <code>n</code> ，找出从 <code>1</code> 到 <code>n</code> 各个整数的 Fizz Buzz 表示，并用字符串数组 <code>answer</code>（<strong>下标从 1 开始</strong>）返回结果，其中：</p>
 
@@ -45,15 +57,17 @@
 	<li><code>1 &lt;= n &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -71,9 +85,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -97,7 +109,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -116,7 +128,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func fizzBuzz(n int) []string {
@@ -138,7 +150,22 @@ func fizzBuzz(n int) []string {
 }
 ```
 
-### **PHP**
+#### JavaScript
+
+```js
+const fizzBuzz = function (n) {
+    let arr = [];
+    for (let i = 1; i <= n; i++) {
+        if (i % 15 === 0) arr.push('FizzBuzz');
+        else if (i % 3 === 0) arr.push('Fizz');
+        else if (i % 5 === 0) arr.push('Buzz');
+        else arr.push(`${i}`);
+    }
+    return arr;
+};
+```
+
+#### PHP
 
 ```php
 class Solution {
@@ -164,10 +191,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.17.Contiguous%20Sequence/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [16.17. Contiguous Sequence](https://leetcode.cn/problems/contiguous-sequence-lcci)
 
 [中文文档](/lcci/16.17.Contiguous%20Sequence/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an array of integers (both positive and negative). Find the contiguous sequence with the largest sum. Return the sum.</p>
 
@@ -30,9 +40,13 @@
 
 <p>If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.</p>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming
 
 We define $f[i]$ as the maximum sum of a continuous subarray that ends with $nums[i]$. The state transition equation is:
 
@@ -50,7 +64,7 @@ We notice that $f[i]$ only depends on $f[i-1]$, so we can use a variable $f$ to 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -62,7 +76,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -77,7 +91,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -93,7 +107,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxSubArray(nums []int) int {
@@ -106,7 +120,7 @@ func maxSubArray(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxSubArray(nums: number[]): number {
@@ -119,7 +133,7 @@ function maxSubArray(nums: number[]): number {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -136,11 +150,26 @@ var maxSubArray = function (nums) {
 };
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    func maxSubArray(_ nums: [Int]) -> Int {
+        var ans = Int.min
+        var f = Int.min
 
+        for x in nums {
+            f = max(f, 0) + x
+            ans = max(ans, f)
+        }
 
+        return ans
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

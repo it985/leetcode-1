@@ -1,10 +1,18 @@
-# [2823. 深度对象筛选](https://leetcode.cn/problems/deep-object-filter)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2823.Deep%20Object%20Filter/README.md
+---
+
+<!-- problem:start -->
+
+# [2823. 深度对象筛选 🔒](https://leetcode.cn/problems/deep-object-filter)
 
 [English Version](/solution/2800-2899/2823.Deep%20Object%20Filter/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个对象 <code>obj</code> 和一个函数 <code>fn</code>，返回一个经过筛选的对象 <code>filteredObject</code>。</p>
 
@@ -61,11 +69,13 @@ fn = (x) =&gt; Array.isArray(x)
 	<li><code>2 &lt;= JSON.stringify(obj).length &lt;= 10**5</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：递归**
+### 方法一：递归
 
 我们先判断当前对象是否为数组，如果是数组，我们就对数组中的每一个元素进行递归调用，然后过滤掉返回值为 `undefined` 的元素，最后返回过滤后的数组。
 
@@ -77,9 +87,7 @@ fn = (x) =&gt; Array.isArray(x)
 
 <!-- tabs:start -->
 
-### **TypeScript**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### TypeScript
 
 ```ts
 function deepFilter(obj: Record<string, any>, fn: Function): Record<string, any> | undefined {
@@ -108,3 +116,7 @@ function deepFilter(obj: Record<string, any>, fn: Function): Record<string, any>
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

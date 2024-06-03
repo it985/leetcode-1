@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2154.Keep%20Multiplying%20Found%20Values%20by%20Two/README.md
+rating: 1235
+source: 第 278 场周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+    - 排序
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [2154. 将找到的值乘以 2](https://leetcode.cn/problems/keep-multiplying-found-values-by-two)
 
 [English Version](/solution/2100-2199/2154.Keep%20Multiplying%20Found%20Values%20by%20Two/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code> ，另给你一个整数 <code>original</code> ，这是需要在 <code>nums</code> 中搜索的第一个数字。</p>
 
@@ -50,15 +65,17 @@
 	<li><code>1 &lt;= nums[i], original &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -69,9 +86,7 @@ class Solution:
         return original
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -89,19 +104,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function findFinalValue(nums: number[], original: number): number {
-    let set: Set<number> = new Set(nums);
-    while (set.has(original)) {
-        original *= 2;
-    }
-    return original;
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -115,7 +118,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findFinalValue(nums []int, original int) int {
@@ -130,10 +133,20 @@ func findFinalValue(nums []int, original int) int {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
-
+```ts
+function findFinalValue(nums: number[], original: number): number {
+    let set: Set<number> = new Set(nums);
+    while (set.has(original)) {
+        original *= 2;
+    }
+    return original;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/01.07.Rotate%20Matrix/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [01.07. Rotate Matrix](https://leetcode.cn/problems/rotate-matrix-lcci)
 
 [中文文档](/lcci/01.07.Rotate%20Matrix/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an image represented by an N x N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?</p>
 
@@ -76,9 +86,13 @@ Rotate the matrix <strong>in place. </strong>It becomes:
 
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: In-place Rotation**
+<!-- solution:start -->
+
+### Solution 1: In-place Rotation
 
 According to the problem requirements, we actually need to rotate $matrix[i][j]$ to $matrix[j][n - i - 1]$.
 
@@ -88,7 +102,7 @@ The time complexity is $O(n^2)$, where $n$ is the side length of the matrix. The
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -102,7 +116,7 @@ class Solution:
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -126,7 +140,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -147,7 +161,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func rotate(matrix [][]int) {
@@ -165,24 +179,7 @@ func rotate(matrix [][]int) {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[][]} matrix
- * @return {void} Do not return anything, modify matrix in-place instead.
- */
-var rotate = function (matrix) {
-    matrix.reverse();
-    for (let i = 0; i < matrix.length; ++i) {
-        for (let j = 0; j < i; ++j) {
-            [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
-        }
-    }
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -200,31 +197,7 @@ function rotate(matrix: number[][]): void {
 }
 ```
 
-### **C#**
-
-```cs
-public class Solution {
-    public void Rotate(int[][] matrix) {
-        int n = matrix.Length;
-        for (int i = 0; i < n >> 1; ++i) {
-            for (int j = 0; j < n; ++j) {
-                int t = matrix[i][j];
-                matrix[i][j] = matrix[n - i - 1][j];
-                matrix[n - i - 1][j] = t;
-            }
-        }
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < i; ++j) {
-                int t = matrix[i][j];
-                matrix[i][j] = matrix[j][i];
-                matrix[j][i] = t;
-            }
-        }
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -248,10 +221,75 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
+```js
+/**
+ * @param {number[][]} matrix
+ * @return {void} Do not return anything, modify matrix in-place instead.
+ */
+var rotate = function (matrix) {
+    matrix.reverse();
+    for (let i = 0; i < matrix.length; ++i) {
+        for (let j = 0; j < i; ++j) {
+            [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+        }
+    }
+};
 ```
 
+#### C#
+
+```cs
+public class Solution {
+    public void Rotate(int[][] matrix) {
+        int n = matrix.Length;
+        for (int i = 0; i < n >> 1; ++i) {
+            for (int j = 0; j < n; ++j) {
+                int t = matrix[i][j];
+                matrix[i][j] = matrix[n - i - 1][j];
+                matrix[n - i - 1][j] = t;
+            }
+        }
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < i; ++j) {
+                int t = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = t;
+            }
+        }
+    }
+}
+```
+
+#### Swift
+
+```swift
+class Solution {
+    func rotate(_ matrix: inout [[Int]]) {
+        let n = matrix.count
+
+        for i in 0..<(n >> 1) {
+            for j in 0..<n {
+                let t = matrix[i][j]
+                matrix[i][j] = matrix[n - i - 1][j]
+                matrix[n - i - 1][j] = t
+            }
+        }
+
+        for i in 0..<n {
+            for j in 0..<i {
+                let t = matrix[i][j]
+                matrix[i][j] = matrix[j][i]
+                matrix[j][i] = t
+            }
+        }
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

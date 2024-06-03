@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0020.Valid%20Parentheses/README.md
+tags:
+    - 栈
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [20. 有效的括号](https://leetcode.cn/problems/valid-parentheses)
 
 [English Version](/solution/0000-0099/0020.Valid%20Parentheses/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个只包括 <code>'('</code>，<code>')'</code>，<code>'{'</code>，<code>'}'</code>，<code>'['</code>，<code>']'</code>&nbsp;的字符串 <code>s</code> ，判断字符串是否有效。</p>
 
@@ -48,11 +59,13 @@
 	<li><code>s</code> 仅由括号 <code>'()[]{}'</code> 组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：栈**
+### 方法一：栈
 
 遍历括号字符串 $s$，遇到左括号时，压入当前的左括号；遇到右括号时，弹出栈顶元素（若栈为空，直接返回 `false`），判断是否匹配，若不匹配，直接返回 `false`。
 
@@ -66,9 +79,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +94,7 @@ class Solution:
         return not stk
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -131,7 +140,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isValid(s string) bool {
@@ -153,7 +162,53 @@ func match(l, r rune) bool {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+const map = new Map([
+    ['(', ')'],
+    ['[', ']'],
+    ['{', '}'],
+]);
+
+function isValid(s: string): boolean {
+    const stack = [];
+    for (const c of s) {
+        if (map.has(c)) {
+            stack.push(map.get(c));
+        } else if (stack.pop() !== c) {
+            return false;
+        }
+    }
+    return stack.length === 0;
+}
+```
+
+#### Rust
+
+```rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn is_valid(s: String) -> bool {
+        let mut map = HashMap::new();
+        map.insert('(', ')');
+        map.insert('[', ']');
+        map.insert('{', '}');
+        let mut stack = vec![];
+        for c in s.chars() {
+            if map.contains_key(&c) {
+                stack.push(map[&c]);
+            } else if stack.pop().unwrap_or(' ') != c {
+                return false;
+            }
+        }
+        stack.len() == 0
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -179,7 +234,29 @@ function match(l, r) {
 }
 ```
 
-### **Ruby**
+#### C#
+
+```cs
+public class Solution {
+    public bool IsValid(string s) {
+        Stack<char> stk = new Stack<char>();
+        foreach (var c in s.ToCharArray()) {
+            if (c == '(') {
+                stk.Push(')');
+            } else if (c == '[') {
+                stk.Push(']');
+            } else if (c == '{') {
+                stk.Push('}');
+            } else if (stk.Count == 0 || stk.Pop() != c) {
+                return false;
+            }
+        }
+        return stk.Count == 0;
+    }
+}
+```
+
+#### Ruby
 
 ```rb
 # @param {String} s
@@ -206,78 +283,41 @@ def is_valid(s)
 end
 ```
 
-### **TypeScript**
+#### PHP
 
-```ts
-const map = new Map([
-    ['(', ')'],
-    ['[', ']'],
-    ['{', '}'],
-]);
+```php
+class Solution {
+    /**
+     * @param string $s
+     * @return boolean
+     */
 
-function isValid(s: string): boolean {
-    const stack = [];
-    for (const c of s) {
-        if (map.has(c)) {
-            stack.push(map.get(c));
-        } else if (stack.pop() !== c) {
-            return false;
-        }
-    }
-    return stack.length === 0;
-}
-```
+    function isValid($s) {
+        $stack = [];
+        $brackets = [
+            ')' => '(',
+            '}' => '{',
+            ']' => '[',
+        ];
 
-### **Rust**
-
-```rust
-use std::collections::HashMap;
-
-impl Solution {
-    pub fn is_valid(s: String) -> bool {
-        let mut map = HashMap::new();
-        map.insert('(', ')');
-        map.insert('[', ']');
-        map.insert('{', '}');
-        let mut stack = vec![];
-        for c in s.chars() {
-            if map.contains_key(&c) {
-                stack.push(map[&c]);
-            } else if stack.pop().unwrap_or(' ') != c {
-                return false;
+        for ($i = 0; $i < strlen($s); $i++) {
+            $char = $s[$i];
+            if (array_key_exists($char, $brackets)) {
+                if (empty($stack) || $stack[count($stack) - 1] !== $brackets[$char]) {
+                    return false;
+                }
+                array_pop($stack);
+            } else {
+                array_push($stack, $char);
             }
         }
-        stack.len() == 0
+        return empty($stack);
     }
 }
-```
-
-### **C#**
-
-```cs
-public class Solution {
-    public bool IsValid(string s) {
-        Stack<char> stk = new Stack<char>();
-        foreach (var c in s.ToCharArray()) {
-            if (c == '(') {
-                stk.Push(')');
-            } else if (c == '[') {
-                stk.Push(']');
-            } else if (c == '{') {
-                stk.Push('}');
-            } else if (stk.Count == 0 || stk.Pop() != c) {
-                return false;
-            }
-        }
-        return stk.Count == 0;
-    }
-}
-```
-
-### **...**
-
-```
-
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

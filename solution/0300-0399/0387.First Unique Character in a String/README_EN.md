@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0387.First%20Unique%20Character%20in%20a%20String/README_EN.md
+tags:
+    - Queue
+    - Hash Table
+    - String
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [387. First Unique Character in a String](https://leetcode.com/problems/first-unique-character-in-a-string)
 
 [中文文档](/solution/0300-0399/0387.First%20Unique%20Character%20in%20a%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a string <code>s</code>, <em>find the first non-repeating character in it and return its index</em>. If it does not exist, return <code>-1</code>.</p>
 
@@ -25,11 +40,17 @@
 	<li><code>s</code> consists of only lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -41,7 +62,7 @@ class Solution:
         return -1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -61,7 +82,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -82,7 +103,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func firstUniqChar(s string) int {
@@ -99,7 +120,24 @@ func firstUniqChar(s string) int {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function firstUniqChar(s: string): number {
+    const cnt = new Array(26).fill(0);
+    for (const c of s) {
+        cnt[c.charCodeAt(0) - 97]++;
+    }
+    for (let i = 0; i < s.length; i++) {
+        if (cnt[s.charCodeAt(i) - 97] === 1) {
+            return i;
+        }
+    }
+    return -1;
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -120,24 +158,7 @@ var firstUniqChar = function (s) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function firstUniqChar(s: string): number {
-    const cnt = new Array(26).fill(0);
-    for (const c of s) {
-        cnt[c.charCodeAt(0) - 97]++;
-    }
-    for (let i = 0; i < s.length; i++) {
-        if (cnt[s.charCodeAt(i) - 97] === 1) {
-            return i;
-        }
-    }
-    return -1;
-}
-```
-
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -159,10 +180,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

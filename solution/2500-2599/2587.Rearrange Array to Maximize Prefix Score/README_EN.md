@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2587.Rearrange%20Array%20to%20Maximize%20Prefix%20Score/README_EN.md
+rating: 1336
+source: Weekly Contest 336 Q2
+tags:
+    - Greedy
+    - Array
+    - Prefix Sum
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2587. Rearrange Array to Maximize Prefix Score](https://leetcode.com/problems/rearrange-array-to-maximize-prefix-score)
 
 [中文文档](/solution/2500-2599/2587.Rearrange%20Array%20to%20Maximize%20Prefix%20Score/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code>. You can rearrange the elements of <code>nums</code> to <strong>any order</strong> (including the given order).</p>
 
@@ -37,9 +54,13 @@ It can be shown that 6 is the maximum score we can obtain.
 	<li><code>-10<sup>6</sup> &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy + Sorting**
+<!-- solution:start -->
+
+### Solution 1: Greedy + Sorting
 
 To maximize the number of positive integers in the prefix sum array, we need to make the elements in the prefix sum array as large as possible, that is, to add as many positive integers as possible. Therefore, we can sort the array $nums$ in descending order, then traverse the array, maintaining the prefix sum $s$. If $s \leq 0$, it means that there can be no more positive integers in the current position and the positions after it, so we can directly return the current position.
 
@@ -49,7 +70,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(\log
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -63,7 +84,7 @@ class Solution:
         return len(nums)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -82,7 +103,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -102,7 +123,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxScore(nums []int) int {
@@ -119,7 +140,24 @@ func maxScore(nums []int) int {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function maxScore(nums: number[]): number {
+    nums.sort((a, b) => a - b);
+    const n = nums.length;
+    let s = 0;
+    for (let i = 0; i < n; ++i) {
+        s += nums[n - i - 1];
+        if (s <= 0) {
+            return i;
+        }
+    }
+    return n;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -137,27 +175,8 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function maxScore(nums: number[]): number {
-    nums.sort((a, b) => a - b);
-    const n = nums.length;
-    let s = 0;
-    for (let i = 0; i < n; ++i) {
-        s += nums[n - i - 1];
-        if (s <= 0) {
-            return i;
-        }
-    }
-    return n;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

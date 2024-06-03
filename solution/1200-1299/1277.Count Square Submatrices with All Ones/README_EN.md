@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1277.Count%20Square%20Submatrices%20with%20All%20Ones/README_EN.md
+rating: 1613
+source: Weekly Contest 165 Q3
+tags:
+    - Array
+    - Dynamic Programming
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [1277. Count Square Submatrices with All Ones](https://leetcode.com/problems/count-square-submatrices-with-all-ones)
 
 [中文文档](/solution/1200-1299/1277.Count%20Square%20Submatrices%20with%20All%20Ones/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a <code>m * n</code> matrix of ones and zeros, return how many <strong>square</strong> submatrices have all ones.</p>
 
@@ -49,11 +65,17 @@ Total number of squares = 6 + 1 = <b>7</b>.
 	<li><code>0 &lt;= arr[i][j] &lt;= 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -73,7 +95,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -100,7 +122,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -124,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countSquares(matrix [][]int) int {
@@ -150,10 +172,8 @@ func countSquares(matrix [][]int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

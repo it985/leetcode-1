@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0080.Remove%20Duplicates%20from%20Sorted%20Array%20II/README_EN.md
+tags:
+    - Array
+    - Two Pointers
+---
+
+<!-- problem:start -->
+
 # [80. Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii)
 
 [中文文档](/solution/0000-0099/0080.Remove%20Duplicates%20from%20Sorted%20Array%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code> sorted in <strong>non-decreasing order</strong>, remove some duplicates <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank"><strong>in-place</strong></a> such that each unique element appears <strong>at most twice</strong>. The <strong>relative order</strong> of the elements should be kept the <strong>same</strong>.</p>
 
@@ -58,9 +71,13 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 	<li><code>nums</code> is sorted in <strong>non-decreasing</strong> order.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Single Pass**
+<!-- solution:start -->
+
+### Solution 1: Single Pass
 
 We use a variable $k$ to record the current length of the array that has been processed. Initially, $k=0$, representing an empty array.
 
@@ -79,11 +96,11 @@ The original problem requires that the same number appears at most $2$ times. We
 
 Similar problems:
 
--   [26. Remove Duplicates from Sorted Array](/solution/0000-0099/0026.Remove%20Duplicates%20from%20Sorted%20Array/README_EN.md)
+-   [26. Remove Duplicates from Sorted Array](https://github.com/doocs/leetcode/blob/main/solution/0000-0099/0026.Remove%20Duplicates%20from%20Sorted%20Array/README_EN.md)
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -96,7 +113,7 @@ class Solution:
         return k
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -112,7 +129,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -129,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func removeDuplicates(nums []int) int {
@@ -144,7 +161,7 @@ func removeDuplicates(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function removeDuplicates(nums: number[]): number {
@@ -158,23 +175,24 @@ function removeDuplicates(nums: number[]): number {
 }
 ```
 
-### **C#**
+#### Rust
 
-```cs
-public class Solution {
-    public int RemoveDuplicates(int[] nums) {
-        int k = 0;
-        foreach (int x in nums) {
-            if (k < 2 || x != nums[k - 2]) {
-                nums[k++] = x;
+```rust
+impl Solution {
+    pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
+        let mut k = 0;
+        for i in 0..nums.len() {
+            if k < 2 || nums[i] != nums[k - 2] {
+                nums[k] = nums[i];
+                k += 1;
             }
         }
-        return k;
+        k as i32
     }
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -192,27 +210,24 @@ var removeDuplicates = function (nums) {
 };
 ```
 
-### **Rust**
+#### C#
 
-```rust
-impl Solution {
-    pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
-        let mut k = 0;
-        for i in 0..nums.len() {
-            if k < 2 || nums[i] != nums[k - 2] {
-                nums[k] = nums[i];
-                k += 1;
+```cs
+public class Solution {
+    public int RemoveDuplicates(int[] nums) {
+        int k = 0;
+        foreach (int x in nums) {
+            if (k < 2 || x != nums[k - 2]) {
+                nums[k++] = x;
             }
         }
-        k as i32
+        return k;
     }
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

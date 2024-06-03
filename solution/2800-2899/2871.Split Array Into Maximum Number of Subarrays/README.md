@@ -1,10 +1,24 @@
-# [2871. 将数组分割成最多数目的子数组](https://leetcode.cn/problems/split-array-into-maximum-number-of-subarrays/)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2871.Split%20Array%20Into%20Maximum%20Number%20of%20Subarrays/README.md
+rating: 1749
+source: 第 114 场双周赛 Q3
+tags:
+    - 贪心
+    - 位运算
+    - 数组
+---
+
+<!-- problem:start -->
+
+# [2871. 将数组分割成最多数目的子数组](https://leetcode.cn/problems/split-array-into-maximum-number-of-subarrays)
 
 [English Version](/solution/2800-2899/2871.Split%20Array%20Into%20Maximum%20Number%20of%20Subarrays/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个只包含 <strong>非负</strong>&nbsp;整数的数组&nbsp;<code>nums</code>&nbsp;。</p>
 
@@ -54,11 +68,13 @@
 	<li><code>0 &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 位运算**
+### 方法一：贪心 + 位运算
 
 我们初始化一个变量 $score$，用来记录当前子数组的分数，初始时 $score = -1$。然后我们遍历数组，对于每个元素 $num$，我们将 $score$ 与 $num$ 进行按位与运算，然后将结果赋值给 $score$。如果 $score = 0$，说明当前子数组的分数为 $0$，我们就可以将当前子数组分割出来，然后将 $score$ 重置为 $-1$。最后我们返回分割出的子数组的个数。
 
@@ -66,9 +82,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -82,9 +96,7 @@ class Solution:
         return 1 if ans == 1 else ans - 1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -103,7 +115,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -122,7 +134,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxSubarrays(nums []int) int {
@@ -141,7 +153,7 @@ func maxSubarrays(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxSubarrays(nums: number[]): number {
@@ -157,10 +169,8 @@ function maxSubarrays(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

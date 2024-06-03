@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2891.Method%20Chaining/README.md
+---
+
+<!-- problem:start -->
+
 # [2891. 方法链](https://leetcode.cn/problems/method-chaining)
 
 [English Version](/solution/2800-2899/2891.Method%20Chaining/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <pre>
 DataFrame <code>animals</code>
@@ -61,28 +69,30 @@ Tatiana 的体重为 464，Jonathan 的体重为 463，Tommy 的体重为 349，
 
 <p>你能用 <strong>一行</strong> 代码的方法链完成这个任务吗？</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Pandas**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 import pandas as pd
 
 
 def findHeavyAnimals(animals: pd.DataFrame) -> pd.DataFrame:
-    return animals[animals['weight'] > 100].sort_values('weight', ascending=False)[['name']]
-```
-
-### **...**
-
-```
-
+    return animals[animals['weight'] > 100].sort_values('weight', ascending=False)[
+        ['name']
+    ]
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

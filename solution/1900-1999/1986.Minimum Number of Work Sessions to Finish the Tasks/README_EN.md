@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1986.Minimum%20Number%20of%20Work%20Sessions%20to%20Finish%20the%20Tasks/README_EN.md
+rating: 1995
+source: Weekly Contest 256 Q3
+tags:
+    - Bit Manipulation
+    - Array
+    - Dynamic Programming
+    - Backtracking
+    - Bitmask
+---
+
+<!-- problem:start -->
+
 # [1986. Minimum Number of Work Sessions to Finish the Tasks](https://leetcode.com/problems/minimum-number-of-work-sessions-to-finish-the-tasks)
 
 [中文文档](/solution/1900-1999/1986.Minimum%20Number%20of%20Work%20Sessions%20to%20Finish%20the%20Tasks/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are <code>n</code> tasks assigned to you. The task times are represented as an integer array <code>tasks</code> of length <code>n</code>, where the <code>i<sup>th</sup></code> task takes <code>tasks[i]</code> hours to finish. A <strong>work session</strong> is when you work for <strong>at most</strong> <code>sessionTime</code> consecutive hours and then take a break.</p>
 
@@ -57,11 +75,17 @@
 	<li><code>max(tasks[i]) &lt;= sessionTime &lt;= 15</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -82,7 +106,7 @@ class Solution:
         return f[-1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -113,7 +137,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -146,7 +170,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minSessions(tasks []int, sessionTime int) int {
@@ -174,7 +198,7 @@ func minSessions(tasks []int, sessionTime int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minSessions(tasks: number[], sessionTime: number): number {
@@ -203,10 +227,8 @@ function minSessions(tasks: number[], sessionTime: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

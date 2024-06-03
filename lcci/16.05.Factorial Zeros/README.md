@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.05.Factorial%20Zeros/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 16.05. 阶乘尾数](https://leetcode.cn/problems/factorial-zeros-lcci)
 
 [English Version](/lcci/16.05.Factorial%20Zeros/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>设计一个算法，算出 n 阶乘有多少个尾随零。</p>
 <p><strong>示例 1:</strong></p>
@@ -17,11 +25,13 @@
 <strong>解释:</strong>&nbsp;5! = 120, 尾数中有 1 个零.</pre>
 <p><strong>说明: </strong>你算法的时间复杂度应为&nbsp;<em>O</em>(log&nbsp;<em>n</em>)<em>&nbsp;</em>。</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：数学**
+### 方法一：数学
 
 题目实际上是求 $[1,n]$ 中有多少个 $5$ 的因数。
 
@@ -36,9 +46,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -50,9 +58,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -67,7 +73,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -83,7 +89,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func trailingZeroes(n int) int {
@@ -96,12 +102,12 @@ func trailingZeroes(n int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function trailingZeroes(n: number): number {
     let ans = 0;
-    while (n > 0) {
+    while (n) {
         n = Math.floor(n / 5);
         ans += n;
     }
@@ -109,10 +115,24 @@ function trailingZeroes(n: number): number {
 }
 ```
 
-### **...**
+#### Swift
 
-```
-
+```swift
+class Solution {
+    func trailingZeroes(_ n: Int) -> Int {
+        var count = 0
+        var number = n
+        while number > 0 {
+            number /= 5
+            count += number
+        }
+        return count
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

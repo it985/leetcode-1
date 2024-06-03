@@ -1,10 +1,20 @@
-# [1173. 即时食物配送 I](https://leetcode.cn/problems/immediate-food-delivery-i)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1173.Immediate%20Food%20Delivery%20I/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1173. 即时食物配送 I 🔒](https://leetcode.cn/problems/immediate-food-delivery-i)
 
 [English Version](/solution/1100-1199/1173.Immediate%20Food%20Delivery%20I/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>配送表: <code>Delivery</code></p>
 
@@ -54,17 +64,19 @@ Delivery 表:
 +----------------------+
 <strong>解释：</strong>2 和 3 号订单为即时订单，其他的为计划订单。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：求和**
+### 方法一：求和
 
 我们可以用 `sum` 函数来统计即时订单的数量，然后除以总订单数即可。由于题目求的是百分比，所以需要乘以 100，最后我们用 `round` 函数保留两位小数。
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -74,3 +86,7 @@ FROM Delivery;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

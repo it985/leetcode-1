@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2956.Find%20Common%20Elements%20Between%20Two%20Arrays/README.md
+rating: 1214
+source: 第 119 场双周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+---
+
+<!-- problem:start -->
+
 # [2956. 找到两个数组中的公共元素](https://leetcode.cn/problems/find-common-elements-between-two-arrays)
 
 [English Version](/solution/2900-2999/2956.Find%20Common%20Elements%20Between%20Two%20Arrays/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums1</code>&nbsp;和&nbsp;<code>nums2</code>&nbsp;，它们分别含有 <code>n</code>&nbsp;和 <code>m</code>&nbsp;个元素。</p>
 
@@ -48,11 +61,13 @@
 	<li><code>1 &lt;= nums1[i], nums2[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表或数组**
+### 方法一：哈希表或数组
 
 我们可以用两个哈希表或数组 $s1$ 和 $s2$ 分别记录两个数组中出现的元素。
 
@@ -66,9 +81,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,9 +90,7 @@ class Solution:
         return [sum(x in s2 for x in nums1), sum(x in s1 for x in nums2)]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +115,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -130,7 +141,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findIntersectionValues(nums1 []int, nums2 []int) []int {
@@ -153,7 +164,7 @@ func findIntersectionValues(nums1 []int, nums2 []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findIntersectionValues(nums1: number[], nums2: number[]): number[] {
@@ -176,10 +187,8 @@ function findIntersectionValues(nums1: number[], nums2: number[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

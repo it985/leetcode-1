@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0445.Add%20Two%20Numbers%20II/README_EN.md
+tags:
+    - Stack
+    - Linked List
+    - Math
+---
+
+<!-- problem:start -->
+
 # [445. Add Two Numbers II](https://leetcode.com/problems/add-two-numbers-ii)
 
 [中文文档](/solution/0400-0499/0445.Add%20Two%20Numbers%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.</p>
 
@@ -42,11 +56,17 @@
 <p>&nbsp;</p>
 <p><strong>Follow up:</strong>&nbsp;Could you solve it without reversing the input lists?</p>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -76,7 +96,7 @@ class Solution:
         return dummy.next
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -113,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -155,7 +175,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -195,7 +215,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -232,7 +252,7 @@ function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | nul
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for singly-linked list.
@@ -290,6 +310,18 @@ impl Solution {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Rust
+
 ```rust
 // Definition for singly-linked list.
 // #[derive(PartialEq, Eq, Clone, Debug)]
@@ -346,10 +378,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

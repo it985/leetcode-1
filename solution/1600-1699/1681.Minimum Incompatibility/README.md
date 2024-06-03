@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1681.Minimum%20Incompatibility/README.md
+rating: 2389
+source: 第 218 场周赛 Q4
+tags:
+    - 位运算
+    - 数组
+    - 动态规划
+    - 状态压缩
+---
+
+<!-- problem:start -->
+
 # [1681. 最小不兼容性](https://leetcode.cn/problems/minimum-incompatibility)
 
 [English Version](/solution/1600-1699/1681.Minimum%20Incompatibility/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code>​​​ 和一个整数 <code>k</code> 。你需要将这个数组划分到 <code>k</code> 个相同大小的子集中，使得同一个子集里面没有两个相同的元素。</p>
 
@@ -52,11 +67,13 @@
 	<li><code>1 <= nums[i] <= nums.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：预处理 + 状态压缩 + 动态规划**
+### 方法一：预处理 + 状态压缩 + 动态规划
 
 不妨设划分后每个子集的大小为 $m$，那么 $m=\frac{n}{k}$，其中 $n$ 是数组的长度。
 
@@ -74,9 +91,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -119,34 +134,7 @@ class Solution:
         return f[-1] if f[-1] != inf else -1
 ```
 
-```python
-class Solution:
-    def minimumIncompatibility(self, nums: List[int], k: int) -> int:
-        @cache
-        def dfs(mask):
-            if mask == (1 << n) - 1:
-                return 0
-            d = {v: i for i, v in enumerate(nums) if (mask >> i & 1) == 0}
-            ans = inf
-            if len(d) < m:
-                return ans
-            for vs in combinations(d.keys(), m):
-                nxt = mask
-                for v in vs:
-                    nxt |= 1 << d[v]
-                ans = min(ans, max(vs) - min(vs) + dfs(nxt))
-            return ans
-
-        n = len(nums)
-        m = n // k
-        ans = dfs(0)
-        dfs.cache_clear()
-        return ans if ans < inf else -1
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -204,7 +192,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -263,7 +251,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumIncompatibility(nums []int, k int) int {
@@ -325,7 +313,7 @@ func minimumIncompatibility(nums []int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumIncompatibility(nums: number[], k: number): number {
@@ -389,7 +377,7 @@ function bitCount(i: number): number {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -457,10 +445,45 @@ public class Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def minimumIncompatibility(self, nums: List[int], k: int) -> int:
+        @cache
+        def dfs(mask):
+            if mask == (1 << n) - 1:
+                return 0
+            d = {v: i for i, v in enumerate(nums) if (mask >> i & 1) == 0}
+            ans = inf
+            if len(d) < m:
+                return ans
+            for vs in combinations(d.keys(), m):
+                nxt = mask
+                for v in vs:
+                    nxt |= 1 << d[v]
+                ans = min(ans, max(vs) - min(vs) + dfs(nxt))
+            return ans
+
+        n = len(nums)
+        m = n // k
+        ans = dfs(0)
+        dfs.cache_clear()
+        return ans if ans < inf else -1
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

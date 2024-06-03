@@ -1,8 +1,20 @@
-# [2668. Find Latest Salaries](https://leetcode.com/problems/find-latest-salaries)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2668.Find%20Latest%20Salaries/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [2668. Find Latest Salaries 🔒](https://leetcode.com/problems/find-latest-salaries)
 
 [中文文档](/solution/2600-2699/2668.Find%20Latest%20Salaries/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code><font face="monospace">Salary</font></code></p>
 
@@ -60,18 +72,24 @@ Each row contains employees details and their yearly salaries, however, some of 
 </strong>
 <strong>Explanation:</strong>
 - emp_id 1 has two records with a salary of&nbsp;110000, 106119 out of these 110000 is an updated salary (Assuming salary is increasing each year)
-- emp_id 2 has two records with a salary of&nbsp;128922, 128922&nbsp;out of these 130000 is an updated salary.
+- emp_id 2 has two records with a salary of&nbsp;128922, 130000&nbsp;out of these 130000 is an updated salary.
 - emp_id 3 has only one salary record so that is already an updated salary.
 - emp_id 4&nbsp;has two records with a salary of&nbsp;162825, 170000&nbsp;out of these 170000 is an updated salary.
 - emp_id 5&nbsp;has only one salary record so that is already an updated salary.
 - emp_id 6&nbsp;has two records with a salary of 79632, 90000 out&nbsp;of these 90000 is an updated salary.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -87,3 +105,7 @@ ORDER BY emp_id;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

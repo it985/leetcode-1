@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0564.Find%20the%20Closest%20Palindrome/README_EN.md
+tags:
+    - Math
+    - String
+---
+
+<!-- problem:start -->
+
 # [564. Find the Closest Palindrome](https://leetcode.com/problems/find-the-closest-palindrome)
 
 [中文文档](/solution/0500-0599/0564.Find%20the%20Closest%20Palindrome/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a string <code>n</code> representing an integer, return <em>the closest integer (not including itself), which is a palindrome</em>. If there is a tie, return <em><strong>the smaller one</strong></em>.</p>
 
@@ -34,11 +47,17 @@
 	<li><code>n</code> is representing an integer in the range <code>[1, 10<sup>18</sup> - 1]</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,7 +85,7 @@ class Solution:
         return str(ans)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -100,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -131,7 +150,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func nearestPalindromic(n string) string {
@@ -168,10 +187,8 @@ func abs(x int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

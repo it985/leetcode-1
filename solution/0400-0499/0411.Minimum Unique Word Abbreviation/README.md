@@ -1,10 +1,22 @@
-# [411. 最短独占单词缩写](https://leetcode.cn/problems/minimum-unique-word-abbreviation)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0411.Minimum%20Unique%20Word%20Abbreviation/README.md
+tags:
+    - 位运算
+    - 字符串
+    - 回溯
+---
+
+<!-- problem:start -->
+
+# [411. 最短独占单词缩写 🔒](https://leetcode.cn/problems/minimum-unique-word-abbreviation)
 
 [English Version](/solution/0400-0499/0411.Minimum%20Unique%20Word%20Abbreviation/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>通过将任意数量的 <strong>不相邻</strong> 子字符串替换为它们的长度，可以完成对字符串的 <strong>缩写</strong> 。 例如，像 <code>"substitution"</code> 这样的字符串可以缩写为（但不限于）：</p>
 
@@ -62,32 +74,42 @@
 
 <p>&nbsp;</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 
 ```
 
-### **...**
+#### C++
+
+```cpp
 
 ```
+
+#### Go
+
+```go
 
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

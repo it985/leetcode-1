@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0485.Max%20Consecutive%20Ones/README_EN.md
+tags:
+    - Array
+---
+
+<!-- problem:start -->
+
 # [485. Max Consecutive Ones](https://leetcode.com/problems/max-consecutive-ones)
 
 [中文文档](/solution/0400-0499/0485.Max%20Consecutive%20Ones/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a binary array <code>nums</code>, return <em>the maximum number of consecutive </em><code>1</code><em>&#39;s in the array</em>.</p>
 
@@ -30,11 +42,17 @@
 	<li><code>nums[i]</code> is either <code>0</code> or <code>1</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -49,7 +67,7 @@ class Solution:
         return max(ans, cnt)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -68,7 +86,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -88,7 +106,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findMaxConsecutiveOnes(nums []int) int {
@@ -105,7 +123,45 @@ func findMaxConsecutiveOnes(nums []int) int {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function findMaxConsecutiveOnes(nums: number[]): number {
+    let res = 0;
+    let count = 0;
+    for (const num of nums) {
+        if (num === 0) {
+            res = Math.max(res, count);
+            count = 0;
+        } else {
+            count++;
+        }
+    }
+    return Math.max(res, count);
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn find_max_consecutive_ones(nums: Vec<i32>) -> i32 {
+        let mut res = 0;
+        let mut count = 0;
+        for num in nums {
+            if num == 0 {
+                res = res.max(count);
+                count = 0;
+            } else {
+                count += 1;
+            }
+        }
+        res.max(count)
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -127,45 +183,7 @@ var findMaxConsecutiveOnes = function (nums) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function findMaxConsecutiveOnes(nums: number[]): number {
-    let res = 0;
-    let count = 0;
-    for (const num of nums) {
-        if (num === 0) {
-            res = Math.max(res, count);
-            count = 0;
-        } else {
-            count++;
-        }
-    }
-    return Math.max(res, count);
-}
-```
-
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn find_max_consecutive_ones(nums: Vec<i32>) -> i32 {
-        let mut res = 0;
-        let mut count = 0;
-        for num in nums {
-            if num == 0 {
-                res = res.max(count);
-                count = 0;
-            } else {
-                count += 1;
-            }
-        }
-        res.max(count)
-    }
-}
-```
-
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -188,10 +206,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

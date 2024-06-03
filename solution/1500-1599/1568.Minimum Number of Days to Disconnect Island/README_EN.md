@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1568.Minimum%20Number%20of%20Days%20to%20Disconnect%20Island/README_EN.md
+rating: 2208
+source: Weekly Contest 204 Q3
+tags:
+    - Depth-First Search
+    - Breadth-First Search
+    - Array
+    - Matrix
+    - Strongly Connected Component
+---
+
+<!-- problem:start -->
+
 # [1568. Minimum Number of Days to Disconnect Island](https://leetcode.com/problems/minimum-number-of-days-to-disconnect-island)
 
 [中文文档](/solution/1500-1599/1568.Minimum%20Number%20of%20Days%20to%20Disconnect%20Island/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an <code>m x n</code> binary grid <code>grid</code> where <code>1</code> represents land and <code>0</code> represents water. An <strong>island</strong> is a maximal <strong>4-directionally</strong> (horizontal or vertical) connected group of <code>1</code>&#39;s.</p>
 
@@ -42,11 +60,17 @@ Change land grid[1][1] and grid[0][2] to water and get 2 disconnected island.
 	<li><code>grid[i][j]</code> is either <code>0</code> or <code>1</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -85,7 +109,7 @@ class Solution:
         return cnt
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -147,7 +171,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -206,7 +230,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minDays(grid [][]int) int {
@@ -262,10 +286,8 @@ func minDays(grid [][]int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1733.Minimum%20Number%20of%20People%20to%20Teach/README.md
+rating: 1983
+source: 第 44 场双周赛 Q2
+tags:
+    - 贪心
+    - 数组
+    - 哈希表
+---
+
+<!-- problem:start -->
+
 # [1733. 需要教语言的最少人数](https://leetcode.cn/problems/minimum-number-of-people-to-teach)
 
 [English Version](/solution/1700-1799/1733.Minimum%20Number%20of%20People%20to%20Teach/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在一个由 <code>m</code> 个用户组成的社交网络里，我们获取到一些用户之间的好友关系。两个用户之间可以相互沟通的条件是他们都掌握同一门语言。</p>
 
@@ -53,11 +67,13 @@
 	<li><code>languages[i]</code> 中包含的值互不相同。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟 + 统计**
+### 方法一：模拟 + 统计
 
 对于每个好友关系，如果两个人掌握的语言集合不相交，则需要教一门语言，使得两个人可以相互沟通，我们将这些人放入一个哈希集合 $s$ 中。
 
@@ -67,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -95,9 +109,7 @@ class Solution:
         return len(s) - max(cnt.values(), default=0)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -139,7 +151,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -178,7 +190,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumTeachings(n int, languages [][]int, friendships [][]int) int {
@@ -212,10 +224,8 @@ func minimumTeachings(n int, languages [][]int, friendships [][]int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

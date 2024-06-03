@@ -1,10 +1,21 @@
-# [1426. 数元素](https://leetcode.cn/problems/counting-elements)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1426.Counting%20Elements/README.md
+tags:
+    - 数组
+    - 哈希表
+---
+
+<!-- problem:start -->
+
+# [1426. 数元素 🔒](https://leetcode.cn/problems/counting-elements)
 
 [English Version](/solution/1400-1499/1426.Counting%20Elements/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组&nbsp;<code>arr</code>， 对于元素 <code>x</code> ，只有当 <code>x + 1</code> 也在数组&nbsp;<code>arr</code> 里时，才能记为 <code>1</code> 个数。</p>
 
@@ -36,11 +47,13 @@
 	<li><code>0 &lt;= arr[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数**
+### 方法一：计数
 
 我们可以用一个哈希表或数组 $cnt$ 记录数组 $arr$ 中的每个数出现的次数，然后遍历 $cnt$ 中的每个数 $x$，如果 $x+1$ 也在 $cnt$ 中，那么就将 $cnt[x]$ 加到答案中。
 
@@ -48,9 +61,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -59,9 +70,7 @@ class Solution:
         return sum(v for x, v in cnt.items() if cnt[x + 1])
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -81,7 +90,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -102,7 +111,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countElements(arr []int) (ans int) {
@@ -120,7 +129,7 @@ func countElements(arr []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countElements(arr: number[]): number {
@@ -139,7 +148,26 @@ function countElements(arr: number[]): number {
 }
 ```
 
-### **JavaScript**
+#### Rust
+
+```rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn count_elements(arr: Vec<i32>) -> i32 {
+        let mut cnt = HashMap::new();
+        for &num in &arr {
+            *cnt.entry(num).or_insert(0) += 1;
+        }
+        cnt.iter()
+            .filter(|(&x, _)| cnt.contains_key(&(x + 1)))
+            .map(|(_, &v)| v)
+            .sum()
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -162,26 +190,7 @@ var countElements = function (arr) {
 };
 ```
 
-### **Rust**
-
-```rust
-use std::collections::HashMap;
-
-impl Solution {
-    pub fn count_elements(arr: Vec<i32>) -> i32 {
-        let mut cnt = HashMap::new();
-        for &num in &arr {
-            *cnt.entry(num).or_insert(0) += 1;
-        }
-        cnt.iter()
-            .filter(|(&x, _)| cnt.contains_key(&(x + 1)))
-            .map(|(_, &v)| v)
-            .sum()
-    }
-}
-```
-
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -202,10 +211,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

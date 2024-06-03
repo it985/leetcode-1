@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1914.Cyclically%20Rotating%20a%20Grid/README.md
+rating: 1766
+source: 第 247 场周赛 Q2
+tags:
+    - 数组
+    - 矩阵
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [1914. 循环轮转矩阵](https://leetcode.cn/problems/cyclically-rotating-a-grid)
 
 [English Version](/solution/1900-1999/1914.Cyclically%20Rotating%20a%20Grid/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个大小为 <code>m x n</code> 的整数矩阵 <code>grid</code>​​​ ，其中 <code>m</code> 和 <code>n</code> 都是 <strong>偶数</strong> ；另给你一个整数 <code>k</code> 。</p>
 
@@ -45,11 +59,13 @@
 	<li><code>1 &lt;= k &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：逐层模拟**
+### 方法一：逐层模拟
 
 我们先计算得到矩阵的层数 $p$，然后从外到内逐层模拟循环轮转的过程。
 
@@ -59,9 +75,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -100,9 +114,7 @@ class Solution:
         return grid
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -155,7 +167,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -202,7 +214,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func rotateGrid(grid [][]int, k int) [][]int {
@@ -252,7 +264,7 @@ func rotateGrid(grid [][]int, k int) [][]int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function rotateGrid(grid: number[][], k: number): number[][] {
@@ -297,10 +309,8 @@ function rotateGrid(grid: number[][], k: number): number[][] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

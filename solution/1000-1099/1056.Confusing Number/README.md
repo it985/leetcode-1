@@ -1,10 +1,20 @@
-# [1056. 易混淆数](https://leetcode.cn/problems/confusing-number)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1056.Confusing%20Number/README.md
+tags:
+    - 数学
+---
+
+<!-- problem:start -->
+
+# [1056. 易混淆数 🔒](https://leetcode.cn/problems/confusing-number)
 
 [English Version](/solution/1000-1099/1056.Confusing%20Number/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个数字 <code>N</code>，当它满足以下条件的时候返回 <code>true</code>：</p>
 
@@ -71,23 +81,17 @@
 	<li>可以忽略掉旋转后得到的前导零，例如，如果我们旋转后得到 <code>0008</code> 那么该数字就是 <code>8</code> 。</li>
 </ol>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-我们先用一个长度为 $10$ 的数组 $d$ 记录每个数字旋转 180° 后对应的数字，在这道题中，数字 $[0,1,6,8,9]$ 旋转后得到的数字是 $[0,1,9,8,6]$，其余数字旋转后得到的不是数字，我们将对应的数字置为 $-1$。
-
-将 $n$ 的值赋给 $x$。然后遍历数字 $x$ 的每一位数字 $v$，如果 $d[v] \lt 0$，说明 $x$ 不是易混淆数，直接返回 `false`。否则，我们将数字 $v$ 对应的旋转数字 $d[v]$ 加入到 $y$ 中。最后，判断 $y$ 和 $n$ 是否相等，若不相等，则说明 $n$ 是易混淆数，返回 `true`。
-
-时间复杂度 $O(\log n)$，空间复杂度 $O(1)$。
-
-相似题目：[788. 旋转数字](/solution/0700-0799/0788.Rotated%20Digits/README.md)
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -102,9 +106,7 @@ class Solution:
         return y != n
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -124,7 +126,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -145,7 +147,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func confusingNumber(n int) bool {
@@ -163,7 +165,7 @@ func confusingNumber(n int) bool {
 }
 ```
 
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -188,10 +190,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

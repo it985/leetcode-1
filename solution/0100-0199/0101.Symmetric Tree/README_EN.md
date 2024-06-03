@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0101.Symmetric%20Tree/README_EN.md
+tags:
+    - Tree
+    - Depth-First Search
+    - Breadth-First Search
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [101. Symmetric Tree](https://leetcode.com/problems/symmetric-tree)
 
 [中文文档](/solution/0100-0199/0101.Symmetric%20Tree/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>root</code> of a binary tree, <em>check whether it is a mirror of itself</em> (i.e., symmetric around its center).</p>
 
@@ -32,9 +47,13 @@
 <p>&nbsp;</p>
 <strong>Follow up:</strong> Could you solve it both recursively and iteratively?
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Recursion**
+<!-- solution:start -->
+
+### Solution 1: Recursion
 
 We design a function $dfs(root1, root2)$ to determine whether two binary trees are symmetric. The answer is $dfs(root, root)$.
 
@@ -48,7 +67,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -69,7 +88,7 @@ class Solution:
         return dfs(root, root)
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -104,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -131,7 +150,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -157,7 +176,7 @@ func isSymmetric(root *TreeNode) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -189,7 +208,7 @@ function isSymmetric(root: TreeNode | null): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -233,6 +252,43 @@ impl Solution {
     }
 }
 ```
+
+#### JavaScript
+
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isSymmetric = function (root) {
+    function dfs(root1, root2) {
+        if (!root1 && !root2) return true;
+        if (!root1 || !root2 || root1.val != root2.val) return false;
+        return dfs(root1.left, root2.right) && dfs(root1.right, root2.left);
+    }
+    return dfs(root, root);
+};
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -284,10 +340,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

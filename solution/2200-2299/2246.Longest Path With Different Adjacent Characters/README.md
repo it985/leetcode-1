@@ -1,10 +1,27 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2246.Longest%20Path%20With%20Different%20Adjacent%20Characters/README.md
+rating: 2126
+source: 第 289 场周赛 Q4
+tags:
+    - 树
+    - 深度优先搜索
+    - 图
+    - 拓扑排序
+    - 数组
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [2246. 相邻字符不同的最长路径](https://leetcode.cn/problems/longest-path-with-different-adjacent-characters)
 
 [English Version](/solution/2200-2299/2246.Longest%20Path%20With%20Different%20Adjacent%20Characters/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一棵 <strong>树</strong>（即一个连通、无向、无环图），根节点是节点 <code>0</code> ，这棵树由编号从 <code>0</code> 到 <code>n - 1</code> 的 <code>n</code> 个节点组成。用下标从 <strong>0</strong> 开始、长度为 <code>n</code> 的数组 <code>parent</code> 来表示这棵树，其中 <code>parent[i]</code> 是节点 <code>i</code> 的父节点，由于节点 <code>0</code> 是根节点，所以 <code>parent[0] == -1</code> 。</p>
 
@@ -48,11 +65,13 @@
 	<li><code>s</code> 仅由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：树形 DP**
+### 方法一：树形 DP
 
 我们先根据数组 $parent$ 构建邻接表 $g$，其中 $g[i]$ 表示节点 $i$ 的所有子节点。
 
@@ -64,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -89,9 +106,7 @@ class Solution:
         return ans + 1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -125,7 +140,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -154,7 +169,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func longestPath(parent []int, s string) int {
@@ -181,7 +196,7 @@ func longestPath(parent []int, s string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function longestPath(parent: number[], s: string): number {
@@ -207,10 +222,8 @@ function longestPath(parent: number[], s: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

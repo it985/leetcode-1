@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0829.Consecutive%20Numbers%20Sum/README_EN.md
+tags:
+    - Math
+    - Enumeration
+---
+
+<!-- problem:start -->
+
 # [829. Consecutive Numbers Sum](https://leetcode.com/problems/consecutive-numbers-sum)
 
 [中文文档](/solution/0800-0899/0829.Consecutive%20Numbers%20Sum/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer <code>n</code>, return <em>the number of ways you can write </em><code>n</code><em> as the sum of consecutive positive integers.</em></p>
 
@@ -38,11 +51,17 @@
 	<li><code>1 &lt;= n &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -56,10 +75,11 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
+
     public int consecutiveNumbersSum(int n) {
         n <<= 1;
         int ans = 0;
@@ -73,7 +93,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -91,7 +111,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func consecutiveNumbersSum(n int) int {
@@ -106,10 +126,8 @@ func consecutiveNumbersSum(n int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

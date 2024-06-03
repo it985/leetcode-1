@@ -1,8 +1,23 @@
-# [2282. Number of People That Can Be Seen in a Grid](https://leetcode.com/problems/number-of-people-that-can-be-seen-in-a-grid)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2282.Number%20of%20People%20That%20Can%20Be%20Seen%20in%20a%20Grid/README_EN.md
+tags:
+    - Stack
+    - Array
+    - Matrix
+    - Monotonic Stack
+---
+
+<!-- problem:start -->
+
+# [2282. Number of People That Can Be Seen in a Grid 🔒](https://leetcode.com/problems/number-of-people-that-can-be-seen-in-a-grid)
 
 [中文文档](/solution/2200-2299/2282.Number%20of%20People%20That%20Can%20Be%20Seen%20in%20a%20Grid/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an <code>m x n</code> <strong>0-indexed</strong> 2D array of positive integers <code>heights</code> where <code>heights[i][j]</code> is the height of the person standing at position <code>(i, j)</code>.</p>
 
@@ -53,11 +68,17 @@
 	<li><code>1 &lt;= heights[i][j] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -86,7 +107,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -131,7 +152,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -176,7 +197,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func seePeople(heights [][]int) (ans [][]int) {
@@ -216,7 +237,7 @@ func seePeople(heights [][]int) (ans [][]int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function seePeople(heights: number[][]): number[][] {
@@ -258,10 +279,8 @@ function seePeople(heights: number[][]): number[][] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

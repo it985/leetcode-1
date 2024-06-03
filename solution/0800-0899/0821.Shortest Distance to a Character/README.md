@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0821.Shortest%20Distance%20to%20a%20Character/README.md
+tags:
+    - 数组
+    - 双指针
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [821. 字符的最短距离](https://leetcode.cn/problems/shortest-distance-to-a-character)
 
 [English Version](/solution/0800-0899/0821.Shortest%20Distance%20to%20a%20Character/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串 <code>s</code> 和一个字符 <code>c</code> ，且 <code>c</code> 是 <code>s</code> 中出现过的字符。</p>
 
@@ -42,11 +54,13 @@
 	<li>题目数据保证 <code>c</code> 在 <code>s</code> 中至少出现一次</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：两次遍历**
+### 方法一：两次遍历
 
 我们先创建一个长度为 $n$ 的答案数组 $ans$。
 
@@ -60,9 +74,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -82,9 +94,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -110,7 +120,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -136,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func shortestToChar(s string, c byte) []int {
@@ -161,7 +171,7 @@ func shortestToChar(s string, c byte) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function shortestToChar(s: string, c: string): number[] {
@@ -184,7 +194,7 @@ function shortestToChar(s: string, c: string): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -212,10 +222,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

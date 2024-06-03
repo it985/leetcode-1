@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2530.Maximal%20Score%20After%20Applying%20K%20Operations/README.md
+rating: 1386
+source: 第 327 场周赛 Q2
+tags:
+    - 贪心
+    - 数组
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [2530. 执行 K 次操作后的最大分数](https://leetcode.cn/problems/maximal-score-after-applying-k-operations)
 
 [English Version](/solution/2500-2599/2530.Maximal%20Score%20After%20Applying%20K%20Operations/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 和一个整数 <code>k</code> 。你的 <strong>起始分数</strong> 为 <code>0</code> 。</p>
 
@@ -51,11 +65,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：优先队列（大根堆）**
+### 方法一：优先队列（大根堆）
 
 要使得分数最大化，我们需要在每一步操作中，选择元素值最大的元素进行操作。因此，我们可以使用优先队列（大根堆）来维护当前元素值最大的元素。
 
@@ -65,9 +81,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -82,21 +96,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def maxKelements(self, nums: List[int], k: int) -> int:
-        for i, v in enumerate(nums):
-            nums[i] = -v
-        heapify(nums)
-        ans = 0
-        for _ in range(k):
-            ans -= heapreplace(nums, -ceil(-nums[0] / 3))
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -116,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -135,25 +135,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    long long maxKelements(vector<int>& nums, int k) {
-        make_heap(nums.begin(), nums.end());
-        long long ans = 0;
-        while (k--) {
-            int v = nums[0];
-            ans += v;
-            pop_heap(nums.begin(), nums.end());
-            nums.back() = (v + 2) / 3;
-            push_heap(nums.begin(), nums.end());
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func maxKelements(nums []int, k int) (ans int64) {
@@ -181,26 +163,24 @@ func (h *hp) push(v int) { heap.Push(h, v) }
 func (h *hp) pop() int   { return heap.Pop(h).(int) }
 ```
 
-```go
-func maxKelements(nums []int, k int) (ans int64) {
-	h := hp{nums}
-	heap.Init(&h)
-	for ; k > 0; k-- {
-		ans += int64(h.IntSlice[0])
-		h.IntSlice[0] = (h.IntSlice[0] + 2) / 3
-		heap.Fix(&h, 0)
-	}
-	return
+#### TypeScript
+
+```ts
+function maxKelements(nums: number[], k: number): number {
+    const pq = new MaxPriorityQueue();
+    nums.forEach(num => pq.enqueue(num));
+    let ans = 0;
+    while (k > 0) {
+        const v = pq.dequeue()!.element;
+        ans += v;
+        pq.enqueue(Math.floor((v + 2) / 3));
+        k--;
+    }
+    return ans;
 }
-
-type hp struct{ sort.IntSlice }
-
-func (h hp) Less(i, j int) bool { return h.IntSlice[i] > h.IntSlice[j] }
-func (hp) Push(any)             {}
-func (hp) Pop() (_ any)         { return }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::BinaryHeap;
@@ -222,27 +202,73 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
+<!-- tabs:end -->
 
-```ts
-function maxKelements(nums: number[], k: number): number {
-    const pq = new MaxPriorityQueue();
-    nums.forEach(num => pq.enqueue(num));
-    let ans = 0;
-    while (k > 0) {
-        const v = pq.dequeue()!.element;
-        ans += v;
-        pq.enqueue(Math.floor((v + 2) / 3));
-        k--;
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def maxKelements(self, nums: List[int], k: int) -> int:
+        for i, v in enumerate(nums):
+            nums[i] = -v
+        heapify(nums)
+        ans = 0
+        for _ in range(k):
+            ans -= heapreplace(nums, -ceil(-nums[0] / 3))
+        return ans
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    long long maxKelements(vector<int>& nums, int k) {
+        make_heap(nums.begin(), nums.end());
+        long long ans = 0;
+        while (k--) {
+            int v = nums[0];
+            ans += v;
+            pop_heap(nums.begin(), nums.end());
+            nums.back() = (v + 2) / 3;
+            push_heap(nums.begin(), nums.end());
+        }
+        return ans;
     }
-    return ans;
+};
+```
+
+#### Go
+
+```go
+func maxKelements(nums []int, k int) (ans int64) {
+	h := hp{nums}
+	heap.Init(&h)
+	for ; k > 0; k-- {
+		ans += int64(h.IntSlice[0])
+		h.IntSlice[0] = (h.IntSlice[0] + 2) / 3
+		heap.Fix(&h, 0)
+	}
+	return
 }
-```
 
-### **...**
+type hp struct{ sort.IntSlice }
 
-```
-
+func (h hp) Less(i, j int) bool { return h.IntSlice[i] > h.IntSlice[j] }
+func (hp) Push(any)             {}
+func (hp) Pop() (_ any)         { return }
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2444.Count%20Subarrays%20With%20Fixed%20Bounds/README_EN.md
+rating: 2092
+source: Weekly Contest 315 Q4
+tags:
+    - Queue
+    - Array
+    - Sliding Window
+    - Monotonic Queue
+---
+
+<!-- problem:start -->
+
 # [2444. Count Subarrays With Fixed Bounds](https://leetcode.com/problems/count-subarrays-with-fixed-bounds)
 
 [中文文档](/solution/2400-2499/2444.Count%20Subarrays%20With%20Fixed%20Bounds/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code> and two integers <code>minK</code> and <code>maxK</code>.</p>
 
@@ -42,9 +59,13 @@
 	<li><code>1 &lt;= nums[i], minK, maxK &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumeration of Right Endpoint**
+<!-- solution:start -->
+
+### Solution 1: Enumeration of Right Endpoint
 
 From the problem description, we know that all elements of the bounded subarray are in the interval `[minK, maxK]`, and the minimum value must be `minK`, and the maximum value must be `maxK`.
 
@@ -60,7 +81,7 @@ The time complexity is $O(n)$, and the space complexity is $O(1)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -78,7 +99,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -121,7 +142,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countSubarrays(nums []int, minK int, maxK int) int64 {
@@ -143,35 +164,7 @@ func countSubarrays(nums []int, minK int, maxK int) int64 {
 }
 ```
 
-### **C**
-
-```c
-#define max(a, b) (((a) > (b)) ? (a) : (b))
-#define min(a, b) (((a) < (b)) ? (a) : (b))
-
-long long countSubarrays(int* nums, int numsSize, int minK, int maxK) {
-    long long res = 0;
-    int minIndex = -1;
-    int maxIndex = -1;
-    int k = -1;
-    for (int i = 0; i < numsSize; i++) {
-        int num = nums[i];
-        if (num == minK) {
-            minIndex = i;
-        }
-        if (num == maxK) {
-            maxIndex = i;
-        }
-        if (num < minK || num > maxK) {
-            k = i;
-        }
-        res += max(min(minIndex, maxIndex) - k, 0);
-    }
-    return res;
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countSubarrays(nums: number[], minK: number, maxK: number): number {
@@ -195,7 +188,7 @@ function countSubarrays(nums: number[], minK: number, maxK: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -223,10 +216,36 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C
 
-```
+```c
+#define max(a, b) (((a) > (b)) ? (a) : (b))
+#define min(a, b) (((a) < (b)) ? (a) : (b))
 
+long long countSubarrays(int* nums, int numsSize, int minK, int maxK) {
+    long long res = 0;
+    int minIndex = -1;
+    int maxIndex = -1;
+    int k = -1;
+    for (int i = 0; i < numsSize; i++) {
+        int num = nums[i];
+        if (num == minK) {
+            minIndex = i;
+        }
+        if (num == maxK) {
+            maxIndex = i;
+        }
+        if (num < minK || num > maxK) {
+            k = i;
+        }
+        res += max(min(minIndex, maxIndex) - k, 0);
+    }
+    return res;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

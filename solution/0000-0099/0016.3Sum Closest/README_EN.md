@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0016.3Sum%20Closest/README_EN.md
+tags:
+    - Array
+    - Two Pointers
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest)
 
 [中文文档](/solution/0000-0099/0016.3Sum%20Closest/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code> of length <code>n</code> and an integer <code>target</code>, find three integers in <code>nums</code> such that the sum is closest to <code>target</code>.</p>
 
@@ -36,9 +50,13 @@
 	<li><code>-10<sup>4</sup> &lt;= target &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sorting + Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Sorting + Two Pointers
 
 We sort the array first, then traverse the array. For each element $nums[i]$, we use pointers $j$ and $k$ to point to $i+1$ and $n-1$ respectively, calculate the sum of the three numbers. If the sum of the three numbers equals $target$, we directly return $target$. Otherwise, we update the answer based on the difference from $target$. If the sum of the three numbers is greater than $target$, we move $k$ one place to the left, otherwise, we move $j$ one place to the right.
 
@@ -46,7 +64,7 @@ The time complexity is $O(n^2)$, and the space complexity is $O(\log n)$. Here, 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +87,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +117,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -125,7 +143,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func threeSumClosest(nums []int, target int) int {
@@ -160,7 +178,36 @@ func abs(x int) int {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function threeSumClosest(nums: number[], target: number): number {
+    nums.sort((a, b) => a - b);
+    let ans: number = 1 << 30;
+    const n = nums.length;
+    for (let i = 0; i < n; ++i) {
+        let j = i + 1;
+        let k = n - 1;
+        while (j < k) {
+            const t: number = nums[i] + nums[j] + nums[k];
+            if (t === target) {
+                return t;
+            }
+            if (Math.abs(t - target) < Math.abs(ans - target)) {
+                ans = t;
+            }
+            if (t > target) {
+                --k;
+            } else {
+                ++j;
+            }
+        }
+    }
+    return ans;
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -194,39 +241,51 @@ var threeSumClosest = function (nums, target) {
 };
 ```
 
-### **TypeScript**
+#### PHP
 
-```ts
-function threeSumClosest(nums: number[], target: number): number {
-    nums.sort((a, b) => a - b);
-    let ans: number = 1 << 30;
-    const n = nums.length;
-    for (let i = 0; i < n; ++i) {
-        let j = i + 1;
-        let k = n - 1;
-        while (j < k) {
-            const t: number = nums[i] + nums[j] + nums[k];
-            if (t === target) {
-                return t;
-            }
-            if (Math.abs(t - target) < Math.abs(ans - target)) {
-                ans = t;
-            }
-            if (t > target) {
-                --k;
-            } else {
-                ++j;
+```php
+class Solution {
+    /**
+     * @param int[] $nums
+     * @param int $target
+     * @return int
+     */
+
+    function threeSumClosest($nums, $target) {
+        $n = count($nums);
+        $closestSum = $nums[0] + $nums[1] + $nums[2];
+        $minDiff = abs($closestSum - $target);
+
+        sort($nums);
+
+        for ($i = 0; $i < $n - 2; $i++) {
+            $left = $i + 1;
+            $right = $n - 1;
+
+            while ($left < $right) {
+                $sum = $nums[$i] + $nums[$left] + $nums[$right];
+                $diff = abs($sum - $target);
+
+                if ($diff < $minDiff) {
+                    $minDiff = $diff;
+                    $closestSum = $sum;
+                } elseif ($sum < $target) {
+                    $left++;
+                } elseif ($sum > $target) {
+                    $right--;
+                } else {
+                    return $sum;
+                }
             }
         }
+
+        return $closestSum;
     }
-    return ans;
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

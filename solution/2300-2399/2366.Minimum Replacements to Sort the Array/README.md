@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2366.Minimum%20Replacements%20to%20Sort%20the%20Array/README.md
+rating: 2060
+source: 第 84 场双周赛 Q4
+tags:
+    - 贪心
+    - 数组
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [2366. 将数组排序的最少替换次数](https://leetcode.cn/problems/minimum-replacements-to-sort-the-array)
 
 [English Version](/solution/2300-2399/2366.Minimum%20Replacements%20to%20Sort%20the%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums</code>&nbsp;。每次操作中，你可以将数组中任何一个元素替换为&nbsp;<strong>任意两个</strong>&nbsp;和为该元素的数字。</p>
 
@@ -44,11 +58,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 我们观察发现，要使得数组 $nums$ 变成非递减有序，也即单调递增，那么数组后面的元素应该尽可能大，所以，将数组 $nums$ 的最后一个元素 $nums[n-1]$ 替换成多个更小的数是没有必要的。
 
@@ -59,13 +75,11 @@
 
 遍历结束，返回总的操作次数即可。
 
-时间复杂度 $O(n)$，空间复杂度 $O(1)$。其中 $n$ 为数组 $nums$ 的长度。
+时间复杂度 $O(n)$，其中 $n$ 为数组 $nums$ 的长度。空间复杂度 $O(1)$。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +97,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -130,7 +142,46 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func minimumReplacement(nums []int) (ans int64) {
+	n := len(nums)
+	mx := nums[n-1]
+	for i := n - 2; i >= 0; i-- {
+		if nums[i] <= mx {
+			mx = nums[i]
+			continue
+		}
+		k := (nums[i] + mx - 1) / mx
+		ans += int64(k - 1)
+		mx = nums[i] / k
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function minimumReplacement(nums: number[]): number {
+    const n = nums.length;
+    let mx = nums[n - 1];
+    let ans = 0;
+    for (let i = n - 2; i >= 0; --i) {
+        if (nums[i] <= mx) {
+            mx = nums[i];
+            continue;
+        }
+        const k = Math.ceil(nums[i] / mx);
+        ans += k - 1;
+        mx = Math.floor(nums[i] / k);
+    }
+    return ans;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -161,49 +212,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func minimumReplacement(nums []int) (ans int64) {
-	n := len(nums)
-	mx := nums[n-1]
-	for i := n - 2; i >= 0; i-- {
-		if nums[i] <= mx {
-			mx = nums[i]
-			continue
-		}
-		k := (nums[i] + mx - 1) / mx
-		ans += int64(k - 1)
-		mx = nums[i] / k
-	}
-	return
-}
-```
-
-### **TypeScript**
-
-```ts
-function minimumReplacement(nums: number[]): number {
-    const n = nums.length;
-    let mx = nums[n - 1];
-    let ans = 0;
-    for (let i = n - 2; i >= 0; --i) {
-        if (nums[i] <= mx) {
-            mx = nums[i];
-            continue;
-        }
-        const k = Math.ceil(nums[i] / mx);
-        ans += k - 1;
-        mx = Math.floor(nums[i] / k);
-    }
-    return ans;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

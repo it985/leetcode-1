@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0916.Word%20Subsets/README_EN.md
+tags:
+    - Array
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [916. Word Subsets](https://leetcode.com/problems/word-subsets)
 
 [中文文档](/solution/0900-0999/0916.Word%20Subsets/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two string arrays <code>words1</code> and <code>words2</code>.</p>
 
@@ -41,11 +55,23 @@
 	<li>All the strings of <code>words1</code> are <strong>unique</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Counting
+
+Traverse each word `b` in `words2`, count the maximum occurrence of each letter, and record it as `cnt`.
+
+Then traverse each word `a` in `words1`, count the occurrence of each letter, and record it as `t`. If the occurrence of each letter in `cnt` is not greater than the occurrence in `t`, then `a` is a universal word, and add it to the answer.
+
+The time complexity is $O(L)$, where $L$ is the sum of the lengths of all words in `words1` and `words2`.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -63,7 +89,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -100,7 +126,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,7 +165,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func wordSubsets(words1 []string, words2 []string) (ans []string) {
@@ -173,10 +199,8 @@ func wordSubsets(words1 []string, words2 []string) (ans []string) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

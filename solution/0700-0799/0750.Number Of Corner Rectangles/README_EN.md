@@ -1,8 +1,23 @@
-# [750. Number Of Corner Rectangles](https://leetcode.com/problems/number-of-corner-rectangles)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0750.Number%20Of%20Corner%20Rectangles/README_EN.md
+tags:
+    - Array
+    - Math
+    - Dynamic Programming
+    - Matrix
+---
+
+<!-- problem:start -->
+
+# [750. Number Of Corner Rectangles 🔒](https://leetcode.com/problems/number-of-corner-rectangles)
 
 [中文文档](/solution/0700-0799/0750.Number%20Of%20Corner%20Rectangles/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an <code>m x n</code> integer matrix <code>grid</code> where each entry is only <code>0</code> or <code>1</code>, return <em>the number of <strong>corner rectangles</strong></em>.</p>
 
@@ -44,9 +59,13 @@
 	<li>The number of <code>1</code>&#39;s in the grid is in the range <code>[1, 6000]</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table + Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Hash Table + Enumeration
 
 We enumerate each row as the bottom of the rectangle. For the current row, if both column $i$ and column $j$ are $1$, then we use a hash table to find out how many of the previous rows have both columns $i$ and $j$ as $1$. This is the number of rectangles with $(i, j)$ as the bottom right corner, and we add this number to the answer. Then we add $(i, j)$ to the hash table and continue to enumerate the next pair $(i, j)$.
 
@@ -54,7 +73,7 @@ The time complexity is $O(m \times n^2)$, and the space complexity is $O(n^2)$. 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -72,7 +91,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +117,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -124,7 +143,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countCornerRectangles(grid [][]int) (ans int) {
@@ -148,7 +167,7 @@ func countCornerRectangles(grid [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countCornerRectangles(grid: number[][]): number {
@@ -172,10 +191,8 @@ function countCornerRectangles(grid: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

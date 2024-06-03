@@ -1,8 +1,29 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1728.Cat%20and%20Mouse%20II/README_EN.md
+rating: 2849
+source: Weekly Contest 224 Q4
+tags:
+    - Graph
+    - Topological Sort
+    - Memoization
+    - Array
+    - Math
+    - Dynamic Programming
+    - Game Theory
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [1728. Cat and Mouse II](https://leetcode.com/problems/cat-and-mouse-ii)
 
 [中文文档](/solution/1700-1799/1728.Cat%20and%20Mouse%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A game is played by a cat and a mouse named Cat and Mouse.</p>
 
@@ -72,11 +93,17 @@
 	<li><code>1 &lt;= catJump, mouseJump &lt;= 8</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -149,19 +176,10 @@ class Solution:
                 return True
 
         return dp(cat, mouse, 0)
-
-```
-
-### **Java**
-
-```java
-
-```
-
-### **...**
-
-```
-
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

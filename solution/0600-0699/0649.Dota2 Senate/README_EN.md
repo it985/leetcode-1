@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0649.Dota2%20Senate/README_EN.md
+tags:
+    - Greedy
+    - Queue
+    - String
+---
+
+<!-- problem:start -->
+
 # [649. Dota2 Senate](https://leetcode.com/problems/dota2-senate)
 
 [中文文档](/solution/0600-0699/0649.Dota2%20Senate/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>In the world of Dota2, there are two parties: the Radiant and the Dire.</p>
 
@@ -52,11 +66,17 @@ And in round 2, the third senator can just announce the victory since he is the 
 	<li><code>senate[i]</code> is either <code>&#39;R&#39;</code> or <code>&#39;D&#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -79,7 +99,7 @@ class Solution:
         return "Radiant" if qr else "Dire"
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +128,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -140,7 +160,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func predictPartyVictory(senate string) string {
@@ -170,7 +190,7 @@ func predictPartyVictory(senate string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function predictPartyVictory(senate: string): string {
@@ -197,7 +217,7 @@ function predictPartyVictory(senate: string): string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -232,10 +252,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

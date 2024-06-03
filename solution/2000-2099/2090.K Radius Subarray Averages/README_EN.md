@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2090.K%20Radius%20Subarray%20Averages/README_EN.md
+rating: 1358
+source: Weekly Contest 269 Q2
+tags:
+    - Array
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [2090. K Radius Subarray Averages](https://leetcode.com/problems/k-radius-subarray-averages)
 
 [中文文档](/solution/2000-2099/2090.K%20Radius%20Subarray%20Averages/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> array <code>nums</code> of <code>n</code> integers, and an integer <code>k</code>.</p>
 
@@ -59,23 +74,171 @@
 	<li><code>0 &lt;= nums[i], k &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Sliding Window
+
+The number of elements in a subarray with radius $k$ is $k \times 2 + 1$. Therefore, we can redefine $k$ as $k \times 2 + 1$.
+
+We create an answer array $ans$ of length $n$, initially each element is $-1$.
+
+Next, we first check whether $k$ is greater than the length $n$ of the array `nums`. If it is, we directly return the answer array.
+
+Otherwise, we calculate the sum $s$ of the first $k$ elements of the array `nums`, and assign the quotient of $s$ divided by $k$ to the $j$-th element of the answer array $ans$, where $j = k / 2$.
+
+Then, we start traversing the array `nums` from $k$. For each iteration, we add the value of $nums[i]$ to $s$ and subtract the value of $nums[i - k]$, and update $j = j + 1$. Then we get the sum $s$ of the subarray with the $j$-th element as the center and radius $k$, and assign the quotient of $s$ divided by $k$ to the $j$-th element of the answer array $ans$.
+
+Finally, we return the answer array.
+
+The time complexity is $O(n)$, where $n$ is the length of the array `nums`. Ignoring the space consumption of the answer, the space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
     def getAverages(self, nums: List[int], k: int) -> List[int]:
+        k = k << 1 | 1
         n = len(nums)
         ans = [-1] * n
-        s = list(accumulate(nums, initial=0))
-        for i in range(n):
-            if i - k >= 0 and i + k < n:
-                ans[i] = (s[i + k + 1] - s[i - k]) // (k << 1 | 1)
+        if k > n:
+            return ans
+        s = sum(nums[:k])
+        j = k // 2
+        ans[j] = s // k
+        for i in range(k, n):
+            j += 1
+            s += nums[i] - nums[i - k]
+            ans[j] = s // k
         return ans
 ```
+
+#### Java
+
+```java
+class Solution {
+    public int[] getAverages(int[] nums, int k) {
+        k = k << 1 | 1;
+        int n = nums.length;
+        int[] ans = new int[n];
+        Arrays.fill(ans, -1);
+        if (k > n) {
+            return ans;
+        }
+        long s = 0;
+        for (int i = 0; i < k; ++i) {
+            s += nums[i];
+        }
+        int j = k / 2;
+        ans[j] = (int) (s / k);
+        for (int i = k; i < n; ++i) {
+            s += nums[i] - nums[i - k];
+            ans[++j] = (int) (s / k);
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> getAverages(vector<int>& nums, int k) {
+        k = k << 1 | 1;
+        int n = nums.size();
+        vector<int> ans(n, -1);
+        if (k > n) {
+            return ans;
+        }
+        long long s = accumulate(nums.begin(), nums.begin() + k, 0LL);
+        int j = k / 2;
+        ans[j] = s / k;
+        for (int i = k; i < n; ++i) {
+            s += nums[i] - nums[i - k];
+            ans[++j] = s / k;
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func getAverages(nums []int, k int) []int {
+	k = k<<1 | 1
+	n := len(nums)
+	ans := make([]int, n)
+	for i := range ans {
+		ans[i] = -1
+	}
+	if k > n {
+		return ans
+	}
+	s := 0
+	for _, x := range nums[:k] {
+		s += x
+	}
+	j := k >> 1
+	ans[j] = s / k
+	for i := k; i < n; i++ {
+		s += nums[i] - nums[i-k]
+		j++
+		ans[j] = s / k
+	}
+	return ans
+}
+```
+
+#### TypeScript
+
+```ts
+function getAverages(nums: number[], k: number): number[] {
+    k = (k << 1) | 1;
+    const n = nums.length;
+    const ans: number[] = Array(n).fill(-1);
+    if (k > n) {
+        return ans;
+    }
+    let s = nums.slice(0, k).reduce((acc, cur) => acc + cur, 0);
+    let j = k >> 1;
+    ans[j] = Math.floor(s / k);
+    for (let i = k; i < n; ++i) {
+        s += nums[i] - nums[i - k];
+        ans[++j] = Math.floor(s / k);
+    }
+    return ans;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Another Way of Sliding Window
+
+We maintain a window of size $k \times 2 + 1$, and let the sum of all elements in the window be $s$.
+
+Like Solution 1, we create an answer array $ans$ of length $n$, initially each element is $-1$.
+
+Next, we traverse the array `nums`, add the value of $nums[i]$ to the sum $s$. If $i \geq k \times 2$, it means the window size is $k \times 2 + 1$ now, so we set $ans[i-k] = \frac{s}{k \times 2 + 1}$, then we subtract the value of $nums[i - k \times 2]$ from the sum $s$. Continue to the next element.
+
+Finally, we return the answer array.
+
+The time complexity is $O(n)$, where $n$ is the length of the array `nums`. Ignoring the space consumption of the answer, the space complexity is $O(1)$.
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -90,27 +253,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-```java
-class Solution {
-    public int[] getAverages(int[] nums, int k) {
-        int n = nums.length;
-        long[] s = new long[n + 1];
-        for (int i = 0; i < n; ++i) {
-            s[i + 1] = s[i] + nums[i];
-        }
-        int[] ans = new int[n];
-        Arrays.fill(ans, -1);
-        for (int i = 0; i < n; ++i) {
-            if (i - k >= 0 && i + k < n) {
-                ans[i] = (int) ((s[i + k + 1] - s[i - k]) / (k << 1 | 1));
-            }
-        }
-        return ans;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -131,28 +274,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    vector<int> getAverages(vector<int>& nums, int k) {
-        int n = nums.size();
-        long s[n + 1];
-        s[0] = 0;
-        for (int i = 0; i < n; ++i) {
-            s[i + 1] = s[i] + nums[i];
-        }
-        vector<int> ans(n, -1);
-        for (int i = 0; i < n; ++i) {
-            if (i - k >= 0 && i + k < n) {
-                ans[i] = (s[i + k + 1] - s[i - k]) / (k << 1 | 1);
-            }
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -173,25 +295,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func getAverages(nums []int, k int) []int {
-	n := len(nums)
-	s := make([]int, n+1)
-	for i, v := range nums {
-		s[i+1] = s[i] + v
-	}
-	ans := make([]int, n)
-	for i := 0; i < n; i++ {
-		ans[i] = -1
-		if i-k >= 0 && i+k < n {
-			ans[i] = (s[i+k+1] - s[i-k]) / (k<<1 | 1)
-		}
-	}
-	return ans
-}
-```
+#### Go
 
 ```go
 func getAverages(nums []int, k int) []int {
@@ -209,24 +313,7 @@ func getAverages(nums []int, k int) []int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function getAverages(nums: number[], k: number): number[] {
-    const n = nums.length;
-    const s = new Array(n + 1).fill(0);
-    for (let i = 0; i < n; ++i) {
-        s[i + 1] = s[i] + nums[i];
-    }
-    const ans: number[] = new Array(n).fill(-1);
-    for (let i = 0; i < n; ++i) {
-        if (i - k >= 0 && i + k < n) {
-            ans[i] = Math.floor((s[i + k + 1] - s[i - k]) / ((k << 1) | 1));
-        }
-    }
-    return ans;
-}
-```
+#### TypeScript
 
 ```ts
 function getAverages(nums: number[], k: number): number[] {
@@ -244,10 +331,8 @@ function getAverages(nums: number[], k: number): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

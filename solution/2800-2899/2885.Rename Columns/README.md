@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2885.Rename%20Columns/README.md
+---
+
+<!-- problem:start -->
+
 # [2885. 重命名列](https://leetcode.cn/problems/rename-columns)
 
 [English Version](/solution/2800-2899/2885.Rename%20Columns/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <pre>
 DataFrame <code>students</code>
@@ -57,30 +65,37 @@ DataFrame <code>students</code>
 <b>解释：</b>
 列名已相应更换。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Pandas**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 import pandas as pd
 
 
 def renameColumns(students: pd.DataFrame) -> pd.DataFrame:
-    students.rename(columns={'id': 'student_id', 'first': 'first_name', 'last': 'last_name', 'age': 'age_in_years'},
-                    inplace=True)
+    students.rename(
+        columns={
+            'id': 'student_id',
+            'first': 'first_name',
+            'last': 'last_name',
+            'age': 'age_in_years',
+        },
+        inplace=True,
+    )
     return students
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

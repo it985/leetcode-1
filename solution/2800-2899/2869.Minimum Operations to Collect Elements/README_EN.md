@@ -1,8 +1,24 @@
-# [2869. Minimum Operations to Collect Elements](https://leetcode.com/problems/minimum-operations-to-collect-elements/)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2869.Minimum%20Operations%20to%20Collect%20Elements/README_EN.md
+rating: 1272
+source: Biweekly Contest 114 Q1
+tags:
+    - Bit Manipulation
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
+# [2869. Minimum Operations to Collect Elements](https://leetcode.com/problems/minimum-operations-to-collect-elements)
 
 [中文文档](/solution/2800-2899/2869.Minimum%20Operations%20to%20Collect%20Elements/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an array <code>nums</code> of positive integers and an integer <code>k</code>.</p>
 
@@ -45,9 +61,13 @@
 	<li>The input is generated such that you can collect elements <code>1, 2, ..., k</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Traverse in Reverse Order**
+<!-- solution:start -->
+
+### Solution 1: Traverse in Reverse Order
 
 We can traverse the array in reverse order. For each element encountered during the traversal that is less than or equal to $k$ and has not been added to the set yet, we add it to the set until the set contains elements from $1$ to $k$.
 
@@ -55,7 +75,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array $nums$. The 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -72,7 +92,7 @@ class Solution:
                 return n - i
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -116,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minOperations(nums []int, k int) int {
@@ -136,7 +156,7 @@ func minOperations(nums []int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minOperations(nums: number[], k: number): number {
@@ -156,10 +176,8 @@ function minOperations(nums: number[], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

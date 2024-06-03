@@ -1,10 +1,27 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2261.K%20Divisible%20Elements%20Subarrays/README.md
+rating: 1724
+source: 第 291 场周赛 Q3
+tags:
+    - 字典树
+    - 数组
+    - 哈希表
+    - 枚举
+    - 哈希函数
+    - 滚动哈希
+---
+
+<!-- problem:start -->
+
 # [2261. 含最多 K 个可整除元素的子数组](https://leetcode.cn/problems/k-divisible-elements-subarrays)
 
 [English Version](/solution/2200-2299/2261.K%20Divisible%20Elements%20Subarrays/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code> 和两个整数 <code>k</code> 和 <code>p</code> ，找出并返回满足要求的不同的子数组数，要求子数组中最多 <code>k</code> 个可被 <code>p</code> 整除的元素。</p>
 
@@ -59,11 +76,13 @@ nums 中的所有元素都可以被 p = 1 整除。
 
 <p>你可以设计并实现时间复杂度为 <code>O(n<sup>2</sup>)</code> 的算法解决此问题吗？</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 枚举**
+### 方法一：哈希表 + 枚举
 
 我们可以枚举子数组的左右端点 $i$ 和 $j$，其中 $0 \leq i \leq j < n$。对于每个子数组 $nums[i,..j]$，我们可以统计其中可以被 $p$ 整除的元素的个数 $cnt$，如果 $cnt \leq k$，则该子数组满足条件。我们将所有满足条件的子数组的元素序列作为字符串存入哈希表中，最后哈希表中的元素个数即为答案。
 
@@ -71,9 +90,7 @@ nums 中的所有元素都可以被 p = 1 整除。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -90,26 +107,7 @@ class Solution:
         return len(s)
 ```
 
-```python
-class Solution:
-    def countDistinct(self, nums: List[int], k: int, p: int) -> int:
-        n = len(nums)
-        s = set()
-        for i in range(n):
-            cnt = 0
-            t = ""
-            for x in nums[i:]:
-                cnt += x % p == 0
-                if cnt > k:
-                    break
-                t += str(x) + ","
-                s.add(t)
-        return len(s)
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -132,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -156,7 +154,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countDistinct(nums []int, k int, p int) int {
@@ -178,7 +176,7 @@ func countDistinct(nums []int, k int, p int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countDistinct(nums: number[], k: number, p: number): number {
@@ -199,10 +197,37 @@ function countDistinct(nums: number[], k: number, p: number): number {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def countDistinct(self, nums: List[int], k: int, p: int) -> int:
+        n = len(nums)
+        s = set()
+        for i in range(n):
+            cnt = 0
+            t = ""
+            for x in nums[i:]:
+                cnt += x % p == 0
+                if cnt > k:
+                    break
+                t += str(x) + ","
+                s.add(t)
+        return len(s)
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

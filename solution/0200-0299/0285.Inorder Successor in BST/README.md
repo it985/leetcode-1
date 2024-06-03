@@ -1,10 +1,23 @@
-# [285. 二叉搜索树中的中序后继](https://leetcode.cn/problems/inorder-successor-in-bst)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0285.Inorder%20Successor%20in%20BST/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 二叉搜索树
+    - 二叉树
+---
+
+<!-- problem:start -->
+
+# [285. 二叉搜索树中的中序后继 🔒](https://leetcode.cn/problems/inorder-successor-in-bst)
 
 [English Version](/solution/0200-0299/0285.Inorder%20Successor%20in%20BST/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一棵二叉搜索树和其中的一个节点 <code>p</code> ，找到该节点在树中的中序后继。如果节点没有中序后继，请返回 <code>null</code> 。</p>
 
@@ -42,11 +55,13 @@
 	<li>树中各节点的值均保证唯一。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分搜索**
+### 方法一：二分搜索
 
 二叉搜索树的中序遍历是一个升序序列，因此可以使用二分搜索的方法。
 
@@ -61,9 +76,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -86,9 +99,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -116,7 +127,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -145,7 +156,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -169,7 +180,7 @@ func inorderSuccessor(root *TreeNode, p *TreeNode) (ans *TreeNode) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -200,7 +211,7 @@ function inorderSuccessor(root: TreeNode | null, p: TreeNode | null): TreeNode |
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -229,10 +240,8 @@ var inorderSuccessor = function (root, p) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

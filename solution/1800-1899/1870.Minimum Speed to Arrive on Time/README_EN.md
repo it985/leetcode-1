@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1870.Minimum%20Speed%20to%20Arrive%20on%20Time/README_EN.md
+rating: 1675
+source: Weekly Contest 242 Q2
+tags:
+    - Array
+    - Binary Search
+---
+
+<!-- problem:start -->
+
 # [1870. Minimum Speed to Arrive on Time](https://leetcode.com/problems/minimum-speed-to-arrive-on-time)
 
 [中文文档](/solution/1800-1899/1870.Minimum%20Speed%20to%20Arrive%20on%20Time/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a floating-point number <code>hour</code>, representing the amount of time you have to reach the office. To commute to the office, you must take <code>n</code> trains in sequential order. You are also given an integer array <code>dist</code> of length <code>n</code>, where <code>dist[i]</code> describes the distance (in kilometers) of the <code>i<sup>th</sup></code> train ride.</p>
 
@@ -60,51 +75,17 @@
 	<li>There will be at most two digits after the decimal point in <code>hour</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-Binary search.
+<!-- solution:start -->
 
-Template 1:
-
-```java
-boolean check(int x) {
-}
-
-int search(int left, int right) {
-    while (left < right) {
-        int mid = (left + right) >> 1;
-        if (check(mid)) {
-            right = mid;
-        } else {
-            left = mid + 1;
-        }
-    }
-    return left;
-}
-```
-
-Template 2:
-
-```java
-boolean check(int x) {
-}
-
-int search(int left, int right) {
-    while (left < right) {
-        int mid = (left + right + 1) >> 1;
-        if (check(mid)) {
-            left = mid;
-        } else {
-            right = mid - 1;
-        }
-    }
-    return left;
-}
-```
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -120,7 +101,7 @@ class Solution:
         return -1 if ans == r else ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -148,7 +129,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -177,7 +158,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minSpeedOnTime(dist []int, hour float64) int {
@@ -199,44 +180,7 @@ func minSpeedOnTime(dist []int, hour float64) int {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} dist
- * @param {number} hour
- * @return {number}
- */
-var minSpeedOnTime = function (dist, hour) {
-    if (dist.length > Math.ceil(hour)) return -1;
-    let left = 1,
-        right = 10 ** 7;
-    while (left < right) {
-        let mid = (left + right) >> 1;
-        if (arriveOnTime(dist, mid, hour)) {
-            right = mid;
-        } else {
-            left = mid + 1;
-        }
-    }
-    return left;
-};
-
-function arriveOnTime(dist, speed, hour) {
-    let res = 0.0;
-    let n = dist.length;
-    for (let i = 0; i < n; i++) {
-        let cost = parseFloat(dist[i]) / speed;
-        if (i != n - 1) {
-            cost = Math.ceil(cost);
-        }
-        res += cost;
-    }
-    return res <= hour;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -274,10 +218,45 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
+```js
+/**
+ * @param {number[]} dist
+ * @param {number} hour
+ * @return {number}
+ */
+var minSpeedOnTime = function (dist, hour) {
+    if (dist.length > Math.ceil(hour)) return -1;
+    let left = 1,
+        right = 10 ** 7;
+    while (left < right) {
+        let mid = (left + right) >> 1;
+        if (arriveOnTime(dist, mid, hour)) {
+            right = mid;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return left;
+};
 
+function arriveOnTime(dist, speed, hour) {
+    let res = 0.0;
+    let n = dist.length;
+    for (let i = 0; i < n; i++) {
+        let cost = parseFloat(dist[i]) / speed;
+        if (i != n - 1) {
+            cost = Math.ceil(cost);
+        }
+        res += cost;
+    }
+    return res <= hour;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

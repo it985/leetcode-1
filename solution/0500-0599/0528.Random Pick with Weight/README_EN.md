@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0528.Random%20Pick%20with%20Weight/README_EN.md
+tags:
+    - Array
+    - Math
+    - Binary Search
+    - Prefix Sum
+    - Randomized
+---
+
+<!-- problem:start -->
+
 # [528. Random Pick with Weight](https://leetcode.com/problems/random-pick-with-weight)
 
 [中文文档](/solution/0500-0599/0528.Random%20Pick%20with%20Weight/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> array of positive integers <code>w</code> where <code>w[i]</code> describes the <strong>weight</strong> of the <code>i<sup>th</sup></code> index.</p>
 
@@ -64,11 +80,17 @@ and so on.
 	<li><code>pickIndex</code> will be called at most <code>10<sup>4</sup></code> times.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -94,7 +116,7 @@ class Solution:
 # param_1 = obj.pickIndex()
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -131,7 +153,7 @@ class Solution {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -166,7 +188,7 @@ public:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Solution struct {
@@ -204,47 +226,7 @@ func (this *Solution) PickIndex() int {
  */
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} w
- */
-var Solution = function (w) {
-    const n = w.length;
-    this.s = new Array(n + 1).fill(0);
-    for (let i = 0; i < n; ++i) {
-        this.s[i + 1] = this.s[i] + w[i];
-    }
-};
-
-/**
- * @return {number}
- */
-Solution.prototype.pickIndex = function () {
-    const n = this.s.length;
-    const x = 1 + Math.floor(Math.random() * this.s[n - 1]);
-    let left = 1,
-        right = n - 1;
-    while (left < right) {
-        const mid = (left + right) >> 1;
-        if (this.s[mid] >= x) {
-            right = mid;
-        } else {
-            left = mid + 1;
-        }
-    }
-    return left - 1;
-};
-
-/**
- * Your Solution object will be instantiated and called as such:
- * var obj = new Solution(w)
- * var param_1 = obj.pickIndex()
- */
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 use rand::{ thread_rng, Rng };
@@ -287,10 +269,48 @@ impl Solution {
  */
 ```
 
-### **...**
+#### JavaScript
 
-```
+```js
+/**
+ * @param {number[]} w
+ */
+var Solution = function (w) {
+    const n = w.length;
+    this.s = new Array(n + 1).fill(0);
+    for (let i = 0; i < n; ++i) {
+        this.s[i + 1] = this.s[i] + w[i];
+    }
+};
 
+/**
+ * @return {number}
+ */
+Solution.prototype.pickIndex = function () {
+    const n = this.s.length;
+    const x = 1 + Math.floor(Math.random() * this.s[n - 1]);
+    let left = 1,
+        right = n - 1;
+    while (left < right) {
+        const mid = (left + right) >> 1;
+        if (this.s[mid] >= x) {
+            right = mid;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return left - 1;
+};
+
+/**
+ * Your Solution object will be instantiated and called as such:
+ * var obj = new Solution(w)
+ * var param_1 = obj.pickIndex()
+ */
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

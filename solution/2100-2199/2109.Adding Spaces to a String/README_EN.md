@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2109.Adding%20Spaces%20to%20a%20String/README_EN.md
+rating: 1315
+source: Weekly Contest 272 Q2
+tags:
+    - Array
+    - Two Pointers
+    - String
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [2109. Adding Spaces to a String](https://leetcode.com/problems/adding-spaces-to-a-string)
 
 [中文文档](/solution/2100-2199/2109.Adding%20Spaces%20to%20a%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> string <code>s</code> and a <strong>0-indexed</strong> integer array <code>spaces</code> that describes the indices in the original string where spaces will be added. Each space should be inserted <strong>before</strong> the character at the given index.</p>
 
@@ -53,11 +70,17 @@ We are also able to place spaces before the first character of the string.
 	<li>All the values of <code>spaces</code> are <strong>strictly increasing</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -72,21 +95,7 @@ class Solution:
         return ''.join(ans)
 ```
 
-```python
-class Solution:
-    def addSpaces(self, s: str, spaces: List[int]) -> str:
-        ans = []
-        i, j = len(s) - 1, len(spaces) - 1
-        while i >= 0:
-            ans.append(s[i])
-            if j >= 0 and i == spaces[j]:
-                ans.append(' ')
-                j -= 1
-            i -= 1
-        return ''.join(ans[::-1])
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -123,7 +132,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func addSpaces(s string, spaces []int) string {
@@ -139,7 +148,7 @@ func addSpaces(s string, spaces []int) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function addSpaces(s: string, spaces: number[]): string {
@@ -155,10 +164,34 @@ function addSpaces(s: string, spaces: number[]): string {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def addSpaces(self, s: str, spaces: List[int]) -> str:
+        ans = []
+        i, j = len(s) - 1, len(spaces) - 1
+        while i >= 0:
+            ans.append(s[i])
+            if j >= 0 and i == spaces[j]:
+                ans.append(' ')
+                j -= 1
+            i -= 1
+        return ''.join(ans[::-1])
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

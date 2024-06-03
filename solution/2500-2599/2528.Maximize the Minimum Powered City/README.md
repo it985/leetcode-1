@@ -1,10 +1,27 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2528.Maximize%20the%20Minimum%20Powered%20City/README.md
+rating: 2235
+source: 第 95 场双周赛 Q4
+tags:
+    - 贪心
+    - 队列
+    - 数组
+    - 二分查找
+    - 前缀和
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
 # [2528. 最大化城市的最小电量](https://leetcode.cn/problems/maximize-the-minimum-powered-city)
 
 [English Version](/solution/2500-2599/2528.Maximize%20the%20Minimum%20Powered%20City/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始长度为 <code>n</code>&nbsp;的整数数组&nbsp;<code>stations</code>&nbsp;，其中&nbsp;<code>stations[i]</code>&nbsp;表示第 <code>i</code>&nbsp;座城市的供电站数目。</p>
 
@@ -62,11 +79,13 @@
 	<li><code>0 &lt;= k&nbsp;&lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找 + 差分数组 + 贪心**
+### 方法一：二分查找 + 差分数组 + 贪心
 
 根据题目描述，最小供电站数目随着 $k$ 值的增大而增大，因此，我们可以用二分查找，找到一个最大的最小供电站数目，并且需要额外建造的供电站不超过 $k$ 座。
 
@@ -82,9 +101,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -123,9 +140,7 @@ class Solution:
         return left
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -181,7 +196,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -234,7 +249,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxPower(stations []int, r int, k int) int64 {
@@ -283,10 +298,63 @@ func maxPower(stations []int, r int, k int) int64 {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
+```ts
+function maxPower(stations: number[], r: number, k: number): number {
+    function check(x: bigint, k: bigint): boolean {
+        d.fill(0n);
+        let t = 0n;
+        for (let i = 0; i < n; ++i) {
+            t += d[i];
+            const dist = x - (s[i] + t);
+            if (dist > 0) {
+                if (k < dist) {
+                    return false;
+                }
+                k -= dist;
+                const j = Math.min(i + r, n - 1);
+                const left = Math.max(0, j - r);
+                const right = Math.min(j + r, n - 1);
+                d[left] += dist;
+                d[right + 1] -= dist;
+                t += dist;
+            }
+        }
+        return true;
+    }
+    const n = stations.length;
+    const d: bigint[] = new Array(n + 1).fill(0n);
+    const s: bigint[] = new Array(n + 1).fill(0n);
 
+    for (let i = 0; i < n; ++i) {
+        const left = Math.max(0, i - r);
+        const right = Math.min(i + r, n - 1);
+        d[left] += BigInt(stations[i]);
+        d[right + 1] -= BigInt(stations[i]);
+    }
+
+    s[0] = d[0];
+    for (let i = 1; i < n + 1; ++i) {
+        s[i] = s[i - 1] + d[i];
+    }
+
+    let left = 0n,
+        right = 1n << 40n;
+    while (left < right) {
+        const mid = (left + right + 1n) >> 1n;
+        if (check(mid, BigInt(k))) {
+            left = mid;
+        } else {
+            right = mid - 1n;
+        }
+    }
+    return Number(left);
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

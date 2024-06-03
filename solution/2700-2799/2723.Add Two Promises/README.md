@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2723.Add%20Two%20Promises/README.md
+---
+
+<!-- problem:start -->
+
 # [2723. 两个 Promise 对象相加](https://leetcode.cn/problems/add-two-promises)
 
 [English Version](/solution/2700-2799/2723.Add%20Two%20Promises/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 给定两个 promise 对象&nbsp;<code>promise1</code> 和 <code>promise2</code>，返回一个新的 promise。<code>promise1</code> 和 <code>promise2</code> 都会被解析为一个数字。返回的 Promise 应该解析为这两个数字的和。
 
@@ -38,15 +46,17 @@ promise2 = new Promise(resolve =&gt; setTimeout(() =&gt; resolve(-12), 30))
 	<li><code>promise1 和 promise2</code> 都是被解析为一个数字的 promise 对象</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **TypeScript**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### TypeScript
 
 ```ts
 async function addTwoPromises(
@@ -62,7 +72,7 @@ async function addTwoPromises(
  */
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 var addTwoPromises = async function (promise1, promise2) {
@@ -71,3 +81,7 @@ var addTwoPromises = async function (promise1, promise2) {
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

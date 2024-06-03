@@ -1,48 +1,77 @@
-# [281. 锯齿迭代器](https://leetcode.cn/problems/zigzag-iterator)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0281.Zigzag%20Iterator/README.md
+tags:
+    - 设计
+    - 队列
+    - 数组
+    - 迭代器
+---
+
+<!-- problem:start -->
+
+# [281. 锯齿迭代器 🔒](https://leetcode.cn/problems/zigzag-iterator)
 
 [English Version](/solution/0200-0299/0281.Zigzag%20Iterator/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>给出两个一维的向量，请你实现一个迭代器，交替返回它们中间的元素。</p>
+<p>给出两个整数向量&nbsp;<code>v1</code>&nbsp;和&nbsp;<code>v2</code>，请你实现一个迭代器，交替返回它们的元素。</p>
 
-<p><strong>示例:</strong></p>
+<p>实现&nbsp;<code>ZigzagIterator</code>&nbsp;类：</p>
 
-<pre><strong>输入:</strong>
-v1 = [1,2]
-v2 = [3,4,5,6] 
+<ul>
+	<li><code>ZigzagIterator(List&lt;int&gt; v1, List&lt;int&gt; v2)</code>&nbsp;用两个向量&nbsp;<code>v1</code>&nbsp;和&nbsp;<code>v2</code>&nbsp;初始化对象。</li>
+	<li><code>boolean hasNext()</code>&nbsp;如果迭代器还有元素返回&nbsp;<code>true</code>，否则返回 <code>false</code>。</li>
+	<li><code>int next()</code>&nbsp;返回迭代器的当前元素并将迭代器移动到下一个元素。</li>
+</ul>
 
-<strong>输出:</strong> <code>[1,3,2,4,5,6]
+<p><strong class="example">示例 1:</strong></p>
 
-<strong>解析:</strong></code>&nbsp;通过连续调用 <em>next</em> 函数直到 <em>hasNext</em> 函数返回 <code>false，</code>
-&nbsp;    <em>next</em> 函数返回值的次序应依次为: <code>[1,3,2,4,5,6]。</code></pre>
-
-<p><strong>拓展：</strong>假如给你&nbsp;<code>k</code>&nbsp;个一维向量呢？你的代码在这种情况下的扩展性又会如何呢?</p>
-
-<p><strong>拓展声明：</strong><br>
-&nbsp;&ldquo;锯齿&rdquo; 顺序对于&nbsp;<code>k &gt; 2</code>&nbsp;的情况定义可能会有些歧义。所以，假如你觉得 &ldquo;锯齿&rdquo; 这个表述不妥，也可以认为这是一种&nbsp;&ldquo;循环&rdquo;。例如：</p>
-
-<pre><strong>输入:</strong>
-[1,2,3]
-[4,5,6,7]
-[8,9]
-
-<strong>输出: </strong><code>[1,4,8,2,5,9,3,6,7]</code>.
+<pre>
+<strong>输入：</strong>v1 = [1,2], v2 = [3,4,5,6]
+<strong>输出：</strong>[1,3,2,4,5,6]
+<strong>解释：</strong>通过重复调用 next 直到 hasNext 返回 false，那么 next 返回的元素的顺序应该是：[1,3,2,4,5,6]。
 </pre>
+
+<p><strong class="example">示例 2:</strong></p>
+
+<pre>
+<strong>输入：</strong>v1 = [1], v2 = []
+<strong>输出：</strong>[1]
+</pre>
+
+<p><strong class="example">示例 3:</strong></p>
+
+<pre>
+<strong>输入：</strong>v1 = [], v2 = [1]
+<strong>输出：</strong>[1]
+</pre>
+
+<p><strong>拓展：</strong>假如给你&nbsp;<code>k</code>&nbsp;个向量呢？你的代码在这种情况下的扩展性又会如何呢?</p>
+
+<p><strong>拓展声明：</strong><br />
+&nbsp;“锯齿” 顺序对于&nbsp;<code>k &gt; 2</code>&nbsp;的情况定义可能会有些歧义。所以，假如你觉得 “锯齿” 这个表述不妥，也可以认为这是一种&nbsp;“循环”。例如：</p>
+
+<pre>
+<strong>输入：</strong>v1 = [1,2,3], v2 = [4,5,6,7], v3 = [8,9]
+<strong>输出：</strong>[1,4,8,2,5,9,3,6,7]
+</pre>
+
+<!-- description:end -->
 
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-定义 vectors 列表保存输入的所有一维向量，indexes 表示 vectors 列表每一项当前所遍历到的下标位置，cur 表示当前遍历到的 vector 列表，而 size 表示 vectors 列表元素个数。具体实现参考以下代码实现。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class ZigzagIterator:
@@ -74,7 +103,53 @@ class ZigzagIterator:
 # while i.hasNext(): v.append(i.next())
 ```
 
-### **Rust**
+#### Java
+
+```java
+public class ZigzagIterator {
+    private int cur;
+    private int size;
+    private List<Integer> indexes = new ArrayList<>();
+    private List<List<Integer>> vectors = new ArrayList<>();
+
+    public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
+        cur = 0;
+        size = 2;
+        indexes.add(0);
+        indexes.add(0);
+        vectors.add(v1);
+        vectors.add(v2);
+    }
+
+    public int next() {
+        List<Integer> vector = vectors.get(cur);
+        int index = indexes.get(cur);
+        int res = vector.get(index);
+        indexes.set(cur, index + 1);
+        cur = (cur + 1) % size;
+        return res;
+    }
+
+    public boolean hasNext() {
+        int start = cur;
+        while (indexes.get(cur) == vectors.get(cur).size()) {
+            cur = (cur + 1) % size;
+            if (start == cur) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+/**
+ * Your ZigzagIterator object will be instantiated and called as such:
+ * ZigzagIterator i = new ZigzagIterator(v1, v2);
+ * while (i.hasNext()) v[f()] = i.next();
+ */
+```
+
+#### Rust
 
 ```rust
 struct ZigzagIterator {
@@ -132,58 +207,8 @@ impl ZigzagIterator {
 }
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```java
-public class ZigzagIterator {
-    private int cur;
-    private int size;
-    private List<Integer> indexes = new ArrayList<>();
-    private List<List<Integer>> vectors = new ArrayList<>();
-
-    public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
-        cur = 0;
-        size = 2;
-        indexes.add(0);
-        indexes.add(0);
-        vectors.add(v1);
-        vectors.add(v2);
-    }
-
-    public int next() {
-        List<Integer> vector = vectors.get(cur);
-        int index = indexes.get(cur);
-        int res = vector.get(index);
-        indexes.set(cur, index + 1);
-        cur = (cur + 1) % size;
-        return res;
-    }
-
-    public boolean hasNext() {
-        int start = cur;
-        while (indexes.get(cur) == vectors.get(cur).size()) {
-            cur = (cur + 1) % size;
-            if (start == cur) {
-                return false;
-            }
-        }
-        return true;
-    }
-}
-
-/**
- * Your ZigzagIterator object will be instantiated and called as such:
- * ZigzagIterator i = new ZigzagIterator(v1, v2);
- * while (i.hasNext()) v[f()] = i.next();
- */
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

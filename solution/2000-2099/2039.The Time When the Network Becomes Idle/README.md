@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2039.The%20Time%20When%20the%20Network%20Becomes%20Idle/README.md
+rating: 1865
+source: 第 63 场双周赛 Q3
+tags:
+    - 广度优先搜索
+    - 图
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [2039. 网络空闲的时刻](https://leetcode.cn/problems/the-time-when-the-network-becomes-idle)
 
 [English Version](/solution/2000-2099/2039.The%20Time%20When%20the%20Network%20Becomes%20Idle/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个有 <code>n</code>&nbsp;个服务器的计算机网络，服务器编号为&nbsp;<code>0</code>&nbsp;到&nbsp;<code>n - 1</code>&nbsp;。同时给你一个二维整数数组&nbsp;<code>edges</code>&nbsp;，其中&nbsp;<code>edges[i] = [u<sub>i</sub>, v<sub>i</sub>]</code>&nbsp;表示服务器&nbsp;<code>u<sub>i</sub></code> 和&nbsp;<code>v<sub>i</sub></code><sub>&nbsp;</sub>之间有一条信息线路，在&nbsp;<strong>一秒</strong>&nbsp;内它们之间可以传输&nbsp;<strong>任意</strong>&nbsp;数目的信息。再给你一个长度为 <code>n</code>&nbsp;且下标从&nbsp;<strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>patience</code>&nbsp;。</p>
 
@@ -82,11 +96,13 @@
 	<li>每个服务器都直接或间接与别的服务器相连。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：BFS**
+### 方法一：BFS
 
 我们先根据二维数组 $edges$ 构建无向图 $g$，其中 $g[u]$ 表示节点 $u$ 的所有邻居节点。
 
@@ -96,9 +112,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -123,9 +137,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -160,10 +172,9 @@ class Solution {
         return ans;
     }
 }
-
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -201,7 +212,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func networkBecomesIdle(edges [][]int, patience []int) (ans int) {
@@ -233,7 +244,7 @@ func networkBecomesIdle(edges [][]int, patience []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function networkBecomesIdle(edges: number[][], patience: number[]): number {
@@ -265,10 +276,8 @@ function networkBecomesIdle(edges: number[][], patience: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

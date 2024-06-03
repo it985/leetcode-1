@@ -1,10 +1,21 @@
-# [2219. 数组的最大总分](https://leetcode.cn/problems/maximum-sum-score-of-array)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2219.Maximum%20Sum%20Score%20of%20Array/README.md
+tags:
+    - 数组
+    - 前缀和
+---
+
+<!-- problem:start -->
+
+# [2219. 数组的最大总分 🔒](https://leetcode.cn/problems/maximum-sum-score-of-array)
 
 [English Version](/solution/2200-2299/2219.Maximum%20Sum%20Score%20of%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> ，数组长度为 <code>n</code> 。</p>
 
@@ -53,17 +64,17 @@ nums 可取得的最大总分是 -3 。
 	<li><code>-10<sup>5</sup> &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-前缀和。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -72,9 +83,7 @@ class Solution:
         return max(max(s[i + 1], s[-1] - s[i]) for i in range(len(nums)))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -93,24 +102,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function maximumSumScore(nums: number[]): number {
-    const n = nums.length;
-    let s = new Array(n + 1).fill(0);
-    for (let i = 0; i < n; ++i) {
-        s[i + 1] = s[i] + nums[i];
-    }
-    let ans = -Infinity;
-    for (let i = 0; i < n; ++i) {
-        ans = Math.max(ans, Math.max(s[i + 1], s[n] - s[i]));
-    }
-    return ans;
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -126,7 +118,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumSumScore(nums []int) int64 {
@@ -143,7 +135,24 @@ func maximumSumScore(nums []int) int64 {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function maximumSumScore(nums: number[]): number {
+    const n = nums.length;
+    let s = new Array(n + 1).fill(0);
+    for (let i = 0; i < n; ++i) {
+        s[i + 1] = s[i] + nums[i];
+    }
+    let ans = -Infinity;
+    for (let i = 0; i < n; ++i) {
+        ans = Math.max(ans, Math.max(s[i + 1], s[n] - s[i]));
+    }
+    return ans;
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -164,10 +173,8 @@ var maximumSumScore = function (nums) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

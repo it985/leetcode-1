@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0018.4Sum/README.md
+tags:
+    - 数组
+    - 双指针
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [18. 四数之和](https://leetcode.cn/problems/4sum)
 
 [English Version](/solution/0000-0099/0018.4Sum/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个由 <code>n</code> 个整数组成的数组&nbsp;<code>nums</code> ，和一个目标值 <code>target</code> 。请你找出并返回满足下述全部条件且<strong>不重复</strong>的四元组&nbsp;<code>[nums[a], nums[b], nums[c], nums[d]]</code>&nbsp;（若两个四元组元素一一对应，则认为两个四元组重复）：</p>
 
@@ -42,11 +54,13 @@
 	<li><code>-10<sup>9</sup> &lt;= target &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 双指针**
+### 方法一：排序 + 双指针
 
 我们注意到，题目中要求找到不重复的四元组，那么我们可以先对数组进行排序，这样就可以方便地跳过重复的元素。
 
@@ -60,9 +74,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -95,9 +107,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -140,7 +150,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -184,7 +194,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func fourSum(nums []int, target int) (ans [][]int) {
@@ -226,7 +236,48 @@ func fourSum(nums []int, target int) (ans [][]int) {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function fourSum(nums: number[], target: number): number[][] {
+    const n = nums.length;
+    const ans: number[][] = [];
+    if (n < 4) {
+        return ans;
+    }
+    nums.sort((a, b) => a - b);
+    for (let i = 0; i < n - 3; ++i) {
+        if (i > 0 && nums[i] === nums[i - 1]) {
+            continue;
+        }
+        for (let j = i + 1; j < n - 2; ++j) {
+            if (j > i + 1 && nums[j] === nums[j - 1]) {
+                continue;
+            }
+            let [k, l] = [j + 1, n - 1];
+            while (k < l) {
+                const x = nums[i] + nums[j] + nums[k] + nums[l];
+                if (x < target) {
+                    ++k;
+                } else if (x > target) {
+                    --l;
+                } else {
+                    ans.push([nums[i], nums[j], nums[k++], nums[l--]]);
+                    while (k < l && nums[k] === nums[k - 1]) {
+                        ++k;
+                    }
+                    while (k < l && nums[l] === nums[l + 1]) {
+                        --l;
+                    }
+                }
+            }
+        }
+    }
+    return ans;
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -272,48 +323,7 @@ var fourSum = function (nums, target) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function fourSum(nums: number[], target: number): number[][] {
-    const n = nums.length;
-    const ans: number[][] = [];
-    if (n < 4) {
-        return ans;
-    }
-    nums.sort((a, b) => a - b);
-    for (let i = 0; i < n - 3; ++i) {
-        if (i > 0 && nums[i] === nums[i - 1]) {
-            continue;
-        }
-        for (let j = i + 1; j < n - 2; ++j) {
-            if (j > i + 1 && nums[j] === nums[j - 1]) {
-                continue;
-            }
-            let [k, l] = [j + 1, n - 1];
-            while (k < l) {
-                const x = nums[i] + nums[j] + nums[k] + nums[l];
-                if (x < target) {
-                    ++k;
-                } else if (x > target) {
-                    --l;
-                } else {
-                    ans.push([nums[i], nums[j], nums[k++], nums[l--]]);
-                    while (k < l && nums[k] === nums[k - 1]) {
-                        ++k;
-                    }
-                    while (k < l && nums[l] === nums[l + 1]) {
-                        --l;
-                    }
-                }
-            }
-        }
-    }
-    return ans;
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -356,10 +366,66 @@ public class Solution {
 }
 ```
 
-### **...**
+#### PHP
 
-```
+```php
+class Solution {
+    /**
+     * @param int[] $nums
+     * @param int $target
+     * @return int[][]
+     */
 
+    function fourSum($nums, $target) {
+        $result = [];
+        $n = count($nums);
+
+        sort($nums);
+
+        for ($i = 0; $i < $n - 3; $i++) {
+            if ($i > 0 && $nums[$i] === $nums[$i - 1]) {
+                continue;
+            }
+
+            for ($j = $i + 1; $j < $n - 2; $j++) {
+                if ($j > $i + 1 && $nums[$j] === $nums[$j - 1]) {
+                    continue;
+                }
+
+                $left = $j + 1;
+                $right = $n - 1;
+
+                while ($left < $right) {
+                    $sum = $nums[$i] + $nums[$j] + $nums[$left] + $nums[$right];
+
+                    if ($sum === $target) {
+                        $result[] = [$nums[$i], $nums[$j], $nums[$left], $nums[$right]];
+
+                        while ($left < $right && $nums[$left] === $nums[$left + 1]) {
+                            $left++;
+                        }
+
+                        while ($left < $right && $nums[$right] === $nums[$right - 1]) {
+                            $right--;
+                        }
+
+                        $left++;
+                        $right--;
+                    } elseif ($sum < $target) {
+                        $left++;
+                    } else {
+                        $right--;
+                    }
+                }
+            }
+        }
+        return $result;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,18 +1,30 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0090.Subsets%20II/README.md
+tags:
+    - 位运算
+    - 数组
+    - 回溯
+---
+
+<!-- problem:start -->
+
 # [90. 子集 II](https://leetcode.cn/problems/subsets-ii)
 
 [English Version](/solution/0000-0099/0090.Subsets%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>给你一个整数数组 <code>nums</code> ，其中可能包含重复元素，请你返回该数组所有可能的子集（幂集）。</p>
+<p>给你一个整数数组 <code>nums</code> ，其中可能包含重复元素，请你返回该数组所有可能的 <span data-keyword="subset">子集</span>（幂集）。</p>
 
 <p>解集 <strong>不能</strong> 包含重复的子集。返回的解集中，子集可以按 <strong>任意顺序</strong> 排列。</p>
 
 <div class="original__bRMd">
 <div>
-<p> </p>
+<p>&nbsp;</p>
 
 <p><strong>示例 1：</strong></p>
 
@@ -28,22 +40,24 @@
 <strong>输出：</strong>[[],[0]]
 </pre>
 
-<p> </p>
+<p>&nbsp;</p>
 
 <p><strong>提示：</strong></p>
 
 <ul>
-	<li><code>1 <= nums.length <= 10</code></li>
-	<li><code>-10 <= nums[i] <= 10</code></li>
+	<li><code>1 &lt;= nums.length &lt;= 10</code></li>
+	<li><code>-10 &lt;= nums[i] &lt;= 10</code></li>
 </ul>
 </div>
 </div>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + DFS**
+### 方法一：排序 + DFS
 
 我们可以先对数组 $nums$ 进行排序，方便去重。
 
@@ -57,21 +71,9 @@
 
 时间复杂度 $O(n \times 2^n)$，空间复杂度 $O(n)$。其中 $n$ 是数组的长度。
 
-**方法二：排序 + 二进制枚举**
-
-与方法一类似，我们先对数组 $nums$ 进行排序，方便去重。
-
-接下来，我们在 $[0, 2^n)$ 的范围内枚举一个二进制数 $mask$，其中 $mask$ 的二进制表示是一个 $n$ 位的位串，如果 $mask$ 的第 $i$ 位为 $1$，表示选择 $nums[i]$，为 $0$ 表示不选择 $nums[i]$。注意，如果 $mask$ 的 $i - 1$ 位为 $0$，且 $nums[i] = nums[i - 1]$，则说明在当前枚举到的方案中，第 $i$ 个元素和第 $i - 1$ 个元素相同，为了避免重复，我们跳过这种情况。否则，我们将 $mask$ 对应的子集加入答案数组中。
-
-枚举结束后，我们返回答案数组即可。
-
-时间复杂度 $O(n \times 2^n)$，空间复杂度 $O(n)$。其中 $n$ 是数组的长度。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -94,29 +96,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
-        nums.sort()
-        n = len(nums)
-        ans = []
-        for mask in range(1 << n):
-            ok = True
-            t = []
-            for i in range(n):
-                if mask >> i & 1:
-                    if i and (mask >> (i - 1) & 1) == 0 and nums[i] == nums[i - 1]:
-                        ok = False
-                        break
-                    t.append(nums[i])
-            if ok:
-                ans.append(t)
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -147,34 +127,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public List<List<Integer>> subsetsWithDup(int[] nums) {
-        Arrays.sort(nums);
-        int n = nums.length;
-        List<List<Integer>> ans = new ArrayList<>();
-        for (int mask = 0; mask < 1 << n; ++mask) {
-            List<Integer> t = new ArrayList<>();
-            boolean ok = true;
-            for (int i = 0; i < n; ++i) {
-                if ((mask >> i & 1) == 1) {
-                    if (i > 0 && (mask >> (i - 1) & 1) == 0 && nums[i] == nums[i - 1]) {
-                        ok = false;
-                        break;
-                    }
-                    t.add(nums[i]);
-                }
-            }
-            if (ok) {
-                ans.add(t);
-            }
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -203,35 +156,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
-        int n = nums.size();
-        vector<vector<int>> ans;
-        for (int mask = 0; mask < 1 << n; ++mask) {
-            vector<int> t;
-            bool ok = true;
-            for (int i = 0; i < n; ++i) {
-                if ((mask >> i & 1) == 1) {
-                    if (i > 0 && (mask >> (i - 1) & 1) == 0 && nums[i] == nums[i - 1]) {
-                        ok = false;
-                        break;
-                    }
-                    t.push_back(nums[i]);
-                }
-            }
-            if (ok) {
-                ans.push_back(t);
-            }
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func subsetsWithDup(nums []int) (ans [][]int) {
@@ -257,31 +182,7 @@ func subsetsWithDup(nums []int) (ans [][]int) {
 }
 ```
 
-```go
-func subsetsWithDup(nums []int) (ans [][]int) {
-	sort.Ints(nums)
-	n := len(nums)
-	for mask := 0; mask < 1<<n; mask++ {
-		t := []int{}
-		ok := true
-		for i := 0; i < n; i++ {
-			if mask>>i&1 == 1 {
-				if i > 0 && mask>>(i-1)&1 == 0 && nums[i] == nums[i-1] {
-					ok = false
-					break
-				}
-				t = append(t, nums[i])
-			}
-		}
-		if ok {
-			ans = append(ans, t)
-		}
-	}
-	return
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function subsetsWithDup(nums: number[]): number[][] {
@@ -307,32 +208,7 @@ function subsetsWithDup(nums: number[]): number[][] {
 }
 ```
 
-```ts
-function subsetsWithDup(nums: number[]): number[][] {
-    nums.sort((a, b) => a - b);
-    const n = nums.length;
-    const ans: number[][] = [];
-    for (let mask = 0; mask < 1 << n; ++mask) {
-        const t: number[] = [];
-        let ok: boolean = true;
-        for (let i = 0; i < n; ++i) {
-            if (((mask >> i) & 1) === 1) {
-                if (i && ((mask >> (i - 1)) & 1) === 0 && nums[i] === nums[i - 1]) {
-                    ok = false;
-                    break;
-                }
-                t.push(nums[i]);
-            }
-        }
-        if (ok) {
-            ans.push(t);
-        }
-    }
-    return ans;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -363,6 +239,160 @@ impl Solution {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：排序 + 二进制枚举
+
+与方法一类似，我们先对数组 $nums$ 进行排序，方便去重。
+
+接下来，我们在 $[0, 2^n)$ 的范围内枚举一个二进制数 $mask$，其中 $mask$ 的二进制表示是一个 $n$ 位的位串，如果 $mask$ 的第 $i$ 位为 $1$，表示选择 $nums[i]$，为 $0$ 表示不选择 $nums[i]$。注意，如果 $mask$ 的 $i - 1$ 位为 $0$，且 $nums[i] = nums[i - 1]$，则说明在当前枚举到的方案中，第 $i$ 个元素和第 $i - 1$ 个元素相同，为了避免重复，我们跳过这种情况。否则，我们将 $mask$ 对应的子集加入答案数组中。
+
+枚举结束后，我们返回答案数组即可。
+
+时间复杂度 $O(n \times 2^n)$，空间复杂度 $O(n)$。其中 $n$ 是数组的长度。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        n = len(nums)
+        ans = []
+        for mask in range(1 << n):
+            ok = True
+            t = []
+            for i in range(n):
+                if mask >> i & 1:
+                    if i and (mask >> (i - 1) & 1) == 0 and nums[i] == nums[i - 1]:
+                        ok = False
+                        break
+                    t.append(nums[i])
+            if ok:
+                ans.append(t)
+        return ans
+```
+
+#### Java
+
+```java
+class Solution {
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        List<List<Integer>> ans = new ArrayList<>();
+        for (int mask = 0; mask < 1 << n; ++mask) {
+            List<Integer> t = new ArrayList<>();
+            boolean ok = true;
+            for (int i = 0; i < n; ++i) {
+                if ((mask >> i & 1) == 1) {
+                    if (i > 0 && (mask >> (i - 1) & 1) == 0 && nums[i] == nums[i - 1]) {
+                        ok = false;
+                        break;
+                    }
+                    t.add(nums[i]);
+                }
+            }
+            if (ok) {
+                ans.add(t);
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        vector<vector<int>> ans;
+        for (int mask = 0; mask < 1 << n; ++mask) {
+            vector<int> t;
+            bool ok = true;
+            for (int i = 0; i < n; ++i) {
+                if ((mask >> i & 1) == 1) {
+                    if (i > 0 && (mask >> (i - 1) & 1) == 0 && nums[i] == nums[i - 1]) {
+                        ok = false;
+                        break;
+                    }
+                    t.push_back(nums[i]);
+                }
+            }
+            if (ok) {
+                ans.push_back(t);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func subsetsWithDup(nums []int) (ans [][]int) {
+	sort.Ints(nums)
+	n := len(nums)
+	for mask := 0; mask < 1<<n; mask++ {
+		t := []int{}
+		ok := true
+		for i := 0; i < n; i++ {
+			if mask>>i&1 == 1 {
+				if i > 0 && mask>>(i-1)&1 == 0 && nums[i] == nums[i-1] {
+					ok = false
+					break
+				}
+				t = append(t, nums[i])
+			}
+		}
+		if ok {
+			ans = append(ans, t)
+		}
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function subsetsWithDup(nums: number[]): number[][] {
+    nums.sort((a, b) => a - b);
+    const n = nums.length;
+    const ans: number[][] = [];
+    for (let mask = 0; mask < 1 << n; ++mask) {
+        const t: number[] = [];
+        let ok: boolean = true;
+        for (let i = 0; i < n; ++i) {
+            if (((mask >> i) & 1) === 1) {
+                if (i && ((mask >> (i - 1)) & 1) === 0 && nums[i] === nums[i - 1]) {
+                    ok = false;
+                    break;
+                }
+                t.push(nums[i]);
+            }
+        }
+        if (ok) {
+            ans.push(t);
+        }
+    }
+    return ans;
+}
+```
+
+#### Rust
+
 ```rust
 impl Solution {
     pub fn subsets_with_dup(nums: Vec<i32>) -> Vec<Vec<i32>> {
@@ -391,10 +421,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

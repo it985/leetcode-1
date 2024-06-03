@@ -1,12 +1,27 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0139.Word%20Break/README.md
+tags:
+    - 字典树
+    - 记忆化搜索
+    - 数组
+    - 哈希表
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [139. 单词拆分](https://leetcode.cn/problems/word-break)
 
 [English Version](/solution/0100-0199/0139.Word%20Break/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>给你一个字符串 <code>s</code> 和一个字符串列表 <code>wordDict</code> 作为字典。请你判断是否可以利用字典中出现的单词拼接出 <code>s</code> 。</p>
+<p>给你一个字符串 <code>s</code> 和一个字符串列表 <code>wordDict</code> 作为字典。如果可以利用字典中出现的一个或多个单词拼接出 <code>s</code>&nbsp;则返回 <code>true</code>。</p>
 
 <p><strong>注意：</strong>不要求字典中出现的单词全部都使用，并且字典中的单词可以重复使用。</p>
 
@@ -25,7 +40,7 @@
 <pre>
 <strong>输入:</strong> s = "applepenapple", wordDict = ["apple", "pen"]
 <strong>输出:</strong> true
-<strong>解释:</strong> 返回 true 因为 <code>"</code>applepenapple<code>"</code> 可以由 <code>"</code>apple" "pen" "apple<code>" 拼接成</code>。
+<strong>解释:</strong> 返回 true 因为 "applepenapple" 可以由 "apple" "pen" "apple" 拼接成。
 &nbsp;    注意，你可以重复使用字典中的单词。
 </pre>
 
@@ -48,11 +63,13 @@
 	<li><code>wordDict</code> 中的所有字符串 <strong>互不相同</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 动态规划**
+### 方法一：哈希表 + 动态规划
 
 我们定义 $f[i]$ 表示字符串 $s$ 的前 $i$ 个字符能否拆分成 $wordDict$ 中的单词，初始时 $f[0]=true$，其余为 $false$。答案为 $f[n]$。
 
@@ -60,21 +77,9 @@
 
 时间复杂度 $O(n^3)$，空间复杂度 $O(n)$。其中 $n$ 为字符串 $s$ 的长度。
 
-**方法二：前缀树 + 动态规划**
-
-我们先将 $wordDict$ 中的单词存入前缀树中，然后使用动态规划求解。
-
-我们定义 $f[i]$ 表示从字符串 $s$ 的第 $i$ 个字符开始往后拆分，能否拆分成 $wordDict$ 中的单词，初始时 $f[n]=true$，其余为 $false$。答案为 $f[0]$。
-
-接下来，我们从大到小枚举 $i$，对于每个 $i$，我们从 $i$ 开始往后拆分，如果 $s[i:j]$ 在前缀树中，且 $f[j+1]=true$，则 $f[i]=true$。
-
-时间复杂度 $O(n^2)$，空间复杂度 $O(n)$。其中 $n$ 为字符串 $s$ 的长度。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -86,6 +91,155 @@ class Solution:
             f[i] = any(f[j] and s[j:i] in words for j in range(i))
         return f[n]
 ```
+
+#### Java
+
+```java
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        Set<String> words = new HashSet<>(wordDict);
+        int n = s.length();
+        boolean[] f = new boolean[n + 1];
+        f[0] = true;
+        for (int i = 1; i <= n; ++i) {
+            for (int j = 0; j < i; ++j) {
+                if (f[j] && words.contains(s.substring(j, i))) {
+                    f[i] = true;
+                    break;
+                }
+            }
+        }
+        return f[n];
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+        unordered_set<string> words(wordDict.begin(), wordDict.end());
+        int n = s.size();
+        bool f[n + 1];
+        memset(f, false, sizeof(f));
+        f[0] = true;
+        for (int i = 1; i <= n; ++i) {
+            for (int j = 0; j < i; ++j) {
+                if (f[j] && words.count(s.substr(j, i - j))) {
+                    f[i] = true;
+                    break;
+                }
+            }
+        }
+        return f[n];
+    }
+};
+```
+
+#### Go
+
+```go
+func wordBreak(s string, wordDict []string) bool {
+	words := map[string]bool{}
+	for _, w := range wordDict {
+		words[w] = true
+	}
+	n := len(s)
+	f := make([]bool, n+1)
+	f[0] = true
+	for i := 1; i <= n; i++ {
+		for j := 0; j < i; j++ {
+			if f[j] && words[s[j:i]] {
+				f[i] = true
+				break
+			}
+		}
+	}
+	return f[n]
+}
+```
+
+#### TypeScript
+
+```ts
+function wordBreak(s: string, wordDict: string[]): boolean {
+    const words = new Set(wordDict);
+    const n = s.length;
+    const f: boolean[] = new Array(n + 1).fill(false);
+    f[0] = true;
+    for (let i = 1; i <= n; ++i) {
+        for (let j = 0; j < i; ++j) {
+            if (f[j] && words.has(s.substring(j, i))) {
+                f[i] = true;
+                break;
+            }
+        }
+    }
+    return f[n];
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn word_break(s: String, word_dict: Vec<String>) -> bool {
+        let words: std::collections::HashSet<String> = word_dict.into_iter().collect();
+        let mut f = vec![false; s.len() + 1];
+        f[0] = true;
+        for i in 1..=s.len() {
+            for j in 0..i {
+                f[i] |= f[j] && words.contains(&s[j..i]);
+            }
+        }
+        f[s.len()]
+    }
+}
+```
+
+#### C#
+
+```cs
+public class Solution {
+    public bool WordBreak(string s, IList<string> wordDict) {
+        var words = new HashSet<string>(wordDict);
+        int n = s.Length;
+        var f = new bool[n + 1];
+        f[0] = true;
+        for (int i = 1; i <= n; ++i) {
+            for (int j = 0; j < i; ++j) {
+                if (f[j] && words.Contains(s.Substring(j, i - j))) {
+                    f[i] = true;
+                    break;
+                }
+            }
+        }
+        return f[n];
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：前缀树 + 动态规划
+
+我们先将 $wordDict$ 中的单词存入前缀树中，然后使用动态规划求解。
+
+我们定义 $f[i]$ 表示从字符串 $s$ 的第 $i$ 个字符开始往后拆分，能否拆分成 $wordDict$ 中的单词，初始时 $f[n]=true$，其余为 $false$。答案为 $f[0]$。
+
+接下来，我们从大到小枚举 $i$，对于每个 $i$，我们从 $i$ 开始往后拆分，如果 $s[i:j]$ 在前缀树中，且 $f[j+1]=true$，则 $f[i]=true$。
+
+时间复杂度 $O(n^2)$，空间复杂度 $O(n)$。其中 $n$ 为字符串 $s$ 的长度。
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Trie:
@@ -124,29 +278,7 @@ class Solution:
         return f[0]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```java
-class Solution {
-    public boolean wordBreak(String s, List<String> wordDict) {
-        Set<String> words = new HashSet<>(wordDict);
-        int n = s.length();
-        boolean[] f = new boolean[n + 1];
-        f[0] = true;
-        for (int i = 1; i <= n; ++i) {
-            for (int j = 0; j < i; ++j) {
-                if (f[j] && words.contains(s.substring(j, i))) {
-                    f[i] = true;
-                    break;
-                }
-            }
-        }
-        return f[n];
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -194,29 +326,7 @@ class Trie {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    bool wordBreak(string s, vector<string>& wordDict) {
-        unordered_set<string> words(wordDict.begin(), wordDict.end());
-        int n = s.size();
-        bool f[n + 1];
-        memset(f, false, sizeof(f));
-        f[0] = true;
-        for (int i = 1; i <= n; ++i) {
-            for (int j = 0; j < i; ++j) {
-                if (f[j] && words.count(s.substr(j, i - j))) {
-                    f[i] = true;
-                    break;
-                }
-            }
-        }
-        return f[n];
-    }
-};
-```
+#### C++
 
 ```cpp
 class Trie {
@@ -267,28 +377,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func wordBreak(s string, wordDict []string) bool {
-	words := map[string]bool{}
-	for _, w := range wordDict {
-		words[w] = true
-	}
-	n := len(s)
-	f := make([]bool, n+1)
-	f[0] = true
-	for i := 1; i <= n; i++ {
-		for j := 0; j < i; j++ {
-			if f[j] && words[s[j:i]] {
-				f[i] = true
-				break
-			}
-		}
-	}
-	return f[n]
-}
-```
+#### Go
 
 ```go
 type trie struct {
@@ -338,27 +427,58 @@ func wordBreak(s string, wordDict []string) bool {
 }
 ```
 
-### **C#**
+#### TypeScript
 
-```cs
-public class Solution {
-    public bool WordBreak(string s, IList<string> wordDict) {
-        var words = new HashSet<string>(wordDict);
-        int n = s.Length;
-        var f = new bool[n + 1];
-        f[0] = true;
-        for (int i = 1; i <= n; ++i) {
-            for (int j = 0; j < i; ++j) {
-                if (f[j] && words.Contains(s.Substring(j, i - j))) {
-                    f[i] = true;
-                    break;
-                }
+```ts
+function wordBreak(s: string, wordDict: string[]): boolean {
+    const trie = new Trie();
+    for (const w of wordDict) {
+        trie.insert(w);
+    }
+    const n = s.length;
+    const f: boolean[] = new Array(n + 1).fill(false);
+    f[n] = true;
+    for (let i = n - 1; i >= 0; --i) {
+        let node: Trie = trie;
+        for (let j = i; j < n; ++j) {
+            const k = s.charCodeAt(j) - 97;
+            if (!node.children[k]) {
+                break;
+            }
+            node = node.children[k];
+            if (node.isEnd && f[j + 1]) {
+                f[i] = true;
+                break;
             }
         }
-        return f[n];
+    }
+    return f[0];
+}
+
+class Trie {
+    children: Trie[];
+    isEnd: boolean;
+
+    constructor() {
+        this.children = new Array(26);
+        this.isEnd = false;
+    }
+
+    insert(w: string): void {
+        let node: Trie = this;
+        for (const c of w) {
+            const i = c.charCodeAt(0) - 97;
+            if (!node.children[i]) {
+                node.children[i] = new Trie();
+            }
+            node = node.children[i];
+        }
+        node.isEnd = true;
     }
 }
 ```
+
+#### C#
 
 ```cs
 public class Solution {
@@ -411,97 +531,8 @@ class Trie {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function wordBreak(s: string, wordDict: string[]): boolean {
-    const words = new Set(wordDict);
-    const n = s.length;
-    const f: boolean[] = new Array(n + 1).fill(false);
-    f[0] = true;
-    for (let i = 1; i <= n; ++i) {
-        for (let j = 0; j < i; ++j) {
-            if (f[j] && words.has(s.substring(j, i))) {
-                f[i] = true;
-                break;
-            }
-        }
-    }
-    return f[n];
-}
-```
-
-```ts
-function wordBreak(s: string, wordDict: string[]): boolean {
-    const trie = new Trie();
-    for (const w of wordDict) {
-        trie.insert(w);
-    }
-    const n = s.length;
-    const f: boolean[] = new Array(n + 1).fill(false);
-    f[n] = true;
-    for (let i = n - 1; i >= 0; --i) {
-        let node: Trie = trie;
-        for (let j = i; j < n; ++j) {
-            const k = s.charCodeAt(j) - 97;
-            if (!node.children[k]) {
-                break;
-            }
-            node = node.children[k];
-            if (node.isEnd && f[j + 1]) {
-                f[i] = true;
-                break;
-            }
-        }
-    }
-    return f[0];
-}
-
-class Trie {
-    children: Trie[];
-    isEnd: boolean;
-
-    constructor() {
-        this.children = new Array(26);
-        this.isEnd = false;
-    }
-
-    insert(w: string): void {
-        let node: Trie = this;
-        for (const c of w) {
-            const i = c.charCodeAt(0) - 97;
-            if (!node.children[i]) {
-                node.children[i] = new Trie();
-            }
-            node = node.children[i];
-        }
-        node.isEnd = true;
-    }
-}
-```
-
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn word_break(s: String, word_dict: Vec<String>) -> bool {
-        let words: std::collections::HashSet<String> = word_dict.into_iter().collect();
-        let mut f = vec![false; s.len() + 1];
-        f[0] = true;
-        for i in 1..=s.len() {
-            for j in 0..i {
-                f[i] |= f[j] && words.contains(&s[j..i]);
-            }
-        }
-        f[s.len()]
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

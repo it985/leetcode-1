@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2273.Find%20Resultant%20Array%20After%20Removing%20Anagrams/README_EN.md
+rating: 1294
+source: Weekly Contest 293 Q1
+tags:
+    - Array
+    - Hash Table
+    - String
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2273. Find Resultant Array After Removing Anagrams](https://leetcode.com/problems/find-resultant-array-after-removing-anagrams)
 
 [中文文档](/solution/2200-2299/2273.Find%20Resultant%20Array%20After%20Removing%20Anagrams/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> string array <code>words</code>, where <code>words[i]</code> consists of lowercase English letters.</p>
 
@@ -45,11 +62,17 @@ No two adjacent strings in words are anagrams of each other, so no operations ar
 	<li><code>words[i]</code> consists of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -61,7 +84,7 @@ class Solution:
         ]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -82,7 +105,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function removeAnagrams(words: string[]): string[] {
@@ -109,10 +132,8 @@ function countWord(word: string): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

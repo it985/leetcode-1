@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0846.Hand%20of%20Straights/README_EN.md
+tags:
+    - Greedy
+    - Array
+    - Hash Table
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [846. Hand of Straights](https://leetcode.com/problems/hand-of-straights)
 
 [中文文档](/solution/0800-0899/0846.Hand%20of%20Straights/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Alice has some number of cards and she wants to rearrange the cards into groups so that each group is of size <code>groupSize</code>, and consists of <code>groupSize</code> consecutive cards.</p>
 
@@ -38,11 +53,17 @@
 <p>&nbsp;</p>
 <p><strong>Note:</strong> This question is the same as 1296: <a href="https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/" target="_blank">https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/</a></p>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -58,6 +79,98 @@ class Solution:
                         cnt.pop(x)
         return True
 ```
+
+#### Java
+
+```java
+class Solution {
+    public boolean isNStraightHand(int[] hand, int groupSize) {
+        Map<Integer, Integer> cnt = new HashMap<>();
+        for (int v : hand) {
+            cnt.put(v, cnt.getOrDefault(v, 0) + 1);
+        }
+        Arrays.sort(hand);
+        for (int v : hand) {
+            if (cnt.containsKey(v)) {
+                for (int x = v; x < v + groupSize; ++x) {
+                    if (!cnt.containsKey(x)) {
+                        return false;
+                    }
+                    cnt.put(x, cnt.get(x) - 1);
+                    if (cnt.get(x) == 0) {
+                        cnt.remove(x);
+                    }
+                }
+            }
+        }
+        return true;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    bool isNStraightHand(vector<int>& hand, int groupSize) {
+        unordered_map<int, int> cnt;
+        for (int& v : hand) ++cnt[v];
+        sort(hand.begin(), hand.end());
+        for (int& v : hand) {
+            if (cnt.count(v)) {
+                for (int x = v; x < v + groupSize; ++x) {
+                    if (!cnt.count(x)) {
+                        return false;
+                    }
+                    if (--cnt[x] == 0) {
+                        cnt.erase(x);
+                    }
+                }
+            }
+        }
+        return true;
+    }
+};
+```
+
+#### Go
+
+```go
+func isNStraightHand(hand []int, groupSize int) bool {
+	cnt := map[int]int{}
+	for _, v := range hand {
+		cnt[v]++
+	}
+	sort.Ints(hand)
+	for _, v := range hand {
+		if _, ok := cnt[v]; ok {
+			for x := v; x < v+groupSize; x++ {
+				if _, ok := cnt[x]; !ok {
+					return false
+				}
+				cnt[x]--
+				if cnt[x] == 0 {
+					delete(cnt, x)
+				}
+			}
+		}
+	}
+	return true
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 from sortedcontainers import SortedDict
@@ -85,33 +198,7 @@ class Solution:
         return True
 ```
 
-### **Java**
-
-```java
-class Solution {
-    public boolean isNStraightHand(int[] hand, int groupSize) {
-        Map<Integer, Integer> cnt = new HashMap<>();
-        for (int v : hand) {
-            cnt.put(v, cnt.getOrDefault(v, 0) + 1);
-        }
-        Arrays.sort(hand);
-        for (int v : hand) {
-            if (cnt.containsKey(v)) {
-                for (int x = v; x < v + groupSize; ++x) {
-                    if (!cnt.containsKey(x)) {
-                        return false;
-                    }
-                    cnt.put(x, cnt.get(x) - 1);
-                    if (cnt.get(x) == 0) {
-                        cnt.remove(x);
-                    }
-                }
-            }
-        }
-        return true;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -141,31 +228,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    bool isNStraightHand(vector<int>& hand, int groupSize) {
-        unordered_map<int, int> cnt;
-        for (int& v : hand) ++cnt[v];
-        sort(hand.begin(), hand.end());
-        for (int& v : hand) {
-            if (cnt.count(v)) {
-                for (int x = v; x < v + groupSize; ++x) {
-                    if (!cnt.count(x)) {
-                        return false;
-                    }
-                    if (--cnt[x] == 0) {
-                        cnt.erase(x);
-                    }
-                }
-            }
-        }
-        return true;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -189,31 +252,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func isNStraightHand(hand []int, groupSize int) bool {
-	cnt := map[int]int{}
-	for _, v := range hand {
-		cnt[v]++
-	}
-	sort.Ints(hand)
-	for _, v := range hand {
-		if _, ok := cnt[v]; ok {
-			for x := v; x < v+groupSize; x++ {
-				if _, ok := cnt[x]; !ok {
-					return false
-				}
-				cnt[x]--
-				if cnt[x] == 0 {
-					delete(cnt, x)
-				}
-			}
-		}
-	}
-	return true
-}
-```
+#### Go
 
 ```go
 func isNStraightHand(hand []int, groupSize int) bool {
@@ -245,10 +284,8 @@ func isNStraightHand(hand []int, groupSize int) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

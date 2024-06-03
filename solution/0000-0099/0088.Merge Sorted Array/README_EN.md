@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0088.Merge%20Sorted%20Array/README_EN.md
+tags:
+    - Array
+    - Two Pointers
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [88. Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array)
 
 [中文文档](/solution/0000-0099/0088.Merge%20Sorted%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two integer arrays <code>nums1</code> and <code>nums2</code>, sorted in <strong>non-decreasing order</strong>, and two integers <code>m</code> and <code>n</code>, representing the number of elements in <code>nums1</code> and <code>nums2</code> respectively.</p>
 
@@ -53,9 +67,13 @@ Note that because m = 0, there are no elements in nums1. The 0 is only there to 
 <p>&nbsp;</p>
 <p><strong>Follow up: </strong>Can you come up with an algorithm that runs in <code>O(m + n)</code> time?</p>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Two Pointers
 
 We use two pointers $i$ and $j$ pointing to the end of two arrays, and a pointer $k$ pointing to the end of the merged array.
 
@@ -65,7 +83,7 @@ The time complexity is $O(m + n)$, where $m$ and $n$ are the lengths of two arra
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -82,7 +100,7 @@ class Solution:
             k -= 1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -107,7 +125,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func merge(nums1 []int, m int, nums2 []int, n int) {
@@ -123,7 +141,7 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -135,6 +153,8 @@ function merge(nums1: number[], m: number, nums2: number[], n: number): void {
     }
 }
 ```
+
+#### TypeScript
 
 ```ts
 /**
@@ -148,24 +168,7 @@ function merge(nums1: number[], m: number, nums2: number[], n: number): void {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} nums1
- * @param {number} m
- * @param {number[]} nums2
- * @param {number} n
- * @return {void} Do not return anything, modify nums1 in-place instead.
- */
-var merge = function (nums1, m, nums2, n) {
-    for (let i = m - 1, j = n - 1, k = m + n - 1; j >= 0; --k) {
-        nums1[k] = i >= 0 && nums1[i] > nums2[j] ? nums1[i--] : nums2[j--];
-    }
-};
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -196,7 +199,24 @@ impl Solution {
 }
 ```
 
-### **PHP**
+#### JavaScript
+
+```js
+/**
+ * @param {number[]} nums1
+ * @param {number} m
+ * @param {number[]} nums2
+ * @param {number} n
+ * @return {void} Do not return anything, modify nums1 in-place instead.
+ */
+var merge = function (nums1, m, nums2, n) {
+    for (let i = m - 1, j = n - 1, k = m + n - 1; j >= 0; --k) {
+        nums1[k] = i >= 0 && nums1[i] > nums2[j] ? nums1[i--] : nums2[j--];
+    }
+};
+```
+
+#### PHP
 
 ```php
 class Solution {
@@ -219,10 +239,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

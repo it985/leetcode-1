@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2787.Ways%20to%20Express%20an%20Integer%20as%20Sum%20of%20Powers/README_EN.md
+rating: 1817
+source: Biweekly Contest 109 Q4
+tags:
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [2787. Ways to Express an Integer as Sum of Powers](https://leetcode.com/problems/ways-to-express-an-integer-as-sum-of-powers)
 
 [中文文档](/solution/2700-2799/2787.Ways%20to%20Express%20an%20Integer%20as%20Sum%20of%20Powers/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two <strong>positive</strong> integers <code>n</code> and <code>x</code>.</p>
 
@@ -40,11 +54,17 @@ It can be shown that it is the only way to express 10 as the sum of the 2<sup>nd
 	<li><code>1 &lt;= x &lt;= 5</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -61,7 +81,7 @@ class Solution:
         return f[n][n]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -83,7 +103,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -107,7 +127,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfWays(n int, x int) int {
@@ -130,7 +150,7 @@ func numberOfWays(n int, x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfWays(n: number, x: number): number {
@@ -152,10 +172,8 @@ function numberOfWays(n: number, x: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

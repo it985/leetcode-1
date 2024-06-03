@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1110.Delete%20Nodes%20And%20Return%20Forest/README_EN.md
+rating: 1511
+source: Weekly Contest 144 Q3
+tags:
+    - Tree
+    - Depth-First Search
+    - Array
+    - Hash Table
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [1110. Delete Nodes And Return Forest](https://leetcode.com/problems/delete-nodes-and-return-forest)
 
 [中文文档](/solution/1100-1199/1110.Delete%20Nodes%20And%20Return%20Forest/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>root</code> of a binary tree, each node in the tree has a distinct value.</p>
 
@@ -35,9 +53,13 @@
 	<li><code>to_delete</code> contains distinct values between <code>1</code> and <code>1000</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: DFS**
+<!-- solution:start -->
+
+### Solution 1: DFS
 
 First, we use a hash table or an array of length 1001, `s`, to record all nodes that need to be deleted.
 
@@ -52,7 +74,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -84,7 +106,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -136,7 +158,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -184,7 +206,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -225,7 +247,7 @@ func delNodes(root *TreeNode, to_delete []int) (ans []*TreeNode) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -272,10 +294,8 @@ function delNodes(root: TreeNode | null, to_delete: number[]): Array<TreeNode | 
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

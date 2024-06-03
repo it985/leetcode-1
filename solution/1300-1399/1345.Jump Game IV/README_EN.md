@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1345.Jump%20Game%20IV/README_EN.md
+rating: 1809
+source: Biweekly Contest 19 Q4
+tags:
+    - Breadth-First Search
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [1345. Jump Game IV](https://leetcode.com/problems/jump-game-iv)
 
 [中文文档](/solution/1300-1399/1345.Jump%20Game%20IV/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of&nbsp;integers <code>arr</code>, you are initially positioned at the first index of the array.</p>
 
@@ -51,11 +67,17 @@
 	<li><code>-10<sup>8</sup> &lt;= arr[i] &lt;= 10<sup>8</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -84,7 +106,7 @@ class Solution:
                 q.append((i - 1, step))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -127,7 +149,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -170,7 +192,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minJumps(arr []int) int {
@@ -209,10 +231,8 @@ func minJumps(arr []int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

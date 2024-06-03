@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1889.Minimum%20Space%20Wasted%20From%20Packaging/README_EN.md
+rating: 2214
+source: Weekly Contest 244 Q4
+tags:
+    - Array
+    - Binary Search
+    - Prefix Sum
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1889. Minimum Space Wasted From Packaging](https://leetcode.com/problems/minimum-space-wasted-from-packaging)
 
 [中文文档](/solution/1800-1899/1889.Minimum%20Space%20Wasted%20From%20Packaging/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You have <code>n</code> packages that you are trying to place in boxes, <strong>one package in each box</strong>. There are <code>m</code> suppliers that each produce boxes of <strong>different sizes</strong> (with infinite supply). A package can be placed in a box if the size of the package is <strong>less than or equal to</strong> the size of the box.</p>
 
@@ -58,11 +75,17 @@ The total waste is (5-3) + (5-5) + (10-8) + (10-10) + (14-11) + (14-12) = 9.
 	<li>The elements in <code>boxes[j]</code> are <strong>distinct</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -85,7 +108,7 @@ class Solution:
         return (ans - sum(packages)) % mod
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -134,7 +157,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -164,7 +187,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minWastedSpace(packages []int, boxes [][]int) int {
@@ -197,7 +220,7 @@ func minWastedSpace(packages []int, boxes [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minWastedSpace(packages: number[], boxes: number[][]): number {
@@ -240,10 +263,8 @@ function search(nums: number[], x: number, l: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

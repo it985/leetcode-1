@@ -1,10 +1,23 @@
-# [1215. 步进数](https://leetcode.cn/problems/stepping-numbers)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1215.Stepping%20Numbers/README.md
+rating: 1674
+source: 第 10 场双周赛 Q3
+tags:
+    - 广度优先搜索
+    - 回溯
+---
+
+<!-- problem:start -->
+
+# [1215. 步进数 🔒](https://leetcode.cn/problems/stepping-numbers)
 
 [English Version](/solution/1200-1299/1215.Stepping%20Numbers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>如果一个整数上的每一位数字与其相邻位上的数字的绝对差都是 <code>1</code>，那么这个数就是一个「步进数」。</p>
 
@@ -28,11 +41,13 @@
 	<li><code>0 &lt;= low &lt;= high &lt;= 2 * 10^9</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：BFS**
+### 方法一：BFS
 
 首先，如果 $low$ 为 $0$，那么我们需要将 $0$ 加入答案中。
 
@@ -42,9 +57,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -67,9 +80,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -103,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,7 +150,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countSteppingNumbers(low int, high int) []int {
@@ -169,7 +180,7 @@ func countSteppingNumbers(low int, high int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countSteppingNumbers(low: number, high: number): number[] {
@@ -201,10 +212,8 @@ function countSteppingNumbers(low: number, high: number): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

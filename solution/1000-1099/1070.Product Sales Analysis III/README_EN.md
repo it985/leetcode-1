@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1070.Product%20Sales%20Analysis%20III/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
 # [1070. Product Sales Analysis III](https://leetcode.com/problems/product-sales-analysis-iii)
 
 [中文文档](/solution/1000-1099/1070.Product%20Sales%20Analysis%20III/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Sales</code></p>
 
@@ -75,11 +87,17 @@ Product table:
 +------------+------------+----------+-------+
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -99,6 +117,18 @@ WHERE
     );
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### MySQL
+
 ```sql
 # Write your MySQL query statement below
 WITH
@@ -117,3 +147,7 @@ WHERE rk = 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1306.Jump%20Game%20III/README_EN.md
+rating: 1396
+source: Weekly Contest 169 Q3
+tags:
+    - Depth-First Search
+    - Breadth-First Search
+    - Array
+---
+
+<!-- problem:start -->
+
 # [1306. Jump Game III](https://leetcode.com/problems/jump-game-iii)
 
 [中文文档](/solution/1300-1399/1306.Jump%20Game%20III/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of non-negative integers <code>arr</code>, you are initially positioned at <code>start</code>&nbsp;index of the array. When you are at index <code>i</code>, you can jump&nbsp;to <code>i + arr[i]</code> or <code>i - arr[i]</code>, check if you can reach&nbsp;<strong>any</strong> index with value 0.</p>
 
@@ -47,13 +63,17 @@ index 0 -&gt; index 4 -&gt; index 1 -&gt; index 3
 	<li><code>0 &lt;= start &lt; arr.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-BFS.
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -71,7 +91,7 @@ class Solution:
         return False
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -96,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -122,7 +142,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canReach(arr []int, start int) bool {
@@ -145,7 +165,7 @@ func canReach(arr []int, start int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canReach(arr: number[], start: number): boolean {
@@ -167,10 +187,8 @@ function canReach(arr: number[], start: number): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

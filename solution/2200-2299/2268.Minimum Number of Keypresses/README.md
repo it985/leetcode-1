@@ -1,10 +1,24 @@
-# [2268. 最少按键次数](https://leetcode.cn/problems/minimum-number-of-keypresses)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2268.Minimum%20Number%20of%20Keypresses/README.md
+tags:
+    - 贪心
+    - 哈希表
+    - 字符串
+    - 计数
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [2268. 最少按键次数 🔒](https://leetcode.cn/problems/minimum-number-of-keypresses)
 
 [English Version](/solution/2200-2299/2268.Minimum%20Number%20of%20Keypresses/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你有一个 9 键键盘，按键按 1 到 9 编号，每个按键对应着几个英文小写字母。你可以决定每个按键对应哪些英文字母，但要满足如下条件：</p>
 
@@ -57,17 +71,17 @@
 	<li><code>s</code> 由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数 + 贪心**
+### 方法一：计数 + 贪心
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +97,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -126,7 +138,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumKeypresses(s string) int {
@@ -146,16 +158,8 @@ func minimumKeypresses(s string) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
-# [2792. Count Nodes That Are Great Enough](https://leetcode.com/problems/count-nodes-that-are-great-enough)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2792.Count%20Nodes%20That%20Are%20Great%20Enough/README_EN.md
+tags:
+    - Tree
+    - Depth-First Search
+    - Divide and Conquer
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
+# [2792. Count Nodes That Are Great Enough 🔒](https://leetcode.com/problems/count-nodes-that-are-great-enough)
 
 [中文文档](/solution/2700-2799/2792.Count%20Nodes%20That%20Are%20Great%20Enough/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <code>root</code> to a binary tree and an integer <code>k</code>. A node of this tree is called <strong>great enough</strong> if the followings hold:</p>
 
@@ -65,11 +80,17 @@ See the picture below for a better understanding.</pre>
 	<li><code>1 &lt;= k &lt;= 10</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -102,7 +123,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -154,7 +175,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -200,7 +221,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -251,10 +272,8 @@ func (h *hp) push(v int) { heap.Push(h, v) }
 func (h *hp) pop() int   { return heap.Pop(h).(int) }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0386.Lexicographical%20Numbers/README.md
+tags:
+    - 深度优先搜索
+    - 字典树
+---
+
+<!-- problem:start -->
+
 # [386. 字典序排数](https://leetcode.cn/problems/lexicographical-numbers)
 
 [English Version](/solution/0300-0399/0386.Lexicographical%20Numbers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数 <code>n</code> ，按字典序返回范围 <code>[1, n]</code> 内所有整数。</p>
 
@@ -34,17 +45,17 @@
 	<li><code>1 &lt;= n &lt;= 5 * 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -62,9 +73,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -88,28 +97,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public List<Integer> lexicalOrder(int n) {
-        List<Integer> ans = new ArrayList<>();
-        int v = 1;
-        for (int i = 0; i < n; ++i) {
-            ans.add(v);
-            if (v * 10 <= n) {
-                v *= 10;
-            } else {
-                while (v % 10 == 9 || v + 1 > n) {
-                    v /= 10;
-                }
-                ++v;
-            }
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -128,27 +116,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    vector<int> lexicalOrder(int n) {
-        vector<int> ans;
-        int v = 1;
-        for (int i = 0; i < n; ++i) {
-            ans.push_back(v);
-            if (v * 10 <= n)
-                v *= 10;
-            else {
-                while (v % 10 == 9 || v + 1 > n) v /= 10;
-                ++v;
-            }
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func lexicalOrder(n int) []int {
@@ -170,26 +138,7 @@ func lexicalOrder(n int) []int {
 }
 ```
 
-```go
-func lexicalOrder(n int) []int {
-	var ans []int
-	v := 1
-	for i := 0; i < n; i++ {
-		ans = append(ans, v)
-		if v*10 <= n {
-			v *= 10
-		} else {
-			for v%10 == 9 || v+1 > n {
-				v /= 10
-			}
-			v++
-		}
-	}
-	return ans
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -213,7 +162,7 @@ impl Solution {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -238,10 +187,84 @@ var lexicalOrder = function (n) {
 };
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Java
+
+```java
+class Solution {
+    public List<Integer> lexicalOrder(int n) {
+        List<Integer> ans = new ArrayList<>();
+        int v = 1;
+        for (int i = 0; i < n; ++i) {
+            ans.add(v);
+            if (v * 10 <= n) {
+                v *= 10;
+            } else {
+                while (v % 10 == 9 || v + 1 > n) {
+                    v /= 10;
+                }
+                ++v;
+            }
+        }
+        return ans;
+    }
+}
 ```
 
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> lexicalOrder(int n) {
+        vector<int> ans;
+        int v = 1;
+        for (int i = 0; i < n; ++i) {
+            ans.push_back(v);
+            if (v * 10 <= n)
+                v *= 10;
+            else {
+                while (v % 10 == 9 || v + 1 > n) v /= 10;
+                ++v;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func lexicalOrder(n int) []int {
+	var ans []int
+	v := 1
+	for i := 0; i < n; i++ {
+		ans = append(ans, v)
+		if v*10 <= n {
+			v *= 10
+		} else {
+			for v%10 == 9 || v+1 > n {
+				v /= 10
+			}
+			v++
+		}
+	}
+	return ans
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

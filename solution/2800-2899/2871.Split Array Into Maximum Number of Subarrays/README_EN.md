@@ -1,8 +1,24 @@
-# [2871. Split Array Into Maximum Number of Subarrays](https://leetcode.com/problems/split-array-into-maximum-number-of-subarrays/)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2871.Split%20Array%20Into%20Maximum%20Number%20of%20Subarrays/README_EN.md
+rating: 1749
+source: Biweekly Contest 114 Q3
+tags:
+    - Greedy
+    - Bit Manipulation
+    - Array
+---
+
+<!-- problem:start -->
+
+# [2871. Split Array Into Maximum Number of Subarrays](https://leetcode.com/problems/split-array-into-maximum-number-of-subarrays)
 
 [中文文档](/solution/2800-2899/2871.Split%20Array%20Into%20Maximum%20Number%20of%20Subarrays/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an array <code>nums</code> consisting of <strong>non-negative</strong> integers.</p>
 
@@ -50,9 +66,13 @@ It can be shown that we cannot split the array into more than 1 subarray with a 
 	<li><code>0 &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy + Bitwise Operation**
+<!-- solution:start -->
+
+### Solution 1: Greedy + Bitwise Operation
 
 We initialize a variable $score$ to record the score of the current subarray, and set $score=-1$ initially. Then we traverse the array, for each element $num$, we perform a bitwise AND operation between $score$ and $num$, and assign the result to $score$. If $score=0$, it means the score of the current subarray is 0, so we can split the current subarray and reset $score$ to $-1$. Finally, we return the number of split subarrays.
 
@@ -60,7 +80,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array. The space c
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -74,7 +94,7 @@ class Solution:
         return 1 if ans == 1 else ans - 1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -93,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -112,7 +132,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxSubarrays(nums []int) int {
@@ -131,7 +151,7 @@ func maxSubarrays(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxSubarrays(nums: number[]): number {
@@ -147,10 +167,8 @@ function maxSubarrays(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

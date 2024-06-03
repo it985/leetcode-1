@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2662.Minimum%20Cost%20of%20a%20Path%20With%20Special%20Roads/README_EN.md
+rating: 2153
+source: Weekly Contest 343 Q3
+tags:
+    - Graph
+    - Array
+    - Shortest Path
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [2662. Minimum Cost of a Path With Special Roads](https://leetcode.com/problems/minimum-cost-of-a-path-with-special-roads)
 
 [中文文档](/solution/2600-2699/2662.Minimum%20Cost%20of%20a%20Path%20With%20Special%20Roads/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an array <code>start</code> where <code>start = [startX, startY]</code> represents your initial position <code>(startX, startY)</code> in a 2D space. You are also given the array <code>target</code> where <code>target = [targetX, targetY]</code> represents your target position <code>(targetX, targetY)</code>.</p>
 
@@ -49,9 +66,13 @@ It can be shown that we cannot achieve a smaller total cost than 5.
 	<li><code>1 &lt;= cost<sub>i</sub> &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Dijkstra**
+<!-- solution:start -->
+
+### Solution 1: Dijkstra
 
 We can find that for each coordinate $(x, y)$ we visit, suppose the minimum cost from the start point to $(x, y)$ is $d$. If we choose to move directly to $(targetX, targetY)$, then the total cost is $d + |x - targetX| + |y - targetY|$. If we choose to go through a special path $(x_1, y_1) \rightarrow (x_2, y_2)$, then we need to spend $|x - x_1| + |y - y_1| + cost$ to move from $(x, y)$ to $(x_2, y_2)$.
 
@@ -67,7 +88,7 @@ The time complexity is $O(n^2 \times \log n)$, and the space complexity is $O(n^
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -91,7 +112,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -125,7 +146,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -158,7 +179,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumCost(start []int, target []int, specialRoads [][]int) int {
@@ -206,7 +227,7 @@ func (h *hp) Push(v any)        { *h = append(*h, v.(tuple)) }
 func (h *hp) Pop() any          { a := *h; v := a[len(a)-1]; *h = a[:len(a)-1]; return v }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumCost(start: number[], target: number[], specialRoads: number[][]): number {
@@ -300,10 +321,8 @@ class Heap<T = number> {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

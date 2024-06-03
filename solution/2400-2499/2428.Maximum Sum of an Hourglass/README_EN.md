@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2428.Maximum%20Sum%20of%20an%20Hourglass/README_EN.md
+rating: 1289
+source: Weekly Contest 313 Q2
+tags:
+    - Array
+    - Matrix
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [2428. Maximum Sum of an Hourglass](https://leetcode.com/problems/maximum-sum-of-an-hourglass)
 
 [中文文档](/solution/2400-2499/2428.Maximum%20Sum%20of%20an%20Hourglass/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an <code>m x n</code> integer matrix <code>grid</code>.</p>
 
@@ -39,9 +55,13 @@
 	<li><code>0 &lt;= grid[i][j] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Enumeration
 
 We observe from the problem statement that each hourglass is a $3 \times 3$ matrix with the first and last elements of the middle row removed. Therefore, we can start from the top left corner, enumerate the middle coordinate $(i, j)$ of each hourglass, then calculate the sum of the elements in the hourglass, and take the maximum value.
 
@@ -49,7 +69,7 @@ The time complexity is $O(m \times n)$, where $m$ and $n$ are the number of rows
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,7 +86,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -89,7 +109,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -113,7 +133,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxSum(grid [][]int) (ans int) {
@@ -133,7 +153,7 @@ func maxSum(grid [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxSum(grid: number[][]): number {
@@ -155,10 +175,8 @@ function maxSum(grid: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

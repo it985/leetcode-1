@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1436.Destination%20City/README_EN.md
+rating: 1192
+source: Weekly Contest 187 Q1
+tags:
+    - Array
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [1436. Destination City](https://leetcode.com/problems/destination-city)
 
 [中文文档](/solution/1400-1499/1436.Destination%20City/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given the array <code>paths</code>, where <code>paths[i] = [cityA<sub>i</sub>, cityB<sub>i</sub>]</code> means there exists a direct path going from <code>cityA<sub>i</sub></code> to <code>cityB<sub>i</sub></code>. <em>Return the destination city, that is, the city without any path outgoing to another city.</em></p>
 
@@ -48,11 +64,17 @@ Clearly the destination city is &quot;A&quot;.
 	<li>All strings consist of lowercase and uppercase English letters and the space character.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -61,7 +83,7 @@ class Solution:
         return next(b for _, b in paths if b not in s)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -80,7 +102,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -100,7 +122,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func destCity(paths [][]string) string {
@@ -117,7 +139,41 @@ func destCity(paths [][]string) string {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function destCity(paths: string[][]): string {
+    const set = new Set(paths.map(([a]) => a));
+    for (const [_, b] of paths) {
+        if (!set.has(b)) {
+            return b;
+        }
+    }
+    return '';
+}
+```
+
+#### Rust
+
+```rust
+use std::collections::HashSet;
+impl Solution {
+    pub fn dest_city(paths: Vec<Vec<String>>) -> String {
+        let set = paths
+            .iter()
+            .map(|v| &v[0])
+            .collect::<HashSet<&String>>();
+        for path in paths.iter() {
+            if !set.contains(&path[1]) {
+                return path[1].clone();
+            }
+        }
+        String::new()
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -138,41 +194,7 @@ var destCity = function (paths) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function destCity(paths: string[][]): string {
-    const set = new Set(paths.map(([a]) => a));
-    for (const [_, b] of paths) {
-        if (!set.has(b)) {
-            return b;
-        }
-    }
-    return '';
-}
-```
-
-### **Rust**
-
-```rust
-use std::collections::HashSet;
-impl Solution {
-    pub fn dest_city(paths: Vec<Vec<String>>) -> String {
-        let set = paths
-            .iter()
-            .map(|v| &v[0])
-            .collect::<HashSet<&String>>();
-        for path in paths.iter() {
-            if !set.contains(&path[1]) {
-                return path[1].clone();
-            }
-        }
-        String::new()
-    }
-}
-```
-
-### **C**
+#### C
 
 ```c
 char* destCity(char*** paths, int pathsSize, int* pathsColSize) {
@@ -192,10 +214,8 @@ char* destCity(char*** paths, int pathsSize, int* pathsColSize) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

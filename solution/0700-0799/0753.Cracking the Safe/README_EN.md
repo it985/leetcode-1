@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0753.Cracking%20the%20Safe/README_EN.md
+tags:
+    - Depth-First Search
+    - Graph
+    - Eulerian Circuit
+---
+
+<!-- problem:start -->
+
 # [753. Cracking the Safe](https://leetcode.com/problems/cracking-the-safe)
 
 [中文文档](/solution/0700-0799/0753.Cracking%20the%20Safe/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is a safe protected by a password. The password is a sequence of <code>n</code> digits where each digit can be in the range <code>[0, k - 1]</code>.</p>
 
@@ -10,6 +24,7 @@
 
 <ul>
 	<li>For example, the correct password is <code>&quot;345&quot;</code> and you enter in <code>&quot;012345&quot;</code>:
+
     <ul>
     	<li>After typing <code>0</code>, the most recent <code>3</code> digits is <code>&quot;0&quot;</code>, which is incorrect.</li>
     	<li>After typing <code>1</code>, the most recent <code>3</code> digits is <code>&quot;01&quot;</code>, which is incorrect.</li>
@@ -19,6 +34,7 @@
     	<li>After typing <code>5</code>, the most recent <code>3</code> digits is <code>&quot;345&quot;</code>, which is correct and the safe unlocks.</li>
     </ul>
     </li>
+
 </ul>
 
 <p>Return <em>any string of <strong>minimum length</strong> that will unlock the safe <strong>at some point</strong> of entering it</em>.</p>
@@ -42,7 +58,7 @@
 - &quot;01&quot; is typed in starting from the 1<sup>st</sup> digit.
 - &quot;10&quot; is typed in starting from the 3<sup>rd</sup> digit.
 - &quot;11&quot; is typed in starting from the 2<sup>nd</sup> digit.
-Thus &quot;01100&quot; will unlock the safe. &quot;01100&quot;, &quot;10011&quot;, and &quot;11001&quot; would also unlock the safe.
+Thus &quot;01100&quot; will unlock the safe. &quot;10011&quot;, and &quot;11001&quot; would also unlock the safe.
 </pre>
 
 <p>&nbsp;</p>
@@ -54,11 +70,17 @@ Thus &quot;01100&quot; will unlock the safe. &quot;01100&quot;, &quot;10011&quot
 	<li><code>1 &lt;= k<sup>n</sup> &lt;= 4096</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -80,7 +102,7 @@ class Solution:
         return "".join(ans)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -134,7 +156,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func crackSafe(n int, k int) string {
@@ -159,10 +181,8 @@ func crackSafe(n int, k int) string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1338.Reduce%20Array%20Size%20to%20The%20Half/README_EN.md
+rating: 1303
+source: Weekly Contest 174 Q2
+tags:
+    - Greedy
+    - Array
+    - Hash Table
+    - Sorting
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [1338. Reduce Array Size to The Half](https://leetcode.com/problems/reduce-array-size-to-the-half)
 
 [中文文档](/solution/1300-1399/1338.Reduce%20Array%20Size%20to%20The%20Half/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>arr</code>. You can choose a set of integers and remove all the occurrences of these integers in the array.</p>
 
@@ -36,11 +54,17 @@ Choosing set {2,7} is not possible as it will make the new array [3,3,3,3,5,5,5]
 	<li><code>1 &lt;= arr[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -55,7 +79,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -84,7 +108,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -113,7 +137,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minSetSize(arr []int) (ans int) {
@@ -135,7 +159,7 @@ func minSetSize(arr []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minSetSize(arr: number[]): number {
@@ -158,10 +182,8 @@ function minSetSize(arr: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

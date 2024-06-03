@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0141.Linked%20List%20Cycle/README.md
+tags:
+    - 哈希表
+    - 链表
+    - 双指针
+---
+
+<!-- problem:start -->
+
 # [141. 环形链表](https://leetcode.cn/problems/linked-list-cycle)
 
 [English Version](/solution/0100-0199/0141.Linked%20List%20Cycle/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个链表的头节点 <code>head</code> ，判断链表中是否有环。</p>
 
@@ -58,17 +70,150 @@
 
 <p><strong>进阶：</strong>你能用 <code>O(1)</code>（即，常量）内存解决此问题吗？</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
-遍历链表，并使用哈希表记录每个节点。当某个节点二次出现时，则表示存在环，直接返回 `true`。否则链表遍历结束，返回 `false`。
+我们可以遍历链表，用一个哈希表 $s$ 记录每个节点。当某个节点二次出现时，则表示存在环，直接返回 `true`。否则链表遍历结束，返回 `false`。
 
 时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 是链表中的节点数。
 
-**方法二：快慢指针**
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        s = set()
+        while head:
+            if head in s:
+                return True
+            s.add(head)
+            head = head.next
+        return False
+```
+
+#### Java
+
+```java
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        Set<ListNode> s = new HashSet<>();
+        for (; head != null; head = head.next) {
+            if (!s.add(head)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+```
+
+#### C++
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool hasCycle(ListNode* head) {
+        unordered_set<ListNode*> s;
+        for (; head; head = head->next) {
+            if (s.contains(head)) {
+                return true;
+            }
+            s.insert(head);
+        }
+        return false;
+    }
+};
+```
+
+#### Go
+
+```go
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func hasCycle(head *ListNode) bool {
+	s := map[*ListNode]bool{}
+	for ; head != nil; head = head.Next {
+		if s[head] {
+			return true
+		}
+		s[head] = true
+	}
+	return false
+}
+```
+
+#### TypeScript
+
+```ts
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     val: number
+ *     next: ListNode | null
+ *     constructor(val?: number, next?: ListNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.next = (next===undefined ? null : next)
+ *     }
+ * }
+ */
+
+function hasCycle(head: ListNode | null): boolean {
+    const s: Set<ListNode> = new Set();
+    for (; head; head = head.next) {
+        if (s.has(head)) {
+            return true;
+        }
+        s.add(head);
+    }
+    return false;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：快慢指针
 
 我们定义快慢指针 $fast$ 和 $slow$，初始时均指向 $head$。
 
@@ -78,9 +223,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -100,9 +243,7 @@ class Solution:
         return False
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -132,7 +273,7 @@ public class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -160,7 +301,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -182,34 +323,7 @@ func hasCycle(head *ListNode) bool {
 }
 ```
 
-### **TypeScript**
-
-```ts
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *     val: number
- *     next: ListNode | null
- *     constructor(val?: number, next?: ListNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.next = (next===undefined ? null : next)
- *     }
- * }
- */
-
-function hasCycle(head: ListNode | null): boolean {
-    const set = new Set<ListNode>();
-    let node = head;
-    while (node !== null) {
-        if (set.has(node)) {
-            return true;
-        }
-        set.add(node);
-        node = node.next;
-    }
-    return false;
-}
-```
+#### TypeScript
 
 ```ts
 /**
@@ -238,7 +352,7 @@ function hasCycle(head: ListNode | null): boolean {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -267,7 +381,7 @@ var hasCycle = function (head) {
 };
 ```
 
-### **C#**
+#### C#
 
 ```cs
 /**
@@ -297,10 +411,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

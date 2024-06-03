@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1969.Minimum%20Non-Zero%20Product%20of%20the%20Array%20Elements/README.md
+rating: 1966
+source: 第 254 场周赛 Q3
+tags:
+    - 贪心
+    - 递归
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [1969. 数组元素的最小非零乘积](https://leetcode.cn/problems/minimum-non-zero-product-of-the-array-elements)
 
 [English Version](/solution/1900-1999/1969.Minimum%20Non-Zero%20Product%20of%20the%20Array%20Elements/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个正整数&nbsp;<code>p</code>&nbsp;。你有一个下标从 <strong>1</strong>&nbsp;开始的数组&nbsp;<code>nums</code>&nbsp;，这个数组包含范围&nbsp;<code>[1, 2<sup>p</sup> - 1]</code>&nbsp;内所有整数的二进制形式（两端都 <strong>包含</strong>）。你可以进行以下操作 <strong>任意</strong>&nbsp;次：</p>
 
@@ -61,11 +75,13 @@
 	<li><code>1 &lt;= p &lt;= 60</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 快速幂**
+### 方法一：贪心 + 快速幂
 
 我们注意到，每一次操作，并不会改变元素的和，而在元素和不变的情况下，要想使得乘积最小，应该尽可能最大化元素的差值。
 
@@ -77,9 +93,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -88,9 +102,7 @@ class Solution:
         return (2**p - 1) * pow(2**p - 2, 2 ** (p - 1) - 1, mod) % mod
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -114,7 +126,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,7 +151,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minNonZeroProduct(p int) int {
@@ -160,7 +172,7 @@ func minNonZeroProduct(p int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minNonZeroProduct(p: number): number {
@@ -182,10 +194,8 @@ function minNonZeroProduct(p: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

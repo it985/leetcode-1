@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1051.Height%20Checker/README_EN.md
+rating: 1303
+source: Weekly Contest 138 Q1
+tags:
+    - Array
+    - Counting Sort
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1051. Height Checker](https://leetcode.com/problems/height-checker)
 
 [中文文档](/solution/1000-1099/1051.Height%20Checker/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A school is trying to take an annual photo of all the students. The students are asked to stand in a single file line in <strong>non-decreasing order</strong> by height. Let this ordering be represented by the integer array <code>expected</code> where <code>expected[i]</code> is the expected height of the <code>i<sup>th</sup></code> student in line.</p>
 
@@ -52,11 +68,17 @@ All indices match.
 	<li><code>1 &lt;= heights[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -64,6 +86,68 @@ class Solution:
         expected = sorted(heights)
         return sum(a != b for a, b in zip(heights, expected))
 ```
+
+#### Java
+
+```java
+class Solution {
+    public int heightChecker(int[] heights) {
+        int[] expected = heights.clone();
+        Arrays.sort(expected);
+        int ans = 0;
+        for (int i = 0; i < heights.length; ++i) {
+            if (heights[i] != expected[i]) {
+                ++ans;
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int heightChecker(vector<int>& heights) {
+        vector<int> expected = heights;
+        sort(expected.begin(), expected.end());
+        int ans = 0;
+        for (int i = 0; i < heights.size(); ++i) ans += heights[i] != expected[i];
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func heightChecker(heights []int) int {
+	expected := make([]int, len(heights))
+	copy(expected, heights)
+	sort.Ints(expected)
+	ans := 0
+	for i, v := range heights {
+		if v != expected[i] {
+			ans++
+		}
+	}
+	return ans
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -81,23 +165,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-```java
-class Solution {
-    public int heightChecker(int[] heights) {
-        int[] expected = heights.clone();
-        Arrays.sort(expected);
-        int ans = 0;
-        for (int i = 0; i < heights.length; ++i) {
-            if (heights[i] != expected[i]) {
-                ++ans;
-            }
-        }
-        return ans;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -120,20 +188,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int heightChecker(vector<int>& heights) {
-        vector<int> expected = heights;
-        sort(expected.begin(), expected.end());
-        int ans = 0;
-        for (int i = 0; i < heights.size(); ++i) ans += heights[i] != expected[i];
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -153,22 +208,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func heightChecker(heights []int) int {
-	expected := make([]int, len(heights))
-	copy(expected, heights)
-	sort.Ints(expected)
-	ans := 0
-	for i, v := range heights {
-		if v != expected[i] {
-			ans++
-		}
-	}
-	return ans
-}
-```
+#### Go
 
 ```go
 func heightChecker(heights []int) int {
@@ -190,10 +230,8 @@ func heightChecker(heights []int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

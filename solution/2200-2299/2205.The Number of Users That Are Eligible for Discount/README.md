@@ -1,10 +1,20 @@
-# [2205. 有资格享受折扣的用户数量](https://leetcode.cn/problems/the-number-of-users-that-are-eligible-for-discount)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2205.The%20Number%20of%20Users%20That%20Are%20Eligible%20for%20Discount/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2205. 有资格享受折扣的用户数量 🔒](https://leetcode.cn/problems/the-number-of-users-that-are-eligible-for-discount)
 
 [English Version](/solution/2200-2299/2205.The%20Number%20of%20Users%20That%20Are%20Eligible%20for%20Discount/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Purchases</code></p>
 
@@ -56,19 +66,19 @@ startDate = 2022-03-08, endDate = 2022-03-20, minAmount = 1000
  - 用户 2 在时间间隔内有一次购买，但金额小于 minAmount。
  - 用户 3 是唯一一个购买行为同时满足这两个条件的用户。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：使用 count(distinct) 函数**
+### 方法一：使用 count(distinct) 函数
 
 注意需要判断的是单次购买金额是否大于等于 `minAmount`，而不是累计购买金额是否大于等于 `minAmount`。
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 CREATE FUNCTION getUserIDs(startDate DATE, endDate DATE, minAmount INT) RETURNS INT
@@ -82,3 +92,7 @@ END
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

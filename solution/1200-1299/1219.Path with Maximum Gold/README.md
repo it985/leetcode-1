@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1219.Path%20with%20Maximum%20Gold/README.md
+rating: 1663
+source: 第 157 场周赛 Q3
+tags:
+    - 数组
+    - 回溯
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [1219. 黄金矿工](https://leetcode.cn/problems/path-with-maximum-gold)
 
 [English Version](/solution/1200-1299/1219.Path%20with%20Maximum%20Gold/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你要开发一座金矿，地质勘测学家已经探明了这座金矿中的资源分布，并用大小为&nbsp;<code>m * n</code> 的网格 <code>grid</code> 进行了标注。每个单元格中的整数就表示这一单元格中的黄金数量；如果该单元格是空的，那么就是 <code>0</code>。</p>
 
@@ -54,11 +68,13 @@
 	<li>最多 <strong>25 </strong>个单元格中有黄金。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们可以枚举每个格子作为起点，然后从起点开始进行深度优先搜索。在搜索的过程中，每遇到一个非零的格子，就将其变成零，并继续搜索。当无法继续搜索时，计算当前的路径的黄金总数，然后将当前的格子变回非零的格子，从而进行回溯。
 
@@ -66,9 +82,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -87,9 +101,7 @@ class Solution:
         return max(dfs(i, j) for i in range(m) for j in range(n))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -127,7 +139,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -155,7 +167,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getMaximumGold(grid [][]int) (ans int) {
@@ -184,7 +196,7 @@ func getMaximumGold(grid [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function getMaximumGold(grid: number[][]): number {
@@ -210,7 +222,7 @@ function getMaximumGold(grid: number[][]): number {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -240,10 +252,8 @@ var getMaximumGold = function (grid) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

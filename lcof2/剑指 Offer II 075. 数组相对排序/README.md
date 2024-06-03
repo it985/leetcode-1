@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof2/%E5%89%91%E6%8C%87%20Offer%20II%20075.%20%E6%95%B0%E7%BB%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/README.md
+---
+
+<!-- problem:start -->
+
 # [剑指 Offer II 075. 数组相对排序](https://leetcode.cn/problems/0H97ZC)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个数组，<code>arr1</code> 和&nbsp;<code>arr2</code>，</p>
 
@@ -37,21 +44,17 @@
 
 <p><meta charset="UTF-8" />注意：本题与主站 1122&nbsp;题相同：<a href="https://leetcode.cn/problems/relative-sort-array/">https://leetcode.cn/problems/relative-sort-array/</a>&nbsp;</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-由于本题数据范围是 `[0, 1000]`，因此我们可以开辟一个长度为 1001 的数组 mp，记录 arr1 的元素以及出现的次数。
-
-接着，遍历 arr2 中每个元素 x，若 `mp[x]` 大于 0，循环将 x 加入到答案数组 arr1 中，并且递减 `mp[x]`。遍历结束后，再从下标 `j = 0` 开始遍历 mp，若遇到 `mp[j]` 大于 0，将 `mp[j]` 个 j 加入到答案数组 arr1 中。
-
-最后返回 arr1 即可。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -61,28 +64,7 @@ class Solution:
         return arr1
 ```
 
-```python
-class Solution:
-    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
-        mp = [0] * 1001
-        for x in arr1:
-            mp[x] += 1
-        i = 0
-        for x in arr2:
-            while mp[x] > 0:
-                arr1[i] = x
-                mp[x] -= 1
-                i += 1
-        for x, cnt in enumerate(mp):
-            for _ in range(cnt):
-                arr1[i] = x
-                i += 1
-        return arr1
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +89,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -127,7 +109,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func relativeSortArray(arr1 []int, arr2 []int) []int {
@@ -154,10 +136,39 @@ func relativeSortArray(arr1 []int, arr2 []int) []int {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start-->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
+        mp = [0] * 1001
+        for x in arr1:
+            mp[x] += 1
+        i = 0
+        for x in arr2:
+            while mp[x] > 0:
+                arr1[i] = x
+                mp[x] -= 1
+                i += 1
+        for x, cnt in enumerate(mp):
+            for _ in range(cnt):
+                arr1[i] = x
+                i += 1
+        return arr1
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

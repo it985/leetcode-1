@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0529.Minesweeper/README.md
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [529. 扫雷游戏](https://leetcode.cn/problems/minesweeper)
 
 [English Version](/solution/0500-0599/0529.Minesweeper/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>让我们一起来玩扫雷游戏！</p>
 
@@ -60,11 +73,13 @@
 	<li><code>board[click<sub>r</sub>][click<sub>c</sub>]</code> 为 <code>'M'</code> 或 <code>'E'</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们记 $click = (i, j)$，如果 $board[i][j]$ 等于 `'M'`，那么直接将 $board[i][j]$ 的值改为 `'X'` 即可。否则，我们需要统计 $board[i][j]$ 周围的地雷数量 $cnt$，如果 $cnt$ 不为 $0$，那么将 $board[i][j]$ 的值改为 $cnt$ 的字符串形式。否则，将 $board[i][j]$ 的值改为 `'B'`，并且递归地搜索处理 $board[i][j]$ 周围的未挖出的方块。
 
@@ -72,9 +87,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -103,9 +116,7 @@ class Solution:
         return board
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -151,7 +162,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -193,7 +204,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func updateBoard(board [][]byte, click []int) [][]byte {
@@ -233,7 +244,7 @@ func updateBoard(board [][]byte, click []int) [][]byte {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function updateBoard(board: string[][], click: number[]): string[][] {
@@ -273,10 +284,8 @@ function updateBoard(board: string[][], click: number[]): string[][] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

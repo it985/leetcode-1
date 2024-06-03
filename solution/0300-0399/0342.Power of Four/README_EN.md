@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0342.Power%20of%20Four/README_EN.md
+tags:
+    - Bit Manipulation
+    - Recursion
+    - Math
+---
+
+<!-- problem:start -->
+
 # [342. Power of Four](https://leetcode.com/problems/power-of-four)
 
 [中文文档](/solution/0300-0399/0342.Power%20of%20Four/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer <code>n</code>, return <em><code>true</code> if it is a power of four. Otherwise, return <code>false</code></em>.</p>
 
@@ -29,11 +43,17 @@
 <p>&nbsp;</p>
 <strong>Follow up:</strong> Could you solve it without loops/recursion?
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -41,7 +61,7 @@ class Solution:
         return n > 0 and (n & (n - 1)) == 0 and (n & 0xAAAAAAAA) == 0
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -51,7 +71,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -62,7 +82,23 @@ public:
 };
 ```
 
-### **JavaScript**
+#### Go
+
+```go
+func isPowerOfFour(n int) bool {
+	return n > 0 && (n&(n-1)) == 0 && (n&0xaaaaaaaa) == 0
+}
+```
+
+#### TypeScript
+
+```ts
+function isPowerOfFour(n: number): boolean {
+    return n > 0 && (n & (n - 1)) == 0 && (n & 0xaaaaaaaa) == 0;
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -74,26 +110,8 @@ var isPowerOfFour = function (n) {
 };
 ```
 
-### **Go**
-
-```go
-func isPowerOfFour(n int) bool {
-	return n > 0 && (n&(n-1)) == 0 && (n&0xaaaaaaaa) == 0
-}
-```
-
-### **TypeScript**
-
-```ts
-function isPowerOfFour(n: number): boolean {
-    return n > 0 && (n & (n - 1)) == 0 && (n & 0xaaaaaaaa) == 0;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

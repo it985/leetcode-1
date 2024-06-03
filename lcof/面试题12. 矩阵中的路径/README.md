@@ -1,6 +1,16 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof/%E9%9D%A2%E8%AF%95%E9%A2%9812.%20%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 12. 矩阵中的路径](https://leetcode.cn/problems/ju-zhen-zhong-de-lu-jing-lcof/)
 
 ## 题目描述
+
+<!-- description:start -->
 
 <p>给定一个 <code>m x n</code> 二维字符网格 <code>board</code> 和一个字符串单词 <code>word</code> 。如果 <code>word</code> 存在于网格中，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
 
@@ -42,9 +52,13 @@
 
 <p><strong>注意：</strong>本题与主站 79 题相同：<a href="https://leetcode.cn/problems/word-search/">https://leetcode.cn/problems/word-search/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-**方法一：枚举 + DFS**
+<!-- solution:start -->
+
+### 方法一：枚举 + DFS
 
 我们可以枚举矩阵的每个位置 $(i, j)$，以该位置为起点，采用深度优先搜索的方法寻找字符串 `word` 的路径。如果找到了一条路径，即可返回 `true`，否则在枚举完所有的位置后，返回 `false`。
 
@@ -60,7 +74,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -80,7 +94,7 @@ class Solution:
         return any(dfs(i, j, 0) for i in range(m) for j in range(n))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -123,7 +137,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -158,7 +172,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func exist(board [][]byte, word string) bool {
@@ -191,45 +205,7 @@ func exist(board [][]byte, word string) bool {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {character[][]} board
- * @param {string} word
- * @return {boolean}
- */
-var exist = function (board, word) {
-    const m = board.length;
-    const n = board[0].length;
-    const dirs = [-1, 0, 1, 0, -1];
-    const dfs = (i, j, k) => {
-        if (k == word.length) {
-            return true;
-        }
-        if (i < 0 || i >= m || j < 0 || j >= n || board[i][j] != word[k]) {
-            return false;
-        }
-        board[i][j] = ' ';
-        let ans = false;
-        for (let l = 0; l < 4; ++l) {
-            ans = ans || dfs(i + dirs[l], j + dirs[l + 1], k + 1);
-        }
-        board[i][j] = word[k];
-        return ans;
-    };
-    for (let i = 0; i < m; ++i) {
-        for (let j = 0; j < n; ++j) {
-            if (dfs(i, j, 0)) {
-                return true;
-            }
-        }
-    }
-    return false;
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function exist(board: string[][], word: string): boolean {
@@ -261,7 +237,7 @@ function exist(board: string[][], word: string): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -309,7 +285,45 @@ impl Solution {
 }
 ```
 
-### **C#**
+#### JavaScript
+
+```js
+/**
+ * @param {character[][]} board
+ * @param {string} word
+ * @return {boolean}
+ */
+var exist = function (board, word) {
+    const m = board.length;
+    const n = board[0].length;
+    const dirs = [-1, 0, 1, 0, -1];
+    const dfs = (i, j, k) => {
+        if (k == word.length) {
+            return true;
+        }
+        if (i < 0 || i >= m || j < 0 || j >= n || board[i][j] != word[k]) {
+            return false;
+        }
+        board[i][j] = ' ';
+        let ans = false;
+        for (let l = 0; l < 4; ++l) {
+            ans = ans || dfs(i + dirs[l], j + dirs[l + 1], k + 1);
+        }
+        board[i][j] = word[k];
+        return ans;
+    };
+    for (let i = 0; i < m; ++i) {
+        for (let j = 0; j < n; ++j) {
+            if (dfs(i, j, 0)) {
+                return true;
+            }
+        }
+    }
+    return false;
+};
+```
+
+#### C#
 
 ```cs
 public class Solution {
@@ -352,10 +366,68 @@ public class Solution {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    private var board: [[Character]]
+    private var word: String
+    private var m: Int
+    private var n: Int
 
+    init() {
+        self.board = []
+        self.word = ""
+        self.m = 0
+        self.n = 0
+    }
+
+    func exist(_ board: [[Character]], _ word: String) -> Bool {
+        self.board = board
+        self.word = word
+        m = board.count
+        n = board[0].count
+
+        for i in 0..<m {
+            for j in 0..<n {
+                if dfs(i, j, 0) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+    private func dfs(_ i: Int, _ j: Int, _ k: Int) -> Bool {
+        if k == word.count {
+            return true
+        }
+        if i < 0 || i >= m || j < 0 || j >= n || board[i][j] != word[word.index(word.startIndex, offsetBy: k)] {
+            return false
+        }
+
+        let temp = board[i][j]
+        board[i][j] = " "
+        let dirs = [-1, 0, 1, 0, -1]
+        var ans = false
+
+        for l in 0..<4 {
+            let ni = i + dirs[l]
+            let nj = j + dirs[l + 1]
+            if dfs(ni, nj, k + 1) {
+                ans = true
+                break
+            }
+        }
+
+        board[i][j] = temp
+        return ans
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

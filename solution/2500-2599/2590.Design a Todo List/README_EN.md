@@ -1,8 +1,24 @@
-# [2590. Design a Todo List](https://leetcode.com/problems/design-a-todo-list)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2590.Design%20a%20Todo%20List/README_EN.md
+tags:
+    - Design
+    - Array
+    - Hash Table
+    - String
+    - Sorting
+---
+
+<!-- problem:start -->
+
+# [2590. Design a Todo List 🔒](https://leetcode.com/problems/design-a-todo-list)
 
 [中文文档](/solution/2500-2599/2590.Design%20a%20Todo%20List/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Design a Todo List Where users can add <strong>tasks</strong>, mark them as <strong>complete</strong>, or get a list of pending tasks. Users can also add <strong>tags</strong> to tasks and can filter the tasks by certain tags.</p>
 
@@ -55,9 +71,13 @@ todoList.getAllTasks(1); // return [&quot;Task3&quot;, &quot;Task1&quot;]. User 
 	<li>At most <code>100</code> calls will be made for each method.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table + Sorted Set**
+<!-- solution:start -->
+
+### Solution 1: Hash Table + Sorted Set
 
 We use a hash table $tasks$ to record the set of tasks for each user, where the key is the user ID and the value is a sorted set sorted by the deadline of the task. In addition, we use a variable $i$ to record the current task ID.
 
@@ -73,7 +93,7 @@ The space complexity is $O(n)$. Where $n$ is the number of all tasks.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 from sortedcontainers import SortedList
@@ -113,7 +133,7 @@ class TodoList:
 # obj.completeTask(userId,taskId)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Task {
@@ -191,7 +211,7 @@ class TodoList {
  */
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::{ HashMap, HashSet };
@@ -307,22 +327,8 @@ impl TodoList {
 }
 ```
 
-### **C++**
-
-```cpp
-
-```
-
-### **Go**
-
-```go
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

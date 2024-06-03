@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2458.Height%20of%20Binary%20Tree%20After%20Subtree%20Removal%20Queries/README_EN.md
+rating: 2298
+source: Weekly Contest 317 Q4
+tags:
+    - Tree
+    - Depth-First Search
+    - Breadth-First Search
+    - Array
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [2458. Height of Binary Tree After Subtree Removal Queries](https://leetcode.com/problems/height-of-binary-tree-after-subtree-removal-queries)
 
 [中文文档](/solution/2400-2499/2458.Height%20of%20Binary%20Tree%20After%20Subtree%20Removal%20Queries/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given the <code>root</code> of a <strong>binary tree</strong> with <code>n</code> nodes. Each node is assigned a unique value from <code>1</code> to <code>n</code>. You are also given an array <code>queries</code> of size <code>m</code>.</p>
 
@@ -57,9 +75,13 @@ The height of the tree is 2 (The path 1 -&gt; 3 -&gt; 2).
 	<li><code>queries[i] != root.val</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two DFS Traversals**
+<!-- solution:start -->
+
+### Solution 1: Two DFS Traversals
 
 First, we perform a DFS traversal to determine the depth of each node, which we store in a hash table $d$, where $d[x]$ represents the depth of node $x$.
 
@@ -85,7 +107,7 @@ The time complexity is $O(n+m)$, and the space complexity is $O(n)$. Here, $n$ a
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -118,7 +140,7 @@ class Solution:
         return [res[v] for v in queries]
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -174,7 +196,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -215,7 +237,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -257,16 +279,8 @@ func treeQueries(root *TreeNode, queries []int) (ans []int) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

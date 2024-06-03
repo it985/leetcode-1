@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2402.Meeting%20Rooms%20III/README_EN.md
+rating: 2092
+source: Weekly Contest 309 Q4
+tags:
+    - Array
+    - Hash Table
+    - Sorting
+    - Simulation
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [2402. Meeting Rooms III](https://leetcode.com/problems/meeting-rooms-iii)
 
 [中文文档](/solution/2400-2499/2402.Meeting%20Rooms%20III/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer <code>n</code>. There are <code>n</code> rooms numbered from <code>0</code> to <code>n - 1</code>.</p>
 
@@ -63,9 +81,13 @@ Room 0 held 1 meeting while rooms 1 and 2 each held 2 meetings, so we return 1.
 	<li>All the values of <code>start<sub>i</sub></code> are <strong>unique</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Priority Queue (Min Heap)**
+<!-- solution:start -->
+
+### Solution 1: Priority Queue (Min Heap)
 
 We define two priority queues, representing idle meeting rooms and busy meeting rooms, respectively. Among them: the idle meeting rooms `idle` are sorted according to **index**; while the busy meeting rooms `busy` are sorted according to **end time, index**.
 
@@ -79,11 +101,11 @@ The time complexity is $O(m \times \log m)$, where $m$ is the number of meetings
 
 Similar problems:
 
--   [1882. Process Tasks Using Servers](/solution/1800-1899/1882.Process%20Tasks%20Using%20Servers/README_EN.md)
+-   [1882. Process Tasks Using Servers](https://github.com/doocs/leetcode/blob/main/solution/1800-1899/1882.Process%20Tasks%20Using%20Servers/README_EN.md)
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -111,7 +133,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -151,7 +173,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 using ll = long long;
@@ -195,7 +217,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func mostBooked(n int, meetings [][]int) int {
@@ -254,17 +276,8 @@ func (h *hp2) Push(v any)   { *h = append(*h, v.(pair)) }
 func (h *hp2) Pop() any     { a := *h; v := a[len(a)-1]; *h = a[:len(a)-1]; return v }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

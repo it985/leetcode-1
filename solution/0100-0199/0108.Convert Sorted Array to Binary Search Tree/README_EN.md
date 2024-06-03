@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0108.Convert%20Sorted%20Array%20to%20Binary%20Search%20Tree/README_EN.md
+tags:
+    - Tree
+    - Binary Search Tree
+    - Array
+    - Divide and Conquer
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [108. Convert Sorted Array to Binary Search Tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree)
 
 [中文文档](/solution/0100-0199/0108.Convert%20Sorted%20Array%20to%20Binary%20Search%20Tree/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code> where the elements are sorted in <strong>ascending order</strong>, convert <em>it to a </em><span data-keyword="height-balanced"><strong><em>height-balanced</em></strong></span> <em>binary search tree</em>.</p>
 
@@ -33,9 +49,13 @@
 	<li><code>nums</code> is sorted in a <strong>strictly increasing</strong> order.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Binary Search + Recursion**
+<!-- solution:start -->
+
+### Solution 1: Binary Search + Recursion
 
 We design a recursive function $dfs(l, r)$, which indicates that the node values of the current binary search tree to be constructed are all within the index range $[l, r]$ of the array `nums`. This function returns the root node of the constructed binary search tree.
 
@@ -53,7 +73,7 @@ The time complexity is $O(n)$, and the space complexity is $O(\log n)$. Here, $n
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -75,7 +95,7 @@ class Solution:
         return dfs(0, len(nums) - 1)
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -113,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -144,36 +164,32 @@ public:
 };
 ```
 
-### **JavaScript**
+#### Go
 
-```js
+```go
 /**
  * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
  * }
  */
-/**
- * @param {number[]} nums
- * @return {TreeNode}
- */
-var sortedArrayToBST = function (nums) {
-    const dfs = (l, r) => {
-        if (l > r) {
-            return null;
-        }
-        const mid = (l + r) >> 1;
-        const left = dfs(l, mid - 1);
-        const right = dfs(mid + 1, r);
-        return new TreeNode(nums[mid], left, right);
-    };
-    return dfs(0, nums.length - 1);
-};
+func sortedArrayToBST(nums []int) *TreeNode {
+	var dfs func(int, int) *TreeNode
+	dfs = func(l, r int) *TreeNode {
+		if l > r {
+			return nil
+		}
+		mid := (l + r) >> 1
+		left, right := dfs(l, mid-1), dfs(mid+1, r)
+		return &TreeNode{nums[mid], left, right}
+	}
+	return dfs(0, len(nums)-1)
+}
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -204,32 +220,7 @@ function sortedArrayToBST(nums: number[]): TreeNode | null {
 }
 ```
 
-### **Go**
-
-```go
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func sortedArrayToBST(nums []int) *TreeNode {
-	var dfs func(int, int) *TreeNode
-	dfs = func(l, r int) *TreeNode {
-		if l > r {
-			return nil
-		}
-		mid := (l + r) >> 1
-		left, right := dfs(l, mid-1), dfs(mid+1, r)
-		return &TreeNode{nums[mid], left, right}
-	}
-	return dfs(0, len(nums)-1)
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -275,10 +266,37 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {number[]} nums
+ * @return {TreeNode}
+ */
+var sortedArrayToBST = function (nums) {
+    const dfs = (l, r) => {
+        if (l > r) {
+            return null;
+        }
+        const mid = (l + r) >> 1;
+        const left = dfs(l, mid - 1);
+        const right = dfs(mid + 1, r);
+        return new TreeNode(nums[mid], left, right);
+    };
+    return dfs(0, nums.length - 1);
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

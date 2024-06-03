@@ -1,10 +1,21 @@
-# [1708. 长度为 K 的最大子数组](https://leetcode.cn/problems/largest-subarray-length-k)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1708.Largest%20Subarray%20Length%20K/README.md
+tags:
+    - 贪心
+    - 数组
+---
+
+<!-- problem:start -->
+
+# [1708. 长度为 K 的最大子数组 🔒](https://leetcode.cn/problems/largest-subarray-length-k)
 
 [English Version](/solution/1700-1799/1708.Largest%20Subarray%20Length%20K/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在数组&nbsp;<code>A</code>&nbsp;和数组 <code>B</code>&nbsp;中，对于第一个满足 <code>A[i] != B[i]</code>&nbsp;的索引&nbsp;<code>i</code>&nbsp;，当 <code>A[i] &gt; B[i]</code>&nbsp;时，数组 <code>A</code> 大于数组 <code>B</code>。</p>
 
@@ -57,11 +68,13 @@
 <p>&nbsp;</p>
 <b>进阶：</b>如果允许&nbsp;<code>nums</code>&nbsp;中存在相同元素，你该如何解决该问题？
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 数组中所有整数都不同，我们可以先在 $[0,..n-k]$ 范围内找到最大的元素的下标，然后从该下标开始取 $k$ 个元素即可。
 
@@ -69,9 +82,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,9 +91,7 @@ class Solution:
         return nums[i : i + k]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -110,7 +119,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func largestSubarray(nums []int, k int) []int {
@@ -124,7 +133,7 @@ func largestSubarray(nums []int, k int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function largestSubarray(nums: number[], k: number): number[] {
@@ -138,7 +147,7 @@ function largestSubarray(nums: number[], k: number): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -154,10 +163,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

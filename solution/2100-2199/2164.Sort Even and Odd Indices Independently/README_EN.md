@@ -1,13 +1,29 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2164.Sort%20Even%20and%20Odd%20Indices%20Independently/README_EN.md
+rating: 1252
+source: Weekly Contest 279 Q1
+tags:
+    - Array
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2164. Sort Even and Odd Indices Independently](https://leetcode.com/problems/sort-even-and-odd-indices-independently)
 
 [中文文档](/solution/2100-2199/2164.Sort%20Even%20and%20Odd%20Indices%20Independently/README.md)
 
 ## Description
 
+<!-- description:start -->
+
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code>. Rearrange the values of <code>nums</code> according to the following rules:</p>
 
 <ol>
 	<li>Sort the values at <strong>odd indices</strong> of <code>nums</code> in <strong>non-increasing</strong> order.
+
     <ul>
     	<li>For example, if <code>nums = [4,<strong><u>1</u></strong>,2,<u><strong>3</strong></u>]</code> before this step, it becomes <code>[4,<u><strong>3</strong></u>,2,<strong><u>1</u></strong>]</code> after. The values at odd indices <code>1</code> and <code>3</code> are sorted in non-increasing order.</li>
     </ul>
@@ -17,6 +33,7 @@
     	<li>For example, if <code>nums = [<u><strong>4</strong></u>,1,<u><strong>2</strong></u>,3]</code> before this step, it becomes <code>[<u><strong>2</strong></u>,1,<u><strong>4</strong></u>,3]</code> after. The values at even indices <code>0</code> and <code>2</code> are sorted in non-decreasing order.</li>
     </ul>
     </li>
+
 </ol>
 
 <p>Return <em>the array formed after rearranging the values of</em> <code>nums</code>.</p>
@@ -53,11 +70,17 @@ The resultant array formed is [2,1], which is the same as the initial array.
 	<li><code>1 &lt;= nums[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +92,7 @@ class Solution:
         return nums
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -123,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sortEvenOdd(nums []int) []int {
@@ -152,16 +175,8 @@ func sortEvenOdd(nums []int) []int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

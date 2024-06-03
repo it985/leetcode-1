@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2217.Find%20Palindrome%20With%20Fixed%20Length/README_EN.md
+rating: 1822
+source: Weekly Contest 286 Q3
+tags:
+    - Array
+    - Math
+---
+
+<!-- problem:start -->
+
 # [2217. Find Palindrome With Fixed Length](https://leetcode.com/problems/find-palindrome-with-fixed-length)
 
 [中文文档](/solution/2200-2299/2217.Find%20Palindrome%20With%20Fixed%20Length/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>queries</code> and a <strong>positive</strong> integer <code>intLength</code>, return <em>an array</em> <code>answer</code> <em>where</em> <code>answer[i]</code> <em>is either the </em><code>queries[i]<sup>th</sup></code> <em>smallest <strong>positive palindrome</strong> of length</em> <code>intLength</code> <em>or</em> <code>-1</code><em> if no such palindrome exists</em>.</p>
 
@@ -39,11 +54,17 @@ The first six palindromes of length 4 are:
 	<li><code>1 &lt;= intLength&nbsp;&lt;= 15</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -62,7 +83,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -87,7 +108,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -113,7 +134,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func kthPalindrome(queries []int, intLength int) []int64 {
@@ -140,7 +161,7 @@ func kthPalindrome(queries []int, intLength int) []int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function kthPalindrome(queries: number[], intLength: number): number[] {
@@ -164,7 +185,7 @@ function kthPalindrome(queries: number[], intLength: number): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -197,10 +218,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

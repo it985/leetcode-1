@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0836.Rectangle%20Overlap/README_EN.md
+tags:
+    - Geometry
+    - Math
+---
+
+<!-- problem:start -->
+
 # [836. Rectangle Overlap](https://leetcode.com/problems/rectangle-overlap)
 
 [中文文档](/solution/0800-0899/0836.Rectangle%20Overlap/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>An axis-aligned rectangle is represented as a list <code>[x1, y1, x2, y2]</code>, where <code>(x1, y1)</code> is the coordinate of its bottom-left corner, and <code>(x2, y2)</code> is the coordinate of its top-right corner. Its top and bottom edges are parallel to the X-axis, and its left and right edges are parallel to the Y-axis.</p>
 
@@ -31,11 +44,17 @@
 	<li><code>rec1</code> and <code>rec2</code> represent a valid rectangle with a non-zero area.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -45,7 +64,7 @@ class Solution:
         return not (y3 >= y2 or y4 <= y1 or x3 >= x2 or x4 <= x1)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -57,7 +76,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -70,7 +89,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isRectangleOverlap(rec1 []int, rec2 []int) bool {
@@ -80,10 +99,8 @@ func isRectangleOverlap(rec1 []int, rec2 []int) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

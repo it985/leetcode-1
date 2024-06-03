@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0735.Asteroid%20Collision/README.md
+tags:
+    - 栈
+    - 数组
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [735. 小行星碰撞](https://leetcode.cn/problems/asteroid-collision)
 
 [English Version](/solution/0700-0799/0735.Asteroid%20Collision/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个整数数组 <code>asteroids</code>，表示在同一行的小行星。</p>
 
@@ -45,11 +57,13 @@
 	<li><code>asteroids[i] != 0</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：栈**
+### 方法一：栈
 
 我们从左到右遍历每个小行星 $x$，由于每个小行星可能与之前的多个小行星发生碰撞，考虑用栈来存储。
 
@@ -62,9 +76,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +95,7 @@ class Solution:
         return stk
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -110,7 +120,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -136,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func asteroidCollision(asteroids []int) (stk []int) {
@@ -158,7 +168,7 @@ func asteroidCollision(asteroids []int) (stk []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function asteroidCollision(asteroids: number[]): number[] {
@@ -181,7 +191,7 @@ function asteroidCollision(asteroids: number[]): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -207,10 +217,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

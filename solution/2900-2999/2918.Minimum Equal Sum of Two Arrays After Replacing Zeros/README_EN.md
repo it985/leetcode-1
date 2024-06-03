@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2918.Minimum%20Equal%20Sum%20of%20Two%20Arrays%20After%20Replacing%20Zeros/README_EN.md
+rating: 1526
+source: Weekly Contest 369 Q2
+tags:
+    - Greedy
+    - Array
+---
+
+<!-- problem:start -->
+
 # [2918. Minimum Equal Sum of Two Arrays After Replacing Zeros](https://leetcode.com/problems/minimum-equal-sum-of-two-arrays-after-replacing-zeros)
 
 [中文文档](/solution/2900-2999/2918.Minimum%20Equal%20Sum%20of%20Two%20Arrays%20After%20Replacing%20Zeros/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two arrays <code>nums1</code> and <code>nums2</code> consisting of positive integers.</p>
 
@@ -38,9 +53,13 @@ Both arrays have an equal sum of 12. It can be shown that it is the minimum sum 
 	<li><code>0 &lt;= nums1[i], nums2[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Case Analysis**
+<!-- solution:start -->
+
+### Solution 1: Case Analysis
 
 We consider the case where we treat all $0$s in the array as $1$s, and calculate the sum of the two arrays separately, denoted as $s_1$ and $s_2$. Without loss of generality, we assume that $s_1 \le s_2$.
 
@@ -51,7 +70,7 @@ The time complexity is $O(n + m)$, where $n$ and $m$ are the lengths of the arra
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,7 +84,7 @@ class Solution:
         return -1 if nums1.count(0) == 0 else s2
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -90,7 +109,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -116,7 +135,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minSum(nums1 []int, nums2 []int) int64 {
@@ -144,7 +163,7 @@ func minSum(nums1 []int, nums2 []int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minSum(nums1: number[], nums2: number[]): number {
@@ -169,10 +188,33 @@ function minSum(nums1: number[], nums2: number[]): number {
 }
 ```
 
-### **...**
+#### C#
 
-```
-
+```cs
+public class Solution {
+    public long MinSum(int[] nums1, int[] nums2) {
+        long s1 = 0, s2 = 0;
+        bool hasZero = false;
+        foreach (int x in nums1) {
+            hasZero |= x == 0;
+            s1 += Math.Max(x, 1);
+        }
+        foreach (int x in nums2) {
+            s2 += Math.Max(x, 1);
+        }
+        if (s1 > s2) {
+            return MinSum(nums2, nums1);
+        }
+        if (s1 == s2) {
+            return s1;
+        }
+        return hasZero ? s2 : -1;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

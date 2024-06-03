@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1819.Number%20of%20Different%20Subsequences%20GCDs/README.md
+rating: 2539
+source: 第 235 场周赛 Q4
+tags:
+    - 数组
+    - 数学
+    - 计数
+    - 数论
+---
+
+<!-- problem:start -->
+
 # [1819. 序列中不同最大公约数的数目](https://leetcode.cn/problems/number-of-different-subsequences-gcds)
 
 [English Version](/solution/1800-1899/1819.Number%20of%20Different%20Subsequences%20GCDs/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个由正整数组成的数组 <code>nums</code> 。</p>
 
@@ -49,11 +64,13 @@
 	<li><code>1 <= nums[i] <= 2 * 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举 + 数学**
+### 方法一：枚举 + 数学
 
 对于数组 $nums$ 的所有子序列，其最大公约数一定不超过数组中的最大值 $mx$。
 
@@ -65,9 +82,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -86,9 +101,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -120,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -149,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countDifferentSubsequenceGCDs(nums []int) (ans int) {
@@ -181,10 +194,8 @@ func gcd(a, b int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

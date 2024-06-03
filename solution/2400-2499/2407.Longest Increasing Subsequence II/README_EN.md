@@ -1,8 +1,28 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2407.Longest%20Increasing%20Subsequence%20II/README_EN.md
+rating: 2280
+source: Weekly Contest 310 Q4
+tags:
+    - Binary Indexed Tree
+    - Segment Tree
+    - Queue
+    - Array
+    - Divide and Conquer
+    - Dynamic Programming
+    - Monotonic Queue
+---
+
+<!-- problem:start -->
+
 # [2407. Longest Increasing Subsequence II](https://leetcode.com/problems/longest-increasing-subsequence-ii)
 
 [中文文档](/solution/2400-2499/2407.Longest%20Increasing%20Subsequence%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code> and an integer <code>k</code>.</p>
 
@@ -57,9 +77,13 @@ The subsequence has a length of 1, so we return 1.
 	<li><code>1 &lt;= nums[i], k &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Segment Tree**
+<!-- solution:start -->
+
+### Solution 1: Segment Tree
 
 We assume that $f[v]$ represents the length of the longest increasing subsequence ending with the number $v$.
 
@@ -80,7 +104,7 @@ The time complexity is $O(n \times \log n)$, where $n$ is the length of the arra
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Node:
@@ -141,7 +165,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -224,7 +248,7 @@ class SegmentTree {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Node {
@@ -295,7 +319,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func lengthOfLIS(nums []int, k int) int {
@@ -375,17 +399,8 @@ func (t *segmentTree) pushup(u int) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,51 +1,64 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0041.First%20Missing%20Positive/README.md
+tags:
+    - 数组
+    - 哈希表
+---
+
+<!-- problem:start -->
+
 # [41. 缺失的第一个正数](https://leetcode.cn/problems/first-missing-positive)
 
 [English Version](/solution/0000-0099/0041.First%20Missing%20Positive/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个未排序的整数数组 <code>nums</code> ，请你找出其中没有出现的最小的正整数。</p>
 请你实现时间复杂度为 <code>O(n)</code> 并且只使用常数级别额外空间的解决方案。
 
-<p> </p>
+<p>&nbsp;</p>
 
 <p><strong>示例 1：</strong></p>
 
 <pre>
 <strong>输入：</strong>nums = [1,2,0]
 <strong>输出：</strong>3
-</pre>
+<strong>解释：</strong>范围 [1,2] 中的数字都在数组中。</pre>
 
 <p><strong>示例 2：</strong></p>
 
 <pre>
 <strong>输入：</strong>nums = [3,4,-1,1]
 <strong>输出：</strong>2
-</pre>
+<strong>解释：</strong>1 在数组中，但 2 没有。</pre>
 
 <p><strong>示例 3：</strong></p>
 
 <pre>
 <strong>输入：</strong>nums = [7,8,9,11,12]
 <strong>输出：</strong>1
-</pre>
+<strong>解释：</strong>最小的正数 1 没有出现。</pre>
 
-<p> </p>
+<p>&nbsp;</p>
 
 <p><strong>提示：</strong></p>
 
 <ul>
-	<li><code>1 <= nums.length <= 5 * 10<sup>5</sup></code></li>
-	<li><code>-2<sup>31</sup> <= nums[i] <= 2<sup>31</sup> - 1</code></li>
+	<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>-2<sup>31</sup> &lt;= nums[i] &lt;= 2<sup>31</sup> - 1</code></li>
 </ul>
+
+<!-- description:end -->
 
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：原地交换**
+### 方法一：原地交换
 
 我们假设数组 $nums$ 长度为 $n$，那么最小的正整数一定在 $[1, .., n + 1]$ 之间。我们可以遍历数组，将数组中的每个数 $x$ 交换到它应该在的位置上，即 $x$ 应该在的位置为 $x - 1$。如果 $x$ 不在 $[1, n + 1]$ 之间，那么我们就不用管它。
 
@@ -55,9 +68,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -75,9 +86,7 @@ class Solution:
         return n + 1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -126,7 +135,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func firstMissingPositive(nums []int) int {
@@ -145,74 +154,7 @@ func firstMissingPositive(nums []int) int {
 }
 ```
 
-### **C**
-
-```c
-int firstMissingPositive(int* nums, int numsSize) {
-
-    int Max = nums[0], i, *Count;
-
-    for (i = 1; i < numsSize; i++) {
-        Max = (Max < nums[i]) ? nums[i] : Max;
-    }
-
-    Count = (int*) calloc(Max + 1, sizeof(int));
-    for (i = 0; i < numsSize; i++) {
-        if (nums[i] > 0) {
-            Count[nums[i]]++;
-        }
-    }
-
-    i = 1;
-    while (Count[i] != 0) {
-        i++;
-    }
-
-    return i;
-}
-```
-
-### **C#**
-
-```cs
-public class Solution {
-    public int FirstMissingPositive(int[] nums) {
-        var i = 0;
-        while (i < nums.Length)
-        {
-            if (nums[i] > 0 && nums[i] <= nums.Length)
-            {
-                var index = nums[i] -1;
-                if (index != i && nums[index] != nums[i])
-                {
-                    var temp = nums[i];
-                    nums[i] = nums[index];
-                    nums[index] = temp;
-                }
-                else
-                {
-                    ++i;
-                }
-            }
-            else
-            {
-                ++i;
-            }
-        }
-
-        for (i = 0; i < nums.Length; ++i)
-        {
-            if (nums[i] != i + 1)
-            {
-                return i + 1;
-            }
-        }
-        return nums.Length + 1;
-    }
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function firstMissingPositive(nums: number[]): number {
@@ -232,18 +174,7 @@ function firstMissingPositive(nums: number[]): number {
 }
 ```
 
-```ts
-function firstMissingPositive(nums: number[]): number {
-    const set = new Set(nums);
-    let ans = 1;
-    while (true) {
-        if (!set.has(ans)) return ans;
-        ans++;
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -269,10 +200,95 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C#
 
+```cs
+public class Solution {
+    public int FirstMissingPositive(int[] nums) {
+        int n = nums.Length;
+        for (int i = 0; i < n; ++i) {
+            while (nums[i] >= 1 && nums[i] <= n && nums[i] != nums[nums[i] - 1]) {
+                Swap(nums, i, nums[i] - 1);
+            }
+        }
+        for (int i = 0; i < n; ++i) {
+            if (i + 1 != nums[i]) {
+                return i + 1;
+            }
+        }
+        return n + 1;
+    }
+
+    private void Swap(int[] nums, int i, int j) {
+        int t = nums[i];
+        nums[i] = nums[j];
+        nums[j] = t;
+    }
+}
 ```
 
+#### C
+
+```c
+int firstMissingPositive(int* nums, int numsSize) {
+    for (int i = 0; i < numsSize; ++i) {
+        while (nums[i] >= 1 && nums[i] <= numsSize && nums[i] != nums[nums[i] - 1]) {
+            swap(&nums[i], &nums[nums[i] - 1]);
+        }
+    }
+    for (int i = 0; i < numsSize; ++i) {
+        if (i + 1 != nums[i]) {
+            return i + 1;
+        }
+    }
+    return numsSize + 1;
+}
+
+void swap(int* a, int* b) {
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+```
+
+#### PHP
+
+```php
+class Solution {
+    /**
+     * @param integer[] $nums
+     * @return integer
+     */
+
+    function firstMissingPositive($nums) {
+        $n = count($nums);
+
+        for ($i = 0; $i < $n; $i++) {
+            if ($nums[$i] <= 0) {
+                $nums[$i] = $n + 1;
+            }
+        }
+
+        for ($i = 0; $i < $n; $i++) {
+            $num = abs($nums[$i]);
+            if ($num <= $n) {
+                $nums[$num - 1] = -abs($nums[$num - 1]);
+            }
+        }
+
+        for ($i = 0; $i < $n; $i++) {
+            if ($nums[$i] > 0) {
+                return $i + 1;
+            }
+        }
+
+        return $n + 1;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

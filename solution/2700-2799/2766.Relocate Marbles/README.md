@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2766.Relocate%20Marbles/README.md
+rating: 1613
+source: 第 108 场双周赛 Q2
+tags:
+    - 数组
+    - 哈希表
+    - 排序
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [2766. 重新放置石块](https://leetcode.cn/problems/relocate-marbles)
 
 [English Version](/solution/2700-2799/2766.Relocate%20Marbles/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums</code>&nbsp;，表示一些石块的初始位置。再给你两个长度<strong>&nbsp;相等</strong>&nbsp;下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>moveFrom</code> 和&nbsp;<code>moveTo</code>&nbsp;。</p>
 
@@ -55,11 +70,13 @@
 	<li>测试数据保证在进行第&nbsp;<code>i</code>&nbsp;步操作时，<code>moveFrom[i]</code>&nbsp;处至少有一个石块。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们用一个哈希表 $pos$ 记录所有有石块的位置，初始时 $pos$ 中包含 $nums$ 中的所有元素。然后我们遍历 $moveFrom$ 和 $moveTo$，每次将 $moveFrom[i]$ 从 $pos$ 中移除，再将 $moveTo[i]$ 添加到 $pos$ 中。最后我们将 $pos$ 中的元素排序后返回即可。
 
@@ -67,9 +84,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +98,7 @@ class Solution:
         return sorted(pos)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -105,7 +118,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -123,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func relocateMarbles(nums []int, moveFrom []int, moveTo []int) (ans []int) {
@@ -146,7 +159,7 @@ func relocateMarbles(nums []int, moveFrom []int, moveTo []int) (ans []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function relocateMarbles(nums: number[], moveFrom: number[], moveTo: number[]): number[] {
@@ -161,10 +174,8 @@ function relocateMarbles(nums: number[], moveFrom: number[], moveTo: number[]): 
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

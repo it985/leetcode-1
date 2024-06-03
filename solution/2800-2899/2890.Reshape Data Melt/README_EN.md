@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2890.Reshape%20Data%20Melt/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [2890. Reshape Data Melt](https://leetcode.com/problems/reshape-data-melt)
 
 [中文文档](/solution/2800-2899/2890.Reshape%20Data%20Melt/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <pre>
 DataFrame <code>report</code>
@@ -49,11 +59,17 @@ DataFrame <code>report</code>
 The DataFrame is reshaped from wide to long format. Each row represents the sales of a product in a quarter.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Pandas**
+#### Python3
 
 ```python
 import pandas as pd
@@ -63,10 +79,8 @@ def meltTable(report: pd.DataFrame) -> pd.DataFrame:
     return pd.melt(report, id_vars=['product'], var_name='quarter', value_name='sales')
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

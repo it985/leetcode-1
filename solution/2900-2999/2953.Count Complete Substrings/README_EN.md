@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2953.Count%20Complete%20Substrings/README_EN.md
+rating: 2449
+source: Weekly Contest 374 Q3
+tags:
+    - Hash Table
+    - String
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [2953. Count Complete Substrings](https://leetcode.com/problems/count-complete-substrings)
 
 [中文文档](/solution/2900-2999/2953.Count%20Complete%20Substrings/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>word</code> and an integer <code>k</code>.</p>
 
@@ -43,9 +59,13 @@
 	<li><code>1 &lt;= k &lt;= word.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumerate Character Types + Sliding Window**
+<!-- solution:start -->
+
+### Solution 1: Enumerate Character Types + Sliding Window
 
 According to condition 2 in the problem description, we can find that in a complete string, the difference between two adjacent characters does not exceed 2. Therefore, we traverse the string $word$, and we can use two pointers to split $word$ into several substrings. The number of character types in these substrings does not exceed 26, and the difference between adjacent characters does not exceed 2. Next, we only need to count the number of substrings in each substring where each character appears $k$ times.
 
@@ -57,7 +77,7 @@ The time complexity is $O(n \times |\Sigma|)$, and the space complexity is $O(|\
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -95,7 +115,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -151,7 +171,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -208,7 +228,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countCompleteSubstrings(word string, k int) (ans int) {
@@ -267,7 +287,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countCompleteSubstrings(word: string, k: number): number {
@@ -325,10 +345,8 @@ function countCompleteSubstrings(word: string, k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,20 @@
-# [1412. Find the Quiet Students in All Exams](https://leetcode.com/problems/find-the-quiet-students-in-all-exams)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1412.Find%20the%20Quiet%20Students%20in%20All%20Exams/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [1412. Find the Quiet Students in All Exams 🔒](https://leetcode.com/problems/find-the-quiet-students-in-all-exams)
 
 [中文文档](/solution/1400-1499/1412.Find%20the%20Quiet%20Students%20in%20All%20Exams/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Student</code></p>
 
@@ -87,9 +99,13 @@ Since student 5 is not taking any exam, he is excluded from the result.
 So, we only return the information of Student 2.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Using RANK() Window Function + Group By**
+<!-- solution:start -->
+
+### Solution 1: Using RANK() Window Function + Group By
 
 We can use the `RANK()` window function to calculate the ascending rank $rk1$ and descending rank $rk2$ of each student in each exam, and obtain the table $T$.
 
@@ -97,7 +113,7 @@ Next, we can perform an inner join between the table $T$ and the table $Student$
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -125,3 +141,7 @@ ORDER BY 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

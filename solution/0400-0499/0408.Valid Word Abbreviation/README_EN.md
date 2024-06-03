@@ -1,8 +1,21 @@
-# [408. Valid Word Abbreviation](https://leetcode.com/problems/valid-word-abbreviation)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0408.Valid%20Word%20Abbreviation/README_EN.md
+tags:
+    - Two Pointers
+    - String
+---
+
+<!-- problem:start -->
+
+# [408. Valid Word Abbreviation 🔒](https://leetcode.com/problems/valid-word-abbreviation)
 
 [中文文档](/solution/0400-0499/0408.Valid%20Word%20Abbreviation/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A string can be <strong>abbreviated</strong> by replacing any number of <strong>non-adjacent</strong>, <strong>non-empty</strong> substrings with their lengths. The lengths <strong>should not</strong> have leading zeros.</p>
 
@@ -56,9 +69,13 @@
 	<li>All the integers in <code>abbr</code> will fit in a 32-bit integer.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 We can directly simulate character matching and replacement.
 
@@ -78,7 +95,7 @@ The time complexity is $O(m + n)$, where $m$ and $n$ are the lengths of the stri
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -100,7 +117,7 @@ class Solution:
         return i + x == m and j == n
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -128,7 +145,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -156,7 +173,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func validWordAbbreviation(word string, abbr string) bool {
@@ -181,7 +198,7 @@ func validWordAbbreviation(word string, abbr string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function validWordAbbreviation(word: string, abbr: string): boolean {
@@ -205,10 +222,8 @@ function validWordAbbreviation(word: string, abbr: string): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

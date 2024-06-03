@@ -1,10 +1,19 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/04.12.Paths%20with%20Sum/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 04.12. 求和路径](https://leetcode.cn/problems/paths-with-sum-lcci)
 
 [English Version](/lcci/04.12.Paths%20with%20Sum/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
+
 <p>给定一棵二叉树，其中每个节点都含有一个整数数值(该值或正或负)。设计一个算法，打印节点数值总和等于某个给定值的所有路径的数量。注意，路径不一定非得从二叉树的根节点或叶节点开始或结束，但是其方向必须向下(只能从父节点指向子节点方向)。</p>
 
 <p><strong>示例:</strong><br>
@@ -30,11 +39,13 @@
 	<li><code>节点总数 &lt;= 10000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 前缀和 + 递归**
+### 方法一：哈希表 + 前缀和 + 递归
 
 我们可以运用前缀和的思想，对二叉树进行递归遍历，同时用哈希表 $cnt$ 统计从根节点到当前节点的路径上各个前缀和出现的次数。
 
@@ -54,9 +65,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -84,9 +93,7 @@ class Solution:
         return dfs(root, 0)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -123,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -157,7 +164,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -187,7 +194,7 @@ func pathSum(root *TreeNode, sum int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -223,7 +230,7 @@ function pathSum(root: TreeNode | null, sum: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -275,10 +282,52 @@ impl Solution {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+/* class TreeNode {
+*    var val: Int
+*    var left: TreeNode?
+*    var right: TreeNode?
+*
+*    init(_ val: Int, _ left: TreeNode? = nil, _ right: TreeNode? = nil) {
+*        self.val = val
+*        self.left = left
+*        self.right = right
+*    }
+* }
+*/
 
+class Solution {
+    private var cnt: [Int: Int] = [:]
+    private var target: Int = 0
+
+    func pathSum(_ root: TreeNode?, _ sum: Int) -> Int {
+        cnt[0] = 1
+        target = sum
+        return dfs(root, 0)
+
+    }
+
+    private func dfs(_ root: TreeNode?, _ s: Int) -> Int {
+        guard let root = root else {
+            return 0
+        }
+        let newSum = s + root.val
+        let ans = cnt[newSum - target, default: 0]
+
+        cnt[newSum, default: 0] += 1
+        let leftPaths = dfs(root.left, newSum)
+        let rightPaths = dfs(root.right, newSum)
+        cnt[newSum, default: 0] -= 1
+
+        return ans + leftPaths + rightPaths
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

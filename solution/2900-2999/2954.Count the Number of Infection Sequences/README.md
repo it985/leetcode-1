@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2954.Count%20the%20Number%20of%20Infection%20Sequences/README.md
+rating: 2644
+source: 第 374 场周赛 Q4
+tags:
+    - 数组
+    - 数学
+    - 组合数学
+---
+
+<!-- problem:start -->
+
 # [2954. 统计感冒序列的数目](https://leetcode.cn/problems/count-the-number-of-infection-sequences)
 
 [English Version](/solution/2900-2999/2954.Count%20the%20Number%20of%20Infection%20Sequences/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数&nbsp;<code>n</code>&nbsp;和一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>sick</code>&nbsp;，数组按 <strong>升序</strong>&nbsp;排序。</p>
 
@@ -56,11 +70,13 @@
 	<li><code>sick</code>&nbsp;按升序排列。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：组合数学 + 乘法逆元 + 快速幂**
+### 方法一：组合数学 + 乘法逆元 + 快速幂
 
 根据题目描述，感冒的小朋友把还没有感冒的小朋友划分成了若干个连续段。我们可以用一个数组 $nums$ 记录每一段不感冒的小朋友的认识，不感冒人数一共有 $s = \sum_{i=0}^{k} nums[k]$ 人。我们可以发现，感冒序列的数目就是 $s$ 个不同元素的全排列数，即 $s!$。
 
@@ -80,9 +96,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 mod = 10**9 + 7
@@ -107,9 +121,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -163,7 +175,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 const int MX = 1e5;
@@ -218,7 +230,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 const MX = 1e5
@@ -274,7 +286,7 @@ func numberOfSequence(n int, sick []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 const MX = 1e5;
@@ -325,10 +337,8 @@ function numberOfSequence(n: number, sick: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

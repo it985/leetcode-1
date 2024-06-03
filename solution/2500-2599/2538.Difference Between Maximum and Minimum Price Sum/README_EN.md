@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2538.Difference%20Between%20Maximum%20and%20Minimum%20Price%20Sum/README_EN.md
+rating: 2397
+source: Weekly Contest 328 Q4
+tags:
+    - Tree
+    - Depth-First Search
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [2538. Difference Between Maximum and Minimum Price Sum](https://leetcode.com/problems/difference-between-maximum-and-minimum-price-sum)
 
 [中文文档](/solution/2500-2599/2538.Difference%20Between%20Maximum%20and%20Minimum%20Price%20Sum/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There exists an undirected and initially unrooted tree with <code>n</code> nodes indexed from <code>0</code> to <code>n - 1</code>. You are given the integer <code>n</code> and a 2D integer array <code>edges</code> of length <code>n - 1</code>, where <code>edges[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> indicates that there is an edge between nodes <code>a<sub>i</sub></code> and <code>b<sub>i</sub></code> in the tree.</p>
 
@@ -49,32 +66,17 @@ The difference between the maximum and minimum price sum is 2. It can be proved 
 	<li><code>1 &lt;= price[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Soution 1: Tree-shaped DP**
+<!-- solution:start -->
 
-Since the value of each node is a positive integer, the smallest path with node $root$ as the root node is the $root$ node itself. Therefore, the difference between the path with the maximum value sum and the smallest path is equivalent to removing one endpoint of the path.
-
-We design a function $dfs(i, fa)$, which represents the maximum path sum in the subtree with node $i$ as the root node, with and without removing the endpoint. Here, $fa$ represents the parent node of node $i$.
-
-The implementation logic of the function $dfs(i, fa)$ is as follows:
-
-Initialize $a = price[i]$, $b = 0$, indicating that initially there is only one node, the maximum path sum without removing the endpoint is $price[i]$, and the maximum path sum with removing the endpoint is $0$.
-
-For each child node $j$ of node $i$, if $j \ne fa$, then recursively call the function $dfs(j, i)$. Here, it returns the maximum path sum in the subtree with node $j$ as the root node, with and without removing the endpoint, denoted as $c$ and $d$. At this time, there are two cases for the answer:
-
--   The maximum path sum without removing the endpoint plus the maximum path sum of the current node with removing the endpoint, that is, $a + d$;
--   The maximum path sum with removing the endpoint plus the maximum path sum of the current node without removing the endpoint, that is, $b + c$.
-
-We update the maximum value of the answer, that is, $ans = \max(ans, a + d, b + c)$.
-
-Then update $a$ and $b$, that is, $a = \max(a, price[i] + c)$, $b = \max(b, price[i] + d)$, and finally return.
-
-The time complexity is $O(n)$, and the space complexity is $O(n)$. Where $n$ is the number of nodes.
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -99,7 +101,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -136,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -169,7 +171,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxOutput(n int, edges [][]int, price []int) int64 {
@@ -200,10 +202,8 @@ func maxOutput(n int, edges [][]int, price []int) int64 {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

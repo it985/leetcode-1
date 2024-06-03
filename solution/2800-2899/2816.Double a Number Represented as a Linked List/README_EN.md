@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2816.Double%20a%20Number%20Represented%20as%20a%20Linked%20List/README_EN.md
+rating: 1393
+source: Weekly Contest 358 Q2
+tags:
+    - Stack
+    - Linked List
+    - Math
+---
+
+<!-- problem:start -->
+
 # [2816. Double a Number Represented as a Linked List](https://leetcode.com/problems/double-a-number-represented-as-a-linked-list)
 
 [中文文档](/solution/2800-2899/2816.Double%20a%20Number%20Represented%20as%20a%20Linked%20List/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given the <code>head</code> of a <strong>non-empty</strong> linked list representing a non-negative integer without leading zeroes.</p>
 
@@ -34,9 +50,13 @@
 	<li>The input is generated such that the list represents a number that does not have leading zeros, except the number <code>0</code> itself.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Reverse Linked List + Simulation**
+<!-- solution:start -->
+
+### Solution 1: Reverse Linked List + Simulation
 
 First, we reverse the linked list, then simulate the multiplication operation, and finally reverse the linked list back.
 
@@ -44,7 +64,7 @@ Time complexity is $O(n)$, where $n$ is the length of the linked list. Ignoring 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -78,7 +98,7 @@ class Solution:
         return reverse(dummy.next)
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -124,7 +144,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -171,7 +191,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -212,7 +232,7 @@ func reverse(head *ListNode) *ListNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -259,10 +279,8 @@ function reverse(head: ListNode | null): ListNode | null {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

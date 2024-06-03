@@ -1,8 +1,16 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof/%E9%9D%A2%E8%AF%95%E9%A2%9859%20-%20II.%20%E9%98%9F%E5%88%97%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 59 - II. 队列的最大值](https://leetcode.cn/problems/dui-lie-de-zui-da-zhi-lcof/)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请定义一个队列并实现函数 <code>max_value</code> 得到队列里的最大值，要求函数<code>max_value</code>、<code>push_back</code> 和 <code>pop_front</code> 的<strong>均摊</strong>时间复杂度都是O(1)。</p>
 
@@ -33,11 +41,13 @@
 	<li><code>1 &lt;= value &lt;= 10^5</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双队列**
+### 方法一：双队列
 
 我们维护两个队列 $q_1$ 和 $q_2$，其中 $q_1$ 用于存储所有元素，而 $q_2$ 用于存储当前队列中的最大值。
 
@@ -51,9 +61,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class MaxQueue:
@@ -86,9 +94,7 @@ class MaxQueue:
 # param_3 = obj.pop_front()
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class MaxQueue {
@@ -131,7 +137,7 @@ class MaxQueue {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class MaxQueue {
@@ -177,7 +183,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type MaxQueue struct {
@@ -224,57 +230,7 @@ func (this *MaxQueue) Pop_front() int {
  */
 ```
 
-### **JavaScript**
-
-```js
-var MaxQueue = function () {
-    this.q1 = [];
-    this.q2 = [];
-};
-
-/**
- * @return {number}
- */
-MaxQueue.prototype.max_value = function () {
-    return this.q2.length ? this.q2[0] : -1;
-};
-
-/**
- * @param {number} value
- * @return {void}
- */
-MaxQueue.prototype.push_back = function (value) {
-    while (this.q2.length && this.q2[this.q2.length - 1] < value) {
-        this.q2.pop();
-    }
-    this.q1.push(value);
-    this.q2.push(value);
-};
-
-/**
- * @return {number}
- */
-MaxQueue.prototype.pop_front = function () {
-    if (!this.q1.length) {
-        return -1;
-    }
-    const ans = this.q1.shift();
-    if (this.q2[0] == ans) {
-        this.q2.shift();
-    }
-    return ans;
-};
-
-/**
- * Your MaxQueue object will be instantiated and called as such:
- * var obj = new MaxQueue()
- * var param_1 = obj.max_value()
- * obj.push_back(value)
- * var param_3 = obj.pop_front()
- */
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class MaxQueue {
@@ -316,7 +272,7 @@ class MaxQueue {
  */
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::VecDeque;
@@ -368,7 +324,57 @@ impl MaxQueue {
  */
 ```
 
-### **C#**
+#### JavaScript
+
+```js
+var MaxQueue = function () {
+    this.q1 = [];
+    this.q2 = [];
+};
+
+/**
+ * @return {number}
+ */
+MaxQueue.prototype.max_value = function () {
+    return this.q2.length ? this.q2[0] : -1;
+};
+
+/**
+ * @param {number} value
+ * @return {void}
+ */
+MaxQueue.prototype.push_back = function (value) {
+    while (this.q2.length && this.q2[this.q2.length - 1] < value) {
+        this.q2.pop();
+    }
+    this.q1.push(value);
+    this.q2.push(value);
+};
+
+/**
+ * @return {number}
+ */
+MaxQueue.prototype.pop_front = function () {
+    if (!this.q1.length) {
+        return -1;
+    }
+    const ans = this.q1.shift();
+    if (this.q2[0] == ans) {
+        this.q2.shift();
+    }
+    return ans;
+};
+
+/**
+ * Your MaxQueue object will be instantiated and called as such:
+ * var obj = new MaxQueue()
+ * var param_1 = obj.max_value()
+ * obj.push_back(value)
+ * var param_3 = obj.pop_front()
+ */
+```
+
+#### C#
 
 ```cs
 public class MaxQueue {
@@ -416,10 +422,51 @@ public class MaxQueue {
  */
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class MaxQueue {
+    private var q1: [Int] = []
+    private var q2: [Int] = []
 
+    init() {
+    }
+
+    func max_value() -> Int {
+        return q2.isEmpty ? -1 : q2.first!
+    }
+
+    func push_back(_ value: Int) {
+        q1.append(value)
+        while !q2.isEmpty && q2.last! < value {
+            q2.removeLast()
+        }
+        q2.append(value)
+    }
+
+    func pop_front() -> Int {
+        if q1.isEmpty {
+            return -1
+        }
+        let ans = q1.removeFirst()
+        if q2.first == ans {
+            q2.removeFirst()
+        }
+        return ans
+    }
+}
+
+/**
+ * Your MaxQueue object will be instantiated and called as such:
+ * let obj = MaxQueue();
+ * let param_1 = obj.max_value();
+ * obj.push_back(value);
+ * let param_3 = obj.pop_front();
+ */
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

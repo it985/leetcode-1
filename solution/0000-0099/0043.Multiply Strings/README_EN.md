@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0043.Multiply%20Strings/README_EN.md
+tags:
+    - Math
+    - String
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [43. Multiply Strings](https://leetcode.com/problems/multiply-strings)
 
 [中文文档](/solution/0000-0099/0043.Multiply%20Strings/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two non-negative integers <code>num1</code> and <code>num2</code> represented as strings, return the product of <code>num1</code> and <code>num2</code>, also represented as a string.</p>
 
@@ -25,9 +39,13 @@
 	<li>Both <code>num1</code> and <code>num2</code>&nbsp;do not contain any leading zero, except the number <code>0</code> itself.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulating Mathematical Multiplication**
+<!-- solution:start -->
+
+### Solution 1: Simulating Mathematical Multiplication
 
 Assume the lengths of $num1$ and $num2$ are $m$ and $n$ respectively, then the length of their product can be at most $m + n$.
 
@@ -46,7 +64,7 @@ The time complexity is $O(m \times n)$, and the space complexity is $O(m + n)$. 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -67,7 +85,7 @@ class Solution:
         return "".join(str(x) for x in arr[i:])
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -130,7 +148,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func multiply(num1 string, num2 string) string {
@@ -162,67 +180,36 @@ func multiply(num1 string, num2 string) string {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function multiply(num1: string, num2: string): string {
-    if ([num1, num2].includes('0')) return '0';
-    const n1 = num1.length,
-        n2 = num2.length;
-    let ans = '';
-    for (let i = 0; i < n1; i++) {
-        let cur1 = parseInt(num1.charAt(n1 - i - 1), 10);
-        let sum = '';
-        for (let j = 0; j < n2; j++) {
-            let cur2 = parseInt(num2.charAt(n2 - j - 1), 10);
-            sum = addString(sum, cur1 * cur2 + '0'.repeat(j));
-        }
-        ans = addString(ans, sum + '0'.repeat(i));
-    }
-    return ans;
-}
-
-function addString(s1: string, s2: string): string {
-    const n1 = s1.length,
-        n2 = s2.length;
-    let ans = [];
-    let sum = 0;
-    for (let i = 0; i < n1 || i < n2 || sum > 0; i++) {
-        let num1 = i < n1 ? parseInt(s1.charAt(n1 - i - 1), 10) : 0;
-        let num2 = i < n2 ? parseInt(s2.charAt(n2 - i - 1), 10) : 0;
-        sum += num1 + num2;
-        ans.unshift(sum % 10);
-        sum = Math.floor(sum / 10);
-    }
-    return ans.join('');
-}
-```
+#### TypeScript
 
 ```ts
 function multiply(num1: string, num2: string): string {
     if (num1 === '0' || num2 === '0') {
         return '0';
     }
-
-    const n = num1.length;
-    const m = num2.length;
-    const res = [];
-    for (let i = 0; i < n; i++) {
-        const a = Number(num1[n - i - 1]);
-        let sum = 0;
-        for (let j = 0; j < m || sum !== 0; j++) {
-            const b = Number(num2[m - j - 1] ?? 0);
-            sum += a * b + (res[i + j] ?? 0);
-            res[i + j] = sum % 10;
-            sum = Math.floor(sum / 10);
+    const m: number = num1.length;
+    const n: number = num2.length;
+    const arr: number[] = Array(m + n).fill(0);
+    for (let i: number = m - 1; i >= 0; i--) {
+        const a: number = +num1[i];
+        for (let j: number = n - 1; j >= 0; j--) {
+            const b: number = +num2[j];
+            arr[i + j + 1] += a * b;
         }
     }
-
-    return res.reverse().join('');
+    for (let i: number = arr.length - 1; i > 0; i--) {
+        arr[i - 1] += Math.floor(arr[i] / 10);
+        arr[i] %= 10;
+    }
+    let i: number = 0;
+    while (i < arr.length && arr[i] === 0) {
+        i++;
+    }
+    return arr.slice(i).join('');
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -256,10 +243,83 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C#
 
+```cs
+public class Solution {
+    public string Multiply(string num1, string num2) {
+        if (num1 == "0" || num2 == "0") {
+            return "0";
+        }
+
+        int m = num1.Length;
+        int n = num2.Length;
+        int[] arr = new int[m + n];
+
+        for (int i = m - 1; i >= 0; i--) {
+            int a = num1[i] - '0';
+            for (int j = n - 1; j >= 0; j--) {
+                int b = num2[j] - '0';
+                arr[i + j + 1] += a * b;
+            }
+        }
+
+        for (int i = arr.Length - 1; i > 0; i--) {
+            arr[i - 1] += arr[i] / 10;
+            arr[i] %= 10;
+        }
+
+        int index = 0;
+        while (index < arr.Length && arr[index] == 0) {
+            index++;
+        }
+
+        StringBuilder ans = new StringBuilder();
+        for (; index < arr.Length; index++) {
+            ans.Append(arr[index]);
+        }
+
+        return ans.ToString();
+    }
+}
 ```
 
+#### PHP
+
+```php
+class Solution {
+    /**
+     * @param string $num1
+     * @param string $num2
+     * @return string
+     */
+
+    function multiply($num1, $num2) {
+        $length1 = strlen($num1);
+        $length2 = strlen($num2);
+        $product = array_fill(0, $length1 + $length2, 0);
+
+        for ($i = $length1 - 1; $i >= 0; $i--) {
+            for ($j = $length2 - 1; $j >= 0; $j--) {
+                $digit1 = intval($num1[$i]);
+                $digit2 = intval($num2[$j]);
+
+                $temp = $digit1 * $digit2 + $product[$i + $j + 1];
+                $product[$i + $j + 1] = $temp % 10;
+
+                $carry = intval($temp / 10);
+                $product[$i + $j] += $carry;
+            }
+        }
+        $result = implode('', $product);
+        $result = ltrim($result, '0');
+        return $result === '' ? '0' : $result;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

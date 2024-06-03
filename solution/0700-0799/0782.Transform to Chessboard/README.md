@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0782.Transform%20to%20Chessboard/README.md
+tags:
+    - 位运算
+    - 数组
+    - 数学
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [782. 变为棋盘](https://leetcode.cn/problems/transform-to-chessboard)
 
 [English Version](/solution/0700-0799/0782.Transform%20to%20Chessboard/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一个&nbsp;<code>n x n</code>&nbsp;的二维网络&nbsp;<code>board</code>&nbsp;仅由&nbsp;<code>0</code>&nbsp;和&nbsp;<code>1</code>&nbsp;组成&nbsp;。每次移动，你能任意交换两列或是两行的位置。</p>
 
@@ -57,11 +70,13 @@
 	<li><code>board[i][j]</code>&nbsp;将只包含&nbsp;<code>0</code>或&nbsp;<code>1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：规律观察 + 状态压缩**
+### 方法一：规律观察 + 状态压缩
 
 在一个有效的棋盘中，有且仅有两种“行”。
 
@@ -82,9 +97,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -130,9 +143,7 @@ class Solution:
         return -1 if t1 == -1 or t2 == -1 else t1 + t2
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -191,7 +202,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -240,7 +251,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func movesToChessboard(board [][]int) int {
@@ -308,10 +319,8 @@ func abs(x int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

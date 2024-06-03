@@ -1,8 +1,24 @@
-# [2955. Number of Same-End Substrings](https://leetcode.com/problems/number-of-same-end-substrings)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2955.Number%20of%20Same-End%20Substrings/README_EN.md
+tags:
+    - Array
+    - Hash Table
+    - String
+    - Counting
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
+# [2955. Number of Same-End Substrings 🔒](https://leetcode.com/problems/number-of-same-end-substrings)
 
 [中文文档](/solution/2900-2999/2955.Number%20of%20Same-End%20Substrings/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> string <code>s</code>, and a 2D array of integers <code>queries</code>, where <code>queries[i] = [l<sub>i</sub>, r<sub>i</sub>]</code> indicates a substring of <code>s</code> starting from the index <code>l<sub>i</sub></code> and ending at the index <code>r<sub>i</sub></code> (both <strong>inclusive</strong>), i.e. <code>s[l<sub>i</sub>..r<sub>i</sub>]</code>.</p>
 
@@ -44,9 +60,13 @@
 	<li><code>0 &lt;= l<sub>i</sub> &lt;= r<sub>i</sub> &lt; s.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Prefix Sum + Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Prefix Sum + Enumeration
 
 We can preprocess the prefix sum for each letter and record it in the array $cnt$, where $cnt[i][j]$ represents the number of times the $i$-th letter appears in the first $j$ characters. In this way, for each interval $[l, r]$, we can enumerate each letter $c$ in the interval, quickly calculate the number of times $c$ appears in the interval $x$ using the prefix sum array. We can arbitrarily choose two of them to form a tail-equal substring, the number of substrings is $C_x^2=\frac{x(x-1)}{2}$, plus the situation where each letter in the interval can form a tail-equal substring alone, there are $r - l + 1$ letters in total. Therefore, for each query $[l, r]$, the number of tail-equal substrings that meet the conditions is $r - l + 1 + \sum_{c \in \Sigma} \frac{x_c(x_c-1)}{2}$, where $x_c$ represents the number of times the letter $c$ appears in the interval $[l, r]$.
 
@@ -54,7 +74,7 @@ The time complexity is $O((n + m) \times |\Sigma|)$, and the space complexity is
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -76,7 +96,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -133,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sameEndSubstringCount(s string, queries [][]int) []int {
@@ -164,7 +184,7 @@ func sameEndSubstringCount(s string, queries [][]int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sameEndSubstringCount(s: string, queries: number[][]): number[] {
@@ -188,7 +208,7 @@ function sameEndSubstringCount(s: string, queries: number[][]): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -217,10 +237,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1713.Minimum%20Operations%20to%20Make%20a%20Subsequence/README.md
+rating: 2350
+source: 第 222 场周赛 Q4
+tags:
+    - 贪心
+    - 数组
+    - 哈希表
+    - 二分查找
+---
+
+<!-- problem:start -->
+
 # [1713. 得到子序列的最少操作次数](https://leetcode.cn/problems/minimum-operations-to-make-a-subsequence)
 
 [English Version](/solution/1700-1799/1713.Minimum%20Operations%20to%20Make%20a%20Subsequence/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个数组 <code>target</code> ，包含若干 <strong>互不相同</strong> 的整数，以及另一个整数数组 <code>arr</code> ，<code>arr</code> <strong>可能</strong> 包含重复元素。</p>
 
@@ -39,27 +54,27 @@
 	<li><code>target</code> 不包含任何重复元素。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：最长递增子序列**
+### 方法一：最长递增子序列
 
 根据题意，`target` 和 `arr` 这两个数组的公共子序列越长，需要添加的元素就越少。因此，最少添加的元素个数等于 `target` 的长度减去 `target` 和 `arr` 的最长公共子序列的长度。
 
-但是，[求最长公共子序列](/solution/1100-1199/1143.Longest%20Common%20Subsequence/README.md)的时间复杂度为 $O(mn)$，无法通过本题，需要转变思路。
+但是，[求最长公共子序列](https://github.com/doocs/leetcode/blob/main/solution/1100-1199/1143.Longest%20Common%20Subsequence/README.md)的时间复杂度为 $O(mn)$，无法通过本题，需要转变思路。
 
 我们可以用一个哈希表记录 `target` 数组中每个元素的下标，然后遍历 `arr` 数组，对于 `arr` 数组中的每个元素，如果哈希表中存在该元素，则将该元素的下标加入到一个数组中，这样就得到了一个新的数组 `nums`，该数组是 `arr` 中的元素在 `target` 数组中的下标（去掉了不在 `target` 中的元素），该数组的最长递增子序列的长度就是 `target` 和 `arr` 的最长公共子序列的长度。
 
-因此，问题转化为求 `nums` 数组的最长递增子序列的长度。参考 [300. 最长递增子序列](/solution/0300-0399/0300.Longest%20Increasing%20Subsequence/README.md)。
+因此，问题转化为求 `nums` 数组的最长递增子序列的长度。参考 [300. 最长递增子序列](https://github.com/doocs/leetcode/blob/main/solution/0300-0399/0300.Longest%20Increasing%20Subsequence/README.md)。
 
 时间复杂度 $O(n\log n)$，其中 $n$ 为 `arr` 数组的长度。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class BinaryIndexedTree:
@@ -103,9 +118,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class BinaryIndexedTree {
@@ -176,7 +189,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class BinaryIndexedTree {
@@ -241,7 +254,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type BinaryIndexedTree struct {
@@ -318,10 +331,8 @@ func lengthOfLIS(nums []int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

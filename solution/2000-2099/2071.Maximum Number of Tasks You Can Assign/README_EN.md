@@ -1,8 +1,27 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2071.Maximum%20Number%20of%20Tasks%20You%20Can%20Assign/README_EN.md
+rating: 2648
+source: Biweekly Contest 65 Q4
+tags:
+    - Greedy
+    - Queue
+    - Array
+    - Binary Search
+    - Sorting
+    - Monotonic Queue
+---
+
+<!-- problem:start -->
+
 # [2071. Maximum Number of Tasks You Can Assign](https://leetcode.com/problems/maximum-number-of-tasks-you-can-assign)
 
 [中文文档](/solution/2000-2099/2071.Maximum%20Number%20of%20Tasks%20You%20Can%20Assign/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You have <code>n</code> tasks and <code>m</code> workers. Each task has a strength requirement stored in a <strong>0-indexed</strong> integer array <code>tasks</code>, with the <code>i<sup>th</sup></code> task requiring <code>tasks[i]</code> strength to complete. The strength of each worker is stored in a <strong>0-indexed</strong> integer array <code>workers</code>, with the <code>j<sup>th</sup></code> worker having <code>workers[j]</code> strength. Each worker can only be assigned to a <strong>single</strong> task and must have a strength <strong>greater than or equal</strong> to the task&#39;s strength requirement (i.e., <code>workers[j] &gt;= tasks[i]</code>).</p>
 
@@ -59,11 +78,17 @@ The last pill is not given because it will not make any worker strong enough for
 	<li><code>0 &lt;= tasks[i], workers[j], strength &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -102,7 +127,7 @@ class Solution:
         return left
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -159,7 +184,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -204,7 +229,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxTaskAssign(tasks []int, workers []int, pills int, strength int) int {
@@ -247,10 +272,8 @@ func maxTaskAssign(tasks []int, workers []int, pills int, strength int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

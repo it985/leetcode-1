@@ -1,12 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0629.K%20Inverse%20Pairs%20Array/README_EN.md
+tags:
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [629. K Inverse Pairs Array](https://leetcode.com/problems/k-inverse-pairs-array)
 
 [中文文档](/solution/0600-0699/0629.K%20Inverse%20Pairs%20Array/README.md)
 
 ## Description
 
+<!-- description:start -->
+
 <p>For an integer array <code>nums</code>, an <strong>inverse pair</strong> is a pair of integers <code>[i, j]</code> where <code>0 &lt;= i &lt; j &lt; nums.length</code> and <code>nums[i] &gt; nums[j]</code>.</p>
 
-<p>Given two integers n and k, return the number of different arrays consist of numbers from <code>1</code> to <code>n</code> such that there are exactly <code>k</code> <strong>inverse pairs</strong>. Since the answer can be huge, return it <strong>modulo</strong> <code>10<sup>9</sup> + 7</code>.</p>
+<p>Given two integers n and k, return the number of different arrays consisting of numbers from <code>1</code> to <code>n</code> such that there are exactly <code>k</code> <strong>inverse pairs</strong>. Since the answer can be huge, return it <strong>modulo</strong> <code>10<sup>9</sup> + 7</code>.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
@@ -33,11 +45,17 @@
 	<li><code>0 &lt;= k &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -53,7 +71,7 @@ class Solution:
         return f[k]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -77,7 +95,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -103,7 +121,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func kInversePairs(n int, k int) int {
@@ -126,7 +144,7 @@ func kInversePairs(n int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function kInversePairs(n: number, k: number): number {
@@ -147,10 +165,8 @@ function kInversePairs(n: number, k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

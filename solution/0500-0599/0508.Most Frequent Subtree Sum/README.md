@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0508.Most%20Frequent%20Subtree%20Sum/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 哈希表
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [508. 出现次数最多的子树元素和](https://leetcode.cn/problems/most-frequent-subtree-sum)
 
 [English Version](/solution/0500-0599/0508.Most%20Frequent%20Subtree%20Sum/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个二叉树的根结点&nbsp;<code>root</code>&nbsp;，请返回出现次数最多的子树元素和。如果有多个元素出现的次数相同，返回所有出现次数最多的子树元素和（不限顺序）。</p>
 
@@ -39,17 +52,17 @@
 	<li><code>-10<sup>5</sup>&nbsp;&lt;= Node.val &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-后序遍历获取每个子树元素和，同时用哈希表记录每个子树元素和出现的次数，以及最大的次数 mx。最后判断哈希表中出现次数为 mx 的，获取对应的子树元素，组成结果列表 ans。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -74,9 +87,7 @@ class Solution:
         return [k for k, v in counter.items() if v == mx]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -127,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -166,7 +177,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -203,7 +214,7 @@ func findFrequentTreeSum(root *TreeNode) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -244,7 +255,7 @@ function findFrequentTreeSum(root: TreeNode | null): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -299,10 +310,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

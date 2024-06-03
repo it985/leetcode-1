@@ -1,8 +1,20 @@
-# [1596. The Most Frequently Ordered Products for Each Customer](https://leetcode.com/problems/the-most-frequently-ordered-products-for-each-customer)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1596.The%20Most%20Frequently%20Ordered%20Products%20for%20Each%20Customer/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [1596. The Most Frequently Ordered Products for Each Customer 🔒](https://leetcode.com/problems/the-most-frequently-ordered-products-for-each-customer)
 
 [中文文档](/solution/1500-1599/1596.The%20Most%20Frequently%20Ordered%20Products%20for%20Each%20Customer/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Customers</code></p>
 
@@ -118,15 +130,19 @@ Jerry (customer 4) only ordered the keyboard (one time), so that is the most fre
 John (customer 5) did not order anything, so we do not include them in the result table.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Group By + Window Function**
+<!-- solution:start -->
+
+### Solution 1: Group By + Window Function
 
 We group the `Orders` table by `customer_id` and `product_id`, and then use the window function `rank()`, which assigns a rank to each `product_id` in each `customer_id` group based on its frequency in descending order. Finally, we select the `product_id` with a rank of $1$ for each `customer_id`, which is the most frequently ordered product for that `customer_id`.
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -150,3 +166,7 @@ WHERE rk = 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

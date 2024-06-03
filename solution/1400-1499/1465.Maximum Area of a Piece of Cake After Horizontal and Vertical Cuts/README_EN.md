@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1465.Maximum%20Area%20of%20a%20Piece%20of%20Cake%20After%20Horizontal%20and%20Vertical%20Cuts/README_EN.md
+rating: 1444
+source: Weekly Contest 191 Q2
+tags:
+    - Greedy
+    - Array
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1465. Maximum Area of a Piece of Cake After Horizontal and Vertical Cuts](https://leetcode.com/problems/maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts)
 
 [中文文档](/solution/1400-1499/1465.Maximum%20Area%20of%20a%20Piece%20of%20Cake%20After%20Horizontal%20and%20Vertical%20Cuts/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a rectangular cake of size <code>h x w</code> and two arrays of integers <code>horizontalCuts</code> and <code>verticalCuts</code> where:</p>
 
@@ -50,9 +66,13 @@
 	<li>All the elements in <code>verticalCuts</code> are distinct.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sorting**
+<!-- solution:start -->
+
+### Solution 1: Sorting
 
 We first sort `horizontalCuts` and `verticalCuts` separately, and then traverse both arrays to calculate the maximum difference between adjacent elements. We denote these maximum differences as $x$ and $y$, respectively. Finally, we return $x \times y$.
 
@@ -62,7 +82,7 @@ The time complexity is $O(m\log m + n\log n)$, where $m$ and $n$ are the lengths
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -78,7 +98,7 @@ class Solution:
         return (x * y) % (10**9 + 7)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -126,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxArea(h int, w int, horizontalCuts []int, verticalCuts []int) int {
@@ -146,7 +166,7 @@ func maxArea(h int, w int, horizontalCuts []int, verticalCuts []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxArea(h: number, w: number, horizontalCuts: number[], verticalCuts: number[]): number {
@@ -166,7 +186,7 @@ function maxArea(h: number, w: number, horizontalCuts: number[], verticalCuts: n
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -203,10 +223,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

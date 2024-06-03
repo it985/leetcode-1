@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0814.Binary%20Tree%20Pruning/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [814. 二叉树剪枝](https://leetcode.cn/problems/binary-tree-pruning)
 
 [English Version](/solution/0800-0899/0814.Binary%20Tree%20Pruning/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你二叉树的根结点&nbsp;<code>root</code>&nbsp;，此外树的每个结点的值要么是 <code>0</code> ，要么是 <code>1</code> 。</p>
 
@@ -46,19 +58,19 @@
 	<li><code>Node.val</code> 为 <code>0</code> 或 <code>1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 观察叶节点，当叶节点 `val` 为 0 时，便将该节点抹去。回溯，查看其父节点是否成为了新的叶节点，依照此规则自底向上。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -78,9 +90,7 @@ class Solution:
         return root
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -113,31 +123,7 @@ class Solution {
 }
 ```
 
-### **Go**
-
-```go
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func pruneTree(root *TreeNode) *TreeNode {
-	if root == nil {
-		return nil
-	}
-	root.Left = pruneTree(root.Left)
-	root.Right = pruneTree(root.Right)
-	if root.Val == 0 && root.Left == nil && root.Right == nil {
-		return nil
-	}
-	return root
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -163,33 +149,31 @@ public:
 };
 ```
 
-### **JavaScript**
+#### Go
 
-```js
+```go
 /**
  * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
  * }
  */
-/**
- * @param {TreeNode} root
- * @return {TreeNode}
- */
-var pruneTree = function (root) {
-    if (!root) return null;
-    root.left = pruneTree(root.left);
-    root.right = pruneTree(root.right);
-    if (root.val == 0 && !root.left && !root.right) {
-        return null;
-    }
-    return root;
-};
+func pruneTree(root *TreeNode) *TreeNode {
+	if root == nil {
+		return nil
+	}
+	root.Left = pruneTree(root.Left)
+	root.Right = pruneTree(root.Right)
+	if root.Val == 0 && root.Left == nil && root.Right == nil {
+		return nil
+	}
+	return root
+}
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -219,7 +203,7 @@ function pruneTree(root: TreeNode | null): TreeNode | null {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -262,10 +246,34 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+var pruneTree = function (root) {
+    if (!root) return null;
+    root.left = pruneTree(root.left);
+    root.right = pruneTree(root.right);
+    if (root.val == 0 && !root.left && !root.right) {
+        return null;
+    }
+    return root;
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

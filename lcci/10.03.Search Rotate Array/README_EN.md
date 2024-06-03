@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/10.03.Search%20Rotate%20Array/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [10.03. Search Rotate Array](https://leetcode.cn/problems/search-rotate-array-lcci)
 
 [中文文档](/lcci/10.03.Search%20Rotate%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a sorted array of n integers that has been rotated an unknown number of times, write code to find an element in the array. You may assume that the array was originally sorted in increasing order. If there are more than one target elements in the array, return the smallest index.</p>
 <p><strong>Example1:</strong></p>
@@ -26,9 +36,13 @@
 	<li><code>1 &lt;= arr.length &lt;= 1000000</code></li>
 </ol>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Binary Search
 
 We define the left boundary of the binary search as $l=0$ and the right boundary as $r=n-1$, where $n$ is the length of the array.
 
@@ -46,11 +60,11 @@ The time complexity is approximately $O(\log n)$, and the space complexity is $O
 
 Similar problems:
 
--   [81. Search in Rotated Sorted Array II](/solution/0000-0099/0081.Search%20in%20Rotated%20Sorted%20Array%20II/README.md)
+-   [81. Search in Rotated Sorted Array II](https://github.com/doocs/leetcode/blob/main/solution/0000-0099/0081.Search%20in%20Rotated%20Sorted%20Array%20II/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +89,7 @@ class Solution:
         return l if arr[l] == target else -1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -140,7 +154,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func search(arr []int, target int) int {
@@ -173,7 +187,7 @@ func search(arr []int, target int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function search(arr: number[], target: number): number {
@@ -203,10 +217,44 @@ function search(arr: number[], target: number): number {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    func search(_ arr: [Int], _ target: Int) -> Int {
+        var l = 0
+        var r = arr.count - 1
 
+        while arr[l] == arr[r] && l < r {
+            r -= 1
+        }
+
+        while l < r {
+            let mid = (l + r) >> 1
+            if arr[mid] > arr[r] {
+                if arr[l] <= target && target <= arr[mid] {
+                    r = mid
+                } else {
+                    l = mid + 1
+                }
+            } else if arr[mid] < arr[r] {
+                if arr[mid] < target && target <= arr[r] {
+                    l = mid + 1
+                } else {
+                    r = mid
+                }
+            } else {
+                r -= 1
+            }
+        }
+
+        return arr[l] == target ? l : -1
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

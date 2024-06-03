@@ -1,10 +1,21 @@
-# [1891. 割绳子](https://leetcode.cn/problems/cutting-ribbons)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1891.Cutting%20Ribbons/README.md
+tags:
+    - 数组
+    - 二分查找
+---
+
+<!-- problem:start -->
+
+# [1891. 割绳子 🔒](https://leetcode.cn/problems/cutting-ribbons)
 
 [English Version](/solution/1800-1899/1891.Cutting%20Ribbons/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个整数数组 <code>ribbons</code> 和一个整数 <code>k</code>，数组每项 <code>ribbons[i]</code> 表示第 <code>i</code> 条绳子的长度。对于每条绳子，你可以将任意切割成一系列长度为<strong>正整数</strong>的部分，或者选择不进行切割。</p>
 
@@ -62,11 +73,13 @@
 	<li><code>1 &lt;= k &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找**
+### 方法一：二分查找
 
 我们发现，如果我们能够得到长度为 $x$ 的 $k$ 根绳子，那么我们一定能够得到长度为 $x - 1$ 的 $k$ 根绳子，这存在着单调性。因此，我们可以使用二分查找的方法，找到最大的长度 $x$，使得我们能够得到长度为 $x$ 的 $k$ 根绳子。
 
@@ -78,9 +91,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -96,9 +107,7 @@ class Solution:
         return left
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -124,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -148,7 +157,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxLength(ribbons []int, k int) int {
@@ -169,34 +178,7 @@ func maxLength(ribbons []int, k int) int {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} ribbons
- * @param {number} k
- * @return {number}
- */
-var maxLength = function (ribbons, k) {
-    let left = 0;
-    let right = Math.max(...ribbons);
-    while (left < right) {
-        const mid = (left + right + 1) >> 1;
-        let cnt = 0;
-        for (const x of ribbons) {
-            cnt += Math.floor(x / mid);
-        }
-        if (cnt >= k) {
-            left = mid;
-        } else {
-            right = mid - 1;
-        }
-    }
-    return left;
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxLength(ribbons: number[], k: number): number {
@@ -218,7 +200,7 @@ function maxLength(ribbons: number[], k: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -245,10 +227,35 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+/**
+ * @param {number[]} ribbons
+ * @param {number} k
+ * @return {number}
+ */
+var maxLength = function (ribbons, k) {
+    let left = 0;
+    let right = Math.max(...ribbons);
+    while (left < right) {
+        const mid = (left + right + 1) >> 1;
+        let cnt = 0;
+        for (const x of ribbons) {
+            cnt += Math.floor(x / mid);
+        }
+        if (cnt >= k) {
+            left = mid;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return left;
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

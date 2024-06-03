@@ -1,8 +1,27 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0912.Sort%20an%20Array/README_EN.md
+tags:
+    - Array
+    - Divide and Conquer
+    - Bucket Sort
+    - Counting Sort
+    - Radix Sort
+    - Sorting
+    - Heap (Priority Queue)
+    - Merge Sort
+---
+
+<!-- problem:start -->
+
 # [912. Sort an Array](https://leetcode.com/problems/sort-an-array)
 
 [中文文档](/solution/0900-0999/0912.Sort%20an%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of integers <code>nums</code>, sort the array in ascending order and return it.</p>
 
@@ -33,13 +52,17 @@
 	<li><code>-5 * 10<sup>4</sup> &lt;= nums[i] &lt;= 5 * 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
-
-Quick Sort:
+#### Python3
 
 ```python
 class Solution:
@@ -65,40 +88,7 @@ class Solution:
         return nums
 ```
 
-Merge Sort:
-
-```python
-class Solution:
-    def sortArray(self, nums: List[int]) -> List[int]:
-        def merge_sort(l, r):
-            if l >= r:
-                return
-            mid = (l + r) >> 1
-            merge_sort(l, mid)
-            merge_sort(mid + 1, r)
-            i, j = l, mid + 1
-            tmp = []
-            while i <= mid and j <= r:
-                if nums[i] <= nums[j]:
-                    tmp.append(nums[i])
-                    i += 1
-                else:
-                    tmp.append(nums[j])
-                    j += 1
-            if i <= mid:
-                tmp.extend(nums[i : mid + 1])
-            if j <= r:
-                tmp.extend(nums[j : r + 1])
-            for i in range(l, r + 1):
-                nums[i] = tmp[i - l]
-
-        merge_sort(0, len(nums) - 1)
-        return nums
-```
-
-### **Java**
-
-Quick Sort:
+#### Java
 
 ```java
 class Solution {
@@ -132,6 +122,173 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> sortArray(vector<int>& nums) {
+        function<void(int, int)> quick_sort = [&](int l, int r) {
+            if (l >= r) {
+                return;
+            }
+            int i = l - 1, j = r + 1;
+            int x = nums[(l + r) >> 1];
+            while (i < j) {
+                while (nums[++i] < x) {
+                }
+                while (nums[--j] > x) {
+                }
+                if (i < j) {
+                    swap(nums[i], nums[j]);
+                }
+            }
+            quick_sort(l, j);
+            quick_sort(j + 1, r);
+        };
+        quick_sort(0, nums.size() - 1);
+        return nums;
+    }
+};
+```
+
+#### Go
+
+```go
+func sortArray(nums []int) []int {
+	quickSort(nums, 0, len(nums)-1)
+	return nums
+}
+
+func quickSort(nums []int, l, r int) {
+	if l >= r {
+		return
+	}
+	i, j := l-1, r+1
+	x := nums[(l+r)>>1]
+	for i < j {
+		for {
+			i++
+			if nums[i] >= x {
+				break
+			}
+		}
+		for {
+			j--
+			if nums[j] <= x {
+				break
+			}
+		}
+		if i < j {
+			nums[i], nums[j] = nums[j], nums[i]
+		}
+	}
+	quickSort(nums, l, j)
+	quickSort(nums, j+1, r)
+}
+```
+
+#### TypeScript
+
+```ts
+function sortArray(nums: number[]): number[] {
+    function quickSort(l: number, r: number) {
+        if (l >= r) {
+            return;
+        }
+        let i = l - 1;
+        let j = r + 1;
+        const x = nums[(l + r) >> 1];
+        while (i < j) {
+            while (nums[++i] < x);
+            while (nums[--j] > x);
+            if (i < j) {
+                [nums[i], nums[j]] = [nums[j], nums[i]];
+            }
+        }
+        quickSort(l, j);
+        quickSort(j + 1, r);
+    }
+    const n = nums.length;
+    quickSort(0, n - 1);
+    return nums;
+}
+```
+
+#### JavaScript
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var sortArray = function (nums) {
+    function quickSort(l, r) {
+        if (l >= r) {
+            return;
+        }
+        let i = l - 1;
+        let j = r + 1;
+        const x = nums[(l + r) >> 1];
+        while (i < j) {
+            while (nums[++i] < x);
+            while (nums[--j] > x);
+            if (i < j) {
+                [nums[i], nums[j]] = [nums[j], nums[i]];
+            }
+        }
+        quickSort(l, j);
+        quickSort(j + 1, r);
+    }
+    const n = nums.length;
+    quickSort(0, n - 1);
+    return nums;
+};
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        def merge_sort(l, r):
+            if l >= r:
+                return
+            mid = (l + r) >> 1
+            merge_sort(l, mid)
+            merge_sort(mid + 1, r)
+            i, j = l, mid + 1
+            tmp = []
+            while i <= mid and j <= r:
+                if nums[i] <= nums[j]:
+                    tmp.append(nums[i])
+                    i += 1
+                else:
+                    tmp.append(nums[j])
+                    j += 1
+            if i <= mid:
+                tmp.extend(nums[i : mid + 1])
+            if j <= r:
+                tmp.extend(nums[j : r + 1])
+            for i in range(l, r + 1):
+                nums[i] = tmp[i - l]
+
+        merge_sort(0, len(nums) - 1)
+        return nums
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -170,80 +327,7 @@ class Solution {
 }
 ```
 
-Merge Sort:
-
-```java
-class Solution {
-    private int[] nums;
-
-    public int[] sortArray(int[] nums) {
-        this.nums = nums;
-        mergeSort(0, nums.length - 1);
-        return nums;
-    }
-
-    private void mergeSort(int l, int r) {
-        if (l >= r) {
-            return;
-        }
-        int mid = (l + r) >> 1;
-        mergeSort(l, mid);
-        mergeSort(mid + 1, r);
-        int i = l, j = mid + 1, k = 0;
-        int[] tmp = new int[r - l + 1];
-        while (i <= mid && j <= r) {
-            if (nums[i] <= nums[j]) {
-                tmp[k++] = nums[i++];
-            } else {
-                tmp[k++] = nums[j++];
-            }
-        }
-        while (i <= mid) {
-            tmp[k++] = nums[i++];
-        }
-        while (j <= r) {
-            tmp[k++] = nums[j++];
-        }
-        for (i = l; i <= r; ++i) {
-            nums[i] = tmp[i - l];
-        }
-    }
-}
-```
-
-### **C++**
-
-Quick Sort:
-
-```cpp
-class Solution {
-public:
-    vector<int> sortArray(vector<int>& nums) {
-        function<void(int, int)> quick_sort = [&](int l, int r) {
-            if (l >= r) {
-                return;
-            }
-            int i = l - 1, j = r + 1;
-            int x = nums[(l + r) >> 1];
-            while (i < j) {
-                while (nums[++i] < x) {
-                }
-                while (nums[--j] > x) {
-                }
-                if (i < j) {
-                    swap(nums[i], nums[j]);
-                }
-            }
-            quick_sort(l, j);
-            quick_sort(j + 1, r);
-        };
-        quick_sort(0, nums.size() - 1);
-        return nums;
-    }
-};
-```
-
-Merge Sort:
+#### C++
 
 ```cpp
 class Solution {
@@ -281,45 +365,7 @@ public:
 };
 ```
 
-### **Go**
-
-Quick Sort:
-
-```go
-func sortArray(nums []int) []int {
-	quickSort(nums, 0, len(nums)-1)
-	return nums
-}
-
-func quickSort(nums []int, l, r int) {
-	if l >= r {
-		return
-	}
-	i, j := l-1, r+1
-	x := nums[(l+r)>>1]
-	for i < j {
-		for {
-			i++
-			if nums[i] >= x {
-				break
-			}
-		}
-		for {
-			j--
-			if nums[j] <= x {
-				break
-			}
-		}
-		if i < j {
-			nums[i], nums[j] = nums[j], nums[i]
-		}
-	}
-	quickSort(nums, l, j)
-	quickSort(nums, j+1, r)
-}
-```
-
-Merge Sort:
+#### Go
 
 ```go
 func sortArray(nums []int) []int {
@@ -360,36 +406,7 @@ func mergeSort(nums []int, l, r int) {
 }
 ```
 
-### **TypeScript**
-
-Quick Sort:
-
-```ts
-function sortArray(nums: number[]): number[] {
-    function quickSort(l: number, r: number) {
-        if (l >= r) {
-            return;
-        }
-        let i = l - 1;
-        let j = r + 1;
-        const x = nums[(l + r) >> 1];
-        while (i < j) {
-            while (nums[++i] < x);
-            while (nums[--j] > x);
-            if (i < j) {
-                [nums[i], nums[j]] = [nums[j], nums[i]];
-            }
-        }
-        quickSort(l, j);
-        quickSort(j + 1, r);
-    }
-    const n = nums.length;
-    quickSort(0, n - 1);
-    return nums;
-}
-```
-
-Merge Sort:
+#### TypeScript
 
 ```ts
 function sortArray(nums: number[]): number[] {
@@ -425,40 +442,7 @@ function sortArray(nums: number[]): number[] {
 }
 ```
 
-### **JavaScript**
-
-Quick Sort:
-
-```js
-/**
- * @param {number[]} nums
- * @return {number[]}
- */
-var sortArray = function (nums) {
-    function quickSort(l, r) {
-        if (l >= r) {
-            return;
-        }
-        let i = l - 1;
-        let j = r + 1;
-        const x = nums[(l + r) >> 1];
-        while (i < j) {
-            while (nums[++i] < x);
-            while (nums[--j] > x);
-            if (i < j) {
-                [nums[i], nums[j]] = [nums[j], nums[i]];
-            }
-        }
-        quickSort(l, j);
-        quickSort(j + 1, r);
-    }
-    const n = nums.length;
-    quickSort(0, n - 1);
-    return nums;
-};
-```
-
-Merge Sort:
+#### JavaScript
 
 ```js
 /**
@@ -498,10 +482,59 @@ var sortArray = function (nums) {
 };
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 3
+
+<!-- tabs:start -->
+
+#### Java
+
+```java
+class Solution {
+    private int[] nums;
+
+    public int[] sortArray(int[] nums) {
+        this.nums = nums;
+        mergeSort(0, nums.length - 1);
+        return nums;
+    }
+
+    private void mergeSort(int l, int r) {
+        if (l >= r) {
+            return;
+        }
+        int mid = (l + r) >> 1;
+        mergeSort(l, mid);
+        mergeSort(mid + 1, r);
+        int i = l, j = mid + 1, k = 0;
+        int[] tmp = new int[r - l + 1];
+        while (i <= mid && j <= r) {
+            if (nums[i] <= nums[j]) {
+                tmp[k++] = nums[i++];
+            } else {
+                tmp[k++] = nums[j++];
+            }
+        }
+        while (i <= mid) {
+            tmp[k++] = nums[i++];
+        }
+        while (j <= r) {
+            tmp[k++] = nums[j++];
+        }
+        for (i = l; i <= r; ++i) {
+            nums[i] = tmp[i - l];
+        }
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

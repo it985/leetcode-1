@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1175.Prime%20Arrangements/README_EN.md
+rating: 1489
+source: Weekly Contest 152 Q1
+tags:
+    - Math
+---
+
+<!-- problem:start -->
+
 # [1175. Prime Arrangements](https://leetcode.com/problems/prime-arrangements)
 
 [中文文档](/solution/1100-1199/1175.Prime%20Arrangements/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Return the number of permutations of 1 to <code>n</code> so that prime numbers are at prime indices (1-indexed.)</p>
 
@@ -33,9 +47,13 @@
 	<li><code>1 &lt;= n &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Mathematics**
+<!-- solution:start -->
+
+### Solution 1: Mathematics
 
 First, count the number of prime numbers within the range $[1,n]$, which we denote as $cnt$. Then, calculate the product of the factorial of $cnt$ and $n-cnt$ to get the answer, remember to perform the modulo operation.
 
@@ -51,7 +69,7 @@ The time complexity is $O(n \times \log \log n)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -71,7 +89,7 @@ class Solution:
         return ans % (10**9 + 7)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +126,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 using ll = long long;
@@ -142,7 +160,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numPrimeArrangements(n int) int {
@@ -178,10 +196,8 @@ func numPrimeArrangements(n int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

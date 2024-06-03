@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1965.Employees%20With%20Missing%20Information/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
 # [1965. 丢失信息的雇员](https://leetcode.cn/problems/employees-with-missing-information)
 
 [English Version](/solution/1900-1999/1965.Employees%20With%20Missing%20Information/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Employees</code></p>
 
@@ -79,19 +89,19 @@ Salaries table:
 1 号雇员的姓名丢失了。
 2 号雇员的薪水信息丢失了。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：子查询 + 合并**
+### 方法一：子查询 + 合并
 
 我们可以先从 `Employees` 表中找出所有不在 `Salaries` 表中的 `employee_id`，再从 `Salaries` 表中找出所有不在 `Employees` 表中的 `employee_id`，最后将两个结果合并，然后按照 `employee_id` 排序即可。
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -106,3 +116,7 @@ ORDER BY 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

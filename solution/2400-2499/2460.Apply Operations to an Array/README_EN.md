@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2460.Apply%20Operations%20to%20an%20Array/README_EN.md
+rating: 1223
+source: Weekly Contest 318 Q1
+tags:
+    - Array
+    - Two Pointers
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [2460. Apply Operations to an Array](https://leetcode.com/problems/apply-operations-to-an-array)
 
 [中文文档](/solution/2400-2499/2460.Apply%20Operations%20to%20an%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> array <code>nums</code> of size <code>n</code> consisting of <strong>non-negative</strong> integers.</p>
 
@@ -53,9 +69,13 @@ After that, we shift the 0&#39;s to the end, which gives the array [1,4,2,0,0,0]
 	<li><code>0 &lt;= nums[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 We can directly simulate according to the problem description.
 
@@ -69,7 +89,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array $nums$. Igno
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -88,7 +108,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -112,7 +132,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -137,7 +157,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func applyOperations(nums []int) []int {
@@ -160,7 +180,7 @@ func applyOperations(nums []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function applyOperations(nums: number[]): number[] {
@@ -182,7 +202,7 @@ function applyOperations(nums: number[]): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -209,10 +229,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

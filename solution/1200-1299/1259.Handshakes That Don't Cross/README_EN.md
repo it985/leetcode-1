@@ -1,8 +1,23 @@
-# [1259. Handshakes That Don't Cross](https://leetcode.com/problems/handshakes-that-dont-cross)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1259.Handshakes%20That%20Don%27t%20Cross/README_EN.md
+rating: 1951
+source: Biweekly Contest 13 Q4
+tags:
+    - Math
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
+# [1259. Handshakes That Don't Cross 🔒](https://leetcode.com/problems/handshakes-that-dont-cross)
 
 [中文文档](/solution/1200-1299/1259.Handshakes%20That%20Don%27t%20Cross/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an <strong>even</strong> number of people <code>numPeople</code> that stand around a circle and each person shakes hands with someone else so that there are <code>numPeople / 2</code> handshakes total.</p>
 
@@ -34,11 +49,28 @@
 	<li><code>numPeople</code> is even.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Memoization Search
+
+We design a function $dfs(i)$, which represents the number of handshake schemes for $i$ people. The answer is $dfs(n)$.
+
+The execution logic of the function $dfs(i)$ is as follows:
+
+-   If $i \lt 2$, then there is only one handshake scheme, which is not to shake hands, so return $1$.
+-   Otherwise, we can enumerate who the first person shakes hands with. Let the number of remaining people on the left be $l$, and the number of people on the right be $r=i-l-2$. Then we have $dfs(i)= \sum_{l=0}^{i-1} dfs(l) \times dfs(r)$.
+
+To avoid repeated calculations, we use the method of memoization search.
+
+The time complexity is $O(n^2)$, and the space complexity is $O(n)$. Where $n$ is the size of $numPeople$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -58,7 +90,7 @@ class Solution:
         return dfs(numPeople)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -86,7 +118,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -113,7 +145,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfWays(numPeople int) int {
@@ -137,7 +169,7 @@ func numberOfWays(numPeople int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfWays(numPeople: number): number {
@@ -161,10 +193,8 @@ function numberOfWays(numPeople: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

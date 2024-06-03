@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1283.Find%20the%20Smallest%20Divisor%20Given%20a%20Threshold/README_EN.md
+rating: 1541
+source: Weekly Contest 166 Q3
+tags:
+    - Array
+    - Binary Search
+---
+
+<!-- problem:start -->
+
 # [1283. Find the Smallest Divisor Given a Threshold](https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold)
 
 [中文文档](/solution/1200-1299/1283.Find%20the%20Smallest%20Divisor%20Given%20a%20Threshold/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of integers <code>nums</code> and an integer <code>threshold</code>, we will choose a positive integer <code>divisor</code>, divide all the array by it, and sum the division&#39;s result. Find the <strong>smallest</strong> <code>divisor</code> such that the result mentioned above is less than or equal to <code>threshold</code>.</p>
 
@@ -36,9 +51,13 @@ If the divisor is 4 we can get a sum of 7 (1+1+2+3) and if the divisor is 5 the 
 	<li><code>nums.length &lt;= threshold &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Binary Search
 
 Notice that for number $v$, if the sum of results of dividing each number in $nums$ by $v$ is less than or equal to $threshold$, then all values greater than $v$ satisfy the condition. There is a monotonicity, so we can use binary search to find the smallest $v$ that satisfies the condition.
 
@@ -50,7 +69,7 @@ The time complexity is $O(n \times \log M)$, where $n$ is the length of the arra
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,6 +84,8 @@ class Solution:
         return l
 ```
 
+#### Python3
+
 ```python
 class Solution:
     def smallestDivisor(self, nums: List[int], threshold: int) -> int:
@@ -75,7 +96,7 @@ class Solution:
         return bisect_left(range(max(nums)), True, key=f) + 1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -123,7 +144,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func smallestDivisor(nums []int, threshold int) int {
@@ -138,7 +159,29 @@ func smallestDivisor(nums []int, threshold int) int {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function smallestDivisor(nums: number[], threshold: number): number {
+    let l = 1;
+    let r = Math.max(...nums);
+    while (l < r) {
+        const mid = (l + r) >> 1;
+        let s = 0;
+        for (const x of nums) {
+            s += Math.ceil(x / mid);
+        }
+        if (s <= threshold) {
+            r = mid;
+        } else {
+            l = mid + 1;
+        }
+    }
+    return l;
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -165,29 +208,7 @@ var smallestDivisor = function (nums, threshold) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function smallestDivisor(nums: number[], threshold: number): number {
-    let l = 1;
-    let r = Math.max(...nums);
-    while (l < r) {
-        const mid = (l + r) >> 1;
-        let s = 0;
-        for (const x of nums) {
-            s += Math.ceil(x / mid);
-        }
-        if (s <= threshold) {
-            r = mid;
-        } else {
-            l = mid + 1;
-        }
-    }
-    return l;
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -211,10 +232,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

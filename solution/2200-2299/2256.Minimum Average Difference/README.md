@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2256.Minimum%20Average%20Difference/README.md
+rating: 1394
+source: 第 77 场双周赛 Q2
+tags:
+    - 数组
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [2256. 最小平均差](https://leetcode.cn/problems/minimum-average-difference)
 
 [English Version](/solution/2200-2299/2256.Minimum%20Average%20Difference/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始长度为 <code>n</code>&nbsp;的整数数组&nbsp;<code>nums</code>&nbsp;。</p>
 
@@ -54,11 +67,13 @@
 	<li><code>0 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：遍历**
+### 方法一：遍历
 
 我们直接遍历数组 $nums$，对于每个下标 $i$，维护前 $i + 1$ 个元素的和 $pre$ 和后 $n - i - 1$ 个元素的和 $suf$，计算平均差的绝对值 $t$，如果 $t$ 小于当前最小值 $mi$，则更新答案 $ans = i$ 和最小值 $mi = t$。
 
@@ -68,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -89,9 +102,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -119,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -147,7 +158,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumAverageDifference(nums []int) (ans int) {
@@ -181,7 +192,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumAverageDifference(nums: number[]): number {
@@ -205,10 +216,8 @@ function minimumAverageDifference(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

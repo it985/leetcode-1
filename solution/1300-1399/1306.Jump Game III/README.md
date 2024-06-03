@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1306.Jump%20Game%20III/README.md
+rating: 1396
+source: 第 169 场周赛 Q3
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [1306. 跳跃游戏 III](https://leetcode.cn/problems/jump-game-iii)
 
 [English Version](/solution/1300-1399/1306.Jump%20Game%20III/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>这里有一个非负整数数组&nbsp;<code>arr</code>，你最开始位于该数组的起始下标&nbsp;<code>start</code>&nbsp;处。当你位于下标&nbsp;<code>i</code>&nbsp;处时，你可以跳到&nbsp;<code>i + arr[i]</code> 或者 <code>i - arr[i]</code>。</p>
 
@@ -50,11 +64,13 @@
 	<li><code>0 &lt;= start &lt; arr.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：BFS**
+### 方法一：BFS
 
 我们可以使用 BFS 来判断是否能够到达值为 $0$ 的下标。
 
@@ -68,9 +84,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -88,9 +102,7 @@ class Solution:
         return False
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -115,7 +127,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -141,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canReach(arr []int, start int) bool {
@@ -164,7 +176,7 @@ func canReach(arr []int, start int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canReach(arr: number[], start: number): boolean {
@@ -186,10 +198,8 @@ function canReach(arr: number[], start: number): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

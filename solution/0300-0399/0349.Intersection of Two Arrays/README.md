@@ -1,12 +1,26 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0349.Intersection%20of%20Two%20Arrays/README.md
+tags:
+    - 数组
+    - 哈希表
+    - 双指针
+    - 二分查找
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [349. 两个数组的交集](https://leetcode.cn/problems/intersection-of-two-arrays)
 
 [English Version](/solution/0300-0399/0349.Intersection%20of%20Two%20Arrays/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>给定两个数组&nbsp;<code>nums1</code>&nbsp;和&nbsp;<code>nums2</code> ，返回 <em>它们的交集</em>&nbsp;。输出结果中的每个元素一定是 <strong>唯一</strong> 的。我们可以 <strong>不考虑输出结果的顺序</strong> 。</p>
+<p>给定两个数组&nbsp;<code>nums1</code>&nbsp;和&nbsp;<code>nums2</code> ，返回 <em>它们的 <span data-keyword="array-intersection">交集</span></em>&nbsp;。输出结果中的每个元素一定是 <strong>唯一</strong> 的。我们可以 <strong>不考虑输出结果的顺序</strong> 。</p>
 
 <p>&nbsp;</p>
 
@@ -34,11 +48,13 @@
 	<li><code>0 &lt;= nums1[i], nums2[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表或数组**
+### 方法一：哈希表或数组
 
 我们先用哈希表或者一个长度为 $1001$ 的数组 $s$ 记录数组 $nums1$ 中出现的元素，然后遍历数组 $nums2$ 中每个元素，如果元素 $x$ 在 $s$ 中，那么将 $x$ 加入答案，并且从 $s$ 中移除 $x$。
 
@@ -48,9 +64,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -58,9 +72,7 @@ class Solution:
         return list(set(nums1) & set(nums2))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -81,7 +93,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -104,7 +116,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func intersection(nums1 []int, nums2 []int) (ans []int) {
@@ -122,7 +134,7 @@ func intersection(nums1 []int, nums2 []int) (ans []int) {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -146,18 +158,25 @@ var intersection = function (nums1, nums2) {
 };
 ```
 
-```js
-/**
- * @param {number[]} nums1
- * @param {number[]} nums2
- * @return {number[]}
- */
-var intersection = function (nums1, nums2) {
-    return Array.from(new Set(nums1)).filter(num => new Set(nums2).has(num));
-};
+#### C#
+
+```cs
+public class Solution {
+    public int[] Intersection(int[] nums1, int[] nums2) {
+        List<int> result = new List<int>();
+        HashSet<int> arr1 = new(nums1);
+        HashSet<int> arr2 = new(nums2);
+        foreach (int x in arr1) {
+            if (arr2.Contains(x)) {
+                result.Add(x);
+            }
+        }
+        return result.ToArray();
+    }
+}
 ```
 
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -183,28 +202,31 @@ class Solution {
 }
 ```
 
-### **C#**
+<!-- tabs:end -->
 
-```cs
-public class Solution {
-    public int[] Intersection(int[] nums1, int[] nums2) {
-        List<int> result = new List<int>();
-        HashSet<int> arr1 = new(nums1);
-        HashSet<int> arr2 = new(nums2);
-        foreach (int x in arr1) {
-            if (arr2.Contains(x)) {
-                result.Add(x);
-            }
-        }
-        return result.ToArray();
-    }
-}
-```
+<!-- solution:end -->
 
-### **...**
+<!-- solution:start -->
 
-```
+### 方法二
 
+<!-- tabs:start -->
+
+#### JavaScript
+
+```js
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var intersection = function (nums1, nums2) {
+    return Array.from(new Set(nums1)).filter(num => new Set(nums2).has(num));
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

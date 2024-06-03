@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1014.Best%20Sightseeing%20Pair/README.md
+rating: 1730
+source: 第 129 场周赛 Q3
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [1014. 最佳观光组合](https://leetcode.cn/problems/best-sightseeing-pair)
 
 [English Version](/solution/1000-1099/1014.Best%20Sightseeing%20Pair/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个正整数数组 <code>values</code>，其中 <code>values[i]</code> 表示第 <code>i</code> 个观光景点的评分，并且两个景点 <code>i</code> 和 <code>j</code> 之间的 <strong>距离</strong> 为 <code>j - i</code>。</p>
 
@@ -38,11 +51,13 @@
 	<li><code>1 <= values[i] <= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举 + 维护前缀最大值**
+### 方法一：枚举 + 维护前缀最大值
 
 我们可以在 $[1,..n - 1]$ 的范围内枚举 $j$，那么我们要在 $[0,..j - 1]$ 的范围内找到一个 $i$，使得 $values[i] + values[j] + i - j$ 的值最大。我们可以维护一个前缀最大值，即 $values[i] + i$ 的最大值，那么我们只需要在枚举 $j$ 的过程中，不断地更新答案即可。
 
@@ -50,9 +65,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -64,9 +77,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -81,7 +92,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -97,7 +108,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxScoreSightseeingPair(values []int) (ans int) {
@@ -109,7 +120,7 @@ func maxScoreSightseeingPair(values []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxScoreSightseeingPair(values: number[]): number {
@@ -123,10 +134,8 @@ function maxScoreSightseeingPair(values: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

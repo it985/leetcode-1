@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2957.Remove%20Adjacent%20Almost-Equal%20Characters/README_EN.md
+rating: 1429
+source: Biweekly Contest 119 Q2
+tags:
+    - Greedy
+    - String
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [2957. Remove Adjacent Almost-Equal Characters](https://leetcode.com/problems/remove-adjacent-almost-equal-characters)
 
 [中文文档](/solution/2900-2999/2957.Remove%20Adjacent%20Almost-Equal%20Characters/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> string <code>word</code>.</p>
 
@@ -47,9 +63,13 @@ It can be shown that the minimum number of operations needed to remove all adjac
 	<li><code>word</code> consists only of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy**
+<!-- solution:start -->
+
+### Solution 1: Greedy
 
 We start traversing the string `word` from index $1$. If `word[i]` and `word[i - 1]` are approximately equal, we greedily replace `word[i]` with a character that is not equal to both `word[i - 1]` and `word[i + 1]` (we can choose not to perform the replacement operation, just record the number of operations). Then, we skip `word[i + 1]` and continue to traverse the string `word`.
 
@@ -59,7 +79,7 @@ The time complexity is $O(n)$, where $n$ is the length of the string `word`. The
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +95,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -92,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -110,7 +130,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func removeAlmostEqualCharacters(word string) (ans int) {
@@ -131,7 +151,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function removeAlmostEqualCharacters(word: string): number {
@@ -146,10 +166,8 @@ function removeAlmostEqualCharacters(word: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

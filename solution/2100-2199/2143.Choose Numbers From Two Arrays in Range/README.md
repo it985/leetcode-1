@@ -1,10 +1,21 @@
-# [2143. 在两个数组的区间中选取数字](https://leetcode.cn/problems/choose-numbers-from-two-arrays-in-range)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2143.Choose%20Numbers%20From%20Two%20Arrays%20in%20Range/README.md
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
+# [2143. 在两个数组的区间中选取数字 🔒](https://leetcode.cn/problems/choose-numbers-from-two-arrays-in-range)
 
 [English Version](/solution/2100-2199/2143.Choose%20Numbers%20From%20Two%20Arrays%20in%20Range/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个 <strong>下标从 0 开始</strong>，长度为 <code>n</code> 的整数数组 <code>nums1</code> 和 <code>nums2</code>。</p>
 
@@ -69,11 +80,13 @@
 	<li><code>0 &lt;= nums1[i], nums2[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i][j]$ 表示以第 $i$ 个元素结尾，且从 $nums1$ 中选取的数字和与从 $nums2$ 中选取的数字和之差为 $j$ 的平衡区间的个数。由于差值可能为负数，因此，我们统一将 $j$ 加上 $s_2 = \sum_{k=0}^{n-1}nums2[k]$，这样就可以保证 $j$ 为非负整数。
 
@@ -85,9 +98,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -110,9 +121,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -144,7 +153,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -178,7 +187,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countSubranges(nums1 []int, nums2 []int) (ans int) {
@@ -216,7 +225,7 @@ func sum(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countSubranges(nums1: number[], nums2: number[]): number {
@@ -248,10 +257,8 @@ function countSubranges(nums1: number[], nums2: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

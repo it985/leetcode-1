@@ -1,10 +1,22 @@
-# [2743. 计算没有重复字符的子字符串数量](https://leetcode.cn/problems/count-substrings-without-repeating-character)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2743.Count%20Substrings%20Without%20Repeating%20Character/README.md
+tags:
+    - 哈希表
+    - 字符串
+    - 滑动窗口
+---
+
+<!-- problem:start -->
+
+# [2743. 计算没有重复字符的子字符串数量 🔒](https://leetcode.cn/problems/count-substrings-without-repeating-character)
 
 [English Version](/solution/2700-2799/2743.Count%20Substrings%20Without%20Repeating%20Character/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定你一个只包含小写英文字母的字符串 <code>s</code> 。如果一个子字符串不包含任何字符至少出现两次（换句话说，它不包含重复字符），则称其为 <strong>特殊</strong> 子字符串。你的任务是计算 <strong>特殊</strong> 子字符串的数量。例如，在字符串 <code>"pop"</code> 中，子串 <code>"po"</code> 是一个特殊子字符串，然而 <code>"pop"</code> 不是 <strong>特殊</strong> 子字符串（因为 <code>'p'</code> 出现了两次）。</p>
 
@@ -49,11 +61,13 @@
 	<li><code>s</code> 只包含小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数 + 双指针**
+### 方法一：计数 + 双指针
 
 我们用两个指针 $j$ 和 $i$ 分别表示当前子串的左右边界，用一个长度为 $26$ 的数组 $cnt$ 统计当前子串中每个字符出现的次数。我们从左到右遍历字符串，每次遍历到位置 $i$ 时，将 $s[i]$ 出现的次数加一，然后判断 $s[i]$ 是否出现了至少两次，如果是，那么我们需要将 $s[j]$ 出现的次数减一，并将 $j$ 右移一位，直到 $s[i]$ 出现的次数不超过一次为止。这样一来，我们就得到以 $s[i]$ 结尾的最长特殊子串的长度，即 $i - j + 1$，那么以 $s[i]$ 结尾的特殊子串的数量就是 $i - j + 1$。最后我们将每个位置结尾的特殊子串的数量累加起来，即为答案。
 
@@ -61,9 +75,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -79,9 +91,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -124,7 +134,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfSpecialSubstrings(s string) (ans int) {
@@ -143,7 +153,7 @@ func numberOfSpecialSubstrings(s string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfSpecialSubstrings(s: string): number {
@@ -163,10 +173,8 @@ function numberOfSpecialSubstrings(s: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

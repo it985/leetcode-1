@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2930.Number%20of%20Strings%20Which%20Can%20Be%20Rearranged%20to%20Contain%20Substring/README_EN.md
+rating: 2227
+source: Biweekly Contest 117 Q3
+tags:
+    - Math
+    - Dynamic Programming
+    - Combinatorics
+---
+
+<!-- problem:start -->
+
 # [2930. Number of Strings Which Can Be Rearranged to Contain Substring](https://leetcode.com/problems/number-of-strings-which-can-be-rearranged-to-contain-substring)
 
 [中文文档](/solution/2900-2999/2930.Number%20of%20Strings%20Which%20Can%20Be%20Rearranged%20to%20Contain%20Substring/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer <code>n</code>.</p>
 
@@ -47,9 +63,13 @@
 	<li><code>1 &lt;= n &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Memorization Search**
+<!-- solution:start -->
+
+### Solution 1: Memorization Search
 
 We design a function $dfs(i, l, e, t)$, which represents the number of good strings that can be formed when the remaining string length is $i$, and there are at least $l$ characters 'l', $e$ characters 'e' and $t$ characters 't'. The answer is $dfs(n, 0, 0, 0)$.
 
@@ -65,29 +85,9 @@ To avoid repeated calculations, we can use memorization search.
 
 The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is the length of the string.
 
-**Solution 2: Reverse Thinking + Inclusion-Exclusion Principle**
-
-We can consider reverse thinking, that is, calculate the number of strings that do not contain the substring "leet", and then subtract this number from the total.
-
-We divide it into the following cases:
-
--   Case $a$: represents the number of schemes where the string does not contain the character 'l', so we have $a = 25^n$.
--   Case $b$: similar to $a$, represents the number of schemes where the string does not contain the character 't', so we have $b = 25^n$.
--   Case $c$: represents the number of schemes where the string does not contain the character 'e' or only contains one character 'e', so we have $c = 25^n + n \times 25^{n - 1}$.
--   Case $ab$: represents the number of schemes where the string does not contain the characters 'l' and 't', so we have $ab = 24^n$.
--   Case $ac$: represents the number of schemes where the string does not contain the characters 'l' and 'e' or only contains one character 'e', so we have $ac = 24^n + n \times 24^{n - 1}$.
--   Case $bc$: similar to $ac$, represents the number of schemes where the string does not contain the characters 't' and 'e' or only contains one character 'e', so we have $bc = 24^n + n \times 24^{n - 1}$.
--   Case $abc$: represents the number of schemes where the string does not contain the characters 'l', 't' and 'e' or only contains one character 'e', so we have $abc = 23^n + n \times 23^{n - 1}$.
-
-Then according to the inclusion-exclusion principle, $a + b + c - ab - ac - bc + abc$ is the number of strings that do not contain the substring "leet".
-
-The total number $tot = 26^n$, so the answer is $tot - (a + b + c - ab - ac - bc + abc)$, remember to take the modulus of $10^9 + 7$.
-
-The time complexity is $O(\log n)$, and the space complexity is $O(1)$. Here, $n$ is the length of the string.
-
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -106,20 +106,7 @@ class Solution:
         return dfs(n, 0, 0, 0)
 ```
 
-```python
-class Solution:
-    def stringCount(self, n: int) -> int:
-        mod = 10**9 + 7
-        a = b = pow(25, n, mod)
-        c = pow(25, n, mod) + n * pow(25, n - 1, mod)
-        ab = pow(24, n, mod)
-        ac = bc = (pow(24, n, mod) + n * pow(24, n - 1, mod)) % mod
-        abc = (pow(23, n, mod) + n * pow(23, n - 1, mod)) % mod
-        tot = pow(26, n, mod)
-        return (tot - (a + b + c - ab - ac - bc + abc)) % mod
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -147,36 +134,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    private final int mod = (int) 1e9 + 7;
-
-    public int stringCount(int n) {
-        long a = qpow(25, n);
-        long b = a;
-        long c = (qpow(25, n) + n * qpow(25, n - 1) % mod) % mod;
-        long ab = qpow(24, n);
-        long ac = (qpow(24, n) + n * qpow(24, n - 1) % mod) % mod;
-        long bc = ac;
-        long abc = (qpow(23, n) + n * qpow(23, n - 1) % mod) % mod;
-        long tot = qpow(26, n);
-        return (int) ((tot - (a + b + c - ab - ac - bc + abc)) % mod + mod) % mod;
-    }
-
-    private long qpow(long a, int n) {
-        long ans = 1;
-        for (; n > 0; n >>= 1) {
-            if ((n & 1) == 1) {
-                ans = ans * a % mod;
-            }
-            a = a * a % mod;
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -204,36 +162,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int stringCount(int n) {
-        const int mod = 1e9 + 7;
-        using ll = long long;
-        auto qpow = [&](ll a, int n) {
-            ll ans = 1;
-            for (; n; n >>= 1) {
-                if (n & 1) {
-                    ans = ans * a % mod;
-                }
-                a = a * a % mod;
-            }
-            return ans;
-        };
-        ll a = qpow(25, n);
-        ll b = a;
-        ll c = (qpow(25, n) + n * qpow(25, n - 1) % mod) % mod;
-        ll ab = qpow(24, n);
-        ll ac = (qpow(24, n) + n * qpow(24, n - 1) % mod) % mod;
-        ll bc = ac;
-        ll abc = (qpow(23, n) + n * qpow(23, n - 1) % mod) % mod;
-        ll tot = qpow(26, n);
-        return ((tot - (a + b + c - ab - ac - bc + abc)) % mod + mod) % mod;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func stringCount(n int) int {
@@ -269,32 +198,7 @@ func stringCount(n int) int {
 }
 ```
 
-```go
-func stringCount(n int) int {
-	const mod int = 1e9 + 7
-	qpow := func(a, n int) int {
-		ans := 1
-		for ; n > 0; n >>= 1 {
-			if n&1 == 1 {
-				ans = ans * a % mod
-			}
-			a = a * a % mod
-		}
-		return ans
-	}
-	a := qpow(25, n)
-	b := a
-	c := qpow(25, n) + n*qpow(25, n-1)
-	ab := qpow(24, n)
-	ac := (qpow(24, n) + n*qpow(24, n-1)) % mod
-	bc := ac
-	abc := (qpow(23, n) + n*qpow(23, n-1)) % mod
-	tot := qpow(26, n)
-	return ((tot-(a+b+c-ab-ac-bc+abc))%mod + mod) % mod
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function stringCount(n: number): number {
@@ -321,6 +225,140 @@ function stringCount(n: number): number {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Reverse Thinking + Inclusion-Exclusion Principle
+
+We can consider reverse thinking, that is, calculate the number of strings that do not contain the substring "leet", and then subtract this number from the total.
+
+We divide it into the following cases:
+
+-   Case $a$: represents the number of schemes where the string does not contain the character 'l', so we have $a = 25^n$.
+-   Case $b$: similar to $a$, represents the number of schemes where the string does not contain the character 't', so we have $b = 25^n$.
+-   Case $c$: represents the number of schemes where the string does not contain the character 'e' or only contains one character 'e', so we have $c = 25^n + n \times 25^{n - 1}$.
+-   Case $ab$: represents the number of schemes where the string does not contain the characters 'l' and 't', so we have $ab = 24^n$.
+-   Case $ac$: represents the number of schemes where the string does not contain the characters 'l' and 'e' or only contains one character 'e', so we have $ac = 24^n + n \times 24^{n - 1}$.
+-   Case $bc$: similar to $ac$, represents the number of schemes where the string does not contain the characters 't' and 'e' or only contains one character 'e', so we have $bc = 24^n + n \times 24^{n - 1}$.
+-   Case $abc$: represents the number of schemes where the string does not contain the characters 'l', 't' and 'e' or only contains one character 'e', so we have $abc = 23^n + n \times 23^{n - 1}$.
+
+Then according to the inclusion-exclusion principle, $a + b + c - ab - ac - bc + abc$ is the number of strings that do not contain the substring "leet".
+
+The total number $tot = 26^n$, so the answer is $tot - (a + b + c - ab - ac - bc + abc)$, remember to take the modulus of $10^9 + 7$.
+
+The time complexity is $O(\log n)$, and the space complexity is $O(1)$. Here, $n$ is the length of the string.
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def stringCount(self, n: int) -> int:
+        mod = 10**9 + 7
+        a = b = pow(25, n, mod)
+        c = pow(25, n, mod) + n * pow(25, n - 1, mod)
+        ab = pow(24, n, mod)
+        ac = bc = (pow(24, n, mod) + n * pow(24, n - 1, mod)) % mod
+        abc = (pow(23, n, mod) + n * pow(23, n - 1, mod)) % mod
+        tot = pow(26, n, mod)
+        return (tot - (a + b + c - ab - ac - bc + abc)) % mod
+```
+
+#### Java
+
+```java
+class Solution {
+    private final int mod = (int) 1e9 + 7;
+
+    public int stringCount(int n) {
+        long a = qpow(25, n);
+        long b = a;
+        long c = (qpow(25, n) + n * qpow(25, n - 1) % mod) % mod;
+        long ab = qpow(24, n);
+        long ac = (qpow(24, n) + n * qpow(24, n - 1) % mod) % mod;
+        long bc = ac;
+        long abc = (qpow(23, n) + n * qpow(23, n - 1) % mod) % mod;
+        long tot = qpow(26, n);
+        return (int) ((tot - (a + b + c - ab - ac - bc + abc)) % mod + mod) % mod;
+    }
+
+    private long qpow(long a, int n) {
+        long ans = 1;
+        for (; n > 0; n >>= 1) {
+            if ((n & 1) == 1) {
+                ans = ans * a % mod;
+            }
+            a = a * a % mod;
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int stringCount(int n) {
+        const int mod = 1e9 + 7;
+        using ll = long long;
+        auto qpow = [&](ll a, int n) {
+            ll ans = 1;
+            for (; n; n >>= 1) {
+                if (n & 1) {
+                    ans = ans * a % mod;
+                }
+                a = a * a % mod;
+            }
+            return ans;
+        };
+        ll a = qpow(25, n);
+        ll b = a;
+        ll c = (qpow(25, n) + n * qpow(25, n - 1) % mod) % mod;
+        ll ab = qpow(24, n);
+        ll ac = (qpow(24, n) + n * qpow(24, n - 1) % mod) % mod;
+        ll bc = ac;
+        ll abc = (qpow(23, n) + n * qpow(23, n - 1) % mod) % mod;
+        ll tot = qpow(26, n);
+        return ((tot - (a + b + c - ab - ac - bc + abc)) % mod + mod) % mod;
+    }
+};
+```
+
+#### Go
+
+```go
+func stringCount(n int) int {
+	const mod int = 1e9 + 7
+	qpow := func(a, n int) int {
+		ans := 1
+		for ; n > 0; n >>= 1 {
+			if n&1 == 1 {
+				ans = ans * a % mod
+			}
+			a = a * a % mod
+		}
+		return ans
+	}
+	a := qpow(25, n)
+	b := a
+	c := qpow(25, n) + n*qpow(25, n-1)
+	ab := qpow(24, n)
+	ac := (qpow(24, n) + n*qpow(24, n-1)) % mod
+	bc := ac
+	abc := (qpow(23, n) + n*qpow(23, n-1)) % mod
+	tot := qpow(26, n)
+	return ((tot-(a+b+c-ab-ac-bc+abc))%mod + mod) % mod
+}
+```
+
+#### TypeScript
+
 ```ts
 function stringCount(n: number): number {
     const mod = BigInt(10 ** 9 + 7);
@@ -346,10 +384,8 @@ function stringCount(n: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2295.Replace%20Elements%20in%20an%20Array/README.md
+rating: 1445
+source: 第 296 场周赛 Q3
+tags:
+    - 数组
+    - 哈希表
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [2295. 替换数组中的元素](https://leetcode.cn/problems/replace-elements-in-an-array)
 
 [English Version](/solution/2200-2299/2295.Replace%20Elements%20in%20an%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始的数组&nbsp;<code>nums</code>&nbsp;，它包含 <code>n</code>&nbsp;个 <strong>互不相同</strong>&nbsp;的正整数。请你对这个数组执行 <code>m</code>&nbsp;个操作，在第 <code>i</code>&nbsp;个操作中，你需要将数字&nbsp;<code>operations[i][0]</code> 替换成&nbsp;<code>operations[i][1]</code>&nbsp;。</p>
 
@@ -56,11 +70,13 @@
 	<li>在执行第&nbsp;<code>i</code>&nbsp;个操作时，<code>operations[i][1]</code>&nbsp;在&nbsp;<code>nums</code>&nbsp;中不存在。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们先用哈希表 $d$ 记录数组 `nums` 中每个数字的下标，然后遍历操作数组 `operations`，对于每个操作 $[a, b]$，我们将 $a$ 在 `nums` 中的下标 $d[a]$ 对应的数字替换为 $b$，并更新 $d$ 中 $b$ 的下标为 $d[a]$。
 
@@ -70,9 +86,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -84,9 +98,7 @@ class Solution:
         return nums
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -105,7 +117,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -125,7 +137,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func arrayChange(nums []int, operations [][]int) []int {
@@ -142,7 +154,7 @@ func arrayChange(nums []int, operations [][]int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function arrayChange(nums: number[], operations: number[][]): number[] {
@@ -155,10 +167,8 @@ function arrayChange(nums: number[], operations: number[][]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

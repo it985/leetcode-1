@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.11.Diving%20Board/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 16.11. 跳水板](https://leetcode.cn/problems/diving-board-lcci)
 
 [English Version](/lcci/16.11.Diving%20Board/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你正在使用一堆木板建造跳水板。有两种类型的木板，其中长度较短的木板长度为<code>shorter</code>，长度较长的木板长度为<code>longer</code>。你必须正好使用<code>k</code>块木板。编写一个方法，生成跳水板所有可能的长度。</p>
 <p>返回的长度需要从小到大排列。</p>
@@ -21,11 +29,13 @@ k = 3
 <li>0 <= k <= 100000</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：分类讨论**
+### 方法一：分类讨论
 
 如果 $k=0$，则不存在任何一种方案，我们可以直接返回空列表。
 
@@ -37,9 +47,7 @@ k = 3
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -54,9 +62,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -76,7 +82,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -92,7 +98,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func divingBoard(shorter int, longer int, k int) []int {
@@ -110,7 +116,7 @@ func divingBoard(shorter int, longer int, k int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function divingBoard(shorter: number, longer: number, k: number): number[] {
@@ -128,10 +134,29 @@ function divingBoard(shorter: number, longer: number, k: number): number[] {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    func divingBoard(_ shorter: Int, _ longer: Int, _ k: Int) -> [Int] {
+        if k == 0 {
+            return []
+        }
+        if shorter == longer {
+            return [shorter * k]
+        }
 
+        var ans = [Int](repeating: 0, count: k + 1)
+        for i in 0...k {
+            ans[i] = longer * i + shorter * (k - i)
+        }
+        return ans
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

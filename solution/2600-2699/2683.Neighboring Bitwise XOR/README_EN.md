@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2683.Neighboring%20Bitwise%20XOR/README_EN.md
+rating: 1517
+source: Weekly Contest 345 Q2
+tags:
+    - Bit Manipulation
+    - Array
+---
+
+<!-- problem:start -->
+
 # [2683. Neighboring Bitwise XOR](https://leetcode.com/problems/neighboring-bitwise-xor)
 
 [中文文档](/solution/2600-2699/2683.Neighboring%20Bitwise%20XOR/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A <strong>0-indexed</strong> array <code>derived</code> with length <code>n</code> is derived by computing the <strong>bitwise XOR</strong>&nbsp;(&oplus;) of adjacent values in a <strong>binary array</strong> <code>original</code> of length <code>n</code>.</p>
 
@@ -60,11 +75,17 @@ derived[1] = original[1] &oplus; original[0] = 1
 	<li>The values in <code>derived</code>&nbsp;are either <strong>0&#39;s</strong> or <strong>1&#39;s</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -72,7 +93,7 @@ class Solution:
         return reduce(xor, derived) == 0
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -86,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -101,7 +122,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func doesValidArrayExist(derived []int) bool {
@@ -113,7 +134,7 @@ func doesValidArrayExist(derived []int) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function doesValidArrayExist(derived: number[]): boolean {
@@ -125,16 +146,26 @@ function doesValidArrayExist(derived: number[]): boolean {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### TypeScript
+
 ```ts
 function doesValidArrayExist(derived: number[]): boolean {
     return derived.reduce((acc, x) => acc ^ x, 0) === 0;
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

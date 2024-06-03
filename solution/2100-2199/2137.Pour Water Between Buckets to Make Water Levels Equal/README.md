@@ -1,10 +1,21 @@
-# [2137. 通过倒水操作让所有的水桶所含水量相等](https://leetcode.cn/problems/pour-water-between-buckets-to-make-water-levels-equal)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2137.Pour%20Water%20Between%20Buckets%20to%20Make%20Water%20Levels%20Equal/README.md
+tags:
+    - 数组
+    - 二分查找
+---
+
+<!-- problem:start -->
+
+# [2137. 通过倒水操作让所有的水桶所含水量相等 🔒](https://leetcode.cn/problems/pour-water-between-buckets-to-make-water-levels-equal)
 
 [English Version](/solution/2100-2199/2137.Pour%20Water%20Between%20Buckets%20to%20Make%20Water%20Levels%20Equal/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你有 <code>n</code> 个水桶，每个水桶中所含的水量用一个 <b>下标从 0 开始</b>&nbsp;的数组 <code>buckets</code> 给出，第 <code>i</code> 个水桶中有 <code>buckets[i]</code> 升水。</p>
 
@@ -52,11 +63,13 @@
 	<li><code>0 &lt;= loss &lt;= 99</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找（浮点数二分）**
+### 方法一：二分查找（浮点数二分）
 
 我们注意到，如果一个水量 $x$ 满足条件，那么所有小于 $x$ 的水量也满足条件。因此我们可以使用二分查找的方法找到最大的满足条件的水量。
 
@@ -68,9 +81,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -94,9 +105,7 @@ class Solution:
         return l
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -128,7 +137,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -159,7 +168,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func equalizeWater(buckets []int, loss int) float64 {
@@ -188,7 +197,7 @@ func equalizeWater(buckets []int, loss int) float64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function equalizeWater(buckets: number[], loss: number): number {
@@ -217,10 +226,8 @@ function equalizeWater(buckets: number[], loss: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

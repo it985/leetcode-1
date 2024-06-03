@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0050.Pow%28x%2C%20n%29/README.md
+tags:
+    - 递归
+    - 数学
+---
+
+<!-- problem:start -->
+
 # [50. Pow(x, n)](https://leetcode.cn/problems/powx-n)
 
 [English Version](/solution/0000-0099/0050.Pow%28x%2C%20n%29/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>实现&nbsp;<a href="https://www.cplusplus.com/reference/valarray/pow/" target="_blank">pow(<em>x</em>, <em>n</em>)</a>&nbsp;，即计算 <code>x</code> 的整数&nbsp;<code>n</code> 次幂函数（即，<code>x<sup>n</sup></code><sup><span style="font-size:10.8333px"> </span></sup>）。</p>
 
@@ -44,11 +55,13 @@
 	<li><code>-10<sup>4</sup> &lt;= x<sup>n</sup> &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：数学（快速幂）**
+### 方法一：数学（快速幂）
 
 快速幂算法的核心思想是将幂指数 $n$ 拆分为若干个二进制位上的 $1$ 的和，然后将 $x$ 的 $n$ 次幂转化为 $x$ 的若干个幂的乘积。
 
@@ -56,9 +69,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -75,9 +86,7 @@ class Solution:
         return qpow(x, n) if n >= 0 else 1 / qpow(x, -n)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +128,46 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func myPow(x float64, n int) float64 {
+	qpow := func(a float64, n int) float64 {
+		ans := 1.0
+		for ; n > 0; n >>= 1 {
+			if n&1 == 1 {
+				ans *= a
+			}
+			a *= a
+		}
+		return ans
+	}
+	if n >= 0 {
+		return qpow(x, n)
+	}
+	return 1 / qpow(x, -n)
+}
+```
+
+#### TypeScript
+
+```ts
+function myPow(x: number, n: number): number {
+    const qpow = (a: number, n: number): number => {
+        let ans = 1;
+        for (; n; n >>>= 1) {
+            if (n & 1) {
+                ans *= a;
+            }
+            a *= a;
+        }
+        return ans;
+    };
+    return n >= 0 ? qpow(x, n) : 1 / qpow(x, -n);
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -150,28 +198,7 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func myPow(x float64, n int) float64 {
-	qpow := func(a float64, n int) float64 {
-		ans := 1.0
-		for ; n > 0; n >>= 1 {
-			if n&1 == 1 {
-				ans *= a
-			}
-			a *= a
-		}
-		return ans
-	}
-	if n >= 0 {
-		return qpow(x, n)
-	}
-	return 1 / qpow(x, -n)
-}
-```
-
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -194,25 +221,7 @@ var myPow = function (x, n) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function myPow(x: number, n: number): number {
-    const qpow = (a: number, n: number): number => {
-        let ans = 1;
-        for (; n; n >>>= 1) {
-            if (n & 1) {
-                ans *= a;
-            }
-            a *= a;
-        }
-        return ans;
-    };
-    return n >= 0 ? qpow(x, n) : 1 / qpow(x, -n);
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -233,10 +242,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0115.Distinct%20Subsequences/README.md
+tags:
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [115. 不同的子序列](https://leetcode.cn/problems/distinct-subsequences)
 
 [English Version](/solution/0100-0199/0115.Distinct%20Subsequences/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个字符串 <code>s</code><strong> </strong>和 <code>t</code> ，统计并返回在 <code>s</code> 的 <strong>子序列</strong> 中 <code>t</code> 出现的个数，结果需要对&nbsp;10<sup>9</sup> + 7 取模。</p>
 
@@ -44,11 +55,13 @@
 	<li><code>s</code> 和 <code>t</code> 由英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i][j]$ 表示字符串 $s$ 的前 $i$ 个字符中，子序列构成字符串 $t$ 的前 $j$ 个字符的方案数。初始时 $f[i][0]=1$，其中 $i \in [0,m]$。
 
@@ -76,9 +89,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -95,21 +106,7 @@ class Solution:
         return f[m][n]
 ```
 
-```python
-class Solution:
-    def numDistinct(self, s: str, t: str) -> int:
-        n = len(t)
-        f = [1] + [0] * n
-        for a in s:
-            for j in range(n, 0, -1):
-                if a == t[j - 1]:
-                    f[j] += f[j - 1]
-        return f[n]
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -132,26 +129,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int numDistinct(String s, String t) {
-        int n = t.length();
-        int[] f = new int[n + 1];
-        f[0] = 1;
-        for (char a : s.toCharArray()) {
-            for (int j = n; j > 0; --j) {
-                char b = t.charAt(j - 1);
-                if (a == b) {
-                    f[j] += f[j - 1];
-                }
-            }
-        }
-        return f[n];
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -176,28 +154,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int numDistinct(string s, string t) {
-        int n = t.size();
-        unsigned long long f[n + 1];
-        memset(f, 0, sizeof(f));
-        f[0] = 1;
-        for (char& a : s) {
-            for (int j = n; j; --j) {
-                char b = t[j - 1];
-                if (a == b) {
-                    f[j] += f[j - 1];
-                }
-            }
-        }
-        return f[n];
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func numDistinct(s string, t string) int {
@@ -221,23 +178,7 @@ func numDistinct(s string, t string) int {
 }
 ```
 
-```go
-func numDistinct(s string, t string) int {
-	n := len(t)
-	f := make([]int, n+1)
-	f[0] = 1
-	for _, a := range s {
-		for j := n; j > 0; j-- {
-			if b := t[j-1]; byte(a) == b {
-				f[j] += f[j-1]
-			}
-		}
-	}
-	return f[n]
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numDistinct(s: string, t: string): number {
@@ -259,24 +200,7 @@ function numDistinct(s: string, t: string): number {
 }
 ```
 
-```ts
-function numDistinct(s: string, t: string): number {
-    const n = t.length;
-    const f: number[] = new Array(n + 1).fill(0);
-    f[0] = 1;
-    for (const a of s) {
-        for (let j = n; j; --j) {
-            const b = t[j - 1];
-            if (a === b) {
-                f[j] += f[j - 1];
-            }
-        }
-    }
-    return f[n];
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -307,10 +231,113 @@ impl Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def numDistinct(self, s: str, t: str) -> int:
+        n = len(t)
+        f = [1] + [0] * n
+        for a in s:
+            for j in range(n, 0, -1):
+                if a == t[j - 1]:
+                    f[j] += f[j - 1]
+        return f[n]
 ```
 
+#### Java
+
+```java
+class Solution {
+    public int numDistinct(String s, String t) {
+        int n = t.length();
+        int[] f = new int[n + 1];
+        f[0] = 1;
+        for (char a : s.toCharArray()) {
+            for (int j = n; j > 0; --j) {
+                char b = t.charAt(j - 1);
+                if (a == b) {
+                    f[j] += f[j - 1];
+                }
+            }
+        }
+        return f[n];
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int numDistinct(string s, string t) {
+        int n = t.size();
+        unsigned long long f[n + 1];
+        memset(f, 0, sizeof(f));
+        f[0] = 1;
+        for (char& a : s) {
+            for (int j = n; j; --j) {
+                char b = t[j - 1];
+                if (a == b) {
+                    f[j] += f[j - 1];
+                }
+            }
+        }
+        return f[n];
+    }
+};
+```
+
+#### Go
+
+```go
+func numDistinct(s string, t string) int {
+	n := len(t)
+	f := make([]int, n+1)
+	f[0] = 1
+	for _, a := range s {
+		for j := n; j > 0; j-- {
+			if b := t[j-1]; byte(a) == b {
+				f[j] += f[j-1]
+			}
+		}
+	}
+	return f[n]
+}
+```
+
+#### TypeScript
+
+```ts
+function numDistinct(s: string, t: string): number {
+    const n = t.length;
+    const f: number[] = new Array(n + 1).fill(0);
+    f[0] = 1;
+    for (const a of s) {
+        for (let j = n; j; --j) {
+            const b = t[j - 1];
+            if (a === b) {
+                f[j] += f[j - 1];
+            }
+        }
+    }
+    return f[n];
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

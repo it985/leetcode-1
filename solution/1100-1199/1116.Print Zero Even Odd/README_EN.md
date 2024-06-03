@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1116.Print%20Zero%20Even%20Odd/README_EN.md
+tags:
+    - Concurrency
+---
+
+<!-- problem:start -->
+
 # [1116. Print Zero Even Odd](https://leetcode.com/problems/print-zero-even-odd)
 
 [中文文档](/solution/1100-1199/1116.Print%20Zero%20Even%20Odd/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You have a function <code>printNumber</code> that can be called with an integer parameter and prints it to the console.</p>
 
@@ -54,9 +66,13 @@ One of them calls zero(), the other calls even(), and the last one calls odd().
 	<li><code>1 &lt;= n &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Multithreading + Semaphore**
+<!-- solution:start -->
+
+### Solution 1: Multithreading + Semaphore
 
 We use three semaphores $z$, $e$, and $o$ to control the execution order of the three threads, where $z$ is initially set to $1$, and $e$ and $o$ are set to $0$.
 
@@ -68,7 +84,7 @@ The time complexity is $O(n)$, and the space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 from threading import Semaphore
@@ -104,7 +120,7 @@ class ZeroEvenOdd:
             self.z.release()
 ```
 
-### **Java**
+#### Java
 
 ```java
 class ZeroEvenOdd {
@@ -148,7 +164,7 @@ class ZeroEvenOdd {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 #include <semaphore.h>
@@ -197,10 +213,8 @@ public:
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

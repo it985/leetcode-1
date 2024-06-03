@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2443.Sum%20of%20Number%20and%20Its%20Reverse/README.md
+rating: 1376
+source: 第 315 场周赛 Q3
+tags:
+    - 数学
+    - 枚举
+---
+
+<!-- problem:start -->
+
 # [2443. 反转之后的数字和](https://leetcode.cn/problems/sum-of-number-and-its-reverse)
 
 [English Version](/solution/2400-2499/2443.Sum%20of%20Number%20and%20Its%20Reverse/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个 <strong>非负</strong> 整数 <code>num</code> 。如果存在某个 <strong>非负</strong> 整数 <code>k</code> 满足 <code>k + reverse(k) = num</code>&nbsp; ，则返回 <code>true</code> ；否则，返回<em> </em><code>false</code> 。</p>
 
@@ -44,11 +57,13 @@
 	<li><code>0 &lt;= num &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：暴力枚举**
+### 方法一：暴力枚举
 
 在 $[0,.., num]$ 范围内枚举 $k$，判断 $k + reverse(k)$ 是否等于 $num$ 即可。
 
@@ -56,9 +71,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -66,9 +79,7 @@ class Solution:
         return any(k + int(str(k)[::-1]) == num for k in range(num + 1))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -89,7 +100,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -111,7 +122,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sumOfNumberAndReverse(num int) bool {
@@ -129,26 +140,7 @@ func sumOfNumberAndReverse(num int) bool {
 }
 ```
 
-### **C**
-
-```c
-bool sumOfNumberAndReverse(int num) {
-    for (int i = 0; i <= num; i++) {
-        int t = i;
-        int j = 0;
-        while (t > 0) {
-            j = j * 10 + t % 10;
-            t /= 10;
-        }
-        if (i + j == num) {
-            return 1;
-        }
-    }
-    return 0;
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumOfNumberAndReverse(num: number): boolean {
@@ -161,7 +153,7 @@ function sumOfNumberAndReverse(num: number): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -187,10 +179,27 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C
 
-```
-
+```c
+bool sumOfNumberAndReverse(int num) {
+    for (int i = 0; i <= num; i++) {
+        int t = i;
+        int j = 0;
+        while (t > 0) {
+            j = j * 10 + t % 10;
+            t /= 10;
+        }
+        if (i + j == num) {
+            return 1;
+        }
+    }
+    return 0;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

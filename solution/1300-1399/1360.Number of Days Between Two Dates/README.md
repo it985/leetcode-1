@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1360.Number%20of%20Days%20Between%20Two%20Dates/README.md
+rating: 1421
+source: 第 177 场周赛 Q1
+tags:
+    - 数学
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [1360. 日期之间隔几天](https://leetcode.cn/problems/number-of-days-between-two-dates)
 
 [English Version](/solution/1300-1399/1360.Number%20of%20Days%20Between%20Two%20Dates/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请你编写一个程序来计算两个日期之间隔了多少天。</p>
 
@@ -32,11 +45,13 @@
 	<li>给定的日期是&nbsp;<code>1971</code>&nbsp;年到 <code>2100</code>&nbsp;年之间的有效日期。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：数学**
+### 方法一：数学
 
 我们先定义一个函数 `isLeapYear(year)` 来判断给定的年份 `year` 是否是闰年，如果是闰年则返回 `true`，否则返回 `false`。
 
@@ -50,9 +65,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -90,9 +103,7 @@ class Solution:
         return abs(calcDays(date1) - calcDays(date2))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -127,13 +138,43 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
+class Solution {
+public:
+    int daysBetweenDates(string date1, string date2) {
+        return abs(calcDays(date1) - calcDays(date2));
+    }
 
+    bool isLeapYear(int year) {
+        return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
+    }
+
+    int daysInMonth(int year, int month) {
+        int days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        days[1] += isLeapYear(year);
+        return days[month - 1];
+    }
+
+    int calcDays(string date) {
+        int year = stoi(date.substr(0, 4));
+        int month = stoi(date.substr(5, 2));
+        int day = stoi(date.substr(8, 2));
+        int days = 0;
+        for (int y = 1971; y < year; ++y) {
+            days += 365 + isLeapYear(y);
+        }
+        for (int m = 1; m < month; ++m) {
+            days += daysInMonth(year, m);
+        }
+        days += day;
+        return days;
+    }
+};
 ```
 
-### **Go**
+#### Go
 
 ```go
 func daysBetweenDates(date1 string, date2 string) int {
@@ -178,7 +219,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function daysBetweenDates(date1: string, date2: string): number {
@@ -208,10 +249,8 @@ function calcDays(date: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2942.Find%20Words%20Containing%20Character/README_EN.md
+rating: 1182
+source: Biweekly Contest 118 Q1
+tags:
+    - Array
+    - String
+---
+
+<!-- problem:start -->
+
 # [2942. Find Words Containing Character](https://leetcode.com/problems/find-words-containing-character)
 
 [中文文档](/solution/2900-2999/2942.Find%20Words%20Containing%20Character/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> array of strings <code>words</code> and a character <code>x</code>.</p>
 
@@ -45,9 +60,13 @@
 	<li><code>words[i]</code> consists only of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Traversal**
+<!-- solution:start -->
+
+### Solution 1: Traversal
 
 We directly traverse each string `words[i]` in the string array `words`. If `x` appears in `words[i]`, we add `i` to the answer array.
 
@@ -57,7 +76,7 @@ The time complexity is $O(L)$, where $L$ is the sum of the lengths of all string
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,7 +84,7 @@ class Solution:
         return [i for i, w in enumerate(words) if x in w]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -81,7 +100,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -98,7 +117,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findWordsContaining(words []string, x byte) (ans []int) {
@@ -114,7 +133,7 @@ func findWordsContaining(words []string, x byte) (ans []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findWordsContaining(words: string[], x: string): number[] {
@@ -128,10 +147,8 @@ function findWordsContaining(words: string[], x: string): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

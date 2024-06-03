@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2813.Maximum%20Elegance%20of%20a%20K-Length%20Subsequence/README.md
+rating: 2582
+source: 第 357 场周赛 Q4
+tags:
+    - 贪心
+    - 数组
+    - 哈希表
+    - 排序
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [2813. 子序列最大优雅度](https://leetcode.cn/problems/maximum-elegance-of-a-k-length-subsequence)
 
 [English Version](/solution/2800-2899/2813.Maximum%20Elegance%20of%20a%20K-Length%20Subsequence/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个长度为 <code>n</code> 的二维整数数组 <code>items</code> 和一个整数 <code>k</code> 。</p>
 
@@ -68,11 +84,13 @@
 	<li><code>1 &lt;= k &lt;= n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 我们可以将所有项目按照利润从大到小排序，先选取前 $k$ 个项目，计算其总利润 $tot$，用一个哈希表 $vis$ 记录这 $k$ 个项目的类别，用一个栈 $dup$ 按顺序记录这 $k$ 个项目中重复类别的利润，用一个变量 $ans$ 记录当前的最大优雅度。
 
@@ -84,9 +102,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -111,9 +127,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -145,7 +159,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -183,7 +197,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findMaximumElegance(items [][]int, k int) int64 {
@@ -215,7 +229,7 @@ func findMaximumElegance(items [][]int, k int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findMaximumElegance(items: number[][], k: number): number {
@@ -244,10 +258,8 @@ function findMaximumElegance(items: number[][], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

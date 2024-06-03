@@ -1,10 +1,25 @@
-# [1099. 小于 K 的两数之和](https://leetcode.cn/problems/two-sum-less-than-k)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1099.Two%20Sum%20Less%20Than%20K/README.md
+rating: 1245
+source: 第 3 场双周赛 Q1
+tags:
+    - 数组
+    - 双指针
+    - 二分查找
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [1099. 小于 K 的两数之和 🔒](https://leetcode.cn/problems/two-sum-less-than-k)
 
 [English Version](/solution/1000-1099/1099.Two%20Sum%20Less%20Than%20K/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code> 和整数 <code>k</code> ，返回最大和 <code>sum</code> ，满足存在 <code>i < j</code> 使得 <code>nums[i] + nums[j] = sum</code> 且 <code>sum < k</code> 。如果没有满足此等式的 <code>i,j</code> 存在，则返回 <code>-1</code> 。</p>
 
@@ -37,11 +52,13 @@
 	<li><code>1 <= k <= 2000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 二分查找**
+### 方法一：排序 + 二分查找
 
 我们可以先对数组 $nums$ 进行排序，初始化答案为 $-1$。
 
@@ -51,21 +68,9 @@
 
 时间复杂度 $O(n \times \log n)$，空间复杂度 $O(\log n)$。其中 $n$ 是数组 $nums$ 的长度。
 
-**方法二：排序 + 双指针**
-
-与方法一类似，我们可以先对数组 $nums$ 进行排序，初始化答案为 $-1$。
-
-接下来，我们使用双指针 $i$ 和 $j$ 分别指向数组的左右两端，每次判断 $s = nums[i] + nums[j]$ 是否小于 $k$，如果小于 $k$，那么我们就可以更新答案，即 $ans = \max(ans, s)$，并将 $i$ 右移一位，否则将 $j$ 左移一位。
-
-枚举结束后，返回答案即可。
-
-时间复杂度 $O(n \times \log n)$，空间复杂度 $O(\log n)$。其中 $n$ 是数组 $nums$ 的长度。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -79,24 +84,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def twoSumLessThanK(self, nums: List[int], k: int) -> int:
-        nums.sort()
-        i, j = 0, len(nums) - 1
-        ans = -1
-        while i < j:
-            if (s := nums[i] + nums[j]) < k:
-                ans = max(ans, s)
-                i += 1
-            else:
-                j -= 1
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -127,6 +115,97 @@ class Solution {
 }
 ```
 
+#### C++
+
+```cpp
+class Solution {
+public:
+    int twoSumLessThanK(vector<int>& nums, int k) {
+        sort(nums.begin(), nums.end());
+        int ans = -1, n = nums.size();
+        for (int i = 0; i < n; ++i) {
+            int j = lower_bound(nums.begin() + i + 1, nums.end(), k - nums[i]) - nums.begin() - 1;
+            if (i < j) {
+                ans = max(ans, nums[i] + nums[j]);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func twoSumLessThanK(nums []int, k int) int {
+	sort.Ints(nums)
+	ans := -1
+	for i, x := range nums {
+		j := sort.SearchInts(nums[i+1:], k-x) + i
+		if v := nums[i] + nums[j]; i < j && ans < v {
+			ans = v
+		}
+	}
+	return ans
+}
+```
+
+#### TypeScript
+
+```ts
+function twoSumLessThanK(nums: number[], k: number): number {
+    nums.sort((a, b) => a - b);
+    let ans = -1;
+    for (let i = 0, j = nums.length - 1; i < j; ) {
+        const s = nums[i] + nums[j];
+        if (s < k) {
+            ans = Math.max(ans, s);
+            ++i;
+        } else {
+            --j;
+        }
+    }
+    return ans;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：排序 + 双指针
+
+与方法一类似，我们可以先对数组 $nums$ 进行排序，初始化答案为 $-1$。
+
+接下来，我们使用双指针 $i$ 和 $j$ 分别指向数组的左右两端，每次判断 $s = nums[i] + nums[j]$ 是否小于 $k$，如果小于 $k$，那么我们就可以更新答案，即 $ans = \max(ans, s)$，并将 $i$ 右移一位，否则将 $j$ 左移一位。
+
+枚举结束后，返回答案即可。
+
+时间复杂度 $O(n \times \log n)$，空间复杂度 $O(\log n)$。其中 $n$ 是数组 $nums$ 的长度。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def twoSumLessThanK(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        i, j = 0, len(nums) - 1
+        ans = -1
+        while i < j:
+            if (s := nums[i] + nums[j]) < k:
+                ans = max(ans, s)
+                i += 1
+            else:
+                j -= 1
+        return ans
+```
+
+#### Java
+
 ```java
 class Solution {
     public int twoSumLessThanK(int[] nums, int k) {
@@ -146,24 +225,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int twoSumLessThanK(vector<int>& nums, int k) {
-        sort(nums.begin(), nums.end());
-        int ans = -1, n = nums.size();
-        for (int i = 0; i < n; ++i) {
-            int j = lower_bound(nums.begin() + i + 1, nums.end(), k - nums[i]) - nums.begin() - 1;
-            if (i < j) {
-                ans = max(ans, nums[i] + nums[j]);
-            }
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -185,21 +247,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func twoSumLessThanK(nums []int, k int) int {
-	sort.Ints(nums)
-	ans := -1
-	for i, x := range nums {
-		j := sort.SearchInts(nums[i+1:], k-x) + i
-		if v := nums[i] + nums[j]; i < j && ans < v {
-			ans = v
-		}
-	}
-	return ans
-}
-```
+#### Go
 
 ```go
 func twoSumLessThanK(nums []int, k int) int {
@@ -217,29 +265,8 @@ func twoSumLessThanK(nums []int, k int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function twoSumLessThanK(nums: number[], k: number): number {
-    nums.sort((a, b) => a - b);
-    let ans = -1;
-    for (let i = 0, j = nums.length - 1; i < j; ) {
-        const s = nums[i] + nums[j];
-        if (s < k) {
-            ans = Math.max(ans, s);
-            ++i;
-        } else {
-            --j;
-        }
-    }
-    return ans;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

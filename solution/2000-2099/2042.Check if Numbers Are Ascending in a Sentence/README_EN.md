@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2042.Check%20if%20Numbers%20Are%20Ascending%20in%20a%20Sentence/README_EN.md
+rating: 1257
+source: Weekly Contest 263 Q1
+tags:
+    - String
+---
+
+<!-- problem:start -->
+
 # [2042. Check if Numbers Are Ascending in a Sentence](https://leetcode.com/problems/check-if-numbers-are-ascending-in-a-sentence)
 
 [中文文档](/solution/2000-2099/2042.Check%20if%20Numbers%20Are%20Ascending%20in%20a%20Sentence/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A sentence is a list of <strong>tokens</strong> separated by a <strong>single</strong> space with no leading or trailing spaces. Every token is either a <strong>positive number</strong> consisting of digits <code>0-9</code> with no leading zeros, or a <strong>word</strong> consisting of lowercase English letters.</p>
 
@@ -53,9 +67,13 @@ They are strictly increasing from left to right: 1 &lt; 3 &lt; 4 &lt; 6 &lt; 12.
 	<li><code>s</code> contains no leading or trailing spaces.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 We can split the string $s$ into several words by spaces. Then, for each word, check if it is a number. If it is a number, convert it to an integer, compare it with the previous number. If it is not strictly increasing, return `false`. Otherwise, assign the current number to the previous number and continue the traversal.
 
@@ -65,7 +83,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -79,26 +97,7 @@ class Solution:
         return True
 ```
 
-```python
-class Solution:
-    def areNumbersAscending(self, s: str) -> bool:
-        pre = i = 0
-        n = len(s)
-        while i < n:
-            if s[i].isdigit():
-                cur = 0
-                while i < n and s[i].isdigit():
-                    cur = cur * 10 + int(s[i])
-                    i += 1
-                if pre >= cur:
-                    return False
-                pre = cur
-            else:
-                i += 1
-        return True
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -118,7 +117,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -141,7 +140,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func areNumbersAscending(s string) bool {
@@ -159,7 +158,7 @@ func areNumbersAscending(s string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function areNumbersAscending(s: string): boolean {
@@ -177,7 +176,7 @@ function areNumbersAscending(s: string): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -197,7 +196,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 bool areNumbersAscending(char* s) {
@@ -223,10 +222,39 @@ bool areNumbersAscending(char* s) {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def areNumbersAscending(self, s: str) -> bool:
+        pre = i = 0
+        n = len(s)
+        while i < n:
+            if s[i].isdigit():
+                cur = 0
+                while i < n and s[i].isdigit():
+                    cur = cur * 10 + int(s[i])
+                    i += 1
+                if pre >= cur:
+                    return False
+                pre = cur
+            else:
+                i += 1
+        return True
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

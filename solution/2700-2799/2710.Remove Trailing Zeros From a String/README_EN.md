@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2710.Remove%20Trailing%20Zeros%20From%20a%20String/README_EN.md
+rating: 1164
+source: Weekly Contest 347 Q1
+tags:
+    - String
+---
+
+<!-- problem:start -->
+
 # [2710. Remove Trailing Zeros From a String](https://leetcode.com/problems/remove-trailing-zeros-from-a-string)
 
 [中文文档](/solution/2700-2799/2710.Remove%20Trailing%20Zeros%20From%20a%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a <strong>positive</strong> integer <code>num</code> represented as a string, return <em>the integer </em><code>num</code><em> without trailing zeros as a string</em>.</p>
 
@@ -32,11 +46,17 @@
 	<li><code>num</code> doesn&#39;t&nbsp;have any leading zeros.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -44,7 +64,7 @@ class Solution:
         return num.rstrip("0")
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -58,7 +78,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -72,7 +92,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func removeTrailingZeros(num string) string {
@@ -84,7 +104,7 @@ func removeTrailingZeros(num string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function removeTrailingZeros(num: string): string {
@@ -96,7 +116,7 @@ function removeTrailingZeros(num: string): string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -112,6 +132,18 @@ impl Solution {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Rust
+
 ```rust
 impl Solution {
     pub fn remove_trailing_zeros(num: String) -> String {
@@ -126,10 +158,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

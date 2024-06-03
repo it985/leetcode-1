@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0413.Arithmetic%20Slices/README_EN.md
+tags:
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [413. Arithmetic Slices](https://leetcode.com/problems/arithmetic-slices)
 
 [中文文档](/solution/0400-0499/0413.Arithmetic%20Slices/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>An integer array is called arithmetic if it consists of <strong>at least three elements</strong> and if the difference between any two consecutive elements is the same.</p>
 
@@ -38,11 +51,17 @@
 	<li><code>-1000 &lt;= nums[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,22 +78,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def numberOfArithmeticSlices(self, nums: List[int]) -> int:
-        ans = cnt = 0
-        d = 3000
-        for a, b in pairwise(nums):
-            if b - a == d:
-                cnt += 1
-            else:
-                d = b - a
-                cnt = 0
-            ans += cnt
-        return ans
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -95,7 +99,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -117,7 +121,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfArithmeticSlices(nums []int) (ans int) {
@@ -136,7 +140,7 @@ func numberOfArithmeticSlices(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfArithmeticSlices(nums: number[]): number {
@@ -158,10 +162,35 @@ function numberOfArithmeticSlices(nums: number[]): number {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def numberOfArithmeticSlices(self, nums: List[int]) -> int:
+        ans = cnt = 0
+        d = 3000
+        for a, b in pairwise(nums):
+            if b - a == d:
+                cnt += 1
+            else:
+                d = b - a
+                cnt = 0
+            ans += cnt
+        return ans
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

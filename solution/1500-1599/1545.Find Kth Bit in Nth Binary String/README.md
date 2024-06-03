@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1545.Find%20Kth%20Bit%20in%20Nth%20Binary%20String/README.md
+rating: 1479
+source: 第 201 场周赛 Q2
+tags:
+    - 递归
+    - 字符串
+    - 模拟
+---
+
+<!-- problem:start -->
+
 # [1545. 找出第 N 个二进制字符串中的第 K 位](https://leetcode.cn/problems/find-kth-bit-in-nth-binary-string)
 
 [English Version](/solution/1500-1599/1545.Find%20Kth%20Bit%20in%20Nth%20Binary%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个正整数 <code>n</code> 和 <code>k</code>，二进制字符串  <code>S<sub>n</sub></code> 的形成规则如下：</p>
 
@@ -67,11 +81,13 @@
 	<li><code>1 <= k <= 2<sup>n</sup> - 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：分类讨论 + 递归**
+### 方法一：分类讨论 + 递归
 
 我们可以发现，对于 $S_n$，其前半部分和 $S_{n-1}$ 是一样的，而后半部分是 $S_{n-1}$ 的反转取反。因此我们可以设计一个函数 $dfs(n, k)$，表示第 $n$ 个字符串的第 $k$ 位字符。答案即为 $dfs(n, k)$。
 
@@ -86,9 +102,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -106,9 +120,7 @@ class Solution:
         return str(dfs(n, k))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -132,7 +144,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -156,7 +168,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findKthBit(n int, k int) byte {
@@ -178,7 +190,7 @@ func findKthBit(n int, k int) byte {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findKthBit(n: number, k: number): string {
@@ -199,10 +211,8 @@ function findKthBit(n: number, k: number): string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

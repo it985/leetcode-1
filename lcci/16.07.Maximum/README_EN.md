@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.07.Maximum/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [16.07. Maximum](https://leetcode.cn/problems/maximum-lcci)
 
 [中文文档](/lcci/16.07.Maximum/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Write a method that finds the maximum of two numbers. You should not use if-else or any other comparison operator.</p>
 <p><strong>Example: </strong></p>
@@ -14,9 +24,13 @@
 
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Bitwise Operation**
+<!-- solution:start -->
+
+### Solution 1: Bitwise Operation
 
 We can extract the sign bit $k$ of $a-b$. If the sign bit is $1$, it means $a \lt b$; if the sign bit is $0$, it means $a \ge b$.
 
@@ -26,7 +40,7 @@ The time complexity is $O(1)$, and the space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -35,7 +49,7 @@ class Solution:
         return a * (k ^ 1) + b * k
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -46,7 +60,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -58,7 +72,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximum(a int, b int) int {
@@ -67,7 +81,7 @@ func maximum(a int, b int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximum(a: number, b: number): number {
@@ -76,10 +90,20 @@ function maximum(a: number, b: number): number {
 }
 ```
 
-### **...**
+#### Swift
 
-```
-
+```swift
+class Solution {
+    func maximum(_ a: Int, _ b: Int) -> Int {
+        let diff = Int64(a) - Int64(b)
+        let k = Int((diff >> 63) & 1)
+        return a * (k ^ 1) + b * k
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

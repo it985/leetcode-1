@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2576.Find%20the%20Maximum%20Number%20of%20Marked%20Indices/README_EN.md
+rating: 1843
+source: Weekly Contest 334 Q3
+tags:
+    - Greedy
+    - Array
+    - Two Pointers
+    - Binary Search
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2576. Find the Maximum Number of Marked Indices](https://leetcode.com/problems/find-the-maximum-number-of-marked-indices)
 
 [中文文档](/solution/2500-2599/2576.Find%20the%20Maximum%20Number%20of%20Marked%20Indices/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code>.</p>
 
@@ -60,11 +78,21 @@ Since there is no other operation, the answer is 4.
 .spoilerbutton[value="Hide Message"] + .spoiler {padding:5px;}
 </style>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Greedy + Two Pointers
+
+In order to mark as many indices as possible, we can sort the array `nums`, and then traverse the array from left to right. For each index $i$, we find the first index $j$ in the right half of the array that satisfies $2 \times nums[i] \leq nums[j]$, and then mark indices $i$ and $j$. Continue to traverse the next index $i$. When we have traversed the right half of the array, it means that the marking is complete, and the number of marked indices is the answer.
+
+The time complexity is $O(n \times \log n)$, and the space complexity is $O(\log n)$. Where $n$ is the length of the array `nums`.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -82,7 +110,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -103,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -125,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxNumOfMarkedIndices(nums []int) (ans int) {
@@ -143,7 +171,7 @@ func maxNumOfMarkedIndices(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxNumOfMarkedIndices(nums: number[]): number {
@@ -162,10 +190,8 @@ function maxNumOfMarkedIndices(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

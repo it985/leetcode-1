@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1595.Minimum%20Cost%20to%20Connect%20Two%20Groups%20of%20Points/README.md
+rating: 2537
+source: 第 207 场周赛 Q4
+tags:
+    - 位运算
+    - 数组
+    - 动态规划
+    - 状态压缩
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [1595. 连通两组点的最小成本](https://leetcode.cn/problems/minimum-cost-to-connect-two-groups-of-points)
 
 [English Version](/solution/1500-1599/1595.Minimum%20Cost%20to%20Connect%20Two%20Groups%20of%20Points/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两组点，其中第一组中有 <code>size<sub>1</sub></code> 个点，第二组中有 <code>size<sub>2</sub></code> 个点，且 <code>size<sub>1</sub> &gt;= size<sub>2</sub></code> 。</p>
 
@@ -58,11 +74,13 @@
 	<li><code>0 &lt;= cost[i][j] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：状态压缩 + 动态规划**
+### 方法一：状态压缩 + 动态规划
 
 我们记第一组的点数为 $m$，第二组的点数为 $n$。
 
@@ -89,9 +107,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -110,29 +126,7 @@ class Solution:
         return f[m][-1]
 ```
 
-```python
-class Solution:
-    def connectTwoGroups(self, cost: List[List[int]]) -> int:
-        m, n = len(cost), len(cost[0])
-        f = [inf] * (1 << n)
-        f[0] = 0
-        g = f[:]
-        for i in range(1, m + 1):
-            for j in range(1 << n):
-                g[j] = inf
-                for k in range(n):
-                    if (j >> k & 1) == 0:
-                        continue
-                    c = cost[i - 1][k]
-                    x = min(g[j ^ (1 << k)], f[j], f[j ^ (1 << k)]) + c
-                    g[j] = min(g[j], x)
-            f = g[:]
-        return f[-1]
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -161,35 +155,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int connectTwoGroups(List<List<Integer>> cost) {
-        int m = cost.size(), n = cost.get(0).size();
-        final int inf = 1 << 30;
-        int[] f = new int[1 << n];
-        Arrays.fill(f, inf);
-        f[0] = 0;
-        int[] g = f.clone();
-        for (int i = 1; i <= m; ++i) {
-            for (int j = 0; j < 1 << n; ++j) {
-                g[j] = inf;
-                for (int k = 0; k < n; ++k) {
-                    if ((j >> k & 1) == 1) {
-                        int c = cost.get(i - 1).get(k);
-                        g[j] = Math.min(g[j], g[j ^ (1 << k)] + c);
-                        g[j] = Math.min(g[j], f[j] + c);
-                        g[j] = Math.min(g[j], f[j ^ (1 << k)] + c);
-                    }
-                }
-            }
-            System.arraycopy(g, 0, f, 0, 1 << n);
-        }
-        return f[(1 << n) - 1];
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -215,34 +181,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int connectTwoGroups(vector<vector<int>>& cost) {
-        int m = cost.size(), n = cost[0].size();
-        const int inf = 1 << 30;
-        vector<int> f(1 << n, inf);
-        f[0] = 0;
-        vector<int> g = f;
-        for (int i = 1; i <= m; ++i) {
-            for (int j = 0; j < 1 << n; ++j) {
-                g[j] = inf;
-                for (int k = 0; k < n; ++k) {
-                    if (j >> k & 1) {
-                        int c = cost[i - 1][k];
-                        int x = min({g[j ^ (1 << k)], f[j], f[j ^ (1 << k)]}) + c;
-                        g[j] = min(g[j], x);
-                    }
-                }
-            }
-            f.swap(g);
-        }
-        return f[(1 << n) - 1];
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func connectTwoGroups(cost [][]int) int {
@@ -272,6 +211,126 @@ func connectTwoGroups(cost [][]int) int {
 }
 ```
 
+#### TypeScript
+
+```ts
+function connectTwoGroups(cost: number[][]): number {
+    const m = cost.length;
+    const n = cost[0].length;
+    const inf = 1 << 30;
+    const f: number[][] = Array(m + 1)
+        .fill(0)
+        .map(() => Array(1 << n).fill(inf));
+    f[0][0] = 0;
+    for (let i = 1; i <= m; ++i) {
+        for (let j = 0; j < 1 << n; ++j) {
+            for (let k = 0; k < n; ++k) {
+                if (((j >> k) & 1) === 1) {
+                    const c = cost[i - 1][k];
+                    f[i][j] = Math.min(f[i][j], f[i][j ^ (1 << k)] + c);
+                    f[i][j] = Math.min(f[i][j], f[i - 1][j] + c);
+                    f[i][j] = Math.min(f[i][j], f[i - 1][j ^ (1 << k)] + c);
+                }
+            }
+        }
+    }
+    return f[m][(1 << n) - 1];
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def connectTwoGroups(self, cost: List[List[int]]) -> int:
+        m, n = len(cost), len(cost[0])
+        f = [inf] * (1 << n)
+        f[0] = 0
+        g = f[:]
+        for i in range(1, m + 1):
+            for j in range(1 << n):
+                g[j] = inf
+                for k in range(n):
+                    if (j >> k & 1) == 0:
+                        continue
+                    c = cost[i - 1][k]
+                    x = min(g[j ^ (1 << k)], f[j], f[j ^ (1 << k)]) + c
+                    g[j] = min(g[j], x)
+            f = g[:]
+        return f[-1]
+```
+
+#### Java
+
+```java
+class Solution {
+    public int connectTwoGroups(List<List<Integer>> cost) {
+        int m = cost.size(), n = cost.get(0).size();
+        final int inf = 1 << 30;
+        int[] f = new int[1 << n];
+        Arrays.fill(f, inf);
+        f[0] = 0;
+        int[] g = f.clone();
+        for (int i = 1; i <= m; ++i) {
+            for (int j = 0; j < 1 << n; ++j) {
+                g[j] = inf;
+                for (int k = 0; k < n; ++k) {
+                    if ((j >> k & 1) == 1) {
+                        int c = cost.get(i - 1).get(k);
+                        g[j] = Math.min(g[j], g[j ^ (1 << k)] + c);
+                        g[j] = Math.min(g[j], f[j] + c);
+                        g[j] = Math.min(g[j], f[j ^ (1 << k)] + c);
+                    }
+                }
+            }
+            System.arraycopy(g, 0, f, 0, 1 << n);
+        }
+        return f[(1 << n) - 1];
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int connectTwoGroups(vector<vector<int>>& cost) {
+        int m = cost.size(), n = cost[0].size();
+        const int inf = 1 << 30;
+        vector<int> f(1 << n, inf);
+        f[0] = 0;
+        vector<int> g = f;
+        for (int i = 1; i <= m; ++i) {
+            for (int j = 0; j < 1 << n; ++j) {
+                g[j] = inf;
+                for (int k = 0; k < n; ++k) {
+                    if (j >> k & 1) {
+                        int c = cost[i - 1][k];
+                        int x = min({g[j ^ (1 << k)], f[j], f[j ^ (1 << k)]}) + c;
+                        g[j] = min(g[j], x);
+                    }
+                }
+            }
+            f.swap(g);
+        }
+        return f[(1 << n) - 1];
+    }
+};
+```
+
+#### Go
+
 ```go
 func connectTwoGroups(cost [][]int) int {
 	m, n := len(cost), len(cost[0])
@@ -300,32 +359,7 @@ func connectTwoGroups(cost [][]int) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function connectTwoGroups(cost: number[][]): number {
-    const m = cost.length;
-    const n = cost[0].length;
-    const inf = 1 << 30;
-    const f: number[][] = Array(m + 1)
-        .fill(0)
-        .map(() => Array(1 << n).fill(inf));
-    f[0][0] = 0;
-    for (let i = 1; i <= m; ++i) {
-        for (let j = 0; j < 1 << n; ++j) {
-            for (let k = 0; k < n; ++k) {
-                if (((j >> k) & 1) === 1) {
-                    const c = cost[i - 1][k];
-                    f[i][j] = Math.min(f[i][j], f[i][j ^ (1 << k)] + c);
-                    f[i][j] = Math.min(f[i][j], f[i - 1][j] + c);
-                    f[i][j] = Math.min(f[i][j], f[i - 1][j ^ (1 << k)] + c);
-                }
-            }
-        }
-    }
-    return f[m][(1 << n) - 1];
-}
-```
+#### TypeScript
 
 ```ts
 function connectTwoGroups(cost: number[][]): number {
@@ -353,10 +387,8 @@ function connectTwoGroups(cost: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

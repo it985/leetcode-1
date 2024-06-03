@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0050.Pow%28x%2C%20n%29/README_EN.md
+tags:
+    - Recursion
+    - Math
+---
+
+<!-- problem:start -->
+
 # [50. Pow(x, n)](https://leetcode.com/problems/powx-n)
 
 [中文文档](/solution/0000-0099/0050.Pow%28x%2C%20n%29/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Implement <a href="http://www.cplusplus.com/reference/valarray/pow/" target="_blank">pow(x, n)</a>, which calculates <code>x</code> raised to the power <code>n</code> (i.e., <code>x<sup>n</sup></code>).</p>
 
@@ -40,9 +53,13 @@
 	<li><code>-10<sup>4</sup> &lt;= x<sup>n</sup> &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Mathematics (Fast Powering)**
+<!-- solution:start -->
+
+### Solution 1: Mathematics (Fast Powering)
 
 The core idea of the fast powering algorithm is to decompose the exponent $n$ into the sum of $1$s on several binary bits, and then transform the $n$th power of $x$ into the product of several powers of $x$.
 
@@ -50,7 +67,7 @@ The time complexity is $O(\log n)$, and the space complexity is $O(1)$. Here, $n
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -67,7 +84,7 @@ class Solution:
         return qpow(x, n) if n >= 0 else 1 / qpow(x, -n)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -88,7 +105,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -109,7 +126,46 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func myPow(x float64, n int) float64 {
+	qpow := func(a float64, n int) float64 {
+		ans := 1.0
+		for ; n > 0; n >>= 1 {
+			if n&1 == 1 {
+				ans *= a
+			}
+			a *= a
+		}
+		return ans
+	}
+	if n >= 0 {
+		return qpow(x, n)
+	}
+	return 1 / qpow(x, -n)
+}
+```
+
+#### TypeScript
+
+```ts
+function myPow(x: number, n: number): number {
+    const qpow = (a: number, n: number): number => {
+        let ans = 1;
+        for (; n; n >>>= 1) {
+            if (n & 1) {
+                ans *= a;
+            }
+            a *= a;
+        }
+        return ans;
+    };
+    return n >= 0 ? qpow(x, n) : 1 / qpow(x, -n);
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -140,28 +196,7 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func myPow(x float64, n int) float64 {
-	qpow := func(a float64, n int) float64 {
-		ans := 1.0
-		for ; n > 0; n >>= 1 {
-			if n&1 == 1 {
-				ans *= a
-			}
-			a *= a
-		}
-		return ans
-	}
-	if n >= 0 {
-		return qpow(x, n)
-	}
-	return 1 / qpow(x, -n)
-}
-```
-
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -184,25 +219,7 @@ var myPow = function (x, n) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function myPow(x: number, n: number): number {
-    const qpow = (a: number, n: number): number => {
-        let ans = 1;
-        for (; n; n >>>= 1) {
-            if (n & 1) {
-                ans *= a;
-            }
-            a *= a;
-        }
-        return ans;
-    };
-    return n >= 0 ? qpow(x, n) : 1 / qpow(x, -n);
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -223,10 +240,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

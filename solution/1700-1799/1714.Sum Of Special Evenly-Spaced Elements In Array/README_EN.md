@@ -1,8 +1,21 @@
-# [1714. Sum Of Special Evenly-Spaced Elements In Array](https://leetcode.com/problems/sum-of-special-evenly-spaced-elements-in-array)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1714.Sum%20Of%20Special%20Evenly-Spaced%20Elements%20In%20Array/README_EN.md
+tags:
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
+# [1714. Sum Of Special Evenly-Spaced Elements In Array 🔒](https://leetcode.com/problems/sum-of-special-evenly-spaced-elements-in-array)
 
 [中文文档](/solution/1700-1799/1714.Sum%20Of%20Special%20Evenly-Spaced%20Elements%20In%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> consisting of <code>n</code> non-negative integers.</p>
 
@@ -41,9 +54,13 @@
 	<li><code>1 &lt;= y<sub>i</sub> &lt;= 5 * 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Block Decomposition**
+<!-- solution:start -->
+
+### Solution 1: Block Decomposition
 
 This problem is a typical block decomposition problem. For queries with a large step size, we can directly brute force the solution; for queries with a small step size, we can preprocess the suffix sum of each position and then directly query.
 
@@ -58,7 +75,7 @@ The time complexity is $O((n +  m) \times \sqrt{n})$, and the space complexity i
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -79,7 +96,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -113,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -147,7 +164,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func solve(nums []int, queries [][]int) (ans []int) {
@@ -177,7 +194,7 @@ func solve(nums []int, queries [][]int) (ans []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function solve(nums: number[], queries: number[][]): number[] {
@@ -208,10 +225,8 @@ function solve(nums: number[], queries: number[][]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

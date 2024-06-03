@@ -1,10 +1,18 @@
-# [2632. 柯里化](https://leetcode.cn/problems/curry)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2632.Curry/README.md
+---
+
+<!-- problem:start -->
+
+# [2632. 柯里化 🔒](https://leetcode.cn/problems/curry)
 
 [English Version](/solution/2600-2699/2632.Curry/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请你编写一个函数，它接收一个其他的函数，并返回该函数的&nbsp;<strong>柯里化&nbsp;</strong>后的形式。</p>
 
@@ -76,15 +84,17 @@ curriedLife() === 42
 	<li>如果&nbsp;<code>fn.length === 0</code>&nbsp;则&nbsp;<code>inputs.length === 1</code>&nbsp;</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **TypeScript**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### TypeScript
 
 ```ts
 function curry(fn: Function): Function {
@@ -103,10 +113,8 @@ function curry(fn: Function): Function {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

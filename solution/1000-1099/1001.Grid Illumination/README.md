@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1001.Grid%20Illumination/README.md
+rating: 1873
+source: 第 125 场周赛 Q4
+tags:
+    - 数组
+    - 哈希表
+---
+
+<!-- problem:start -->
+
 # [1001. 网格照明](https://leetcode.cn/problems/grid-illumination)
 
 [English Version](/solution/1000-1099/1001.Grid%20Illumination/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在大小为 <code>n x n</code> 的网格 <code>grid</code> 上，每个单元格都有一盏灯，最初灯都处于 <strong>关闭</strong> 状态。</p>
 
@@ -57,11 +70,13 @@
 	<li><code>0 &lt;= row<sub>j</sub>, col<sub>j</sub> &lt; n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 假设一盏灯的坐标为 $(x, y)$，那么它所在的行的数值为 $x$，列的数值为 $y$，正对角线的数值为 $x-y$，反对角线的数值为 $x+y$。确定某一直线的唯一数值标识后，我们就可以通过哈希表来记录某一直线所拥有的灯的数目。
 
@@ -77,9 +92,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -108,9 +121,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -170,7 +181,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -216,7 +227,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func gridIllumination(n int, lamps [][]int, queries [][]int) []int {
@@ -258,7 +269,7 @@ func gridIllumination(n int, lamps [][]int, queries [][]int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function gridIllumination(n: number, lamps: number[][], queries: number[][]): number[] {
@@ -301,10 +312,8 @@ function gridIllumination(n: number, lamps: number[][], queries: number[][]): nu
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

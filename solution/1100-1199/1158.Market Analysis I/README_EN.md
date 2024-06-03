@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1158.Market%20Analysis%20I/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
 # [1158. Market Analysis I](https://leetcode.com/problems/market-analysis-i)
 
 [中文文档](/solution/1100-1199/1158.Market%20Analysis%20I/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Users</code></p>
 
@@ -104,11 +116,17 @@ Items table:
 +-----------+------------+----------------+
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -121,6 +139,18 @@ FROM
     LEFT JOIN Orders AS o ON u.user_id = o.buyer_id AND YEAR(order_date) = 2019
 GROUP BY user_id;
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -135,3 +165,7 @@ GROUP BY 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

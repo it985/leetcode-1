@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0771.Jewels%20and%20Stones/README.md
+tags:
+    - 哈希表
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [771. 宝石与石头](https://leetcode.cn/problems/jewels-and-stones)
 
 [English Version](/solution/0700-0799/0771.Jewels%20and%20Stones/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>&nbsp;给你一个字符串 <code>jewels</code>&nbsp;代表石头中宝石的类型，另有一个字符串 <code>stones</code> 代表你拥有的石头。&nbsp;<code>stones</code>&nbsp;中每个字符代表了一种你拥有的石头的类型，你想知道你拥有的石头中有多少是宝石。</p>
 
@@ -36,11 +47,13 @@
 	<li><code>jewels</code> 中的所有字符都是 <strong>唯一的</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表或数组**
+### 方法一：哈希表或数组
 
 我们可以先用一个哈希表或数组 $s$ 记录所有宝石的类型。然后遍历所有石头，如果当前石头是宝石，就将答案加一。
 
@@ -48,9 +61,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -59,9 +70,7 @@ class Solution:
         return sum(c in s for c in stones)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -79,7 +88,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -94,7 +103,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numJewelsInStones(jewels string, stones string) (ans int) {
@@ -109,21 +118,7 @@ func numJewelsInStones(jewels string, stones string) (ans int) {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {string} jewels
- * @param {string} stones
- * @return {number}
- */
-var numJewelsInStones = function (jewels, stones) {
-    const s = new Set(jewels.split(''));
-    return stones.split('').reduce((prev, val) => prev + s.has(val), 0);
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numJewelsInStones(jewels: string, stones: string): number {
@@ -136,7 +131,7 @@ function numJewelsInStones(jewels: string, stones: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashSet;
@@ -154,7 +149,21 @@ impl Solution {
 }
 ```
 
-### **C**
+#### JavaScript
+
+```js
+/**
+ * @param {string} jewels
+ * @param {string} stones
+ * @return {number}
+ */
+var numJewelsInStones = function (jewels, stones) {
+    const s = new Set(jewels.split(''));
+    return stones.split('').reduce((prev, val) => prev + s.has(val), 0);
+};
+```
+
+#### C
 
 ```c
 int numJewelsInStones(char* jewels, char* stones) {
@@ -170,10 +179,8 @@ int numJewelsInStones(char* jewels, char* stones) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

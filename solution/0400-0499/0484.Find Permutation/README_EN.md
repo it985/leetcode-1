@@ -1,8 +1,23 @@
-# [484. Find Permutation](https://leetcode.com/problems/find-permutation)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0484.Find%20Permutation/README_EN.md
+tags:
+    - Stack
+    - Greedy
+    - Array
+    - String
+---
+
+<!-- problem:start -->
+
+# [484. Find Permutation 🔒](https://leetcode.com/problems/find-permutation)
 
 [中文文档](/solution/0400-0499/0484.Find%20Permutation/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A permutation <code>perm</code> of <code>n</code>&nbsp;integers of all the integers in the range <code>[1, n]</code> can be represented as a string <code>s</code> of length <code>n - 1</code> where:</p>
 
@@ -38,11 +53,17 @@
 	<li><code>s[i]</code> is either <code>&#39;I&#39;</code> or <code>&#39;D&#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,7 +80,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +112,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -114,7 +135,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findPermutation(s string) []int {
@@ -141,10 +162,8 @@ func reverse(arr []int, i, j int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

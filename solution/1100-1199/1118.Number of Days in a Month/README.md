@@ -1,10 +1,22 @@
-# [1118. 一月有多少天](https://leetcode.cn/problems/number-of-days-in-a-month)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1118.Number%20of%20Days%20in%20a%20Month/README.md
+rating: 1227
+source: 第 4 场双周赛 Q1
+tags:
+    - 数学
+---
+
+<!-- problem:start -->
+
+# [1118. 一月有多少天 🔒](https://leetcode.cn/problems/number-of-days-in-a-month)
 
 [English Version](/solution/1100-1199/1118.Number%20of%20Days%20in%20a%20Month/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>指定年份&nbsp;<code>year</code> 和月份&nbsp;<code>month</code>，返回 <em>该月天数&nbsp;</em>。</p>
 
@@ -40,11 +52,13 @@
 	<li><code>1 &lt;= month &lt;= 12</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：判断闰年**
+### 方法一：判断闰年
 
 我们可以先判断给定的年份是否为闰年，如果年份能被 $4$ 整除但不能被 $100$ 整除，或者能被 $400$ 整除，那么这一年就是闰年。
 
@@ -56,9 +70,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -68,9 +80,7 @@ class Solution:
         return days[month]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -82,7 +92,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -95,7 +105,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfDays(year int, month int) int {
@@ -109,7 +119,7 @@ func numberOfDays(year int, month int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfDays(year: number, month: number): number {
@@ -119,10 +129,8 @@ function numberOfDays(year: number, month: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

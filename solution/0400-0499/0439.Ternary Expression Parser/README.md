@@ -1,10 +1,22 @@
-# [439. 三元表达式解析器](https://leetcode.cn/problems/ternary-expression-parser)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0439.Ternary%20Expression%20Parser/README.md
+tags:
+    - 栈
+    - 递归
+    - 字符串
+---
+
+<!-- problem:start -->
+
+# [439. 三元表达式解析器 🔒](https://leetcode.cn/problems/ternary-expression-parser)
 
 [English Version](/solution/0400-0499/0439.Ternary%20Expression%20Parser/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个表示任意嵌套三元表达式的字符串&nbsp;<code>expression</code>&nbsp;，求值并返回其结果。</p>
 
@@ -51,11 +63,13 @@ or "(F ? 1 : (T ? 4 : 5))" --&gt; "(T ? 4 : 5)" --&gt; "4"
 	<li><strong>保证&nbsp;</strong>了表达式是一个有效的三元表达式，并且每个数字都是 <strong>一位数</strong>&nbsp;</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：栈**
+### 方法一：栈
 
 我们从右到左遍历字符串 `expression`，对于当前遍历到的字符 $c$：
 
@@ -70,9 +84,7 @@ or "(F ? 1 : (T ? 4 : 5))" --&gt; "(T ? 4 : 5)" --&gt; "4"
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -98,9 +110,7 @@ class Solution:
         return stk[0]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -134,7 +144,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -170,7 +180,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func parseTernary(expression string) string {
@@ -202,10 +212,8 @@ func parseTernary(expression string) string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

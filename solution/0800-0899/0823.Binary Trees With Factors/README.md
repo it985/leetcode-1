@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0823.Binary%20Trees%20With%20Factors/README.md
+tags:
+    - 数组
+    - 哈希表
+    - 动态规划
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [823. 带因子的二叉树](https://leetcode.cn/problems/binary-trees-with-factors)
 
 [English Version](/solution/0800-0899/0823.Binary%20Trees%20With%20Factors/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给出一个含有不重复整数元素的数组 <code>arr</code> ，每个整数 <code>arr[i]</code> 均大于 1。</p>
 
@@ -38,11 +51,13 @@
 	<li><code>arr</code> 中的所有值 <strong>互不相同</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们可以枚举 $arr$ 中的每一个数 $a$ 作为二叉树的根节点（根节点一定最大），然后枚举枚举左子树的值 $b$，若 $a$ 能被 $b$ 整除，则右子树的值为 $a / b$，若 $a / b$ 也在 $arr$ 中，则可以构成一棵二叉树。此时，以 $a$ 为根节点的二叉树的个数为 $f(a) = f(b) \times f(a / b)$，其中 $f(b)$ 和 $f(a / b)$ 分别为左子树和右子树的二叉树个数。
 
@@ -52,9 +67,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -72,9 +85,7 @@ class Solution:
         return sum(f) % mod
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -110,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -146,7 +157,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numFactoredBinaryTrees(arr []int) int {
@@ -176,7 +187,7 @@ func numFactoredBinaryTrees(arr []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numFactoredBinaryTrees(arr: number[]): number {
@@ -205,10 +216,8 @@ function numFactoredBinaryTrees(arr: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

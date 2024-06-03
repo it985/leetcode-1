@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0530.Minimum%20Absolute%20Difference%20in%20BST/README_EN.md
+tags:
+    - Tree
+    - Depth-First Search
+    - Breadth-First Search
+    - Binary Search Tree
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [530. Minimum Absolute Difference in BST](https://leetcode.com/problems/minimum-absolute-difference-in-bst)
 
 [中文文档](/solution/0500-0599/0530.Minimum%20Absolute%20Difference%20in%20BST/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>root</code> of a Binary Search Tree (BST), return <em>the minimum absolute difference between the values of any two different nodes in the tree</em>.</p>
 
@@ -32,11 +48,17 @@
 <p>&nbsp;</p>
 <p><strong>Note:</strong> This question is the same as 783: <a href="https://leetcode.com/problems/minimum-distance-between-bst-nodes/" target="_blank">https://leetcode.com/problems/minimum-distance-between-bst-nodes/</a></p>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -61,7 +83,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -103,7 +125,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -139,7 +161,43 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func getMinimumDifference(root *TreeNode) int {
+	inf := 0x3f3f3f3f
+	ans, prev := inf, inf
+	var dfs func(*TreeNode)
+	dfs = func(root *TreeNode) {
+		if root == nil {
+			return
+		}
+		dfs(root.Left)
+		ans = min(ans, abs(prev-root.Val))
+		prev = root.Val
+		dfs(root.Right)
+	}
+	dfs(root)
+	return ans
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+```
+
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -188,46 +246,45 @@ impl Solution {
 }
 ```
 
-### **Go**
+#### TypeScript
 
-```go
+```ts
 /**
  * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
+ * class TreeNode {
+ *     val: number
+ *     left: TreeNode | null
+ *     right: TreeNode | null
+ *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.left = (left===undefined ? null : left)
+ *         this.right = (right===undefined ? null : right)
+ *     }
  * }
  */
-func getMinimumDifference(root *TreeNode) int {
-	inf := 0x3f3f3f3f
-	ans, prev := inf, inf
-	var dfs func(*TreeNode)
-	dfs = func(root *TreeNode) {
-		if root == nil {
-			return
-		}
-		dfs(root.Left)
-		ans = min(ans, abs(prev-root.Val))
-		prev = root.Val
-		dfs(root.Right)
-	}
-	dfs(root)
-	return ans
+function getMinimumDifference(root: TreeNode | null): number {
+    if (!root) return 0;
+
+    let prev = Number.MIN_SAFE_INTEGER;
+    let min = Number.MAX_SAFE_INTEGER;
+
+    const dfs = (node: TreeNode | null) => {
+        if (!node) return;
+
+        dfs(node.left);
+        min = Math.min(min, node.val - prev);
+        prev = node.val;
+        dfs(node.right);
+    };
+
+    dfs(root);
+
+    return min;
 }
-
-func abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
-}
-```
-
-### **...**
-
-```
-
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

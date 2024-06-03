@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.16.Sub%20Sort/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [16.16. Sub Sort](https://leetcode.cn/problems/sub-sort-lcci)
 
 [中文文档](/lcci/16.15.Master%20Mind/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of integers, write a method to find indices m and n such that if you sorted&nbsp;elements m through n, the entire array would be sorted. Minimize <code>n - m</code> (that is, find the smallest such sequence).</p>
 <p>Return <code>[m,n]</code>. If there are no such m and n (e.g. the array is already sorted), return [-1, -1].</p>
@@ -19,9 +29,13 @@
 	<li><code>0 &lt;= len(array) &lt;= 1000000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Passes**
+<!-- solution:start -->
+
+### Solution 1: Two Passes
 
 We first traverse the array $array$ from left to right, and use $mx$ to record the maximum value encountered so far. If the current value $x$ is less than $mx$, it means that $x$ needs to be sorted, and we record the index $i$ of $x$ as $right$; otherwise, update $mx$.
 
@@ -33,7 +47,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array $array$. The
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -54,7 +68,7 @@ class Solution:
         return [left, right]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -81,7 +95,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -109,7 +123,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func subSort(array []int) []int {
@@ -134,7 +148,7 @@ func subSort(array []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function subSort(array: number[]): number[] {
@@ -159,10 +173,38 @@ function subSort(array: number[]): number[] {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    func subSort(_ array: [Int]) -> [Int] {
+        let n = array.count
+        var mi = Int.max, mx = Int.min
+        var left = -1, right = -1
 
+        for i in 0..<n {
+            if array[i] < mx {
+                right = i
+            } else {
+                mx = array[i]
+            }
+        }
+
+        for i in stride(from: n - 1, through: 0, by: -1) {
+            if array[i] > mi {
+                left = i
+            } else {
+                mi = array[i]
+            }
+        }
+
+        return [left, right]
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

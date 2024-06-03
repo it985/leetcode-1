@@ -1,10 +1,21 @@
-# [1682. 最长回文子序列 II](https://leetcode.cn/problems/longest-palindromic-subsequence-ii)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1682.Longest%20Palindromic%20Subsequence%20II/README.md
+tags:
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
+# [1682. 最长回文子序列 II 🔒](https://leetcode.cn/problems/longest-palindromic-subsequence-ii)
 
 [English Version](/solution/1600-1699/1682.Longest%20Palindromic%20Subsequence%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>字符串&nbsp;<code>s</code>&nbsp;的某个子序列符合下列条件时，称为“<strong>好的回文子序列</strong>”：</p>
 
@@ -46,11 +57,13 @@
 	<li><code>s</code>&nbsp;包含小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：记忆化搜索**
+### 方法一：记忆化搜索
 
 我们设计一个函数 $dfs(i, j, x)$ 表示字符串 $s$ 中下标范围 $[i, j]$ 内，且以字符 $x$ 结尾的最长“好的回文子序列”的长度。答案为 $dfs(0, n - 1, 26)$。
 
@@ -66,9 +79,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -86,9 +97,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -126,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -152,7 +161,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func longestPalindromeSubseq(s string) int {
@@ -188,10 +197,8 @@ func longestPalindromeSubseq(s string) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

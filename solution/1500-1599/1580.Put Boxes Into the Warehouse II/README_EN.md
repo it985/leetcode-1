@@ -1,8 +1,22 @@
-# [1580. Put Boxes Into the Warehouse II](https://leetcode.com/problems/put-boxes-into-the-warehouse-ii)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1580.Put%20Boxes%20Into%20the%20Warehouse%20II/README_EN.md
+tags:
+    - Greedy
+    - Array
+    - Sorting
+---
+
+<!-- problem:start -->
+
+# [1580. Put Boxes Into the Warehouse II 🔒](https://leetcode.com/problems/put-boxes-into-the-warehouse-ii)
 
 [中文文档](/solution/1500-1599/1580.Put%20Boxes%20Into%20the%20Warehouse%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two arrays of positive integers, <code>boxes</code> and <code>warehouse</code>, representing the heights of some boxes of unit width and the heights of <code>n</code> rooms in a warehouse respectively. The warehouse&#39;s rooms are labeled from <code>0</code> to <code>n - 1</code> from left to right where <code>warehouse[i]</code> (0-indexed) is the height of the <code>i<sup>th</sup></code> room.</p>
 
@@ -53,11 +67,17 @@ Other valid solutions are to put the green box in room 2 or to put the orange bo
 	<li><code>1 &lt;= boxes[i], warehouse[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -84,7 +104,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -122,7 +142,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -160,7 +180,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxBoxesInWarehouse(boxes []int, warehouse []int) (ans int) {
@@ -196,10 +216,8 @@ func maxBoxesInWarehouse(boxes []int, warehouse []int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

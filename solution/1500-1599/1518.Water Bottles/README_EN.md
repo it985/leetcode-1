@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1518.Water%20Bottles/README_EN.md
+rating: 1245
+source: Weekly Contest 198 Q1
+tags:
+    - Math
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [1518. Water Bottles](https://leetcode.com/problems/water-bottles)
 
 [中文文档](/solution/1500-1599/1518.Water%20Bottles/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are <code>numBottles</code> water bottles that are initially full of water. You can exchange <code>numExchange</code> empty water bottles from the market with one full water bottle.</p>
 
@@ -37,11 +52,17 @@ Number of water bottles you can drink: 15 + 3 + 1 = 19.
 	<li><code>2 &lt;= numExchange &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -53,7 +74,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -67,7 +88,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -82,7 +103,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numWaterBottles(numBottles int, numExchange int) int {
@@ -94,7 +115,7 @@ func numWaterBottles(numBottles int, numExchange int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numWaterBottles(numBottles: number, numExchange: number): number {
@@ -106,7 +127,24 @@ function numWaterBottles(numBottles: number, numExchange: number): number {
 }
 ```
 
-### **PHP**
+#### JavaScript
+
+```js
+/**
+ * @param {number} numBottles
+ * @param {number} numExchange
+ * @return {number}
+ */
+var numWaterBottles = function (numBottles, numExchange) {
+    let ans = numBottles;
+    for (; numBottles >= numExchange; ++ans) {
+        numBottles -= numExchange - 1;
+    }
+    return ans;
+};
+```
+
+#### PHP
 
 ```php
 class Solution {
@@ -126,27 +164,8 @@ class Solution {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number} numBottles
- * @param {number} numExchange
- * @return {number}
- */
-var numWaterBottles = function (numBottles, numExchange) {
-    let ans = numBottles;
-    for (; numBottles >= numExchange; ++ans) {
-        numBottles -= numExchange - 1;
-    }
-    return ans;
-};
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

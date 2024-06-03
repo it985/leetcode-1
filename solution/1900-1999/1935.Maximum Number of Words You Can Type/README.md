@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1935.Maximum%20Number%20of%20Words%20You%20Can%20Type/README.md
+rating: 1226
+source: 第 250 场周赛 Q1
+tags:
+    - 哈希表
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [1935. 可以输入的最大单词数](https://leetcode.cn/problems/maximum-number-of-words-you-can-type)
 
 [English Version](/solution/1900-1999/1935.Maximum%20Number%20of%20Words%20You%20Can%20Type/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>键盘出现了一些故障，有些字母键无法正常工作。而键盘上所有其他键都能够正常工作。</p>
 
@@ -45,11 +58,13 @@
 	<li><code>brokenLetters</code> 由 <strong>互不相同</strong> 的小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：数组或哈希表**
+### 方法一：数组或哈希表
 
 我们可以用哈希表或者一个长度为 $26$ 的数组 $s$ 来记录所有损坏的字母键。
 
@@ -61,9 +76,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -72,9 +85,7 @@ class Solution:
         return sum(all(c not in s for c in w) for w in text.split())
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +109,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -138,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canBeTypedWords(text string, brokenLetters string) (ans int) {
@@ -159,7 +170,7 @@ func canBeTypedWords(text string, brokenLetters string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canBeTypedWords(text: string, brokenLetters: string): number {
@@ -181,7 +192,7 @@ function canBeTypedWords(text: string, brokenLetters: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -206,10 +217,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

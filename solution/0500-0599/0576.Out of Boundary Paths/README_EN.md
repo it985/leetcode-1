@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0576.Out%20of%20Boundary%20Paths/README_EN.md
+tags:
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [576. Out of Boundary Paths](https://leetcode.com/problems/out-of-boundary-paths)
 
 [中文文档](/solution/0500-0599/0576.Out%20of%20Boundary%20Paths/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is an <code>m x n</code> grid with a ball. The ball is initially at the position <code>[startRow, startColumn]</code>. You are allowed to move the ball to one of the four adjacent cells in the grid (possibly out of the grid crossing the grid boundary). You can apply <strong>at most</strong> <code>maxMove</code> moves to the ball.</p>
 
@@ -33,11 +45,17 @@
 	<li><code>0 &lt;= startColumn &lt; n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -61,7 +79,7 @@ class Solution:
         return dfs(startRow, startColumn, maxMove)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -106,38 +124,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int findPaths(int m, int n, int N, int i, int j) {
-        final int MOD = (int) (1e9 + 7);
-        final int[] dirs = new int[] {-1, 0, 1, 0, -1};
-        int[][] f = new int[m][n];
-        f[i][j] = 1;
-        int res = 0;
-        for (int step = 0; step < N; ++step) {
-            int[][] temp = new int[m][n];
-            for (int x = 0; x < m; ++x) {
-                for (int y = 0; y < n; ++y) {
-                    for (int k = 0; k < 4; ++k) {
-                        int tx = x + dirs[k], ty = y + dirs[k + 1];
-                        if (tx >= 0 && tx < m && ty >= 0 && ty < n) {
-                            temp[tx][ty] += f[x][y];
-                            temp[tx][ty] %= MOD;
-                        } else {
-                            res += f[x][y];
-                            res %= MOD;
-                        }
-                    }
-                }
-            }
-            f = temp;
-        }
-        return res;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -171,7 +158,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findPaths(m int, n int, maxMove int, startRow int, startColumn int) int {
@@ -211,10 +198,51 @@ func findPaths(m int, n int, maxMove int, startRow int, startColumn int) int {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Java
+
+```java
+class Solution {
+    public int findPaths(int m, int n, int N, int i, int j) {
+        final int MOD = (int) (1e9 + 7);
+        final int[] dirs = new int[] {-1, 0, 1, 0, -1};
+        int[][] f = new int[m][n];
+        f[i][j] = 1;
+        int res = 0;
+        for (int step = 0; step < N; ++step) {
+            int[][] temp = new int[m][n];
+            for (int x = 0; x < m; ++x) {
+                for (int y = 0; y < n; ++y) {
+                    for (int k = 0; k < 4; ++k) {
+                        int tx = x + dirs[k], ty = y + dirs[k + 1];
+                        if (tx >= 0 && tx < m && ty >= 0 && ty < n) {
+                            temp[tx][ty] += f[x][y];
+                            temp[tx][ty] %= MOD;
+                        } else {
+                            res += f[x][y];
+                            res %= MOD;
+                        }
+                    }
+                }
+            }
+            f = temp;
+        }
+        return res;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,23 @@
-# [1246. 删除回文子数组](https://leetcode.cn/problems/palindrome-removal)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1246.Palindrome%20Removal/README.md
+rating: 2203
+source: 第 12 场双周赛 Q4
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
+# [1246. 删除回文子数组 🔒](https://leetcode.cn/problems/palindrome-removal)
 
 [English Version](/solution/1200-1299/1246.Palindrome%20Removal/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组&nbsp;<code>arr</code>，每一次操作你都可以选择并删除它的一个 <strong>回文</strong> 子数组&nbsp;<code>arr[i], arr[i+1], ..., arr[j]</code>（ <code>i &lt;= j</code>）。</p>
 
@@ -36,11 +49,13 @@
 	<li><code>1 &lt;= arr[i] &lt;= 20</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划（区间 DP）**
+### 方法一：动态规划（区间 DP）
 
 我们定义 $f[i][j]$ 表示删除下标区间 $[i,..j]$ 内的所有数字所需的最少操作次数。初始时 $f[i][i] = 1$，表示只有一个数字时，需要执行一次删除操作。
 
@@ -54,9 +69,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,9 +90,7 @@ class Solution:
         return f[0][n - 1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +118,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -137,7 +148,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumMoves(arr []int) int {
@@ -170,10 +181,8 @@ func minimumMoves(arr []int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

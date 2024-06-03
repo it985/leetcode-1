@@ -1,10 +1,22 @@
-# [2599. 使前缀和数组非负](https://leetcode.cn/problems/make-the-prefix-sum-non-negative)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2599.Make%20the%20Prefix%20Sum%20Non-negative/README.md
+tags:
+    - 贪心
+    - 数组
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
+# [2599. 使前缀和数组非负 🔒](https://leetcode.cn/problems/make-the-prefix-sum-non-negative)
 
 [English Version](/solution/2500-2599/2599.Make%20the%20Prefix%20Sum%20Non-negative/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个 <strong>下标从0开始</strong> 的整数数组 <code>nums</code> 。你可以任意多次执行以下操作：</p>
 
@@ -45,11 +57,13 @@
 	<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 优先队列（小根堆）**
+### 方法一：贪心 + 优先队列（小根堆）
 
 我们用变量 $s$ 记录当前数组的前缀和。
 
@@ -59,9 +73,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -78,9 +90,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -103,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -128,7 +138,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func makePrefSumNonNegative(nums []int) (ans int) {
@@ -159,7 +169,7 @@ func (h *hp) Pop() any {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function makePrefSumNonNegative(nums: number[]): number {
@@ -180,10 +190,8 @@ function makePrefSumNonNegative(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

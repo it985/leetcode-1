@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0515.Find%20Largest%20Value%20in%20Each%20Tree%20Row/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 广度优先搜索
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [515. 在每个树行中找最大值](https://leetcode.cn/problems/find-largest-value-in-each-tree-row)
 
 [English Version](/solution/0500-0599/0515.Find%20Largest%20Value%20in%20Each%20Tree%20Row/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一棵二叉树的根节点&nbsp;<code>root</code> ，请找出该二叉树中每一层的最大值。</p>
 
@@ -37,23 +50,19 @@
 
 <p>&nbsp;</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：BFS**
+### 方法一：BFS
 
 BFS 找每一层最大的节点值。
 
-**方法二：DFS**
-
-DFS 先序遍历，找每个深度最大的节点值。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -81,33 +90,7 @@ class Solution:
         return ans
 ```
 
-```python
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-class Solution:
-    def largestValues(self, root: Optional[TreeNode]) -> List[int]:
-        def dfs(root, curr):
-            if root is None:
-                return
-            if curr == len(ans):
-                ans.append(root.val)
-            else:
-                ans[curr] = max(ans[curr], root.val)
-            dfs(root.left, curr + 1)
-            dfs(root.right, curr + 1)
-
-        ans = []
-        dfs(root, 0)
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -152,46 +135,7 @@ class Solution {
 }
 ```
 
-```java
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
-    private List<Integer> ans = new ArrayList<>();
-
-    public List<Integer> largestValues(TreeNode root) {
-        dfs(root, 0);
-        return ans;
-    }
-
-    private void dfs(TreeNode root, int curr) {
-        if (root == null) {
-            return;
-        }
-        if (curr == ans.size()) {
-            ans.add(root.val);
-        } else {
-            ans.set(curr, Math.max(ans.get(curr), root.val));
-        }
-        dfs(root.left, curr + 1);
-        dfs(root.right, curr + 1);
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -227,40 +171,7 @@ public:
 };
 ```
 
-```cpp
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-class Solution {
-public:
-    vector<int> ans;
-
-    vector<int> largestValues(TreeNode* root) {
-        dfs(root, 0);
-        return ans;
-    }
-
-    void dfs(TreeNode* root, int curr) {
-        if (!root) return;
-        if (curr == ans.size())
-            ans.push_back(root->val);
-        else
-            ans[curr] = max(ans[curr], root->val);
-        dfs(root->left, curr + 1);
-        dfs(root->right, curr + 1);
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 /**
@@ -296,36 +207,7 @@ func largestValues(root *TreeNode) []int {
 }
 ```
 
-```go
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func largestValues(root *TreeNode) []int {
-	var ans []int
-	var dfs func(*TreeNode, int)
-	dfs = func(root *TreeNode, curr int) {
-		if root == nil {
-			return
-		}
-		if curr == len(ans) {
-			ans = append(ans, root.Val)
-		} else {
-			ans[curr] = max(ans[curr], root.Val)
-		}
-		dfs(root.Left, curr+1)
-		dfs(root.Right, curr+1)
-	}
-	dfs(root, 0)
-	return ans
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -363,42 +245,7 @@ function largestValues(root: TreeNode | null): number[] {
 }
 ```
 
-```ts
-/**
- * Definition for a binary tree node.
- * class TreeNode {
- *     val: number
- *     left: TreeNode | null
- *     right: TreeNode | null
- *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.left = (left===undefined ? null : left)
- *         this.right = (right===undefined ? null : right)
- *     }
- * }
- */
-
-function largestValues(root: TreeNode | null): number[] {
-    const res = [];
-    const dfs = (root: TreeNode | null, depth: number) => {
-        if (root == null) {
-            return;
-        }
-        const { val, left, right } = root;
-        if (res.length == depth) {
-            res.push(val);
-        } else {
-            res[depth] = Math.max(res[depth], val);
-        }
-        dfs(left, depth + 1);
-        dfs(right, depth + 1);
-    };
-    dfs(root, 0);
-    return res;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -449,6 +296,190 @@ impl Solution {
 }
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：DFS
+
+DFS 先序遍历，找每个深度最大的节点值。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def largestValues(self, root: Optional[TreeNode]) -> List[int]:
+        def dfs(root, curr):
+            if root is None:
+                return
+            if curr == len(ans):
+                ans.append(root.val)
+            else:
+                ans[curr] = max(ans[curr], root.val)
+            dfs(root.left, curr + 1)
+            dfs(root.right, curr + 1)
+
+        ans = []
+        dfs(root, 0)
+        return ans
+```
+
+#### Java
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    private List<Integer> ans = new ArrayList<>();
+
+    public List<Integer> largestValues(TreeNode root) {
+        dfs(root, 0);
+        return ans;
+    }
+
+    private void dfs(TreeNode root, int curr) {
+        if (root == null) {
+            return;
+        }
+        if (curr == ans.size()) {
+            ans.add(root.val);
+        } else {
+            ans.set(curr, Math.max(ans.get(curr), root.val));
+        }
+        dfs(root.left, curr + 1);
+        dfs(root.right, curr + 1);
+    }
+}
+```
+
+#### C++
+
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> ans;
+
+    vector<int> largestValues(TreeNode* root) {
+        dfs(root, 0);
+        return ans;
+    }
+
+    void dfs(TreeNode* root, int curr) {
+        if (!root) return;
+        if (curr == ans.size())
+            ans.push_back(root->val);
+        else
+            ans[curr] = max(ans[curr], root->val);
+        dfs(root->left, curr + 1);
+        dfs(root->right, curr + 1);
+    }
+};
+```
+
+#### Go
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func largestValues(root *TreeNode) []int {
+	var ans []int
+	var dfs func(*TreeNode, int)
+	dfs = func(root *TreeNode, curr int) {
+		if root == nil {
+			return
+		}
+		if curr == len(ans) {
+			ans = append(ans, root.Val)
+		} else {
+			ans[curr] = max(ans[curr], root.Val)
+		}
+		dfs(root.Left, curr+1)
+		dfs(root.Right, curr+1)
+	}
+	dfs(root, 0)
+	return ans
+}
+```
+
+#### TypeScript
+
+```ts
+/**
+ * Definition for a binary tree node.
+ * class TreeNode {
+ *     val: number
+ *     left: TreeNode | null
+ *     right: TreeNode | null
+ *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.left = (left===undefined ? null : left)
+ *         this.right = (right===undefined ? null : right)
+ *     }
+ * }
+ */
+
+function largestValues(root: TreeNode | null): number[] {
+    const res = [];
+    const dfs = (root: TreeNode | null, depth: number) => {
+        if (root == null) {
+            return;
+        }
+        const { val, left, right } = root;
+        if (res.length == depth) {
+            res.push(val);
+        } else {
+            res[depth] = Math.max(res[depth], val);
+        }
+        dfs(left, depth + 1);
+        dfs(right, depth + 1);
+    };
+    dfs(root, 0);
+    return res;
+}
+```
+
+#### Rust
+
 ```rust
 // Definition for a binary tree node.
 // #[derive(Debug, PartialEq, Eq)]
@@ -493,10 +524,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

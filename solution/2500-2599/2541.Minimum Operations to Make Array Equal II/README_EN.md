@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2541.Minimum%20Operations%20to%20Make%20Array%20Equal%20II/README_EN.md
+rating: 1619
+source: Biweekly Contest 96 Q2
+tags:
+    - Greedy
+    - Array
+    - Math
+---
+
+<!-- problem:start -->
+
 # [2541. Minimum Operations to Make Array Equal II](https://leetcode.com/problems/minimum-operations-to-make-array-equal-ii)
 
 [中文文档](/solution/2500-2599/2541.Minimum%20Operations%20to%20Make%20Array%20Equal%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two integer arrays <code>nums1</code> and <code>nums2</code> of equal length <code>n</code> and an integer <code>k</code>. You can perform the following operation on <code>nums1</code>:</p>
 
@@ -43,9 +59,13 @@ One can prove that it is impossible to make arrays equal in fewer operations.</p
 	<li><code>0 &lt;= k &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Single Pass**
+<!-- solution:start -->
+
+### Solution 1: Single Pass
 
 We use a variable $x$ to record the difference in the number of additions and subtractions, and a variable $ans$ to record the number of operations.
 
@@ -57,7 +77,7 @@ The time complexity is $O(n)$, and the space complexity is $O(1)$, where $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -76,7 +96,7 @@ class Solution:
         return -1 if x else ans // 2
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -102,7 +122,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -129,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minOperations(nums1 []int, nums2 []int, k int) int64 {
@@ -163,7 +183,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minOperations(nums1: number[], nums2: number[], k: number): number {
@@ -188,7 +208,7 @@ function minOperations(nums1: number[], nums2: number[], k: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -225,7 +245,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 long long minOperations(int* nums1, int nums1Size, int* nums2, int nums2Size, int k) {
@@ -254,10 +274,8 @@ long long minOperations(int* nums1, int nums1Size, int* nums2, int nums2Size, in
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

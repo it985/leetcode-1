@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0947.Most%20Stones%20Removed%20with%20Same%20Row%20or%20Column/README_EN.md
+tags:
+    - Depth-First Search
+    - Union Find
+    - Graph
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [947. Most Stones Removed with Same Row or Column](https://leetcode.com/problems/most-stones-removed-with-same-row-or-column)
 
 [中文文档](/solution/0900-0999/0947.Most%20Stones%20Removed%20with%20Same%20Row%20or%20Column/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>On a 2D plane, we place <code>n</code> stones at some integer coordinate points. Each coordinate point may have at most one stone.</p>
 
@@ -54,11 +69,17 @@ Stones [0,0] and [1,1] cannot be removed since they do not share a row/column wi
 	<li>No two stones are at the same coordinate point.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -77,7 +98,7 @@ class Solution:
         return len(stones) - len(s)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +129,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -132,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func removeStones(stones [][]int) int {
@@ -159,10 +180,8 @@ func removeStones(stones [][]int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

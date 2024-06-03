@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1170.Compare%20Strings%20by%20Frequency%20of%20the%20Smallest%20Character/README.md
+rating: 1431
+source: 第 151 场周赛 Q2
+tags:
+    - 数组
+    - 哈希表
+    - 字符串
+    - 二分查找
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1170. 比较字符串最小字母出现频次](https://leetcode.cn/problems/compare-strings-by-frequency-of-the-smallest-character)
 
 [English Version](/solution/1100-1199/1170.Compare%20Strings%20by%20Frequency%20of%20the%20Smallest%20Character/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>定义一个函数 <code>f(s)</code>，统计 <code>s</code>  中<strong>（按字典序比较）最小字母的出现频次</strong> ，其中 <code>s</code> 是一个非空字符串。</p>
 
@@ -43,11 +59,13 @@
 	<li><code>queries[i][j]</code>、<code>words[i][j]</code> 都由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 二分查找**
+### 方法一：排序 + 二分查找
 
 我们先按照题目描述，实现函数 $f(s)$，函数返回字符串 $s$ 中按字典序比较最小字母的出现频次。
 
@@ -59,9 +77,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -75,9 +91,7 @@ class Solution:
         return [n - bisect_right(nums, f(q)) for q in queries]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -121,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -155,7 +169,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numSmallerByFrequency(queries []string, words []string) (ans []int) {
@@ -185,7 +199,7 @@ func numSmallerByFrequency(queries []string, words []string) (ans []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numSmallerByFrequency(queries: string[], words: string[]): number[] {
@@ -216,10 +230,8 @@ function numSmallerByFrequency(queries: string[], words: string[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

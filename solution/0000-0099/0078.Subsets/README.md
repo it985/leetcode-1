@@ -1,16 +1,28 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0078.Subsets/README.md
+tags:
+    - 位运算
+    - 数组
+    - 回溯
+---
+
+<!-- problem:start -->
+
 # [78. 子集](https://leetcode.cn/problems/subsets)
 
 [English Version](/solution/0000-0099/0078.Subsets/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
-<p>给你一个整数数组 <code>nums</code> ，数组中的元素 <strong>互不相同</strong> 。返回该数组所有可能的子集（幂集）。</p>
+<p>给你一个整数数组&nbsp;<code>nums</code> ，数组中的元素 <strong>互不相同</strong> 。返回该数组所有可能的<span data-keyword="subset">子集</span>（幂集）。</p>
 
 <p>解集 <strong>不能</strong> 包含重复的子集。你可以按 <strong>任意顺序</strong> 返回解集。</p>
 
-<p> </p>
+<p>&nbsp;</p>
 
 <p><strong>示例 1：</strong></p>
 
@@ -26,21 +38,23 @@
 <strong>输出：</strong>[[],[0]]
 </pre>
 
-<p> </p>
+<p>&nbsp;</p>
 
 <p><strong>提示：</strong></p>
 
 <ul>
-	<li><code>1 <= nums.length <= 10</code></li>
-	<li><code>-10 <= nums[i] <= 10</code></li>
+	<li><code>1 &lt;= nums.length &lt;= 10</code></li>
+	<li><code>-10 &lt;= nums[i] &lt;= 10</code></li>
 	<li><code>nums</code> 中的所有元素 <strong>互不相同</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS(回溯)**
+### 方法一：DFS(回溯)
 
 我们设计一个函数 $dfs(i)$，表示从数组的第 $i$ 个元素开始搜索所有子集。函数 $dfs(i)$ 的执行逻辑如下：
 
@@ -51,19 +65,9 @@
 
 时间复杂度 $O(n\times 2^n)$，空间复杂度 $O(n)$。其中 $n$ 为数组的长度。一共有 $2^n$ 个子集，每个子集需要 $O(n)$ 的时间来构造。
 
-**方法二：二进制枚举**
-
-我们也可以使用二进制枚举的方法得到所有的子集。
-
-我们可以使用 $2^n$ 个二进制数来表示 $n$ 个元素的所有子集，对于当前二进制数 $mask$，如果第 $i$ 位为 $1$，表示选择了第 $i$ 个元素，否则表示不选择第 $i$ 个元素。
-
-时间复杂度 $O(n\times 2^n)$，空间复杂度 $O(n)$。其中 $n$ 为数组的长度。一共有 $2^n$ 个子集，每个子集需要 $O(n)$ 的时间来构造。
-
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,19 +87,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def subsets(self, nums: List[int]) -> List[List[int]]:
-        ans = []
-        for mask in range(1 << len(nums)):
-            t = [x for i, x in enumerate(nums) if mask >> i & 1]
-            ans.append(t)
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -122,26 +114,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public List<List<Integer>> subsets(int[] nums) {
-        int n = nums.length;
-        List<List<Integer>> ans = new ArrayList<>();
-        for (int mask = 0; mask < 1 << n; ++mask) {
-            List<Integer> t = new ArrayList<>();
-            for (int i = 0; i < n; ++i) {
-                if (((mask >> i) & 1) == 1) {
-                    t.add(nums[i]);
-                }
-            }
-            ans.add(t);
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -165,27 +138,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    vector<vector<int>> subsets(vector<int>& nums) {
-        int n = nums.size();
-        vector<vector<int>> ans;
-        for (int mask = 0; mask < 1 << n; ++mask) {
-            vector<int> t;
-            for (int i = 0; i < n; ++i) {
-                if (mask >> i & 1) {
-                    t.emplace_back(nums[i]);
-                }
-            }
-            ans.emplace_back(t);
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func subsets(nums []int) (ans [][]int) {
@@ -206,23 +159,7 @@ func subsets(nums []int) (ans [][]int) {
 }
 ```
 
-```go
-func subsets(nums []int) (ans [][]int) {
-	n := len(nums)
-	for mask := 0; mask < 1<<n; mask++ {
-		t := []int{}
-		for i, x := range nums {
-			if mask>>i&1 == 1 {
-				t = append(t, x)
-			}
-		}
-		ans = append(ans, t)
-	}
-	return
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function subsets(nums: number[]): number[][] {
@@ -243,24 +180,7 @@ function subsets(nums: number[]): number[][] {
 }
 ```
 
-```ts
-function subsets(nums: number[]): number[][] {
-    const n = nums.length;
-    const ans: number[][] = [];
-    for (let mask = 0; mask < 1 << n; ++mask) {
-        const t: number[] = [];
-        for (let i = 0; i < n; ++i) {
-            if (((mask >> i) & 1) === 1) {
-                t.push(nums[i]);
-            }
-        }
-        ans.push(t);
-    }
-    return ans;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -283,10 +203,116 @@ impl Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：二进制枚举
+
+我们也可以使用二进制枚举的方法得到所有的子集。
+
+我们可以使用 $2^n$ 个二进制数来表示 $n$ 个元素的所有子集，对于当前二进制数 $mask$，如果第 $i$ 位为 $1$，表示选择了第 $i$ 个元素，否则表示不选择第 $i$ 个元素。
+
+时间复杂度 $O(n\times 2^n)$，空间复杂度 $O(n)$。其中 $n$ 为数组的长度。一共有 $2^n$ 个子集，每个子集需要 $O(n)$ 的时间来构造。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        ans = []
+        for mask in range(1 << len(nums)):
+            t = [x for i, x in enumerate(nums) if mask >> i & 1]
+            ans.append(t)
+        return ans
 ```
 
+#### Java
+
+```java
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        int n = nums.length;
+        List<List<Integer>> ans = new ArrayList<>();
+        for (int mask = 0; mask < 1 << n; ++mask) {
+            List<Integer> t = new ArrayList<>();
+            for (int i = 0; i < n; ++i) {
+                if (((mask >> i) & 1) == 1) {
+                    t.add(nums[i]);
+                }
+            }
+            ans.add(t);
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        int n = nums.size();
+        vector<vector<int>> ans;
+        for (int mask = 0; mask < 1 << n; ++mask) {
+            vector<int> t;
+            for (int i = 0; i < n; ++i) {
+                if (mask >> i & 1) {
+                    t.emplace_back(nums[i]);
+                }
+            }
+            ans.emplace_back(t);
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func subsets(nums []int) (ans [][]int) {
+	n := len(nums)
+	for mask := 0; mask < 1<<n; mask++ {
+		t := []int{}
+		for i, x := range nums {
+			if mask>>i&1 == 1 {
+				t = append(t, x)
+			}
+		}
+		ans = append(ans, t)
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function subsets(nums: number[]): number[][] {
+    const n = nums.length;
+    const ans: number[][] = [];
+    for (let mask = 0; mask < 1 << n; ++mask) {
+        const t: number[] = [];
+        for (let i = 0; i < n; ++i) {
+            if (((mask >> i) & 1) === 1) {
+                t.push(nums[i]);
+            }
+        }
+        ans.push(t);
+    }
+    return ans;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

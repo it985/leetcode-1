@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1683.Invalid%20Tweets/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
 # [1683. Invalid Tweets](https://leetcode.com/problems/invalid-tweets)
 
 [中文文档](/solution/1600-1699/1683.Invalid%20Tweets/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>Tweets</code></p>
 
@@ -48,9 +60,13 @@ Tweet 1 has length = 14. It is a valid tweet.
 Tweet 2 has length = 32. It is an invalid tweet.
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Using `CHAR_LENGTH` Function**
+<!-- solution:start -->
+
+### Solution 1: Using `CHAR_LENGTH` Function
 
 The `CHAR_LENGTH()` function returns the length of a string, where Chinese characters, numbers, and letters are all counted as $1$ byte.
 
@@ -60,7 +76,7 @@ For this problem, we can directly use the `CHAR_LENGTH` function to get the leng
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -71,3 +87,7 @@ WHERE CHAR_LENGTH(content) > 15;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2849.Determine%20if%20a%20Cell%20Is%20Reachable%20at%20a%20Given%20Time/README_EN.md
+rating: 1515
+source: Weekly Contest 362 Q2
+tags:
+    - Math
+---
+
+<!-- problem:start -->
+
 # [2849. Determine if a Cell Is Reachable at a Given Time](https://leetcode.com/problems/determine-if-a-cell-is-reachable-at-a-given-time)
 
 [中文文档](/solution/2800-2899/2849.Determine%20if%20a%20Cell%20Is%20Reachable%20at%20a%20Given%20Time/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given four integers <code>sx</code>, <code>sy</code>, <code>fx</code>, <code>fy</code>, and a <strong>non-negative</strong> integer <code>t</code>.</p>
 
@@ -37,11 +51,17 @@
 	<li><code>0 &lt;= t &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -53,7 +73,7 @@ class Solution:
         return max(dx, dy) <= t
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -68,7 +88,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -83,7 +103,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isReachableAtTime(sx int, sy int, fx int, fy int, t int) bool {
@@ -103,7 +123,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function isReachableAtTime(sx: number, sy: number, fx: number, fy: number, t: number): boolean {
@@ -116,7 +136,7 @@ function isReachableAtTime(sx: number, sy: number, fx: number, fy: number, t: nu
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -128,10 +148,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

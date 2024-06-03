@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2924.Find%20Champion%20II/README_EN.md
+rating: 1430
+source: Weekly Contest 370 Q2
+tags:
+    - Graph
+---
+
+<!-- problem:start -->
+
 # [2924. Find Champion II](https://leetcode.com/problems/find-champion-ii)
 
 [中文文档](/solution/2900-2999/2924.Find%20Champion%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are <code>n</code> teams numbered from <code>0</code> to <code>n - 1</code> in a tournament; each team is also a node in a <strong>DAG</strong>.</p>
 
@@ -56,9 +70,13 @@
 	<li>The input is generated such that if team <code>a</code> is stronger than team <code>b</code> and team <code>b</code> is stronger than team <code>c</code>, then team <code>a</code> is stronger than team <code>c</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Counting In-degrees**
+<!-- solution:start -->
+
+### Solution 1: Counting In-degrees
 
 Based on the problem description, we only need to count the in-degrees of each node and record them in an array $indeg$. If only one node has an in-degree of $0$, then this node is the champion; otherwise, there is no unique champion.
 
@@ -66,7 +84,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -77,7 +95,7 @@ class Solution:
         return -1 if indeg.count(0) != 1 else indeg.index(0)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -121,7 +139,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findChampion(n int, edges [][]int) int {
@@ -143,7 +161,7 @@ func findChampion(n int, edges [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findChampion(n: number, edges: number[][]): number {
@@ -162,10 +180,8 @@ function findChampion(n: number, edges: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

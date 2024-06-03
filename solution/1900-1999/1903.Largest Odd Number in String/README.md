@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1903.Largest%20Odd%20Number%20in%20String/README.md
+rating: 1248
+source: 第 246 场周赛 Q1
+tags:
+    - 贪心
+    - 数学
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [1903. 字符串中的最大奇数](https://leetcode.cn/problems/largest-odd-number-in-string)
 
 [English Version](/solution/1900-1999/1903.Largest%20Odd%20Number%20in%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串 <code>num</code> ，表示一个大整数。请你在字符串 <code>num</code> 的所有 <strong>非空子字符串</strong> 中找出 <strong>值最大的奇数</strong> ，并以字符串形式返回。如果不存在奇数，则返回一个空字符串<em> </em><code>""</code><em> </em>。</p>
 
@@ -45,11 +59,13 @@
 	<li><code>num</code> 仅由数字组成且不含前导零</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：逆序遍历**
+### 方法一：逆序遍历
 
 我们可以从后往前遍历字符串，找到第一个奇数，然后返回从开头到该奇数的子字符串即可。如果不存在奇数，则返回空字符串。
 
@@ -57,9 +73,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -70,9 +84,7 @@ class Solution:
         return ''
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -88,7 +100,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -105,7 +117,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func largestOddNumber(num string) string {
@@ -119,7 +131,7 @@ func largestOddNumber(num string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function largestOddNumber(num: string): string {
@@ -132,7 +144,7 @@ function largestOddNumber(num: string): string {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -149,10 +161,8 @@ var largestOddNumber = function (num) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

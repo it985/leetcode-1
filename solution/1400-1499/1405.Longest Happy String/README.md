@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1405.Longest%20Happy%20String/README.md
+rating: 1820
+source: 第 183 场周赛 Q3
+tags:
+    - 贪心
+    - 字符串
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [1405. 最长快乐字符串](https://leetcode.cn/problems/longest-happy-string)
 
 [English Version](/solution/1400-1499/1405.Longest%20Happy%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>如果字符串中不含有任何 <code>&#39;aaa&#39;</code>，<code>&#39;bbb&#39;</code> 或 <code>&#39;ccc&#39;</code> 这样的字符串作为子串，那么该字符串就是一个「快乐字符串」。</p>
 
@@ -48,17 +62,19 @@
 	<li><code>a + b + c &gt; 0</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-贪心，优先选择剩余最多的字符，通过优先队列或排序，确保每次选到的字符都是剩余最多的（为了避免出现连续 3 个一样的字符，一些情况需要选择剩余第二多的字符）
+### 方法一：贪心 + 优先队列
+
+贪心，优先选择剩余最多的字符，通过优先队列或排序，确保每次选到的字符都是剩余最多的（为了避免出现连续 3 个一样的字符，一些情况需要选择剩余第二多的字符）。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -92,9 +108,7 @@ class Solution:
         return ''.join(ans)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -139,41 +153,48 @@ class Solution {
 }
 ```
 
-### **TypeScript**
+#### C++
 
-```ts
-function longestDiverseString(a: number, b: number, c: number): string {
-    let ans = [];
-    let store: Array<[string, number]> = [
-        ['a', a],
-        ['b', b],
-        ['c', c],
-    ];
-    while (true) {
-        store.sort((a, b) => b[1] - a[1]);
-        let hasNext = false;
-        for (let [i, [ch, ctn]] of store.entries()) {
-            if (ctn < 1) {
-                break;
+```cpp
+class Solution {
+public:
+    string longestDiverseString(int a, int b, int c) {
+        using pci = pair<char, int>;
+        auto cmp = [](pci x, pci y) { return x.second < y.second; };
+        priority_queue<pci, vector<pci>, decltype(cmp)> pq(cmp);
+
+        if (a > 0) pq.push({'a', a});
+        if (b > 0) pq.push({'b', b});
+        if (c > 0) pq.push({'c', c});
+
+        string ans;
+        while (!pq.empty()) {
+            pci cur = pq.top();
+            pq.pop();
+            int n = ans.size();
+            if (n >= 2 && ans[n - 1] == cur.first && ans[n - 2] == cur.first) {
+                if (pq.empty()) break;
+                pci nxt = pq.top();
+                pq.pop();
+                ans.push_back(nxt.first);
+                if (--nxt.second > 0) {
+                    pq.push(nxt);
+                }
+                pq.push(cur);
+            } else {
+                ans.push_back(cur.first);
+                if (--cur.second > 0) {
+                    pq.push(cur);
+                }
             }
-            const n = ans.length;
-            if (n >= 2 && ans[n - 1] == ch && ans[n - 2] == ch) {
-                continue;
-            }
-            hasNext = true;
-            ans.push(ch);
-            store[i][1] -= 1;
-            break;
         }
-        if (!hasNext) {
-            break;
-        }
+
+        return ans;
     }
-    return ans.join('');
-}
+};
 ```
 
-### **Go**
+#### Go
 
 ```go
 type pair struct {
@@ -228,51 +249,42 @@ func longestDiverseString(a int, b int, c int) string {
 }
 ```
 
-### **C++**
+#### TypeScript
 
-```cpp
-class Solution {
-public:
-    string longestDiverseString(int a, int b, int c) {
-        using pci = pair<char, int>;
-        auto cmp = [](pci x, pci y) { return x.second < y.second; };
-        priority_queue<pci, vector<pci>, decltype(cmp)> pq(cmp);
-
-        if (a > 0) pq.push({'a', a});
-        if (b > 0) pq.push({'b', b});
-        if (c > 0) pq.push({'c', c});
-
-        string ans;
-        while (!pq.empty()) {
-            pci cur = pq.top();
-            pq.pop();
-            int n = ans.size();
-            if (n >= 2 && ans[n - 1] == cur.first && ans[n - 2] == cur.first) {
-                if (pq.empty()) break;
-                pci nxt = pq.top();
-                pq.pop();
-                ans.push_back(nxt.first);
-                if (--nxt.second > 0) {
-                    pq.push(nxt);
-                }
-                pq.push(cur);
-            } else {
-                ans.push_back(cur.first);
-                if (--cur.second > 0) {
-                    pq.push(cur);
-                }
+```ts
+function longestDiverseString(a: number, b: number, c: number): string {
+    let ans = [];
+    let store: Array<[string, number]> = [
+        ['a', a],
+        ['b', b],
+        ['c', c],
+    ];
+    while (true) {
+        store.sort((a, b) => b[1] - a[1]);
+        let hasNext = false;
+        for (let [i, [ch, ctn]] of store.entries()) {
+            if (ctn < 1) {
+                break;
             }
+            const n = ans.length;
+            if (n >= 2 && ans[n - 1] == ch && ans[n - 2] == ch) {
+                continue;
+            }
+            hasNext = true;
+            ans.push(ch);
+            store[i][1] -= 1;
+            break;
         }
-
-        return ans;
+        if (!hasNext) {
+            break;
+        }
     }
-};
-```
-
-### **...**
-
-```
-
+    return ans.join('');
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

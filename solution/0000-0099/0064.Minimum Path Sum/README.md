@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0064.Minimum%20Path%20Sum/README.md
+tags:
+    - 数组
+    - 动态规划
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [64. 最小路径和](https://leetcode.cn/problems/minimum-path-sum)
 
 [English Version](/solution/0000-0099/0064.Minimum%20Path%20Sum/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个包含非负整数的 <code><em>m</em>&nbsp;x&nbsp;<em>n</em></code>&nbsp;网格&nbsp;<code>grid</code> ，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。</p>
 
@@ -38,11 +50,13 @@
 	<li><code>0 &lt;= grid[i][j] &lt;= 200</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i][j]$ 表示从左上角走到 $(i, j)$ 位置的最小路径和。初始时 $f[0][0] = grid[0][0]$，答案为 $f[m - 1][n - 1]$。
 
@@ -58,9 +72,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -78,9 +90,7 @@ class Solution:
         return f[-1][-1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -129,7 +139,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minPathSum(grid [][]int) int {
@@ -154,7 +164,7 @@ func minPathSum(grid [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minPathSum(grid: number[][]): number {
@@ -179,31 +189,30 @@ function minPathSum(grid: number[][]): number {
 }
 ```
 
-### **C#**
+#### Rust
 
-```cs
-public class Solution {
-    public int MinPathSum(int[][] grid) {
-        int m = grid.Length, n = grid[0].Length;
-        int[,] f = new int[m, n];
-        f[0, 0] = grid[0][0];
-        for (int i = 1; i < m; ++i) {
-            f[i, 0] = f[i - 1, 0] + grid[i][0];
+```rust
+impl Solution {
+    pub fn min_path_sum(mut grid: Vec<Vec<i32>>) -> i32 {
+        let m = grid.len();
+        let n = grid[0].len();
+        for i in 1..m {
+            grid[i][0] += grid[i - 1][0];
         }
-        for (int j = 1; j < n; ++j) {
-            f[0, j] = f[0, j - 1] + grid[0][j];
+        for i in 1..n {
+            grid[0][i] += grid[0][i - 1];
         }
-        for (int i = 1; i < m; ++i) {
-            for (int j = 1; j < n; ++j) {
-                f[i, j] = Math.Min(f[i - 1, j], f[i, j - 1]) + grid[i][j];
+        for i in 1..m {
+            for j in 1..n {
+                grid[i][j] += grid[i][j - 1].min(grid[i - 1][j]);
             }
         }
-        return f[m - 1, n - 1];
+        grid[m - 1][n - 1]
     }
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -232,33 +241,32 @@ var minPathSum = function (grid) {
 };
 ```
 
-### **Rust**
+#### C#
 
-```rust
-impl Solution {
-    pub fn min_path_sum(mut grid: Vec<Vec<i32>>) -> i32 {
-        let m = grid.len();
-        let n = grid[0].len();
-        for i in 1..m {
-            grid[i][0] += grid[i - 1][0];
+```cs
+public class Solution {
+    public int MinPathSum(int[][] grid) {
+        int m = grid.Length, n = grid[0].Length;
+        int[,] f = new int[m, n];
+        f[0, 0] = grid[0][0];
+        for (int i = 1; i < m; ++i) {
+            f[i, 0] = f[i - 1, 0] + grid[i][0];
         }
-        for i in 1..n {
-            grid[0][i] += grid[0][i - 1];
+        for (int j = 1; j < n; ++j) {
+            f[0, j] = f[0, j - 1] + grid[0][j];
         }
-        for i in 1..m {
-            for j in 1..n {
-                grid[i][j] += grid[i][j - 1].min(grid[i - 1][j]);
+        for (int i = 1; i < m; ++i) {
+            for (int j = 1; j < n; ++j) {
+                f[i, j] = Math.Min(f[i - 1, j], f[i, j - 1]) + grid[i][j];
             }
         }
-        grid[m - 1][n - 1]
+        return f[m - 1, n - 1];
     }
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

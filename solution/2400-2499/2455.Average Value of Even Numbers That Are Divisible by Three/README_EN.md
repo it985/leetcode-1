@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2455.Average%20Value%20of%20Even%20Numbers%20That%20Are%20Divisible%20by%20Three/README_EN.md
+rating: 1151
+source: Weekly Contest 317 Q1
+tags:
+    - Array
+    - Math
+---
+
+<!-- problem:start -->
+
 # [2455. Average Value of Even Numbers That Are Divisible by Three](https://leetcode.com/problems/average-value-of-even-numbers-that-are-divisible-by-three)
 
 [中文文档](/solution/2400-2499/2455.Average%20Value%20of%20Even%20Numbers%20That%20Are%20Divisible%20by%20Three/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code> of <strong>positive</strong> integers, return <em>the average value of all even integers that are divisible by</em> <code>3</code><i>.</i></p>
 
@@ -33,9 +48,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 We notice that an even number divisible by $3$ must be a multiple of $6$. Therefore, we only need to traverse the array, count the sum and the number of all multiples of $6$, and then calculate the average.
 
@@ -43,7 +62,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array. The space c
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -56,7 +75,7 @@ class Solution:
         return 0 if n == 0 else s // n
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -73,7 +92,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -91,7 +110,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func averageValue(nums []int) int {
@@ -109,7 +128,7 @@ func averageValue(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function averageValue(nums: number[]): number {
@@ -125,22 +144,7 @@ function averageValue(nums: number[]): number {
 }
 ```
 
-### **C**
-
-```c
-int averageValue(int* nums, int numsSize) {
-    int s = 0, n = 0;
-    for (int i = 0; i < numsSize; ++i) {
-        if (nums[i] % 6 == 0) {
-            s += nums[i];
-            ++n;
-        }
-    }
-    return n == 0 ? 0 : s / n;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -161,6 +165,33 @@ impl Solution {
 }
 ```
 
+#### C
+
+```c
+int averageValue(int* nums, int numsSize) {
+    int s = 0, n = 0;
+    for (int i = 0; i < numsSize; ++i) {
+        if (nums[i] % 6 == 0) {
+            s += nums[i];
+            ++n;
+        }
+    }
+    return n == 0 ? 0 : s / n;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Rust
+
 ```rust
 impl Solution {
     pub fn average_value(nums: Vec<i32>) -> i32 {
@@ -179,10 +210,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

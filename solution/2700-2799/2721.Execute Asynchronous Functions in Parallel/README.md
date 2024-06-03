@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2721.Execute%20Asynchronous%20Functions%20in%20Parallel/README.md
+---
+
+<!-- problem:start -->
+
 # [2721. 并行执行异步函数](https://leetcode.cn/problems/execute-asynchronous-functions-in-parallel)
 
 [English Version](/solution/2700-2799/2721.Execute%20Asynchronous%20Functions%20in%20Parallel/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个异步函数数组 <code>functions</code>，返回一个新的 promise 对象&nbsp;<code>promise</code>。数组中的每个函数都不接受参数并返回一个 promise。所有的 promise 都应该并行执行。</p>
 
@@ -69,15 +77,17 @@ promiseAll(functions).then(console.log); // [5]
 	<li><code>1 &lt;= functions.length &lt;= 10</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **TypeScript**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### TypeScript
 
 ```ts
 async function promiseAll<T>(functions: (() => Promise<T>)[]): Promise<T[]> {
@@ -108,3 +118,7 @@ async function promiseAll<T>(functions: (() => Promise<T>)[]): Promise<T[]> {
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

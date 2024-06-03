@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2117.Abbreviating%20the%20Product%20of%20a%20Range/README_EN.md
+rating: 2476
+source: Biweekly Contest 68 Q4
+tags:
+    - Math
+---
+
+<!-- problem:start -->
+
 # [2117. Abbreviating the Product of a Range](https://leetcode.com/problems/abbreviating-the-product-of-a-range)
 
 [中文文档](/solution/2100-2199/2117.Abbreviating%20the%20Product%20of%20a%20Range/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two positive integers <code>left</code> and <code>right</code> with <code>left &lt;= right</code>. Calculate the <strong>product</strong> of all integers in the <strong>inclusive</strong> range <code>[left, right]</code>.</p>
 
@@ -10,6 +24,7 @@
 
 <ol>
 	<li>Count all <strong>trailing</strong> zeros in the product and <strong>remove</strong> them. Let us denote this count as <code>C</code>.
+
     <ul>
     	<li>For example, there are <code>3</code> trailing zeros in <code>1000</code>, and there are <code>0</code> trailing zeros in <code>546</code>.</li>
     </ul>
@@ -24,6 +39,7 @@
     	<li>For example, <code>12345678987600000</code> will be represented as <code>&quot;12345...89876e5&quot;</code>.</li>
     </ul>
     </li>
+
 </ol>
 
 <p>Return <em>a string denoting the <strong>abbreviated product</strong> of all integers in the <strong>inclusive</strong> range</em> <code>[left, right]</code>.</p>
@@ -66,11 +82,17 @@ Hence, the abbreviated product is &quot;399168e2&quot;.
 	<li><code>1 &lt;= left &lt;= right &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 import numpy
@@ -108,40 +130,7 @@ class Solution:
         return str(pre) + "..." + str(suf).zfill(5) + "e" + str(c)
 ```
 
-```python
-class Solution:
-    def abbreviateProduct(self, left: int, right: int) -> str:
-        cnt2 = cnt5 = 0
-        for x in range(left, right + 1):
-            while x % 2 == 0:
-                cnt2 += 1
-                x //= 2
-            while x % 5 == 0:
-                cnt5 += 1
-                x //= 5
-        c = cnt2 = cnt5 = min(cnt2, cnt5)
-        pre = suf = 1
-        gt = False
-        for x in range(left, right + 1):
-            suf *= x
-            while cnt2 and suf % 2 == 0:
-                suf //= 2
-                cnt2 -= 1
-            while cnt5 and suf % 5 == 0:
-                suf //= 5
-                cnt5 -= 1
-            if suf >= 1e10:
-                gt = True
-                suf %= int(1e10)
-            pre *= x
-            while pre > 1e5:
-                pre /= 10
-        if gt:
-            return str(int(pre)) + "..." + str(suf % int(1e5)).zfill(5) + 'e' + str(c)
-        return str(suf) + "e" + str(c)
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -184,7 +173,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -229,7 +218,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func abbreviateProduct(left int, right int) string {
@@ -275,16 +264,53 @@ func abbreviateProduct(left int, right int) string {
 }
 ```
 
-### **TypeScript**
+<!-- tabs:end -->
 
-```ts
+<!-- solution:end -->
 
-```
+<!-- solution:start -->
 
-### **...**
+### Solution 2
 
-```
+<!-- tabs:start -->
 
+#### Python3
+
+```python
+class Solution:
+    def abbreviateProduct(self, left: int, right: int) -> str:
+        cnt2 = cnt5 = 0
+        for x in range(left, right + 1):
+            while x % 2 == 0:
+                cnt2 += 1
+                x //= 2
+            while x % 5 == 0:
+                cnt5 += 1
+                x //= 5
+        c = cnt2 = cnt5 = min(cnt2, cnt5)
+        pre = suf = 1
+        gt = False
+        for x in range(left, right + 1):
+            suf *= x
+            while cnt2 and suf % 2 == 0:
+                suf //= 2
+                cnt2 -= 1
+            while cnt5 and suf % 5 == 0:
+                suf //= 5
+                cnt5 -= 1
+            if suf >= 1e10:
+                gt = True
+                suf %= int(1e10)
+            pre *= x
+            while pre > 1e5:
+                pre /= 10
+        if gt:
+            return str(int(pre)) + "..." + str(suf % int(1e5)).zfill(5) + 'e' + str(c)
+        return str(suf) + "e" + str(c)
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

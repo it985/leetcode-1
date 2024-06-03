@@ -1,10 +1,20 @@
-# [2504. 把名字和职业联系起来](https://leetcode.cn/problems/concatenate-the-name-and-the-profession)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2504.Concatenate%20the%20Name%20and%20the%20Profession/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2504. 把名字和职业联系起来 🔒](https://leetcode.cn/problems/concatenate-the-name-and-the-profession)
 
 [English Version](/solution/2500-2599/2504.Concatenate%20the%20Name%20and%20the%20Profession/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Person</code></p>
 
@@ -59,15 +69,17 @@ Person 表:
 +-----------+----------+
 <strong>解释:</strong> 请注意，在名称和职业的第一个字母之间不应该有任何空白。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -77,3 +89,7 @@ ORDER BY person_id DESC;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,16 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcp/LCP%2052.%20%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E6%9F%93%E8%89%B2/README.md
+---
+
+<!-- problem:start -->
+
 # [LCP 52. 二叉搜索树染色](https://leetcode.cn/problems/QO5KpG)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 欢迎各位勇者来到力扣城，本次试炼主题为「二叉搜索树染色」。
 
@@ -28,7 +36,7 @@
 > 第 1 次操作，将值为 1、2、3 的节点染红；
 > 第 2 次操作，将值为 3、4、5 的节点染蓝；
 > 因此，最终值为 1、2 的节点为红色节点，返回数量 2
-> ![image.png](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcp/LCP%2052.%20%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E6%9F%93%E8%89%B2/images/1649833948-arSlXd-image.png)
+> ![image.png](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcp/LCP%2052.%20%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E6%9F%93%E8%89%B2/images/1649833948-arSlXd-image.png){:width=230px}
 
 **示例 2：**
 
@@ -42,7 +50,7 @@
 > 第 2 次操作，将值为 4、5 的节点染蓝；
 > 第 3 次操作，将值为 5、6、7 的节点染红；
 > 因此，最终值为 1、2、5、6、7 的节点为红色节点，返回数量 5
-> ![image.png](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcp/LCP%2052.%20%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E6%9F%93%E8%89%B2/images/1649833763-BljEbP-image.png)
+> ![image.png](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/lcp/LCP%2052.%20%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E6%9F%93%E8%89%B2/images/1649833763-BljEbP-image.png){:width=230px}
 
 **提示：**
 
@@ -53,11 +61,13 @@
 -   `0 <= ops[i][1] <= ops[i][2] <= 10^9`
 -   `0 <= 节点值 <= 10^9`
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：有序集合 + 倒序遍历**
+### 方法一：有序集合 + 倒序遍历
 
 我们先遍历一遍二叉树，将所有节点的值加入到有序集合中。
 
@@ -69,9 +79,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -104,9 +112,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -148,7 +154,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -188,7 +194,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -224,7 +230,7 @@ func getNumber(root *TreeNode, ops [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -756,10 +762,8 @@ class TreeSet<T = number> {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

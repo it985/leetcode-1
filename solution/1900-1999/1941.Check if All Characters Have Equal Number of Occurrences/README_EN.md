@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1941.Check%20if%20All%20Characters%20Have%20Equal%20Number%20of%20Occurrences/README_EN.md
+rating: 1242
+source: Biweekly Contest 57 Q1
+tags:
+    - Hash Table
+    - String
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [1941. Check if All Characters Have Equal Number of Occurrences](https://leetcode.com/problems/check-if-all-characters-have-equal-number-of-occurrences)
 
 [中文文档](/solution/1900-1999/1941.Check%20if%20All%20Characters%20Have%20Equal%20Number%20of%20Occurrences/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a string <code>s</code>, return <code>true</code><em> if </em><code>s</code><em> is a <strong>good</strong> string, or </em><code>false</code><em> otherwise</em>.</p>
 
@@ -34,11 +50,17 @@
 	<li><code>s</code> consists of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -47,7 +69,7 @@ class Solution:
         return len(set(cnt.values())) == 1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -71,7 +93,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -96,7 +118,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func areOccurrencesEqual(s string) bool {
@@ -118,7 +140,7 @@ func areOccurrencesEqual(s string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function areOccurrencesEqual(s: string): boolean {
@@ -140,18 +162,7 @@ function areOccurrencesEqual(s: string): boolean {
 }
 ```
 
-```ts
-function areOccurrencesEqual(s: string): boolean {
-    const cnt: number[] = new Array(26).fill(0);
-    for (const c of s) {
-        ++cnt[c.charCodeAt(0) - 'a'.charCodeAt(0)];
-    }
-    const x = cnt.find(v => v);
-    return cnt.every(v => !v || v === x);
-}
-```
-
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -169,10 +180,31 @@ class Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### TypeScript
+
+```ts
+function areOccurrencesEqual(s: string): boolean {
+    const cnt: number[] = new Array(26).fill(0);
+    for (const c of s) {
+        ++cnt[c.charCodeAt(0) - 'a'.charCodeAt(0)];
+    }
+    const x = cnt.find(v => v);
+    return cnt.every(v => !v || v === x);
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

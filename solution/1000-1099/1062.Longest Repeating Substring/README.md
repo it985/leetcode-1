@@ -1,10 +1,25 @@
-# [1062. 最长重复子串](https://leetcode.cn/problems/longest-repeating-substring)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1062.Longest%20Repeating%20Substring/README.md
+tags:
+    - 字符串
+    - 二分查找
+    - 动态规划
+    - 后缀数组
+    - 哈希函数
+    - 滚动哈希
+---
+
+<!-- problem:start -->
+
+# [1062. 最长重复子串 🔒](https://leetcode.cn/problems/longest-repeating-substring)
 
 [English Version](/solution/1000-1099/1062.Longest%20Repeating%20Substring/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定字符串&nbsp;<code>S</code>，找出最长重复子串的长度。如果不存在重复子串就返回 <code>0</code>。</p>
 
@@ -46,13 +61,15 @@
 	<li><code>1 &lt;= S.length &lt;= 1500</code></li>
 </ol>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
-定义 $dp[i][j]$ 表示以 $s[i]$ 和 $s[j]$ 结尾的最长重复子串的长度。状态转移方程为：
+定义 $dp[i][j]$ 表示以 $s[i]$ 和 $s[j]$ 结尾的最长重复子串 🔒 的长度。状态转移方程为：
 
 $$
 dp[i][j]=
@@ -67,13 +84,13 @@ $$
 
 其中 $n$ 为字符串 $s$ 的长度。
 
-相似题目：[1044. 最长重复子串](/solution/1000-1099/1044.Longest%20Duplicate%20Substring/README.md)
+相似题目：
+
+-   [1044. 最长重复子串 🔒](https://github.com/doocs/leetcode/blob/main/solution/1000-1099/1044.Longest%20Duplicate%20Substring/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -89,9 +106,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -112,7 +127,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -134,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func longestRepeatingSubstring(s string) int {
@@ -160,10 +175,8 @@ func longestRepeatingSubstring(s string) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

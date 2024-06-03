@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/01.06.Compress%20String/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [01.06. Compress String](https://leetcode.cn/problems/compress-string-lcci)
 
 [中文文档](/lcci/01.06.Compress%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Implement a method to perform basic string compression using the counts of repeated characters. For example, the string aabcccccaaa would become a2blc5a3. If the &quot;compressed&quot; string would not become smaller than the original string, your method should return the original string. You can assume the string has only uppercase and lowercase letters (a - z).</p>
 
@@ -34,9 +44,13 @@ The compressed string is &quot;a1b2c2d1&quot;, which is longer than the original
 
 -   `0 <= S.length <= 50000`
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Two Pointers
 
 We can use two pointers to find the start and end positions of each consecutive character, calculate the length of the consecutive characters, and then append the character and length to the string $t$.
 
@@ -46,7 +60,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -54,6 +68,8 @@ class Solution:
         t = "".join(a + str(len(list(b))) for a, b in groupby(S))
         return min(S, t, key=len)
 ```
+
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +85,7 @@ class Solution:
         return min(S, "".join(t), key=len)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -90,7 +106,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -112,7 +128,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func compressString(S string) string {
@@ -134,29 +150,7 @@ func compressString(S string) string {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {string} S
- * @return {string}
- */
-var compressString = function (S) {
-    const n = S.length;
-    const t = [];
-    for (let i = 0; i < n; ) {
-        let j = i + 1;
-        while (j < n && S.charAt(j) === S.charAt(i)) {
-            ++j;
-        }
-        t.push(S.charAt(i), j - i);
-        i = j;
-    }
-    return t.length < n ? t.join('') : S;
-};
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -185,10 +179,54 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
+```js
+/**
+ * @param {string} S
+ * @return {string}
+ */
+var compressString = function (S) {
+    const n = S.length;
+    const t = [];
+    for (let i = 0; i < n; ) {
+        let j = i + 1;
+        while (j < n && S.charAt(j) === S.charAt(i)) {
+            ++j;
+        }
+        t.push(S.charAt(i), j - i);
+        i = j;
+    }
+    return t.length < n ? t.join('') : S;
+};
 ```
 
+#### Swift
+
+```swift
+class Solution {
+    func compressString(_ S: String) -> String {
+        let n = S.count
+        var compressed = ""
+        var i = 0
+
+        while i < n {
+            var j = i
+            let currentChar = S[S.index(S.startIndex, offsetBy: i)]
+            while j < n && S[S.index(S.startIndex, offsetBy: j)] == currentChar {
+                j += 1
+            }
+            compressed += "\(currentChar)\(j - i)"
+            i = j
+        }
+
+        return compressed.count < n ? compressed : S
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

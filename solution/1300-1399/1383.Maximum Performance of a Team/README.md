@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1383.Maximum%20Performance%20of%20a%20Team/README.md
+rating: 2091
+source: 第 180 场周赛 Q4
+tags:
+    - 贪心
+    - 数组
+    - 排序
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [1383. 最大的团队表现值](https://leetcode.cn/problems/maximum-performance-of-a-team)
 
 [English Version](/solution/1300-1399/1383.Maximum%20Performance%20of%20a%20Team/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个整数 <code>n</code> 和 <code>k</code>，以及两个长度为 <code>n</code> 的整数数组 <code>speed</code> 和<code> efficiency</code>。现有 <code>n</code> 名工程师，编号从 <code>1</code> 到 <code>n</code>。其中 <code>speed[i]</code>&nbsp;和 <code>efficiency[i]</code>&nbsp;分别代表第 <code>i</code>&nbsp;位工程师的速度和效率。</p>
 
@@ -53,23 +68,25 @@
 	<li><code>1 &lt;= efficiency[i] &lt;= 10^8</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 优先队列（小根堆）**
+### 方法一：贪心 + 优先队列（小根堆）
 
 本题是求“速度和”与“效率最小值”乘积的最大值。变量有两个，我们可以从大到小枚举 `efficiency[i]` 作为效率最小值，在所有效率大于等于 `efficiency[i]` 的工程师中选取不超过 $k-1$ 个，让他们速度和最大。
 
 时间复杂度 $O(n\log n)$。
 
-相似题目：[857. 雇佣 K 名工人的最低成本](/solution/0800-0899/0857.Minimum%20Cost%20to%20Hire%20K%20Workers/README.md)
+相似题目：
+
+-   [857. 雇佣 K 名工人的最低成本](https://github.com/doocs/leetcode/blob/main/solution/0800-0899/0857.Minimum%20Cost%20to%20Hire%20K%20Workers/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -89,9 +106,7 @@ class Solution:
         return ans % mod
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -120,7 +135,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -147,7 +162,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxPerformance(n int, speed []int, efficiency []int, k int) int {
@@ -183,10 +198,8 @@ func (h *hp) Pop() any {
 func (h *hp) Less(i, j int) bool { return h.IntSlice[i] < h.IntSlice[j] }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0162.Find%20Peak%20Element/README.md
+tags:
+    - 数组
+    - 二分查找
+---
+
+<!-- problem:start -->
+
 # [162. 寻找峰值](https://leetcode.cn/problems/find-peak-element)
 
 [English Version](/solution/0100-0199/0162.Find%20Peak%20Element/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>峰值元素是指其值严格大于左右相邻值的元素。</p>
 
@@ -42,11 +53,13 @@
 	<li>对于所有有效的 <code>i</code> 都有 <code>nums[i] != nums[i + 1]</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找**
+### 方法一：二分查找
 
 我们定义二分查找的左边界 $left=0$，右边界 $right=n-1$，其中 $n$ 是数组的长度。在每一步二分查找中，我们找到当前区间的中间元素 $mid$，然后比较 $mid$ 与其右边元素 $mid+1$ 的值：
 
@@ -58,9 +71,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -75,9 +86,7 @@ class Solution:
         return left
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -96,7 +105,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -116,7 +125,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findPeakElement(nums []int) int {
@@ -133,7 +142,7 @@ func findPeakElement(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findPeakElement(nums: number[]): number {
@@ -150,10 +159,8 @@ function findPeakElement(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

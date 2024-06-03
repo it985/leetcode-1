@@ -1,10 +1,22 @@
-# [1564. 把箱子放进仓库里 I](https://leetcode.cn/problems/put-boxes-into-the-warehouse-i)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1564.Put%20Boxes%20Into%20the%20Warehouse%20I/README.md
+tags:
+    - 贪心
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [1564. 把箱子放进仓库里 I 🔒](https://leetcode.cn/problems/put-boxes-into-the-warehouse-i)
 
 [English Version](/solution/1500-1599/1564.Put%20Boxes%20Into%20the%20Warehouse%20I/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个正整数数组&nbsp;<code>boxes</code>&nbsp;和&nbsp;<code>warehouse</code>&nbsp;，分别包含单位宽度的箱子的高度，以及仓库中 <code>n</code> 个房间各自的高度。仓库的房间分别从&nbsp;<code>0</code>&nbsp;到&nbsp;<code>n - 1</code>&nbsp;自左向右编号，&nbsp;<code>warehouse[i]</code>&nbsp;（索引从 0 开始）是第&nbsp;<code>i</code>&nbsp;个房间的高度。</p>
 
@@ -65,11 +77,13 @@
 	<li><code>1 &lt;= boxes[i], warehouse[i] &lt;= 10^9</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：预处理 + 排序 + 双指针**
+### 方法一：预处理 + 排序 + 双指针
 
 我们可以先对仓库的房间进行预处理，得到一个数组 $left$，其中 $left[i]$ 表示下标 $i$ 可以放入的最大箱子高度。
 
@@ -81,9 +95,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -103,9 +115,7 @@ class Solution:
         return i
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -133,7 +143,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -162,7 +172,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxBoxesInWarehouse(boxes []int, warehouse []int) int {
@@ -187,7 +197,7 @@ func maxBoxesInWarehouse(boxes []int, warehouse []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxBoxesInWarehouse(boxes: number[], warehouse: number[]): number {
@@ -214,10 +224,8 @@ function maxBoxesInWarehouse(boxes: number[], warehouse: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

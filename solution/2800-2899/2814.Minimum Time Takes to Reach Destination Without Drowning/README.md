@@ -1,10 +1,22 @@
-# [2814. 避免淹死并到达目的地的最短时间](https://leetcode.cn/problems/minimum-time-takes-to-reach-destination-without-drowning)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2814.Minimum%20Time%20Takes%20to%20Reach%20Destination%20Without%20Drowning/README.md
+tags:
+    - 广度优先搜索
+    - 数组
+    - 矩阵
+---
+
+<!-- problem:start -->
+
+# [2814. 避免淹死并到达目的地的最短时间 🔒](https://leetcode.cn/problems/minimum-time-takes-to-reach-destination-without-drowning)
 
 [English Version](/solution/2800-2899/2814.Minimum%20Time%20Takes%20to%20Reach%20Destination%20Without%20Drowning/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>现给定一个 <code>n * m</code> 的索引从 <strong>0</strong> 开始的二维字符串网格 <code>land</code>，目前你站在为&nbsp;<code>"S"</code> 的单元格上，你需要到达为&nbsp;<code>"D"</code> 的单元格。在这片区域上还有另外三种类型的单元格：</p>
 
@@ -72,11 +84,13 @@
 	<li><strong>恰好</strong>有一个单元格等于 <code>"D"</code>。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：两次 BFS**
+### 方法一：两次 BFS
 
 我们先跑一次 BFS，求出每个点到水域的最短距离，记录在数组 $g$ 中。然后再跑一次 BFS，从单元格 $(s_i, s_j)$ 出发，求出到达目标单元格 $(d_i, d_j)$ 的最短距离。在此过程中，如果当前单元格 $(i, j)$ 的相邻单元格 $(x, y)$ 满足 $g[x][y] \gt t + 1$，那么我们就可以从 $(x, y)$ 走到 $(i, j)$。
 
@@ -84,9 +98,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -144,9 +156,7 @@ class Solution:
         return -1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -215,7 +225,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -286,7 +296,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumSeconds(land [][]string) int {
@@ -360,7 +370,7 @@ func minimumSeconds(land [][]string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumSeconds(land: string[][]): number {
@@ -431,10 +441,8 @@ function minimumSeconds(land: string[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

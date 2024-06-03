@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0608.Tree%20Node/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
 # [608. 树节点](https://leetcode.cn/problems/tree-node)
 
 [English Version](/solution/0600-0699/0608.Tree%20Node/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code>Tree</code></p>
 
@@ -87,11 +97,13 @@ Tree table:
 <b>解释：</b>如果树中只有一个节点，则只需要输出其根属性。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：条件判断 + 子查询**
+### 方法一：条件判断 + 子查询
 
 我们可以使用 `CASE WHEN` 条件判断语句来判断每个节点的类型，具体地：
 
@@ -101,7 +113,7 @@ Tree table:
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -116,3 +128,7 @@ FROM Tree;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

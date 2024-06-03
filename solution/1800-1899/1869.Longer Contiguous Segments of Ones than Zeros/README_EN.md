@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1869.Longer%20Contiguous%20Segments%20of%20Ones%20than%20Zeros/README_EN.md
+rating: 1204
+source: Weekly Contest 242 Q1
+tags:
+    - String
+---
+
+<!-- problem:start -->
+
 # [1869. Longer Contiguous Segments of Ones than Zeros](https://leetcode.com/problems/longer-contiguous-segments-of-ones-than-zeros)
 
 [中文文档](/solution/1800-1899/1869.Longer%20Contiguous%20Segments%20of%20Ones%20than%20Zeros/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a binary string <code>s</code>, return <code>true</code><em> if the <strong>longest</strong> contiguous segment of </em><code>1</code>&#39;<em>s is <strong>strictly longer</strong> than the <strong>longest</strong> contiguous segment of </em><code>0</code>&#39;<em>s in </em><code>s</code>, or return <code>false</code><em> otherwise</em>.</p>
 
@@ -54,9 +68,13 @@ The segment of 1s is not longer, so return false.
 	<li><code>s[i]</code> is either <code>&#39;0&#39;</code> or <code>&#39;1&#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Passes**
+<!-- solution:start -->
+
+### Solution 1: Two Passes
 
 We design a function $f(x)$, which represents the length of the longest consecutive substring in string $s$ composed of $x$. If $f(1) > f(0)$, then return `true`, otherwise return `false`.
 
@@ -64,7 +82,7 @@ The time complexity is $O(n)$, where $n$ is the length of the string $s$. The sp
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -82,7 +100,7 @@ class Solution:
         return f("1") > f("0")
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +122,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -126,7 +144,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func checkZeroOnes(s string) bool {
@@ -146,7 +164,7 @@ func checkZeroOnes(s string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function checkZeroOnes(s: string): boolean {
@@ -165,7 +183,7 @@ function checkZeroOnes(s: string): boolean {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -188,10 +206,8 @@ var checkZeroOnes = function (s) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

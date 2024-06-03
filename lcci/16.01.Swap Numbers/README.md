@@ -1,10 +1,19 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.01.Swap%20Numbers/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 16.01. 交换数字](https://leetcode.cn/problems/swap-numbers-lcci)
 
 [English Version](/lcci/16.01.Swap%20Numbers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
+
 <p>编写一个函数，不用临时变量，直接交换<code>numbers = [a, b]</code>中<code>a</code>与<code>b</code>的值。</p>
 <p><strong>示例：</strong></p>
 <pre><strong>输入:</strong> numbers = [1,2]
@@ -15,11 +24,13 @@
 <li><code>numbers.length == 2</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：位运算**
+### 方法一：位运算
 
 我们可以使用异或运算 $\oplus$ 来实现两个数的交换。
 
@@ -41,9 +52,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -54,9 +63,7 @@ class Solution:
         return numbers
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -69,25 +76,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function swapNumbers(numbers: number[]): number[] {
-    numbers[0] ^= numbers[1];
-    numbers[1] ^= numbers[0];
-    numbers[0] ^= numbers[1];
-    return numbers;
-}
-```
-
-```ts
-function swapNumbers(numbers: number[]): number[] {
-    [numbers[0], numbers[1]] = [numbers[1], numbers[0]];
-    return numbers;
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -101,7 +90,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func swapNumbers(numbers []int) []int {
@@ -112,10 +101,33 @@ func swapNumbers(numbers []int) []int {
 }
 ```
 
-### **...**
+#### TypeScript
 
+```ts
+function swapNumbers(numbers: number[]): number[] {
+    numbers[0] ^= numbers[1];
+    numbers[1] ^= numbers[0];
+    numbers[0] ^= numbers[1];
+    return numbers;
+}
 ```
 
+#### Swift
+
+```swift
+class Solution {
+    func swapNumbers(_ numbers: [Int]) -> [Int] {
+        var numbers = numbers
+        numbers[0] ^= numbers[1]
+        numbers[1] ^= numbers[0]
+        numbers[0] ^= numbers[1]
+        return numbers
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

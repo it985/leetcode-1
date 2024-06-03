@@ -1,8 +1,16 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof/%E9%9D%A2%E8%AF%95%E9%A2%9820.%20%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%80%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 20. 表示数值的字符串](https://leetcode.cn/problems/biao-shi-shu-zhi-de-zi-fu-chuan-lcof/)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请实现一个函数用来判断字符串是否表示<strong>数值</strong>（包括整数和小数）。</p>
 
@@ -85,11 +93,13 @@
 	<li><code>s</code> 仅含英文字母（大写和小写），数字（<code>0-9</code>），加号 <code>'+'</code> ，减号 <code>'-'</code> ，空格 <code>' '</code> 或者点 <code>'.'</code> 。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：分类讨论**
+### 方法一：分类讨论
 
 我们先去除字符串 $s$ 首尾的空格，此时 $i$ 和 $j$ 分别指向字符串 $s$ 的第一个非空格字符和最后一个非空格字符。
 
@@ -113,9 +123,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -148,9 +156,7 @@ class Solution:
         return digit
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -196,7 +202,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -240,7 +246,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isNumber(s string) bool {
@@ -280,7 +286,7 @@ func isNumber(s string) bool {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -323,10 +329,61 @@ public class Solution {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    func isNumber(_ s: String) -> Bool {
+        let chars = Array(s)
+        var i = 0, j = chars.count - 1
 
+        // Trim leading spaces
+        while i <= j && chars[i] == " " {
+            i += 1
+        }
+        // Trim trailing spaces
+        while i <= j && chars[j] == " " {
+            j -= 1
+        }
+        if i > j {
+            return false
+        }
+
+        var digit = false
+        var dot = false
+        var e = false
+
+        while i <= j {
+            let char = chars[i]
+            if char == "+" || char == "-" {
+                if i > 0 && chars[i - 1] != " " && chars[i - 1] != "e" && chars[i - 1] != "E" {
+                    return false
+                }
+            } else if char.isWholeNumber {
+                digit = true
+            } else if char == "." {
+                if dot || e {
+                    return false
+                }
+                dot = true
+            } else if char == "e" || char == "E" {
+                if !digit || e {
+                    return false
+                }
+                e = true
+                digit = false
+            } else {
+                return false
+            }
+            i += 1
+        }
+        return digit
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

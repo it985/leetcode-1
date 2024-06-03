@@ -1,8 +1,16 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/lcp/LCP%2051.%20%E7%83%B9%E9%A5%AA%E6%96%99%E7%90%86/README.md
+---
+
+<!-- problem:start -->
+
 # [LCP 51. 烹饪料理](https://leetcode.cn/problems/UEcfPD)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 欢迎各位勇者来到力扣城，城内设有烹饪锅供勇者制作料理，为自己恢复状态。
 
@@ -43,11 +51,13 @@
 -   `0 <= materials[i], cookbooks[i][j], attribute[i][j] <= 20`
 -   `1 <= limit <= 100`
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二进制枚举**
+### 方法一：二进制枚举
 
 我们注意到，料理的数量 $n$ 不超过 $8$，因此，我们可以使用二进制枚举的方法枚举所有的料理方案。
 
@@ -61,9 +71,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -91,9 +99,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -127,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -162,7 +168,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func perfectMenu(materials []int, cookbooks [][]int, attribute [][]int, limit int) int {
@@ -193,7 +199,7 @@ func perfectMenu(materials []int, cookbooks [][]int, attribute [][]int, limit in
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function perfectMenu(
@@ -229,10 +235,8 @@ function perfectMenu(
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

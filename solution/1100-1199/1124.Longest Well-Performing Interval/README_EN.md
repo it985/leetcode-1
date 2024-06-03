@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1124.Longest%20Well-Performing%20Interval/README_EN.md
+rating: 1908
+source: Weekly Contest 145 Q3
+tags:
+    - Stack
+    - Array
+    - Hash Table
+    - Prefix Sum
+    - Monotonic Stack
+---
+
+<!-- problem:start -->
+
 # [1124. Longest Well-Performing Interval](https://leetcode.com/problems/longest-well-performing-interval)
 
 [中文文档](/solution/1100-1199/1124.Longest%20Well-Performing%20Interval/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>We are given <code>hours</code>, a list of the number of hours worked per day for a given employee.</p>
 
@@ -36,9 +54,13 @@
 	<li><code>0 &lt;= hours[i] &lt;= 16</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Prefix Sum + Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Prefix Sum + Hash Table
 
 We can use the idea of prefix sum, maintaining a variable $s$, which represents the difference between the number of "tiring days" and "non-tiring days" from index $0$ to the current index. If $s$ is greater than $0$, it means that the segment from index $0$ to the current index is a "well-performing time period". In addition, we use a hash table $pos$ to record the first occurrence index of each $s$.
 
@@ -54,7 +76,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -72,7 +94,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -93,7 +115,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -117,7 +139,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func longestWPI(hours []int) (ans int) {
@@ -142,10 +164,8 @@ func longestWPI(hours []int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

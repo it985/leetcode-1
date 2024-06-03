@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0703.Kth%20Largest%20Element%20in%20a%20Stream/README.md
+tags:
+    - 树
+    - 设计
+    - 二叉搜索树
+    - 二叉树
+    - 数据流
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [703. 数据流中的第 K 大元素](https://leetcode.cn/problems/kth-largest-element-in-a-stream)
 
 [English Version](/solution/0700-0799/0703.Kth%20Largest%20Element%20in%20a%20Stream/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>设计一个找到数据流中第 <code>k</code> 大元素的类（class）。注意是排序后的第 <code>k</code> 大元素，不是第 <code>k</code> 个不同的元素。</p>
 
@@ -47,17 +62,17 @@ kthLargest.add(4);   // return 8
 	<li>题目数据保证，在查找第 <code>k</code> 大元素时，数组中至少有 <code>k</code> 个元素</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-小根堆存放最大的 k 个元素，那么堆顶就是第 k 大的元素。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class KthLargest:
@@ -79,9 +94,7 @@ class KthLargest:
 # param_1 = obj.add(val)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class KthLargest {
@@ -112,7 +125,7 @@ class KthLargest {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class KthLargest {
@@ -139,7 +152,85 @@ public:
  */
 ```
 
-### **JavaScript**
+#### Go
+
+```go
+type KthLargest struct {
+	h *IntHeap
+	k int
+}
+
+func Constructor(k int, nums []int) KthLargest {
+	h := &IntHeap{}
+	heap.Init(h)
+	for _, v := range nums {
+		heap.Push(h, v)
+	}
+
+	for h.Len() > k {
+		heap.Pop(h)
+	}
+
+	return KthLargest{
+		h: h,
+		k: k,
+	}
+}
+
+func (this *KthLargest) Add(val int) int {
+	heap.Push(this.h, val)
+	for this.h.Len() > this.k {
+		heap.Pop(this.h)
+	}
+
+	return this.h.Top()
+}
+
+func connectSticks(sticks []int) int {
+	h := IntHeap(sticks)
+	heap.Init(&h)
+	res := 0
+	for h.Len() > 1 {
+		val := heap.Pop(&h).(int)
+		val += heap.Pop(&h).(int)
+		res += val
+		heap.Push(&h, val)
+	}
+	return res
+}
+
+type IntHeap []int
+
+func (h IntHeap) Len() int           { return len(h) }
+func (h IntHeap) Less(i, j int) bool { return h[i] < h[j] }
+func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+func (h *IntHeap) Push(x any) {
+	*h = append(*h, x.(int))
+}
+func (h *IntHeap) Pop() any {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
+}
+
+func (h *IntHeap) Top() int {
+	if (*h).Len() == 0 {
+		return 0
+	}
+
+	return (*h)[0]
+}
+
+/**
+ * Your KthLargest object will be instantiated and called as such:
+ * obj := Constructor(k, nums);
+ * param_1 := obj.Add(val);
+ */
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -258,88 +349,8 @@ class MinHeap {
  */
 ```
 
-### **Go**
-
-```go
-type KthLargest struct {
-	h *IntHeap
-	k int
-}
-
-func Constructor(k int, nums []int) KthLargest {
-	h := &IntHeap{}
-	heap.Init(h)
-	for _, v := range nums {
-		heap.Push(h, v)
-	}
-
-	for h.Len() > k {
-		heap.Pop(h)
-	}
-
-	return KthLargest{
-		h: h,
-		k: k,
-	}
-}
-
-func (this *KthLargest) Add(val int) int {
-	heap.Push(this.h, val)
-	for this.h.Len() > this.k {
-		heap.Pop(this.h)
-	}
-
-	return this.h.Top()
-}
-
-func connectSticks(sticks []int) int {
-	h := IntHeap(sticks)
-	heap.Init(&h)
-	res := 0
-	for h.Len() > 1 {
-		val := heap.Pop(&h).(int)
-		val += heap.Pop(&h).(int)
-		res += val
-		heap.Push(&h, val)
-	}
-	return res
-}
-
-type IntHeap []int
-
-func (h IntHeap) Len() int           { return len(h) }
-func (h IntHeap) Less(i, j int) bool { return h[i] < h[j] }
-func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
-func (h *IntHeap) Push(x any) {
-	*h = append(*h, x.(int))
-}
-func (h *IntHeap) Pop() any {
-	old := *h
-	n := len(old)
-	x := old[n-1]
-	*h = old[0 : n-1]
-	return x
-}
-
-func (h *IntHeap) Top() int {
-	if (*h).Len() == 0 {
-		return 0
-	}
-
-	return (*h)[0]
-}
-
-/**
- * Your KthLargest object will be instantiated and called as such:
- * obj := Constructor(k, nums);
- * param_1 := obj.Add(val);
- */
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

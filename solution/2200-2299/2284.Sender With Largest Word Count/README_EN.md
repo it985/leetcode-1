@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2284.Sender%20With%20Largest%20Word%20Count/README_EN.md
+rating: 1346
+source: Biweekly Contest 79 Q2
+tags:
+    - Array
+    - Hash Table
+    - String
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [2284. Sender With Largest Word Count](https://leetcode.com/problems/sender-with-largest-word-count)
 
 [中文文档](/solution/2200-2299/2284.Sender%20With%20Largest%20Word%20Count/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You have a chat log of <code>n</code> messages. You are given two string arrays <code>messages</code> and <code>senders</code> where <code>messages[i]</code> is a <strong>message</strong> sent by <code>senders[i]</code>.</p>
 
@@ -52,11 +69,17 @@ Since there is a tie for the largest word count, we return the sender with the l
 	<li><code>senders[i]</code> consists of uppercase and lowercase English letters only.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -71,7 +94,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -100,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -123,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func largestWordCount(messages []string, senders []string) (ans string) {
@@ -141,16 +164,8 @@ func largestWordCount(messages []string, senders []string) (ans string) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0033.Search%20in%20Rotated%20Sorted%20Array/README.md
+tags:
+    - 数组
+    - 二分查找
+---
+
+<!-- problem:start -->
+
 # [33. 搜索旋转排序数组](https://leetcode.cn/problems/search-in-rotated-sorted-array)
 
 [English Version](/solution/0000-0099/0033.Search%20in%20Rotated%20Sorted%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>整数数组 <code>nums</code> 按升序排列，数组中的值 <strong>互不相同</strong> 。</p>
 
@@ -48,11 +59,13 @@
 	<li><code>-10<sup>4</sup> &lt;= target &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找**
+### 方法一：二分查找
 
 我们使用二分，将数组分割成 $[left,.. mid]$, $[mid + 1,.. right]$ 两部分，这时候可以发现，其中有一部分一定是有序的。
 
@@ -71,9 +84,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -95,9 +106,7 @@ class Solution:
         return left if nums[left] == target else -1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -125,9 +134,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### C++
 
 ```cpp
 class Solution {
@@ -154,7 +161,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func search(nums []int, target int) int {
@@ -183,15 +190,10 @@ func search(nums []int, target int) int {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
 
-```js
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- */
-var search = function (nums, target) {
+```ts
+function search(nums: number[], target: number): number {
     const n = nums.length;
     let left = 0,
         right = n - 1;
@@ -212,10 +214,10 @@ var search = function (nums, target) {
         }
     }
     return nums[left] == target ? left : -1;
-};
+}
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -247,10 +249,15 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
+#### JavaScript
 
-```ts
-function search(nums: number[], target: number): number {
+```js
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var search = function (nums, target) {
     const n = nums.length;
     let left = 0,
         right = n - 1;
@@ -271,13 +278,33 @@ function search(nums: number[], target: number): number {
         }
     }
     return nums[left] == target ? left : -1;
+};
+```
+
+#### PHP
+
+```php
+class Solution {
+    /**
+     * @param integer[] $nums
+     * @param integer $target
+     * @return integer
+     */
+
+    function search($nums, $target) {
+        $foundKey = -1;
+        foreach ($nums as $key => $value) {
+            if ($value === $target) {
+                $foundKey = $key;
+            }
+        }
+        return $foundKey;
+    }
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

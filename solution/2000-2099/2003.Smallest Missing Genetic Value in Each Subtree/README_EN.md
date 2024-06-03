@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2003.Smallest%20Missing%20Genetic%20Value%20in%20Each%20Subtree/README_EN.md
+rating: 2415
+source: Weekly Contest 258 Q4
+tags:
+    - Tree
+    - Depth-First Search
+    - Union Find
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [2003. Smallest Missing Genetic Value in Each Subtree](https://leetcode.com/problems/smallest-missing-genetic-value-in-each-subtree)
 
 [中文文档](/solution/2000-2099/2003.Smallest%20Missing%20Genetic%20Value%20in%20Each%20Subtree/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There is a <strong>family tree</strong> rooted at <code>0</code> consisting of <code>n</code> nodes numbered <code>0</code> to <code>n - 1</code>. You are given a <strong>0-indexed</strong> integer array <code>parents</code>, where <code>parents[i]</code> is the parent for node <code>i</code>. Since node <code>0</code> is the <strong>root</strong>, <code>parents[0] == -1</code>.</p>
 
@@ -60,9 +77,13 @@
 	<li>Each <code>nums[i]</code> is distinct.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: DFS**
+<!-- solution:start -->
+
+### Solution 1: DFS
 
 We notice that each node has a unique gene value, so we only need to find the node $idx$ with gene value $1$, and all nodes except for those on the path from node $idx$ to the root node $0$ have an answer of $1$.
 
@@ -80,7 +101,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -119,7 +140,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -174,7 +195,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -223,7 +244,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func smallestMissingValueSubtree(parents []int, nums []int) []int {
@@ -269,7 +290,51 @@ func smallestMissingValueSubtree(parents []int, nums []int) []int {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function smallestMissingValueSubtree(parents: number[], nums: number[]): number[] {
+    const n = nums.length;
+    const g: number[][] = Array.from({ length: n }, () => []);
+    const vis: boolean[] = Array(n).fill(false);
+    const has: boolean[] = Array(n + 2).fill(false);
+    const ans: number[] = Array(n).fill(1);
+    let idx = -1;
+    for (let i = 0; i < n; ++i) {
+        if (i) {
+            g[parents[i]].push(i);
+        }
+        if (nums[i] === 1) {
+            idx = i;
+        }
+    }
+    if (idx === -1) {
+        return ans;
+    }
+    const dfs = (i: number): void => {
+        if (vis[i]) {
+            return;
+        }
+        vis[i] = true;
+        if (nums[i] < has.length) {
+            has[nums[i]] = true;
+        }
+        for (const j of g[i]) {
+            dfs(j);
+        }
+    };
+    for (let i = 2; ~idx; idx = parents[idx]) {
+        dfs(idx);
+        while (has[i]) {
+            ++i;
+        }
+        ans[idx] = i;
+    }
+    return ans;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -325,54 +390,8 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function smallestMissingValueSubtree(parents: number[], nums: number[]): number[] {
-    const n = nums.length;
-    const g: number[][] = Array.from({ length: n }, () => []);
-    const vis: boolean[] = Array(n).fill(false);
-    const has: boolean[] = Array(n + 2).fill(false);
-    const ans: number[] = Array(n).fill(1);
-    let idx = -1;
-    for (let i = 0; i < n; ++i) {
-        if (i) {
-            g[parents[i]].push(i);
-        }
-        if (nums[i] === 1) {
-            idx = i;
-        }
-    }
-    if (idx === -1) {
-        return ans;
-    }
-    const dfs = (i: number): void => {
-        if (vis[i]) {
-            return;
-        }
-        vis[i] = true;
-        if (nums[i] < has.length) {
-            has[nums[i]] = true;
-        }
-        for (const j of g[i]) {
-            dfs(j);
-        }
-    };
-    for (let i = 2; ~idx; idx = parents[idx]) {
-        dfs(idx);
-        while (has[i]) {
-            ++i;
-        }
-        ans[idx] = i;
-    }
-    return ans;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

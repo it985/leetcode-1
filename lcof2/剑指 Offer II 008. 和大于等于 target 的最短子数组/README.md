@@ -1,8 +1,15 @@
+---
+comments: true
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof2/%E5%89%91%E6%8C%87%20Offer%20II%20008.%20%E5%92%8C%E5%A4%A7%E4%BA%8E%E7%AD%89%E4%BA%8E%20target%20%E7%9A%84%E6%9C%80%E7%9F%AD%E5%AD%90%E6%95%B0%E7%BB%84/README.md
+---
+
+<!-- problem:start -->
+
 # [剑指 Offer II 008. 和大于等于 target 的最短子数组](https://leetcode.cn/problems/2VG8Kg)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个含有&nbsp;<code>n</code><strong>&nbsp;</strong>个正整数的数组和一个正整数 <code>target</code><strong> 。</strong></p>
 
@@ -54,11 +61,13 @@
 
 <p><meta charset="UTF-8" />注意：本题与主站 209&nbsp;题相同：<a href="https://leetcode.cn/problems/minimum-size-subarray-sum/">https://leetcode.cn/problems/minimum-size-subarray-sum/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：双指针**
+### 方法一：双指针
 
 我们使用双指针维护一个和小于 $target$ 的连续子数组。每次右边界 $j$ 向右移动一位，如果和大于等于 $target$，则更新答案的最小值，同时左边界 $i$ 向右移动，直到和小于 $target$。
 
@@ -68,9 +77,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -86,9 +93,7 @@ class Solution:
         return 0 if ans == inf else ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -130,7 +135,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minSubArrayLen(target int, nums []int) int {
@@ -152,7 +157,7 @@ func minSubArrayLen(target int, nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minSubArrayLen(target: number, nums: number[]): number {
@@ -171,10 +176,32 @@ function minSubArrayLen(target: number, nums: number[]): number {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    func minSubArrayLen(_ target: Int, _ nums: [Int]) -> Int {
+        let inf = Int.max
+        var ans = inf
+        var sum = 0
+        var i = 0
 
+        for j in 0..<nums.count {
+            sum += nums[j]
+            while sum >= target {
+                ans = min(ans, j - i + 1)
+                sum -= nums[i]
+                i += 1
+            }
+        }
+
+        return ans == inf ? 0 : ans
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

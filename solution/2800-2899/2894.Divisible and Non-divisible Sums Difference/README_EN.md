@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2894.Divisible%20and%20Non-divisible%20Sums%20Difference/README_EN.md
+rating: 1140
+source: Weekly Contest 366 Q1
+tags:
+    - Math
+---
+
+<!-- problem:start -->
+
 # [2894. Divisible and Non-divisible Sums Difference](https://leetcode.com/problems/divisible-and-non-divisible-sums-difference)
 
 [中文文档](/solution/2800-2899/2894.Divisible%20and%20Non-divisible%20Sums%20Difference/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given positive integers <code>n</code> and <code>m</code>.</p>
 
@@ -56,9 +70,13 @@ We return 0 - 15 = -15 as the answer.
 	<li><code>1 &lt;= n, m &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 We traverse every number in the range $[1, n]$. If it is divisible by $m$, we subtract it from the answer. Otherwise, we add it to the answer.
 
@@ -68,7 +86,7 @@ The time complexity is $O(n)$, where $n$ is the given integer. The space complex
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -76,7 +94,7 @@ class Solution:
         return sum(i if i % m else -i for i in range(1, n + 1))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -90,18 +108,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int differenceOfSums(int n, int m) {
-        int sum = n * (n + 1) / 2;
-        int k = n / m;
-        int nums2 = k * (k + 1) / 2 * m;
-        return sum - nums2 * 2;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -116,7 +123,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func differenceOfSums(n int, m int) (ans int) {
@@ -131,7 +138,7 @@ func differenceOfSums(n int, m int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function differenceOfSums(n: number, m: number): number {
@@ -143,10 +150,8 @@ function differenceOfSums(n: number, m: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

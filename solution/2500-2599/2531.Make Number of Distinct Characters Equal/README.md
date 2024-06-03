@@ -1,10 +1,24 @@
-# [2531. 使字符串总不同字符的数目相等](https://leetcode.cn/problems/make-number-of-distinct-characters-equal)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2531.Make%20Number%20of%20Distinct%20Characters%20Equal/README.md
+rating: 1775
+source: 第 327 场周赛 Q3
+tags:
+    - 哈希表
+    - 字符串
+    - 计数
+---
+
+<!-- problem:start -->
+
+# [2531. 使字符串中不同字符的数目相等](https://leetcode.cn/problems/make-number-of-distinct-characters-equal)
 
 [English Version](/solution/2500-2599/2531.Make%20Number%20of%20Distinct%20Characters%20Equal/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你两个下标从 <strong>0</strong> 开始的字符串 <code>word1</code> 和 <code>word2</code> 。</p>
 
@@ -48,11 +62,13 @@
 	<li><code>word1</code> 和 <code>word2</code> 仅由小写英文字母组成。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：计数 + 枚举**
+### 方法一：计数 + 枚举
 
 我们先用两个长度为 $26$ 的数组分别统计字符串 $word1$ 和 $word2$ 中每个字母的出现次数，记为 $cnt1$ 和 $cnt2$。
 
@@ -64,9 +80,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -89,9 +103,7 @@ class Solution:
         return False
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -135,7 +147,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -180,7 +192,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isItPossible(word1 string, word2 string) bool {
@@ -218,10 +230,8 @@ func isItPossible(word1 string, word2 string) bool {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

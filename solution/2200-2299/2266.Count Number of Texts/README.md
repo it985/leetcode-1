@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2266.Count%20Number%20of%20Texts/README.md
+rating: 1856
+source: 第 292 场周赛 Q3
+tags:
+    - 哈希表
+    - 数学
+    - 字符串
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2266. 统计打字方案数](https://leetcode.cn/problems/count-number-of-texts)
 
 [English Version](/solution/2200-2299/2266.Count%20Number%20of%20Texts/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>Alice 在给 Bob 用手机打字。数字到字母的 <strong>对应</strong>&nbsp;如下图所示。</p>
 
@@ -57,15 +72,17 @@ Alice 可能发出的文字信息包括：
 	<li><code>pressedKeys</code> 只包含数字&nbsp;<code>'2'</code>&nbsp;到&nbsp;<code>'9'</code>&nbsp;。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 mod = 10**9 + 7
@@ -85,9 +102,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -127,7 +142,7 @@ class Solution {
 }
 ```
 
-### **Go**
+#### Go
 
 ```go
 const mod int = 1e9 + 7
@@ -163,16 +178,8 @@ func countTexts(pressedKeys string) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

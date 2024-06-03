@@ -1,8 +1,23 @@
-# [288. Unique Word Abbreviation](https://leetcode.com/problems/unique-word-abbreviation)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0288.Unique%20Word%20Abbreviation/README_EN.md
+tags:
+    - Design
+    - Array
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
+# [288. Unique Word Abbreviation 🔒](https://leetcode.com/problems/unique-word-abbreviation)
 
 [中文文档](/solution/0200-0299/0288.Unique%20Word%20Abbreviation/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>The <strong>abbreviation</strong> of a word is a concatenation of its first letter, the number of characters between the first and last letter, and its last letter. If a word has only two characters, then it is an <strong>abbreviation</strong> of itself.</p>
 
@@ -57,9 +72,13 @@ validWordAbbr.isUnique(&quot;cake&quot;); // return true, because &quot;cake&quo
 	<li>At most <code>5000</code> calls will be made to <code>isUnique</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Hash Table
 
 According to the problem description, we define a function $abbr(s)$, which calculates the abbreviation of the word $s$. If the length of the word $s$ is less than $3$, then its abbreviation is itself; otherwise, its abbreviation is its first letter + (its length - 2) + its last letter.
 
@@ -71,7 +90,7 @@ In terms of time complexity, the time complexity of initializing the hash table 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class ValidWordAbbr:
@@ -93,7 +112,7 @@ class ValidWordAbbr:
 # param_1 = obj.isUnique(word)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class ValidWordAbbr {
@@ -123,7 +142,7 @@ class ValidWordAbbr {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class ValidWordAbbr {
@@ -155,7 +174,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type ValidWordAbbr struct {
@@ -194,7 +213,7 @@ func abbr(s string) string {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class ValidWordAbbr {
@@ -228,10 +247,8 @@ class ValidWordAbbr {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

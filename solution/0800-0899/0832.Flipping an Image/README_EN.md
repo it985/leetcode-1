@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0832.Flipping%20an%20Image/README_EN.md
+tags:
+    - Bit Manipulation
+    - Array
+    - Two Pointers
+    - Matrix
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [832. Flipping an Image](https://leetcode.com/problems/flipping-an-image)
 
 [中文文档](/solution/0800-0899/0832.Flipping%20an%20Image/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an <code>n x n</code> binary matrix <code>image</code>, flip the image <strong>horizontally</strong>, then invert it, and return <em>the resulting image</em>.</p>
 
@@ -47,11 +63,17 @@ Then invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
 	<li><code>images[i][j]</code> is either <code>0</code> or <code>1</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +91,7 @@ class Solution:
         return image
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -114,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func flipAndInvertImage(image [][]int) [][]int {
@@ -134,7 +156,7 @@ func flipAndInvertImage(image [][]int) [][]int {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -159,10 +181,8 @@ var flipAndInvertImage = function (image) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

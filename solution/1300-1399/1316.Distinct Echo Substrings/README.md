@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1316.Distinct%20Echo%20Substrings/README.md
+rating: 1836
+source: 第 17 场双周赛 Q4
+tags:
+    - 字典树
+    - 字符串
+    - 哈希函数
+    - 滚动哈希
+---
+
+<!-- problem:start -->
+
 # [1316. 不同的循环子字符串](https://leetcode.cn/problems/distinct-echo-substrings)
 
 [English Version](/solution/1300-1399/1316.Distinct%20Echo%20Substrings/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串&nbsp;<code>text</code> ，请你返回满足下述条件的&nbsp;<strong>不同</strong> 非空子字符串的数目：</p>
 
@@ -39,11 +54,13 @@
 	<li><code>text</code>&nbsp;只包含小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：字符串哈希**
+### 方法一：字符串哈希
 
 **字符串哈希**是把一个任意长度的字符串映射成一个非负整数，并且其冲突的概率几乎为 0。字符串哈希用于计算字符串哈希值，快速判断两个字符串是否相等。
 
@@ -55,9 +72,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -85,9 +100,7 @@ class Solution:
         return len(vis)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -125,7 +138,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 typedef unsigned long long ull;
@@ -161,7 +174,38 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func distinctEchoSubstrings(text string) int {
+	n := len(text)
+	base := 131
+	h := make([]int, n+10)
+	p := make([]int, n+10)
+	p[0] = 1
+	for i, c := range text {
+		t := int(c-'a') + 1
+		p[i+1] = p[i] * base
+		h[i+1] = h[i]*base + t
+	}
+	get := func(l, r int) int {
+		return h[r] - h[l-1]*p[r-l+1]
+	}
+	vis := map[int]bool{}
+	for i := 0; i < n-1; i++ {
+		for j := i + 1; j < n; j += 2 {
+			k := (i + j) >> 1
+			a, b := get(i+1, k+1), get(k+2, j+1)
+			if a == b {
+				vis[a] = true
+			}
+		}
+	}
+	return len(vis)
+}
+```
+
+#### Rust
 
 ```rust
 use std::collections::HashSet;
@@ -208,41 +252,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func distinctEchoSubstrings(text string) int {
-	n := len(text)
-	base := 131
-	h := make([]int, n+10)
-	p := make([]int, n+10)
-	p[0] = 1
-	for i, c := range text {
-		t := int(c-'a') + 1
-		p[i+1] = p[i] * base
-		h[i+1] = h[i]*base + t
-	}
-	get := func(l, r int) int {
-		return h[r] - h[l-1]*p[r-l+1]
-	}
-	vis := map[int]bool{}
-	for i := 0; i < n-1; i++ {
-		for j := i + 1; j < n; j += 2 {
-			k := (i + j) >> 1
-			a, b := get(i+1, k+1), get(k+2, j+1)
-			if a == b {
-				vis[a] = true
-			}
-		}
-	}
-	return len(vis)
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

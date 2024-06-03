@@ -1,8 +1,22 @@
-# [727. Minimum Window Subsequence](https://leetcode.com/problems/minimum-window-subsequence)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0727.Minimum%20Window%20Subsequence/README_EN.md
+tags:
+    - String
+    - Dynamic Programming
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
+# [727. Minimum Window Subsequence 🔒](https://leetcode.com/problems/minimum-window-subsequence)
 
 [中文文档](/solution/0700-0799/0727.Minimum%20Window%20Subsequence/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given strings <code>s1</code> and <code>s2</code>, return <em>the minimum contiguous&nbsp;substring part of </em><code>s1</code><em>, so that </em><code>s2</code><em> is a subsequence of the part</em>.</p>
 
@@ -35,11 +49,17 @@
 	<li><code>s1</code> and <code>s2</code> consist of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -62,7 +82,7 @@ class Solution:
         return "" if k > m else s1[p : p + k]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -93,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -126,7 +146,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minWindow(s1 string, s2 string) string {
@@ -165,7 +185,7 @@ func minWindow(s1 string, s2 string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minWindow(s1: string, s2: string): string {
@@ -198,10 +218,8 @@ function minWindow(s1: string, s2: string): string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

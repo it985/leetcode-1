@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2886.Change%20Data%20Type/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [2886. Change Data Type](https://leetcode.com/problems/change-data-type)
 
 [中文文档](/solution/2800-2899/2886.Change%20Data%20Type/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <pre>
 DataFrame <code>students</code>
@@ -43,11 +53,17 @@ DataFrame <code>students</code>
 <strong>Explanation:</strong> 
 The data types of the column grade is converted to int.</pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Pandas**
+#### Python3
 
 ```python
 import pandas as pd
@@ -58,10 +74,8 @@ def changeDatatype(students: pd.DataFrame) -> pd.DataFrame:
     return students
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

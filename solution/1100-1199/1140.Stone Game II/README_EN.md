@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1140.Stone%20Game%20II/README_EN.md
+rating: 2034
+source: Weekly Contest 147 Q4
+tags:
+    - Array
+    - Math
+    - Dynamic Programming
+    - Game Theory
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [1140. Stone Game II](https://leetcode.com/problems/stone-game-ii)
 
 [中文文档](/solution/1100-1199/1140.Stone%20Game%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Alice and Bob continue their&nbsp;games with piles of stones.&nbsp; There are a number of&nbsp;piles&nbsp;<strong>arranged in a row</strong>, and each pile has a positive integer number of stones&nbsp;<code>piles[i]</code>.&nbsp; The objective of the game is to end with the most&nbsp;stones.&nbsp;</p>
 
@@ -38,9 +56,13 @@
 	<li><code>1 &lt;= piles[i]&nbsp;&lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Prefix Sum + Memoization Search**
+<!-- solution:start -->
+
+### Solution 1: Prefix Sum + Memoization Search
 
 Since the player can take all the stones from the first $X$ piles each time, that is, they can take the stones from an interval, we can first preprocess a prefix sum array $s$ of length $n+1$, where $s[i]$ represents the sum of the first $i$ elements of the array `piles`.
 
@@ -59,7 +81,7 @@ The time complexity is $O(n^3)$, and the space complexity is $O(n^2)$. Here, $n$
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -77,23 +99,7 @@ class Solution:
         return dfs(0, 1)
 ```
 
-```python
-class Solution:
-    def stoneGameII(self, piles: List[int]) -> int:
-        @cache
-        def dfs(i: int, m: int = 1) -> int:
-            if i >= len(piles):
-                return 0
-            t = inf
-            for x in range(1, m << 1 | 1):
-                t = min(t, dfs(i + x, max(m, x)))
-            return s[-1] - s[i] - t
-
-        s = list(accumulate(piles, initial=0))
-        return dfs(0)
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -127,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -159,7 +165,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func stoneGameII(piles []int) int {
@@ -188,7 +194,7 @@ func stoneGameII(piles []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function stoneGameII(piles: number[]): number {
@@ -215,10 +221,36 @@ function stoneGameII(piles: number[]): number {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def stoneGameII(self, piles: List[int]) -> int:
+        @cache
+        def dfs(i: int, m: int = 1) -> int:
+            if i >= len(piles):
+                return 0
+            t = inf
+            for x in range(1, m << 1 | 1):
+                t = min(t, dfs(i + x, max(m, x)))
+            return s[-1] - s[i] - t
+
+        s = list(accumulate(piles, initial=0))
+        return dfs(0)
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

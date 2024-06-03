@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0207.Course%20Schedule/README.md
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 图
+    - 拓扑排序
+---
+
+<!-- problem:start -->
+
 # [207. 课程表](https://leetcode.cn/problems/course-schedule)
 
 [English Version](/solution/0200-0299/0207.Course%20Schedule/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你这个学期必须选修 <code>numCourses</code> 门课程，记为&nbsp;<code>0</code>&nbsp;到&nbsp;<code>numCourses - 1</code> 。</p>
 
@@ -44,11 +57,13 @@
 	<li><code>prerequisites[i]</code> 中的所有课程对 <strong>互不相同</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：拓扑排序**
+### 方法一：拓扑排序
 
 对于本题，我们可以将课程看作图中的节点，先修课程看作图中的边，那么我们可以将本题转化为判断有向图中是否存在环。
 
@@ -60,9 +75,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -84,9 +97,7 @@ class Solution:
         return cnt == numCourses
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -120,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -155,7 +166,70 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func canFinish(numCourses int, prerequisites [][]int) bool {
+	g := make([][]int, numCourses)
+	indeg := make([]int, numCourses)
+	for _, p := range prerequisites {
+		a, b := p[0], p[1]
+		g[b] = append(g[b], a)
+		indeg[a]++
+	}
+	q := []int{}
+	for i, x := range indeg {
+		if x == 0 {
+			q = append(q, i)
+		}
+	}
+	cnt := 0
+	for len(q) > 0 {
+		i := q[0]
+		q = q[1:]
+		cnt++
+		for _, j := range g[i] {
+			indeg[j]--
+			if indeg[j] == 0 {
+				q = append(q, j)
+			}
+		}
+	}
+	return cnt == numCourses
+}
+```
+
+#### TypeScript
+
+```ts
+function canFinish(numCourses: number, prerequisites: number[][]): boolean {
+    const g: number[][] = new Array(numCourses).fill(0).map(() => []);
+    const indeg: number[] = new Array(numCourses).fill(0);
+    for (const [a, b] of prerequisites) {
+        g[b].push(a);
+        indeg[a]++;
+    }
+    const q: number[] = [];
+    for (let i = 0; i < numCourses; ++i) {
+        if (indeg[i] == 0) {
+            q.push(i);
+        }
+    }
+    let cnt = 0;
+    while (q.length) {
+        const i = q.shift()!;
+        cnt++;
+        for (const j of g[i]) {
+            if (--indeg[j] == 0) {
+                q.push(j);
+            }
+        }
+    }
+    return cnt == numCourses;
+}
+```
+
+#### Rust
 
 ```rust
 use std::collections::VecDeque;
@@ -207,70 +281,7 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func canFinish(numCourses int, prerequisites [][]int) bool {
-	g := make([][]int, numCourses)
-	indeg := make([]int, numCourses)
-	for _, p := range prerequisites {
-		a, b := p[0], p[1]
-		g[b] = append(g[b], a)
-		indeg[a]++
-	}
-	q := []int{}
-	for i, x := range indeg {
-		if x == 0 {
-			q = append(q, i)
-		}
-	}
-	cnt := 0
-	for len(q) > 0 {
-		i := q[0]
-		q = q[1:]
-		cnt++
-		for _, j := range g[i] {
-			indeg[j]--
-			if indeg[j] == 0 {
-				q = append(q, j)
-			}
-		}
-	}
-	return cnt == numCourses
-}
-```
-
-### **TypeScript**
-
-```ts
-function canFinish(numCourses: number, prerequisites: number[][]): boolean {
-    const g: number[][] = new Array(numCourses).fill(0).map(() => []);
-    const indeg: number[] = new Array(numCourses).fill(0);
-    for (const [a, b] of prerequisites) {
-        g[b].push(a);
-        indeg[a]++;
-    }
-    const q: number[] = [];
-    for (let i = 0; i < numCourses; ++i) {
-        if (indeg[i] == 0) {
-            q.push(i);
-        }
-    }
-    let cnt = 0;
-    while (q.length) {
-        const i = q.shift()!;
-        cnt++;
-        for (const j of g[i]) {
-            if (--indeg[j] == 0) {
-                q.push(j);
-            }
-        }
-    }
-    return cnt == numCourses;
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -306,10 +317,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

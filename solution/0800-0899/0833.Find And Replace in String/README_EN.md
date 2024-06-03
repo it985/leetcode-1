@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0833.Find%20And%20Replace%20in%20String/README_EN.md
+tags:
+    - Array
+    - String
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [833. Find And Replace in String](https://leetcode.com/problems/find-and-replace-in-string)
 
 [中文文档](/solution/0800-0899/0833.Find%20And%20Replace%20in%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> string <code>s</code> that you must perform <code>k</code> replacement operations on. The replacement operations are given as three <strong>0-indexed</strong> parallel arrays, <code>indices</code>, <code>sources</code>, and <code>targets</code>, all of length <code>k</code>.</p>
 
@@ -60,11 +74,17 @@
 	<li><code>sources[i]</code> and <code>targets[i]</code> consist of only lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -88,7 +108,7 @@ class Solution:
         return "".join(ans)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -116,7 +136,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -144,7 +164,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findReplaceString(s string, indices []int, sources []string, targets []string) string {
@@ -169,7 +189,7 @@ func findReplaceString(s string, indices []int, sources []string, targets []stri
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findReplaceString(
@@ -199,10 +219,8 @@ function findReplaceString(
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

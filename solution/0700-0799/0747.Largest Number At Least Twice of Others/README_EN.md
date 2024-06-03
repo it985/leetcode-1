@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0747.Largest%20Number%20At%20Least%20Twice%20of%20Others/README_EN.md
+tags:
+    - Array
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [747. Largest Number At Least Twice of Others](https://leetcode.com/problems/largest-number-at-least-twice-of-others)
 
 [中文文档](/solution/0700-0799/0747.Largest%20Number%20At%20Least%20Twice%20of%20Others/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code> where the largest integer is <strong>unique</strong>.</p>
 
@@ -36,9 +49,13 @@ The index of value 6 is 1, so we return 1.
 	<li>The largest element in <code>nums</code> is unique.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Traversal**
+<!-- solution:start -->
+
+### Solution 1: Traversal
 
 We can traverse the array $nums$ to find the maximum value $x$ and the second largest value $y$ in the array. If $x \ge 2y$, then return the index of $x$, otherwise return $-1$.
 
@@ -48,7 +65,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array $nums$. The 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -57,7 +74,7 @@ class Solution:
         return nums.index(x) if x >= 2 * y else -1
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -79,7 +96,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -102,7 +119,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func dominantIndex(nums []int) int {
@@ -121,7 +138,7 @@ func dominantIndex(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function dominantIndex(nums: number[]): number {
@@ -140,7 +157,7 @@ function dominantIndex(nums: number[]): number {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -163,10 +180,8 @@ var dominantIndex = function (nums) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/08.09.Bracket/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [08.09. Bracket](https://leetcode.cn/problems/bracket-lcci)
 
 [中文文档](/lcci/08.09.Bracket/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Implement an algorithm to print all valid (e.g., properly opened and closed) combinations of n pairs of parentheses.</p>
 
@@ -28,9 +38,13 @@
 
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: DFS + Pruning**
+<!-- solution:start -->
+
+### Solution 1: DFS + Pruning
 
 The range of $n$ in the problem is $[1, 8]$, so we can directly solve this problem quickly through "brute force search + pruning".
 
@@ -45,7 +59,7 @@ The time complexity is $O(2^{n\times 2} \times n)$, and the space complexity is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -64,7 +78,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +105,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -114,7 +128,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func generateParenthesis(n int) []string {
@@ -136,32 +150,7 @@ func generateParenthesis(n int) []string {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number} n
- * @return {string[]}
- */
-var generateParenthesis = function (n) {
-    function dfs(l, r, t) {
-        if (l > n || r > n || l < r) {
-            return;
-        }
-        if (l == n && r == n) {
-            ans.push(t);
-            return;
-        }
-        dfs(l + 1, r, t + '(');
-        dfs(l, r + 1, t + ')');
-    }
-    let ans = [];
-    dfs(0, 0, '');
-    return ans;
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function generateParenthesis(n: number): string[] {
@@ -182,7 +171,7 @@ function generateParenthesis(n: number): string[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -211,10 +200,60 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
+```js
+/**
+ * @param {number} n
+ * @return {string[]}
+ */
+var generateParenthesis = function (n) {
+    function dfs(l, r, t) {
+        if (l > n || r > n || l < r) {
+            return;
+        }
+        if (l == n && r == n) {
+            ans.push(t);
+            return;
+        }
+        dfs(l + 1, r, t + '(');
+        dfs(l, r + 1, t + ')');
+    }
+    let ans = [];
+    dfs(0, 0, '');
+    return ans;
+};
 ```
 
+#### Swift
+
+```swift
+class Solution {
+    private var ans: [String] = []
+    private var n: Int = 0
+
+    func generateParenthesis(_ n: Int) -> [String] {
+        self.n = n
+        dfs(l: 0, r: 0, t: "")
+        return ans
+    }
+
+    private func dfs(l: Int, r: Int, t: String) {
+        if l > n || r > n || l < r {
+            return
+        }
+        if l == n && r == n {
+            ans.append(t)
+            return
+        }
+        dfs(l: l + 1, r: r, t: t + "(")
+        dfs(l: l, r: r + 1, t: t + ")")
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

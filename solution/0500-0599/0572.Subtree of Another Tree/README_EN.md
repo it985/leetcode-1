@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0572.Subtree%20of%20Another%20Tree/README_EN.md
+tags:
+    - Tree
+    - Depth-First Search
+    - Binary Tree
+    - String Matching
+    - Hash Function
+---
+
+<!-- problem:start -->
+
 # [572. Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree)
 
 [中文文档](/solution/0500-0599/0572.Subtree%20of%20Another%20Tree/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the roots of two binary trees <code>root</code> and <code>subRoot</code>, return <code>true</code> if there is a subtree of <code>root</code> with the same structure and node values of<code> subRoot</code> and <code>false</code> otherwise.</p>
 
@@ -33,11 +49,17 @@
 	<li><code>-10<sup>4</sup> &lt;= subRoot.val &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -68,7 +90,7 @@ class Solution:
         )
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -108,7 +130,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -137,7 +159,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -166,40 +188,7 @@ func isSubtree(root *TreeNode, subRoot *TreeNode) bool {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
-/**
- * @param {TreeNode} root
- * @param {TreeNode} subRoot
- * @return {boolean}
- */
-var isSubtree = function (root, subRoot) {
-    if (!root) return false;
-    let dfs = function (root1, root2) {
-        if (!root1 && !root2) {
-            return true;
-        }
-        if (!root1 || !root2) {
-            return false;
-        }
-        return (
-            root1.val == root2.val && dfs(root1.left, root2.left) && dfs(root1.right, root2.right)
-        );
-    };
-    return dfs(root, subRoot) || isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -234,7 +223,7 @@ function isSubtree(root: TreeNode | null, subRoot: TreeNode | null): boolean {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -293,10 +282,41 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {TreeNode} subRoot
+ * @return {boolean}
+ */
+var isSubtree = function (root, subRoot) {
+    if (!root) return false;
+    let dfs = function (root1, root2) {
+        if (!root1 && !root2) {
+            return true;
+        }
+        if (!root1 || !root2) {
+            return false;
+        }
+        return (
+            root1.val == root2.val && dfs(root1.left, root2.left) && dfs(root1.right, root2.right)
+        );
+    };
+    return dfs(root, subRoot) || isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

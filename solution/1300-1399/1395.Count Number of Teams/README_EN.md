@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1395.Count%20Number%20of%20Teams/README_EN.md
+rating: 1343
+source: Weekly Contest 182 Q2
+tags:
+    - Binary Indexed Tree
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [1395. Count Number of Teams](https://leetcode.com/problems/count-number-of-teams)
 
 [中文文档](/solution/1300-1399/1395.Count%20Number%20of%20Teams/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are <code>n</code> soldiers standing in a line. Each soldier is assigned a <strong>unique</strong> <code>rating</code> value.</p>
 
@@ -49,11 +65,21 @@
 	<li>All the integers in <code>rating</code> are <strong>unique</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Enumerate Middle Element
+
+We can enumerate each element $rating[i]$ in the array $rating$ as the middle element, then count the number of elements $l$ that are smaller than it on the left, and the number of elements $r$ that are larger than it on the right. The number of combat units with this element as the middle element is $l \times r + (i - l) \times (n - i - 1 - r)$. We can add this to the answer.
+
+The time complexity is $O(n^2)$, and the space complexity is $O(1)$. Where $n$ is the length of the array $rating$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -66,6 +92,127 @@ class Solution:
             ans += (i - l) * (n - i - 1 - r)
         return ans
 ```
+
+#### Java
+
+```java
+class Solution {
+    public int numTeams(int[] rating) {
+        int n = rating.length;
+        int ans = 0;
+        for (int i = 0; i < n; ++i) {
+            int l = 0, r = 0;
+            for (int j = 0; j < i; ++j) {
+                if (rating[j] < rating[i]) {
+                    ++l;
+                }
+            }
+            for (int j = i + 1; j < n; ++j) {
+                if (rating[j] > rating[i]) {
+                    ++r;
+                }
+            }
+            ans += l * r;
+            ans += (i - l) * (n - i - 1 - r);
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int numTeams(vector<int>& rating) {
+        int n = rating.size();
+        int ans = 0;
+        for (int i = 0; i < n; ++i) {
+            int l = 0, r = 0;
+            for (int j = 0; j < i; ++j) {
+                if (rating[j] < rating[i]) {
+                    ++l;
+                }
+            }
+            for (int j = i + 1; j < n; ++j) {
+                if (rating[j] > rating[i]) {
+                    ++r;
+                }
+            }
+            ans += l * r;
+            ans += (i - l) * (n - i - 1 - r);
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func numTeams(rating []int) (ans int) {
+	n := len(rating)
+	for i, b := range rating {
+		l, r := 0, 0
+		for _, a := range rating[:i] {
+			if a < b {
+				l++
+			}
+		}
+		for _, c := range rating[i+1:] {
+			if c < b {
+				r++
+			}
+		}
+		ans += l * r
+		ans += (i - l) * (n - i - 1 - r)
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function numTeams(rating: number[]): number {
+    let ans = 0;
+    const n = rating.length;
+    for (let i = 0; i < n; ++i) {
+        let l = 0;
+        let r = 0;
+        for (let j = 0; j < i; ++j) {
+            if (rating[j] < rating[i]) {
+                ++l;
+            }
+        }
+        for (let j = i + 1; j < n; ++j) {
+            if (rating[j] > rating[i]) {
+                ++r;
+            }
+        }
+        ans += l * r;
+        ans += (i - l) * (n - i - 1 - r);
+    }
+    return ans;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Binary Indexed Tree
+
+We can use two binary indexed trees to maintain the number of elements $l$ that are smaller than each element on the left in the array $rating$, and the number of elements $r$ that are larger than it on the right. Then count the number of combat units with this element as the middle element as $l \times r + (i - l) \times (n - i - 1 - r)$, and add this to the answer.
+
+The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$. Where $n$ is the length of the array $rating$.
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class BinaryIndexedTree:
@@ -108,32 +255,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-```java
-class Solution {
-    public int numTeams(int[] rating) {
-        int n = rating.length;
-        int ans = 0;
-        for (int i = 0; i < n; ++i) {
-            int l = 0, r = 0;
-            for (int j = 0; j < i; ++j) {
-                if (rating[j] < rating[i]) {
-                    ++l;
-                }
-            }
-            for (int j = i + 1; j < n; ++j) {
-                if (rating[j] > rating[i]) {
-                    ++r;
-                }
-            }
-            ans += l * r;
-            ans += (i - l) * (n - i - 1 - r);
-        }
-        return ans;
-    }
-}
-```
+#### Java
 
 ```java
 class BinaryIndexedTree {
@@ -208,33 +330,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int numTeams(vector<int>& rating) {
-        int n = rating.size();
-        int ans = 0;
-        for (int i = 0; i < n; ++i) {
-            int l = 0, r = 0;
-            for (int j = 0; j < i; ++j) {
-                if (rating[j] < rating[i]) {
-                    ++l;
-                }
-            }
-            for (int j = i + 1; j < n; ++j) {
-                if (rating[j] > rating[i]) {
-                    ++r;
-                }
-            }
-            ans += l * r;
-            ans += (i - l) * (n - i - 1 - r);
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class BinaryIndexedTree {
@@ -293,29 +389,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func numTeams(rating []int) (ans int) {
-	n := len(rating)
-	for i, b := range rating {
-		l, r := 0, 0
-		for _, a := range rating[:i] {
-			if a < b {
-				l++
-			}
-		}
-		for _, c := range rating[i+1:] {
-			if c < b {
-				r++
-			}
-		}
-		ans += l * r
-		ans += (i - l) * (n - i - 1 - r)
-	}
-	return
-}
-```
+#### Go
 
 ```go
 type BinaryIndexedTree struct {
@@ -375,31 +449,7 @@ func numTeams(rating []int) (ans int) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function numTeams(rating: number[]): number {
-    let ans = 0;
-    const n = rating.length;
-    for (let i = 0; i < n; ++i) {
-        let l = 0;
-        let r = 0;
-        for (let j = 0; j < i; ++j) {
-            if (rating[j] < rating[i]) {
-                ++l;
-            }
-        }
-        for (let j = i + 1; j < n; ++j) {
-            if (rating[j] > rating[i]) {
-                ++r;
-            }
-        }
-        ans += l * r;
-        ans += (i - l) * (n - i - 1 - r);
-    }
-    return ans;
-}
-```
+#### TypeScript
 
 ```ts
 class BinaryIndexedTree {
@@ -471,10 +521,8 @@ function numTeams(rating: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

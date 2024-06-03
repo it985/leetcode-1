@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0931.Minimum%20Falling%20Path%20Sum/README.md
+tags:
+    - 数组
+    - 动态规划
+    - 矩阵
+---
+
+<!-- problem:start -->
+
 # [931. 下降路径最小和](https://leetcode.cn/problems/minimum-falling-path-sum)
 
 [English Version](/solution/0900-0999/0931.Minimum%20Falling%20Path%20Sum/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个 <code>n x n</code> 的<strong> 方形 </strong>整数数组&nbsp;<code>matrix</code> ，请你找出并返回通过 <code>matrix</code> 的<strong>下降路径</strong><em> </em>的<strong> </strong><strong>最小和</strong> 。</p>
 
@@ -42,11 +54,13 @@
 	<li><code>-100 &lt;= matrix[i][j] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i][j]$ 表示从第一行开始下降，到达第 $i$ 行第 $j$ 列的最小路径和。那么我们可以得到这样的动态规划转移方程：
 
@@ -62,9 +76,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,9 +92,7 @@ class Solution:
         return min(f)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -112,7 +122,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -138,7 +148,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minFallingPathSum(matrix [][]int) int {
@@ -162,7 +172,7 @@ func minFallingPathSum(matrix [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minFallingPathSum(matrix: number[][]): number {
@@ -185,10 +195,8 @@ function minFallingPathSum(matrix: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

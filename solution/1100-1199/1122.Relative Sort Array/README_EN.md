@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1122.Relative%20Sort%20Array/README_EN.md
+rating: 1188
+source: Weekly Contest 145 Q1
+tags:
+    - Array
+    - Hash Table
+    - Counting Sort
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1122. Relative Sort Array](https://leetcode.com/problems/relative-sort-array)
 
 [中文文档](/solution/1100-1199/1122.Relative%20Sort%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two arrays <code>arr1</code> and <code>arr2</code>, the elements of <code>arr2</code> are distinct, and all elements in <code>arr2</code> are also in <code>arr1</code>.</p>
 
@@ -33,9 +50,13 @@
 	<li>Each&nbsp;<code>arr2[i]</code> is in <code>arr1</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Custom Sorting**
+<!-- solution:start -->
+
+### Solution 1: Custom Sorting
 
 First, we use a hash table $pos$ to record the position of each element in array $arr2$. Then, we map each element in array $arr1$ to a tuple $(pos.get(x, 1000 + x), x)$, and sort these tuples. Finally, we take out the second element of all tuples and return it.
 
@@ -43,7 +64,7 @@ The time complexity is $O(n \times \log n + m)$, and the space complexity is $O(
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -52,7 +73,7 @@ class Solution:
         return sorted(arr1, key=lambda x: pos.get(x, 1000 + x))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -74,7 +95,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -98,7 +119,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func relativeSortArray(arr1 []int, arr2 []int) []int {
@@ -124,7 +145,7 @@ func relativeSortArray(arr1 []int, arr2 []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function relativeSortArray(arr1: number[], arr2: number[]): number[] {
@@ -142,10 +163,8 @@ function relativeSortArray(arr1: number[], arr2: number[]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

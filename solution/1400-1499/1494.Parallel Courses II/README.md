@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1494.Parallel%20Courses%20II/README.md
+rating: 2081
+source: 第 29 场双周赛 Q4
+tags:
+    - 位运算
+    - 图
+    - 动态规划
+    - 状态压缩
+---
+
+<!-- problem:start -->
+
 # [1494. 并行课程 II](https://leetcode.cn/problems/parallel-courses-ii)
 
 [English Version](/solution/1400-1499/1494.Parallel%20Courses%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数&nbsp;<code>n</code>&nbsp;表示某所大学里课程的数目，编号为&nbsp;<code>1</code>&nbsp;到&nbsp;<code>n</code>&nbsp;，数组&nbsp;<code>relations</code>&nbsp;中，&nbsp;<code>relations[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp; 表示一个先修课的关系，也就是课程&nbsp;<code>x<sub>i</sub></code>&nbsp;必须在课程&nbsp;<code>y<sub>i</sub></code><sub>&nbsp;</sub>之前上。同时你还有一个整数&nbsp;<code>k</code>&nbsp;。</p>
 
@@ -56,11 +71,13 @@
 	<li>题目输入的图是个有向无环图。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：状态压缩 + BFS + 子集枚举**
+### 方法一：状态压缩 + BFS + 子集枚举
 
 我们用数组 $d[i]$ 表示课程 $i$ 的先修课程的集合。由于数据规模 $n\lt 15$，我们可以用一个整数的二进制位（状态压缩）来表示集合，其中第 $j$ 位为 $1$ 表示课程 $j$ 是课程 $i$ 的先修课程。
 
@@ -74,9 +91,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -108,9 +123,7 @@ class Solution:
                     nxt = (nxt - 1) & x
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -155,7 +168,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -202,7 +215,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minNumberOfSemesters(n int, relations [][]int, k int) int {
@@ -247,10 +260,8 @@ func minNumberOfSemesters(n int, relations [][]int, k int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

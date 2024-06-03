@@ -1,8 +1,16 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcp/LCP%2078.%20%E5%9F%8E%E5%A2%99%E9%98%B2%E7%BA%BF/README.md
+---
+
+<!-- problem:start -->
+
 # [LCP 78. 城墙防线](https://leetcode.cn/problems/Nsibyl)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 在探险营地间，小扣意外发现了一片城墙遗迹，在探索期间，却不巧遇到迁徙中的兽群向他迎面冲来。情急之下小扣吹响了他的苍蓝笛，随着笛声响起，遗迹中的城墙逐渐发生了横向膨胀。
 已知 `rampart[i] = [x,y]` 表示第 `i` 段城墙的初始所在区间。当城墙发生膨胀时，将遵循以下规则：
@@ -42,11 +50,13 @@
 -   `rampart[i].length == 2`
 -   `0 <= rampart[i][0] < rampart[i][1] <= rampart[i+1][0] <= 10^8`
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：二分查找**
+### 方法一：二分查找
 
 我们注意到，如果一个膨胀值 $x$ 满足条件，那么所有小于 $x$ 的值也都满足条件，这存在着单调性。因此我们可以使用二分查找的方法，找到最大的满足条件的膨胀值。
 
@@ -60,9 +70,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -88,9 +96,7 @@ class Solution:
         return left
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -126,7 +132,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -160,7 +166,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func rampartDefensiveLine(rampart [][]int) int {
@@ -191,7 +197,7 @@ func rampartDefensiveLine(rampart [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function rampartDefensiveLine(rampart: number[][]): number {
@@ -222,10 +228,8 @@ function rampartDefensiveLine(rampart: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

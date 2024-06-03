@@ -1,10 +1,22 @@
-# [277. 搜寻名人](https://leetcode.cn/problems/find-the-celebrity)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0277.Find%20the%20Celebrity/README.md
+tags:
+    - 图
+    - 双指针
+    - 交互
+---
+
+<!-- problem:start -->
+
+# [277. 搜寻名人 🔒](https://leetcode.cn/problems/find-the-celebrity)
 
 [English Version](/solution/0200-0299/0277.Find%20the%20Celebrity/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>假设你是一个专业的狗仔，参加了一个 <code>n</code> 人派对，其中每个人被从 <code>0</code> 到 <code>n - 1</code> 标号。在这个派对人群当中可能存在一位 “名人”。所谓 “名人” 的定义是：其他所有 <code>n - 1</code> 个人都认识他/她，而他/她并不认识其他任何人。</p>
 
@@ -63,11 +75,13 @@
 <ol>
 </ol>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：O(n) 遍历**
+### 方法一：O(n) 遍历
 
 经过验证，若暴力遍历，调用 $O(n^2)$ 次 $knows$ 方法，会报 TLE 错误。因此，我们需要寻找更优的解法。
 
@@ -106,9 +120,7 @@ ans = 6
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # The knows API is already defined for you.
@@ -129,9 +141,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /* The knows API is defined in the parent class Relation.
@@ -157,7 +167,7 @@ public class Solution extends Relation {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /* The knows API is defined for you.
@@ -184,7 +194,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -211,10 +221,8 @@ func solution(knows func(a int, b int) bool) func(n int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

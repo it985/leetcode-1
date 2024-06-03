@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1500-1599/1592.Rearrange%20Spaces%20Between%20Words/README.md
+rating: 1362
+source: 第 207 场周赛 Q1
+tags:
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [1592. 重新排列单词间的空格](https://leetcode.cn/problems/rearrange-spaces-between-words)
 
 [English Version](/solution/1500-1599/1592.Rearrange%20Spaces%20Between%20Words/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串 <code>text</code> ，该字符串由若干被空格包围的单词组成。每个单词由一个或者多个小写英文字母组成，并且两个单词之间至少存在一个空格。题目测试用例保证 <code>text</code> <strong>至少包含一个单词</strong> 。</p>
 
@@ -56,11 +68,13 @@
 	<li><code>text</code> 中至少包含一个单词</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：字符串模拟**
+### 方法一：字符串模拟
 
 统计字符串 `text` 中的空格数，记为 `cnt`。将 `text` 按空格分割成字符串数组 `words`。然后计算相邻字符串之间需要拼接的空格数，进行拼接。最后将剩余的空格拼接在末尾。
 
@@ -68,9 +82,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +95,7 @@ class Solution:
         return (' ' * (cnt // m)).join(words) + ' ' * (cnt % m)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -114,7 +124,7 @@ class Solution {
 }
 ```
 
-### **Go**
+#### Go
 
 ```go
 func reorderSpaces(text string) string {
@@ -128,7 +138,7 @@ func reorderSpaces(text string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function reorderSpaces(text: string): string {
@@ -151,7 +161,7 @@ function reorderSpaces(text: string): string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -184,10 +194,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

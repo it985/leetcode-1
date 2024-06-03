@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0084.Largest%20Rectangle%20in%20Histogram/README_EN.md
+tags:
+    - Stack
+    - Array
+    - Monotonic Stack
+---
+
+<!-- problem:start -->
+
 # [84. Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram)
 
 [中文文档](/solution/0000-0099/0084.Largest%20Rectangle%20in%20Histogram/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of integers <code>heights</code> representing the histogram&#39;s bar height where the width of each bar is <code>1</code>, return <em>the area of the largest rectangle in the histogram</em>.</p>
 
@@ -31,9 +45,13 @@ The largest rectangle is shown in the red area, which has an area = 10 units.
 	<li><code>0 &lt;= heights[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Monotonic Stack**
+<!-- solution:start -->
+
+### Solution 1: Monotonic Stack
 
 We can enumerate the height $h$ of each bar as the height of the rectangle. Using a monotonic stack, we find the index $left_i$, $right_i$ of the first bar with a height less than $h$ to the left and right. The area of the rectangle at this time is $h \times (right_i-left_i-1)$. We can find the maximum value.
 
@@ -51,7 +69,7 @@ for i in range(n):
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -70,31 +88,7 @@ class Solution:
         return max(h * (right[i] - left[i] - 1) for i, h in enumerate(heights))
 ```
 
-```python
-class Solution:
-    def largestRectangleArea(self, heights: List[int]) -> int:
-        n = len(heights)
-        stk = []
-        left = [-1] * n
-        right = [n] * n
-        for i, h in enumerate(heights):
-            while stk and heights[stk[-1]] >= h:
-                stk.pop()
-            if stk:
-                left[i] = stk[-1]
-            stk.append(i)
-        stk = []
-        for i in range(n - 1, -1, -1):
-            h = heights[i]
-            while stk and heights[stk[-1]] >= h:
-                stk.pop()
-            if stk:
-                right[i] = stk[-1]
-            stk.append(i)
-        return max(h * (right[i] - left[i] - 1) for i, h in enumerate(heights))
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -119,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -144,7 +138,36 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func largestRectangleArea(heights []int) int {
+	res, n := 0, len(heights)
+	var stk []int
+	left, right := make([]int, n), make([]int, n)
+	for i := range right {
+		right[i] = n
+	}
+	for i, h := range heights {
+		for len(stk) > 0 && heights[stk[len(stk)-1]] >= h {
+			right[stk[len(stk)-1]] = i
+			stk = stk[:len(stk)-1]
+		}
+		if len(stk) > 0 {
+			left[i] = stk[len(stk)-1]
+		} else {
+			left[i] = -1
+		}
+		stk = append(stk, i)
+	}
+	for i, h := range heights {
+		res = max(res, h*(right[i]-left[i]-1))
+	}
+	return res
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -194,39 +217,76 @@ impl Solution {
 }
 ```
 
-### **Go**
+#### C#
 
-```go
-func largestRectangleArea(heights []int) int {
-	res, n := 0, len(heights)
-	var stk []int
-	left, right := make([]int, n), make([]int, n)
-	for i := range right {
-		right[i] = n
-	}
-	for i, h := range heights {
-		for len(stk) > 0 && heights[stk[len(stk)-1]] >= h {
-			right[stk[len(stk)-1]] = i
-			stk = stk[:len(stk)-1]
-		}
-		if len(stk) > 0 {
-			left[i] = stk[len(stk)-1]
-		} else {
-			left[i] = -1
-		}
-		stk = append(stk, i)
-	}
-	for i, h := range heights {
-		res = max(res, h*(right[i]-left[i]-1))
-	}
-	return res
+```cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Solution {
+    public int LargestRectangleArea(int[] height) {
+        var stack = new Stack<int>();
+        var result = 0;
+        var i = 0;
+        while (i < height.Length || stack.Any())
+        {
+            if (!stack.Any() || (i < height.Length && height[stack.Peek()] < height[i]))
+            {
+                stack.Push(i);
+                ++i;
+            }
+            else
+            {
+                var previousIndex = stack.Pop();
+                var area = height[previousIndex] * (stack.Any() ? (i - stack.Peek() - 1) : i);
+                result = Math.Max(result, area);
+            }
+        }
+
+        return result;
+    }
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        n = len(heights)
+        stk = []
+        left = [-1] * n
+        right = [n] * n
+        for i, h in enumerate(heights):
+            while stk and heights[stk[-1]] >= h:
+                stk.pop()
+            if stk:
+                left[i] = stk[-1]
+            stk.append(i)
+        stk = []
+        for i in range(n - 1, -1, -1):
+            h = heights[i]
+            while stk and heights[stk[-1]] >= h:
+                stk.pop()
+            if stk:
+                right[i] = stk[-1]
+            stk.append(i)
+        return max(h * (right[i] - left[i] - 1) for i, h in enumerate(heights))
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

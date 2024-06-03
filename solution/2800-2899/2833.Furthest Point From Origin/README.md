@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2833.Furthest%20Point%20From%20Origin/README.md
+rating: 1294
+source: 第 360 场周赛 Q1
+tags:
+    - 字符串
+    - 计数
+---
+
+<!-- problem:start -->
+
 # [2833. 距离原点最远的点](https://leetcode.cn/problems/furthest-point-from-origin)
 
 [English Version](/solution/2800-2899/2833.Furthest%20Point%20From%20Origin/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个长度为 <code>n</code> 的字符串 <code>moves</code> ，该字符串仅由字符 <code>'L'</code>、<code>'R'</code> 和 <code>'_'</code> 组成。字符串表示你在一条原点为 <code>0</code> 的数轴上的若干次移动。</p>
 
@@ -52,11 +65,13 @@
 	<li><code>moves</code> 仅由字符 <code>'L'</code>、<code>'R'</code> 和 <code>'_'</code> 组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 遇到字符 `'_'` 时，我们可以选择向左或向右移动，而题目需要我们求出离原点最远的点，因此，我们可以先进行一次遍历，贪心地把所有的 `'_'` 都移到左边，求出此时离原点最远的点，再进行一次遍历，贪心地把所有的 `'_'` 都移到右边，求出此时离原点最远的点，最后取两次遍历中的最大值即可。
 
@@ -66,9 +81,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -76,9 +89,7 @@ class Solution:
         return abs(moves.count("L") - moves.count("R")) + moves.count("_")
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +109,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -112,7 +123,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func furthestDistanceFromOrigin(moves string) int {
@@ -128,7 +139,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function furthestDistanceFromOrigin(moves: string): number {
@@ -137,10 +148,8 @@ function furthestDistanceFromOrigin(moves: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

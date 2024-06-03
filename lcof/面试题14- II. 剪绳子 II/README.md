@@ -1,6 +1,16 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcof/%E9%9D%A2%E8%AF%95%E9%A2%9814-%20II.%20%E5%89%AA%E7%BB%B3%E5%AD%90%20II/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 14- II. 剪绳子 II](https://leetcode.cn/problems/jian-sheng-zi-ii-lcof/)
 
 ## 题目描述
+
+<!-- description:start -->
 
 <p>给你一根长度为 <code>n</code> 的绳子，请把绳子剪成整数长度的 <code>m</code>&nbsp;段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 <code>k[0],k[1]...k[m - 1]</code> 。请问 <code>k[0]*k[1]*...*k[m - 1]</code> 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。</p>
 
@@ -30,9 +40,13 @@
 
 <p>注意：本题与主站 343 题相同：<a href="https://leetcode.cn/problems/integer-break/">https://leetcode.cn/problems/integer-break/</a></p>
 
+<!-- description:end -->
+
 ## 解法
 
-**方法一：数学（快速幂）**
+<!-- solution:start -->
+
+### 方法一：数学（快速幂）
 
 当 $n \lt 4$，此时 $n$ 不能拆分成至少两个正整数的和，因此 $n - 1$ 是最大乘积。当 $n \ge 4$ 时，我们尽可能多地拆分 $3$，当剩下的最后一段为 $4$ 时，我们将其拆分为 $2 + 2$，这样乘积最大。
 
@@ -40,7 +54,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -55,7 +69,7 @@ class Solution:
         return pow(3, n // 3, mod) * 2 % mod
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -87,7 +101,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -118,7 +132,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func cuttingRope(n int) int {
@@ -146,7 +160,25 @@ func cuttingRope(n int) int {
 }
 ```
 
-### **JavaScript**
+#### Rust
+
+```rust
+impl Solution {
+    pub fn cutting_rope(mut n: i32) -> i32 {
+        if n < 4 {
+            return n - 1;
+        }
+        let mut res = 1i64;
+        while n > 4 {
+            res = (res * 3) % 1000000007;
+            n -= 3;
+        }
+        ((res * (n as i64)) % 1000000007) as i32
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -179,25 +211,7 @@ var cuttingRope = function (n) {
 };
 ```
 
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn cutting_rope(mut n: i32) -> i32 {
-        if n < 4 {
-            return n - 1;
-        }
-        let mut res = 1i64;
-        while n > 4 {
-            res = (res * 3) % 1000000007;
-            n -= 3;
-        }
-        ((res * (n as i64)) % 1000000007) as i32
-    }
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -218,10 +232,43 @@ public class Solution {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    private let mod = 1000000007
 
+    func cuttingRope(_ n: Int) -> Int {
+        if n < 4 {
+            return n - 1
+        }
+        if n % 3 == 0 {
+            return qpow(3, n / 3)
+        }
+        if n % 3 == 1 {
+            return (4 * qpow(3, n / 3 - 1)) % mod
+        }
+        return (2 * qpow(3, n / 3)) % mod
+    }
+
+    private func qpow(_ a: Int, _ n: Int) -> Int {
+        var a = a
+        var n = n
+        var ans: Int = 1
+        while n > 0 {
+            if (n & 1) == 1 {
+                ans = (ans * a) % mod
+            }
+            a = (a * a) % mod
+            n >>= 1
+        }
+        return ans
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

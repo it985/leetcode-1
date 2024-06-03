@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1805.Number%20of%20Different%20Integers%20in%20a%20String/README_EN.md
+rating: 1333
+source: Weekly Contest 234 Q1
+tags:
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [1805. Number of Different Integers in a String](https://leetcode.com/problems/number-of-different-integers-in-a-string)
 
 [中文文档](/solution/1800-1899/1805.Number%20of%20Different%20Integers%20in%20a%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>word</code> that consists of digits and lowercase English letters.</p>
 
@@ -45,9 +60,13 @@ the leading zeros are ignored when comparing their decimal values.
 	<li><code>word</code> consists of digits and lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Double Pointers + Simulation**
+<!-- solution:start -->
+
+### Solution 1: Double Pointers + Simulation
 
 Traverse the string `word`, find the start and end positions of each integer, cut out this substring, and store it in the hash set $s$.
 
@@ -59,7 +78,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -79,7 +98,7 @@ class Solution:
         return len(s)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +123,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -126,7 +145,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numDifferentIntegers(word string) int {
@@ -149,7 +168,7 @@ func numDifferentIntegers(word string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numDifferentIntegers(word: string): number {
@@ -164,7 +183,7 @@ function numDifferentIntegers(word: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashSet;
@@ -194,10 +213,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

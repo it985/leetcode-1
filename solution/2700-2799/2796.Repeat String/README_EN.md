@@ -1,8 +1,18 @@
-# [2796. Repeat String](https://leetcode.com/problems/repeat-string)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2796.Repeat%20String/README_EN.md
+---
+
+<!-- problem:start -->
+
+# [2796. Repeat String 🔒](https://leetcode.com/problems/repeat-string)
 
 [中文文档](/solution/2700-2799/2796.Repeat%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Write code that enhances all strings such that you can call the&nbsp;<code>string.replicate(x)</code>&nbsp;method on any string and it will return repeated string <code>x</code> times.</p>
 
@@ -37,14 +47,24 @@
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>1 &lt;= str.length,&nbsp;times &lt;=&nbsp;10<sup>5</sup></code></li>
+	<li><code>1 &lt;= times &lt;=&nbsp;10<sup>5</sup></code></li>
+	<li><code>1 &lt;=&nbsp;str.length &lt;= 1000</code></li>
 </ul>
+
+<p>&nbsp;</p>
+<strong>Follow up:</strong> Let&#39;s assume, for the sake of simplifying analysis, that concatenating strings is a constant time operation <code>O(1)</code>. With this assumption in mind, can you write an algorithm with a runtime complexity of <code>O(log n)</code>?
+
+<!-- description:end -->
 
 ## Solutions
 
+<!-- solution:start -->
+
+### Solution 1
+
 <!-- tabs:start -->
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 declare global {
@@ -58,7 +78,7 @@ String.prototype.replicate = function (times: number) {
 };
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 String.prototype.replicate = function (times) {
@@ -67,3 +87,7 @@ String.prototype.replicate = function (times) {
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

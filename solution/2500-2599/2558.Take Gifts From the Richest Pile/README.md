@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2558.Take%20Gifts%20From%20the%20Richest%20Pile/README.md
+rating: 1276
+source: 第 331 场周赛 Q1
+tags:
+    - 数组
+    - 模拟
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [2558. 从数量最多的堆取走礼物](https://leetcode.cn/problems/take-gifts-from-the-richest-pile)
 
 [English Version](/solution/2500-2599/2558.Take%20Gifts%20From%20the%20Richest%20Pile/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>gifts</code> ，表示各堆礼物的数量。每一秒，你需要执行以下操作：</p>
 
@@ -53,11 +67,13 @@
 	<li><code>1 &lt;= k &lt;= 10<sup>3</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：优先队列（大根堆）**
+### 方法一：优先队列（大根堆）
 
 我们将数组 $gifts$ 转存到大根堆中，然后循环 $k$ 次，每次取出堆顶元素，将堆顶元素开根号的结果再放入堆中。
 
@@ -67,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -81,9 +95,7 @@ class Solution:
         return -sum(h)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -104,7 +116,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -121,7 +133,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func pickGifts(gifts []int, k int) (ans int64) {
@@ -144,7 +156,7 @@ func (hp) Pop() (_ any)         { return }
 func (hp) Push(any)             {}
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function pickGifts(gifts: number[], k: number): number {
@@ -163,7 +175,7 @@ function pickGifts(gifts: number[], k: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -187,10 +199,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

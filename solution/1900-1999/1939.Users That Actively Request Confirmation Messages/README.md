@@ -1,10 +1,20 @@
-# [1939. 主动请求确认消息的用户](https://leetcode.cn/problems/users-that-actively-request-confirmation-messages)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1939.Users%20That%20Actively%20Request%20Confirmation%20Messages/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1939. 主动请求确认消息的用户 🔒](https://leetcode.cn/problems/users-that-actively-request-confirmation-messages)
 
 [English Version](/solution/1900-1999/1939.Users%20That%20Actively%20Request%20Confirmation%20Messages/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>Table: <code>Signups</code></p>
 
@@ -77,15 +87,17 @@ Result table
 
 <p>用户 2 在彼此恰好 24 小时内请求了两条消息，因此我们将它们包括在内。 用户 3 在 6 分 59 秒内请求了两条消息，因此我们将它们包括在内。 用户 6 在 23 小时 59 分 59 秒内请求了两条消息，因此我们将它们包括在内。 用户 7 在 24 小时 1 秒内请求了两条消息，因此我们将它们从答案中排除。</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 SELECT DISTINCT user_id
@@ -98,3 +110,7 @@ WHERE
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

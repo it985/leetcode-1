@@ -1,10 +1,20 @@
-# [1613. 找到遗失的 ID](https://leetcode.cn/problems/find-the-missing-ids)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1613.Find%20the%20Missing%20IDs/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1613. 找到遗失的 ID 🔒](https://leetcode.cn/problems/find-the-missing-ids)
 
 [English Version](/solution/1600-1699/1613.Find%20the%20Missing%20IDs/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Customers</code></p>
 
@@ -53,17 +63,19 @@ Customers</code> 表:
 <strong>解释：</strong>
 表中最大的 customer_id 是 5, 所以在范围 [1,5] 内, ID2 和 3 从表中遗失.</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：递归**
+### 方法一：递归
 
 利用 `recursive` 关键字，递归生成 `[1, 100]` 的序列，然后排除已有的 `customer_id`，即可得到结果。
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -94,3 +106,7 @@ WHERE
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

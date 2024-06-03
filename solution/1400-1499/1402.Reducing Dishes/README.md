@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1402.Reducing%20Dishes/README.md
+rating: 1679
+source: 第 23 场双周赛 Q4
+tags:
+    - 贪心
+    - 数组
+    - 动态规划
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [1402. 做菜顺序](https://leetcode.cn/problems/reducing-dishes)
 
 [English Version](/solution/1400-1499/1402.Reducing%20Dishes/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>一个厨师收集了他&nbsp;<code>n</code>&nbsp;道菜的满意程度&nbsp;<code>satisfaction</code>&nbsp;，这个厨师做出每道菜的时间都是 1 单位时间。</p>
 
@@ -49,11 +64,13 @@
 	<li><code>-1000 &lt;= satisfaction[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 排序**
+### 方法一：贪心 + 排序
 
 假如我们只选择一道菜，那么我们应该选择满意度最大的那道菜 $s_0$，并且判断 $s_0$ 是否大于 0，如果 $s_0 \leq 0$，那么我们就不做菜了，否则我们做这道菜，得到的总满意度为 $s_0$。
 
@@ -67,9 +84,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -84,9 +99,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -105,7 +118,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -125,7 +138,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxSatisfaction(satisfaction []int) (ans int) {
@@ -142,7 +155,7 @@ func maxSatisfaction(satisfaction []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxSatisfaction(satisfaction: number[]): number {
@@ -159,10 +172,8 @@ function maxSatisfaction(satisfaction: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

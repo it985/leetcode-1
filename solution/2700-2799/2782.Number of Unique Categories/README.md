@@ -1,10 +1,22 @@
-# [2782. 唯一类别的数量](https://leetcode.cn/problems/number-of-unique-categories)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2782.Number%20of%20Unique%20Categories/README.md
+tags:
+    - 并查集
+    - 计数
+    - 交互
+---
+
+<!-- problem:start -->
+
+# [2782. 唯一类别的数量 🔒](https://leetcode.cn/problems/number-of-unique-categories)
 
 [English Version](/solution/2700-2799/2782.Number%20of%20Unique%20Categories/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>现给定一个整数 <code>n</code> 和一个 <code>CategoryHandler</code> 类的对象 <code>categoryHandler</code> 。</p>
 
@@ -52,11 +64,13 @@
 	<li><code>1 &lt;= n &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：并查集**
+### 方法一：并查集
 
 我们用并查集来维护相同类别的元素，接下来枚举所有的元素对，如果两个元素属于相同的类别，那么就将它们合并到同一个集合中。最后统计并查集中有多少个集合，就是答案。
 
@@ -64,9 +78,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a category handler.
@@ -90,9 +102,7 @@ class Solution:
         return sum(i == x for i, x in enumerate(p))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -135,7 +145,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -173,7 +183,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -210,7 +220,7 @@ func numberOfCategories(n int, categoryHandler CategoryHandler) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -245,10 +255,8 @@ function numberOfCategories(n: number, categoryHandler: CategoryHandler): number
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

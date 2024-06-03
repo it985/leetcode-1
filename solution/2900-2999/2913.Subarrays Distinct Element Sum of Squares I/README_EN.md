@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2913.Subarrays%20Distinct%20Element%20Sum%20of%20Squares%20I/README_EN.md
+rating: 1297
+source: Biweekly Contest 116 Q1
+tags:
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
 # [2913. Subarrays Distinct Element Sum of Squares I](https://leetcode.com/problems/subarrays-distinct-element-sum-of-squares-i)
 
 [中文文档](/solution/2900-2999/2913.Subarrays%20Distinct%20Element%20Sum%20of%20Squares%20I/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed </strong>integer array <code>nums</code>.</p>
 
@@ -51,9 +66,13 @@ The sum of the squares of the distinct counts in all subarrays is equal to 1<sup
 	<li><code>1 &lt;= nums[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Enumeration
 
 We can enumerate the left endpoint index $i$ of the subarray, and for each $i$, we enumerate the right endpoint index $j$ in the range $[i, n)$, and calculate the distinct count of $nums[i..j]$ by adding the count of $nums[j]$ to a set $s$, and then taking the square of the size of $s$ as the contribution of $nums[i..j]$ to the answer.
 
@@ -63,7 +82,7 @@ The time complexity is $O(n^2)$, and the space complexity is $O(n)$. Here, $n$ i
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -77,7 +96,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +118,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -122,7 +141,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sumCounts(nums []int) (ans int) {
@@ -141,7 +160,7 @@ func sumCounts(nums []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sumCounts(nums: number[]): number {
@@ -161,10 +180,8 @@ function sumCounts(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0093.Restore%20IP%20Addresses/README_EN.md
+tags:
+    - String
+    - Backtracking
+---
+
+<!-- problem:start -->
+
 # [93. Restore IP Addresses](https://leetcode.com/problems/restore-ip-addresses)
 
 [中文文档](/solution/0000-0099/0093.Restore%20IP%20Addresses/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A <strong>valid IP address</strong> consists of exactly four integers separated by single dots. Each integer is between <code>0</code> and <code>255</code> (<strong>inclusive</strong>) and cannot have leading zeros.</p>
 
@@ -42,9 +55,13 @@
 	<li><code>s</code> consists of digits only.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: DFS**
+<!-- solution:start -->
+
+### Solution 1: DFS
 
 We define a function $dfs(i)$, which represents the list of IP addresses that can be formed starting from the $i$th position of string $s$.
 
@@ -58,7 +75,7 @@ The time complexity is $O(n \times 3^4)$, and the space complexity is $O(n)$. He
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -87,7 +104,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -125,7 +142,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -159,7 +176,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func restoreIpAddresses(s string) (ans []string) {
@@ -190,7 +207,7 @@ func restoreIpAddresses(s string) (ans []string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function restoreIpAddresses(s: string): string[] {
@@ -221,7 +238,7 @@ function restoreIpAddresses(s: string): string[] {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -259,10 +276,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

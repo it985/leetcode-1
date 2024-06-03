@@ -1,8 +1,21 @@
-# [1426. Counting Elements](https://leetcode.com/problems/counting-elements)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1426.Counting%20Elements/README_EN.md
+tags:
+    - Array
+    - Hash Table
+---
+
+<!-- problem:start -->
+
+# [1426. Counting Elements 🔒](https://leetcode.com/problems/counting-elements)
 
 [中文文档](/solution/1400-1499/1426.Counting%20Elements/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>arr</code>, count how many elements <code>x</code> there are, such that <code>x + 1</code> is also in <code>arr</code>. If there are duplicates in <code>arr</code>, count them separately.</p>
 
@@ -31,9 +44,13 @@
 	<li><code>0 &lt;= arr[i] &lt;= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Counting**
+<!-- solution:start -->
+
+### Solution 1: Counting
 
 We can use a hash table or array $cnt$ to record the frequency of each number in the array $arr$. Then, we traverse each number $x$ in $cnt$. If $x+1$ also exists in $cnt$, we add $cnt[x]$ to the answer.
 
@@ -41,7 +58,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -50,7 +67,7 @@ class Solution:
         return sum(v for x, v in cnt.items() if cnt[x + 1])
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -70,7 +87,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -91,7 +108,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countElements(arr []int) (ans int) {
@@ -109,7 +126,7 @@ func countElements(arr []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countElements(arr: number[]): number {
@@ -128,7 +145,26 @@ function countElements(arr: number[]): number {
 }
 ```
 
-### **JavaScript**
+#### Rust
+
+```rust
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn count_elements(arr: Vec<i32>) -> i32 {
+        let mut cnt = HashMap::new();
+        for &num in &arr {
+            *cnt.entry(num).or_insert(0) += 1;
+        }
+        cnt.iter()
+            .filter(|(&x, _)| cnt.contains_key(&(x + 1)))
+            .map(|(_, &v)| v)
+            .sum()
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -151,26 +187,7 @@ var countElements = function (arr) {
 };
 ```
 
-### **Rust**
-
-```rust
-use std::collections::HashMap;
-
-impl Solution {
-    pub fn count_elements(arr: Vec<i32>) -> i32 {
-        let mut cnt = HashMap::new();
-        for &num in &arr {
-            *cnt.entry(num).or_insert(0) += 1;
-        }
-        cnt.iter()
-            .filter(|(&x, _)| cnt.contains_key(&(x + 1)))
-            .map(|(_, &v)| v)
-            .sum()
-    }
-}
-```
-
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -191,10 +208,8 @@ class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

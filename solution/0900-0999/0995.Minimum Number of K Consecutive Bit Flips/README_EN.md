@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0900-0999/0995.Minimum%20Number%20of%20K%20Consecutive%20Bit%20Flips/README_EN.md
+tags:
+    - Bit Manipulation
+    - Queue
+    - Array
+    - Prefix Sum
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [995. Minimum Number of K Consecutive Bit Flips](https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips)
 
 [中文文档](/solution/0900-0999/0995.Minimum%20Number%20of%20K%20Consecutive%20Bit%20Flips/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a binary array <code>nums</code> and an integer <code>k</code>.</p>
 
@@ -48,9 +64,13 @@ Flip nums[5],nums[6],nums[7]: nums becomes [1,1,1,1,1,1,1,1]
 	<li><code>1 &lt;= k &lt;= nums.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Difference Array**
+<!-- solution:start -->
+
+### Solution 1: Difference Array
 
 We notice that the result of reversing several consecutive elements is independent of the order of the reversals. Therefore, we can greedily consider the number of reversals needed at each position.
 
@@ -64,7 +84,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -84,7 +104,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -109,7 +129,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -136,7 +156,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minKBitFlips(nums []int, k int) int {
@@ -159,7 +179,7 @@ func minKBitFlips(nums []int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minKBitFlips(nums: number[], k: number): number {
@@ -182,7 +202,7 @@ function minKBitFlips(nums: number[], k: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -208,10 +228,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

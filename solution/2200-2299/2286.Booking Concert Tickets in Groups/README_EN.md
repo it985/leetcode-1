@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2286.Booking%20Concert%20Tickets%20in%20Groups/README_EN.md
+rating: 2470
+source: Biweekly Contest 79 Q4
+tags:
+    - Design
+    - Binary Indexed Tree
+    - Segment Tree
+    - Binary Search
+---
+
+<!-- problem:start -->
+
 # [2286. Booking Concert Tickets in Groups](https://leetcode.com/problems/booking-concert-tickets-in-groups)
 
 [中文文档](/solution/2200-2299/2286.Booking%20Concert%20Tickets%20in%20Groups/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A concert hall has <code>n</code> rows numbered from <code>0</code> to <code>n - 1</code>, each with <code>m</code> seats, numbered from <code>0</code> to <code>m - 1</code>. You need to design a ticketing system that can allocate seats in the following cases:</p>
 
@@ -59,11 +76,17 @@ bms.scatter(5, 1); // return False
 	<li>At most <code>5 * 10<sup>4</sup></code> calls <strong>in total</strong> will be made to <code>gather</code> and <code>scatter</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Node:
@@ -162,7 +185,7 @@ class BookMyShow:
 # param_2 = obj.scatter(k,maxRow)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Node {
@@ -299,7 +322,7 @@ class BookMyShow {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Node {
@@ -439,7 +462,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type BookMyShow struct {
@@ -570,16 +593,8 @@ func (t *segmentTree) pushup(u int) {
  */
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

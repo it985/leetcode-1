@@ -1,14 +1,28 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0057.Insert%20Interval/README_EN.md
+tags:
+    - Array
+---
+
+<!-- problem:start -->
+
 # [57. Insert Interval](https://leetcode.com/problems/insert-interval)
 
 [中文文档](/solution/0000-0099/0057.Insert%20Interval/README.md)
 
 ## Description
 
+<!-- description:start -->
+
 <p>You are given an array of non-overlapping intervals <code>intervals</code> where <code>intervals[i] = [start<sub>i</sub>, end<sub>i</sub>]</code> represent the start and the end of the <code>i<sup>th</sup></code> interval and <code>intervals</code> is sorted in ascending order by <code>start<sub>i</sub></code>. You are also given an interval <code>newInterval = [start, end]</code> that represents the start and end of another interval.</p>
 
 <p>Insert <code>newInterval</code> into <code>intervals</code> such that <code>intervals</code> is still sorted in ascending order by <code>start<sub>i</sub></code> and <code>intervals</code> still does not have any overlapping intervals (merge overlapping intervals if necessary).</p>
 
 <p>Return <code>intervals</code><em> after the insertion</em>.</p>
+
+<p><strong>Note</strong> that you don&#39;t need to modify <code>intervals</code> in-place. You can make a new array and return it.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
@@ -38,29 +52,21 @@
 	<li><code>0 &lt;= start &lt;= end &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sorting + Interval Merging**
+<!-- solution:start -->
+
+### Solution 1: Sorting + Interval Merging
 
 We can first add the new interval `newInterval` to the interval list `intervals`, and then merge according to the regular method of interval merging.
 
 The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$. Here, $n$ is the number of intervals.
 
-**Solution 2: One-pass Traversal**
-
-We can traverse the interval list `intervals`, let the current interval be `interval`, and there are three situations for each interval:
-
--   The current interval is on the right side of the new interval, that is, $newInterval[1] < interval[0]$. At this time, if the new interval has not been added, then add the new interval to the answer, and then add the current interval to the answer.
--   The current interval is on the left side of the new interval, that is, $interval[1] < newInterval[0]$. At this time, add the current interval to the answer.
--   Otherwise, it means that the current interval and the new interval intersect. We take the minimum of the left endpoint of the current interval and the left endpoint of the new interval, and the maximum of the right endpoint of the current interval and the right endpoint of the new interval, as the left and right endpoints of the new interval, and then continue to traverse the interval list.
-
-After the traversal, if the new interval has not been added, then add the new interval to the answer.
-
-The time complexity is $O(n)$, where $n$ is the number of intervals. Ignoring the space consumption of the answer array, the space complexity is $O(1)$.
-
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -81,31 +87,7 @@ class Solution:
         return merge(intervals)
 ```
 
-```python
-class Solution:
-    def insert(
-        self, intervals: List[List[int]], newInterval: List[int]
-    ) -> List[List[int]]:
-        st, ed = newInterval
-        ans = []
-        insert = False
-        for s, e in intervals:
-            if ed < s:
-                if not insert:
-                    ans.append([st, ed])
-                    insert = True
-                ans.append([s, e])
-            elif e < st:
-                ans.append([s, e])
-            else:
-                st = min(st, s)
-                ed = max(ed, e)
-        if not insert:
-            ans.append([st, ed])
-        return ans
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -134,6 +116,182 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
+        intervals.emplace_back(newInterval);
+        return merge(intervals);
+    }
+
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        sort(intervals.begin(), intervals.end());
+        vector<vector<int>> ans;
+        ans.emplace_back(intervals[0]);
+        for (int i = 1; i < intervals.size(); ++i) {
+            if (ans.back()[1] < intervals[i][0]) {
+                ans.emplace_back(intervals[i]);
+            } else {
+                ans.back()[1] = max(ans.back()[1], intervals[i][1]);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func insert(intervals [][]int, newInterval []int) [][]int {
+	merge := func(intervals [][]int) (ans [][]int) {
+		sort.Slice(intervals, func(i, j int) bool { return intervals[i][0] < intervals[j][0] })
+		ans = append(ans, intervals[0])
+		for _, e := range intervals[1:] {
+			if ans[len(ans)-1][1] < e[0] {
+				ans = append(ans, e)
+			} else {
+				ans[len(ans)-1][1] = max(ans[len(ans)-1][1], e[1])
+			}
+		}
+		return
+	}
+	intervals = append(intervals, newInterval)
+	return merge(intervals)
+}
+```
+
+#### TypeScript
+
+```ts
+function insert(intervals: number[][], newInterval: number[]): number[][] {
+    const merge = (intervals: number[][]): number[][] => {
+        intervals.sort((a, b) => a[0] - b[0]);
+        const ans: number[][] = [intervals[0]];
+        for (let i = 1; i < intervals.length; ++i) {
+            if (ans.at(-1)[1] < intervals[i][0]) {
+                ans.push(intervals[i]);
+            } else {
+                ans.at(-1)[1] = Math.max(ans.at(-1)[1], intervals[i][1]);
+            }
+        }
+        return ans;
+    };
+
+    intervals.push(newInterval);
+    return merge(intervals);
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn insert(intervals: Vec<Vec<i32>>, new_interval: Vec<i32>) -> Vec<Vec<i32>> {
+        let mut merged_intervals = intervals.clone();
+        merged_intervals.push(vec![new_interval[0], new_interval[1]]);
+        // sort by elem[0]
+        merged_intervals.sort_by_key(|elem| elem[0]);
+        // merge interval
+        let mut result = vec![];
+
+        for interval in merged_intervals {
+            if result.is_empty() {
+                result.push(interval);
+                continue;
+            }
+
+            let last_elem = result.last_mut().unwrap();
+            if interval[0] > last_elem[1] {
+                result.push(interval);
+            } else {
+                last_elem[1] = last_elem[1].max(interval[1]);
+            }
+        }
+        result
+    }
+}
+```
+
+#### C#
+
+```cs
+public class Solution {
+    public int[][] Insert(int[][] intervals, int[] newInterval) {
+        int[][] newIntervals = new int[intervals.Length + 1][];
+        for (int i = 0; i < intervals.Length; ++i) {
+            newIntervals[i] = intervals[i];
+        }
+        newIntervals[intervals.Length] = newInterval;
+        return Merge(newIntervals);
+    }
+
+    public int[][] Merge(int[][] intervals) {
+        intervals = intervals.OrderBy(a => a[0]).ToArray();
+        var ans = new List<int[]>();
+        ans.Add(intervals[0]);
+        for (int i = 1; i < intervals.Length; ++i) {
+            if (ans[ans.Count - 1][1] < intervals[i][0]) {
+                ans.Add(intervals[i]);
+            } else {
+                ans[ans.Count - 1][1] = Math.Max(ans[ans.Count - 1][1], intervals[i][1]);
+            }
+        }
+        return ans.ToArray();
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: One-pass Traversal
+
+We can traverse the interval list `intervals`, let the current interval be `interval`, and there are three situations for each interval:
+
+-   The current interval is on the right side of the new interval, that is, $newInterval[1] < interval[0]$. At this time, if the new interval has not been added, then add the new interval to the answer, and then add the current interval to the answer.
+-   The current interval is on the left side of the new interval, that is, $interval[1] < newInterval[0]$. At this time, add the current interval to the answer.
+-   Otherwise, it means that the current interval and the new interval intersect. We take the minimum of the left endpoint of the current interval and the left endpoint of the new interval, and the maximum of the right endpoint of the current interval and the right endpoint of the new interval, as the left and right endpoints of the new interval, and then continue to traverse the interval list.
+
+After the traversal, if the new interval has not been added, then add the new interval to the answer.
+
+The time complexity is $O(n)$, where $n$ is the number of intervals. Ignoring the space consumption of the answer array, the space complexity is $O(1)$.
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def insert(
+        self, intervals: List[List[int]], newInterval: List[int]
+    ) -> List[List[int]]:
+        st, ed = newInterval
+        ans = []
+        insert = False
+        for s, e in intervals:
+            if ed < s:
+                if not insert:
+                    ans.append([st, ed])
+                    insert = True
+                ans.append([s, e])
+            elif e < st:
+                ans.append([s, e])
+            else:
+                st = min(st, s)
+                ed = max(ed, e)
+        if not insert:
+            ans.append([st, ed])
+        return ans
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -164,31 +322,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
-        intervals.emplace_back(newInterval);
-        return merge(intervals);
-    }
-
-    vector<vector<int>> merge(vector<vector<int>>& intervals) {
-        sort(intervals.begin(), intervals.end());
-        vector<vector<int>> ans;
-        ans.emplace_back(intervals[0]);
-        for (int i = 1; i < intervals.size(); ++i) {
-            if (ans.back()[1] < intervals[i][0]) {
-                ans.emplace_back(intervals[i]);
-            } else {
-                ans.back()[1] = max(ans.back()[1], intervals[i][1]);
-            }
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -220,26 +354,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func insert(intervals [][]int, newInterval []int) [][]int {
-	merge := func(intervals [][]int) (ans [][]int) {
-		sort.Slice(intervals, func(i, j int) bool { return intervals[i][0] < intervals[j][0] })
-		ans = append(ans, intervals[0])
-		for _, e := range intervals[1:] {
-			if ans[len(ans)-1][1] < e[0] {
-				ans = append(ans, e)
-			} else {
-				ans[len(ans)-1][1] = max(ans[len(ans)-1][1], e[1])
-			}
-		}
-		return
-	}
-	intervals = append(intervals, newInterval)
-	return merge(intervals)
-}
-```
+#### Go
 
 ```go
 func insert(intervals [][]int, newInterval []int) (ans [][]int) {
@@ -267,27 +382,7 @@ func insert(intervals [][]int, newInterval []int) (ans [][]int) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function insert(intervals: number[][], newInterval: number[]): number[][] {
-    const merge = (intervals: number[][]): number[][] => {
-        intervals.sort((a, b) => a[0] - b[0]);
-        const ans: number[][] = [intervals[0]];
-        for (let i = 1; i < intervals.length; ++i) {
-            if (ans.at(-1)[1] < intervals[i][0]) {
-                ans.push(intervals[i]);
-            } else {
-                ans.at(-1)[1] = Math.max(ans.at(-1)[1], intervals[i][1]);
-            }
-        }
-        return ans;
-    };
-
-    intervals.push(newInterval);
-    return merge(intervals);
-}
-```
+#### TypeScript
 
 ```ts
 function insert(intervals: number[][], newInterval: number[]): number[][] {
@@ -315,93 +410,7 @@ function insert(intervals: number[][], newInterval: number[]): number[][] {
 }
 ```
 
-### **C#**
-
-```cs
-public class Solution {
-    public int[][] Insert(int[][] intervals, int[] newInterval) {
-        int[][] newIntervals = new int[intervals.Length + 1][];
-        for (int i = 0; i < intervals.Length; ++i) {
-            newIntervals[i] = intervals[i];
-        }
-        newIntervals[intervals.Length] = newInterval;
-        return Merge(newIntervals);
-    }
-
-    public int[][] Merge(int[][] intervals) {
-        intervals = intervals.OrderBy(a => a[0]).ToArray();
-        var ans = new List<int[]>();
-        ans.Add(intervals[0]);
-        for (int i = 1; i < intervals.Length; ++i) {
-            if (ans[ans.Count - 1][1] < intervals[i][0]) {
-                ans.Add(intervals[i]);
-            } else {
-                ans[ans.Count - 1][1] = Math.Max(ans[ans.Count - 1][1], intervals[i][1]);
-            }
-        }
-        return ans.ToArray();
-    }
-}
-```
-
-```cs
-public class Solution {
-    public int[][] Insert(int[][] intervals, int[] newInterval) {
-        var ans = new List<int[]>();
-        int st = newInterval[0], ed = newInterval[1];
-        bool insert = false;
-        foreach (var interval in intervals) {
-            int s = interval[0], e = interval[1];
-            if (ed < s) {
-                if (!insert) {
-                    ans.Add(new int[]{st, ed});
-                    insert = true;
-                }
-                ans.Add(interval);
-            } else if (st > e) {
-                ans.Add(interval);
-            } else {
-                st = Math.Min(st, s);
-                ed = Math.Max(ed, e);
-            }
-        }
-        if (!insert) {
-            ans.Add(new int[]{st, ed});
-        }
-        return ans.ToArray();
-    }
-}
-```
-
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn insert(intervals: Vec<Vec<i32>>, new_interval: Vec<i32>) -> Vec<Vec<i32>> {
-        let mut merged_intervals = intervals.clone();
-        merged_intervals.push(vec![new_interval[0], new_interval[1]]);
-        // sort by elem[0]
-        merged_intervals.sort_by_key(|elem| elem[0]);
-        // merge interval
-        let mut result = vec![];
-
-        for interval in merged_intervals {
-            if result.is_empty() {
-                result.push(interval);
-                continue;
-            }
-
-            let last_elem = result.last_mut().unwrap();
-            if interval[0] > last_elem[1] {
-                result.push(interval);
-            } else {
-                last_elem[1] = last_elem[1].max(interval[1]);
-            }
-        }
-        result
-    }
-}
-```
+#### Rust
 
 ```rust
 impl Solution {
@@ -434,10 +443,39 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C#
 
-```
-
+```cs
+public class Solution {
+    public int[][] Insert(int[][] intervals, int[] newInterval) {
+        var ans = new List<int[]>();
+        int st = newInterval[0], ed = newInterval[1];
+        bool insert = false;
+        foreach (var interval in intervals) {
+            int s = interval[0], e = interval[1];
+            if (ed < s) {
+                if (!insert) {
+                    ans.Add(new int[]{st, ed});
+                    insert = true;
+                }
+                ans.Add(interval);
+            } else if (st > e) {
+                ans.Add(interval);
+            } else {
+                st = Math.Min(st, s);
+                ed = Math.Max(ed, e);
+            }
+        }
+        if (!insert) {
+            ans.Add(new int[]{st, ed});
+        }
+        return ans.ToArray();
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2830.Maximize%20the%20Profit%20as%20the%20Salesman/README.md
+rating: 1851
+source: 第 359 场周赛 Q3
+tags:
+    - 数组
+    - 哈希表
+    - 二分查找
+    - 动态规划
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2830. 销售利润最大化](https://leetcode.cn/problems/maximize-the-profit-as-the-salesman)
 
 [English Version](/solution/2800-2899/2830.Maximize%20the%20Profit%20as%20the%20Salesman/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数 <code>n</code> 表示数轴上的房屋数量，编号从 <code>0</code> 到 <code>n - 1</code> 。</p>
 
@@ -49,11 +65,13 @@
 	<li><code>1 &lt;= gold<sub>i</sub> &lt;= 10<sup>3</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 二分查找 + 动态规划**
+### 方法一：排序 + 二分查找 + 动态规划
 
 我们将所有的购买要约按照 $end$ 从小到大排序，然后使用动态规划求解。
 
@@ -65,9 +83,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -81,9 +97,7 @@ class Solution:
         return f[-1]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -118,7 +132,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -143,7 +157,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximizeTheProfit(n int, offers [][]int) int {
@@ -162,7 +176,7 @@ func maximizeTheProfit(n int, offers [][]int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximizeTheProfit(n: number, offers: number[][]): number {
@@ -191,10 +205,8 @@ function maximizeTheProfit(n: number, offers: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

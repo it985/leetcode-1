@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2415.Reverse%20Odd%20Levels%20of%20Binary%20Tree/README_EN.md
+rating: 1431
+source: Weekly Contest 311 Q3
+tags:
+    - Tree
+    - Depth-First Search
+    - Breadth-First Search
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [2415. Reverse Odd Levels of Binary Tree](https://leetcode.com/problems/reverse-odd-levels-of-binary-tree)
 
 [中文文档](/solution/2400-2499/2415.Reverse%20Odd%20Levels%20of%20Binary%20Tree/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the <code>root</code> of a <strong>perfect</strong> binary tree, reverse the node values at each <strong>odd</strong> level of the tree.</p>
 
@@ -56,9 +73,13 @@ The nodes at level 3 were 1, 1, 1, 1, 2, 2, 2, 2, and are 2, 2, 2, 2, 1, 1, 1, 1
 	<li><code>root</code> is a <strong>perfect</strong> binary tree.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: BFS**
+<!-- solution:start -->
+
+### Solution 1: BFS
 
 We can use the Breadth-First Search (BFS) method, using a queue $q$ to store the nodes of each level, and a variable $i$ to record the current level. If $i$ is odd, we reverse the values of the nodes at the current level.
 
@@ -66,7 +87,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -94,7 +115,7 @@ class Solution:
         return root
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -139,7 +160,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -179,7 +200,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -213,7 +234,7 @@ func reverseOddLevels(root *TreeNode) *TreeNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -251,7 +272,7 @@ function reverseOddLevels(root: TreeNode | null): TreeNode | null {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -322,10 +343,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

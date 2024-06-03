@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0481.Magical%20String/README_EN.md
+tags:
+    - Two Pointers
+    - String
+---
+
+<!-- problem:start -->
+
 # [481. Magical String](https://leetcode.com/problems/magical-string)
 
 [中文文档](/solution/0400-0499/0481.Magical%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A magical string <code>s</code> consists of only <code>&#39;1&#39;</code> and <code>&#39;2&#39;</code> and obeys the following rules:</p>
 
@@ -37,11 +50,17 @@
 	<li><code>1 &lt;= n &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -51,12 +70,13 @@ class Solution:
         while len(s) < n:
             pre = s[-1]
             cur = 3 - pre
+            # cur 表示这一组的数字，s[i] 表示这一组数字出现的次数
             s += [cur] * s[i]
             i += 1
         return s[:n].count(1)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -80,7 +100,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -99,7 +119,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func magicalString(n int) (ans int) {
@@ -120,7 +140,7 @@ func magicalString(n int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function magicalString(n: number): number {
@@ -138,7 +158,7 @@ function magicalString(n: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -163,10 +183,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

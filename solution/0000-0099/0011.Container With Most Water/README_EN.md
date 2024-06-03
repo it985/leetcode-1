@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0011.Container%20With%20Most%20Water/README_EN.md
+tags:
+    - Greedy
+    - Array
+    - Two Pointers
+---
+
+<!-- problem:start -->
+
 # [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water)
 
 [中文文档](/solution/0000-0099/0011.Container%20With%20Most%20Water/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>height</code> of length <code>n</code>. There are <code>n</code> vertical lines drawn such that the two endpoints of the <code>i<sup>th</sup></code> line are <code>(i, 0)</code> and <code>(i, height[i])</code>.</p>
 
@@ -37,9 +51,13 @@
 	<li><code>0 &lt;= height[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Two Pointers
 
 Initially, we consider the capacity of the water that the two farthest pillars can hold. The width of the water is the distance between the two pillars, and the height of the water depends on the shorter one between the two pillars.
 
@@ -51,7 +69,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array `height`. Th
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -68,7 +86,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -89,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -111,7 +129,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxArea(height []int) (ans int) {
@@ -129,7 +147,48 @@ func maxArea(height []int) (ans int) {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function maxArea(height: number[]): number {
+    let i = 0;
+    let j = height.length - 1;
+    let ans = 0;
+    while (i < j) {
+        const t = Math.min(height[i], height[j]) * (j - i);
+        ans = Math.max(ans, t);
+        if (height[i] < height[j]) {
+            ++i;
+        } else {
+            --j;
+        }
+    }
+    return ans;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn max_area(height: Vec<i32>) -> i32 {
+        let mut i = 0;
+        let mut j = height.len() - 1;
+        let mut ans = 0;
+        while i < j {
+            ans = ans.max(height[i].min(height[j]) * ((j - i) as i32));
+            if height[i] <= height[j] {
+                i += 1;
+            } else {
+                j -= 1;
+            }
+        }
+        ans
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -153,27 +212,7 @@ var maxArea = function (height) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function maxArea(height: number[]): number {
-    let i = 0;
-    let j = height.length - 1;
-    let ans = 0;
-    while (i < j) {
-        const t = Math.min(height[i], height[j]) * (j - i);
-        ans = Math.max(ans, t);
-        if (height[i] < height[j]) {
-            ++i;
-        } else {
-            --j;
-        }
-    }
-    return ans;
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -194,31 +233,34 @@ public class Solution {
 }
 ```
 
-### **Rust**
+#### PHP
 
-```rust
-impl Solution {
-    pub fn max_area(height: Vec<i32>) -> i32 {
-        let mut i = 0;
-        let mut j = height.len() - 1;
-        let mut res = 0;
-        while i < j {
-            res = res.max(height[i].min(height[j]) * ((j - i) as i32));
-            if height[i] <= height[j] {
-                i += 1;
+```php
+class Solution {
+    /**
+     * @param Integer[] $height
+     * @return Integer
+     */
+    function maxArea($height) {
+        $i = 0;
+        $j = count($height) - 1;
+        $ans = 0;
+        while ($i < $j) {
+            $t = min($height[$i], $height[$j]) * ($j - $i);
+            $ans = max($ans, $t);
+            if ($height[$i] < $height[$j]) {
+                ++$i;
             } else {
-                j -= 1;
+                --$j;
             }
         }
-        res
+        return $ans;
     }
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

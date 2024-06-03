@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0061.Rotate%20List/README.md
+tags:
+    - 链表
+    - 双指针
+---
+
+<!-- problem:start -->
+
 # [61. 旋转链表](https://leetcode.cn/problems/rotate-list)
 
 [English Version](/solution/0000-0099/0061.Rotate%20List/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个链表的头节点 <code>head</code> ，旋转链表，将链表每个节点向右移动&nbsp;<code>k</code><em>&nbsp;</em>个位置。</p>
 
@@ -34,11 +45,13 @@
 	<li><code>0 &lt;= k &lt;= 2 * 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：快慢指针 + 链表拼接**
+### 方法一：快慢指针 + 链表拼接
 
 我们先判断链表节点数是否小于 $2$，如果是，直接返回 $head$ 即可。
 
@@ -54,9 +67,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -87,9 +98,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -133,7 +142,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -179,7 +188,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -218,7 +227,7 @@ func rotateRight(head *ListNode, k int) *ListNode {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -263,53 +272,7 @@ function rotateRight(head: ListNode | null, k: number): ListNode | null {
 }
 ```
 
-### **C#**
-
-```cs
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     public int val;
- *     public ListNode next;
- *     public ListNode(int val=0, ListNode next=null) {
- *         this.val = val;
- *         this.next = next;
- *     }
- * }
- */
-public class Solution {
-    public ListNode RotateRight(ListNode head, int k) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        var cur = head;
-        int n = 0;
-        while (cur != null) {
-            cur = cur.next;
-            ++n;
-        }
-        k %= n;
-        if (k == 0) {
-            return head;
-        }
-        var fast = head;
-        var slow = head;
-        while (k-- > 0) {
-            fast = fast.next;
-        }
-        while (fast.next != null) {
-            fast = fast.next;
-            slow = slow.next;
-        }
-        var ans = slow.next;
-        slow.next = null;
-        fast.next = head;
-        return ans;
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for singly-linked list.
@@ -362,10 +325,54 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C#
 
-```
-
+```cs
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     public ListNode(int val=0, ListNode next=null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode RotateRight(ListNode head, int k) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        var cur = head;
+        int n = 0;
+        while (cur != null) {
+            cur = cur.next;
+            ++n;
+        }
+        k %= n;
+        if (k == 0) {
+            return head;
+        }
+        var fast = head;
+        var slow = head;
+        while (k-- > 0) {
+            fast = fast.next;
+        }
+        while (fast.next != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        var ans = slow.next;
+        slow.next = null;
+        fast.next = head;
+        return ans;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

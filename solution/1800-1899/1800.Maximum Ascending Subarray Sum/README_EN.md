@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1800.Maximum%20Ascending%20Subarray%20Sum/README_EN.md
+rating: 1229
+source: Weekly Contest 233 Q1
+tags:
+    - Array
+---
+
+<!-- problem:start -->
+
 # [1800. Maximum Ascending Subarray Sum](https://leetcode.com/problems/maximum-ascending-subarray-sum)
 
 [中文文档](/solution/1800-1899/1800.Maximum%20Ascending%20Subarray%20Sum/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of positive integers <code>nums</code>, return the <em>maximum possible sum of an <strong>ascending</strong> subarray in </em><code>nums</code>.</p>
 
@@ -43,9 +57,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Direct Simulation**
+<!-- solution:start -->
+
+### Solution 1: Direct Simulation
 
 We use a variable $t$ to record the current sum of the ascending subarray, and a variable $ans$ to record the maximum sum of the ascending subarray.
 
@@ -59,7 +77,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array $nums$. The 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -74,7 +92,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -93,7 +111,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -113,7 +131,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxAscendingSum(nums []int) int {
@@ -132,26 +150,7 @@ func maxAscendingSum(nums []int) int {
 }
 ```
 
-### **C**
-
-```c
-#define max(a, b) (((a) > (b)) ? (a) : (b))
-
-int maxAscendingSum(int* nums, int numsSize) {
-    int res = nums[0];
-    int sum = nums[0];
-    for (int i = 1; i < numsSize; i++) {
-        if (nums[i - 1] >= nums[i]) {
-            res = max(res, sum);
-            sum = 0;
-        }
-        sum += nums[i];
-    }
-    return max(res, sum);
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxAscendingSum(nums: number[]): number {
@@ -169,7 +168,7 @@ function maxAscendingSum(nums: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -189,10 +188,27 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C
 
-```
+```c
+#define max(a, b) (((a) > (b)) ? (a) : (b))
 
+int maxAscendingSum(int* nums, int numsSize) {
+    int res = nums[0];
+    int sum = nums[0];
+    for (int i = 1; i < numsSize; i++) {
+        if (nums[i - 1] >= nums[i]) {
+            res = max(res, sum);
+            sum = 0;
+        }
+        sum += nums[i];
+    }
+    return max(res, sum);
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

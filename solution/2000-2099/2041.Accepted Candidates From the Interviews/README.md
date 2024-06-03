@@ -1,10 +1,20 @@
-# [2041. 面试中被录取的候选人](https://leetcode.cn/problems/accepted-candidates-from-the-interviews)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2041.Accepted%20Candidates%20From%20the%20Interviews/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2041. 面试中被录取的候选人 🔒](https://leetcode.cn/problems/accepted-candidates-from-the-interviews)
 
 [English Version](/solution/2000-2099/2041.Accepted%20Candidates%20From%20the%20Interviews/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code>Candidates</code></p>
 
@@ -90,15 +100,17 @@ Rounds table:
 - 候选人 8 ：总分是 6 ，0 年工作经验。由于工作年限和分数，不列入结果表。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -112,3 +124,7 @@ HAVING SUM(score) > 15;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

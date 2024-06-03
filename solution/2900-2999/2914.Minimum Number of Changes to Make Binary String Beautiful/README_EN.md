@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2914.Minimum%20Number%20of%20Changes%20to%20Make%20Binary%20String%20Beautiful/README_EN.md
+rating: 1479
+source: Biweekly Contest 116 Q2
+tags:
+    - String
+---
+
+<!-- problem:start -->
+
 # [2914. Minimum Number of Changes to Make Binary String Beautiful](https://leetcode.com/problems/minimum-number-of-changes-to-make-binary-string-beautiful)
 
 [中文文档](/solution/2900-2999/2914.Minimum%20Number%20of%20Changes%20to%20Make%20Binary%20String%20Beautiful/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> binary string <code>s</code> having an even length.</p>
 
@@ -55,9 +69,13 @@ It can be proven that 1 is the minimum number of changes needed to make the stri
 	<li><code>s[i]</code> is either <code>&#39;0&#39;</code> or <code>&#39;1&#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Counting**
+<!-- solution:start -->
+
+### Solution 1: Counting
 
 We only need to traverse all odd indices $1, 3, 5, \cdots$ of the string $s$. If the current odd index is different from the previous index, i.e., $s[i] \ne s[i - 1]$, we need to modify the current character so that $s[i] = s[i - 1]$. Therefore, the answer needs to be incremented by $1$.
 
@@ -67,7 +85,7 @@ The time complexity is $O(n)$, where $n$ is the length of the string $s$. The sp
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -75,7 +93,7 @@ class Solution:
         return sum(s[i] != s[i - 1] for i in range(1, len(s), 2))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +109,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -107,7 +125,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minChanges(s string) (ans int) {
@@ -120,7 +138,7 @@ func minChanges(s string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minChanges(s: string): number {
@@ -134,10 +152,8 @@ function minChanges(s: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

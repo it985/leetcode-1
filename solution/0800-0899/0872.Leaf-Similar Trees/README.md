@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0872.Leaf-Similar%20Trees/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [872. 叶子相似的树](https://leetcode.cn/problems/leaf-similar-trees)
 
 [English Version](/solution/0800-0899/0872.Leaf-Similar%20Trees/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>请考虑一棵二叉树上所有的叶子，这些叶子的值按从左到右的顺序排列形成一个&nbsp;<strong>叶值序列 </strong>。</p>
 
@@ -45,19 +57,19 @@
 	<li>给定的两棵树上的值在&nbsp;<code>[0, 200]</code> 范围内</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 后序遍历。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -77,9 +89,7 @@ class Solution:
         return dfs(root1) == dfs(root2)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -118,7 +128,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -149,7 +159,35 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func leafSimilar(root1 *TreeNode, root2 *TreeNode) bool {
+	var dfs func(*TreeNode) []int
+	dfs = func(root *TreeNode) []int {
+		if root == nil {
+			return []int{}
+		}
+		ans := dfs(root.Left)
+		ans = append(ans, dfs(root.Right)...)
+		if len(ans) == 0 {
+			ans = append(ans, root.Val)
+		}
+		return ans
+	}
+	return reflect.DeepEqual(dfs(root1), dfs(root2))
+}
+```
+
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -210,38 +248,28 @@ impl Solution {
 }
 ```
 
-### **Go**
+#### JavaScript
 
-```go
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func leafSimilar(root1 *TreeNode, root2 *TreeNode) bool {
-	var dfs func(*TreeNode) []int
-	dfs = func(root *TreeNode) []int {
-		if root == nil {
-			return []int{}
-		}
-		ans := dfs(root.Left)
-		ans = append(ans, dfs(root.Right)...)
-		if len(ans) == 0 {
-			ans = append(ans, root.Val)
-		}
-		return ans
-	}
-	return reflect.DeepEqual(dfs(root1), dfs(root2))
-}
-```
-
-### **...**
-
-```
-
+```js
+var leafSimilar = function (root1, root2) {
+    const dfs = root => {
+        if (!root) {
+            return [];
+        }
+        let ans = [...dfs(root.left), ...dfs(root.right)];
+        if (!ans.length) {
+            ans = [root.val];
+        }
+        return ans;
+    };
+    const l1 = dfs(root1);
+    const l2 = dfs(root2);
+    return l1.toString() === l2.toString();
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

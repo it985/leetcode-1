@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2879.Display%20the%20First%20Three%20Rows/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [2879. Display the First Three Rows](https://leetcode.com/problems/display-the-first-three-rows)
 
 [中文文档](/solution/2800-2899/2879.Display%20the%20First%20Three%20Rows/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <pre>
 DataFrame: <code>employees</code>
@@ -45,11 +55,17 @@ DataFrame: <code>employees</code>
 <strong>Explanation:</strong> 
 Only the first 3 rows are displayed.</pre>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Pandas**
+#### Python3
 
 ```python
 import pandas as pd
@@ -59,10 +75,8 @@ def selectFirstRows(employees: pd.DataFrame) -> pd.DataFrame:
     return employees.head(3)
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

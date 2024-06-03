@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0461.Hamming%20Distance/README_EN.md
+tags:
+    - Bit Manipulation
+---
+
+<!-- problem:start -->
+
 # [461. Hamming Distance](https://leetcode.com/problems/hamming-distance)
 
 [中文文档](/solution/0400-0499/0461.Hamming%20Distance/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>The <a href="https://en.wikipedia.org/wiki/Hamming_distance" target="_blank">Hamming distance</a> between two integers is the number of positions at which the corresponding bits are different.</p>
 
@@ -35,18 +47,17 @@ The above arrows point to positions where the corresponding bits are different.
 	<li><code>0 &lt;=&nbsp;x, y &lt;= 2<sup>31</sup> - 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-Use xor operation to find different bits.
+<!-- solution:start -->
 
--   0 ^ 0 = 0
--   1 ^ 1 = 0
--   0 ^ 1 = 1
--   1 ^ 0 = 1
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -54,7 +65,7 @@ class Solution:
         return (x ^ y).bit_count()
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -64,7 +75,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -75,7 +86,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func hammingDistance(x int, y int) int {
@@ -83,7 +94,21 @@ func hammingDistance(x int, y int) int {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function hammingDistance(x: number, y: number): number {
+    x ^= y;
+    let ans = 0;
+    while (x) {
+        x -= x & -x;
+        ++ans;
+    }
+    return ans;
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -102,24 +127,8 @@ var hammingDistance = function (x, y) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function hammingDistance(x: number, y: number): number {
-    x ^= y;
-    let ans = 0;
-    while (x) {
-        x -= x & -x;
-        ++ans;
-    }
-    return ans;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

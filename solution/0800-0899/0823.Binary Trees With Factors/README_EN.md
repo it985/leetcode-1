@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0823.Binary%20Trees%20With%20Factors/README_EN.md
+tags:
+    - Array
+    - Hash Table
+    - Dynamic Programming
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [823. Binary Trees With Factors](https://leetcode.com/problems/binary-trees-with-factors)
 
 [中文文档](/solution/0800-0899/0823.Binary%20Trees%20With%20Factors/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of unique integers, <code>arr</code>, where each integer <code>arr[i]</code> is strictly greater than <code>1</code>.</p>
 
@@ -34,11 +49,17 @@
 	<li>All the values of <code>arr</code> are <strong>unique</strong>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -56,7 +77,7 @@ class Solution:
         return sum(f) % mod
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -92,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -128,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numFactoredBinaryTrees(arr []int) int {
@@ -158,7 +179,7 @@ func numFactoredBinaryTrees(arr []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numFactoredBinaryTrees(arr: number[]): number {
@@ -187,10 +208,8 @@ function numFactoredBinaryTrees(arr: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

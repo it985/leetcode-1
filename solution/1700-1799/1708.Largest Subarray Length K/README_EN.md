@@ -1,8 +1,21 @@
-# [1708. Largest Subarray Length K](https://leetcode.com/problems/largest-subarray-length-k)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1708.Largest%20Subarray%20Length%20K/README_EN.md
+tags:
+    - Greedy
+    - Array
+---
+
+<!-- problem:start -->
+
+# [1708. Largest Subarray Length K 🔒](https://leetcode.com/problems/largest-subarray-length-k)
 
 [中文文档](/solution/1700-1799/1708.Largest%20Subarray%20Length%20K/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>An array <code>A</code> is larger than some array <code>B</code> if for the first index <code>i</code> where <code>A[i] != B[i]</code>, <code>A[i] &gt; B[i]</code>.</p>
 
@@ -53,9 +66,13 @@ Of these, [4,5,2,3] is the largest.</pre>
 <p>&nbsp;</p>
 <strong>Follow up:</strong> What if the integers in <code>nums</code> are not distinct?
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 All integers in the array are distinct, so we can first find the index of the maximum element in the range $[0,..n-k]$, and then take $k$ elements starting from this index.
 
@@ -63,7 +80,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array. Ignoring th
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -72,7 +89,7 @@ class Solution:
         return nums[i : i + k]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -88,7 +105,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -100,7 +117,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func largestSubarray(nums []int, k int) []int {
@@ -114,7 +131,7 @@ func largestSubarray(nums []int, k int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function largestSubarray(nums: number[], k: number): number[] {
@@ -128,7 +145,7 @@ function largestSubarray(nums: number[], k: number): number[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -144,10 +161,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
-# [2590. 设计一个待办事项清单](https://leetcode.cn/problems/design-a-todo-list)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2590.Design%20a%20Todo%20List/README.md
+tags:
+    - 设计
+    - 数组
+    - 哈希表
+    - 字符串
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [2590. 设计一个待办事项清单 🔒](https://leetcode.cn/problems/design-a-todo-list)
 
 [English Version](/solution/2500-2599/2590.Design%20a%20Todo%20List/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>设计一个待办事项清单，用户可以添加 <strong>任务</strong> ，标记任务为 <strong>完成状态</strong> ，或获取待办任务列表。用户还可以为任务添加 <strong>标签</strong> ，并可以按照特定标签筛选任务。</p>
 
@@ -59,11 +73,13 @@ todoList.getAllTasks(1); // 返回["Task3", "Task1"]。用户1现在有两个未
 	<li>每个方法最多被调用 <code>100</code> 次。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 有序集合**
+### 方法一：哈希表 + 有序集合
 
 我们使用哈希表 $tasks$ 记录每个用户的任务集合，其中键为用户 ID，值为一个有序集合，按照任务的截止日期排序。另外用一个变量 $i$ 记录当前任务的 ID。
 
@@ -79,9 +95,7 @@ todoList.getAllTasks(1); // 返回["Task3", "Task1"]。用户1现在有两个未
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 from sortedcontainers import SortedList
@@ -121,9 +135,7 @@ class TodoList:
 # obj.completeTask(userId,taskId)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Task {
@@ -201,7 +213,7 @@ class TodoList {
  */
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::{ HashMap, HashSet };
@@ -317,22 +329,8 @@ impl TodoList {
 }
 ```
 
-### **C++**
-
-```cpp
-
-```
-
-### **Go**
-
-```go
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

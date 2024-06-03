@@ -1,8 +1,23 @@
-# [604. Design Compressed String Iterator](https://leetcode.com/problems/design-compressed-string-iterator)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0604.Design%20Compressed%20String%20Iterator/README_EN.md
+tags:
+    - Design
+    - Array
+    - String
+    - Iterator
+---
+
+<!-- problem:start -->
+
+# [604. Design Compressed String Iterator 🔒](https://leetcode.com/problems/design-compressed-string-iterator)
 
 [中文文档](/solution/0600-0699/0604.Design%20Compressed%20String%20Iterator/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Design and implement a data structure for a compressed string iterator. The given compressed string will be in the form of each letter followed by a positive integer representing the number of this letter existing in the original uncompressed string.</p>
 
@@ -46,11 +61,17 @@ stringIterator.hasNext(); // return True
 	<li>At most <code>100</code> calls will be made to <code>next</code> and <code>hasNext</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class StringIterator:
@@ -87,7 +108,7 @@ class StringIterator:
 # param_2 = obj.hasNext()
 ```
 
-### **Java**
+#### Java
 
 ```java
 class StringIterator {
@@ -141,7 +162,7 @@ class Node {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class StringIterator {
@@ -185,7 +206,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type pair struct {
@@ -239,10 +260,8 @@ func (this *StringIterator) HasNext() bool {
  */
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

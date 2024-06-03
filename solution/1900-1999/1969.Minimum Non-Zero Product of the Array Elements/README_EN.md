@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1969.Minimum%20Non-Zero%20Product%20of%20the%20Array%20Elements/README_EN.md
+rating: 1966
+source: Weekly Contest 254 Q3
+tags:
+    - Greedy
+    - Recursion
+    - Math
+---
+
+<!-- problem:start -->
+
 # [1969. Minimum Non-Zero Product of the Array Elements](https://leetcode.com/problems/minimum-non-zero-product-of-the-array-elements)
 
 [中文文档](/solution/1900-1999/1969.Minimum%20Non-Zero%20Product%20of%20the%20Array%20Elements/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a positive integer <code>p</code>. Consider an array <code>nums</code> (<strong>1-indexed</strong>) that consists of the integers in the <strong>inclusive</strong> range <code>[1, 2<sup>p</sup> - 1]</code> in their binary representations. You are allowed to do the following operation <strong>any</strong> number of times:</p>
 
@@ -57,11 +73,25 @@ The array product is 1 * 6 * 1 * 6 * 1 * 6 * 7 = 1512, which is the minimum poss
 	<li><code>1 &lt;= p &lt;= 60</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Greedy + Fast Power
+
+We notice that each operation does not change the sum of the elements. When the sum of the elements remains unchanged, to minimize the product, we should maximize the difference between the elements as much as possible.
+
+Since the largest element is $2^p - 1$, no matter which element it exchanges with, it will not increase the difference. Therefore, we do not need to consider the case of exchanging with the largest element.
+
+For the other elements in $[1,..2^p-2]$, we pair the first and last elements one by one, that is, pair $x$ with $2^p-1-x$. After several operations, each pair of elements becomes $(1, 2^p-2)$. The final product is $(2^p-1) \times (2^p-2)^{2^{p-1}-1}$.
+
+The time complexity is $O(p)$, and the space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -70,7 +100,7 @@ class Solution:
         return (2**p - 1) * pow(2**p - 2, 2 ** (p - 1) - 1, mod) % mod
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +124,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +149,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minNonZeroProduct(p int) int {
@@ -140,7 +170,7 @@ func minNonZeroProduct(p int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minNonZeroProduct(p: number): number {
@@ -162,10 +192,8 @@ function minNonZeroProduct(p: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,14 +1,27 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1000-1099/1035.Uncrossed%20Lines/README.md
+rating: 1805
+source: 第 134 场周赛 Q3
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [1035. 不相交的线](https://leetcode.cn/problems/uncrossed-lines)
 
 [English Version](/solution/1000-1099/1035.Uncrossed%20Lines/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>在两条独立的水平线上按给定的顺序写下 <code>nums1</code> 和 <code>nums2</code> 中的整数。</p>
 
-<p>现在，可以绘制一些连接两个数字 <code>nums1[i]</code>&nbsp;和 <code>nums2[j]</code>&nbsp;的直线，这些直线需要同时满足满足：</p>
+<p>现在，可以绘制一些连接两个数字 <code>nums1[i]</code>&nbsp;和 <code>nums2[j]</code>&nbsp;的直线，这些直线需要同时满足：</p>
 
 <ul>
 	<li>&nbsp;<code>nums1[i] == nums2[j]</code></li>
@@ -58,11 +71,13 @@
 
 <p>&nbsp;</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 最长公共子序列问题。
 
@@ -80,9 +95,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -98,9 +111,7 @@ class Solution:
         return dp[m][n]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -122,7 +133,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -144,7 +155,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxUncrossedLines(nums1 []int, nums2 []int) int {
@@ -166,7 +177,7 @@ func maxUncrossedLines(nums1 []int, nums2 []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxUncrossedLines(nums1: number[], nums2: number[]): number {
@@ -185,10 +196,8 @@ function maxUncrossedLines(nums1: number[], nums2: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

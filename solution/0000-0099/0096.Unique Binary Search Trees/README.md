@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0096.Unique%20Binary%20Search%20Trees/README.md
+tags:
+    - 树
+    - 二叉搜索树
+    - 数学
+    - 动态规划
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [96. 不同的二叉搜索树](https://leetcode.cn/problems/unique-binary-search-trees)
 
 [English Version](/solution/0000-0099/0096.Unique%20Binary%20Search%20Trees/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数 <code>n</code> ，求恰由 <code>n</code> 个节点组成且节点值从 <code>1</code> 到 <code>n</code> 互不相同的 <strong>二叉搜索树</strong> 有多少种？返回满足题意的二叉搜索树的种数。</p>
 
@@ -32,11 +46,13 @@
 	<li><code>1 <= n <= 19</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划**
+### 方法一：动态规划
 
 我们定义 $f[i]$ 表示 $[1, i]$ 能产生的二叉搜索树的个数，初始时 $f[0] = 1$，答案为 $f[n]$。
 
@@ -48,9 +64,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -62,9 +76,7 @@ class Solution:
         return f[n]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -81,7 +93,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -99,7 +111,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numTrees(n int) int {
@@ -114,7 +126,22 @@ func numTrees(n int) int {
 }
 ```
 
-### **Rust**
+#### TypeScript
+
+```ts
+function numTrees(n: number): number {
+    const f: number[] = Array(n + 1).fill(0);
+    f[0] = 1;
+    for (let i = 1; i <= n; ++i) {
+        for (let j = 0; j < i; ++j) {
+            f[i] += f[j] * f[i - j - 1];
+        }
+    }
+    return f[n];
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -132,22 +159,7 @@ impl Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function numTrees(n: number): number {
-    const f: number[] = Array(n + 1).fill(0);
-    f[0] = 1;
-    for (let i = 1; i <= n; ++i) {
-        for (let j = 0; j < i; ++j) {
-            f[i] += f[j] * f[i - j - 1];
-        }
-    }
-    return f[n];
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -164,10 +176,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

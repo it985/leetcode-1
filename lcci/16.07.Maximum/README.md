@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.07.Maximum/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 16.07. 最大数值](https://leetcode.cn/problems/maximum-lcci)
 
 [English Version](/lcci/16.07.Maximum/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>编写一个方法，找出两个数字<code>a</code>和<code>b</code>中最大的那一个。不得使用if-else或其他比较运算符。</p>
 <p><strong>示例：</strong></p>
@@ -12,11 +20,13 @@
 <strong>输出：</strong> 2
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：位运算**
+### 方法一：位运算
 
 我们可以提取 $a-b$ 的符号位 $k$，如果符号位为 $1$，说明 $a \lt b$；如果符号位为 $0$，说明 $a \ge b$。
 
@@ -26,9 +36,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -37,9 +45,7 @@ class Solution:
         return a * (k ^ 1) + b * k
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -50,7 +56,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -62,7 +68,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximum(a int, b int) int {
@@ -71,7 +77,7 @@ func maximum(a int, b int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximum(a: number, b: number): number {
@@ -80,10 +86,20 @@ function maximum(a: number, b: number): number {
 }
 ```
 
-### **...**
+#### Swift
 
-```
-
+```swift
+class Solution {
+    func maximum(_ a: Int, _ b: Int) -> Int {
+        let diff = Int64(a) - Int64(b)
+        let k = Int((diff >> 63) & 1)
+        return a * (k ^ 1) + b * k
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

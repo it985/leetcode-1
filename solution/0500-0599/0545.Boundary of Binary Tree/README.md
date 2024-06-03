@@ -1,10 +1,22 @@
-# [545. 二叉树的边界](https://leetcode.cn/problems/boundary-of-binary-tree)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0545.Boundary%20of%20Binary%20Tree/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 二叉树
+---
+
+<!-- problem:start -->
+
+# [545. 二叉树的边界 🔒](https://leetcode.cn/problems/boundary-of-binary-tree)
 
 [English Version](/solution/0500-0599/0545.Boundary%20of%20Binary%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>二叉树的 <strong>边界</strong> 是由 <strong>根节点 </strong>、<strong>左边界</strong> 、按从左到右顺序的<strong> 叶节点</strong> 和 <strong>逆序的右边界</strong> ，按顺序依次连接组成。</p>
 
@@ -56,19 +68,17 @@
 	<li><code>-1000 <= Node.val <= 1000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-分别求根节点、左边界、叶子节点、右边界，依次放入结果数组 res 中。
-
-注意，求右边界的时候，需要逆序结果，这时可以用栈实现。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -122,9 +132,7 @@ class Solution:
         return node and node.left is None and node.right is None
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -204,7 +212,7 @@ class Solution {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -273,10 +281,8 @@ var boundaryOfBinaryTree = function (root) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2563.Count%20the%20Number%20of%20Fair%20Pairs/README.md
+rating: 1720
+source: 第 332 场周赛 Q2
+tags:
+    - 数组
+    - 双指针
+    - 二分查找
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2563. 统计公平数对的数目](https://leetcode.cn/problems/count-the-number-of-fair-pairs)
 
 [English Version](/solution/2500-2599/2563.Count%20the%20Number%20of%20Fair%20Pairs/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始、长度为 <code>n</code> 的整数数组&nbsp;<code>nums</code>&nbsp;，和两个整数&nbsp;<code>lower</code> 和&nbsp;<code>upper</code> ，返回 <strong>公平数对的数目</strong> 。</p>
 
@@ -30,7 +45,7 @@
 <pre>
 <b>输入：</b>nums = [1,7,9,2,5], lower = 11, upper = 11
 <b>输出：</b>1
-<b>解释：</b>只有单个公平数对：(2,9) 。
+<b>解释：</b>只有单个公平数对：(2,3) 。
 </pre>
 
 <p>&nbsp;</p>
@@ -44,11 +59,13 @@
 	<li><code>-10<sup>9</sup>&nbsp;&lt;= lower &lt;= upper &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 二分查找**
+### 方法一：排序 + 二分查找
 
 我们先对数组 `nums` 按照升序排序，然后枚举 `nums[i]`，对于每个 `nums[i]`，我们通过二分查找找到 `nums[j]` 的下界 `j`，即第一个满足 `nums[j] >= lower - nums[i]` 的下标，然后再通过二分查找找到 `nums[k]` 的下界 `k`，即第一个满足 `nums[k] >= upper - nums[i] + 1` 的下标，那么 `[j, k)` 即为 `nums[j]` 满足 `lower <= nums[i] + nums[j] <= upper` 的下标范围，这些下标对应的 `nums[j]` 的个数即为 `k - j`，将其累加到答案中即可。注意 $j \gt i$。
 
@@ -56,9 +73,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -72,9 +87,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -105,7 +118,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -123,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countFairPairs(nums []int, lower int, upper int) (ans int64) {
@@ -137,7 +150,7 @@ func countFairPairs(nums []int, lower int, upper int) (ans int64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countFairPairs(nums: number[], lower: number, upper: number): number {
@@ -165,10 +178,8 @@ function countFairPairs(nums: number[], lower: number, upper: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

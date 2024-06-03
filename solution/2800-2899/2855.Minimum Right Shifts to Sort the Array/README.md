@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2855.Minimum%20Right%20Shifts%20to%20Sort%20the%20Array/README.md
+rating: 1379
+source: 第 113 场双周赛 Q1
+tags:
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [2855. 使数组成为递增数组的最少右移次数](https://leetcode.cn/problems/minimum-right-shifts-to-sort-the-array)
 
 [English Version](/solution/2800-2899/2855.Minimum%20Right%20Shifts%20to%20Sort%20the%20Array/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个长度为 <code>n</code>&nbsp;下标从 <strong>0</strong>&nbsp;开始的数组&nbsp;<code>nums</code>&nbsp;，数组中的元素为&nbsp;<strong>互不相同</strong>&nbsp;的正整数。请你返回让 <code>nums</code>&nbsp;成为递增数组的 <strong>最少右移</strong>&nbsp;次数，如果无法得到递增数组，返回 <code>-1</code>&nbsp;。</p>
 
@@ -48,11 +60,13 @@
 	<li><code>nums</code>&nbsp;中的整数互不相同。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：直接遍历**
+### 方法一：直接遍历
 
 我们先用一个指针 $i$ 从左到右遍历数组 $nums$，找出一段连续的递增序列，直到 $i$ 到达数组末尾或者 $nums[i - 1] \gt nums[i]$。接下来我们用另一个指针 $k$ 从 $i + 1$ 开始遍历数组 $nums$，找出一段连续的递增序列，直到 $k$ 到达数组末尾或者 $nums[k - 1] \gt nums[k]$ 且 $nums[k] \gt nums[0]$。如果 $k$ 到达数组末尾，说明数组已经是递增的，返回 $n - i$；否则返回 $-1$。
 
@@ -60,9 +74,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,9 +89,7 @@ class Solution:
         return -1 if k < n else n - i
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +108,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -118,7 +128,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumRightShifts(nums []int) int {
@@ -138,7 +148,7 @@ func minimumRightShifts(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumRightShifts(nums: number[]): number {
@@ -155,10 +165,8 @@ function minimumRightShifts(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

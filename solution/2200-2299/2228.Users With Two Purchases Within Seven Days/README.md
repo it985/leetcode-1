@@ -1,10 +1,20 @@
-# [2228. 7 天内两次购买的用户](https://leetcode.cn/problems/users-with-two-purchases-within-seven-days)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2200-2299/2228.Users%20With%20Two%20Purchases%20Within%20Seven%20Days/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2228. 7 天内两次购买的用户 🔒](https://leetcode.cn/problems/users-with-two-purchases-within-seven-days)
 
 [English Version](/solution/2200-2299/2228.Users%20With%20Two%20Purchases%20Within%20Seven%20Days/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Purchases</code></p>
 
@@ -57,15 +67,17 @@ Purchases 表:
 用户 5 只购买了 1 次。
 用户 7 在同一天有两次购买，所以我们添加了他们的 ID。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -89,3 +101,7 @@ ORDER BY user_id;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

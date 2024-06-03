@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0600-0699/0688.Knight%20Probability%20in%20Chessboard/README_EN.md
+tags:
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
 # [688. Knight Probability in Chessboard](https://leetcode.com/problems/knight-probability-in-chessboard)
 
 [中文文档](/solution/0600-0699/0688.Knight%20Probability%20in%20Chessboard/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>On an <code>n x n</code> chessboard, a knight starts at the cell <code>(row, column)</code> and attempts to make exactly <code>k</code> moves. The rows and columns are <strong>0-indexed</strong>, so the top-left cell is <code>(0, 0)</code>, and the bottom-right cell is <code>(n - 1, n - 1)</code>.</p>
 
@@ -41,9 +53,13 @@ The total probability the knight stays on the board is 0.0625.
 	<li><code>0 &lt;= row, column &lt;= n - 1</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Dynamic Programming**
+<!-- solution:start -->
+
+### Solution 1: Dynamic Programming
 
 Let $f[h][i][j]$ denotes the probability that the knight is still on the chessboard after $h$ steps starting from the position $(i, j)$. Then the final answer is $f[k][row][column]$.
 
@@ -63,7 +79,7 @@ The time complexity is $O(k \times n^2)$, and the space complexity is $O(k \time
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -82,7 +98,7 @@ class Solution:
         return f[k][row][column]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -111,7 +127,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -142,7 +158,68 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func knightProbability(n int, k int, row int, column int) float64 {
+	f := make([][][]float64, k+1)
+	for h := range f {
+		f[h] = make([][]float64, n)
+		for i := range f[h] {
+			f[h][i] = make([]float64, n)
+			for j := range f[h][i] {
+				f[0][i][j] = 1
+			}
+		}
+	}
+	dirs := [9]int{-2, -1, 2, 1, -2, 1, 2, -1, -2}
+	for h := 1; h <= k; h++ {
+		for i := 0; i < n; i++ {
+			for j := 0; j < n; j++ {
+				for p := 0; p < 8; p++ {
+					x, y := i+dirs[p], j+dirs[p+1]
+					if x >= 0 && x < n && y >= 0 && y < n {
+						f[h][i][j] += f[h-1][x][y] / 8
+					}
+				}
+			}
+		}
+	}
+	return f[k][row][column]
+}
+```
+
+#### TypeScript
+
+```ts
+function knightProbability(n: number, k: number, row: number, column: number): number {
+    const f = new Array(k + 1)
+        .fill(0)
+        .map(() => new Array(n).fill(0).map(() => new Array(n).fill(0)));
+    for (let i = 0; i < n; ++i) {
+        for (let j = 0; j < n; ++j) {
+            f[0][i][j] = 1;
+        }
+    }
+    const dirs = [-2, -1, 2, 1, -2, 1, 2, -1, -2];
+    for (let h = 1; h <= k; ++h) {
+        for (let i = 0; i < n; ++i) {
+            for (let j = 0; j < n; ++j) {
+                for (let p = 0; p < 8; ++p) {
+                    const x = i + dirs[p];
+                    const y = j + dirs[p + 1];
+                    if (x >= 0 && x < n && y >= 0 && y < n) {
+                        f[h][i][j] += f[h - 1][x][y] / 8;
+                    }
+                }
+            }
+        }
+    }
+    return f[k][row][column];
+}
+```
+
+#### Rust
 
 ```rust
 const DIR: [(i32, i32); 8] = [
@@ -198,71 +275,8 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func knightProbability(n int, k int, row int, column int) float64 {
-	f := make([][][]float64, k+1)
-	for h := range f {
-		f[h] = make([][]float64, n)
-		for i := range f[h] {
-			f[h][i] = make([]float64, n)
-			for j := range f[h][i] {
-				f[0][i][j] = 1
-			}
-		}
-	}
-	dirs := [9]int{-2, -1, 2, 1, -2, 1, 2, -1, -2}
-	for h := 1; h <= k; h++ {
-		for i := 0; i < n; i++ {
-			for j := 0; j < n; j++ {
-				for p := 0; p < 8; p++ {
-					x, y := i+dirs[p], j+dirs[p+1]
-					if x >= 0 && x < n && y >= 0 && y < n {
-						f[h][i][j] += f[h-1][x][y] / 8
-					}
-				}
-			}
-		}
-	}
-	return f[k][row][column]
-}
-```
-
-### **TypeScript**
-
-```ts
-function knightProbability(n: number, k: number, row: number, column: number): number {
-    const f = new Array(k + 1)
-        .fill(0)
-        .map(() => new Array(n).fill(0).map(() => new Array(n).fill(0)));
-    for (let i = 0; i < n; ++i) {
-        for (let j = 0; j < n; ++j) {
-            f[0][i][j] = 1;
-        }
-    }
-    const dirs = [-2, -1, 2, 1, -2, 1, 2, -1, -2];
-    for (let h = 1; h <= k; ++h) {
-        for (let i = 0; i < n; ++i) {
-            for (let j = 0; j < n; ++j) {
-                for (let p = 0; p < 8; ++p) {
-                    const x = i + dirs[p];
-                    const y = j + dirs[p + 1];
-                    if (x >= 0 && x < n && y >= 0 && y < n) {
-                        f[h][i][j] += f[h - 1][x][y] / 8;
-                    }
-                }
-            }
-        }
-    }
-    return f[k][row][column];
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

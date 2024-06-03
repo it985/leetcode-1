@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0833.Find%20And%20Replace%20in%20String/README.md
+tags:
+    - 数组
+    - 字符串
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [833. 字符串中的查找与替换](https://leetcode.cn/problems/find-and-replace-in-string)
 
 [English Version](/solution/0800-0899/0833.Find%20And%20Replace%20in%20String/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你会得到一个字符串 <code>s</code>&nbsp;(索引从 0 开始)，你必须对它执行 <code>k</code> 个替换操作。替换操作以三个长度均为 <code>k</code> 的并行数组给出：<code>indices</code>,&nbsp;<code>sources</code>,&nbsp;&nbsp;<code>targets</code>。</p>
 
@@ -66,11 +78,13 @@
 	<li><code>sources[i]</code> 和 <code>targets[i]</code> 仅由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们遍历每个替换操作，对于当前第 $k$ 个替换操作 $(i, src)$，如果 $s[i..i+|src|-1]$ 与 $src$ 相等，此时我们记录下标 $i$ 处需要替换的是 $targets$ 的第 $k$ 个字符串，否则不需要替换。
 
@@ -80,9 +94,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -106,9 +118,7 @@ class Solution:
         return "".join(ans)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -136,7 +146,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -164,7 +174,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findReplaceString(s string, indices []int, sources []string, targets []string) string {
@@ -189,7 +199,7 @@ func findReplaceString(s string, indices []int, sources []string, targets []stri
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findReplaceString(
@@ -219,10 +229,8 @@ function findReplaceString(
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

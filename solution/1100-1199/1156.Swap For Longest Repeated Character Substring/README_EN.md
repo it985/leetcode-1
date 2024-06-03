@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1156.Swap%20For%20Longest%20Repeated%20Character%20Substring/README_EN.md
+rating: 1787
+source: Weekly Contest 149 Q3
+tags:
+    - Hash Table
+    - String
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [1156. Swap For Longest Repeated Character Substring](https://leetcode.com/problems/swap-for-longest-repeated-character-substring)
 
 [中文文档](/solution/1100-1199/1156.Swap%20For%20Longest%20Repeated%20Character%20Substring/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>text</code>. You can swap two of the characters in the <code>text</code>.</p>
 
@@ -41,9 +57,13 @@
 	<li><code>text</code> consist of lowercase English characters only.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Two Pointers
 
 First, we use a hash table or array $cnt$ to count the occurrence of each character in the string $text$.
 
@@ -55,7 +75,7 @@ The time complexity is $O(n)$, and the space complexity is $O(C)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -77,7 +97,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -107,7 +127,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -138,7 +158,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxRepOpt1(text string) (ans int) {
@@ -164,7 +184,7 @@ func maxRepOpt1(text string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxRepOpt1(text: string): number {
@@ -194,10 +214,8 @@ function maxRepOpt1(text: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

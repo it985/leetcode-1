@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.21.Sum%20Swap/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [16.21. Sum Swap](https://leetcode.cn/problems/sum-swap-lcci)
 
 [中文文档](/lcci/16.21.Sum%20Swap/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two arrays of integers, find a pair of values (one value from each array) that you can swap to give the two arrays the same sum.</p>
 
@@ -32,9 +42,13 @@
 	<li><code>1 &lt;= array1.length, array2.length &lt;= 100000</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Hash Table
 
 We first calculate the sum of the two arrays, and then calculate the difference $diff$ between the sums. If $diff$ is odd, it means that the sums of the two arrays cannot be equal, so we directly return an empty array.
 
@@ -44,7 +58,7 @@ The time complexity is $O(m + n)$, and the space complexity is $O(n)$. Here, $m$
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -60,7 +74,7 @@ class Solution:
         return []
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -90,7 +104,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -115,7 +129,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findSwapValues(array1 []int, array2 []int) []int {
@@ -142,7 +156,7 @@ func findSwapValues(array1 []int, array2 []int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findSwapValues(array1: number[], array2: number[]): number[] {
@@ -164,10 +178,41 @@ function findSwapValues(array1: number[], array2: number[]): number[] {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+class Solution {
+    func findSwapValues(_ array1: [Int], _ array2: [Int]) -> [Int] {
+        var s1 = 0, s2 = 0
+        var set = Set<Int>()
 
+        for x in array1 {
+            s1 += x
+        }
+        for x in array2 {
+            s2 += x
+            set.insert(x)
+        }
+
+        let diff = s1 - s2
+        if diff % 2 != 0 {
+            return []
+        }
+        let target = diff / 2
+
+        for a in array1 {
+            let b = a - target
+            if set.contains(b) {
+                return [a, b]
+            }
+        }
+        return []
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

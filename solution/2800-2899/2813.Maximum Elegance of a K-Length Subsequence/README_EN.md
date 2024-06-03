@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2813.Maximum%20Elegance%20of%20a%20K-Length%20Subsequence/README_EN.md
+rating: 2582
+source: Weekly Contest 357 Q4
+tags:
+    - Greedy
+    - Array
+    - Hash Table
+    - Sorting
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [2813. Maximum Elegance of a K-Length Subsequence](https://leetcode.com/problems/maximum-elegance-of-a-k-length-subsequence)
 
 [中文文档](/solution/2800-2899/2813.Maximum%20Elegance%20of%20a%20K-Length%20Subsequence/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> 2D integer array <code>items</code> of length <code>n</code> and an integer <code>k</code>.</p>
 
@@ -61,9 +79,13 @@ Hence, the maximum elegance is 6 + 1<sup>2</sup> = 7.  </pre>
 	<li><code>1 &lt;= k &lt;= n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy**
+<!-- solution:start -->
+
+### Solution 1: Greedy
 
 We can sort all items by profit from large to small. First choose the first $k$ items and calculate the total profit $tot$. Use a hash table $vis$ to record the categories of these $k$ items, use a stack $dup$ to record the profits of the repeated categories in order, and use a variable $ans$ to record the current maximum elegance.
 
@@ -75,7 +97,7 @@ The time complexity is $O(n \times \log n)$ and the space complexity is $O(n)$, 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -100,7 +122,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -132,7 +154,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -170,7 +192,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findMaximumElegance(items [][]int, k int) int64 {
@@ -202,7 +224,7 @@ func findMaximumElegance(items [][]int, k int) int64 {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findMaximumElegance(items: number[][], k: number): number {
@@ -231,10 +253,8 @@ function findMaximumElegance(items: number[][], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

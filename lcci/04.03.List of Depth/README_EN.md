@@ -1,8 +1,18 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/04.03.List%20of%20Depth/README_EN.md
+---
+
+<!-- problem:start -->
+
 # [04.03. List of Depth](https://leetcode.cn/problems/list-of-depth-lcci)
 
 [中文文档](/lcci/04.03.List%20of%20Depth/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a binary tree, design an algorithm which creates a linked list of all the nodes at each depth (e.g., if you have a tree with depth D, you&#39;ll have D linked lists). Return a array containing all the linked lists.</p>
 
@@ -36,13 +46,21 @@
 
 </pre>
 
+<!-- description:end -->
+
 ## Solutions
 
-Level order traversal.
+<!-- solution:start -->
+
+### Solution 1: BFS Level Order Traversal
+
+We can use the BFS level order traversal method. For each level, we store the values of the current level's nodes into a list, and then add the list to the result array.
+
+The time complexity is $O(n)$, and the space complexity is $O(n)$, where $n$ is the number of nodes in the binary tree.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -77,7 +95,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -123,7 +141,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -170,7 +188,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -211,7 +229,7 @@ func listOfDepth(tree *TreeNode) (ans []*ListNode) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -259,7 +277,7 @@ function listOfDepth(tree: TreeNode | null): Array<ListNode | null> {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -331,10 +349,66 @@ impl Solution {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+/* class TreeNode {
+*    var val: Int
+*    var left: TreeNode?
+*    var right: TreeNode?
+*
+*    init(_ val: Int) {
+*        self.val = val
+*        self.left = nil
+*        self.right = nil
+*    }
+*  }
+*/
 
+/* class ListNode {
+*    var val: Int
+*    var next: ListNode?
+*
+*    init(_ val: Int) {
+*        self.val = val
+*        self.next = nil
+*    }
+*  }
+*/
+
+class Solution {
+    func listOfDepth(_ tree: TreeNode?) -> [ListNode?] {
+        var ans = [ListNode?]()
+        guard let tree = tree else { return ans }
+
+        var q = [TreeNode]()
+        q.append(tree)
+
+        while !q.isEmpty {
+            let dummy = ListNode(0)
+            var cur = dummy
+            for _ in 0..<q.count {
+                let node = q.removeFirst()
+                cur.next = ListNode(node.val)
+                cur = cur.next!
+
+                if let left = node.left {
+                    q.append(left)
+                }
+                if let right = node.right {
+                    q.append(right)
+                }
+            }
+            ans.append(dummy.next)
+        }
+
+        return ans
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

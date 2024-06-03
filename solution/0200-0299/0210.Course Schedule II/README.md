@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0210.Course%20Schedule%20II/README.md
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 图
+    - 拓扑排序
+---
+
+<!-- problem:start -->
+
 # [210. 课程表 II](https://leetcode.cn/problems/course-schedule-ii)
 
 [English Version](/solution/0200-0299/0210.Course%20Schedule%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>现在你总共有 <code>numCourses</code> 门课需要选，记为&nbsp;<code>0</code>&nbsp;到&nbsp;<code>numCourses - 1</code>。给你一个数组&nbsp;<code>prerequisites</code> ，其中 <code>prerequisites[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> ，表示在选修课程 <code>a<sub>i</sub></code> 前 <strong>必须</strong> 先选修&nbsp;<code>b<sub>i</sub></code> 。</p>
 
@@ -51,11 +64,13 @@
 	<li>所有<code>[a<sub>i</sub>, b<sub>i</sub>]</code> <strong>互不相同</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：拓扑排序**
+### 方法一：拓扑排序
 
 我们创建一个邻接表 $g$，用于存储每个节点的后继节点，同时还需要一个数组 $indeg$ 存储每个节点的入度。在构建邻接表的同时，我们也统计每个节点的入度。当入度为 $0$ 的节点代表没有任何前置课程，可以直接学习，我们将其加入队列 $q$ 中。
 
@@ -70,9 +85,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -94,9 +107,7 @@ class Solution:
         return ans if len(ans) == numCourses else []
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -131,7 +142,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -166,7 +177,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findOrder(numCourses int, prerequisites [][]int) []int {
@@ -202,7 +213,7 @@ func findOrder(numCourses int, prerequisites [][]int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function findOrder(numCourses: number, prerequisites: number[][]): number[] {
@@ -232,44 +243,7 @@ function findOrder(numCourses: number, prerequisites: number[][]): number[] {
 }
 ```
 
-### **C#**
-
-```cs
-public class Solution {
-    public int[] FindOrder(int numCourses, int[][] prerequisites) {
-        var g = new List<int>[numCourses];
-        for (int i = 0; i < numCourses; ++i) {
-            g[i] = new List<int>();
-        }
-        var indeg = new int[numCourses];
-        foreach (var p in prerequisites) {
-            int a = p[0], b = p[1];
-            g[b].Add(a);
-            ++indeg[a];
-        }
-        var q = new Queue<int>();
-        for (int i = 0; i < numCourses; ++i) {
-            if (indeg[i] == 0) {
-                q.Enqueue(i);
-            }
-        }
-        var ans = new int[numCourses];
-        var cnt = 0;
-        while (q.Count > 0) {
-            int i = q.Dequeue();
-            ans[cnt++] = i;
-            foreach (int j in g[i]) {
-                if (--indeg[j] == 0) {
-                    q.Enqueue(j);
-                }
-            }
-        }
-        return cnt == numCourses ? ans : new int[0];
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -312,10 +286,45 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C#
 
-```
-
+```cs
+public class Solution {
+    public int[] FindOrder(int numCourses, int[][] prerequisites) {
+        var g = new List<int>[numCourses];
+        for (int i = 0; i < numCourses; ++i) {
+            g[i] = new List<int>();
+        }
+        var indeg = new int[numCourses];
+        foreach (var p in prerequisites) {
+            int a = p[0], b = p[1];
+            g[b].Add(a);
+            ++indeg[a];
+        }
+        var q = new Queue<int>();
+        for (int i = 0; i < numCourses; ++i) {
+            if (indeg[i] == 0) {
+                q.Enqueue(i);
+            }
+        }
+        var ans = new int[numCourses];
+        var cnt = 0;
+        while (q.Count > 0) {
+            int i = q.Dequeue();
+            ans[cnt++] = i;
+            foreach (int j in g[i]) {
+                if (--indeg[j] == 0) {
+                    q.Enqueue(j);
+                }
+            }
+        }
+        return cnt == numCourses ? ans : new int[0];
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

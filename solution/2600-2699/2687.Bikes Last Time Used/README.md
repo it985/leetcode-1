@@ -1,10 +1,20 @@
-# [2687. 自行车的最后使用时间](https://leetcode.cn/problems/bikes-last-time-used)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2600-2699/2687.Bikes%20Last%20Time%20Used/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2687. 自行车的最后使用时间 🔒](https://leetcode.cn/problems/bikes-last-time-used)
 
 [English Version](/solution/2600-2699/2687.Bikes%20Last%20Time%20Used/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code>Bikes</code>&nbsp;</p>
 
@@ -59,15 +69,17 @@ ride_id 是该表的主键。
 
 <p>&nbsp;</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -80,3 +92,7 @@ ORDER BY end_time DESC;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

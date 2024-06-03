@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2884.Modify%20Columns/README.md
+---
+
+<!-- problem:start -->
+
 # [2884. 修改列](https://leetcode.cn/problems/modify-columns)
 
 [English Version](/solution/2800-2899/2884.Modify%20Columns/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <pre>
 DataFrame <code>employees</code>
@@ -49,15 +57,17 @@ DataFrame <code>employees</code>
 <strong>解释：
 </strong>每个人的薪水都被加倍。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Pandas**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 import pandas as pd
@@ -68,10 +78,8 @@ def modifySalaryColumn(employees: pd.DataFrame) -> pd.DataFrame:
     return employees
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

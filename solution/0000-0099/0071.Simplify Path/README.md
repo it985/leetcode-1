@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0071.Simplify%20Path/README.md
+tags:
+    - 栈
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [71. 简化路径](https://leetcode.cn/problems/simplify-path)
 
 [English Version](/solution/0000-0099/0071.Simplify%20Path/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串 <code>path</code> ，表示指向某一文件或目录的 Unix 风格 <strong>绝对路径 </strong>（以 <code>'/'</code> 开头），请你将其转化为更加简洁的规范路径。</p>
 
@@ -63,11 +74,13 @@
 	<li><code>path</code> 是一个有效的 Unix 风格绝对路径。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：栈**
+### 方法一：栈
 
 我们先将路径按照 `'/'` 分割成若干个子串，然后遍历每个子串，根据子串的内容进行如下操作：
 
@@ -81,9 +94,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -100,9 +111,7 @@ class Solution:
         return '/' + '/'.join(stk)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -123,7 +132,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -156,7 +165,49 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func simplifyPath(path string) string {
+	var stk []string
+	for _, s := range strings.Split(path, "/") {
+		if s == "" || s == "." {
+			continue
+		}
+		if s == ".." {
+			if len(stk) > 0 {
+				stk = stk[0 : len(stk)-1]
+			}
+		} else {
+			stk = append(stk, s)
+		}
+	}
+	return "/" + strings.Join(stk, "/")
+}
+```
+
+#### TypeScript
+
+```ts
+function simplifyPath(path: string): string {
+    const stk: string[] = [];
+    for (const s of path.split('/')) {
+        if (s === '' || s === '.') {
+            continue;
+        }
+        if (s === '..') {
+            if (stk.length) {
+                stk.pop();
+            }
+        } else {
+            stk.push(s);
+        }
+    }
+    return '/' + stk.join('/');
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -188,55 +239,7 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func simplifyPath(path string) string {
-	var stk []string
-	for _, s := range strings.Split(path, "/") {
-		if s == "" || s == "." {
-			continue
-		}
-		if s == ".." {
-			if len(stk) > 0 {
-				stk = stk[0 : len(stk)-1]
-			}
-		} else {
-			stk = append(stk, s)
-		}
-	}
-	return "/" + strings.Join(stk, "/")
-}
-```
-
-```go
-func simplifyPath(path string) string {
-	return filepath.Clean(path)
-}
-```
-
-### **TypeScript**
-
-```ts
-function simplifyPath(path: string): string {
-    const stk: string[] = [];
-    for (const s of path.split('/')) {
-        if (s === '' || s === '.') {
-            continue;
-        }
-        if (s === '..') {
-            if (stk.length) {
-                stk.pop();
-            }
-        } else {
-            stk.push(s);
-        }
-    }
-    return '/' + stk.join('/');
-}
-```
-
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -263,10 +266,26 @@ public class Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Go
+
+```go
+func simplifyPath(path string) string {
+	return filepath.Clean(path)
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

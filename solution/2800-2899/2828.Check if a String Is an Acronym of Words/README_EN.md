@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2828.Check%20if%20a%20String%20Is%20an%20Acronym%20of%20Words/README_EN.md
+rating: 1151
+source: Weekly Contest 359 Q1
+tags:
+    - Array
+    - String
+---
+
+<!-- problem:start -->
+
 # [2828. Check if a String Is an Acronym of Words](https://leetcode.com/problems/check-if-a-string-is-an-acronym-of-words)
 
 [中文文档](/solution/2800-2899/2828.Check%20if%20a%20String%20Is%20an%20Acronym%20of%20Words/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of strings <code>words</code> and a string <code>s</code>, determine if <code>s</code> is an <strong>acronym</strong> of words.</p>
 
@@ -48,27 +63,21 @@ Hence, s = &quot;ngguoy&quot; is the acronym.
 	<li><code>words[i]</code> and <code>s</code> consist of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 We can iterate over each string in the array $words$, concatenate their first letters to form a new string $t$, and then check if $t$ is equal to $s$.
 
 The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is the length of the array $words$.
 
-**Solution 2: Simulation (Space Optimization)**
-
-First, we check if the number of strings in $words$ is equal to the length of $s$. If not, $s$ is definitely not an acronym of the first letters of $words$, and we directly return $false$.
-
-Then, we iterate over each character in $s$, checking if it is equal to the first letter of the corresponding string in $words$. If not, $s$ is definitely not an acronym of the first letters of $words$, and we directly return $false$.
-
-After the iteration, if we haven't returned $false$, then $s$ is an acronym of the first letters of $words$, and we return $true$.
-
-The time complexity is $O(n)$, where $n$ is the length of the array $words$. The space complexity is $O(1)$.
-
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -76,13 +85,7 @@ class Solution:
         return "".join(w[0] for w in words) == s
 ```
 
-```python
-class Solution:
-    def isAcronym(self, words: List[str], s: str) -> bool:
-        return len(words) == len(s) and all(w[0] == c for w, c in zip(words, s))
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -95,6 +98,82 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    bool isAcronym(vector<string>& words, string s) {
+        string t;
+        for (auto& w : words) {
+            t += w[0];
+        }
+        return t == s;
+    }
+};
+```
+
+#### Go
+
+```go
+func isAcronym(words []string, s string) bool {
+	t := []byte{}
+	for _, w := range words {
+		t = append(t, w[0])
+	}
+	return string(t) == s
+}
+```
+
+#### TypeScript
+
+```ts
+function isAcronym(words: string[], s: string): boolean {
+    return words.map(w => w[0]).join('') === s;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn is_acronym(words: Vec<String>, s: String) -> bool {
+        words
+            .iter()
+            .map(|w| w.chars().next().unwrap_or_default())
+            .collect::<String>() == s
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2: Simulation (Space Optimization)
+
+First, we check if the number of strings in $words$ is equal to the length of $s$. If not, $s$ is definitely not an acronym of the first letters of $words$, and we directly return $false$.
+
+Then, we iterate over each character in $s$, checking if it is equal to the first letter of the corresponding string in $words$. If not, $s$ is definitely not an acronym of the first letters of $words$, and we directly return $false$.
+
+After the iteration, if we haven't returned $false$, then $s$ is an acronym of the first letters of $words$, and we return $true$.
+
+The time complexity is $O(n)$, where $n$ is the length of the array $words$. The space complexity is $O(1)$.
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def isAcronym(self, words: List[str], s: str) -> bool:
+        return len(words) == len(s) and all(w[0] == c for w, c in zip(words, s))
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -112,20 +191,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    bool isAcronym(vector<string>& words, string s) {
-        string t;
-        for (auto& w : words) {
-            t += w[0];
-        }
-        return t == s;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -144,17 +210,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func isAcronym(words []string, s string) bool {
-	t := []byte{}
-	for _, w := range words {
-		t = append(t, w[0])
-	}
-	return string(t) == s
-}
-```
+#### Go
 
 ```go
 func isAcronym(words []string, s string) bool {
@@ -170,13 +226,7 @@ func isAcronym(words []string, s string) bool {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function isAcronym(words: string[], s: string): boolean {
-    return words.map(w => w[0]).join('') === s;
-}
-```
+#### TypeScript
 
 ```ts
 function isAcronym(words: string[], s: string): boolean {
@@ -192,18 +242,7 @@ function isAcronym(words: string[], s: string): boolean {
 }
 ```
 
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn is_acronym(words: Vec<String>, s: String) -> bool {
-        words
-            .iter()
-            .map(|w| w.chars().next().unwrap_or_default())
-            .collect::<String>() == s
-    }
-}
-```
+#### Rust
 
 ```rust
 impl Solution {
@@ -221,10 +260,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

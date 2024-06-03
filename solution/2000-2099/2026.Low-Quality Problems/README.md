@@ -1,10 +1,20 @@
-# [2026. 低质量的问题](https://leetcode.cn/problems/low-quality-problems)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2026.Low-Quality%20Problems/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2026. 低质量的问题 🔒](https://leetcode.cn/problems/low-quality-problems)
 
 [English Version](/solution/2000-2099/2026.Low-Quality%20Problems/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：&nbsp;<code>Problems</code></p>
 
@@ -63,15 +73,17 @@ Problems 表:
 - 问题 13: (2050 / (2050 + 4164)) * 100 = 32.99002%
 问题 7, 10, 11, 和 13 是低质量问题，因为它们的同类百分比低于60%。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -82,3 +94,7 @@ ORDER BY problem_id;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

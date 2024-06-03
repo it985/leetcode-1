@@ -1,8 +1,16 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/lcp/LCP%2040.%20%E5%BF%83%E7%AE%97%E6%8C%91%E6%88%98/README.md
+---
+
+<!-- problem:start -->
+
 # [LCP 40. 心算挑战](https://leetcode.cn/problems/uOAnQW)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 「力扣挑战赛」心算项目的挑战比赛中，要求选手从 `N` 张卡牌中选出 `cnt` 张卡牌，若这 `cnt` 张卡牌数字总和为偶数，则选手成绩「有效」且得分为 `cnt` 张卡牌数字总和。
 给定数组 `cards` 和 `cnt`，其中 `cards[i]` 表示第 `i` 张卡牌上的数字。 请帮参赛选手计算最大的有效得分。若不存在获取有效得分的卡牌方案，则返回 0。
@@ -28,11 +36,13 @@
 -   `1 <= cnt <= cards.length <= 10^5`
 -   `1 <= cards[i] <= 1000`
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序 + 贪心**
+### 方法一：排序 + 贪心
 
 排序先取最大的 $cnt$ 个数，如果和为偶数则直接返回答案。
 
@@ -42,9 +52,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -61,9 +69,7 @@ class Solution:
         return max(ans - a + c, ans - b + d, 0)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -133,7 +139,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxmiumScore(cards []int, cnt int) int {
@@ -165,10 +171,8 @@ func maxmiumScore(cards []int, cnt int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

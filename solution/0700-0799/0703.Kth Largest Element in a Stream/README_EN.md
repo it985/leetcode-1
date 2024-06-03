@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0703.Kth%20Largest%20Element%20in%20a%20Stream/README_EN.md
+tags:
+    - Tree
+    - Design
+    - Binary Search Tree
+    - Binary Tree
+    - Data Stream
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [703. Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream)
 
 [中文文档](/solution/0700-0799/0703.Kth%20Largest%20Element%20in%20a%20Stream/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Design a class to find the <code>k<sup>th</sup></code> largest element in a stream. Note that it is the <code>k<sup>th</sup></code> largest element in the sorted order, not the <code>k<sup>th</sup></code> distinct element.</p>
 
@@ -44,11 +61,17 @@ kthLargest.add(4);   // return 8
 	<li>It is guaranteed that there will be at least <code>k</code> elements in the array when you search for the <code>k<sup>th</sup></code> element.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class KthLargest:
@@ -70,7 +93,7 @@ class KthLargest:
 # param_1 = obj.add(val)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class KthLargest {
@@ -101,7 +124,112 @@ class KthLargest {
  */
 ```
 
-### **JavaScript**
+#### C++
+
+```cpp
+class KthLargest {
+public:
+    priority_queue<int, vector<int>, greater<int>> q;
+    int size;
+
+    KthLargest(int k, vector<int>& nums) {
+        size = k;
+        for (int num : nums) add(num);
+    }
+
+    int add(int val) {
+        q.push(val);
+        if (q.size() > size) q.pop();
+        return q.top();
+    }
+};
+
+/**
+ * Your KthLargest object will be instantiated and called as such:
+ * KthLargest* obj = new KthLargest(k, nums);
+ * int param_1 = obj->add(val);
+ */
+```
+
+#### Go
+
+```go
+type KthLargest struct {
+	h *IntHeap
+	k int
+}
+
+func Constructor(k int, nums []int) KthLargest {
+	h := &IntHeap{}
+	heap.Init(h)
+	for _, v := range nums {
+		heap.Push(h, v)
+	}
+
+	for h.Len() > k {
+		heap.Pop(h)
+	}
+
+	return KthLargest{
+		h: h,
+		k: k,
+	}
+}
+
+func (this *KthLargest) Add(val int) int {
+	heap.Push(this.h, val)
+	for this.h.Len() > this.k {
+		heap.Pop(this.h)
+	}
+
+	return this.h.Top()
+}
+
+func connectSticks(sticks []int) int {
+	h := IntHeap(sticks)
+	heap.Init(&h)
+	res := 0
+	for h.Len() > 1 {
+		val := heap.Pop(&h).(int)
+		val += heap.Pop(&h).(int)
+		res += val
+		heap.Push(&h, val)
+	}
+	return res
+}
+
+type IntHeap []int
+
+func (h IntHeap) Len() int           { return len(h) }
+func (h IntHeap) Less(i, j int) bool { return h[i] < h[j] }
+func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+func (h *IntHeap) Push(x any) {
+	*h = append(*h, x.(int))
+}
+func (h *IntHeap) Pop() any {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
+}
+
+func (h *IntHeap) Top() int {
+	if (*h).Len() == 0 {
+		return 0
+	}
+
+	return (*h)[0]
+}
+
+/**
+ * Your KthLargest object will be instantiated and called as such:
+ * obj := Constructor(k, nums);
+ * param_1 := obj.Add(val);
+ */
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -220,115 +348,8 @@ class MinHeap {
  */
 ```
 
-### **C++**
-
-```cpp
-class KthLargest {
-public:
-    priority_queue<int, vector<int>, greater<int>> q;
-    int size;
-
-    KthLargest(int k, vector<int>& nums) {
-        size = k;
-        for (int num : nums) add(num);
-    }
-
-    int add(int val) {
-        q.push(val);
-        if (q.size() > size) q.pop();
-        return q.top();
-    }
-};
-
-/**
- * Your KthLargest object will be instantiated and called as such:
- * KthLargest* obj = new KthLargest(k, nums);
- * int param_1 = obj->add(val);
- */
-```
-
-### **Go**
-
-```go
-type KthLargest struct {
-	h *IntHeap
-	k int
-}
-
-func Constructor(k int, nums []int) KthLargest {
-	h := &IntHeap{}
-	heap.Init(h)
-	for _, v := range nums {
-		heap.Push(h, v)
-	}
-
-	for h.Len() > k {
-		heap.Pop(h)
-	}
-
-	return KthLargest{
-		h: h,
-		k: k,
-	}
-}
-
-func (this *KthLargest) Add(val int) int {
-	heap.Push(this.h, val)
-	for this.h.Len() > this.k {
-		heap.Pop(this.h)
-	}
-
-	return this.h.Top()
-}
-
-func connectSticks(sticks []int) int {
-	h := IntHeap(sticks)
-	heap.Init(&h)
-	res := 0
-	for h.Len() > 1 {
-		val := heap.Pop(&h).(int)
-		val += heap.Pop(&h).(int)
-		res += val
-		heap.Push(&h, val)
-	}
-	return res
-}
-
-type IntHeap []int
-
-func (h IntHeap) Len() int           { return len(h) }
-func (h IntHeap) Less(i, j int) bool { return h[i] < h[j] }
-func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
-func (h *IntHeap) Push(x any) {
-	*h = append(*h, x.(int))
-}
-func (h *IntHeap) Pop() any {
-	old := *h
-	n := len(old)
-	x := old[n-1]
-	*h = old[0 : n-1]
-	return x
-}
-
-func (h *IntHeap) Top() int {
-	if (*h).Len() == 0 {
-		return 0
-	}
-
-	return (*h)[0]
-}
-
-/**
- * Your KthLargest object will be instantiated and called as such:
- * obj := Constructor(k, nums);
- * param_1 := obj.Add(val);
- */
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

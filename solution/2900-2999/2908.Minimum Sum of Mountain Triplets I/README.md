@@ -1,10 +1,22 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2900-2999/2908.Minimum%20Sum%20of%20Mountain%20Triplets%20I/README.md
+rating: 1253
+source: 第 368 场周赛 Q1
+tags:
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [2908. 元素和最小的山形三元组 I](https://leetcode.cn/problems/minimum-sum-of-mountain-triplets-i)
 
 [English Version](/solution/2900-2999/2908.Minimum%20Sum%20of%20Mountain%20Triplets%20I/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 。</p>
 
@@ -58,11 +70,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 50</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：预处理 + 枚举**
+### 方法一：预处理 + 枚举
 
 我们可以预处理出每个位置右侧的最小值，记录在数组 $right[i]$ 中，即 $right[i]$ 表示 $nums[i+1..n-1]$ 中的最小值。
 
@@ -74,9 +88,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -93,9 +105,7 @@ class Solution:
         return -1 if ans == inf else ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -119,7 +129,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -144,7 +154,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumSum(nums []int) int {
@@ -169,7 +179,7 @@ func minimumSum(nums []int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumSum(nums: number[]): number {
@@ -189,10 +199,8 @@ function minimumSum(nums: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1737.Change%20Minimum%20Characters%20to%20Satisfy%20One%20of%20Three%20Conditions/README_EN.md
+rating: 1952
+source: Weekly Contest 225 Q2
+tags:
+    - Hash Table
+    - String
+    - Counting
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [1737. Change Minimum Characters to Satisfy One of Three Conditions](https://leetcode.com/problems/change-minimum-characters-to-satisfy-one-of-three-conditions)
 
 [中文文档](/solution/1700-1799/1737.Change%20Minimum%20Characters%20to%20Satisfy%20One%20of%20Three%20Conditions/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two strings <code>a</code> and <code>b</code> that consist of lowercase letters. In one operation, you can change any character in <code>a</code> or <code>b</code> to <strong>any lowercase letter</strong>.</p>
 
@@ -45,9 +62,13 @@ The best way was done in 2 operations (either condition 1 or condition 3).
 	<li><code>a</code> and <code>b</code> consist only of lowercase letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Counting + Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Counting + Enumeration
 
 First, we count the number of occurrences of each letter in strings $a$ and $b$, denoted as $cnt_1$ and $cnt_2$.
 
@@ -61,7 +82,7 @@ The time complexity is $O(m + n + C^2)$, where $m$ and $n$ are the lengths of st
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -87,7 +108,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -127,7 +148,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -155,7 +176,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minCharacters(a string, b string) int {
@@ -190,7 +211,7 @@ func minCharacters(a string, b string) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minCharacters(a: string, b: string): number {
@@ -222,10 +243,8 @@ function minCharacters(a: string, b: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1830.Minimum%20Number%20of%20Operations%20to%20Make%20String%20Sorted/README_EN.md
+rating: 2620
+source: Biweekly Contest 50 Q4
+tags:
+    - Math
+    - String
+    - Combinatorics
+---
+
+<!-- problem:start -->
+
 # [1830. Minimum Number of Operations to Make String Sorted](https://leetcode.com/problems/minimum-number-of-operations-to-make-string-sorted)
 
 [中文文档](/solution/1800-1899/1830.Minimum%20Number%20of%20Operations%20to%20Make%20String%20Sorted/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>s</code> (<strong>0-indexed</strong>)​​​​​​. You are asked to perform the following operation on <code>s</code>​​​​​​ until you get a sorted string:</p>
 
@@ -47,9 +63,13 @@ Operation 2: i=4, j=4. Swap s[3] and s[4] to get s=&quot;aaaab&quot;, then rever
 	<li><code>s</code>​​​​​​ consists only of lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Counting + Permutation and Combination + Preprocessing**
+<!-- solution:start -->
+
+### Solution 1: Counting + Permutation and Combination + Preprocessing
 
 The operation in the problem is actually to find the previous permutation in lexicographical order of the current permutation. Therefore, we only need to find the number of permutations smaller than the current permutation, which is the answer.
 
@@ -67,7 +87,7 @@ The time complexity is $O(n \times k)$, and the space complexity is $O(n)$. Wher
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 n = 3010
@@ -96,7 +116,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -150,7 +170,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 const int N = 3010;
@@ -205,7 +225,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 const n = 3010
@@ -255,10 +275,8 @@ func makeStringSorted(s string) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

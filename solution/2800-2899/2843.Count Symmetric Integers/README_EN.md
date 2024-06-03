@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2843.Count%20Symmetric%20Integers/README_EN.md
+rating: 1269
+source: Weekly Contest 361 Q1
+tags:
+    - Math
+    - Enumeration
+---
+
+<!-- problem:start -->
+
 # [2843. Count Symmetric Integers](https://leetcode.com/problems/count-symmetric-integers)
 
 [中文文档](/solution/2800-2899/2843.Count%20Symmetric%20Integers/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two positive integers <code>low</code> and <code>high</code>.</p>
 
@@ -34,9 +49,13 @@
 	<li><code>1 &lt;= low &lt;= high &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Enumeration**
+<!-- solution:start -->
+
+### Solution 1: Enumeration
 
 We enumerate each integer $x$ in the range $[low, high]$, and check whether it is a palindromic number. If it is, then the answer $ans$ is increased by $1$.
 
@@ -44,7 +63,7 @@ The time complexity is $O(n \times \log m)$, and the space complexity is $O(\log
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -59,7 +78,7 @@ class Solution:
         return sum(f(x) for x in range(low, high + 1))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -89,7 +108,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -117,7 +136,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countSymmetricIntegers(low int, high int) (ans int) {
@@ -144,7 +163,7 @@ func countSymmetricIntegers(low int, high int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countSymmetricIntegers(low: number, high: number): number {
@@ -170,10 +189,8 @@ function countSymmetricIntegers(low: number, high: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

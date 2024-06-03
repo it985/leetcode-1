@@ -1,8 +1,20 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0896.Monotonic%20Array/README_EN.md
+tags:
+    - Array
+---
+
+<!-- problem:start -->
+
 # [896. Monotonic Array](https://leetcode.com/problems/monotonic-array)
 
 [中文文档](/solution/0800-0899/0896.Monotonic%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>An array is <strong>monotonic</strong> if it is either monotone increasing or monotone decreasing.</p>
 
@@ -40,9 +52,13 @@
 	<li><code>-10<sup>5</sup> &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Single Traversal**
+<!-- solution:start -->
+
+### Solution 1: Single Traversal
 
 We traverse the array, and if an increasing or decreasing situation occurs, we record it. We then check whether both increasing and decreasing situations have occurred. If both have occurred, it means that the array is not monotonic, and we return `false`.
 
@@ -52,7 +68,7 @@ The time complexity is $O(n)$, where $n$ is the length of the array. The space c
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -62,7 +78,7 @@ class Solution:
         return asc or desc
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -83,7 +99,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -105,7 +121,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isMonotonic(nums []int) bool {
@@ -124,7 +140,48 @@ func isMonotonic(nums []int) bool {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function isMonotonic(nums: number[]): boolean {
+    let [asc, desc] = [false, false];
+    for (let i = 1; i < nums.length; ++i) {
+        if (nums[i - 1] < nums[i]) {
+            asc = true;
+        } else if (nums[i - 1] > nums[i]) {
+            desc = true;
+        }
+        if (asc && desc) {
+            return false;
+        }
+    }
+    return true;
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn is_monotonic(nums: Vec<i32>) -> bool {
+        let mut asc = false;
+        let mut desc = false;
+        for i in 1..nums.len() {
+            if nums[i - 1] < nums[i] {
+                asc = true;
+            } else if nums[i - 1] > nums[i] {
+                desc = true;
+            }
+            if asc && desc {
+                return false;
+            }
+        }
+        true
+    }
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -147,51 +204,8 @@ var isMonotonic = function (nums) {
 };
 ```
 
-### **TypeScript**
-
-```ts
-function isMonotonic(nums: number[]): boolean {
-    let [asc, desc] = [false, false];
-    for (let i = 1; i < nums.length; ++i) {
-        if (nums[i - 1] < nums[i]) {
-            asc = true;
-        } else if (nums[i - 1] > nums[i]) {
-            desc = true;
-        }
-        if (asc && desc) {
-            return false;
-        }
-    }
-    return true;
-}
-```
-
-### **Rust**
-
-```rust
-impl Solution {
-    pub fn is_monotonic(nums: Vec<i32>) -> bool {
-        let mut asc = false;
-        let mut desc = false;
-        for i in 1..nums.len() {
-            if nums[i - 1] < nums[i] {
-                asc = true;
-            } else if nums[i - 1] > nums[i] {
-                desc = true;
-            }
-            if asc && desc {
-                return false;
-            }
-        }
-        true
-    }
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2848.Points%20That%20Intersect%20With%20Cars/README.md
+rating: 1229
+source: 第 362 场周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [2848. 与车相交的点](https://leetcode.cn/problems/points-that-intersect-with-cars)
 
 [English Version](/solution/2800-2899/2848.Points%20That%20Intersect%20With%20Cars/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong> 开始的二维整数数组 <code>nums</code> 表示汽车停放在数轴上的坐标。对于任意下标 <code>i</code>，<code>nums[i] = [start<sub>i</sub>, end<sub>i</sub>]</code> ，其中 <code>start<sub>i</sub></code> 是第 <code>i</code> 辆车的起点，<code>end<sub>i</sub></code> 是第 <code>i</code> 辆车的终点。</p>
 
@@ -38,11 +52,13 @@
 	<li><code><font face="monospace">1 &lt;= start<sub>i</sub>&nbsp;&lt;= end<sub>i</sub>&nbsp;&lt;= 100</font></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：差分数组**
+### 方法一：差分数组
 
 我们创建一个长度为 $110$ 的差分数组 $d$，然后遍历给定的数组，对于每个区间 $[a, b]$，我们令 $d[a]$ 增加 $1$，$d[b + 1]$ 减少 $1$。最后我们遍历差分数组 $d$，求每个位置的前缀和 $s$，如果 $s > 0$，则说明该位置被覆盖，我们将答案增加 $1$。
 
@@ -50,9 +66,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -64,9 +78,7 @@ class Solution:
         return sum(s > 0 for s in accumulate(d))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -88,7 +100,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -109,7 +121,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func numberOfPoints(nums [][]int) (ans int) {
@@ -129,7 +141,7 @@ func numberOfPoints(nums [][]int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function numberOfPoints(nums: number[][]): number {
@@ -150,10 +162,8 @@ function numberOfPoints(nums: number[][]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

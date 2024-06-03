@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0475.Heaters/README.md
+tags:
+    - 数组
+    - 双指针
+    - 二分查找
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [475. 供暖器](https://leetcode.cn/problems/heaters)
 
 [English Version](/solution/0400-0499/0475.Heaters/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>冬季已经来临。&nbsp;你的任务是设计一个有固定加热半径的供暖器向所有房屋供暖。</p>
 
@@ -48,17 +61,17 @@
 	<li><code>1 &lt;= houses[i], heaters[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-排序 + 二分查找 + 双指针。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -92,9 +105,7 @@ class Solution:
         return left
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -115,30 +126,7 @@ class Solution {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function findRadius(houses: number[], heaters: number[]): number {
-    houses.sort((a, b) => a - b);
-    heaters.sort((a, b) => a - b);
-    const m = houses.length,
-        n = heaters.length;
-    let ans = 0;
-    for (let i = 0, j = 0; i < m; i++) {
-        let cur = Math.abs(houses[i] - heaters[j]);
-        while (
-            j + 1 < n &&
-            Math.abs(houses[i] - heaters[j]) >= Math.abs(houses[i] - heaters[j + 1])
-        ) {
-            cur = Math.min(Math.abs(houses[i] - heaters[++j]), cur);
-        }
-        ans = Math.max(cur, ans);
-    }
-    return ans;
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -175,7 +163,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func findRadius(houses []int, heaters []int) int {
@@ -214,10 +202,31 @@ func findRadius(houses []int, heaters []int) int {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
-
+```ts
+function findRadius(houses: number[], heaters: number[]): number {
+    houses.sort((a, b) => a - b);
+    heaters.sort((a, b) => a - b);
+    const m = houses.length,
+        n = heaters.length;
+    let ans = 0;
+    for (let i = 0, j = 0; i < m; i++) {
+        let cur = Math.abs(houses[i] - heaters[j]);
+        while (
+            j + 1 < n &&
+            Math.abs(houses[i] - heaters[j]) >= Math.abs(houses[i] - heaters[j + 1])
+        ) {
+            cur = Math.min(Math.abs(houses[i] - heaters[++j]), cur);
+        }
+        ans = Math.max(cur, ans);
+    }
+    return ans;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

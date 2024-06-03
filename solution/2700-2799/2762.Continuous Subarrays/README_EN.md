@@ -1,8 +1,27 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2762.Continuous%20Subarrays/README_EN.md
+rating: 1940
+source: Weekly Contest 352 Q3
+tags:
+    - Queue
+    - Array
+    - Ordered Set
+    - Sliding Window
+    - Monotonic Queue
+    - Heap (Priority Queue)
+---
+
+<!-- problem:start -->
+
 # [2762. Continuous Subarrays](https://leetcode.com/problems/continuous-subarrays)
 
 [中文文档](/solution/2700-2799/2762.Continuous%20Subarrays/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code>. A subarray of <code>nums</code> is called <strong>continuous</strong> if:</p>
 
@@ -51,9 +70,13 @@ Total continuous subarrays = 3 + 2 + 1 = 6.
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Ordered List + Two Pointers**
+<!-- solution:start -->
+
+### Solution 1: Ordered List + Two Pointers
 
 We can use two pointers, $i$ and $j$, to maintain the left and right endpoints of the current subarray, and use an ordered list to maintain all elements in the current subarray.
 
@@ -65,7 +88,7 @@ The time complexity is $O(n \times \log n)$ and the space complexity is $O(n)$, 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 from sortedcontainers import SortedList
@@ -84,7 +107,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -129,7 +152,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func continuousSubarrays(nums []int) (ans int64) {
@@ -161,10 +184,8 @@ func continuousSubarrays(nums []int) (ans int64) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

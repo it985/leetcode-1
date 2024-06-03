@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2027.Minimum%20Moves%20to%20Convert%20String/README_EN.md
+rating: 1346
+source: Weekly Contest 261 Q1
+tags:
+    - Greedy
+    - String
+---
+
+<!-- problem:start -->
+
 # [2027. Minimum Moves to Convert String](https://leetcode.com/problems/minimum-moves-to-convert-string)
 
 [中文文档](/solution/2000-2099/2027.Minimum%20Moves%20to%20Convert%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>s</code> consisting of <code>n</code> characters which are either <code>&#39;X&#39;</code> or <code>&#39;O&#39;</code>.</p>
 
@@ -45,9 +60,13 @@ Then we select the last 3 characters and convert them so that the final string c
 	<li><code>s[i]</code> is either <code>&#39;X&#39;</code> or <code>&#39;O&#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy Algorithm**
+<!-- solution:start -->
+
+### Solution 1: Greedy Algorithm
 
 Traverse the string $s$. Whenever you encounter `'X'`, move the pointer $i$ three steps forward and add $1$ to the answer; otherwise, move the pointer $i$ one step forward.
 
@@ -55,7 +74,7 @@ The time complexity is $O(n)$, where $n$ represents the length of the string $s$
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -70,7 +89,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -87,7 +106,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -105,7 +124,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minimumMoves(s string) (ans int) {
@@ -119,7 +138,7 @@ func minimumMoves(s string) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minimumMoves(s: string): number {
@@ -138,7 +157,7 @@ function minimumMoves(s: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -160,7 +179,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 int minimumMoves(char* s) {
@@ -179,10 +198,8 @@ int minimumMoves(char* s) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

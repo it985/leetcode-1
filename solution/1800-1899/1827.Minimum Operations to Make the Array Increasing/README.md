@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1827.Minimum%20Operations%20to%20Make%20the%20Array%20Increasing/README.md
+rating: 1314
+source: 第 50 场双周赛 Q1
+tags:
+    - 贪心
+    - 数组
+---
+
+<!-- problem:start -->
+
 # [1827. 最少操作使数组递增](https://leetcode.cn/problems/minimum-operations-to-make-the-array-increasing)
 
 [English Version](/solution/1800-1899/1827.Minimum%20Operations%20to%20Make%20the%20Array%20Increasing/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code> （<strong>下标从 0 开始</strong>）。每一次操作中，你可以选择数组中一个元素，并将它增加 <code>1</code> 。</p>
 
@@ -49,11 +62,13 @@
 	<li><code>1 &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：一次遍历**
+### 方法一：一次遍历
 
 我们用变量 $mx$ 记录当前严格递增数组的最大值，初始时 $mx = 0$。
 
@@ -63,9 +78,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -77,9 +90,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -94,7 +105,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -110,7 +121,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minOperations(nums []int) (ans int) {
@@ -123,22 +134,7 @@ func minOperations(nums []int) (ans int) {
 }
 ```
 
-### **C#**
-
-```cs
-public class Solution {
-    public int MinOperations(int[] nums) {
-        int ans = 0, mx = 0;
-        foreach (int v in nums) {
-            ans += Math.Max(0, mx + 1 - v);
-            mx = Math.Max(mx + 1, v);
-        }
-        return ans;
-    }
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minOperations(nums: number[]): number {
@@ -152,7 +148,7 @@ function minOperations(nums: number[]): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -168,7 +164,22 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C#
+
+```cs
+public class Solution {
+    public int MinOperations(int[] nums) {
+        int ans = 0, mx = 0;
+        foreach (int v in nums) {
+            ans += Math.Max(0, mx + 1 - v);
+            mx = Math.Max(mx + 1, v);
+        }
+        return ans;
+    }
+}
+```
+
+#### C
 
 ```c
 #define max(a, b) (((a) > (b)) ? (a) : (b))
@@ -184,10 +195,8 @@ int minOperations(int* nums, int numsSize) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

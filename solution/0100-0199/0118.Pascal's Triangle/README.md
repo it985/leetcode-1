@@ -1,10 +1,21 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0118.Pascal%27s%20Triangle/README.md
+tags:
+    - 数组
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [118. 杨辉三角](https://leetcode.cn/problems/pascals-triangle)
 
 [English Version](/solution/0100-0199/0118.Pascal%27s%20Triangle/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个非负整数 <em><code>numRows</code>，</em>生成「杨辉三角」的前 <em><code>numRows</code> </em>行。</p>
 
@@ -36,11 +47,13 @@
 	<li><code>1 <= numRows <= 30</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
 我们先创建一个答案数组 $f$，然后将 $f$ 的第一行元素设为 $[1]$。接下来，我们从第二行开始，每一行的开头和结尾元素都是 $1$，其它 $f[i][j] = f[i - 1][j - 1] + f[i - 1][j]$。
 
@@ -48,9 +61,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -62,9 +73,7 @@ class Solution:
         return f
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -85,7 +94,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -107,7 +116,41 @@ public:
 };
 ```
 
-### **Rust**
+#### Go
+
+```go
+func generate(numRows int) [][]int {
+	f := [][]int{[]int{1}}
+	for i := 0; i < numRows-1; i++ {
+		g := []int{1}
+		for j := 0; j < len(f[i])-1; j++ {
+			g = append(g, f[i][j]+f[i][j+1])
+		}
+		g = append(g, 1)
+		f = append(f, g)
+	}
+	return f
+}
+```
+
+#### TypeScript
+
+```ts
+function generate(numRows: number): number[][] {
+    const f: number[][] = [[1]];
+    for (let i = 0; i < numRows - 1; ++i) {
+        const g: number[] = [1];
+        for (let j = 0; j < f[i].length - 1; ++j) {
+            g.push(f[i][j] + f[i][j + 1]);
+        }
+        g.push(1);
+        f.push(g);
+    }
+    return f;
+}
+```
+
+#### Rust
 
 ```rust
 impl Solution {
@@ -130,41 +173,7 @@ impl Solution {
 }
 ```
 
-### **Go**
-
-```go
-func generate(numRows int) [][]int {
-	f := [][]int{[]int{1}}
-	for i := 0; i < numRows-1; i++ {
-		g := []int{1}
-		for j := 0; j < len(f[i])-1; j++ {
-			g = append(g, f[i][j]+f[i][j+1])
-		}
-		g = append(g, 1)
-		f = append(f, g)
-	}
-	return f
-}
-```
-
-### **TypeScript**
-
-```ts
-function generate(numRows: number): number[][] {
-    const f: number[][] = [[1]];
-    for (let i = 0; i < numRows - 1; ++i) {
-        const g: number[] = [1];
-        for (let j = 0; j < f[i].length - 1; ++j) {
-            g.push(f[i][j] + f[i][j + 1]);
-        }
-        g.push(1);
-        f.push(g);
-    }
-    return f;
-}
-```
-
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -185,10 +194,8 @@ var generate = function (numRows) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

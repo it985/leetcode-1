@@ -1,10 +1,20 @@
-# [1212. 查询球队积分](https://leetcode.cn/problems/team-scores-in-football-tournament)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1212.Team%20Scores%20in%20Football%20Tournament/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1212. 查询球队积分 🔒](https://leetcode.cn/problems/team-scores-in-football-tournament)
 
 [English Version](/solution/1200-1299/1212.Team%20Scores%20in%20Football%20Tournament/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Teams</code></p>
 
@@ -91,11 +101,13 @@ Teams </code>table:
 | 40         | Chicago FC   | 0             |
 +------------+--------------+---------------+</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：左连接 + 分组 + CASE 表达式**
+### 方法一：左连接 + 分组 + CASE 表达式
 
 我们可以通过左连接，将 `Teams` 表和 `Matches` 表连接起来，连接的条件为 `team_id = host_team OR team_id = guest_team`，这样就可以得到每个球队的所有比赛信息。
 
@@ -109,7 +121,7 @@ Teams </code>table:
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -134,3 +146,7 @@ ORDER BY 3 DESC, 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,20 @@
-# [1264. 页面推荐](https://leetcode.cn/problems/page-recommendations)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1264.Page%20Recommendations/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1264. 页面推荐 🔒](https://leetcode.cn/problems/page-recommendations)
 
 [English Version](/solution/1200-1299/1264.Page%20Recommendations/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>朋友关系列表：&nbsp;<code>Friendship</code></p>
 
@@ -92,17 +102,19 @@ Likes table:
 页面77 同时被 用户2 和 用户3 推荐。
 页面88 没有被推荐，因为 用户1 已经喜欢了它。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：合并 + 等值连接 + 子查询**
+### 方法一：合并 + 等值连接 + 子查询
 
 我们先查出所有与 `user_id = 1` 的用户是朋友的用户，记录在 `T` 表中，然后再查出所有在 `T` 表中的用户喜欢的页面，最后排除掉 `user_id = 1` 喜欢的页面即可。
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -119,6 +131,18 @@ FROM
 WHERE page_id NOT IN (SELECT page_id FROM Likes WHERE user_id = 1);
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### MySQL
+
 ```sql
 # Write your MySQL query statement below
 SELECT DISTINCT page_id AS recommended_page
@@ -133,3 +157,7 @@ WHERE
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

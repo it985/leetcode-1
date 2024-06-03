@@ -1,10 +1,18 @@
-# [2820. 选举结果](https://leetcode.cn/problems/election-results)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2820.Election%20Results/README.md
+---
+
+<!-- problem:start -->
+
+# [2820. 选举结果 🔒](https://leetcode.cn/problems/election-results)
 
 [English Version](/solution/2800-2899/2820.Election%20Results/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code><font face="monospace">Votes</font></code></p>
 
@@ -60,11 +68,13 @@ Votes table:
 - Ryan 和 Christine 总共获得了2.33票，而 Kathy 总共获得了 1.33 票。
 由于 Ryan 和 Christine 获得的票数相等，我们将按升序显示他们的名字。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：窗口函数 + 分组统计**
+### 方法一：窗口函数 + 分组统计
 
 我们可以使用窗口函数 `count` 计算每个投票人投给的候选人的票数，然后再使用分组统计函数 `sum` 计算每个候选人的总票数，最后使用窗口函数 `rank` 计算每个候选人的排名，最后筛选出排名第一的候选人即可。
 
@@ -72,9 +82,7 @@ Votes table:
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -104,3 +112,7 @@ ORDER BY 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

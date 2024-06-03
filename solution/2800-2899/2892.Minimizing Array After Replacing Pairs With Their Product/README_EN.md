@@ -1,8 +1,22 @@
-# [2892. Minimizing Array After Replacing Pairs With Their Product](https://leetcode.com/problems/minimizing-array-after-replacing-pairs-with-their-product)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2892.Minimizing%20Array%20After%20Replacing%20Pairs%20With%20Their%20Product/README_EN.md
+tags:
+    - Greedy
+    - Array
+    - Dynamic Programming
+---
+
+<!-- problem:start -->
+
+# [2892. Minimizing Array After Replacing Pairs With Their Product 🔒](https://leetcode.com/problems/minimizing-array-after-replacing-pairs-with-their-product)
 
 [中文文档](/solution/2800-2899/2892.Minimizing%20Array%20After%20Replacing%20Pairs%20With%20Their%20Product/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer array <code>nums</code> and an integer <code>k</code>, you can perform the following operation on the array any number of times:</p>
 
@@ -42,9 +56,13 @@ Hence, the answer is 4.</pre>
 	<li><code>1 &lt;= k &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy**
+<!-- solution:start -->
+
+### Solution 1: Greedy
 
 We use a variable $ans$ to record the current length of the array, and a variable $y$ to record the current product of the array. Initially, $ans = 1$ and $y = nums[0]$.
 
@@ -60,7 +78,7 @@ The time complexity is $O(n)$, where n is the length of the array. The space com
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -77,7 +95,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -101,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -126,7 +144,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minArrayLength(nums []int, k int) int {
@@ -146,7 +164,7 @@ func minArrayLength(nums []int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minArrayLength(nums: number[], k: number): number {
@@ -166,10 +184,8 @@ function minArrayLength(nums: number[], k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

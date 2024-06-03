@@ -1,8 +1,26 @@
-# [2519. Count the Number of K-Big Indices](https://leetcode.com/problems/count-the-number-of-k-big-indices)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2519.Count%20the%20Number%20of%20K-Big%20Indices/README_EN.md
+tags:
+    - Binary Indexed Tree
+    - Segment Tree
+    - Array
+    - Binary Search
+    - Divide and Conquer
+    - Ordered Set
+    - Merge Sort
+---
+
+<!-- problem:start -->
+
+# [2519. Count the Number of K-Big Indices 🔒](https://leetcode.com/problems/count-the-number-of-k-big-indices)
 
 [中文文档](/solution/2500-2599/2519.Count%20the%20Number%20of%20K-Big%20Indices/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> and a positive integer <code>k</code>.</p>
 
@@ -42,9 +60,13 @@
 	<li><code>1 &lt;= nums[i], k &lt;= nums.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Binary Indexed Tree**
+<!-- solution:start -->
+
+### Solution 1: Binary Indexed Tree
 
 We maintain two binary indexed trees, one records the number of elements smaller than the current position on the left, and the other records the number of elements smaller than the current position on the right.
 
@@ -54,7 +76,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$,
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class BinaryIndexedTree:
@@ -90,7 +112,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class BinaryIndexedTree {
@@ -140,7 +162,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class BinaryIndexedTree {
@@ -190,7 +212,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type BinaryIndexedTree struct {
@@ -237,10 +259,8 @@ func kBigIndices(nums []int, k int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

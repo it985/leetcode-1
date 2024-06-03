@@ -1,10 +1,20 @@
-# [2752. 在连续天数上进行了最多交易次数的顾客](https://leetcode.cn/problems/customers-with-maximum-number-of-transactions-on-consecutive-days)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2752.Customers%20with%20Maximum%20Number%20of%20Transactions%20on%20Consecutive%20Days/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2752. 在连续天数上进行了最多交易次数的顾客 🔒](https://leetcode.cn/problems/customers-with-maximum-number-of-transactions-on-consecutive-days)
 
 [English Version](/solution/2700-2799/2752.Customers%20with%20Maximum%20Number%20of%20Transactions%20on%20Consecutive%20Days/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：&nbsp;<code>Transactions</code></p>
 
@@ -60,15 +70,17 @@ Transactions 表:
 - customer_id 为 105 共有 3 次交易，且全部是连续的。 
 总的来说，最大连续交易次数为 3，由 customer_id 为 101 和 105 的完成。customer_id 按升序排序。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -97,3 +109,7 @@ ORDER BY customer_id;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0800-0899/0884.Uncommon%20Words%20from%20Two%20Sentences/README_EN.md
+tags:
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [884. Uncommon Words from Two Sentences](https://leetcode.com/problems/uncommon-words-from-two-sentences)
 
 [中文文档](/solution/0800-0899/0884.Uncommon%20Words%20from%20Two%20Sentences/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>A <strong>sentence</strong> is a string of single-space separated words where each word consists only of lowercase letters.</p>
 
@@ -28,11 +41,23 @@
 	<li>All the words in <code>s1</code> and <code>s2</code> are separated by a single space.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Hash Table
+
+According to the problem description, as long as a word appears once, it meets the requirements of the problem. Therefore, we use a hash table `cnt` to record all words and their occurrence counts.
+
+Then we traverse the hash table, and take out all strings that appear only once.
+
+The time complexity is $O(m + n)$, and the space complexity is $O(m + n)$. Here, $m$ and $n$ are the lengths of strings `s1` and `s2`, respectively.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -41,17 +66,17 @@ class Solution:
         return [s for s, v in cnt.items() if v == 1]
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
     public String[] uncommonFromSentences(String s1, String s2) {
         Map<String, Integer> cnt = new HashMap<>();
         for (String s : s1.split(" ")) {
-            cnt.put(s, cnt.getOrDefault(s, 0) + 1);
+            cnt.merge(s, 1, Integer::sum);
         }
         for (String s : s2.split(" ")) {
-            cnt.put(s, cnt.getOrDefault(s, 0) + 1);
+            cnt.merge(s, 1, Integer::sum);
         }
         List<String> ans = new ArrayList<>();
         for (var e : cnt.entrySet()) {
@@ -64,7 +89,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -86,7 +111,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func uncommonFromSentences(s1 string, s2 string) (ans []string) {
@@ -106,7 +131,7 @@ func uncommonFromSentences(s1 string, s2 string) (ans []string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function uncommonFromSentences(s1: string, s2: string): string[] {
@@ -124,7 +149,7 @@ function uncommonFromSentences(s1: string, s2: string): string[] {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -149,7 +174,7 @@ impl Solution {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -172,10 +197,8 @@ var uncommonFromSentences = function (s1, s2) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0068.Text%20Justification/README_EN.md
+tags:
+    - Array
+    - String
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [68. Text Justification](https://leetcode.com/problems/text-justification)
 
 [中文文档](/solution/0000-0099/0068.Text%20Justification/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of strings <code>words</code> and a width <code>maxWidth</code>, format the text such that each line has exactly <code>maxWidth</code> characters and is fully (left and right) justified.</p>
 
@@ -70,9 +84,13 @@ Note that the second line is also left-justified because it contains only one wo
 	<li><code>words[i].length &lt;= maxWidth</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 We can simulate the process according to the problem's requirements. Note that if it is the last line, or if there is only one word in the line, then we should align to the left. Otherwise, we should distribute the spaces evenly.
 
@@ -80,7 +98,7 @@ The time complexity is $O(L)$, and the space complexity is $O(L)$. Here, $L$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -112,7 +130,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -149,7 +167,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -188,7 +206,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func fullJustify(words []string, maxWidth int) (ans []string) {
@@ -225,7 +243,7 @@ func fullJustify(words []string, maxWidth int) (ans []string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function fullJustify(words: string[], maxWidth: number): string[] {
@@ -258,7 +276,7 @@ function fullJustify(words: string[], maxWidth: number): string[] {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -296,10 +314,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

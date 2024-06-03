@@ -1,10 +1,23 @@
-# [261. 以图判树](https://leetcode.cn/problems/graph-valid-tree)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0200-0299/0261.Graph%20Valid%20Tree/README.md
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 并查集
+    - 图
+---
+
+<!-- problem:start -->
+
+# [261. 以图判树 🔒](https://leetcode.cn/problems/graph-valid-tree)
 
 [English Version](/solution/0200-0299/0261.Graph%20Valid%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定编号从 <code>0</code> 到 <code>n - 1</code>&nbsp;的&nbsp;<code>n</code> 个结点。给定一个整数&nbsp;<code>n</code>&nbsp;和一个&nbsp;<code>edges</code>&nbsp;列表，其中&nbsp;<code>edges[i] = [a<sub>i</sub>, b<sub>i</sub>]</code>&nbsp;表示图中节点&nbsp;<code>a<sub>i</sub></code>&nbsp;和&nbsp;<code>b<sub>i</sub></code>&nbsp;之间存在一条无向边。</p>
 
@@ -41,101 +54,46 @@
 	<li>不存在自循环或重复的边</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-并查集模板题。
+### 方法一：并查集
 
-模板 1——朴素并查集：
+判断是否是树，需要满足以下两个条件：
 
-```python
-# 初始化，p存储每个点的父节点
-p = list(range(n))
+1. 边的数量等于节点数减一；
+2. 不存在环。
 
+我们可以使用并查集来判断是否存在环。遍历边，如果两个节点已经在同一个集合中，说明存在环。否则，我们将两个节点合并到同一个集合中。然后将连通分量的数量减一，最后判断连通分量的数量是否为 $1$。
 
-# 返回x的祖宗节点
-def find(x):
-    if p[x] != x:
-        # 路径压缩
-        p[x] = find(p[x])
-    return p[x]
-
-
-# 合并a和b所在的两个集合
-p[find(a)] = find(b)
-```
-
-模板 2——维护 size 的并查集：
-
-```python
-# 初始化，p存储每个点的父节点，size只有当节点是祖宗节点时才有意义，表示祖宗节点所在集合中，点的数量
-p = list(range(n))
-size = [1] * n
-
-
-# 返回x的祖宗节点
-def find(x):
-    if p[x] != x:
-        # 路径压缩
-        p[x] = find(p[x])
-    return p[x]
-
-
-# 合并a和b所在的两个集合
-if find(a) != find(b):
-    size[find(b)] += size[find(a)]
-    p[find(a)] = find(b)
-```
-
-模板 3——维护到祖宗节点距离的并查集：
-
-```python
-# 初始化，p存储每个点的父节点，d[x]存储x到p[x]的距离
-p = list(range(n))
-d = [0] * n
-
-
-# 返回x的祖宗节点
-def find(x):
-    if p[x] != x:
-        t = find(p[x])
-        d[x] += d[p[x]]
-        p[x] = t
-    return p[x]
-
-
-# 合并a和b所在的两个集合
-p[find(a)] = find(b)
-d[find(a)] = distance
-```
+时间复杂度 $O(n \times \log n)$，空间复杂度 $O(n)$。其中 $n$ 是节点数。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
-        def find(x):
+        def find(x: int) -> int:
             if p[x] != x:
                 p[x] = find(p[x])
             return p[x]
 
         p = list(range(n))
         for a, b in edges:
-            if find(a) == find(b):
+            pa, pb = find(a), find(b)
+            if pa == pb:
                 return False
-            p[find(a)] = find(b)
+            p[pa] = pb
             n -= 1
         return n == 1
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -146,12 +104,12 @@ class Solution {
         for (int i = 0; i < n; ++i) {
             p[i] = i;
         }
-        for (int[] e : edges) {
-            int a = e[0], b = e[1];
-            if (find(a) == find(b)) {
+        for (var e : edges) {
+            int pa = find(e[0]), pb = find(e[1]);
+            if (pa == pb) {
                 return false;
             }
-            p[find(a)] = find(b);
+            p[pa] = pb;
             --n;
         }
         return n == 1;
@@ -166,33 +124,34 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
 public:
-    vector<int> p;
-
     bool validTree(int n, vector<vector<int>>& edges) {
-        p.resize(n);
-        for (int i = 0; i < n; ++i) p[i] = i;
+        vector<int> p(n);
+        iota(p.begin(), p.end(), 0);
+        function<int(int)> find = [&](int x) {
+            if (p[x] != x) {
+                p[x] = find(p[x]);
+            }
+            return p[x];
+        };
         for (auto& e : edges) {
-            int a = e[0], b = e[1];
-            if (find(a) == find(b)) return 0;
-            p[find(a)] = find(b);
+            int pa = find(e[0]), pb = find(e[1]);
+            if (pa == pb) {
+                return false;
+            }
+            p[pa] = pb;
             --n;
         }
         return n == 1;
     }
-
-    int find(int x) {
-        if (p[x] != x) p[x] = find(p[x]);
-        return p[x];
-    }
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func validTree(n int, edges [][]int) bool {
@@ -200,7 +159,7 @@ func validTree(n int, edges [][]int) bool {
 	for i := range p {
 		p[i] = i
 	}
-	var find func(x int) int
+	var find func(int) int
 	find = func(x int) int {
 		if p[x] != x {
 			p[x] = find(p[x])
@@ -208,18 +167,18 @@ func validTree(n int, edges [][]int) bool {
 		return p[x]
 	}
 	for _, e := range edges {
-		a, b := e[0], e[1]
-		if find(a) == find(b) {
+		pa, pb := find(e[0]), find(e[1])
+		if pa == pb {
 			return false
 		}
-		p[find(a)] = find(b)
+		p[pa] = pb
 		n--
 	}
 	return n == 1
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -228,31 +187,189 @@ func validTree(n int, edges [][]int) bool {
  * @return {boolean}
  */
 var validTree = function (n, edges) {
-    let p = new Array(n);
-    for (let i = 0; i < n; ++i) {
-        p[i] = i;
-    }
-    function find(x) {
-        if (p[x] != x) {
+    const p = Array.from({ length: n }, (_, i) => i);
+    const find = x => {
+        if (p[x] !== x) {
             p[x] = find(p[x]);
         }
         return p[x];
-    }
+    };
     for (const [a, b] of edges) {
-        if (find(a) == find(b)) {
+        const pa = find(a);
+        const pb = find(b);
+        if (pa === pb) {
             return false;
         }
-        p[find(a)] = find(b);
+        p[pa] = pb;
         --n;
     }
-    return n == 1;
+    return n === 1;
 };
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：DFS
+
+我们也可以使用深度优先搜索来判断是否存在环。我们可以使用一个数组 $vis$ 来记录访问过的节点，搜索时，我们先将节点标记为已访问，然后遍历与该节点相邻的节点，如果相邻节点已经访问过，则跳过，否则递归访问相邻节点。最后，我们判断是否所有节点都被访问过，如果有未访问过的节点，说明无法构成树，返回 `false`。
+
+时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 是节点数。
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        def dfs(i: int):
+            vis.add(i)
+            for j in g[i]:
+                if j not in vis:
+                    dfs(j)
+
+        if len(edges) != n - 1:
+            return False
+        g = [[] for _ in range(n)]
+        for a, b in edges:
+            g[a].append(b)
+            g[b].append(a)
+        vis = set()
+        dfs(0)
+        return len(vis) == n
 ```
 
+#### Java
+
+```java
+class Solution {
+    private List<Integer>[] g;
+    private Set<Integer> vis = new HashSet<>();
+
+    public boolean validTree(int n, int[][] edges) {
+        if (edges.length != n - 1) {
+            return false;
+        }
+        g = new List[n];
+        Arrays.setAll(g, k -> new ArrayList<>());
+        for (var e : edges) {
+            int a = e[0], b = e[1];
+            g[a].add(b);
+            g[b].add(a);
+        }
+        dfs(0);
+        return vis.size() == n;
+    }
+
+    private void dfs(int i) {
+        vis.add(i);
+        for (int j : g[i]) {
+            if (!vis.contains(j)) {
+                dfs(j);
+            }
+        }
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    bool validTree(int n, vector<vector<int>>& edges) {
+        if (edges.size() != n - 1) {
+            return false;
+        }
+        vector<int> g[n];
+        vector<int> vis(n);
+        function<void(int)> dfs = [&](int i) {
+            vis[i] = true;
+            --n;
+            for (int j : g[i]) {
+                if (!vis[j]) {
+                    dfs(j);
+                }
+            }
+        };
+        for (auto& e : edges) {
+            int a = e[0], b = e[1];
+            g[a].push_back(b);
+            g[b].push_back(a);
+        }
+        dfs(0);
+        return n == 0;
+    }
+};
+```
+
+#### Go
+
+```go
+func validTree(n int, edges [][]int) bool {
+	if len(edges) != n-1 {
+		return false
+	}
+	g := make([][]int, n)
+	vis := make([]bool, n)
+	for _, e := range edges {
+		a, b := e[0], e[1]
+		g[a] = append(g[a], b)
+		g[b] = append(g[b], a)
+	}
+	var dfs func(int)
+	dfs = func(i int) {
+		vis[i] = true
+		n--
+		for _, j := range g[i] {
+			if !vis[j] {
+				dfs(j)
+			}
+		}
+	}
+	dfs(0)
+	return n == 0
+}
+```
+
+#### JavaScript
+
+```js
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @return {boolean}
+ */
+var validTree = function (n, edges) {
+    if (edges.length !== n - 1) {
+        return false;
+    }
+    const g = Array.from({ length: n }, () => []);
+    const vis = Array.from({ length: n }, () => false);
+    for (const [a, b] of edges) {
+        g[a].push(b);
+        g[b].push(a);
+    }
+    const dfs = i => {
+        vis[i] = true;
+        --n;
+        for (const j of g[i]) {
+            if (!vis[j]) {
+                dfs(j);
+            }
+        }
+    };
+    dfs(0);
+    return n === 0;
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

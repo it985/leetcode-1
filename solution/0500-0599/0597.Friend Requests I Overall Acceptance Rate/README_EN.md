@@ -1,8 +1,20 @@
-# [597. Friend Requests I Overall Acceptance Rate](https://leetcode.com/problems/friend-requests-i-overall-acceptance-rate)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0597.Friend%20Requests%20I%20Overall%20Acceptance%20Rate/README_EN.md
+tags:
+    - Database
+---
+
+<!-- problem:start -->
+
+# [597. Friend Requests I Overall Acceptance Rate 🔒](https://leetcode.com/problems/friend-requests-i-overall-acceptance-rate)
 
 [中文文档](/solution/0500-0599/0597.Friend%20Requests%20I%20Overall%20Acceptance%20Rate/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Table: <code>FriendRequest</code></p>
 
@@ -91,11 +103,17 @@ There are 4 unique accepted requests, and there are 5 requests in total. So the 
 	<li>Could you find the cumulative acceptance rate for every day?</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -113,3 +131,7 @@ SELECT
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

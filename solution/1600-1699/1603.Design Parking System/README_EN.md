@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1603.Design%20Parking%20System/README_EN.md
+rating: 1324
+source: Biweekly Contest 36 Q1
+tags:
+    - Design
+    - Counting
+    - Simulation
+---
+
+<!-- problem:start -->
+
 # [1603. Design Parking System](https://leetcode.com/problems/design-parking-system)
 
 [中文文档](/solution/1600-1699/1603.Design%20Parking%20System/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Design a parking system for a parking lot. The parking lot has three kinds of parking spaces: big, medium, and small, with a fixed number of slots for each size.</p>
 
@@ -40,11 +56,17 @@ parkingSystem.addCar(1); // return false because there is no available slot for 
 	<li>At most <code>1000</code> calls will be made to <code>addCar</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class ParkingSystem:
@@ -63,7 +85,7 @@ class ParkingSystem:
 # param_1 = obj.addCar(carType)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class ParkingSystem {
@@ -89,22 +111,25 @@ class ParkingSystem {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class ParkingSystem {
 public:
-    vector<int> cnt;
-
     ParkingSystem(int big, int medium, int small) {
         cnt = {0, big, medium, small};
     }
 
     bool addCar(int carType) {
-        if (cnt[carType] == 0) return false;
+        if (cnt[carType] == 0) {
+            return false;
+        }
         --cnt[carType];
         return true;
     }
+
+private:
+    vector<int> cnt;
 };
 
 /**
@@ -114,7 +139,7 @@ public:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type ParkingSystem struct {
@@ -140,7 +165,7 @@ func (this *ParkingSystem) AddCar(carType int) bool {
  */
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class ParkingSystem {
@@ -166,7 +191,7 @@ class ParkingSystem {
  */
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 struct ParkingSystem {
@@ -199,7 +224,34 @@ impl ParkingSystem {
  */
 ```
 
-### **C**
+#### C#
+
+```cs
+public class ParkingSystem {
+
+    private List<int> cnt;
+
+    public ParkingSystem(int big, int medium, int small) {
+        cnt = new List<int>() {0 , big, medium, small};
+    }
+
+    public bool AddCar(int carType) {
+        if (cnt[carType] == 0) {
+            return false;
+        }
+        --cnt[carType];
+        return true;
+    }
+}
+
+/**
+ * Your ParkingSystem object will be instantiated and called as such:
+ * ParkingSystem obj = new ParkingSystem(big, medium, small);
+ * bool param_1 = obj.AddCar(carType);
+ */
+```
+
+#### C
 
 ```c
 typedef struct {
@@ -237,37 +289,8 @@ void parkingSystemFree(ParkingSystem* obj) {
 */
 ```
 
-### **C#**
-
-```cs
-public class ParkingSystem {
-
-    private List<int> cnt;
-
-    public ParkingSystem(int big, int medium, int small) {
-        cnt = new List<int>() {0 , big, medium, small};
-    }
-
-    public bool AddCar(int carType) {
-        if (cnt[carType] == 0) {
-            return false;
-        }
-        --cnt[carType];
-        return true;
-    }
-}
-
-/**
- * Your ParkingSystem object will be instantiated and called as such:
- * ParkingSystem obj = new ParkingSystem(big, medium, small);
- * bool param_1 = obj.AddCar(carType);
- */
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

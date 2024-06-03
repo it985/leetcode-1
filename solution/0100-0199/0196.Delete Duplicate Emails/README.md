@@ -1,10 +1,20 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0196.Delete%20Duplicate%20Emails/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
 # [196. 删除重复的电子邮箱](https://leetcode.cn/problems/delete-duplicate-emails)
 
 [English Version](/solution/0100-0199/0196.Delete%20Duplicate%20Emails/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表:&nbsp;<code>Person</code></p>
 
@@ -54,19 +64,49 @@ Person 表:
 +----+------------------+
 <strong>解释:</strong> john@example.com重复两次。我们保留最小的Id = 1。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### Python3
+
+```python
+import pandas as pd
+
+
+# Modify Person in place
+def delete_duplicate_emails(person: pd.DataFrame) -> None:
+    # Sort the rows based on id (Ascending order)
+    person.sort_values(by="id", ascending=True, inplace=True)
+    # Drop the duplicates based on email.
+    person.drop_duplicates(subset="email", keep="first", inplace=True)
+```
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
 DELETE FROM Person
 WHERE id NOT IN (SELECT MIN(id) FROM (SELECT * FROM Person) AS p GROUP BY email);
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -88,6 +128,18 @@ WHERE
     );
 ```
 
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法三
+
+<!-- tabs:start -->
+
+#### MySQL
+
 ```sql
 DELETE p2
 FROM
@@ -97,19 +149,8 @@ WHERE
     p1.id < p2.id;
 ```
 
-### **Pandas**
-
-```python
-import pandas as pd
-
-
-# Modify Person in place
-def delete_duplicate_emails(person: pd.DataFrame) -> None:
-    # Sort the rows based on id (Ascending order)
-    person.sort_values(by="id", ascending=True, inplace=True)
-    # Drop the duplicates based on email.
-    person.drop_duplicates(subset="email", keep="first", inplace=True)
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

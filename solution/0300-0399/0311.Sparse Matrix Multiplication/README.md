@@ -1,10 +1,22 @@
-# [311. 稀疏矩阵的乘法](https://leetcode.cn/problems/sparse-matrix-multiplication)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0311.Sparse%20Matrix%20Multiplication/README.md
+tags:
+    - 数组
+    - 哈希表
+    - 矩阵
+---
+
+<!-- problem:start -->
+
+# [311. 稀疏矩阵的乘法 🔒](https://leetcode.cn/problems/sparse-matrix-multiplication)
 
 [English Version](/solution/0300-0399/0311.Sparse%20Matrix%20Multiplication/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定两个&nbsp;<a href="https://baike.baidu.com/item/%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5" target="_blank">稀疏矩阵</a>&nbsp;：大小为 <code>m x k</code> 的稀疏矩阵 <code>mat1</code> 和大小为 <code>k x n</code> 的稀疏矩阵 <code>mat2</code> ，返回 <code>mat1 x mat2</code> 的结果。你可以假设乘法总是可能的。</p>
 
@@ -38,29 +50,21 @@
 	<li><code>-100 &lt;= mat1[i][j], mat2[i][j] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：直接相乘**
+### 方法一：直接相乘
 
 我们可以直接按照矩阵乘法的定义，计算出结果矩阵中的每一个元素。
 
-时间复杂度 $O(m \times n \times k)$，空间复杂度 $O(m \times n)$。
-
-**方法二：预处理**
-
-我们可以预处理出两个矩阵的稀疏表示，即 $g1[i]$ 表示矩阵 $mat1$ 第 $i$ 行中所有非零元素的列下标和值，而 $g2[i]$ 表示矩阵 $mat2$ 第 $i$ 行中所有非零元素的列下标和值。
-
-接下来，我们遍历每一行 $i$，遍历 $g1[i]$ 中的每一个元素 $(k, x)$，遍历 $g2[k]$ 中的每一个元素 $(j, y)$，那么最终 $mat1[i][k] \times mat2[k][j]$ 就会对应到结果矩阵中的 $ans[i][j]$，我们将所有的结果累加即可。
-
-时间复杂度 $O(m \times n \times k)$，空间复杂度 $O(m \times n)$。
+时间复杂度 $O(m \times n \times k)$，空间复杂度 $O(m \times n)$。其中 $m$ 和 $n$ 分别是矩阵 $mat1$ 的行数和矩阵 $mat2$ 的列数，而 $k$ 是矩阵 $mat1$ 的列数或矩阵 $mat2$ 的行数。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -73,6 +77,100 @@ class Solution:
                     ans[i][j] += mat1[i][k] * mat2[k][j]
         return ans
 ```
+
+#### Java
+
+```java
+class Solution {
+    public int[][] multiply(int[][] mat1, int[][] mat2) {
+        int m = mat1.length, n = mat2[0].length;
+        int[][] ans = new int[m][n];
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                for (int k = 0; k < mat2.length; ++k) {
+                    ans[i][j] += mat1[i][k] * mat2[k][j];
+                }
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> multiply(vector<vector<int>>& mat1, vector<vector<int>>& mat2) {
+        int m = mat1.size(), n = mat2[0].size();
+        vector<vector<int>> ans(m, vector<int>(n));
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                for (int k = 0; k < mat2.size(); ++k) {
+                    ans[i][j] += mat1[i][k] * mat2[k][j];
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func multiply(mat1 [][]int, mat2 [][]int) [][]int {
+	m, n := len(mat1), len(mat2[0])
+	ans := make([][]int, m)
+	for i := range ans {
+		ans[i] = make([]int, n)
+	}
+	for i := 0; i < m; i++ {
+		for j := 0; j < n; j++ {
+			for k := 0; k < len(mat2); k++ {
+				ans[i][j] += mat1[i][k] * mat2[k][j]
+			}
+		}
+	}
+	return ans
+}
+```
+
+#### TypeScript
+
+```ts
+function multiply(mat1: number[][], mat2: number[][]): number[][] {
+    const [m, n] = [mat1.length, mat2[0].length];
+    const ans: number[][] = Array.from({ length: m }, () => Array.from({ length: n }, () => 0));
+    for (let i = 0; i < m; ++i) {
+        for (let j = 0; j < n; ++j) {
+            for (let k = 0; k < mat2.length; ++k) {
+                ans[i][j] += mat1[i][k] * mat2[k][j];
+            }
+        }
+    }
+    return ans;
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二：预处理
+
+我们可以预处理出两个矩阵的稀疏表示，即 $g1[i]$ 表示矩阵 $mat1$ 第 $i$ 行中所有非零元素的列下标和值，而 $g2[i]$ 表示矩阵 $mat2$ 第 $i$ 行中所有非零元素的列下标和值。
+
+接下来，我们遍历每一行 $i$，遍历 $g1[i]$ 中的每一个元素 $(k, x)$，遍历 $g2[k]$ 中的每一个元素 $(j, y)$，那么最终 $mat1[i][k] \times mat2[k][j]$ 就会对应到结果矩阵中的 $ans[i][j]$，我们将所有的结果累加即可。
+
+时间复杂度 $O(m \times n \times k)$，空间复杂度 $O(m \times n)$。其中 $m$ 和 $n$ 分别是矩阵 $mat1$ 的行数和矩阵 $mat2$ 的列数，而 $k$ 是矩阵 $mat1$ 的列数或矩阵 $mat2$ 的行数。
+
+<!-- tabs:start -->
+
+#### Python3
 
 ```python
 class Solution:
@@ -96,26 +194,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
-
-```java
-class Solution {
-    public int[][] multiply(int[][] mat1, int[][] mat2) {
-        int m = mat1.length, n = mat2[0].length;
-        int[][] ans = new int[m][n];
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < n; ++j) {
-                for (int k = 0; k < mat2.length; ++k) {
-                    ans[i][j] += mat1[i][k] * mat2[k][j];
-                }
-            }
-        }
-        return ans;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -152,25 +231,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    vector<vector<int>> multiply(vector<vector<int>>& mat1, vector<vector<int>>& mat2) {
-        int m = mat1.size(), n = mat2[0].size();
-        vector<vector<int>> ans(m, vector<int>(n));
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < n; ++j) {
-                for (int k = 0; k < mat2.size(); ++k) {
-                    ans[i][j] += mat1[i][k] * mat2[k][j];
-                }
-            }
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -204,25 +265,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func multiply(mat1 [][]int, mat2 [][]int) [][]int {
-	m, n := len(mat1), len(mat2[0])
-	ans := make([][]int, m)
-	for i := range ans {
-		ans[i] = make([]int, n)
-	}
-	for i := 0; i < m; i++ {
-		for j := 0; j < n; j++ {
-			for k := 0; k < len(mat2); k++ {
-				ans[i][j] += mat1[i][k] * mat2[k][j]
-			}
-		}
-	}
-	return ans
-}
-```
+#### Go
 
 ```go
 func multiply(mat1 [][]int, mat2 [][]int) [][]int {
@@ -258,22 +301,7 @@ func multiply(mat1 [][]int, mat2 [][]int) [][]int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function multiply(mat1: number[][], mat2: number[][]): number[][] {
-    const [m, n] = [mat1.length, mat2[0].length];
-    const ans: number[][] = Array.from({ length: m }, () => Array.from({ length: n }, () => 0));
-    for (let i = 0; i < m; ++i) {
-        for (let j = 0; j < n; ++j) {
-            for (let k = 0; k < mat2.length; ++k) {
-                ans[i][j] += mat1[i][k] * mat2[k][j];
-            }
-        }
-    }
-    return ans;
-}
-```
+#### TypeScript
 
 ```ts
 function multiply(mat1: number[][], mat2: number[][]): number[][] {
@@ -304,10 +332,8 @@ function multiply(mat1: number[][], mat2: number[][]): number[][] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

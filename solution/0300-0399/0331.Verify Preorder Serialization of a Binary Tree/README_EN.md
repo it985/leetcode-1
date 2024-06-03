@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0331.Verify%20Preorder%20Serialization%20of%20a%20Binary%20Tree/README_EN.md
+tags:
+    - Stack
+    - Tree
+    - String
+    - Binary Tree
+---
+
+<!-- problem:start -->
+
 # [331. Verify Preorder Serialization of a Binary Tree](https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree)
 
 [中文文档](/solution/0300-0399/0331.Verify%20Preorder%20Serialization%20of%20a%20Binary%20Tree/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>One way to serialize a binary tree is to use <strong>preorder traversal</strong>. When we encounter a non-null node, we record the node&#39;s value. If it is a null node, we record using a sentinel value such as <code>&#39;#&#39;</code>.</p>
 <img alt="" src="https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0300-0399/0331.Verify%20Preorder%20Serialization%20of%20a%20Binary%20Tree/images/pre-tree.jpg" style="width: 362px; height: 293px;" />
@@ -39,11 +54,23 @@
 	<li><code>preorder</code> consist of integers in the range <code>[0, 100]</code> and <code>&#39;#&#39;</code> separated by commas <code>&#39;,&#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Stack
+
+We split the string `preorder` into an array by commas, then traverse the array. If we encounter two consecutive `'#'` and the third element is not `'#'`, we replace these three elements with a single `'#'`. This process continues until the array traversal is complete.
+
+Finally, we check whether the length of the array is $1$ and whether the only element in the array is `'#'`.
+
+The time complexity is $O(n)$ and the space complexity is $O(n)$, where $n$ is the length of the string `preorder`.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -57,25 +84,7 @@ class Solution:
         return len(stk) == 1 and stk[0] == "#"
 ```
 
-### **Java**
-
-```java
-class Solution {
-    public boolean isValidSerialization(String preorder) {
-        String[] strs = preorder.split(",");
-        int diff = 1;
-        for (String s : strs) {
-            if (--diff < 0) {
-                return false;
-            }
-            if (!s.equals("#")) {
-                diff += 2;
-            }
-        }
-        return diff == 0;
-    }
-}
-```
+#### Java
 
 ```java
 class Solution {
@@ -96,7 +105,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -119,7 +128,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func isValidSerialization(preorder string) bool {
@@ -135,10 +144,23 @@ func isValidSerialization(preorder string) bool {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
-
+```ts
+function isValidSerialization(preorder: string): boolean {
+    const stk: string[] = [];
+    for (const s of preorder.split(',')) {
+        stk.push(s);
+        while (stk.length >= 3 && stk.at(-1) === '#' && stk.at(-2) === '#' && stk.at(-3) !== '#') {
+            stk.splice(-3, 3, '#');
+        }
+    }
+    return stk.length === 1 && stk[0] === '#';
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

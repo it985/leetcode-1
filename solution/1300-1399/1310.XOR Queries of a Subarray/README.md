@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1310.XOR%20Queries%20of%20a%20Subarray/README.md
+rating: 1459
+source: 第 170 场周赛 Q2
+tags:
+    - 位运算
+    - 数组
+    - 前缀和
+---
+
+<!-- problem:start -->
+
 # [1310. 子数组异或查询](https://leetcode.cn/problems/xor-queries-of-a-subarray)
 
 [English Version](/solution/1300-1399/1310.XOR%20Queries%20of%20a%20Subarray/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>有一个正整数数组 <code>arr</code>，现给你一个对应的查询数组 <code>queries</code>，其中 <code>queries[i] = [L<sub>i, </sub>R<sub>i</sub>]</code>。</p>
 
@@ -51,11 +65,13 @@
 	<li><code>0 <= queries[i][0] <= queries[i][1] < arr.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：前缀异或**
+### 方法一：前缀异或
 
 我们可以用一个长度为 $n+1$ 的前缀异或数组 $s$ 来存储数组 $arr$ 的前缀异或结果，其中 $s[i] = s[i-1] \oplus arr[i-1]$，即 $s[i]$ 表示 $arr$ 中下标 $[0,i-1]$ 的元素的异或结果。
 
@@ -72,9 +88,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +97,7 @@ class Solution:
         return [s[r + 1] ^ s[l] for l, r in queries]
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -106,7 +118,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -128,7 +140,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func xorQueries(arr []int, queries [][]int) (ans []int) {
@@ -145,7 +157,7 @@ func xorQueries(arr []int, queries [][]int) (ans []int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function xorQueries(arr: number[], queries: number[][]): number[] {
@@ -162,7 +174,7 @@ function xorQueries(arr: number[], queries: number[][]): number[] {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -184,10 +196,8 @@ var xorQueries = function (arr, queries) {
 };
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

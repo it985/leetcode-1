@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0524.Longest%20Word%20in%20Dictionary%20through%20Deleting/README.md
+tags:
+    - 数组
+    - 双指针
+    - 字符串
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [524. 通过删除字母匹配到字典里最长单词](https://leetcode.cn/problems/longest-word-in-dictionary-through-deleting)
 
 [English Version](/solution/0500-0599/0524.Longest%20Word%20in%20Dictionary%20through%20Deleting/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串 <code>s</code> 和一个字符串数组 <code>dictionary</code> ，找出并返回&nbsp;<code>dictionary</code> 中最长的字符串，该字符串可以通过删除 <code>s</code> 中的某些字符得到。</p>
 
@@ -37,15 +50,17 @@
 	<li><code>s</code> 和 <code>dictionary[i]</code> 仅由小写英文字母组成</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -66,9 +81,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -98,7 +111,57 @@ class Solution {
 }
 ```
 
-### **TypeScript**
+#### C++
+
+```cpp
+class Solution {
+public:
+    string findLongestWord(string s, vector<string>& dictionary) {
+        string ans = "";
+        for (string& a : dictionary)
+            if (check(s, a) && (ans.size() < a.size() || (ans.size() == a.size() && a < ans)))
+                ans = a;
+        return ans;
+    }
+
+    bool check(string& a, string& b) {
+        int m = a.size(), n = b.size();
+        int i = 0, j = 0;
+        while (i < m && j < n) {
+            if (a[i] == b[j]) ++j;
+            ++i;
+        }
+        return j == n;
+    }
+};
+```
+
+#### Go
+
+```go
+func findLongestWord(s string, dictionary []string) string {
+	ans := ""
+	check := func(a, b string) bool {
+		m, n := len(a), len(b)
+		i, j := 0, 0
+		for i < m && j < n {
+			if a[i] == b[j] {
+				j++
+			}
+			i++
+		}
+		return j == n
+	}
+	for _, a := range dictionary {
+		if check(s, a) && (len(ans) < len(a) || (len(ans) == len(a) && a < ans)) {
+			ans = a
+		}
+	}
+	return ans
+}
+```
+
+#### TypeScript
 
 ```ts
 function findLongestWord(s: string, dictionary: string[]): string {
@@ -130,7 +193,7 @@ function findLongestWord(s: string, dictionary: string[]): string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -157,60 +220,8 @@ impl Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    string findLongestWord(string s, vector<string>& dictionary) {
-        string ans = "";
-        for (string& a : dictionary)
-            if (check(s, a) && (ans.size() < a.size() || (ans.size() == a.size() && a < ans)))
-                ans = a;
-        return ans;
-    }
-
-    bool check(string& a, string& b) {
-        int m = a.size(), n = b.size();
-        int i = 0, j = 0;
-        while (i < m && j < n) {
-            if (a[i] == b[j]) ++j;
-            ++i;
-        }
-        return j == n;
-    }
-};
-```
-
-### **Go**
-
-```go
-func findLongestWord(s string, dictionary []string) string {
-	ans := ""
-	check := func(a, b string) bool {
-		m, n := len(a), len(b)
-		i, j := 0, 0
-		for i < m && j < n {
-			if a[i] == b[j] {
-				j++
-			}
-			i++
-		}
-		return j == n
-	}
-	for _, a := range dictionary {
-		if check(s, a) && (len(ans) < len(a) || (len(ans) == len(a) && a < ans)) {
-			ans = a
-		}
-	}
-	return ans
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

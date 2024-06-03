@@ -1,8 +1,25 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1818.Minimum%20Absolute%20Sum%20Difference/README_EN.md
+rating: 1934
+source: Weekly Contest 235 Q3
+tags:
+    - Array
+    - Binary Search
+    - Ordered Set
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1818. Minimum Absolute Sum Difference](https://leetcode.com/problems/minimum-absolute-sum-difference)
 
 [中文文档](/solution/1800-1899/1818.Minimum%20Absolute%20Sum%20Difference/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given two positive integer arrays <code>nums1</code> and <code>nums2</code>, both of length <code>n</code>.</p>
 
@@ -59,9 +76,13 @@ This yields an absolute sum difference of <code>|10-9| + |10-3| + |4-5| + |4-1| 
 	<li><code>1 &lt;= nums1[i], nums2[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sorting + Binary Search**
+<!-- solution:start -->
+
+### Solution 1: Sorting + Binary Search
 
 According to the problem, we can first calculate the absolute difference sum of `nums1` and `nums2` without any replacements, denoted as $s$.
 
@@ -73,7 +94,7 @@ The time complexity is $O(n \times \log n)$, and the space complexity is $O(n)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -93,7 +114,7 @@ class Solution:
         return (s - mx + mod) % mod
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -136,7 +157,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -167,7 +188,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minAbsoluteSumDiff(nums1 []int, nums2 []int) int {
@@ -204,7 +225,50 @@ func abs(x int) int {
 }
 ```
 
-### **JavaScript**
+#### TypeScript
+
+```ts
+function minAbsoluteSumDiff(nums1: number[], nums2: number[]): number {
+    const mod = 10 ** 9 + 7;
+    const nums = [...nums1];
+    nums.sort((a, b) => a - b);
+    const n = nums.length;
+    let s = 0;
+    for (let i = 0; i < n; ++i) {
+        s = (s + Math.abs(nums1[i] - nums2[i])) % mod;
+    }
+    let mx = 0;
+    for (let i = 0; i < n; ++i) {
+        const d1 = Math.abs(nums1[i] - nums2[i]);
+        let d2 = 1 << 30;
+        let j = search(nums, nums2[i]);
+        if (j < n) {
+            d2 = Math.min(d2, Math.abs(nums[j] - nums2[i]));
+        }
+        if (j) {
+            d2 = Math.min(d2, Math.abs(nums[j - 1] - nums2[i]));
+        }
+        mx = Math.max(mx, d1 - d2);
+    }
+    return (s - mx + mod) % mod;
+}
+
+function search(nums: number[], x: number): number {
+    let left = 0;
+    let right = nums.length;
+    while (left < right) {
+        const mid = (left + right) >> 1;
+        if (nums[mid] >= x) {
+            right = mid;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return left;
+}
+```
+
+#### JavaScript
 
 ```js
 /**
@@ -252,53 +316,8 @@ function search(nums, x) {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function minAbsoluteSumDiff(nums1: number[], nums2: number[]): number {
-    const mod = 10 ** 9 + 7;
-    const nums = [...nums1];
-    nums.sort((a, b) => a - b);
-    const n = nums.length;
-    let s = 0;
-    for (let i = 0; i < n; ++i) {
-        s = (s + Math.abs(nums1[i] - nums2[i])) % mod;
-    }
-    let mx = 0;
-    for (let i = 0; i < n; ++i) {
-        const d1 = Math.abs(nums1[i] - nums2[i]);
-        let d2 = 1 << 30;
-        let j = search(nums, nums2[i]);
-        if (j < n) {
-            d2 = Math.min(d2, Math.abs(nums[j] - nums2[i]));
-        }
-        if (j) {
-            d2 = Math.min(d2, Math.abs(nums[j - 1] - nums2[i]));
-        }
-        mx = Math.max(mx, d1 - d2);
-    }
-    return (s - mx + mod) % mod;
-}
-
-function search(nums: number[], x: number): number {
-    let left = 0;
-    let right = nums.length;
-    while (left < right) {
-        const mid = (left + right) >> 1;
-        if (nums[mid] >= x) {
-            right = mid;
-        } else {
-            left = mid + 1;
-        }
-    }
-    return left;
-}
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

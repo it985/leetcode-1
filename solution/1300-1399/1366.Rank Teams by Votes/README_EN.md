@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1300-1399/1366.Rank%20Teams%20by%20Votes/README_EN.md
+rating: 1626
+source: Weekly Contest 178 Q2
+tags:
+    - Array
+    - Hash Table
+    - String
+    - Counting
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [1366. Rank Teams by Votes](https://leetcode.com/problems/rank-teams-by-votes)
 
 [中文文档](/solution/1300-1399/1366.Rank%20Teams%20by%20Votes/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>In a special ranking system, each voter gives a rank from highest to lowest to all teams participating in the competition.</p>
 
@@ -54,11 +72,21 @@ X is the winner due to the tie-breaking rule. X has the same votes as W for the 
 	<li>All the characters that occur in <code>votes[0]</code> <strong>also occur</strong> in <code>votes[j]</code> where <code>1 &lt;= j &lt; votes.length</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Counting + Custom Sorting
+
+For each candidate, we can count the number of votes they receive in each ranking, and then compare the number of votes according to different rankings. If the number of votes is the same, we compare the letters.
+
+The time complexity is $O(n^2 \times \log n)$, and the space complexity is $O(n^2)$. Where $n$ is the number of candidates.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -71,7 +99,7 @@ class Solution:
         return "".join(sorted(votes[0], key=lambda x: (cnt[x], -ord(x)), reverse=True))
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -106,7 +134,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -135,7 +163,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func rankTeams(votes []string) string {
@@ -160,10 +188,8 @@ func rankTeams(votes []string) string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

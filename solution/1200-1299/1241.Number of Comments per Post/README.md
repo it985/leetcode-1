@@ -1,10 +1,20 @@
-# [1241. 每个帖子的评论数](https://leetcode.cn/problems/number-of-comments-per-post)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1241.Number%20of%20Comments%20per%20Post/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1241. 每个帖子的评论数 🔒](https://leetcode.cn/problems/number-of-comments-per-post)
 
 [English Version](/solution/1200-1299/1241.Number%20of%20Comments%20per%20Post/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表&nbsp;<code>Submissions</code>&nbsp;：</p>
 
@@ -71,13 +81,17 @@ Submissions table:
 表中 ID 为 12 的帖子没有评论。
 表中 ID 为 6 的评论是对 ID 为 7 的已删除帖子的评论，因此我们将其忽略。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -96,3 +110,7 @@ ORDER BY post_id;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

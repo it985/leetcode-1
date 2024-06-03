@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0023.Merge%20k%20Sorted%20Lists/README.md
+tags:
+    - 链表
+    - 分治
+    - 堆（优先队列）
+    - 归并排序
+---
+
+<!-- problem:start -->
+
 # [23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists)
 
 [English Version](/solution/0000-0099/0023.Merge%20k%20Sorted%20Lists/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个链表数组，每个链表都已经按升序排列。</p>
 
@@ -51,11 +64,13 @@
 	<li><code>lists[i].length</code> 的总和不超过 <code>10^4</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：优先队列（小根堆）**
+### 方法一：优先队列（小根堆）
 
 我们可以创建一个小根堆来 $pq$ 维护所有链表的头节点，每次从小根堆中取出值最小的节点，添加到结果链表的末尾，然后将该节点的下一个节点加入堆中，重复上述步骤直到堆为空。
 
@@ -63,9 +78,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for singly-linked list.
@@ -88,9 +101,7 @@ class Solution:
         return dummy.next
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -126,7 +137,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -165,7 +176,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -204,7 +215,7 @@ func (h *hp) Push(v any)        { *h = append(*h, v.(*ListNode)) }
 func (h *hp) Pop() any          { a := *h; v := a[len(a)-1]; *h = a[:len(a)-1]; return v }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -240,79 +251,7 @@ function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode[]} lists
- * @return {ListNode}
- */
-var mergeKLists = function (lists) {
-    const pq = new MinPriorityQueue({ priority: node => node.val });
-    for (const head of lists) {
-        if (head) {
-            pq.enqueue(head);
-        }
-    }
-    const dummy = new ListNode();
-    let cur = dummy;
-    while (!pq.isEmpty()) {
-        const node = pq.dequeue().element;
-        cur.next = node;
-        cur = cur.next;
-        if (node.next) {
-            pq.enqueue(node.next);
-        }
-    }
-    return dummy.next;
-};
-```
-
-### **C#**
-
-```cs
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     public int val;
- *     public ListNode next;
- *     public ListNode(int val=0, ListNode next=null) {
- *         this.val = val;
- *         this.next = next;
- *     }
- * }
- */
-public class Solution {
-    public ListNode MergeKLists(ListNode[] lists) {
-        PriorityQueue<ListNode, int> pq = new PriorityQueue<ListNode, int>();
-        foreach (var head in lists) {
-            if (head != null) {
-                pq.Enqueue(head, head.val);
-            }
-        }
-        var dummy = new ListNode();
-        var cur = dummy;
-        while (pq.Count > 0) {
-            var node = pq.Dequeue();
-            cur.next = node;
-            cur = cur.next;
-            if (node.next != null) {
-                pq.Enqueue(node.next, node.next.val);
-            }
-        }
-        return dummy.next;
-    }
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for singly-linked list.
@@ -363,10 +302,139 @@ impl Solution {
 }
 ```
 
-### **...**
+#### JavaScript
 
+```js
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode[]} lists
+ * @return {ListNode}
+ */
+var mergeKLists = function (lists) {
+    const pq = new MinPriorityQueue({ priority: node => node.val });
+    for (const head of lists) {
+        if (head) {
+            pq.enqueue(head);
+        }
+    }
+    const dummy = new ListNode();
+    let cur = dummy;
+    while (!pq.isEmpty()) {
+        const node = pq.dequeue().element;
+        cur.next = node;
+        cur = cur.next;
+        if (node.next) {
+            pq.enqueue(node.next);
+        }
+    }
+    return dummy.next;
+};
 ```
 
+#### C#
+
+```cs
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     public ListNode(int val=0, ListNode next=null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode MergeKLists(ListNode[] lists) {
+        PriorityQueue<ListNode, int> pq = new PriorityQueue<ListNode, int>();
+        foreach (var head in lists) {
+            if (head != null) {
+                pq.Enqueue(head, head.val);
+            }
+        }
+        var dummy = new ListNode();
+        var cur = dummy;
+        while (pq.Count > 0) {
+            var node = pq.Dequeue();
+            cur.next = node;
+            cur = cur.next;
+            if (node.next != null) {
+                pq.Enqueue(node.next, node.next.val);
+            }
+        }
+        return dummy.next;
+    }
+}
+```
+
+#### PHP
+
+```php
+# Definition for singly-linked list.
+class ListNode {
+    public $val;
+    public $next;
+    public function __construct($val = 0, $next = null) {
+        $this->val = $val;
+        $this->next = $next;
+    }
+}
+
+class Solution {
+    /**
+     * @param ListNode[] $lists
+     * @return ListNode
+     */
+
+    function mergeKLists($lists) {
+        $numLists = count($lists);
+
+        if ($numLists === 0) {
+            return null;
+        }
+        while ($numLists > 1) {
+            $mid = intval($numLists / 2);
+            for ($i = 0; $i < $mid; $i++) {
+                $lists[$i] = $this->mergeTwoLists($lists[$i], $lists[$numLists - $i - 1]);
+            }
+            $numLists = intval(($numLists + 1) / 2);
+        }
+        return $lists[0];
+    }
+
+    function mergeTwoLists($list1, $list2) {
+        $dummy = new ListNode(0);
+        $current = $dummy;
+
+        while ($list1 != null && $list2 != null) {
+            if ($list1->val <= $list2->val) {
+                $current->next = $list1;
+                $list1 = $list1->next;
+            } else {
+                $current->next = $list2;
+                $list2 = $list2->next;
+            }
+            $current = $current->next;
+        }
+        if ($list1 != null) {
+            $current->next = $list1;
+        } elseif ($list2 != null) {
+            $current->next = $list2;
+        }
+        return $dummy->next;
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

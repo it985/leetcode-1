@@ -1,8 +1,26 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2500-2599/2501.Longest%20Square%20Streak%20in%20an%20Array/README_EN.md
+rating: 1479
+source: Weekly Contest 323 Q2
+tags:
+    - Array
+    - Hash Table
+    - Binary Search
+    - Dynamic Programming
+    - Sorting
+---
+
+<!-- problem:start -->
+
 # [2501. Longest Square Streak in an Array](https://leetcode.com/problems/longest-square-streak-in-an-array)
 
 [中文文档](/solution/2500-2599/2501.Longest%20Square%20Streak%20in%20an%20Array/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code>. A subsequence of <code>nums</code> is called a <strong>square streak</strong> if:</p>
 
@@ -44,11 +62,17 @@ It can be shown that every subsequence of length 4 is not a square streak.
 	<li><code>2 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,21 +89,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def longestSquareStreak(self, nums: List[int]) -> int:
-        @cache
-        def dfs(x):
-            if x not in s:
-                return 0
-            return 1 + dfs(x * x)
-
-        s = set(nums)
-        ans = max(dfs(x) for x in nums)
-        return -1 if ans < 2 else ans
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -103,6 +113,79 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int longestSquareStreak(vector<int>& nums) {
+        unordered_set<long long> s(nums.begin(), nums.end());
+        int ans = -1;
+        for (int& v : nums) {
+            int t = 0;
+            long long x = v;
+            while (s.count(x)) {
+                x *= x;
+                ++t;
+            }
+            if (t > 1) ans = max(ans, t);
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func longestSquareStreak(nums []int) int {
+	s := map[int]bool{}
+	for _, v := range nums {
+		s[v] = true
+	}
+	ans := -1
+	for _, v := range nums {
+		t := 0
+		for s[v] {
+			v *= v
+			t++
+		}
+		if t > 1 && t > ans {
+			ans = t
+		}
+	}
+	return ans
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def longestSquareStreak(self, nums: List[int]) -> int:
+        @cache
+        def dfs(x):
+            if x not in s:
+                return 0
+            return 1 + dfs(x * x)
+
+        s = set(nums)
+        ans = max(dfs(x) for x in nums)
+        return -1 if ans < 2 else ans
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -134,27 +217,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int longestSquareStreak(vector<int>& nums) {
-        unordered_set<long long> s(nums.begin(), nums.end());
-        int ans = -1;
-        for (int& v : nums) {
-            int t = 0;
-            long long x = v;
-            while (s.count(x)) {
-                x *= x;
-                ++t;
-            }
-            if (t > 1) ans = max(ans, t);
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -177,28 +240,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func longestSquareStreak(nums []int) int {
-	s := map[int]bool{}
-	for _, v := range nums {
-		s[v] = true
-	}
-	ans := -1
-	for _, v := range nums {
-		t := 0
-		for s[v] {
-			v *= v
-			t++
-		}
-		if t > 1 && t > ans {
-			ans = t
-		}
-	}
-	return ans
-}
-```
+#### Go
 
 ```go
 func longestSquareStreak(nums []int) (ans int) {
@@ -230,10 +272,8 @@ func longestSquareStreak(nums []int) (ans int) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

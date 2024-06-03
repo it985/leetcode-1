@@ -1,10 +1,19 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/04.03.List%20of%20Depth/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 04.03. 特定深度节点链表](https://leetcode.cn/problems/list-of-depth-lcci)
 
 [English Version](/lcci/04.03.List%20of%20Depth/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
+
 <p>给定一棵二叉树，设计一个算法，创建含有某一深度上所有节点的链表（比如，若一棵树的深度为 <code>D</code>，则会创建出 <code>D</code> 个链表）。返回一个包含所有深度的链表的数组。</p>
 
 <p>&nbsp;</p>
@@ -24,11 +33,13 @@
 <strong>输出：</strong>[[1],[2,3],[4,5,7],[8]]
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：BFS 层序遍历**
+### 方法一：BFS 层序遍历
 
 我们可以使用 BFS 层序遍历的方法，每次遍历一层，将当前层的节点值存入链表中，然后将链表加入到结果数组中。
 
@@ -36,9 +47,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -73,9 +82,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -121,7 +128,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -168,7 +175,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -209,7 +216,7 @@ func listOfDepth(tree *TreeNode) (ans []*ListNode) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -257,7 +264,7 @@ function listOfDepth(tree: TreeNode | null): Array<ListNode | null> {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -329,10 +336,66 @@ impl Solution {
 }
 ```
 
-### **...**
+#### Swift
 
-```
+```swift
+/* class TreeNode {
+*    var val: Int
+*    var left: TreeNode?
+*    var right: TreeNode?
+*
+*    init(_ val: Int) {
+*        self.val = val
+*        self.left = nil
+*        self.right = nil
+*    }
+*  }
+*/
 
+/* class ListNode {
+*    var val: Int
+*    var next: ListNode?
+*
+*    init(_ val: Int) {
+*        self.val = val
+*        self.next = nil
+*    }
+*  }
+*/
+
+class Solution {
+    func listOfDepth(_ tree: TreeNode?) -> [ListNode?] {
+        var ans = [ListNode?]()
+        guard let tree = tree else { return ans }
+
+        var q = [TreeNode]()
+        q.append(tree)
+
+        while !q.isEmpty {
+            let dummy = ListNode(0)
+            var cur = dummy
+            for _ in 0..<q.count {
+                let node = q.removeFirst()
+                cur.next = ListNode(node.val)
+                cur = cur.next!
+
+                if let left = node.left {
+                    q.append(left)
+                }
+                if let right = node.right {
+                    q.append(right)
+                }
+            }
+            ans.append(dummy.next)
+        }
+
+        return ans
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

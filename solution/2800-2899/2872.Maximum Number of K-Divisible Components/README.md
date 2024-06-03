@@ -1,10 +1,23 @@
-# [2872. 可以被 K 整除连通块的最大数目](https://leetcode.cn/problems/maximum-number-of-k-divisible-components/)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2872.Maximum%20Number%20of%20K-Divisible%20Components/README.md
+rating: 1967
+source: 第 114 场双周赛 Q4
+tags:
+    - 树
+    - 深度优先搜索
+---
+
+<!-- problem:start -->
+
+# [2872. 可以被 K 整除连通块的最大数目](https://leetcode.cn/problems/maximum-number-of-k-divisible-components)
 
 [English Version](/solution/2800-2899/2872.Maximum%20Number%20of%20K-Divisible%20Components/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一棵 <code>n</code>&nbsp;个节点的无向树，节点编号为&nbsp;<code>0</code>&nbsp;到&nbsp;<code>n - 1</code>&nbsp;。给你整数&nbsp;<code>n</code>&nbsp;和一个长度为 <code>n - 1</code>&nbsp;的二维整数数组&nbsp;<code>edges</code>&nbsp;，其中&nbsp;<code>edges[i] = [a<sub>i</sub>, b<sub>i</sub>]</code>&nbsp;表示树中节点&nbsp;<code>a<sub>i</sub></code> 和&nbsp;<code>b<sub>i</sub></code>&nbsp;有一条边。</p>
 
@@ -58,11 +71,13 @@
 	<li>输入保证&nbsp;<code>edges</code>&nbsp;是一棵无向树。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：DFS**
+### 方法一：DFS
 
 我们注意到，题目保证了整棵树的节点值之和可以被 $k$ 整除，因此，如果我们删除一棵元素和能被 $k$ 整除的边，那么剩下的每个连通块的节点值之和也一定可以被 $k$ 整除。
 
@@ -72,9 +87,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -99,9 +112,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -137,44 +148,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    int n, k;
-    int[] values;
-    int[] dfs(int curr, int parent, List<List<Integer>> adj) {
-        int[] res = new int[] {0, values[curr] % k};
-        for (int next : adj.get(curr)) {
-            if (next == parent) {
-                continue;
-            }
-            int[] update = dfs(next, curr, adj);
-            res[0] += update[0];
-            res[1] += update[1];
-        }
-        res[1] %= k;
-        res[0] += res[1] == 0 ? 1 : 0;
-        return res;
-    }
-    public int maxKDivisibleComponents(int n, int[][] edges, int[] values, int k) {
-        this.n = n;
-        this.k = k;
-        this.values = values;
-        List<List<Integer>> adj = new ArrayList<>();
-        int[][] dp = new int[n][2];
-        for (int i = 0; i < n; i++) {
-            adj.add(new ArrayList<>());
-        }
-        for (int[] edge : edges) {
-            adj.get(edge[0]).add(edge[1]);
-            adj.get(edge[1]).add(edge[0]);
-        }
-        int[] ans = dfs(0, -1, adj);
-        return ans[1] == 0 ? ans[0] : 0;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -203,7 +177,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxKDivisibleComponents(n int, edges [][]int, values []int, k int) (ans int) {
@@ -231,7 +205,7 @@ func maxKDivisibleComponents(n int, edges [][]int, values []int, k int) (ans int
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxKDivisibleComponents(
@@ -263,10 +237,8 @@ function maxKDivisibleComponents(
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

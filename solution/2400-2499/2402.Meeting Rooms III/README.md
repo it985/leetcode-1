@@ -1,10 +1,26 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2402.Meeting%20Rooms%20III/README.md
+rating: 2092
+source: 第 309 场周赛 Q4
+tags:
+    - 数组
+    - 哈希表
+    - 排序
+    - 模拟
+    - 堆（优先队列）
+---
+
+<!-- problem:start -->
+
 # [2402. 会议室 III](https://leetcode.cn/problems/meeting-rooms-iii)
 
 [English Version](/solution/2400-2499/2402.Meeting%20Rooms%20III/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数 <code>n</code> ，共有编号从 <code>0</code> 到 <code>n - 1</code> 的 <code>n</code> 个会议室。</p>
 
@@ -65,11 +81,13 @@
 	<li><code>start<sub>i</sub></code> 的所有值 <strong>互不相同</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：优先队列（小根堆）**
+### 方法一：优先队列（小根堆）
 
 我们定义两个优先队列，分别表示空闲会议室、使用中的会议室。其中：空闲会议室 `idle` 依据**下标**排序；而使用中的会议室 `busy` 依据**结束时间、下标**排序。
 
@@ -83,13 +101,11 @@
 
 相似题目：
 
--   [1882. 使用服务器处理任务](/solution/1800-1899/1882.Process%20Tasks%20Using%20Servers/README.md)
+-   [1882. 使用服务器处理任务](https://github.com/doocs/leetcode/blob/main/solution/1800-1899/1882.Process%20Tasks%20Using%20Servers/README.md)
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -117,9 +133,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -159,7 +173,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 using ll = long long;
@@ -203,7 +217,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func mostBooked(n int, meetings [][]int) int {
@@ -262,17 +276,8 @@ func (h *hp2) Push(v any)   { *h = append(*h, v.(pair)) }
 func (h *hp2) Pop() any     { a := *h; v := a[len(a)-1]; *h = a[:len(a)-1]; return v }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

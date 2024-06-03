@@ -1,10 +1,20 @@
-# [1440. 计算布尔表达式的值](https://leetcode.cn/problems/evaluate-boolean-expression)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1440.Evaluate%20Boolean%20Expression/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1440. 计算布尔表达式的值 🔒](https://leetcode.cn/problems/evaluate-boolean-expression)
 
 [English Version](/solution/1400-1499/1440.Evaluate%20Boolean%20Expression/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表 <code>Variables</code>:</p>
 
@@ -86,17 +96,19 @@ Expressions 表:
 如上所示, 你需要通过使用 Variables 表来找到 Expressions 表中的每一个布尔表达式的值.
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：等值连接 + CASE 表达式**
+### 方法一：等值连接 + CASE 表达式
 
 我们可以通过等值连接，将 `Expressions` 表中的每一行与 `Variables` 表中的两行进行关联，关联的条件是 `left_operand = name` 和 `right_operand = name`，然后通过 `CASE` 表达式来判断布尔表达式的值。如果 `operator` 为 `=`，则判断两个值是否相等；如果 `operator` 为 `>`，则判断左值是否大于右值；如果 `operator` 为 `<`，则判断左值是否小于右值。若是，那么布尔表达式的值为 `true`，否则为 `false`。
 
 <!-- tabs:start -->
 
-### **SQL**
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -119,3 +131,7 @@ FROM
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

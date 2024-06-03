@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0000-0099/0051.N-Queens/README_EN.md
+tags:
+    - Array
+    - Backtracking
+---
+
+<!-- problem:start -->
+
 # [51. N-Queens](https://leetcode.com/problems/n-queens)
 
 [中文文档](/solution/0000-0099/0051.N-Queens/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>The <strong>n-queens</strong> puzzle is the problem of placing <code>n</code> queens on an <code>n x n</code> chessboard such that no two queens attack each other.</p>
 
@@ -33,9 +46,13 @@
 	<li><code>1 &lt;= n &lt;= 9</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: DFS (Backtracking)**
+<!-- solution:start -->
+
+### Solution 1: DFS (Backtracking)
 
 We define three arrays $col$, $dg$, and $udg$ to represent whether there is a queen in the column, the main diagonal, and the anti-diagonal, respectively. If there is a queen at position $(i, j)$, then $col[j]$, $dg[i + j]$, and $udg[n - i + j]$ are all $1$. In addition, we use an array $g$ to record the current state of the chessboard, where all elements in $g$ are initially `'.'`.
 
@@ -51,7 +68,7 @@ The time complexity is $O(n^2 \times n!)$, and the space complexity is $O(n)$. H
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -77,7 +94,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -123,7 +140,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -155,7 +172,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func solveNQueens(n int) (ans [][]string) {
@@ -194,17 +211,15 @@ func solveNQueens(n int) (ans [][]string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function solveNQueens(n: number): string[][] {
-    const col: number[] = new Array(n).fill(0);
-    const dg: number[] = new Array(n << 1).fill(0);
-    const udg: number[] = new Array(n << 1).fill(0);
+    const col: number[] = Array(n).fill(0);
+    const dg: number[] = Array(n << 1).fill(0);
+    const udg: number[] = Array(n << 1).fill(0);
     const ans: string[][] = [];
-    const t: string[][] = Array(n)
-        .fill(0)
-        .map(() => Array(n).fill('.'));
+    const t: string[][] = Array.from({ length: n }, () => Array(n).fill('.'));
     const dfs = (i: number) => {
         if (i === n) {
             ans.push(t.map(x => x.join('')));
@@ -225,7 +240,7 @@ function solveNQueens(n: number): string[][] {
 }
 ```
 
-### **C#**
+#### C#
 
 ```cs
 public class Solution {
@@ -266,10 +281,8 @@ public class Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

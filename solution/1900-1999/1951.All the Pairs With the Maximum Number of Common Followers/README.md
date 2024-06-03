@@ -1,10 +1,20 @@
-# [1951. 查询具有最多共同关注者的所有两两结对组](https://leetcode.cn/problems/all-the-pairs-with-the-maximum-number-of-common-followers)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1900-1999/1951.All%20the%20Pairs%20With%20the%20Maximum%20Number%20of%20Common%20Followers/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [1951. 查询具有最多共同关注者的所有两两结对组 🔒](https://leetcode.cn/problems/all-the-pairs-with-the-maximum-number-of-common-followers)
 
 [English Version](/solution/1900-1999/1951.All%20the%20Pairs%20With%20the%20Maximum%20Number%20of%20Common%20Followers/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Relations</code></p>
 
@@ -62,15 +72,17 @@ Result 表:
 注意，我们没有关于用户3，4，5的任何关注者信息，我们认为他们有0个关注者。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -93,3 +105,7 @@ WHERE rk = 1;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

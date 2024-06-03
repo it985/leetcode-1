@@ -1,10 +1,20 @@
-# [2853. 最高薪水差异](https://leetcode.cn/problems/highest-salaries-difference)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2853.Highest%20Salaries%20Difference/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2853. 最高薪水差异 🔒](https://leetcode.cn/problems/highest-salaries-difference)
 
 [English Version](/solution/2800-2899/2853.Highest%20Salaries%20Difference/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表：<code><font face="monospace">Salaries</font></code></p>
 
@@ -57,19 +67,19 @@ Salaries table:
 - 工程部门和市场部门的最高工资分别为 102,000 和 53,000，因此绝对差异为 49,000。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：GROUP BY 分组**
+### 方法一：GROUP BY 分组
 
 我们可以先分别计算出每个部门的最高工资，然后再计算两个最高工资的差值。
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -83,3 +93,7 @@ FROM
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

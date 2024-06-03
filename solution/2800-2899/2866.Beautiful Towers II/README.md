@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2866.Beautiful%20Towers%20II/README.md
+rating: 2071
+source: 第 364 场周赛 Q3
+tags:
+    - 栈
+    - 数组
+    - 单调栈
+---
+
+<!-- problem:start -->
+
 # [2866. 美丽塔 II](https://leetcode.cn/problems/beautiful-towers-ii)
 
 [English Version](/solution/2800-2899/2866.Beautiful%20Towers%20II/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个长度为 <code>n</code>&nbsp;下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>maxHeights</code>&nbsp;。</p>
 
@@ -69,11 +83,13 @@
 	<li><code>1 &lt;= maxHeights[i] &lt;= 10<sup>9</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：动态规划 + 单调栈**
+### 方法一：动态规划 + 单调栈
 
 我们定义 $f[i]$ 表示前 $i+1$ 座塔中，以最后一座塔作为最高塔的美丽塔方案的高度和。我们可以得到如下的状态转移方程：
 
@@ -93,9 +109,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -135,9 +149,7 @@ class Solution:
         return max(a + b - c for a, b, c in zip(f, g, maxHeights))
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -198,7 +210,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -257,7 +269,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumSumOfHeights(maxHeights []int) (ans int64) {
@@ -321,7 +333,7 @@ func maximumSumOfHeights(maxHeights []int) (ans int64) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maximumSumOfHeights(maxHeights: number[]): number {
@@ -378,10 +390,8 @@ function maximumSumOfHeights(maxHeights: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

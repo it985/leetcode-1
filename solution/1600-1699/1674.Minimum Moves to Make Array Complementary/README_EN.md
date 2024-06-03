@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1600-1699/1674.Minimum%20Moves%20to%20Make%20Array%20Complementary/README_EN.md
+rating: 2333
+source: Weekly Contest 217 Q3
+tags:
+    - Array
+    - Hash Table
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [1674. Minimum Moves to Make Array Complementary](https://leetcode.com/problems/minimum-moves-to-make-array-complementary)
 
 [中文文档](/solution/1600-1699/1674.Minimum%20Moves%20to%20Make%20Array%20Complementary/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an integer array <code>nums</code> of <strong>even</strong> length <code>n</code> and an integer <code>limit</code>. In one move, you can replace any integer from <code>nums</code> with another integer between <code>1</code> and <code>limit</code>, inclusive.</p>
 
@@ -50,9 +66,13 @@ Therefore, nums[i] + nums[n-1-i] = 4 for every i, so nums is complementary.
 	<li><code>n</code> is even.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Difference Array**
+<!-- solution:start -->
+
+### Solution 1: Difference Array
 
 Let's denote $a$ as the smaller value between $nums[i]$ and $nums[n-i-1]$, and $b$ as the larger value between $nums[i]$ and $nums[n-i-1]$.
 
@@ -78,7 +98,7 @@ The time complexity is $O(n)$, and the space complexity is $O(n)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -106,7 +126,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -138,7 +158,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -171,7 +191,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minMoves(nums []int, limit int) int {
@@ -199,10 +219,39 @@ func minMoves(nums []int, limit int) int {
 }
 ```
 
-### **...**
+#### TypeScript
 
-```
+```ts
+function minMoves(nums: number[], limit: number): number {
+    const n = nums.length;
+    const d: number[] = Array(limit * 2 + 2).fill(0);
+    for (let i = 0; i < n >> 1; ++i) {
+        const a = Math.min(nums[i], nums[n - i - 1]);
+        const b = Math.max(nums[i], nums[n - i - 1]);
 
+        d[2] += 2;
+        d[limit * 2 + 1] -= 2;
+
+        d[a + 1] -= 1;
+        d[b + limit + 1] += 1;
+
+        d[a + b] -= 1;
+        d[a + b + 1] += 1;
+    }
+    let ans = n;
+    let s = 0;
+    for (let i = 2; i <= limit * 2; ++i) {
+        s += d[i];
+        if (ans > s) {
+            ans = s;
+        }
+    }
+    return ans;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

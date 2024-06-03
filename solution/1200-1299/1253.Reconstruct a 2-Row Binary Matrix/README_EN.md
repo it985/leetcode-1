@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1253.Reconstruct%20a%202-Row%20Binary%20Matrix/README_EN.md
+rating: 1505
+source: Weekly Contest 162 Q2
+tags:
+    - Greedy
+    - Array
+    - Matrix
+---
+
+<!-- problem:start -->
+
 # [1253. Reconstruct a 2-Row Binary Matrix](https://leetcode.com/problems/reconstruct-a-2-row-binary-matrix)
 
 [中文文档](/solution/1200-1299/1253.Reconstruct%20a%202-Row%20Binary%20Matrix/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given the following details of a matrix with <code>n</code> columns and <code>2</code> rows :</p>
 
@@ -53,11 +69,30 @@
 	<li><code>0 &lt;= colsum[i] &lt;= 2</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1: Greedy
+
+First, we create an answer array $ans$, where $ans[0]$ and $ans[1]$ represent the first and second rows of the matrix, respectively.
+
+Next, we traverse the array $colsum$ from left to right. For the current element $colsum[j]$, we have the following cases:
+
+-   If $colsum[j] = 2$, then we set both $ans[0][j]$ and $ans[1][j]$ to $1$. In this case, both $upper$ and $lower$ are reduced by $1$.
+-   If $colsum[j] = 1$, then we set either $ans[0][j]$ or $ans[1][j]$ to $1$. If $upper \gt lower$, then we prefer to set $ans[0][j]$ to $1$; otherwise, we prefer to set $ans[1][j]$ to $1$. In this case, either $upper$ or $lower$ is reduced by $1$.
+-   If $colsum[j] = 0$, then we set both $ans[0][j]$ and $ans[1][j]$ to $0$.
+-   If $upper \lt 0$ or $lower \lt 0$, then it is impossible to construct a matrix that meets the requirements, and we return an empty array.
+
+At the end of the traversal, if both $upper$ and $lower$ are $0$, then we return $ans$; otherwise, we return an empty array.
+
+The time complexity is $O(n)$, where $n$ is the length of the array $colsum$. Ignoring the space consumption of the answer array, the space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -82,7 +117,7 @@ class Solution:
         return ans if lower == upper == 0 else []
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -116,7 +151,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -148,7 +183,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func reconstructMatrix(upper int, lower int, colsum []int) [][]int {
@@ -183,7 +218,7 @@ func reconstructMatrix(upper int, lower int, colsum []int) [][]int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function reconstructMatrix(upper: number, lower: number, colsum: number[]): number[][] {
@@ -213,10 +248,8 @@ function reconstructMatrix(upper: number, lower: number, colsum: number[]): numb
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

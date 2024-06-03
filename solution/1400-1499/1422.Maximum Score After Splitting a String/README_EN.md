@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1422.Maximum%20Score%20After%20Splitting%20a%20String/README_EN.md
+rating: 1237
+source: Weekly Contest 186 Q1
+tags:
+    - String
+    - Prefix Sum
+---
+
+<!-- problem:start -->
+
 # [1422. Maximum Score After Splitting a String](https://leetcode.com/problems/maximum-score-after-splitting-a-string)
 
 [中文文档](/solution/1400-1499/1422.Maximum%20Score%20After%20Splitting%20a%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a&nbsp;string <code>s</code>&nbsp;of zeros and ones, <em>return the maximum score after splitting the string into two <strong>non-empty</strong> substrings</em> (i.e. <strong>left</strong> substring and <strong>right</strong> substring).</p>
 
@@ -46,11 +61,17 @@ left = &quot;01110&quot; and right = &quot;1&quot;, score = 2 + 1 = 3
 	<li>The string <code>s</code> consists of characters <code>&#39;0&#39;</code> and <code>&#39;1&#39;</code> only.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -58,17 +79,7 @@ class Solution:
         return max(s[:i].count('0') + s[i:].count('1') for i in range(1, len(s)))
 ```
 
-```python
-class Solution:
-    def maxScore(self, s: str) -> int:
-        ans = t = (s[0] == '0') + s[1:].count('1')
-        for i in range(1, len(s) - 1):
-            t += 1 if s[i] == '0' else -1
-            ans = max(ans, t)
-        return ans
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -93,29 +104,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int maxScore(String s) {
-        int t = 0;
-        if (s.charAt(0) == '0') {
-            t++;
-        }
-        for (int i = 1; i < s.length(); ++i) {
-            if (s.charAt(i) == '1') {
-                t++;
-            }
-        }
-        int ans = t;
-        for (int i = 1; i < s.length() - 1; ++i) {
-            t += s.charAt(i) == '0' ? 1 : -1;
-            ans = Math.max(ans, t);
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -137,24 +126,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int maxScore(string s) {
-        int t = 0;
-        if (s[0] == '0') ++t;
-        for (int i = 1; i < s.size(); ++i) t += s[i] == '1';
-        int ans = t;
-        for (int i = 1; i < s.size() - 1; ++i) {
-            t += s[i] == '0' ? 1 : -1;
-            ans = max(ans, t);
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func maxScore(s string) int {
@@ -177,32 +149,7 @@ func maxScore(s string) int {
 }
 ```
 
-```go
-func maxScore(s string) int {
-	t := 0
-	if s[0] == '0' {
-		t++
-	}
-	n := len(s)
-	for i := 1; i < n; i++ {
-		if s[i] == '1' {
-			t++
-		}
-	}
-	ans := t
-	for i := 1; i < n-1; i++ {
-		if s[i] == '0' {
-			t++
-		} else {
-			t--
-		}
-		ans = max(ans, t)
-	}
-	return ans
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxScore(s: string): number {
@@ -230,7 +177,7 @@ function maxScore(s: string): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -261,10 +208,100 @@ impl Solution {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def maxScore(self, s: str) -> int:
+        ans = t = (s[0] == '0') + s[1:].count('1')
+        for i in range(1, len(s) - 1):
+            t += 1 if s[i] == '0' else -1
+            ans = max(ans, t)
+        return ans
 ```
 
+#### Java
+
+```java
+class Solution {
+    public int maxScore(String s) {
+        int t = 0;
+        if (s.charAt(0) == '0') {
+            t++;
+        }
+        for (int i = 1; i < s.length(); ++i) {
+            if (s.charAt(i) == '1') {
+                t++;
+            }
+        }
+        int ans = t;
+        for (int i = 1; i < s.length() - 1; ++i) {
+            t += s.charAt(i) == '0' ? 1 : -1;
+            ans = Math.max(ans, t);
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int maxScore(string s) {
+        int t = 0;
+        if (s[0] == '0') ++t;
+        for (int i = 1; i < s.size(); ++i) t += s[i] == '1';
+        int ans = t;
+        for (int i = 1; i < s.size() - 1; ++i) {
+            t += s[i] == '0' ? 1 : -1;
+            ans = max(ans, t);
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func maxScore(s string) int {
+	t := 0
+	if s[0] == '0' {
+		t++
+	}
+	n := len(s)
+	for i := 1; i < n; i++ {
+		if s[i] == '1' {
+			t++
+		}
+	}
+	ans := t
+	for i := 1; i < n-1; i++ {
+		if s[i] == '0' {
+			t++
+		} else {
+			t--
+		}
+		ans = max(ans, t)
+	}
+	return ans
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

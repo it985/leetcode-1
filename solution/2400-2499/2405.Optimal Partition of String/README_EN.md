@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2405.Optimal%20Partition%20of%20String/README_EN.md
+rating: 1355
+source: Weekly Contest 310 Q2
+tags:
+    - Greedy
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
 # [2405. Optimal Partition of String](https://leetcode.com/problems/optimal-partition-of-string)
 
 [中文文档](/solution/2400-2499/2405.Optimal%20Partition%20of%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given a string <code>s</code>, partition the string into one or more <strong>substrings</strong> such that the characters in each substring are <strong>unique</strong>. That is, no letter appears in a single substring more than <strong>once</strong>.</p>
 
@@ -38,9 +54,13 @@ It can be shown that 4 is the minimum number of substrings needed.
 	<li><code>s</code> consists of only English lowercase letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy**
+<!-- solution:start -->
+
+### Solution 1: Greedy
 
 According to the problem, each substring should be as long as possible and contain unique characters. We just need to partition greedily.
 
@@ -50,7 +70,7 @@ The time complexity is $O(n)$, where $n$ is the length of the string $s$.
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -65,20 +85,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def partitionString(self, s: str) -> int:
-        ans, v = 1, 0
-        for c in s:
-            i = ord(c) - ord('a')
-            if (v >> i) & 1:
-                v = 0
-                ans += 1
-            v |= 1 << i
-        return ans
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -96,6 +103,107 @@ class Solution {
     }
 }
 ```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int partitionString(string s) {
+        unordered_set<char> ss;
+        int ans = 1;
+        for (char c : s) {
+            if (ss.count(c)) {
+                ++ans;
+                ss.clear();
+            }
+            ss.insert(c);
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func partitionString(s string) int {
+	ss := map[rune]bool{}
+	ans := 1
+	for _, c := range s {
+		if ss[c] {
+			ans++
+			ss = map[rune]bool{}
+		}
+		ss[c] = true
+	}
+	return ans
+}
+```
+
+#### TypeScript
+
+```ts
+function partitionString(s: string): number {
+    const set = new Set();
+    let res = 1;
+    for (const c of s) {
+        if (set.has(c)) {
+            res++;
+            set.clear();
+        }
+        set.add(c);
+    }
+    return res;
+}
+```
+
+#### Rust
+
+```rust
+use std::collections::HashSet;
+impl Solution {
+    pub fn partition_string(s: String) -> i32 {
+        let mut set = HashSet::new();
+        let mut res = 1;
+        for c in s.as_bytes().iter() {
+            if set.contains(c) {
+                res += 1;
+                set.clear();
+            }
+            set.insert(c);
+        }
+        res
+    }
+}
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def partitionString(self, s: str) -> int:
+        ans, v = 1, 0
+        for c in s:
+            i = ord(c) - ord('a')
+            if (v >> i) & 1:
+                v = 0
+                ans += 1
+            v |= 1 << i
+        return ans
+```
+
+#### Java
 
 ```java
 class Solution {
@@ -115,25 +223,7 @@ class Solution {
 }
 ```
 
-### **C++**
-
-```cpp
-class Solution {
-public:
-    int partitionString(string s) {
-        unordered_set<char> ss;
-        int ans = 1;
-        for (char c : s) {
-            if (ss.count(c)) {
-                ++ans;
-                ss.clear();
-            }
-            ss.insert(c);
-        }
-        return ans;
-    }
-};
-```
+#### C++
 
 ```cpp
 class Solution {
@@ -154,22 +244,7 @@ public:
 };
 ```
 
-### **Go**
-
-```go
-func partitionString(s string) int {
-	ss := map[rune]bool{}
-	ans := 1
-	for _, c := range s {
-		if ss[c] {
-			ans++
-			ss = map[rune]bool{}
-		}
-		ss[c] = true
-	}
-	return ans
-}
-```
+#### Go
 
 ```go
 func partitionString(s string) int {
@@ -186,48 +261,8 @@ func partitionString(s string) int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-function partitionString(s: string): number {
-    const set = new Set();
-    let res = 1;
-    for (const c of s) {
-        if (set.has(c)) {
-            res++;
-            set.clear();
-        }
-        set.add(c);
-    }
-    return res;
-}
-```
-
-### **Rust**
-
-```rust
-use std::collections::HashSet;
-impl Solution {
-    pub fn partition_string(s: String) -> i32 {
-        let mut set = HashSet::new();
-        let mut res = 1;
-        for c in s.as_bytes().iter() {
-            if set.contains(c) {
-                res += 1;
-                set.clear();
-            }
-            set.insert(c);
-        }
-        res
-    }
-}
-```
-
-### **...**
-
-```
-
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

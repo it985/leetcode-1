@@ -1,10 +1,20 @@
-# [2339. 联赛的所有比赛](https://leetcode.cn/problems/all-the-matches-of-the-league)
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2339.All%20the%20Matches%20of%20the%20League/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2339. 联赛的所有比赛 🔒](https://leetcode.cn/problems/all-the-matches-of-the-league)
 
 [English Version](/solution/2300-2399/2339.All%20the%20Matches%20of%20the%20League/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Teams</code></p>
 
@@ -52,15 +62,17 @@ Teams 表:
 <strong>解释:</strong> 该联赛的所有比赛都列在表格中。
 </pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -72,3 +84,7 @@ WHERE t1.team_name != t2.team_name;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

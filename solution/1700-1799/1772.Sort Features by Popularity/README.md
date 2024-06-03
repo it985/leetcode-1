@@ -1,10 +1,23 @@
-# [1772. 按受欢迎程度排列功能](https://leetcode.cn/problems/sort-features-by-popularity)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1772.Sort%20Features%20by%20Popularity/README.md
+tags:
+    - 数组
+    - 哈希表
+    - 字符串
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [1772. 按受欢迎程度排列功能 🔒](https://leetcode.cn/problems/sort-features-by-popularity)
 
 [English Version](/solution/1700-1799/1772.Sort%20Features%20by%20Popularity/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个字符串数组 <code>features</code> ，其中 <code>features[i]</code> 是一个单词，描述你最近参与开发的项目中一个功能的名称。你调查了用户喜欢哪些功能。另给定一个字符串数组 <code>responses</code>，其中 <code>responses[i]</code> 是一个包含以空格分隔的一系列单词的字符串。</p>
 
@@ -45,11 +58,13 @@
 	<li><code>responses[i]</code> 没有前置或后置空格。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表 + 自定义排序**
+### 方法一：哈希表 + 自定义排序
 
 我们遍历 `responses`，对于 `responses[i]` 中的每个单词，我们用一个哈希表 `vis` 暂存。接下来将 `vis` 中的单词记录到哈希表 `cnt` 中，记录每个单词出现的次数。
 
@@ -59,9 +74,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -73,9 +86,7 @@ class Solution:
         return sorted(features, key=lambda w: -cnt[w])
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -108,7 +119,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -142,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func sortFeatures(features []string, responses []string) []string {
@@ -161,7 +172,7 @@ func sortFeatures(features []string, responses []string) []string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function sortFeatures(features: string[], responses: string[]): string[] {
@@ -187,10 +198,8 @@ function sortFeatures(features: string[], responses: string[]): string[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

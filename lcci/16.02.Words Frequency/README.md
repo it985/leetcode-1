@@ -1,10 +1,18 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/lcci/16.02.Words%20Frequency/README.md
+---
+
+<!-- problem:start -->
+
 # [面试题 16.02. 单词频率](https://leetcode.cn/problems/words-frequency-lcci)
 
 [English Version](/lcci/16.02.Words%20Frequency/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>设计一个方法，找出任意指定单词在一本书中的出现频率。</p>
 <p>你的实现应该支持如下操作：</p>
@@ -28,11 +36,13 @@ wordsFrequency.get("pen"); //返回1
 <li><code>get</code>函数的调用次数不会超过100000</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：哈希表**
+### 方法一：哈希表
 
 我们用哈希表 $cnt$ 统计 $book$ 中每个单词出现的次数。
 
@@ -42,9 +52,7 @@ wordsFrequency.get("pen"); //返回1
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class WordsFrequency:
@@ -60,9 +68,7 @@ class WordsFrequency:
 # param_1 = obj.get(word)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class WordsFrequency {
@@ -86,7 +92,7 @@ class WordsFrequency {
  */
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class WordsFrequency {
@@ -112,7 +118,7 @@ private:
  */
 ```
 
-### **Go**
+#### Go
 
 ```go
 type WordsFrequency struct {
@@ -138,35 +144,7 @@ func (this *WordsFrequency) Get(word string) int {
  */
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {string[]} book
- */
-var WordsFrequency = function (book) {
-    this.cnt = new Map();
-    for (const x of book) {
-        this.cnt.set(x, (this.cnt.get(x) || 0) + 1);
-    }
-};
-
-/**
- * @param {string} word
- * @return {number}
- */
-WordsFrequency.prototype.get = function (word) {
-    return this.cnt.get(word) || 0;
-};
-
-/**
- * Your WordsFrequency object will be instantiated and called as such:
- * var obj = new WordsFrequency(book)
- * var param_1 = obj.get(word)
- */
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class WordsFrequency {
@@ -192,7 +170,7 @@ class WordsFrequency {
  */
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -223,10 +201,54 @@ impl WordsFrequency {
  */
 ```
 
-### **...**
+#### JavaScript
 
+```js
+/**
+ * @param {string[]} book
+ */
+var WordsFrequency = function (book) {
+    this.cnt = new Map();
+    for (const x of book) {
+        this.cnt.set(x, (this.cnt.get(x) || 0) + 1);
+    }
+};
+
+/**
+ * @param {string} word
+ * @return {number}
+ */
+WordsFrequency.prototype.get = function (word) {
+    return this.cnt.get(word) || 0;
+};
+
+/**
+ * Your WordsFrequency object will be instantiated and called as such:
+ * var obj = new WordsFrequency(book)
+ * var param_1 = obj.get(word)
+ */
 ```
 
+#### Swift
+
+```swift
+class WordsFrequency {
+    private var cnt: [String: Int] = [:]
+
+    init(_ book: [String]) {
+        for word in book {
+            cnt[word, default: 0] += 1
+        }
+    }
+
+    func get(_ word: String) -> Int {
+        return cnt[word, default: 0]
+    }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

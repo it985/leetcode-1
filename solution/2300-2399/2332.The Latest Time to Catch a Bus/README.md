@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2300-2399/2332.The%20Latest%20Time%20to%20Catch%20a%20Bus/README.md
+rating: 1840
+source: 第 82 场双周赛 Q2
+tags:
+    - 数组
+    - 双指针
+    - 二分查找
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2332. 坐上公交的最晚时间](https://leetcode.cn/problems/the-latest-time-to-catch-a-bus)
 
 [English Version](/solution/2300-2399/2332.The%20Latest%20Time%20to%20Catch%20a%20Bus/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始长度为 <code>n</code>&nbsp;的整数数组&nbsp;<code>buses</code>&nbsp;，其中&nbsp;<code>buses[i]</code>&nbsp;表示第 <code>i</code>&nbsp;辆公交车的出发时间。同时给你一个下标从 <strong>0</strong>&nbsp;开始长度为 <code>m</code>&nbsp;的整数数组&nbsp;<code>passengers</code>&nbsp;，其中&nbsp;<code>passengers[j]</code>&nbsp;表示第&nbsp;<code>j</code>&nbsp;位乘客的到达时间。所有公交车出发的时间互不相同，所有乘客到达的时间也互不相同。</p>
 
@@ -50,26 +65,26 @@
 	<li><code>passengers</code>&nbsp;中的元素 <strong>互不相同</strong>&nbsp;。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：模拟**
+### 方法一：模拟
 
-先排序，然后用双指针模拟乘客上车的过程：遍历公交车 $bus$，乘客遵循“先到先上车”的原则。
+我们先排序，然后用双指针模拟乘客上车的过程：遍历公交车 $bus$，乘客遵循“先到先上车”的原则。
 
 模拟结束后，判断最后一班公交车是否还有空位：
 
--   若有空位，我们可以在公交车发车时 $bus[bus.length-1]$ 到达公交站；若此时有人，可以顺着往前找到没人到达的时刻；
+-   若有空位，我们可以在公交车发车时 $bus[|bus|-1]$ 到达公交站；若此时有人，可以顺着往前找到没人到达的时刻；
 -   若无空位，我们可以找到上一个上车的乘客，顺着他往前找到没人到达的时刻。
 
-时间复杂度 $O(nlogn+mlogm)$。
+时间复杂度 $O(n \times \log n + m \times \log m)$，空间复杂度 $O(\log n + \log m)$。其中 $n$ 和 $m$ 分别是公交车和乘客的数量。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -90,9 +105,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -118,7 +131,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -139,7 +152,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func latestTimeCatchTheBus(buses []int, passengers []int, capacity int) int {
@@ -166,16 +179,62 @@ func latestTimeCatchTheBus(buses []int, passengers []int, capacity int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
-
+function latestTimeCatchTheBus(buses: number[], passengers: number[], capacity: number): number {
+    buses.sort((a, b) => a - b);
+    passengers.sort((a, b) => a - b);
+    let [j, c] = [0, 0];
+    for (const t of buses) {
+        c = capacity;
+        while (c && j < passengers.length && passengers[j] <= t) {
+            --c;
+            ++j;
+        }
+    }
+    --j;
+    let ans = c > 0 ? buses.at(-1)! : passengers[j];
+    while (j >= 0 && passengers[j] === ans) {
+        --ans;
+        --j;
+    }
+    return ans;
+}
 ```
 
-### **...**
+#### JavaScript
 
-```
-
+```js
+/**
+ * @param {number[]} buses
+ * @param {number[]} passengers
+ * @param {number} capacity
+ * @return {number}
+ */
+var latestTimeCatchTheBus = function (buses, passengers, capacity) {
+    buses.sort((a, b) => a - b);
+    passengers.sort((a, b) => a - b);
+    let [j, c] = [0, 0];
+    for (const t of buses) {
+        c = capacity;
+        while (c && j < passengers.length && passengers[j] <= t) {
+            --c;
+            ++j;
+        }
+    }
+    --j;
+    let ans = c > 0 ? buses.at(-1) : passengers[j];
+    while (j >= 0 && passengers[j] === ans) {
+        --ans;
+        --j;
+    }
+    return ans;
+};
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

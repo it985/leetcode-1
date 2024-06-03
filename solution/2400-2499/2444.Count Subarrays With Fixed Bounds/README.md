@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2444.Count%20Subarrays%20With%20Fixed%20Bounds/README.md
+rating: 2092
+source: 第 315 场周赛 Q4
+tags:
+    - 队列
+    - 数组
+    - 滑动窗口
+    - 单调队列
+---
+
+<!-- problem:start -->
+
 # [2444. 统计定界子数组的数目](https://leetcode.cn/problems/count-subarrays-with-fixed-bounds)
 
 [English Version](/solution/2400-2499/2444.Count%20Subarrays%20With%20Fixed%20Bounds/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个整数数组 <code>nums</code> 和两个整数 <code>minK</code> 以及 <code>maxK</code> 。</p>
 
@@ -43,11 +58,13 @@
 	<li><code>1 &lt;= nums[i], minK, maxK &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：枚举右端点**
+### 方法一：枚举右端点
 
 由题意，我们可以知道，定界子数组的所有元素都在区间 `[minK, maxK]` 中，且最小值一定为 `minK`，最大值一定为 `maxK`。
 
@@ -63,9 +80,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -83,9 +98,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -109,7 +122,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -128,7 +141,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func countSubarrays(nums []int, minK int, maxK int) int64 {
@@ -150,35 +163,7 @@ func countSubarrays(nums []int, minK int, maxK int) int64 {
 }
 ```
 
-### **C**
-
-```c
-#define max(a, b) (((a) > (b)) ? (a) : (b))
-#define min(a, b) (((a) < (b)) ? (a) : (b))
-
-long long countSubarrays(int* nums, int numsSize, int minK, int maxK) {
-    long long res = 0;
-    int minIndex = -1;
-    int maxIndex = -1;
-    int k = -1;
-    for (int i = 0; i < numsSize; i++) {
-        int num = nums[i];
-        if (num == minK) {
-            minIndex = i;
-        }
-        if (num == maxK) {
-            maxIndex = i;
-        }
-        if (num < minK || num > maxK) {
-            k = i;
-        }
-        res += max(min(minIndex, maxIndex) - k, 0);
-    }
-    return res;
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function countSubarrays(nums: number[], minK: number, maxK: number): number {
@@ -202,7 +187,7 @@ function countSubarrays(nums: number[], minK: number, maxK: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -230,10 +215,36 @@ impl Solution {
 }
 ```
 
-### **...**
+#### C
 
-```
+```c
+#define max(a, b) (((a) > (b)) ? (a) : (b))
+#define min(a, b) (((a) < (b)) ? (a) : (b))
 
+long long countSubarrays(int* nums, int numsSize, int minK, int maxK) {
+    long long res = 0;
+    int minIndex = -1;
+    int maxIndex = -1;
+    int k = -1;
+    for (int i = 0; i < numsSize; i++) {
+        int num = nums[i];
+        if (num == minK) {
+            minIndex = i;
+        }
+        if (num == maxK) {
+            maxIndex = i;
+        }
+        if (num < minK || num > maxK) {
+            k = i;
+        }
+        res += max(min(minIndex, maxIndex) - k, 0);
+    }
+    return res;
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,10 +1,23 @@
-# [723. 粉碎糖果](https://leetcode.cn/problems/candy-crush)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0700-0799/0723.Candy%20Crush/README.md
+tags:
+    - 数组
+    - 双指针
+    - 矩阵
+    - 模拟
+---
+
+<!-- problem:start -->
+
+# [723. 粉碎糖果 🔒](https://leetcode.cn/problems/candy-crush)
 
 [English Version](/solution/0700-0799/0723.Candy%20Crush/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>这个问题是实现一个简单的消除算法。</p>
 
@@ -52,17 +65,17 @@
 
 <p>&nbsp;</p>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-循环消除，先标记每一行需要消除的元素，再标记每一列需要消除的元素（使用元素的负相反数进行标记），然后执行消除。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -106,9 +119,7 @@ class Solution:
         return board
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -156,7 +167,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -203,7 +214,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func candyCrush(board [][]int) [][]int {
@@ -256,10 +267,8 @@ func abs(x int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

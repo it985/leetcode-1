@@ -1,10 +1,20 @@
-# [2051. 商店中每个成员的级别](https://leetcode.cn/problems/the-category-of-each-member-in-the-store)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2000-2099/2051.The%20Category%20of%20Each%20Member%20in%20the%20Store/README.md
+tags:
+    - 数据库
+---
+
+<!-- problem:start -->
+
+# [2051. 商店中每个成员的级别 🔒](https://leetcode.cn/problems/the-category-of-each-member-in-the-store)
 
 [English Version](/solution/2000-2099/2051.The%20Category%20of%20Each%20Member%20in%20the%20Store/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>表: <code>Members</code></p>
 
@@ -124,15 +134,17 @@ Purchases 表:
 - id = 9 的成员 Alice 访问了商店两次，购买了一次。转化率=(100 * 1)/ 2 = 50。她获得了金奖。
 - id = 11 的用户 Bob 访问了商店三次，购买了一次。转化率=(100 * 1)/ 3 = 33.33。他获得了银奖。</pre>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
+
+### 方法一
 
 <!-- tabs:start -->
 
-### **SQL**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### MySQL
 
 ```sql
 # Write your MySQL query statement below
@@ -153,3 +165,7 @@ GROUP BY member_id;
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

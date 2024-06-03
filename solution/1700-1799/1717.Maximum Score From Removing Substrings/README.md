@@ -1,15 +1,30 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1700-1799/1717.Maximum%20Score%20From%20Removing%20Substrings/README.md
+rating: 1867
+source: 第 43 场双周赛 Q2
+tags:
+    - 栈
+    - 贪心
+    - 字符串
+---
+
+<!-- problem:start -->
+
 # [1717. 删除子字符串的最大得分](https://leetcode.cn/problems/maximum-score-from-removing-substrings)
 
 [English Version](/solution/1700-1799/1717.Maximum%20Score%20From%20Removing%20Substrings/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串 <code>s</code> 和两个整数 <code>x</code> 和 <code>y</code> 。你可以执行下面两种操作任意次。</p>
 
 <ul>
 	<li>删除子字符串 <code>"ab"</code> 并得到 <code>x</code> 分。
+
     <ul>
     	<li>比方说，从 <code>"c<strong>ab</strong>xbae"</code> 删除 <code>ab</code> ，得到 <code>"cxbae"</code> 。</li>
     </ul>
@@ -19,6 +34,7 @@
     	<li>比方说，从 <code>"cabx<strong>ba</strong>e"</code> 删除 <code>ba</code> ，得到 <code>"cabxe"</code> 。</li>
     </ul>
     </li>
+
 </ul>
 
 <p>请返回对 <code>s</code> 字符串执行上面操作若干次能得到的最大得分。</p>
@@ -52,17 +68,17 @@
 	<li><code>s</code> 只包含小写英文字母。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-不失一般性，可以设 `x >= y`。因此，可以先删除所有 "ab"，再删除所有 "ba"，获取最终得分 ans。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -93,9 +109,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -136,7 +150,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -178,7 +192,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maximumGain(s string, x int, y int) int {
@@ -220,10 +234,8 @@ func maximumGain(s string, x int, y int) int {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

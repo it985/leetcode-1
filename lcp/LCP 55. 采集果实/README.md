@@ -1,8 +1,16 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/lcp/LCP%2055.%20%E9%87%87%E9%9B%86%E6%9E%9C%E5%AE%9E/README.md
+---
+
+<!-- problem:start -->
+
 # [LCP 55. 采集果实](https://leetcode.cn/problems/PTXy4P)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 欢迎各位勇者来到力扣新手村，本次训练内容为「采集果实」。
 
@@ -50,11 +58,13 @@
 -   `1 <= fruits[i][1] < 10^3`
 -   `1 <= limit <= 100`
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心**
+### 方法一：贪心
 
 对于每个任务，我们贪心地按照 $limit$ 的大小来采集，那么每个任务需要的时间为 $\lceil \frac{num}{limit} \rceil \times time[type]$，其中 $\lceil x \rceil$ 表示对 $x$ 向上取整。我们将所有任务需要的时间求和即为答案。
 
@@ -62,9 +72,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -74,9 +82,7 @@ class Solution:
         return sum((num + limit - 1) // limit * time[i] for i, num in fruits)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +97,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -107,7 +113,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func getMinimumTime(time []int, fruits [][]int, limit int) (ans int) {
@@ -119,7 +125,7 @@ func getMinimumTime(time []int, fruits [][]int, limit int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function getMinimumTime(time: number[], fruits: number[][], limit: number): number {
@@ -131,10 +137,8 @@ function getMinimumTime(time: number[], fruits: number[][], limit: number): numb
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

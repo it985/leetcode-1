@@ -1,8 +1,20 @@
-# [2113. Elements in Array After Removing and Replacing Elements](https://leetcode.com/problems/elements-in-array-after-removing-and-replacing-elements)
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2100-2199/2113.Elements%20in%20Array%20After%20Removing%20and%20Replacing%20Elements/README_EN.md
+tags:
+    - Array
+---
+
+<!-- problem:start -->
+
+# [2113. Elements in Array After Removing and Replacing Elements 🔒](https://leetcode.com/problems/elements-in-array-after-removing-and-replacing-elements)
 
 [中文文档](/solution/2100-2199/2113.Elements%20in%20Array%20After%20Removing%20and%20Replacing%20Elements/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> integer array <code>nums</code>. Initially on minute <code>0</code>, the array is unchanged. Every minute, the <strong>leftmost</strong> element in <code>nums</code> is removed until no elements remain. Then, every minute, one element is appended to the <strong>end</strong> of <code>nums</code>, in the order they were removed in, until the original array is restored. This process repeats indefinitely.</p>
 
@@ -68,11 +80,17 @@ At minute 3, nums[0] does not exist.
 	<li><code>0 &lt;= index<sub>j</sub> &lt; nums.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -88,7 +106,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -110,7 +128,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -132,7 +150,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func elementInNums(nums []int, queries [][]int) []int {
@@ -152,16 +170,8 @@ func elementInNums(nums []int, queries [][]int) []int {
 }
 ```
 
-### **TypeScript**
-
-```ts
-
-```
-
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

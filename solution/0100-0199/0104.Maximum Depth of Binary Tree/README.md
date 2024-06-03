@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0100-0199/0104.Maximum%20Depth%20of%20Binary%20Tree/README.md
+tags:
+    - 树
+    - 深度优先搜索
+    - 广度优先搜索
+    - 二叉树
+---
+
+<!-- problem:start -->
+
 # [104. 二叉树的最大深度](https://leetcode.cn/problems/maximum-depth-of-binary-tree)
 
 [English Version](/solution/0100-0199/0104.Maximum%20Depth%20of%20Binary%20Tree/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个二叉树 <code>root</code> ，返回其最大深度。</p>
 
@@ -39,11 +52,13 @@
 	<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：递归**
+### 方法一：递归
 
 递归遍历左右子树，求左右子树的最大深度，然后取最大值加 $1$ 即可。
 
@@ -51,9 +66,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # Definition for a binary tree node.
@@ -70,9 +83,7 @@ class Solution:
         return 1 + max(l, r)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -102,7 +113,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -126,7 +137,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -146,30 +157,7 @@ func maxDepth(root *TreeNode) int {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
-/**
- * @param {TreeNode} root
- * @return {number}
- */
-var maxDepth = function (root) {
-    if (!root) return 0;
-    const l = maxDepth(root.left);
-    const r = maxDepth(root.right);
-    return 1 + Math.max(l, r);
-};
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -194,7 +182,7 @@ function maxDepth(root: TreeNode | null): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 // Definition for a binary tree node.
@@ -232,7 +220,30 @@ impl Solution {
 }
 ```
 
-### **C**
+#### JavaScript
+
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var maxDepth = function (root) {
+    if (!root) return 0;
+    const l = maxDepth(root.left);
+    const r = maxDepth(root.right);
+    return 1 + Math.max(l, r);
+};
+```
+
+#### C
 
 ```c
 /**
@@ -256,10 +267,8 @@ int maxDepth(struct TreeNode* root) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

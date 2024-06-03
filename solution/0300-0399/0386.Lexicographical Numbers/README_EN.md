@@ -1,8 +1,21 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0300-0399/0386.Lexicographical%20Numbers/README_EN.md
+tags:
+    - Depth-First Search
+    - Trie
+---
+
+<!-- problem:start -->
+
 # [386. Lexicographical Numbers](https://leetcode.com/problems/lexicographical-numbers)
 
 [中文文档](/solution/0300-0399/0386.Lexicographical%20Numbers/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an integer <code>n</code>, return all the numbers in the range <code>[1, n]</code> sorted in lexicographical order.</p>
 
@@ -23,13 +36,17 @@
 	<li><code>1 &lt;= n &lt;= 5 * 10<sup>4</sup></code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-DFS.
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -47,23 +64,7 @@ class Solution:
         return ans
 ```
 
-```python
-class Solution:
-    def lexicalOrder(self, n: int) -> List[int]:
-        v = 1
-        ans = []
-        for i in range(n):
-            ans.append(v)
-            if v * 10 <= n:
-                v *= 10
-            else:
-                while v % 10 == 9 or v + 1 > n:
-                    v //= 10
-                v += 1
-        return ans
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -87,28 +88,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public List<Integer> lexicalOrder(int n) {
-        List<Integer> ans = new ArrayList<>();
-        int v = 1;
-        for (int i = 0; i < n; ++i) {
-            ans.add(v);
-            if (v * 10 <= n) {
-                v *= 10;
-            } else {
-                while (v % 10 == 9 || v + 1 > n) {
-                    v /= 10;
-                }
-                ++v;
-            }
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -127,27 +107,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    vector<int> lexicalOrder(int n) {
-        vector<int> ans;
-        int v = 1;
-        for (int i = 0; i < n; ++i) {
-            ans.push_back(v);
-            if (v * 10 <= n)
-                v *= 10;
-            else {
-                while (v % 10 == 9 || v + 1 > n) v /= 10;
-                ++v;
-            }
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func lexicalOrder(n int) []int {
@@ -169,26 +129,7 @@ func lexicalOrder(n int) []int {
 }
 ```
 
-```go
-func lexicalOrder(n int) []int {
-	var ans []int
-	v := 1
-	for i := 0; i < n; i++ {
-		ans = append(ans, v)
-		if v*10 <= n {
-			v *= 10
-		} else {
-			for v%10 == 9 || v+1 > n {
-				v /= 10
-			}
-			v++
-		}
-	}
-	return ans
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -212,7 +153,7 @@ impl Solution {
 }
 ```
 
-### **JavaScript**
+#### JavaScript
 
 ```js
 /**
@@ -237,10 +178,84 @@ var lexicalOrder = function (n) {
 };
 ```
 
-### **...**
+<!-- tabs:end -->
 
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Java
+
+```java
+class Solution {
+    public List<Integer> lexicalOrder(int n) {
+        List<Integer> ans = new ArrayList<>();
+        int v = 1;
+        for (int i = 0; i < n; ++i) {
+            ans.add(v);
+            if (v * 10 <= n) {
+                v *= 10;
+            } else {
+                while (v % 10 == 9 || v + 1 > n) {
+                    v /= 10;
+                }
+                ++v;
+            }
+        }
+        return ans;
+    }
+}
 ```
 
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> lexicalOrder(int n) {
+        vector<int> ans;
+        int v = 1;
+        for (int i = 0; i < n; ++i) {
+            ans.push_back(v);
+            if (v * 10 <= n)
+                v *= 10;
+            else {
+                while (v % 10 == 9 || v + 1 > n) v /= 10;
+                ++v;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func lexicalOrder(n int) []int {
+	var ans []int
+	v := 1
+	for i := 0; i < n; i++ {
+		ans = append(ans, v)
+		if v*10 <= n {
+			v *= 10
+		} else {
+			for v%10 == 9 || v+1 > n {
+				v /= 10
+			}
+			v++
+		}
+	}
+	return ans
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

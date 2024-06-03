@@ -1,10 +1,24 @@
-# [527. 单词缩写](https://leetcode.cn/problems/word-abbreviation)
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0500-0599/0527.Word%20Abbreviation/README.md
+tags:
+    - 贪心
+    - 字典树
+    - 数组
+    - 字符串
+    - 排序
+---
+
+<!-- problem:start -->
+
+# [527. 单词缩写 🔒](https://leetcode.cn/problems/word-abbreviation)
 
 [English Version](/solution/0500-0599/0527.Word%20Abbreviation/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个字符串数组 <code>words</code> ，该数组由 <strong>互不相同</strong> 的若干字符串组成，请你找出并返回每个单词的 <strong>最小缩写</strong> 。</p>
 
@@ -43,11 +57,13 @@
 	<li><code>words</code> 中的所有字符串 <strong>互不相同</strong></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：分组字典树**
+### 方法一：分组字典树
 
 我们注意到，如果两个单词的缩写相同，那么它们的首尾字母一定相同，并且它们的长度一定相同。因此，我们可以将所有的单词按照长度以及末尾字母进行分组，对于每组单词，我们使用字典树存储这组单词的信息。
 
@@ -64,9 +80,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Trie:
@@ -114,9 +128,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Trie {
@@ -170,7 +182,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Trie {
@@ -236,7 +248,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 type Trie struct {
@@ -296,7 +308,7 @@ func wordsAbbreviation(words []string) (ans []string) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 class Trie {
@@ -352,10 +364,8 @@ function wordsAbbreviation(words: string[]): string[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

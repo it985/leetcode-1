@@ -1,8 +1,22 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1800-1899/1844.Replace%20All%20Digits%20with%20Characters/README_EN.md
+rating: 1300
+source: Biweekly Contest 51 Q1
+tags:
+    - String
+---
+
+<!-- problem:start -->
+
 # [1844. Replace All Digits with Characters](https://leetcode.com/problems/replace-all-digits-with-characters)
 
 [中文文档](/solution/1800-1899/1844.Replace%20All%20Digits%20with%20Characters/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a <strong>0-indexed</strong> string <code>s</code> that has lowercase English letters in its <strong>even</strong> indices and digits in its <strong>odd</strong> indices.</p>
 
@@ -47,9 +61,13 @@
 	<li><code>shift(s[i-1], s[i]) &lt;= &#39;z&#39;</code> for all <strong>odd</strong> indices <code>i</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Simulation**
+<!-- solution:start -->
+
+### Solution 1: Simulation
 
 Traverse the string, for characters at odd indices, replace them with the character that is a certain number of positions after the previous character.
 
@@ -59,7 +77,7 @@ The time complexity is $O(n)$, where $n$ is the length of the string $s$. Ignori
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -70,7 +88,7 @@ class Solution:
         return ''.join(s)
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -84,7 +102,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -99,7 +117,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func replaceDigits(s string) string {
@@ -111,7 +129,7 @@ func replaceDigits(s string) string {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function replaceDigits(s: string): string {
@@ -124,7 +142,7 @@ function replaceDigits(s: string): string {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -141,7 +159,7 @@ impl Solution {
 }
 ```
 
-### **C**
+#### C
 
 ```c
 char* replaceDigits(char* s) {
@@ -153,10 +171,8 @@ char* replaceDigits(char* s) {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

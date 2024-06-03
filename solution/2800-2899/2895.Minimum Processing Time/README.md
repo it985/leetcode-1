@@ -1,10 +1,24 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2895.Minimum%20Processing%20Time/README.md
+rating: 1351
+source: 第 366 场周赛 Q2
+tags:
+    - 贪心
+    - 数组
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2895. 最小处理时间](https://leetcode.cn/problems/minimum-processing-time)
 
 [English Version](/solution/2800-2899/2895.Minimum%20Processing%20Time/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>你有 <code>n</code> 颗处理器，每颗处理器都有 <code>4</code> 个核心。现有 <code>n * 4</code> 个待执行任务，每个核心只执行 <strong>一个</strong> 任务。</p>
 
@@ -49,11 +63,13 @@
 	<li><code>tasks.length == 4 * n</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：贪心 + 排序**
+### 方法一：贪心 + 排序
 
 要使得处理完所有任务的时间最小，那么越早处于空闲状态的处理器应该处理耗时最长的 $4$ 个任务。
 
@@ -63,9 +79,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,9 +94,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -99,7 +111,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -117,7 +129,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minProcessingTime(processorTime []int, tasks []int) (ans int) {
@@ -132,7 +144,7 @@ func minProcessingTime(processorTime []int, tasks []int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minProcessingTime(processorTime: number[], tasks: number[]): number {
@@ -147,10 +159,8 @@ function minProcessingTime(processorTime: number[], tasks: number[]): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

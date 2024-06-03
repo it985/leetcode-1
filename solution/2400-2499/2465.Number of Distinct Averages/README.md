@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 简单
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2400-2499/2465.Number%20of%20Distinct%20Averages/README.md
+rating: 1250
+source: 第 91 场双周赛 Q1
+tags:
+    - 数组
+    - 哈希表
+    - 双指针
+    - 排序
+---
+
+<!-- problem:start -->
+
 # [2465. 不同的平均值数目](https://leetcode.cn/problems/number-of-distinct-averages)
 
 [English Version](/solution/2400-2499/2465.Number%20of%20Distinct%20Averages/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个下标从 <strong>0</strong>&nbsp;开始长度为 <strong>偶数</strong>&nbsp;的整数数组&nbsp;<code>nums</code>&nbsp;。</p>
 
@@ -57,11 +72,13 @@
 	<li><code>0 &lt;= nums[i] &lt;= 100</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：排序**
+### 方法一：排序
 
 题目中要求每次找到数组 $nums$ 中的最小值和最大值，然后删除它们，再计算删除两数的平均值。因此，我们可以先对数组 $nums$ 进行排序，然后每次取数组的首尾元素，计算它们的和，用哈希表或数组 $cnt$ 记录每个和出现的次数，最后统计不同的和的个数即可。
 
@@ -69,9 +86,7 @@
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -80,23 +95,7 @@ class Solution:
         return len(set(nums[i] + nums[-i - 1] for i in range(len(nums) >> 1)))
 ```
 
-```python
-class Solution:
-    def distinctAverages(self, nums: List[int]) -> int:
-        nums.sort()
-        ans = 0
-        cnt = Counter()
-        for i in range(len(nums) >> 1):
-            x = nums[i] + nums[-i - 1]
-            cnt[x] += 1
-            if cnt[x] == 1:
-                ans += 1
-        return ans
-```
-
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -112,24 +111,7 @@ class Solution {
 }
 ```
 
-```java
-class Solution {
-    public int distinctAverages(int[] nums) {
-        Arrays.sort(nums);
-        int[] cnt = new int[201];
-        int n = nums.length;
-        int ans = 0;
-        for (int i = 0; i < n >> 1; ++i) {
-            if (++cnt[nums[i] + nums[n - i - 1]] == 1) {
-                ++ans;
-            }
-        }
-        return ans;
-    }
-}
-```
-
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -146,25 +128,7 @@ public:
 };
 ```
 
-```cpp
-class Solution {
-public:
-    int distinctAverages(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
-        int cnt[201]{};
-        int n = nums.size();
-        int ans = 0;
-        for (int i = 0; i < n >> 1; ++i) {
-            if (++cnt[nums[i] + nums[n - i - 1]] == 1) {
-                ++ans;
-            }
-        }
-        return ans;
-    }
-};
-```
-
-### **Go**
+#### Go
 
 ```go
 func distinctAverages(nums []int) (ans int) {
@@ -178,23 +142,7 @@ func distinctAverages(nums []int) (ans int) {
 }
 ```
 
-```go
-func distinctAverages(nums []int) (ans int) {
-	sort.Ints(nums)
-	n := len(nums)
-	cnt := [201]int{}
-	for i := 0; i < n>>1; i++ {
-		x := nums[i] + nums[n-i-1]
-		cnt[x]++
-		if cnt[x] == 1 {
-			ans++
-		}
-	}
-	return
-}
-```
-
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function distinctAverages(nums: number[]): number {
@@ -208,22 +156,7 @@ function distinctAverages(nums: number[]): number {
 }
 ```
 
-```ts
-function distinctAverages(nums: number[]): number {
-    nums.sort((a, b) => a - b);
-    const cnt: number[] = Array(201).fill(0);
-    let ans = 0;
-    const n = nums.length;
-    for (let i = 0; i < n >> 1; ++i) {
-        if (++cnt[nums[i] + nums[n - i - 1]] === 1) {
-            ++ans;
-        }
-    }
-    return ans;
-}
-```
-
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -247,6 +180,108 @@ impl Solution {
     }
 }
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法二
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def distinctAverages(self, nums: List[int]) -> int:
+        nums.sort()
+        ans = 0
+        cnt = Counter()
+        for i in range(len(nums) >> 1):
+            x = nums[i] + nums[-i - 1]
+            cnt[x] += 1
+            if cnt[x] == 1:
+                ans += 1
+        return ans
+```
+
+#### Java
+
+```java
+class Solution {
+    public int distinctAverages(int[] nums) {
+        Arrays.sort(nums);
+        int[] cnt = new int[201];
+        int n = nums.length;
+        int ans = 0;
+        for (int i = 0; i < n >> 1; ++i) {
+            if (++cnt[nums[i] + nums[n - i - 1]] == 1) {
+                ++ans;
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int distinctAverages(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int cnt[201]{};
+        int n = nums.size();
+        int ans = 0;
+        for (int i = 0; i < n >> 1; ++i) {
+            if (++cnt[nums[i] + nums[n - i - 1]] == 1) {
+                ++ans;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+func distinctAverages(nums []int) (ans int) {
+	sort.Ints(nums)
+	n := len(nums)
+	cnt := [201]int{}
+	for i := 0; i < n>>1; i++ {
+		x := nums[i] + nums[n-i-1]
+		cnt[x]++
+		if cnt[x] == 1 {
+			ans++
+		}
+	}
+	return
+}
+```
+
+#### TypeScript
+
+```ts
+function distinctAverages(nums: number[]): number {
+    nums.sort((a, b) => a - b);
+    const cnt: number[] = Array(201).fill(0);
+    let ans = 0;
+    const n = nums.length;
+    for (let i = 0; i < n >> 1; ++i) {
+        if (++cnt[nums[i] + nums[n - i - 1]] === 1) {
+            ++ans;
+        }
+    }
+    return ans;
+}
+```
+
+#### Rust
 
 ```rust
 use std::collections::HashMap;
@@ -272,6 +307,18 @@ impl Solution {
     }
 }
 ```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### 方法三
+
+<!-- tabs:start -->
+
+#### Rust
 
 ```rust
 use std::collections::HashSet;
@@ -300,10 +347,8 @@ impl Solution {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

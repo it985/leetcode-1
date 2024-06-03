@@ -1,8 +1,21 @@
-# [422. Valid Word Square](https://leetcode.com/problems/valid-word-square)
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/0400-0499/0422.Valid%20Word%20Square/README_EN.md
+tags:
+    - Array
+    - Matrix
+---
+
+<!-- problem:start -->
+
+# [422. Valid Word Square 🔒](https://leetcode.com/problems/valid-word-square)
 
 [中文文档](/solution/0400-0499/0422.Valid%20Word%20Square/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given an array of strings <code>words</code>, return <code>true</code> <em>if it forms a valid <strong>word square</strong></em>.</p>
 
@@ -54,11 +67,17 @@ Therefore, it is NOT a valid word square.
 	<li><code>words[i]</code> consists of only lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -73,18 +92,7 @@ class Solution:
         return True
 ```
 
-```python
-class Solution:
-    def validWordSquare(self, words: List[str]) -> bool:
-        m = len(words)
-        for i, w in enumerate(words):
-            for j, c in enumerate(w):
-                if j >= m or i >= len(words[j]) or c != words[j][i]:
-                    return False
-        return True
-```
-
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -106,7 +114,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -126,7 +134,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func validWordSquare(words []string) bool {
@@ -142,7 +150,7 @@ func validWordSquare(words []string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function validWordSquare(words: string[]): boolean {
@@ -159,10 +167,31 @@ function validWordSquare(words: string[]): boolean {
 }
 ```
 
-### **...**
+<!-- tabs:end -->
 
-```
+<!-- solution:end -->
 
+<!-- solution:start -->
+
+### Solution 2
+
+<!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def validWordSquare(self, words: List[str]) -> bool:
+        m = len(words)
+        for i, w in enumerate(words):
+            for j, c in enumerate(w):
+                if j >= m or i >= len(words[j]) or c != words[j][i]:
+                    return False
+        return True
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

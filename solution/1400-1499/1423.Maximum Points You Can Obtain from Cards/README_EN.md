@@ -1,8 +1,24 @@
+---
+comments: true
+difficulty: Medium
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1400-1499/1423.Maximum%20Points%20You%20Can%20Obtain%20from%20Cards/README_EN.md
+rating: 1573
+source: Weekly Contest 186 Q2
+tags:
+    - Array
+    - Prefix Sum
+    - Sliding Window
+---
+
+<!-- problem:start -->
+
 # [1423. Maximum Points You Can Obtain from Cards](https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards)
 
 [中文文档](/solution/1400-1499/1423.Maximum%20Points%20You%20Can%20Obtain%20from%20Cards/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>There are several cards <strong>arranged in a row</strong>, and each card has an associated number of points. The points are given in the integer array <code>cardPoints</code>.</p>
 
@@ -46,9 +62,13 @@
 	<li><code>1 &lt;= k &lt;= cardPoints.length</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Sliding Window**
+<!-- solution:start -->
+
+### Solution 1: Sliding Window
 
 We can use a sliding window of length $k$ to simulate this process.
 
@@ -60,7 +80,7 @@ The time complexity is $O(k)$, where $k$ is the integer given in the problem. Th
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -72,7 +92,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -91,7 +111,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -109,7 +129,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func maxScore(cardPoints []int, k int) int {
@@ -127,7 +147,7 @@ func maxScore(cardPoints []int, k int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function maxScore(cardPoints: number[], k: number): number {
@@ -142,7 +162,7 @@ function maxScore(cardPoints: number[], k: number): number {
 }
 ```
 
-### **Rust**
+#### Rust
 
 ```rust
 impl Solution {
@@ -160,7 +180,27 @@ impl Solution {
 }
 ```
 
-### **C#**
+#### JavaScript
+
+```js
+/**
+ * @param {number[]} cardPoints
+ * @param {number} k
+ * @return {number}
+ */
+var maxScore = function (cardPoints, k) {
+    const n = cardPoints.length;
+    let s = cardPoints.slice(-k).reduce((a, b) => a + b);
+    let ans = s;
+    for (let i = 0; i < k; ++i) {
+        s += cardPoints[i] - cardPoints[n - k + i];
+        ans = Math.max(ans, s);
+    }
+    return ans;
+};
+```
+
+#### C#
 
 ```cs
 public class Solution {
@@ -177,7 +217,7 @@ public class Solution {
 }
 ```
 
-### **PHP**
+#### PHP
 
 ```php
 class Solution {
@@ -199,24 +239,24 @@ class Solution {
 }
 ```
 
-### **Kotlin**
+#### Scala
 
-```kotlin
-class Solution {
-    fun maxScore(cardPoints: IntArray, k: Int): Int {
-        val n = cardPoints.size
-        var s = cardPoints.sliceArray(n - k until n).sum()
+```scala
+object Solution {
+    def maxScore(cardPoints: Array[Int], k: Int): Int = {
+        val n = cardPoints.length
+        var s = cardPoints.takeRight(k).sum
         var ans = s
-        for (i in 0 until k) {
-            s += cardPoints[i] - cardPoints[n - k + i]
-            ans = maxOf(ans, s)
+        for (i <- 0 until k) {
+            s += cardPoints(i) - cardPoints(n - k + i)
+            ans = ans.max(s)
         }
-        return ans
+        ans
     }
 }
 ```
 
-### **Swift**
+#### Swift
 
 ```swift
 class Solution {
@@ -233,44 +273,7 @@ class Solution {
 }
 ```
 
-### **JavaScript**
-
-```js
-/**
- * @param {number[]} cardPoints
- * @param {number} k
- * @return {number}
- */
-var maxScore = function (cardPoints, k) {
-    const n = cardPoints.length;
-    let s = cardPoints.slice(-k).reduce((a, b) => a + b);
-    let ans = s;
-    for (let i = 0; i < k; ++i) {
-        s += cardPoints[i] - cardPoints[n - k + i];
-        ans = Math.max(ans, s);
-    }
-    return ans;
-};
-```
-
-### **Dart**
-
-```dart
-class Solution {
-  int maxScore(List<int> cardPoints, int k) {
-    int n = cardPoints.length;
-    int s = cardPoints.sublist(n - k).reduce((a, b) => a + b);
-    int ans = s;
-    for (int i = 0; i < k; ++i) {
-      s += cardPoints[i] - cardPoints[n - k + i];
-      ans = s > ans ? s : ans;
-    }
-    return ans;
-  }
-}
-```
-
-### **Ruby**
+#### Ruby
 
 ```rb
 # @param {Integer[]} card_points
@@ -288,27 +291,42 @@ def max_score(card_points, k)
 end
 ```
 
-### **Scala**
+#### Kotlin
 
-```scala
-object Solution {
-    def maxScore(cardPoints: Array[Int], k: Int): Int = {
-        val n = cardPoints.length
-        var s = cardPoints.takeRight(k).sum
+```kotlin
+class Solution {
+    fun maxScore(cardPoints: IntArray, k: Int): Int {
+        val n = cardPoints.size
+        var s = cardPoints.sliceArray(n - k until n).sum()
         var ans = s
-        for (i <- 0 until k) {
-            s += cardPoints(i) - cardPoints(n - k + i)
-            ans = ans.max(s)
+        for (i in 0 until k) {
+            s += cardPoints[i] - cardPoints[n - k + i]
+            ans = maxOf(ans, s)
         }
-        ans
+        return ans
     }
 }
 ```
 
-### **...**
+#### Dart
 
-```
-
+```dart
+class Solution {
+  int maxScore(List<int> cardPoints, int k) {
+    int n = cardPoints.length;
+    int s = cardPoints.sublist(n - k).reduce((a, b) => a + b);
+    int ans = s;
+    for (int i = 0; i < k; ++i) {
+      s += cardPoints[i] - cardPoints[n - k + i];
+      ans = s > ans ? s : ans;
+    }
+    return ans;
+  }
+}
 ```
 
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

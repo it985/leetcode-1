@@ -1,10 +1,25 @@
+---
+comments: true
+difficulty: 困难
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2858.Minimum%20Edge%20Reversals%20So%20Every%20Node%20Is%20Reachable/README.md
+rating: 2294
+source: 第 113 场双周赛 Q4
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 图
+    - 动态规划
+---
+
+<!-- problem:start -->
+
 # [2858. 可以到达每一个节点的最少边反转次数](https://leetcode.cn/problems/minimum-edge-reversals-so-every-node-is-reachable)
 
 [English Version](/solution/2800-2899/2858.Minimum%20Edge%20Reversals%20So%20Every%20Node%20Is%20Reachable/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给你一个 <code>n</code>&nbsp;个点的 <strong>简单有向图</strong>&nbsp;（没有重复边的有向图），节点编号为 <code>0</code>&nbsp;到 <code>n - 1</code>&nbsp;。如果这些边是双向边，那么这个图形成一棵&nbsp;<strong>树</strong>&nbsp;。</p>
 
@@ -66,19 +81,19 @@
 	<li>输入保证如果边是双向边，可以得到一棵树。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：树形 DP**
+### 方法一：树形 DP
 
 时间复杂度 $O(n)$，空间复杂度 $O(n)$。
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -107,9 +122,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -152,7 +165,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -188,7 +201,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func minEdgeReversals(n int, edges [][]int) []int {
@@ -227,7 +240,7 @@ func minEdgeReversals(n int, edges [][]int) []int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function minEdgeReversals(n: number, edges: number[][]): number[] {
@@ -259,10 +272,8 @@ function minEdgeReversals(n: number, edges: number[][]): number[] {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,18 @@
-# [2753. Count Houses in a Circular Street II](https://leetcode.com/problems/count-houses-in-a-circular-street-ii)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2700-2799/2753.Count%20Houses%20in%20a%20Circular%20Street%20II/README_EN.md
+---
+
+<!-- problem:start -->
+
+# [2753. Count Houses in a Circular Street II 🔒](https://leetcode.com/problems/count-houses-in-a-circular-street-ii)
 
 [中文文档](/solution/2700-2799/2753.Count%20Houses%20in%20a%20Circular%20Street%20II/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given an object <code>street</code> of class <code>Street</code> that represents a <strong>circular</strong> street and a positive integer <code>k</code> which represents a maximum bound for the number of houses in that street (in other words, the number of houses is less than or equal to <code>k</code>). Houses&#39; doors could be open or closed initially (at least one is open).</p>
 
@@ -48,11 +58,17 @@ The number of houses is equal to k, which is 5.
 	<li>The input is generated such that at least one of the doors is open.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
+
+<!-- solution:start -->
+
+### Solution 1
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 # Definition for a street.
@@ -75,7 +91,7 @@ class Solution:
         return ans
 ```
 
-### **Java**
+#### Java
 
 ```java
 /**
@@ -105,7 +121,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -137,7 +153,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -163,7 +179,7 @@ func houseCount(street Street, k int) (ans int) {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 /**
@@ -191,10 +207,8 @@ function houseCount(street: Street | null, k: number): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

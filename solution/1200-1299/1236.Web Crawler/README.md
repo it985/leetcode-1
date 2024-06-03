@@ -1,10 +1,23 @@
-# [1236. 网络爬虫](https://leetcode.cn/problems/web-crawler)
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1236.Web%20Crawler/README.md
+tags:
+    - 深度优先搜索
+    - 广度优先搜索
+    - 字符串
+    - 交互
+---
+
+<!-- problem:start -->
+
+# [1236. 网络爬虫 🔒](https://leetcode.cn/problems/web-crawler)
 
 [English Version](/solution/1200-1299/1236.Web%20Crawler/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>给定一个链接&nbsp;<code>startUrl</code> 和一个接口&nbsp;<code>HtmlParser</code>&nbsp;，请你实现一个网络爬虫，以实现爬取同&nbsp;<code>startUrl</code>&nbsp;拥有相同&nbsp;<strong>域名标签&nbsp;</strong>的全部链接。该爬虫得到的全部链接可以&nbsp;<strong>任何顺序&nbsp;</strong>返回结果。</p>
 
@@ -87,17 +100,17 @@ startUrl = "http://news.google.com"
 	<li>你可以假定url库中不包含重复项。</li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-DFS。
+### 方法一
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 # """
@@ -131,9 +144,7 @@ class Solution:
         return list(ans)
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 /**
@@ -172,7 +183,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 /**
@@ -215,7 +226,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 /**
@@ -250,10 +261,8 @@ func crawl(startUrl string, htmlParser HtmlParser) []string {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

@@ -1,8 +1,23 @@
-# [1153. String Transforms Into Another String](https://leetcode.com/problems/string-transforms-into-another-string)
+---
+comments: true
+difficulty: Hard
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1100-1199/1153.String%20Transforms%20Into%20Another%20String/README_EN.md
+rating: 1949
+source: Biweekly Contest 6 Q4
+tags:
+    - Hash Table
+    - String
+---
+
+<!-- problem:start -->
+
+# [1153. String Transforms Into Another String 🔒](https://leetcode.com/problems/string-transforms-into-another-string)
 
 [中文文档](/solution/1100-1199/1153.String%20Transforms%20Into%20Another%20String/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>Given two strings <code>str1</code> and <code>str2</code> of the same length, determine whether you can transform <code>str1</code> into <code>str2</code> by doing <strong>zero or more</strong> <em>conversions</em>.</p>
 
@@ -35,9 +50,13 @@
 	<li><code>str1</code> and <code>str2</code> contain only lowercase English letters.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Hash Table**
+<!-- solution:start -->
+
+### Solution 1: Hash Table
 
 First, we can check if `str1` and `str2` are equal. If they are, return `true` directly.
 
@@ -51,7 +70,7 @@ The time complexity is $O(n)$, and the space complexity is $O(C)$. Here, $n$ is 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -69,7 +88,7 @@ class Solution:
         return True
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -103,7 +122,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -137,7 +156,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func canConvert(str1 string, str2 string) bool {
@@ -164,7 +183,7 @@ func canConvert(str1 string, str2 string) bool {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function canConvert(str1: string, str2: string): boolean {
@@ -186,10 +205,8 @@ function canConvert(str1: string, str2: string): boolean {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

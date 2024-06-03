@@ -1,8 +1,23 @@
+---
+comments: true
+difficulty: Easy
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/2800-2899/2833.Furthest%20Point%20From%20Origin/README_EN.md
+rating: 1294
+source: Weekly Contest 360 Q1
+tags:
+    - String
+    - Counting
+---
+
+<!-- problem:start -->
+
 # [2833. Furthest Point From Origin](https://leetcode.com/problems/furthest-point-from-origin)
 
 [中文文档](/solution/2800-2899/2833.Furthest%20Point%20From%20Origin/README.md)
 
 ## Description
+
+<!-- description:start -->
 
 <p>You are given a string <code>moves</code> of length <code>n</code> consisting only of characters <code>&#39;L&#39;</code>, <code>&#39;R&#39;</code>, and <code>&#39;_&#39;</code>. The string represents your movement on a number line starting from the origin <code>0</code>.</p>
 
@@ -48,9 +63,13 @@
 	<li><code>moves</code> consists only of characters <code>&#39;L&#39;</code>, <code>&#39;R&#39;</code> and <code>&#39;_&#39;</code>.</li>
 </ul>
 
+<!-- description:end -->
+
 ## Solutions
 
-**Solution 1: Greedy**
+<!-- solution:start -->
+
+### Solution 1: Greedy
 
 When encountering the character '_', we can choose to move left or right. The problem requires us to find the farthest point from the origin. Therefore, we can first traverse once, greedily move all '_' to the left, and find the farthest point from the origin at this time. Then traverse again, greedily move all '\_' to the right, and find the farthest point from the origin at this time. Finally, take the maximum of the two traversals.
 
@@ -60,7 +79,7 @@ The time complexity is $O(n)$, where $n$ is the length of the string. The space 
 
 <!-- tabs:start -->
 
-### **Python3**
+#### Python3
 
 ```python
 class Solution:
@@ -68,7 +87,7 @@ class Solution:
         return abs(moves.count("L") - moves.count("R")) + moves.count("_")
 ```
 
-### **Java**
+#### Java
 
 ```java
 class Solution {
@@ -88,7 +107,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -102,7 +121,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func furthestDistanceFromOrigin(moves string) int {
@@ -118,7 +137,7 @@ func abs(x int) int {
 }
 ```
 
-### **TypeScript**
+#### TypeScript
 
 ```ts
 function furthestDistanceFromOrigin(moves: string): number {
@@ -127,10 +146,8 @@ function furthestDistanceFromOrigin(moves: string): number {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->

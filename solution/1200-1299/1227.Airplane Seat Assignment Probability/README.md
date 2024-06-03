@@ -1,10 +1,23 @@
+---
+comments: true
+difficulty: 中等
+edit_url: https://github.com/doocs/leetcode/edit/main/solution/1200-1299/1227.Airplane%20Seat%20Assignment%20Probability/README.md
+tags:
+    - 脑筋急转弯
+    - 数学
+    - 动态规划
+    - 概率与统计
+---
+
+<!-- problem:start -->
+
 # [1227. 飞机座位分配概率](https://leetcode.cn/problems/airplane-seat-assignment-probability)
 
 [English Version](/solution/1200-1299/1227.Airplane%20Seat%20Assignment%20Probability/README_EN.md)
 
 ## 题目描述
 
-<!-- 这里写题目描述 -->
+<!-- description:start -->
 
 <p>有 <code>n</code> 位乘客即将登机，飞机正好有 <code>n</code> 个座位。第一位乘客的票丢了，他随便选了一个座位坐下。</p>
 
@@ -44,11 +57,13 @@
 	<li><code>1 &lt;= n &lt;= 10^5</code></li>
 </ul>
 
+<!-- description:end -->
+
 ## 解法
 
-<!-- 这里可写通用的实现逻辑 -->
+<!-- solution:start -->
 
-**方法一：数学**
+### 方法一：数学
 
 用 $f(n)$ 表示当有 $n$ 位乘客登机时，第 $n$ 位乘客坐在自己的座位上的概率。从最简单的情况开始考虑：
 
@@ -129,9 +144,7 @@ $$
 
 <!-- tabs:start -->
 
-### **Python3**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Python3
 
 ```python
 class Solution:
@@ -139,9 +152,7 @@ class Solution:
         return 1 if n == 1 else 0.5
 ```
 
-### **Java**
-
-<!-- 这里可写当前语言的特殊实现逻辑 -->
+#### Java
 
 ```java
 class Solution {
@@ -151,7 +162,7 @@ class Solution {
 }
 ```
 
-### **C++**
+#### C++
 
 ```cpp
 class Solution {
@@ -162,7 +173,7 @@ public:
 };
 ```
 
-### **Go**
+#### Go
 
 ```go
 func nthPersonGetsNthSeat(n int) float64 {
@@ -173,10 +184,8 @@ func nthPersonGetsNthSeat(n int) float64 {
 }
 ```
 
-### **...**
-
-```
-
-```
-
 <!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- problem:end -->
