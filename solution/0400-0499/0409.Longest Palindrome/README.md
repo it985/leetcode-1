@@ -62,11 +62,11 @@ tags:
 
 因此，我们可以先遍历字符串 $s$，统计每个字符出现的次数，记录在数组或哈希表 $cnt$ 中。
 
-然后，我们遍历 $cnt$，对于每个字符 $c$，如果 $cnt[c]$ 为偶数，则直接将 $cnt[c]$ 累加到答案 $ans$ 中；如果 $cnt[c]$ 为奇数，则将 $cnt[c] - 1$ 累加到 $ans$ 中，如果 $ans$ 为偶数，则将 $ans$ 增加 $1$。
+然后，我们遍历 $cnt$，对于每个次数 $v$，将 $v$ 除以 2 取整，再乘以 2，累加到答案 $ans$ 中。
 
-最后，我们返回 $ans$ 即可。
+最后，如果答案小于字符串 $s$ 的长度，则将答案加一，返回 $ans$。
 
-时间复杂度 $O(n)$，空间复杂度 $O(C)$。其中 $n$ 为字符串 $s$ 的长度；而 $C$ 为字符集的大小，本题中 $C = 128$。
+时间复杂度 $O(n + |\Sigma|)$，空间复杂度 $O(|\Sigma|)$。其中，$n$ 为字符串 $s$ 的长度，而 $|\Sigma|$ 为字符集大小，在本题中 $|\Sigma| = 128$。
 
 <!-- tabs:start -->
 
@@ -76,10 +76,8 @@ tags:
 class Solution:
     def longestPalindrome(self, s: str) -> int:
         cnt = Counter(s)
-        ans = 0
-        for v in cnt.values():
-            ans += v - (v & 1)
-            ans += (ans & 1 ^ 1) and (v & 1)
+        ans = sum(v // 2 * 2 for v in cnt.values())
+        ans += int(ans < len(s))
         return ans
 ```
 
@@ -89,16 +87,15 @@ class Solution:
 class Solution {
     public int longestPalindrome(String s) {
         int[] cnt = new int[128];
-        for (int i = 0; i < s.length(); ++i) {
+        int n = s.length();
+        for (int i = 0; i < n; ++i) {
             ++cnt[s.charAt(i)];
         }
         int ans = 0;
         for (int v : cnt) {
-            ans += v - (v & 1);
-            if (ans % 2 == 0 && v % 2 == 1) {
-                ++ans;
-            }
+            ans += v / 2 * 2;
         }
+        ans += ans < n ? 1 : 0;
         return ans;
     }
 }
@@ -111,16 +108,14 @@ class Solution {
 public:
     int longestPalindrome(string s) {
         int cnt[128]{};
-        for (char& c : s) {
+        for (char c : s) {
             ++cnt[c];
         }
         int ans = 0;
         for (int v : cnt) {
-            ans += v - (v & 1);
-            if (ans % 2 == 0 && v % 2 == 1) {
-                ++ans;
-            }
+            ans += v / 2 * 2;
         }
+        ans += ans < s.size();
         return ans;
     }
 };
@@ -135,10 +130,10 @@ func longestPalindrome(s string) (ans int) {
 		cnt[c]++
 	}
 	for _, v := range cnt {
-		ans += v - (v & 1)
-		if ans&1 == 0 && v&1 == 1 {
-			ans++
-		}
+		ans += v / 2 * 2
+	}
+	if ans < len(s) {
+		ans++
 	}
 	return
 }
@@ -148,17 +143,13 @@ func longestPalindrome(s string) (ans int) {
 
 ```ts
 function longestPalindrome(s: string): number {
-    let n = s.length;
-    let ans = 0;
-    let record = new Array(128).fill(0);
-    for (let i = 0; i < n; i++) {
-        record[s.charCodeAt(i)]++;
+    const cnt: Record<string, number> = {};
+    for (const c of s) {
+        cnt[c] = (cnt[c] || 0) + 1;
     }
-    for (let i = 65; i < 128; i++) {
-        let count = record[i];
-        ans += count % 2 == 0 ? count : count - 1;
-    }
-    return ans < s.length ? ans + 1 : ans;
+    let ans = Object.values(cnt).reduce((acc, v) => acc + Math.floor(v / 2) * 2, 0);
+    ans += ans < s.length ? 1 : 0;
+    return ans;
 }
 ```
 
@@ -169,20 +160,21 @@ use std::collections::HashMap;
 
 impl Solution {
     pub fn longest_palindrome(s: String) -> i32 {
-        let mut map: HashMap<char, i32> = HashMap::new();
-        for c in s.chars() {
-            map.insert(c, map.get(&c).unwrap_or(&0) + 1);
+        let mut cnt = HashMap::new();
+        for ch in s.chars() {
+            *cnt.entry(ch).or_insert(0) += 1;
         }
-        let mut has_odd = false;
-        let mut res = 0;
-        for v in map.values() {
-            res += v;
-            if v % 2 == 1 {
-                has_odd = true;
-                res -= 1;
-            }
+
+        let mut ans = 0;
+        for &v in cnt.values() {
+            ans += (v / 2) * 2;
         }
-        res + (if has_odd { 1 } else { 0 })
+
+        if ans < (s.len() as i32) {
+            ans += 1;
+        }
+
+        ans
     }
 }
 ```
@@ -193,28 +185,97 @@ impl Solution {
 
 <!-- solution:start -->
 
-### 方法二
+### 方法二：位运算 + 计数
+
+我们可以使用一个数组或哈希表 $odd$ 记录字符串 $s$ 中每个字符是否出现奇数次，用一个整型变量 $cnt$ 记录出现奇数次的字符个数。
+
+遍历字符串 $s$，对于每个字符 $c$，将 $odd[c]$ 取反，即 $0 \rightarrow 1$, $1 \rightarrow 0$。如果 $odd[c]$ 由 $0$ 变为 $1$，则 $cnt$ 加一；如果 $odd[c]$ 由 $1$ 变为 $0$，则 $cnt$ 减一。
+
+最后，如果 $cnt$ 大于 $0$，答案为 $n - cnt + 1$，否则答案为 $n$。
+
+时间复杂度 $O(n)$，空间复杂度 $O(|\Sigma|)$。其中，$n$ 为字符串 $s$ 的长度，而 $|\Sigma|$ 为字符集大小，在本题中 $|\Sigma| = 128$。
 
 <!-- tabs:start -->
+
+#### Python3
+
+```python
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        odd = defaultdict(int)
+        cnt = 0
+        for c in s:
+            odd[c] ^= 1
+            cnt += 1 if odd[c] else -1
+        return len(s) - cnt + 1 if cnt else len(s)
+```
+
+#### Java
+
+```java
+class Solution {
+    public int longestPalindrome(String s) {
+        int[] odd = new int[128];
+        int n = s.length();
+        int cnt = 0;
+        for (int i = 0; i < n; ++i) {
+            odd[s.charAt(i)] ^= 1;
+            cnt += odd[s.charAt(i)] == 1 ? 1 : -1;
+        }
+        return cnt > 0 ? n - cnt + 1 : n;
+    }
+}
+```
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        int odd[128]{};
+        int n = s.length();
+        int cnt = 0;
+        for (char& c : s) {
+            odd[c] ^= 1;
+            cnt += odd[c] ? 1 : -1;
+        }
+        return cnt ? n - cnt + 1 : n;
+    }
+};
+```
+
+#### Go
+
+```go
+func longestPalindrome(s string) (ans int) {
+	odd := [128]int{}
+	cnt := 0
+	for _, c := range s {
+		odd[c] ^= 1
+		cnt += odd[c]
+		if odd[c] == 0 {
+			cnt--
+		}
+	}
+	if cnt > 0 {
+		return len(s) - cnt + 1
+	}
+	return len(s)
+}
+```
 
 #### TypeScript
 
 ```ts
 function longestPalindrome(s: string): number {
-    const map = new Map();
+    const odd: Record<string, number> = {};
+    let cnt = 0;
     for (const c of s) {
-        map.set(c, (map.get(c) ?? 0) + 1);
+        odd[c] ^= 1;
+        cnt += odd[c] ? 1 : -1;
     }
-    let hasOdd = false;
-    let res = 0;
-    for (const v of map.values()) {
-        res += v;
-        if (v & 1) {
-            hasOdd = true;
-            res--;
-        }
-    }
-    return res + (hasOdd ? 1 : 0);
+    return cnt ? s.length - cnt + 1 : s.length;
 }
 ```
 
