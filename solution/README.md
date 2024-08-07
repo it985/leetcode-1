@@ -3184,7 +3184,7 @@
 |  3171  |  [找到按位或最接近 K 的子数组](/solution/3100-3199/3171.Find%20Subarray%20With%20Bitwise%20OR%20Closest%20to%20K/README.md)  |  `位运算`,`线段树`,`数组`,`二分查找`  |  困难  |  第 400 场周赛  |
 |  3172  |  [第二天验证](/solution/3100-3199/3172.Second%20Day%20Verification/README.md)  |  `数据库`  |  简单  |  🔒  |
 |  3173  |  [相邻元素的按位或](/solution/3100-3199/3173.Bitwise%20OR%20of%20Adjacent%20Elements/README.md)  |  `位运算`,`数组`  |  简单  |  🔒  |
-|  3174  |  [清除数字](/solution/3100-3199/3174.Clear%20Digits/README.md)  |  `哈希表`,`字符串`,`模拟`  |  简单  |  第 132 场双周赛  |
+|  3174  |  [清除数字](/solution/3100-3199/3174.Clear%20Digits/README.md)  |  `栈`,`字符串`,`模拟`  |  简单  |  第 132 场双周赛  |
 |  3175  |  [找到连续赢 K 场比赛的第一位玩家](/solution/3100-3199/3175.Find%20The%20First%20Player%20to%20win%20K%20Games%20in%20a%20Row/README.md)  |  `数组`,`模拟`  |  中等  |  第 132 场双周赛  |
 |  3176  |  [求出最长好子序列 I](/solution/3100-3199/3176.Find%20the%20Maximum%20Length%20of%20a%20Good%20Subsequence%20I/README.md)  |  `数组`,`哈希表`,`动态规划`  |  中等  |  第 132 场双周赛  |
 |  3177  |  [求出最长好子序列 II](/solution/3100-3199/3177.Find%20the%20Maximum%20Length%20of%20a%20Good%20Subsequence%20II/README.md)  |  `数组`,`哈希表`,`动态规划`  |  困难  |  第 132 场双周赛  |
@@ -3247,6 +3247,16 @@
 |  3234  |  [统计 1 显著的字符串的数量](/solution/3200-3299/3234.Count%20the%20Number%20of%20Substrings%20With%20Dominant%20Ones/README.md)  |  `字符串`,`枚举`,`滑动窗口`  |  中等  |  第 408 场周赛  |
 |  3235  |  [判断矩形的两个角落是否可达](/solution/3200-3299/3235.Check%20if%20the%20Rectangle%20Corner%20Is%20Reachable/README.md)  |  `深度优先搜索`,`广度优先搜索`,`并查集`,`几何`,`数组`,`数学`  |  困难  |  第 408 场周赛  |
 |  3236  |  [首席执行官下属层级](/solution/3200-3299/3236.CEO%20Subordinate%20Hierarchy/README.md)  |  `数据库`  |  困难  |  🔒  |
+|  3237  |  [Alt 和 Tab 模拟](/solution/3200-3299/3237.Alt%20and%20Tab%20Simulation/README.md)  |  `数组`,`哈希表`,`模拟`  |  中等  |  🔒  |
+|  3238  |  [求出胜利玩家的数目](/solution/3200-3299/3238.Find%20the%20Number%20of%20Winning%20Players/README.md)  |  `数组`,`哈希表`,`计数`  |  简单  |  第 136 场双周赛  |
+|  3239  |  [最少翻转次数使二进制矩阵回文 I](/solution/3200-3299/3239.Minimum%20Number%20of%20Flips%20to%20Make%20Binary%20Grid%20Palindromic%20I/README.md)  |  `数组`,`双指针`,`矩阵`  |  中等  |  第 136 场双周赛  |
+|  3240  |  [最少翻转次数使二进制矩阵回文 II](/solution/3200-3299/3240.Minimum%20Number%20of%20Flips%20to%20Make%20Binary%20Grid%20Palindromic%20II/README.md)  |  `数组`,`双指针`,`矩阵`  |  中等  |  第 136 场双周赛  |
+|  3241  |  [标记所有节点需要的时间](/solution/3200-3299/3241.Time%20Taken%20to%20Mark%20All%20Nodes/README.md)  |  `树`,`深度优先搜索`,`图`,`动态规划`  |  困难  |  第 136 场双周赛  |
+|  3242  |  [设计相邻元素求和服务](/solution/3200-3299/3242.Design%20Neighbor%20Sum%20Service/README.md)  |  `设计`,`数组`,`哈希表`,`矩阵`,`模拟`  |  简单  |  第 409 场周赛  |
+|  3243  |  [新增道路查询后的最短距离 I](/solution/3200-3299/3243.Shortest%20Distance%20After%20Road%20Addition%20Queries%20I/README.md)  |  `广度优先搜索`,`图`,`数组`  |  中等  |  第 409 场周赛  |
+|  3244  |  [新增道路查询后的最短距离 II](/solution/3200-3299/3244.Shortest%20Distance%20After%20Road%20Addition%20Queries%20II/README.md)  |  `贪心`,`图`,`数组`,`有序集合`  |  困难  |  第 409 场周赛  |
+|  3245  |  [交替组 III](/solution/3200-3299/3245.Alternating%20Groups%20III/README.md)  |  `树状数组`,`数组`  |  困难  |  第 409 场周赛  |
+|  3246  |  [英超积分榜排名](/solution/3200-3299/3246.Premier%20League%20Table%20Ranking/README.md)  |  `数据库`  |  简单  |  🔒  |
 
 ## 版权
 
