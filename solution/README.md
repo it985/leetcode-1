@@ -598,7 +598,7 @@
 |  0585  |  [2016年的投资](/solution/0500-0599/0585.Investments%20in%202016/README.md)  |  `数据库`  |  中等  |    |
 |  0586  |  [订单最多的客户](/solution/0500-0599/0586.Customer%20Placing%20the%20Largest%20Number%20of%20Orders/README.md)  |  `数据库`  |  简单  |    |
 |  0587  |  [安装栅栏](/solution/0500-0599/0587.Erect%20the%20Fence/README.md)  |  `几何`,`数组`,`数学`  |  困难  |    |
-|  0588  |  [设计内存文件系统](/solution/0500-0599/0588.Design%20In-Memory%20File%20System/README.md)  |  `设计`,`字典树`,`哈希表`,`字符串`  |  困难  |  🔒  |
+|  0588  |  [设计内存文件系统](/solution/0500-0599/0588.Design%20In-Memory%20File%20System/README.md)  |  `设计`,`字典树`,`哈希表`,`字符串`,`排序`  |  困难  |  🔒  |
 |  0589  |  [N 叉树的前序遍历](/solution/0500-0599/0589.N-ary%20Tree%20Preorder%20Traversal/README.md)  |  `栈`,`树`,`深度优先搜索`  |  简单  |    |
 |  0590  |  [N 叉树的后序遍历](/solution/0500-0599/0590.N-ary%20Tree%20Postorder%20Traversal/README.md)  |  `栈`,`树`,`深度优先搜索`  |  简单  |    |
 |  0591  |  [标签验证器](/solution/0500-0599/0591.Tag%20Validator/README.md)  |  `栈`,`字符串`  |  困难  |    |
@@ -652,7 +652,7 @@
 |  0639  |  [解码方法 II](/solution/0600-0699/0639.Decode%20Ways%20II/README.md)  |  `字符串`,`动态规划`  |  困难  |    |
 |  0640  |  [求解方程](/solution/0600-0699/0640.Solve%20the%20Equation/README.md)  |  `数学`,`字符串`,`模拟`  |  中等  |    |
 |  0641  |  [设计循环双端队列](/solution/0600-0699/0641.Design%20Circular%20Deque/README.md)  |  `设计`,`队列`,`数组`,`链表`  |  中等  |    |
-|  0642  |  [设计搜索自动补全系统](/solution/0600-0699/0642.Design%20Search%20Autocomplete%20System/README.md)  |  `设计`,`字典树`,`字符串`,`数据流`,`排序`,`堆（优先队列）`  |  困难  |  🔒  |
+|  0642  |  [设计搜索自动补全系统](/solution/0600-0699/0642.Design%20Search%20Autocomplete%20System/README.md)  |  `深度优先搜索`,`设计`,`字典树`,`字符串`,`数据流`,`排序`,`堆（优先队列）`  |  困难  |  🔒  |
 |  0643  |  [子数组最大平均数 I](/solution/0600-0699/0643.Maximum%20Average%20Subarray%20I/README.md)  |  `数组`,`滑动窗口`  |  简单  |    |
 |  0644  |  [子数组最大平均数 II](/solution/0600-0699/0644.Maximum%20Average%20Subarray%20II/README.md)  |  `数组`,`二分查找`,`前缀和`  |  困难  |  🔒  |
 |  0645  |  [错误的集合](/solution/0600-0699/0645.Set%20Mismatch/README.md)  |  `位运算`,`数组`,`哈希表`,`排序`  |  简单  |    |
@@ -1405,7 +1405,7 @@
 |  1392  |  [最长快乐前缀](/solution/1300-1399/1392.Longest%20Happy%20Prefix/README.md)  |  `字符串`,`字符串匹配`,`哈希函数`,`滚动哈希`  |  困难  |  第 181 场周赛  |
 |  1393  |  [股票的资本损益](/solution/1300-1399/1393.Capital%20GainLoss/README.md)  |  `数据库`  |  中等  |    |
 |  1394  |  [找出数组中的幸运数](/solution/1300-1399/1394.Find%20Lucky%20Integer%20in%20an%20Array/README.md)  |  `数组`,`哈希表`,`计数`  |  简单  |  第 182 场周赛  |
-|  1395  |  [统计作战单位数](/solution/1300-1399/1395.Count%20Number%20of%20Teams/README.md)  |  `树状数组`,`数组`,`动态规划`  |  中等  |  第 182 场周赛  |
+|  1395  |  [统计作战单位数](/solution/1300-1399/1395.Count%20Number%20of%20Teams/README.md)  |  `树状数组`,`线段树`,`数组`,`动态规划`  |  中等  |  第 182 场周赛  |
 |  1396  |  [设计地铁系统](/solution/1300-1399/1396.Design%20Underground%20System/README.md)  |  `设计`,`哈希表`,`字符串`  |  中等  |  第 182 场周赛  |
 |  1397  |  [找到所有好字符串](/solution/1300-1399/1397.Find%20All%20Good%20Strings/README.md)  |  `字符串`,`动态规划`,`字符串匹配`  |  困难  |  第 182 场周赛  |
 |  1398  |  [购买了产品 A 和产品 B 却没有购买产品 C 的顾客](/solution/1300-1399/1398.Customers%20Who%20Bought%20Products%20A%20and%20B%20but%20Not%20C/README.md)  |  `数据库`  |  中等  |  🔒  |
@@ -1830,7 +1830,7 @@
 |  1817  |  [查找用户活跃分钟数](/solution/1800-1899/1817.Finding%20the%20Users%20Active%20Minutes/README.md)  |  `数组`,`哈希表`  |  中等  |  第 235 场周赛  |
 |  1818  |  [绝对差值和](/solution/1800-1899/1818.Minimum%20Absolute%20Sum%20Difference/README.md)  |  `数组`,`二分查找`,`有序集合`,`排序`  |  中等  |  第 235 场周赛  |
 |  1819  |  [序列中不同最大公约数的数目](/solution/1800-1899/1819.Number%20of%20Different%20Subsequences%20GCDs/README.md)  |  `数组`,`数学`,`计数`,`数论`  |  困难  |  第 235 场周赛  |
-|  1820  |  [最多邀请的个数](/solution/1800-1899/1820.Maximum%20Number%20of%20Accepted%20Invitations/README.md)  |  `数组`,`回溯`,`矩阵`  |  中等  |  🔒  |
+|  1820  |  [最多邀请的个数](/solution/1800-1899/1820.Maximum%20Number%20of%20Accepted%20Invitations/README.md)  |  `图`,`数组`,`回溯`,`矩阵`  |  中等  |  🔒  |
 |  1821  |  [寻找今年具有正收入的客户](/solution/1800-1899/1821.Find%20Customers%20With%20Positive%20Revenue%20this%20Year/README.md)  |  `数据库`  |  简单  |  🔒  |
 |  1822  |  [数组元素积的符号](/solution/1800-1899/1822.Sign%20of%20the%20Product%20of%20an%20Array/README.md)  |  `数组`,`数学`  |  简单  |  第 236 场周赛  |
 |  1823  |  [找出游戏的获胜者](/solution/1800-1899/1823.Find%20the%20Winner%20of%20the%20Circular%20Game/README.md)  |  `递归`,`队列`,`数组`,`数学`,`模拟`  |  中等  |  第 236 场周赛  |
@@ -3257,6 +3257,7 @@
 |  3244  |  [新增道路查询后的最短距离 II](/solution/3200-3299/3244.Shortest%20Distance%20After%20Road%20Addition%20Queries%20II/README.md)  |  `贪心`,`图`,`数组`,`有序集合`  |  困难  |  第 409 场周赛  |
 |  3245  |  [交替组 III](/solution/3200-3299/3245.Alternating%20Groups%20III/README.md)  |  `树状数组`,`数组`  |  困难  |  第 409 场周赛  |
 |  3246  |  [英超积分榜排名](/solution/3200-3299/3246.Premier%20League%20Table%20Ranking/README.md)  |  `数据库`  |  简单  |  🔒  |
+|  3247  |  [奇数和子序列的数量](/solution/3200-3299/3247.Number%20of%20Subsequences%20with%20Odd%20Sum/README.md)  |    |  中等  |  🔒  |
 
 ## 版权
 
