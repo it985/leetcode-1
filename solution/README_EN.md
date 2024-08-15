@@ -1828,7 +1828,7 @@ Press <kbd>Control</kbd> + <kbd>F</kbd>(or <kbd>Command</kbd> + <kbd>F</kbd> on 
 |  1817  |  [Finding the Users Active Minutes](/solution/1800-1899/1817.Finding%20the%20Users%20Active%20Minutes/README_EN.md)  |  `Array`,`Hash Table`  |  Medium  |  Weekly Contest 235  |
 |  1818  |  [Minimum Absolute Sum Difference](/solution/1800-1899/1818.Minimum%20Absolute%20Sum%20Difference/README_EN.md)  |  `Array`,`Binary Search`,`Ordered Set`,`Sorting`  |  Medium  |  Weekly Contest 235  |
 |  1819  |  [Number of Different Subsequences GCDs](/solution/1800-1899/1819.Number%20of%20Different%20Subsequences%20GCDs/README_EN.md)  |  `Array`,`Math`,`Counting`,`Number Theory`  |  Hard  |  Weekly Contest 235  |
-|  1820  |  [Maximum Number of Accepted Invitations](/solution/1800-1899/1820.Maximum%20Number%20of%20Accepted%20Invitations/README_EN.md)  |  `Graph`,`Array`,`Backtracking`,`Matrix`  |  Medium  |  🔒  |
+|  1820  |  [Maximum Number of Accepted Invitations](/solution/1800-1899/1820.Maximum%20Number%20of%20Accepted%20Invitations/README_EN.md)  |  `Depth-First Search`,`Graph`,`Array`,`Matrix`  |  Medium  |  🔒  |
 |  1821  |  [Find Customers With Positive Revenue this Year](/solution/1800-1899/1821.Find%20Customers%20With%20Positive%20Revenue%20this%20Year/README_EN.md)  |  `Database`  |  Easy  |  🔒  |
 |  1822  |  [Sign of the Product of an Array](/solution/1800-1899/1822.Sign%20of%20the%20Product%20of%20an%20Array/README_EN.md)  |  `Array`,`Math`  |  Easy  |  Weekly Contest 236  |
 |  1823  |  [Find the Winner of the Circular Game](/solution/1800-1899/1823.Find%20the%20Winner%20of%20the%20Circular%20Game/README_EN.md)  |  `Recursion`,`Queue`,`Array`,`Math`,`Simulation`  |  Medium  |  Weekly Contest 236  |
@@ -3255,12 +3255,13 @@ Press <kbd>Control</kbd> + <kbd>F</kbd>(or <kbd>Command</kbd> + <kbd>F</kbd> on 
 |  3244  |  [Shortest Distance After Road Addition Queries II](/solution/3200-3299/3244.Shortest%20Distance%20After%20Road%20Addition%20Queries%20II/README_EN.md)  |  `Greedy`,`Graph`,`Array`,`Ordered Set`  |  Hard  |  Weekly Contest 409  |
 |  3245  |  [Alternating Groups III](/solution/3200-3299/3245.Alternating%20Groups%20III/README_EN.md)  |  `Binary Indexed Tree`,`Array`  |  Hard  |  Weekly Contest 409  |
 |  3246  |  [Premier League Table Ranking](/solution/3200-3299/3246.Premier%20League%20Table%20Ranking/README_EN.md)  |  `Database`  |  Easy  |  🔒  |
-|  3247  |  [Number of Subsequences with Odd Sum](/solution/3200-3299/3247.Number%20of%20Subsequences%20with%20Odd%20Sum/README_EN.md)  |    |  Medium  |  🔒  |
-|  3248  |  [Snake in Matrix](/solution/3200-3299/3248.Snake%20in%20Matrix/README_EN.md)  |    |  Easy  |  Weekly Contest 410  |
-|  3249  |  [Count the Number of Good Nodes](/solution/3200-3299/3249.Count%20the%20Number%20of%20Good%20Nodes/README_EN.md)  |    |  Medium  |  Weekly Contest 410  |
-|  3250  |  [Find the Count of Monotonic Pairs I](/solution/3200-3299/3250.Find%20the%20Count%20of%20Monotonic%20Pairs%20I/README_EN.md)  |    |  Hard  |  Weekly Contest 410  |
-|  3251  |  [Find the Count of Monotonic Pairs II](/solution/3200-3299/3251.Find%20the%20Count%20of%20Monotonic%20Pairs%20II/README_EN.md)  |    |  Hard  |  Weekly Contest 410  |
-|  3252  |  [Premier League Table Ranking II](/solution/3200-3299/3252.Premier%20League%20Table%20Ranking%20II/README_EN.md)  |    |  Medium  |  🔒  |
+|  3247  |  [Number of Subsequences with Odd Sum](/solution/3200-3299/3247.Number%20of%20Subsequences%20with%20Odd%20Sum/README_EN.md)  |  `Array`,`Math`,`Dynamic Programming`,`Combinatorics`  |  Medium  |  🔒  |
+|  3248  |  [Snake in Matrix](/solution/3200-3299/3248.Snake%20in%20Matrix/README_EN.md)  |  `Array`,`String`,`Simulation`  |  Easy  |  Weekly Contest 410  |
+|  3249  |  [Count the Number of Good Nodes](/solution/3200-3299/3249.Count%20the%20Number%20of%20Good%20Nodes/README_EN.md)  |  `Tree`,`Depth-First Search`  |  Medium  |  Weekly Contest 410  |
+|  3250  |  [Find the Count of Monotonic Pairs I](/solution/3200-3299/3250.Find%20the%20Count%20of%20Monotonic%20Pairs%20I/README_EN.md)  |  `Array`,`Math`,`Dynamic Programming`,`Combinatorics`,`Prefix Sum`  |  Hard  |  Weekly Contest 410  |
+|  3251  |  [Find the Count of Monotonic Pairs II](/solution/3200-3299/3251.Find%20the%20Count%20of%20Monotonic%20Pairs%20II/README_EN.md)  |  `Array`,`Math`,`Dynamic Programming`,`Combinatorics`,`Prefix Sum`  |  Hard  |  Weekly Contest 410  |
+|  3252  |  [Premier League Table Ranking II](/solution/3200-3299/3252.Premier%20League%20Table%20Ranking%20II/README_EN.md)  |  `Database`  |  Medium  |  🔒  |
+|  3253  |  [Construct String with Minimum Cost (Easy)](/solution/3200-3299/3253.Construct%20String%20with%20Minimum%20Cost%20%28Easy%29/README_EN.md)  |    |  Medium  |  🔒  |
 
 ## Copyright
 

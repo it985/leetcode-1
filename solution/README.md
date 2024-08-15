@@ -240,7 +240,7 @@
 |  0227  |  [基本计算器 II](/solution/0200-0299/0227.Basic%20Calculator%20II/README.md)  |  `栈`,`数学`,`字符串`  |  中等  |    |
 |  0228  |  [汇总区间](/solution/0200-0299/0228.Summary%20Ranges/README.md)  |  `数组`  |  简单  |    |
 |  0229  |  [多数元素 II](/solution/0200-0299/0229.Majority%20Element%20II/README.md)  |  `数组`,`哈希表`,`计数`,`排序`  |  中等  |    |
-|  0230  |  [二叉搜索树中第K小的元素](/solution/0200-0299/0230.Kth%20Smallest%20Element%20in%20a%20BST/README.md)  |  `树`,`深度优先搜索`,`二叉搜索树`,`二叉树`  |  中等  |    |
+|  0230  |  [二叉搜索树中第 K 小的元素](/solution/0200-0299/0230.Kth%20Smallest%20Element%20in%20a%20BST/README.md)  |  `树`,`深度优先搜索`,`二叉搜索树`,`二叉树`  |  中等  |    |
 |  0231  |  [2 的幂](/solution/0200-0299/0231.Power%20of%20Two/README.md)  |  `位运算`,`递归`,`数学`  |  简单  |    |
 |  0232  |  [用栈实现队列](/solution/0200-0299/0232.Implement%20Queue%20using%20Stacks/README.md)  |  `栈`,`设计`,`队列`  |  简单  |    |
 |  0233  |  [数字 1 的个数](/solution/0200-0299/0233.Number%20of%20Digit%20One/README.md)  |  `递归`,`数学`,`动态规划`  |  困难  |    |
@@ -318,7 +318,7 @@
 |  0305  |  [岛屿数量 II](/solution/0300-0399/0305.Number%20of%20Islands%20II/README.md)  |  `并查集`,`数组`,`哈希表`  |  困难  |  🔒  |
 |  0306  |  [累加数](/solution/0300-0399/0306.Additive%20Number/README.md)  |  `字符串`,`回溯`  |  中等  |    |
 |  0307  |  [区域和检索 - 数组可修改](/solution/0300-0399/0307.Range%20Sum%20Query%20-%20Mutable/README.md)  |  `设计`,`树状数组`,`线段树`,`数组`  |  中等  |    |
-|  0308  |  [二维区域和检索 - 可变](/solution/0300-0399/0308.Range%20Sum%20Query%202D%20-%20Mutable/README.md)  |  `设计`,`树状数组`,`线段树`,`数组`,`矩阵`  |  困难  |  🔒  |
+|  0308  |  [二维区域和检索 - 矩阵可修改](/solution/0300-0399/0308.Range%20Sum%20Query%202D%20-%20Mutable/README.md)  |  `设计`,`树状数组`,`线段树`,`数组`,`矩阵`  |  困难  |  🔒  |
 |  0309  |  [买卖股票的最佳时机含冷冻期](/solution/0300-0399/0309.Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Cooldown/README.md)  |  `数组`,`动态规划`  |  中等  |    |
 |  0310  |  [最小高度树](/solution/0300-0399/0310.Minimum%20Height%20Trees/README.md)  |  `深度优先搜索`,`广度优先搜索`,`图`,`拓扑排序`  |  中等  |    |
 |  0311  |  [稀疏矩阵的乘法](/solution/0300-0399/0311.Sparse%20Matrix%20Multiplication/README.md)  |  `数组`,`哈希表`,`矩阵`  |  中等  |  🔒  |
@@ -1830,7 +1830,7 @@
 |  1817  |  [查找用户活跃分钟数](/solution/1800-1899/1817.Finding%20the%20Users%20Active%20Minutes/README.md)  |  `数组`,`哈希表`  |  中等  |  第 235 场周赛  |
 |  1818  |  [绝对差值和](/solution/1800-1899/1818.Minimum%20Absolute%20Sum%20Difference/README.md)  |  `数组`,`二分查找`,`有序集合`,`排序`  |  中等  |  第 235 场周赛  |
 |  1819  |  [序列中不同最大公约数的数目](/solution/1800-1899/1819.Number%20of%20Different%20Subsequences%20GCDs/README.md)  |  `数组`,`数学`,`计数`,`数论`  |  困难  |  第 235 场周赛  |
-|  1820  |  [最多邀请的个数](/solution/1800-1899/1820.Maximum%20Number%20of%20Accepted%20Invitations/README.md)  |  `图`,`数组`,`回溯`,`矩阵`  |  中等  |  🔒  |
+|  1820  |  [最多邀请的个数](/solution/1800-1899/1820.Maximum%20Number%20of%20Accepted%20Invitations/README.md)  |  `深度优先搜索`,`图`,`数组`,`矩阵`  |  中等  |  🔒  |
 |  1821  |  [寻找今年具有正收入的客户](/solution/1800-1899/1821.Find%20Customers%20With%20Positive%20Revenue%20this%20Year/README.md)  |  `数据库`  |  简单  |  🔒  |
 |  1822  |  [数组元素积的符号](/solution/1800-1899/1822.Sign%20of%20the%20Product%20of%20an%20Array/README.md)  |  `数组`,`数学`  |  简单  |  第 236 场周赛  |
 |  1823  |  [找出游戏的获胜者](/solution/1800-1899/1823.Find%20the%20Winner%20of%20the%20Circular%20Game/README.md)  |  `递归`,`队列`,`数组`,`数学`,`模拟`  |  中等  |  第 236 场周赛  |
@@ -3257,12 +3257,13 @@
 |  3244  |  [新增道路查询后的最短距离 II](/solution/3200-3299/3244.Shortest%20Distance%20After%20Road%20Addition%20Queries%20II/README.md)  |  `贪心`,`图`,`数组`,`有序集合`  |  困难  |  第 409 场周赛  |
 |  3245  |  [交替组 III](/solution/3200-3299/3245.Alternating%20Groups%20III/README.md)  |  `树状数组`,`数组`  |  困难  |  第 409 场周赛  |
 |  3246  |  [英超积分榜排名](/solution/3200-3299/3246.Premier%20League%20Table%20Ranking/README.md)  |  `数据库`  |  简单  |  🔒  |
-|  3247  |  [奇数和子序列的数量](/solution/3200-3299/3247.Number%20of%20Subsequences%20with%20Odd%20Sum/README.md)  |    |  中等  |  🔒  |
-|  3248  |  [矩阵中的蛇](/solution/3200-3299/3248.Snake%20in%20Matrix/README.md)  |    |  简单  |  第 410 场周赛  |
-|  3249  |  [统计好节点的数目](/solution/3200-3299/3249.Count%20the%20Number%20of%20Good%20Nodes/README.md)  |    |  中等  |  第 410 场周赛  |
-|  3250  |  [单调数组对的数目 I](/solution/3200-3299/3250.Find%20the%20Count%20of%20Monotonic%20Pairs%20I/README.md)  |    |  困难  |  第 410 场周赛  |
-|  3251  |  [单调数组对的数目 II](/solution/3200-3299/3251.Find%20the%20Count%20of%20Monotonic%20Pairs%20II/README.md)  |    |  困难  |  第 410 场周赛  |
-|  3252  |  [Premier League Table Ranking II](/solution/3200-3299/3252.Premier%20League%20Table%20Ranking%20II/README.md)  |    |  中等  |  🔒  |
+|  3247  |  [奇数和子序列的数量](/solution/3200-3299/3247.Number%20of%20Subsequences%20with%20Odd%20Sum/README.md)  |  `数组`,`数学`,`动态规划`,`组合数学`  |  中等  |  🔒  |
+|  3248  |  [矩阵中的蛇](/solution/3200-3299/3248.Snake%20in%20Matrix/README.md)  |  `数组`,`字符串`,`模拟`  |  简单  |  第 410 场周赛  |
+|  3249  |  [统计好节点的数目](/solution/3200-3299/3249.Count%20the%20Number%20of%20Good%20Nodes/README.md)  |  `树`,`深度优先搜索`  |  中等  |  第 410 场周赛  |
+|  3250  |  [单调数组对的数目 I](/solution/3200-3299/3250.Find%20the%20Count%20of%20Monotonic%20Pairs%20I/README.md)  |  `数组`,`数学`,`动态规划`,`组合数学`,`前缀和`  |  困难  |  第 410 场周赛  |
+|  3251  |  [单调数组对的数目 II](/solution/3200-3299/3251.Find%20the%20Count%20of%20Monotonic%20Pairs%20II/README.md)  |  `数组`,`数学`,`动态规划`,`组合数学`,`前缀和`  |  困难  |  第 410 场周赛  |
+|  3252  |  [英超积分榜排名 II](/solution/3200-3299/3252.Premier%20League%20Table%20Ranking%20II/README.md)  |  `数据库`  |  中等  |  🔒  |
+|  3253  |  [Construct String with Minimum Cost (Easy)](/solution/3200-3299/3253.Construct%20String%20with%20Minimum%20Cost%20%28Easy%29/README.md)  |    |  中等  |  🔒  |
 
 ## 版权
 
