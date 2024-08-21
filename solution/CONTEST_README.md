@@ -26,6 +26,20 @@ comments: true
 
 ## 往期竞赛
 
+#### 第 411 场周赛(2024-08-18 10:30, 90 分钟) 参赛人数 3029
+
+- [3258. 统计满足 K 约束的子字符串数量 I](/solution/3200-3299/3258.Count%20Substrings%20That%20Satisfy%20K-Constraint%20I/README.md)
+- [3259. 超级饮料的最大强化能量](/solution/3200-3299/3259.Maximum%20Energy%20Boost%20From%20Two%20Drinks/README.md)
+- [3260. 找出最大的 N 位 K 回文数](/solution/3200-3299/3260.Find%20the%20Largest%20Palindrome%20Divisible%20by%20K/README.md)
+- [3261. 统计满足 K 约束的子字符串数量 II](/solution/3200-3299/3261.Count%20Substrings%20That%20Satisfy%20K-Constraint%20II/README.md)
+
+#### 第 137 场双周赛(2024-08-17 22:30, 90 分钟) 参赛人数 2198
+
+- [3254. 长度为 K 的子数组的能量值 I](/solution/3200-3299/3254.Find%20the%20Power%20of%20K-Size%20Subarrays%20I/README.md)
+- [3255. 长度为 K 的子数组的能量值 II](/solution/3200-3299/3255.Find%20the%20Power%20of%20K-Size%20Subarrays%20II/README.md)
+- [3256. 放三个车的价值之和最大 I](/solution/3200-3299/3256.Maximum%20Value%20Sum%20by%20Placing%20Three%20Rooks%20I/README.md)
+- [3257. 放三个车的价值之和最大 II](/solution/3200-3299/3257.Maximum%20Value%20Sum%20by%20Placing%20Three%20Rooks%20II/README.md)
+
 #### 第 410 场周赛(2024-08-11 10:30, 90 分钟) 参赛人数 2987
 
 - [3248. 矩阵中的蛇](/solution/3200-3299/3248.Snake%20in%20Matrix/README.md)
@@ -2716,7 +2730,6 @@ comments: true
 
 #### 第 154 场周赛(2019-09-15 10:30, 90 分钟) 参赛人数 1299
 
-- [1189. “气球” 的最大数量](/solution/1100-1199/1189.Maximum%20Number%20of%20Balloons/README.md)
 - [1190. 反转每对括号间的子串](/solution/1100-1199/1190.Reverse%20Substrings%20Between%20Each%20Pair%20of%20Parentheses/README.md)
 - [1191. K 次串联后最大子数组之和](/solution/1100-1199/1191.K-Concatenation%20Maximum%20Sum/README.md)
 - [1192. 查找集群内的关键连接](/solution/1100-1199/1192.Critical%20Connections%20in%20a%20Network/README.md)
