@@ -29,6 +29,48 @@ If you want to estimate your score changes after the contest ends, you can visit
 
 ## Past Contests
 
+#### Weekly Contest 415
+
+- [3289. The Two Sneaky Numbers of Digitville](/solution/3200-3299/3289.The%20Two%20Sneaky%20Numbers%20of%20Digitville/README_EN.md)
+- [3290. Maximum Multiplication Score](/solution/3200-3299/3290.Maximum%20Multiplication%20Score/README_EN.md)
+- [3291. Minimum Number of Valid Strings to Form Target I](/solution/3200-3299/3291.Minimum%20Number%20of%20Valid%20Strings%20to%20Form%20Target%20I/README_EN.md)
+- [3292. Minimum Number of Valid Strings to Form Target II](/solution/3200-3299/3292.Minimum%20Number%20of%20Valid%20Strings%20to%20Form%20Target%20II/README_EN.md)
+
+#### Biweekly Contest 139
+
+- [3285. Find Indices of Stable Mountains](/solution/3200-3299/3285.Find%20Indices%20of%20Stable%20Mountains/README_EN.md)
+- [3286. Find a Safe Walk Through a Grid](/solution/3200-3299/3286.Find%20a%20Safe%20Walk%20Through%20a%20Grid/README_EN.md)
+- [3287. Find the Maximum Sequence Value of Array](/solution/3200-3299/3287.Find%20the%20Maximum%20Sequence%20Value%20of%20Array/README_EN.md)
+- [3288. Length of the Longest Increasing Path](/solution/3200-3299/3288.Length%20of%20the%20Longest%20Increasing%20Path/README_EN.md)
+
+#### Weekly Contest 414
+
+- [3280. Convert Date to Binary](/solution/3200-3299/3280.Convert%20Date%20to%20Binary/README_EN.md)
+- [3281. Maximize Score of Numbers in Ranges](/solution/3200-3299/3281.Maximize%20Score%20of%20Numbers%20in%20Ranges/README_EN.md)
+- [3282. Reach End of Array With Max Score](/solution/3200-3299/3282.Reach%20End%20of%20Array%20With%20Max%20Score/README_EN.md)
+- [3283. Maximum Number of Moves to Kill All Pawns](/solution/3200-3299/3283.Maximum%20Number%20of%20Moves%20to%20Kill%20All%20Pawns/README_EN.md)
+
+#### Weekly Contest 413
+
+- [3274. Check if Two Chessboard Squares Have the Same Color](/solution/3200-3299/3274.Check%20if%20Two%20Chessboard%20Squares%20Have%20the%20Same%20Color/README_EN.md)
+- [3275. K-th Nearest Obstacle Queries](/solution/3200-3299/3275.K-th%20Nearest%20Obstacle%20Queries/README_EN.md)
+- [3276. Select Cells in Grid With Maximum Score](/solution/3200-3299/3276.Select%20Cells%20in%20Grid%20With%20Maximum%20Score/README_EN.md)
+- [3277. Maximum XOR Score Subarray Queries](/solution/3200-3299/3277.Maximum%20XOR%20Score%20Subarray%20Queries/README_EN.md)
+
+#### Biweekly Contest 138
+
+- [3270. Find the Key of the Numbers](/solution/3200-3299/3270.Find%20the%20Key%20of%20the%20Numbers/README_EN.md)
+- [3271. Hash Divided String](/solution/3200-3299/3271.Hash%20Divided%20String/README_EN.md)
+- [3272. Find the Count of Good Integers](/solution/3200-3299/3272.Find%20the%20Count%20of%20Good%20Integers/README_EN.md)
+- [3273. Minimum Amount of Damage Dealt to Bob](/solution/3200-3299/3273.Minimum%20Amount%20of%20Damage%20Dealt%20to%20Bob/README_EN.md)
+
+#### Weekly Contest 412
+
+- [3264. Final Array State After K Multiplication Operations I](/solution/3200-3299/3264.Final%20Array%20State%20After%20K%20Multiplication%20Operations%20I/README_EN.md)
+- [3265. Count Almost Equal Pairs I](/solution/3200-3299/3265.Count%20Almost%20Equal%20Pairs%20I/README_EN.md)
+- [3266. Final Array State After K Multiplication Operations II](/solution/3200-3299/3266.Final%20Array%20State%20After%20K%20Multiplication%20Operations%20II/README_EN.md)
+- [3267. Count Almost Equal Pairs II](/solution/3200-3299/3267.Count%20Almost%20Equal%20Pairs%20II/README_EN.md)
+
 #### Weekly Contest 411
 
 - [3258. Count Substrings That Satisfy K-Constraint I](/solution/3200-3299/3258.Count%20Substrings%20That%20Satisfy%20K-Constraint%20I/README_EN.md)

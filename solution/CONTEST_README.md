@@ -26,21 +26,63 @@ comments: true
 
 ## 往期竞赛
 
-#### 第 411 场周赛(2024-08-18 10:30, 90 分钟) 参赛人数 3029
+#### 第 415 场周赛(2024-09-15 10:30, 90 分钟) 参赛人数 2769
+
+- [3289. 数字小镇中的捣蛋鬼](/solution/3200-3299/3289.The%20Two%20Sneaky%20Numbers%20of%20Digitville/README.md)
+- [3290. 最高乘法得分](/solution/3200-3299/3290.Maximum%20Multiplication%20Score/README.md)
+- [3291. 形成目标字符串需要的最少字符串数 I](/solution/3200-3299/3291.Minimum%20Number%20of%20Valid%20Strings%20to%20Form%20Target%20I/README.md)
+- [3292. 形成目标字符串需要的最少字符串数 II](/solution/3200-3299/3292.Minimum%20Number%20of%20Valid%20Strings%20to%20Form%20Target%20II/README.md)
+
+#### 第 139 场双周赛(2024-09-14 22:30, 90 分钟) 参赛人数 2120
+
+- [3285. 找到稳定山的下标](/solution/3200-3299/3285.Find%20Indices%20of%20Stable%20Mountains/README.md)
+- [3286. 穿越网格图的安全路径](/solution/3200-3299/3286.Find%20a%20Safe%20Walk%20Through%20a%20Grid/README.md)
+- [3287. 求出数组中最大序列值](/solution/3200-3299/3287.Find%20the%20Maximum%20Sequence%20Value%20of%20Array/README.md)
+- [3288. 最长上升路径的长度](/solution/3200-3299/3288.Length%20of%20the%20Longest%20Increasing%20Path/README.md)
+
+#### 第 414 场周赛(2024-09-08 10:30, 90 分钟) 参赛人数 3236
+
+- [3280. 将日期转换为二进制表示](/solution/3200-3299/3280.Convert%20Date%20to%20Binary/README.md)
+- [3281. 范围内整数的最大得分](/solution/3200-3299/3281.Maximize%20Score%20of%20Numbers%20in%20Ranges/README.md)
+- [3282. 到达数组末尾的最大得分](/solution/3200-3299/3282.Reach%20End%20of%20Array%20With%20Max%20Score/README.md)
+- [3283. 吃掉所有兵需要的最多移动次数](/solution/3200-3299/3283.Maximum%20Number%20of%20Moves%20to%20Kill%20All%20Pawns/README.md)
+
+#### 第 413 场周赛(2024-09-01 10:30, 90 分钟) 参赛人数 2875
+
+- [3274. 检查棋盘方格颜色是否相同](/solution/3200-3299/3274.Check%20if%20Two%20Chessboard%20Squares%20Have%20the%20Same%20Color/README.md)
+- [3275. 第 K 近障碍物查询](/solution/3200-3299/3275.K-th%20Nearest%20Obstacle%20Queries/README.md)
+- [3276. 选择矩阵中单元格的最大得分](/solution/3200-3299/3276.Select%20Cells%20in%20Grid%20With%20Maximum%20Score/README.md)
+- [3277. 查询子数组最大异或值](/solution/3200-3299/3277.Maximum%20XOR%20Score%20Subarray%20Queries/README.md)
+
+#### 第 138 场双周赛(2024-08-31 22:30, 90 分钟) 参赛人数 2029
+
+- [3270. 求出数字答案](/solution/3200-3299/3270.Find%20the%20Key%20of%20the%20Numbers/README.md)
+- [3271. 哈希分割字符串](/solution/3200-3299/3271.Hash%20Divided%20String/README.md)
+- [3272. 统计好整数的数目](/solution/3200-3299/3272.Find%20the%20Count%20of%20Good%20Integers/README.md)
+- [3273. 对 Bob 造成的最少伤害](/solution/3200-3299/3273.Minimum%20Amount%20of%20Damage%20Dealt%20to%20Bob/README.md)
+
+#### 第 412 场周赛(2024-08-25 10:30, 90 分钟) 参赛人数 2681
+
+- [3264. K 次乘运算后的最终数组 I](/solution/3200-3299/3264.Final%20Array%20State%20After%20K%20Multiplication%20Operations%20I/README.md)
+- [3265. 统计近似相等数对 I](/solution/3200-3299/3265.Count%20Almost%20Equal%20Pairs%20I/README.md)
+- [3266. K 次乘运算后的最终数组 II](/solution/3200-3299/3266.Final%20Array%20State%20After%20K%20Multiplication%20Operations%20II/README.md)
+- [3267. 统计近似相等数对 II](/solution/3200-3299/3267.Count%20Almost%20Equal%20Pairs%20II/README.md)
+
+#### 第 411 场周赛(2024-08-18 10:30, 90 分钟) 参赛人数 3030
 
 - [3258. 统计满足 K 约束的子字符串数量 I](/solution/3200-3299/3258.Count%20Substrings%20That%20Satisfy%20K-Constraint%20I/README.md)
 - [3259. 超级饮料的最大强化能量](/solution/3200-3299/3259.Maximum%20Energy%20Boost%20From%20Two%20Drinks/README.md)
 - [3260. 找出最大的 N 位 K 回文数](/solution/3200-3299/3260.Find%20the%20Largest%20Palindrome%20Divisible%20by%20K/README.md)
 - [3261. 统计满足 K 约束的子字符串数量 II](/solution/3200-3299/3261.Count%20Substrings%20That%20Satisfy%20K-Constraint%20II/README.md)
 
-#### 第 137 场双周赛(2024-08-17 22:30, 90 分钟) 参赛人数 2198
+#### 第 137 场双周赛(2024-08-17 22:30, 90 分钟) 参赛人数 2199
 
 - [3254. 长度为 K 的子数组的能量值 I](/solution/3200-3299/3254.Find%20the%20Power%20of%20K-Size%20Subarrays%20I/README.md)
 - [3255. 长度为 K 的子数组的能量值 II](/solution/3200-3299/3255.Find%20the%20Power%20of%20K-Size%20Subarrays%20II/README.md)
 - [3256. 放三个车的价值之和最大 I](/solution/3200-3299/3256.Maximum%20Value%20Sum%20by%20Placing%20Three%20Rooks%20I/README.md)
 - [3257. 放三个车的价值之和最大 II](/solution/3200-3299/3257.Maximum%20Value%20Sum%20by%20Placing%20Three%20Rooks%20II/README.md)
 
-#### 第 410 场周赛(2024-08-11 10:30, 90 分钟) 参赛人数 2987
+#### 第 410 场周赛(2024-08-11 10:30, 90 分钟) 参赛人数 2988
 
 - [3248. 矩阵中的蛇](/solution/3200-3299/3248.Snake%20in%20Matrix/README.md)
 - [3249. 统计好节点的数目](/solution/3200-3299/3249.Count%20the%20Number%20of%20Good%20Nodes/README.md)
@@ -170,7 +212,7 @@ comments: true
 
 - [3151. 特殊数组 I](/solution/3100-3199/3151.Special%20Array%20I/README.md)
 - [3152. 特殊数组 II](/solution/3100-3199/3152.Special%20Array%20II/README.md)
-- [3153. 所有数对中数位不同之和](/solution/3100-3199/3153.Sum%20of%20Digit%20Differences%20of%20All%20Pairs/README.md)
+- [3153. 所有数对中数位差之和](/solution/3100-3199/3153.Sum%20of%20Digit%20Differences%20of%20All%20Pairs/README.md)
 - [3154. 到达第 K 级台阶的方案数](/solution/3100-3199/3154.Find%20Number%20of%20Ways%20to%20Reach%20the%20K-th%20Stair/README.md)
 
 #### 第 397 场周赛(2024-05-12 10:30, 90 分钟) 参赛人数 3365
@@ -995,7 +1037,7 @@ comments: true
 #### 第 319 场周赛(2022-11-13 10:30, 90 分钟) 参赛人数 6175
 
 - [2469. 温度转换](/solution/2400-2499/2469.Convert%20the%20Temperature/README.md)
-- [2470. 最小公倍数为 K 的子数组数目](/solution/2400-2499/2470.Number%20of%20Subarrays%20With%20LCM%20Equal%20to%20K/README.md)
+- [2470. 最小公倍数等于 K 的子数组数目](/solution/2400-2499/2470.Number%20of%20Subarrays%20With%20LCM%20Equal%20to%20K/README.md)
 - [2471. 逐层排序二叉树所需的最少操作数目](/solution/2400-2499/2471.Minimum%20Number%20of%20Operations%20to%20Sort%20a%20Binary%20Tree%20by%20Level/README.md)
 - [2472. 不重叠回文子字符串的最大数目](/solution/2400-2499/2472.Maximum%20Number%20of%20Non-overlapping%20Palindrome%20Substrings/README.md)
 
@@ -1141,7 +1183,7 @@ comments: true
 
 #### 第 305 场周赛(2022-08-07 10:30, 90 分钟) 参赛人数 7465
 
-- [2367. 算术三元组的数目](/solution/2300-2399/2367.Number%20of%20Arithmetic%20Triplets/README.md)
+- [2367. 等差三元组的数目](/solution/2300-2399/2367.Number%20of%20Arithmetic%20Triplets/README.md)
 - [2368. 受限条件下可到达节点的数目](/solution/2300-2399/2368.Reachable%20Nodes%20With%20Restrictions/README.md)
 - [2369. 检查数组是否存在有效划分](/solution/2300-2399/2369.Check%20if%20There%20is%20a%20Valid%20Partition%20For%20The%20Array/README.md)
 - [2370. 最长理想子序列](/solution/2300-2399/2370.Longest%20Ideal%20Subsequence/README.md)

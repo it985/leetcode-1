@@ -39,7 +39,7 @@
 | 0585 | [2016年的投资](/solution/0500-0599/0585.Investments%20in%202016/README.md)                                                                                   | `数据库` | 中等 |      |
 | 0586 | [订单最多的客户](/solution/0500-0599/0586.Customer%20Placing%20the%20Largest%20Number%20of%20Orders/README.md)                                               | `数据库` | 简单 |      |
 | 0595 | [大的国家](/solution/0500-0599/0595.Big%20Countries/README.md)                                                                                               | `数据库` | 简单 |      |
-| 0596 | [超过5名学生的课](/solution/0500-0599/0596.Classes%20More%20Than%205%20Students/README.md)                                                                   | `数据库` | 简单 |      |
+| 0596 | [超过 5 名学生的课](/solution/0500-0599/0596.Classes%20More%20Than%205%20Students/README.md)                                                                 | `数据库` | 简单 |      |
 | 0597 | [好友申请 I：总体通过率](/solution/0500-0599/0597.Friend%20Requests%20I%20Overall%20Acceptance%20Rate/README.md)                                             | `数据库` | 简单 | 🔒   |
 | 0601 | [体育馆的人流量](/solution/0600-0699/0601.Human%20Traffic%20of%20Stadium/README.md)                                                                          | `数据库` | 困难 |      |
 | 0602 | [好友申请 II ：谁有最多的好友](/solution/0600-0699/0602.Friend%20Requests%20II%20Who%20Has%20the%20Most%20Friends/README.md)                                 | `数据库` | 中等 |      |
@@ -274,7 +274,7 @@
 | 3087 | [查找热门话题标签](/solution/3000-3099/3087.Find%20Trending%20Hashtags/README.md)                                                                            | `数据库` | 中等 | 🔒   |
 | 3089 | [查找突发行为](/solution/3000-3099/3089.Find%20Bursty%20Behavior/README.md)                                                                                  | `数据库` | 中等 | 🔒   |
 | 3103 | [查找热门话题标签 II](/solution/3100-3199/3103.Find%20Trending%20Hashtags%20II/README.md)                                                                    | `数据库` | 困难 | 🔒   |
-| 3118 | [Friday Purchase III](/solution/3100-3199/3118.Friday%20Purchase%20III/README.md)                                                                            | `数据库` | 中等 | 🔒   |
+| 3118 | [发生在周五的交易 III](/solution/3100-3199/3118.Friday%20Purchase%20III/README.md)                                                                           | `数据库` | 中等 | 🔒   |
 | 3124 | [查找最长的电话](/solution/3100-3199/3124.Find%20Longest%20Calls/README.md)                                                                                  | `数据库` | 中等 | 🔒   |
 | 3126 | [服务器利用时间](/solution/3100-3199/3126.Server%20Utilization%20Time/README.md)                                                                             | `数据库` | 中等 | 🔒   |
 | 3140 | [连续空余座位 II](/solution/3100-3199/3140.Consecutive%20Available%20Seats%20II/README.md)                                                                   | `数据库` | 中等 | 🔒   |
@@ -292,7 +292,9 @@
 | 3236 | [首席执行官下属层级](/solution/3200-3299/3236.CEO%20Subordinate%20Hierarchy/README.md)                                                                       | `数据库` | 困难 | 🔒   |
 | 3246 | [英超积分榜排名](/solution/3200-3299/3246.Premier%20League%20Table%20Ranking/README.md)                                                                      | `数据库` | 简单 | 🔒   |
 | 3252 | [英超积分榜排名 II](/solution/3200-3299/3252.Premier%20League%20Table%20Ranking%20II/README.md)                                                              | `数据库` | 中等 | 🔒   |
-| 3262 | [查找重叠的班次](/solution/3200-3299/3262.Find%20Overlapping%20Shifts/README.md)                                                                             |          | 中等 | 🔒   |
+| 3262 | [查找重叠的班次](/solution/3200-3299/3262.Find%20Overlapping%20Shifts/README.md)                                                                             | `数据库` | 中等 | 🔒   |
+| 3268 | [查找重叠的班次 II](/solution/3200-3299/3268.Find%20Overlapping%20Shifts%20II/README.md)                                                                     | `数据库` | 困难 | 🔒   |
+| 3278 | [寻找数据科学家职位的候选人 II](/solution/3200-3299/3278.Find%20Candidates%20for%20Data%20Scientist%20Position%20II/README.md)                               | `数据库` | 中等 | 🔒   |
 
 ## 版权
 
