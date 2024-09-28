@@ -43,7 +43,7 @@ MyCalendar.book(10, 40); // returns true
 MyCalendar.book(5, 15); // returns false
 MyCalendar.book(5, 10); // returns true
 MyCalendar.book(25, 55); // returns true
-<strong>解释：</strong> 
+<strong>解释：</strong>
 前两个日程安排可以添加至日历中。 第三个日程安排会导致双重预订，但可以添加至日历中。
 第四个日程安排活动（5,15）不能添加至日历中，因为它会导致三重预订。
 第五个日程安排（5,10）可以添加至日历中，因为它未使用已经双重预订的时间10。
@@ -205,6 +205,80 @@ func (this *MyCalendarTwo) Book(start int, end int) bool {
  * Your MyCalendarTwo object will be instantiated and called as such:
  * obj := Constructor();
  * param_1 := obj.Book(start,end);
+ */
+```
+
+#### TypeScript
+
+```ts
+class MyCalendarTwo {
+    private events: [number, number][];
+    private overlaps: [number, number][];
+
+    constructor() {
+        this.events = [];
+        this.overlaps = [];
+    }
+
+    book(start: number, end: number): boolean {
+        for (const [s, e] of this.overlaps) {
+            if (Math.max(start, s) < Math.min(end, e)) {
+                return false;
+            }
+        }
+
+        for (const [s, e] of this.events) {
+            if (Math.max(start, s) < Math.min(end, e)) {
+                this.overlaps.push([Math.max(start, s), Math.min(end, e)]);
+            }
+        }
+
+        this.events.push([start, end]);
+        return true;
+    }
+}
+
+/**
+ * Your MyCalendarTwo object will be instantiated and called as such:
+ * var obj = new MyCalendarTwo()
+ * var param_1 = obj.book(start,end)
+ */
+```
+
+#### JavaScript
+
+```js
+var MyCalendarTwo = function () {
+    this.events = [];
+    this.overlaps = [];
+};
+
+/**
+ * @param {number} start
+ * @param {number} end
+ * @return {boolean}
+ */
+MyCalendarTwo.prototype.book = function (start, end) {
+    for (let [s, e] of this.overlaps) {
+        if (Math.max(start, s) < Math.min(end, e)) {
+            return false;
+        }
+    }
+
+    for (let [s, e] of this.events) {
+        if (Math.max(start, s) < Math.min(end, e)) {
+            this.overlaps.push([Math.max(start, s), Math.min(end, e)]);
+        }
+    }
+
+    this.events.push([start, end]);
+    return true;
+};
+
+/**
+ * Your MyCalendarTwo object will be instantiated and called as such:
+ * var obj = new MyCalendarTwo()
+ * var param_1 = obj.book(start,end)
  */
 ```
 
@@ -636,6 +710,76 @@ func (this *MyCalendarTwo) Book(start int, end int) bool {
  * obj := Constructor();
  * param_1 := obj.Book(start,end);
  */
+```
+
+<!-- tabs:end -->
+
+<!-- solution:end -->
+
+<!-- solution:start -->
+
+### Solution 3: Line Sweep
+
+<!-- tabs:start -->
+
+#### TypeScript
+
+```ts
+class MyCalendarTwo {
+    #OVERLAPS = 2;
+    #cnt: Record<number, number> = {};
+
+    book(start: number, end: number): boolean {
+        this.#cnt[start] = (this.#cnt[start] ?? 0) + 1;
+        this.#cnt[end] = (this.#cnt[end] ?? 0) - 1;
+
+        let sum = 0;
+        for (const v of Object.values(this.#cnt)) {
+            sum += v;
+            if (sum > this.#OVERLAPS) {
+                this.#cnt[start]--;
+                this.#cnt[end]++;
+
+                if (!this.#cnt[start]) delete this.#cnt[start];
+                if (!this.#cnt[end]) delete this.#cnt[end];
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+```
+
+#### JavaScript
+
+```js
+class MyCalendarTwo {
+    #OVERLAPS = 2;
+    #cnt = {};
+
+    book(start, end) {
+        this.#cnt[start] = (this.#cnt[start] ?? 0) + 1;
+        this.#cnt[end] = (this.#cnt[end] ?? 0) - 1;
+
+        let sum = 0;
+        for (const v of Object.values(this.#cnt)) {
+            sum += v;
+            if (sum > this.#OVERLAPS) {
+                this.#cnt[start]--;
+                this.#cnt[end]++;
+
+                if (!this.#cnt[start]) delete this.#cnt[start];
+                if (!this.#cnt[end]) delete this.#cnt[end];
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
 ```
 
 <!-- tabs:end -->
