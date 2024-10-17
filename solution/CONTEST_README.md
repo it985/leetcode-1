@@ -26,6 +26,27 @@ comments: true
 
 ## 往期竞赛
 
+#### 第 419 场周赛(2024-10-13 10:30, 90 分钟) 参赛人数 2924
+
+- [3318. 计算子数组的 x-sum I](/solution/3300-3399/3318.Find%20X-Sum%20of%20All%20K-Long%20Subarrays%20I/README.md)
+- [3319. 第 K 大的完美二叉子树的大小](/solution/3300-3399/3319.K-th%20Largest%20Perfect%20Subtree%20Size%20in%20Binary%20Tree/README.md)
+- [3320. 统计能获胜的出招序列数](/solution/3300-3399/3320.Count%20The%20Number%20of%20Winning%20Sequences/README.md)
+- [3321. 计算子数组的 x-sum II](/solution/3300-3399/3321.Find%20X-Sum%20of%20All%20K-Long%20Subarrays%20II/README.md)
+
+#### 第 141 场双周赛(2024-10-12 22:30, 90 分钟) 参赛人数 2055
+
+- [3314. 构造最小位运算数组 I](/solution/3300-3399/3314.Construct%20the%20Minimum%20Bitwise%20Array%20I/README.md)
+- [3315. 构造最小位运算数组 II](/solution/3300-3399/3315.Construct%20the%20Minimum%20Bitwise%20Array%20II/README.md)
+- [3316. 从原字符串里进行删除操作的最多次数](/solution/3300-3399/3316.Find%20Maximum%20Removals%20From%20Source%20String/README.md)
+- [3317. 安排活动的方案数](/solution/3300-3399/3317.Find%20the%20Number%20of%20Possible%20Ways%20for%20an%20Event/README.md)
+
+#### 第 418 场周赛(2024-10-06 10:30, 90 分钟) 参赛人数 2255
+
+- [3309. 连接二进制表示可形成的最大数值](/solution/3300-3399/3309.Maximum%20Possible%20Number%20by%20Binary%20Concatenation/README.md)
+- [3310. 移除可疑的方法](/solution/3300-3399/3310.Remove%20Methods%20From%20Project/README.md)
+- [3311. 构造符合图结构的二维矩阵](/solution/3300-3399/3311.Construct%202D%20Grid%20Matching%20Graph%20Layout/README.md)
+- [3312. 查询排序后的最大公约数](/solution/3300-3399/3312.Sorted%20GCD%20Pair%20Queries/README.md)
+
 #### 第 417 场周赛(2024-09-29 10:30, 90 分钟) 参赛人数 2509
 
 - [3304. 找出第 K 个字符 I](/solution/3300-3399/3304.Find%20the%20K-th%20Character%20in%20String%20Game%20I/README.md)
