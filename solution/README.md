@@ -3334,6 +3334,11 @@
 |  3321  |  [计算子数组的 x-sum II](/solution/3300-3399/3321.Find%20X-Sum%20of%20All%20K-Long%20Subarrays%20II/README.md)  |  `数组`,`哈希表`,`滑动窗口`,`堆（优先队列）`  |  困难  |  第 419 场周赛  |
 |  3322  |  [英超积分榜排名 III](/solution/3300-3399/3322.Premier%20League%20Table%20Ranking%20III/README.md)  |  `数据库`  |  中等  |  🔒  |
 |  3323  |  [通过插入区间最小化连通组](/solution/3300-3399/3323.Minimize%20Connected%20Groups%20by%20Inserting%20Interval/README.md)  |    |  中等  |  🔒  |
+|  3324  |  [出现在屏幕上的字符串序列](/solution/3300-3399/3324.Find%20the%20Sequence%20of%20Strings%20Appeared%20on%20the%20Screen/README.md)  |    |  中等  |  第 420 场周赛  |
+|  3325  |  [字符至少出现 K 次的子字符串 I](/solution/3300-3399/3325.Count%20Substrings%20With%20K-Frequency%20Characters%20I/README.md)  |    |  中等  |  第 420 场周赛  |
+|  3326  |  [使数组非递减的最少除法操作次数](/solution/3300-3399/3326.Minimum%20Division%20Operations%20to%20Make%20Array%20Non%20Decreasing/README.md)  |    |  中等  |  第 420 场周赛  |
+|  3327  |  [判断 DFS 字符串是否是回文串](/solution/3300-3399/3327.Check%20if%20DFS%20Strings%20Are%20Palindromes/README.md)  |    |  困难  |  第 420 场周赛  |
+|  3328  |  [Find Cities in Each State II](/solution/3300-3399/3328.Find%20Cities%20in%20Each%20State%20II/README.md)  |    |  中等  |  🔒  |
 
 ## 版权
 
