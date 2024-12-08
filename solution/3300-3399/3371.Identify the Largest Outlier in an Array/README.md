@@ -19,9 +19,9 @@ tags:
 
 <!-- description:start -->
 
-<p>给你一个整数数组 <code>nums</code>。该数组包含 <code>n</code> 个元素，其中&nbsp;<strong>恰好&nbsp;</strong>有 <code>n - 2</code> 个元素是&nbsp;<strong>特殊数字&nbsp;</strong>。剩下的&nbsp;<strong>两个&nbsp;</strong>元素中，一个是这些&nbsp;<strong>特殊数字&nbsp;</strong>的 <strong>和</strong> ，另一个是&nbsp;<strong>异常值&nbsp;</strong>。</p>
+<p>给你一个整数数组 <code>nums</code>。该数组包含 <code>n</code> 个元素，其中&nbsp;<strong>恰好&nbsp;</strong>有 <code>n - 2</code> 个元素是&nbsp;<strong>特殊数字&nbsp;</strong>。剩下的&nbsp;<strong>两个&nbsp;</strong>元素中，一个是所有&nbsp;<strong>特殊数字&nbsp;</strong>的 <strong>和</strong> ，另一个是&nbsp;<strong>异常值&nbsp;</strong>。</p>
 
-<p><strong>异常值</strong> 的定义是：既不是原始特殊数字之一，也不是表示这些数字元素和的数字。</p>
+<p><strong>异常值</strong> 的定义是：既不是原始特殊数字之一，也不是所有特殊数字的和。</p>
 
 <p><strong>注意</strong>，特殊数字、和 以及 异常值 的下标必须&nbsp;<strong>不同&nbsp;</strong>，但可以共享&nbsp;<strong>相同</strong> 的值。</p>
 
@@ -81,7 +81,15 @@ tags:
 
 <!-- solution:start -->
 
-### 方法一
+### 方法一：哈希表 + 枚举
+
+我们用一个哈希表 $\textit{cnt}$ 记录数组 $\textit{nums}$ 中每个元素出现的次数。
+
+接下来，我们枚举数组 $\textit{nums}$ 中的每个元素 $x$ 作为可能的异常值，对于每个 $x$，我们计算数组 $\textit{nums}$ 中除了 $x$ 之外的所有元素的和 $t$，如果 $t$ 不是偶数，或者 $t$ 的一半不在 $\textit{cnt}$ 中，那么 $x$ 不满足条件，我们跳过这个 $x$。否则，如果 $x$ 不等于 $t$ 的一半，或者 $x$ 在 $\textit{cnt}$ 中出现的次数大于 $1$，那么 $x$ 是一个可能的异常值，我们更新答案。
+
+枚举结束后，返回答案即可。
+
+时间复杂度 $O(n)$，空间复杂度 $O(n)$。其中 $n$ 为数组 $\textit{nums}$ 的长度。
 
 <!-- tabs:start -->
 
