@@ -19,9 +19,7 @@ tags:
 
 <p>You are given a <em>positive</em> number <code>n</code>.</p>
 
-<p>Return the <strong>smallest</strong> number <code>x</code> <strong>greater than</strong> or <strong>equal to</strong> <code>n</code>, such that the binary representation of <code>x</code> contains only <strong>set</strong> bits.</p>
-
-<p>A <strong>set</strong> bit refers to a bit in the binary representation of a number that has a value of <code>1</code>.</p>
+<p>Return the <strong>smallest</strong> number <code>x</code> <strong>greater than</strong> or <strong>equal to</strong> <code>n</code>, such that the binary representation of <code>x</code> contains only <span data-keyword="set-bit">set bits</span></p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
@@ -73,7 +71,11 @@ tags:
 
 <!-- solution:start -->
 
-### Solution 1
+### Solution 1: Bit Manipulation
+
+We start with $x = 1$ and continuously left shift $x$ until $x - 1 \geq n$. At this point, $x - 1$ is the answer we are looking for.
+
+The time complexity is $O(\log n)$, and the space complexity is $O(1)$.
 
 <!-- tabs:start -->
 
