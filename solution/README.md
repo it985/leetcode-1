@@ -3011,7 +3011,7 @@
 |  2998  |  [使 X 和 Y 相等的最少操作次数](/solution/2900-2999/2998.Minimum%20Number%20of%20Operations%20to%20Make%20X%20and%20Y%20Equal/README.md)  |  `广度优先搜索`,`记忆化搜索`,`动态规划`  |  中等  |  第 121 场双周赛  |
 |  2999  |  [统计强大整数的数目](/solution/2900-2999/2999.Count%20the%20Number%20of%20Powerful%20Integers/README.md)  |  `数学`,`字符串`,`动态规划`  |  困难  |  第 121 场双周赛  |
 |  3000  |  [对角线最长的矩形的面积](/solution/3000-3099/3000.Maximum%20Area%20of%20Longest%20Diagonal%20Rectangle/README.md)  |  `数组`  |  简单  |  第 379 场周赛  |
-|  3001  |  [捕获黑皇后需要的最少移动次数](/solution/3000-3099/3001.Minimum%20Moves%20to%20Capture%20The%20Queen/README.md)  |  `数组`,`枚举`  |  中等  |  第 379 场周赛  |
+|  3001  |  [捕获黑皇后需要的最少移动次数](/solution/3000-3099/3001.Minimum%20Moves%20to%20Capture%20The%20Queen/README.md)  |  `数学`,`枚举`  |  中等  |  第 379 场周赛  |
 |  3002  |  [移除后集合的最多元素数](/solution/3000-3099/3002.Maximum%20Size%20of%20a%20Set%20After%20Removals/README.md)  |  `贪心`,`数组`,`哈希表`  |  中等  |  第 379 场周赛  |
 |  3003  |  [执行操作后的最大分割数量](/solution/3000-3099/3003.Maximize%20the%20Number%20of%20Partitions%20After%20Operations/README.md)  |  `位运算`,`字符串`,`动态规划`,`状态压缩`  |  困难  |  第 379 场周赛  |
 |  3004  |  [相同颜色的最大子树](/solution/3000-3099/3004.Maximum%20Subtree%20of%20the%20Same%20Color/README.md)  |  `树`,`深度优先搜索`,`数组`,`动态规划`  |  中等  |  🔒  |
@@ -3385,6 +3385,16 @@
 |  3372  |  [连接两棵树后最大目标节点数目 I](/solution/3300-3399/3372.Maximize%20the%20Number%20of%20Target%20Nodes%20After%20Connecting%20Trees%20I/README.md)  |  `树`,`深度优先搜索`,`广度优先搜索`  |  中等  |  第 426 场周赛  |
 |  3373  |  [连接两棵树后最大目标节点数目 II](/solution/3300-3399/3373.Maximize%20the%20Number%20of%20Target%20Nodes%20After%20Connecting%20Trees%20II/README.md)  |  `树`,`深度优先搜索`,`广度优先搜索`  |  困难  |  第 426 场周赛  |
 |  3374  |  [首字母大写 II](/solution/3300-3399/3374.First%20Letter%20Capitalization%20II/README.md)  |  `数据库`  |  困难  |    |
+|  3375  |  [使数组的值全部为 K 的最少操作次数](/solution/3300-3399/3375.Minimum%20Operations%20to%20Make%20Array%20Values%20Equal%20to%20K/README.md)  |  `数组`,`哈希表`  |  简单  |  第 145 场双周赛  |
+|  3376  |  [破解锁的最少时间 I](/solution/3300-3399/3376.Minimum%20Time%20to%20Break%20Locks%20I/README.md)  |  `位运算`,`数组`,`动态规划`,`回溯`,`状态压缩`  |  中等  |  第 145 场双周赛  |
+|  3377  |  [使两个整数相等的数位操作](/solution/3300-3399/3377.Digit%20Operations%20to%20Make%20Two%20Integers%20Equal/README.md)  |  `图`,`数学`,`数论`,`最短路`,`堆（优先队列）`  |  中等  |  第 145 场双周赛  |
+|  3378  |  [统计最小公倍数图中的连通块数目](/solution/3300-3399/3378.Count%20Connected%20Components%20in%20LCM%20Graph/README.md)  |  `并查集`,`数组`,`哈希表`,`数学`,`数论`  |  困难  |  第 145 场双周赛  |
+|  3379  |  [转换数组](/solution/3300-3399/3379.Transformed%20Array/README.md)  |  `数组`,`模拟`  |  简单  |  第 427 场周赛  |
+|  3380  |  [用点构造面积最大的矩形 I](/solution/3300-3399/3380.Maximum%20Area%20Rectangle%20With%20Point%20Constraints%20I/README.md)  |  `树状数组`,`线段树`,`几何`,`数组`,`数学`,`枚举`,`排序`  |  中等  |  第 427 场周赛  |
+|  3381  |  [长度可被 K 整除的子数组的最大元素和](/solution/3300-3399/3381.Maximum%20Subarray%20Sum%20With%20Length%20Divisible%20by%20K/README.md)  |  `数组`,`哈希表`,`前缀和`  |  中等  |  第 427 场周赛  |
+|  3382  |  [用点构造面积最大的矩形 II](/solution/3300-3399/3382.Maximum%20Area%20Rectangle%20With%20Point%20Constraints%20II/README.md)  |  `树状数组`,`线段树`,`几何`,`数组`,`数学`,`排序`  |  困难  |  第 427 场周赛  |
+|  3383  |  [施法所需最低符文数量](/solution/3300-3399/3383.Minimum%20Runes%20to%20Add%20to%20Cast%20Spell/README.md)  |  `深度优先搜索`,`广度优先搜索`,`图`,`拓扑排序`,`数组`  |  困难  |  🔒  |
+|  3384  |  [球队传球成功的优势得分](/solution/3300-3399/3384.Team%20Dominance%20by%20Pass%20Success/README.md)  |  `数据库`  |  困难  |  🔒  |
 
 ## 版权
 
